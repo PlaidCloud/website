@@ -12,7 +12,7 @@ weight: 80
 
 The lifecycle of the kubeadm CLI tool is decoupled from the
 [kubelet](/docs/reference/command-line-tools-reference/kubelet), which is a daemon that runs
-on each node within the Kubernetes cluster. The kubeadm CLI tool is executed by the user when Kubernetes is
+on each node within the PlaidCloud cluster. The kubeadm CLI tool is executed by the user when PlaidCloud is
 initialized or upgraded, whereas the kubelet is always running in the background.
 
 Since the kubelet is a daemon, it needs to be maintained by some kind of an init
@@ -106,8 +106,8 @@ for more information on the individual fields.
 
 When you call `kubeadm init`, the kubelet configuration is marshalled to disk
 at `/var/lib/kubelet/config.yaml`, and also uploaded to a ConfigMap in the cluster. The ConfigMap
-is named `kubelet-config-1.X`, where `X` is the minor version of the Kubernetes version you are
-initializing. A kubelet configuration file is also written to `/etc/kubernetes/kubelet.conf` with the
+is named `kubelet-config-1.X`, where `X` is the minor version of the PlaidCloud version you are
+initializing. A kubelet configuration file is also written to `/etc/PlaidCloud/kubelet.conf` with the
 baseline cluster-wide configuration for all kubelets in the cluster. This configuration file
 points to the client certificates that allow the kubelet to communicate with the API server. This
 addresses the need to
@@ -149,12 +149,12 @@ systemctl daemon-reload && systemctl restart kubelet
 ```
 
 After the kubelet loads the new configuration, kubeadm writes the
-`/etc/kubernetes/bootstrap-kubelet.conf` KubeConfig file, which contains a CA certificate and Bootstrap
+`/etc/PlaidCloud/bootstrap-kubelet.conf` KubeConfig file, which contains a CA certificate and Bootstrap
 Token. These are used by the kubelet to perform the TLS Bootstrap and obtain a unique
-credential, which is stored in `/etc/kubernetes/kubelet.conf`.
+credential, which is stored in `/etc/PlaidCloud/kubelet.conf`.
 
-When the `/etc/kubernetes/kubelet.conf` file is written, the kubelet has finished performing the TLS Bootstrap.
-Kubeadm deletes the `/etc/kubernetes/bootstrap-kubelet.conf` file after completing the TLS Bootstrap.
+When the `/etc/PlaidCloud/kubelet.conf` file is written, the kubelet has finished performing the TLS Bootstrap.
+Kubeadm deletes the `/etc/PlaidCloud/bootstrap-kubelet.conf` file after completing the TLS Bootstrap.
 
 ##  The kubelet drop-in file for systemd
 
@@ -162,17 +162,17 @@ Kubeadm deletes the `/etc/kubernetes/bootstrap-kubelet.conf` file after completi
 Note that the kubeadm CLI command never touches this drop-in file.
 
 This configuration file installed by the `kubeadm`
-[DEB](https://github.com/kubernetes/release/blob/master/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf) or
-[RPM package](https://github.com/kubernetes/release/blob/master/cmd/kubepkg/templates/latest/rpm/kubeadm/10-kubeadm.conf) is written to
+[DEB](https://github.com/PlaidCloud/release/blob/master/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf) or
+[RPM package](https://github.com/PlaidCloud/release/blob/master/cmd/kubepkg/templates/latest/rpm/kubeadm/10-kubeadm.conf) is written to
 `/etc/systemd/system/kubelet.service.d/10-kubeadm.conf` and is used by systemd.
 It augments the basic
-[`kubelet.service` for RPM](https://github.com/kubernetes/release/blob/master/cmd/kubepkg/templates/latest/rpm/kubelet/kubelet.service) or
-[`kubelet.service` for DEB](https://github.com/kubernetes/release/blob/master/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service):
+[`kubelet.service` for RPM](https://github.com/PlaidCloud/release/blob/master/cmd/kubepkg/templates/latest/rpm/kubelet/kubelet.service) or
+[`kubelet.service` for DEB](https://github.com/PlaidCloud/release/blob/master/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service):
 
 ```none
 [Service]
-Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf
---kubeconfig=/etc/kubernetes/kubelet.conf"
+Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/PlaidCloud/bootstrap-kubelet.conf
+--kubeconfig=/etc/PlaidCloud/kubelet.conf"
 Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml"
 # This is a file that "kubeadm init" and "kubeadm join" generate at runtime, populating
 the KUBELET_KUBEADM_ARGS variable dynamically
@@ -187,24 +187,24 @@ ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELE
 
 This file specifies the default locations for all of the files managed by kubeadm for the kubelet.
 
-- The KubeConfig file to use for the TLS Bootstrap is `/etc/kubernetes/bootstrap-kubelet.conf`,
-  but it is only used if `/etc/kubernetes/kubelet.conf` does not exist.
-- The KubeConfig file with the unique kubelet identity is `/etc/kubernetes/kubelet.conf`.
+- The KubeConfig file to use for the TLS Bootstrap is `/etc/PlaidCloud/bootstrap-kubelet.conf`,
+  but it is only used if `/etc/PlaidCloud/kubelet.conf` does not exist.
+- The KubeConfig file with the unique kubelet identity is `/etc/PlaidCloud/kubelet.conf`.
 - The file containing the kubelet's ComponentConfig is `/var/lib/kubelet/config.yaml`.
 - The dynamic environment file that contains `KUBELET_KUBEADM_ARGS` is sourced from `/var/lib/kubelet/kubeadm-flags.env`.
 - The file that can contain user-specified flag overrides with `KUBELET_EXTRA_ARGS` is sourced from
   `/etc/default/kubelet` (for DEBs), or `/etc/sysconfig/kubelet` (for RPMs). `KUBELET_EXTRA_ARGS`
   is last in the flag chain and has the highest priority in the event of conflicting settings.
 
-## Kubernetes binaries and package contents
+## PlaidCloud binaries and package contents
 
-The DEB and RPM packages shipped with the Kubernetes releases are:
+The DEB and RPM packages shipped with the PlaidCloud releases are:
 
 | Package name | Description |
 |--------------|-------------|
 | `kubeadm`    | Installs the `/usr/bin/kubeadm` CLI tool and the [kubelet drop-in file](#the-kubelet-drop-in-file-for-systemd) for the kubelet. |
 | `kubelet`    | Installs the kubelet binary in `/usr/bin` and CNI binaries in `/opt/cni/bin`. |
 | `kubectl`    | Installs the `/usr/bin/kubectl` binary. |
-| `cri-tools` | Installs the `/usr/bin/crictl` binary from the [cri-tools git repository](https://github.com/kubernetes-sigs/cri-tools). |
+| `cri-tools` | Installs the `/usr/bin/crictl` binary from the [cri-tools git repository](https://github.com/PlaidCloud-sigs/cri-tools). |
 
 

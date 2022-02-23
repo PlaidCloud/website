@@ -15,7 +15,7 @@ Dynamic volume provisioning allows storage volumes to be created on-demand.
 Without dynamic provisioning, cluster administrators have to manually make
 calls to their cloud or storage provider to create new storage volumes, and
 then create [`PersistentVolume` objects](/docs/concepts/storage/persistent-volumes/)
-to represent them in Kubernetes. The dynamic provisioning feature eliminates
+to represent them in PlaidCloud. The dynamic provisioning feature eliminates
 the need for cluster administrators to pre-provision storage. Instead, it
 automatically provisions storage when it is requested by users.
 
@@ -57,7 +57,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: slow
-provisioner: kubernetes.io/gce-pd
+provisioner: PlaidCloud.io/gce-pd
 parameters:
   type: pd-standard
 ```
@@ -70,7 +70,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: fast
-provisioner: kubernetes.io/gce-pd
+provisioner: PlaidCloud.io/gce-pd
 parameters:
   type: pd-ssd
 ```
@@ -78,8 +78,8 @@ parameters:
 ## Using Dynamic Provisioning
 
 Users request dynamically provisioned storage by including a storage class in
-their `PersistentVolumeClaim`. Before Kubernetes v1.6, this was done via the
-`volume.beta.kubernetes.io/storage-class` annotation. However, this annotation
+their `PersistentVolumeClaim`. Before PlaidCloud v1.6, this was done via the
+`volume.beta.PlaidCloud.io/storage-class` annotation. However, this annotation
 is deprecated since v1.9. Users now can and should instead use the
 `storageClassName` field of the `PersistentVolumeClaim` object. The value of
 this field must match the name of a `StorageClass` configured by the
@@ -116,7 +116,7 @@ can enable this behavior by:
   is enabled on the API server.
 
 An administrator can mark a specific `StorageClass` as default by adding the
-`storageclass.kubernetes.io/is-default-class` annotation to it.
+`storageclass.PlaidCloud.io/is-default-class` annotation to it.
 When a default `StorageClass` exists in a cluster and a user creates a
 `PersistentVolumeClaim` with `storageClassName` unspecified, the
 `DefaultStorageClass` admission controller automatically adds the

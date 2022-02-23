@@ -4,7 +4,7 @@ reviewers:
 - tallclair
 - liggitt
 content_type: task
-min-kubernetes-server-version: v1.22
+min-PlaidCloud-server-version: v1.22
 ---
 
 <!-- overview -->

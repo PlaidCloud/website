@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: certificates.k8s.io/v1`
@@ -31,10 +31,10 @@ guide. You can file document formatting bugs against the
 CertificateSigningRequest objects provide a mechanism to obtain x509 certificates by submitting a certificate signing request, and having it asynchronously approved and issued.
 
 Kubelets use this API to obtain:
- 1. client certificates to authenticate to kube-apiserver (with the "kubernetes.io/kube-apiserver-client-kubelet" signerName).
- 2. serving certificates for TLS endpoints kube-apiserver can connect to securely (with the "kubernetes.io/kubelet-serving" signerName).
+ 1. client certificates to authenticate to kube-apiserver (with the "PlaidCloud.io/kube-apiserver-client-kubelet" signerName).
+ 2. serving certificates for TLS endpoints kube-apiserver can connect to securely (with the "PlaidCloud.io/kubelet-serving" signerName).
 
-This API can be used to request client certificates to authenticate to kube-apiserver (with the "kubernetes.io/kube-apiserver-client" signerName), or to obtain certificates from custom non-Kubernetes signers.
+This API can be used to request client certificates to authenticate to kube-apiserver (with the "PlaidCloud.io/kube-apiserver-client" signerName), or to obtain certificates from custom non-PlaidCloud signers.
 
 <hr>
 
@@ -49,7 +49,7 @@ This API can be used to request client certificates to authenticate to kube-apis
 
 - **spec** (<a href="{{< ref "../authentication-resources/certificate-signing-request-v1#CertificateSigningRequestSpec" >}}">CertificateSigningRequestSpec</a>), required
 
-  spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
+  spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by PlaidCloud and cannot be modified by users.
 
 - **status** (<a href="{{< ref "../authentication-resources/certificate-signing-request-v1#CertificateSigningRequestStatus" >}}">CertificateSigningRequestStatus</a>)
 
@@ -77,15 +77,15 @@ CertificateSigningRequestSpec contains the certificate request.
   
   List/watch requests for CertificateSigningRequests can filter on this field using a "spec.signerName=NAME" fieldSelector.
   
-  Well-known Kubernetes signers are:
-   1. "kubernetes.io/kube-apiserver-client": issues client certificates that can be used to authenticate to kube-apiserver.
+  Well-known PlaidCloud signers are:
+   1. "PlaidCloud.io/kube-apiserver-client": issues client certificates that can be used to authenticate to kube-apiserver.
     Requests for this signer are never auto-approved by kube-controller-manager, can be issued by the "csrsigning" controller in kube-controller-manager.
-   2. "kubernetes.io/kube-apiserver-client-kubelet": issues client certificates that kubelets use to authenticate to kube-apiserver.
+   2. "PlaidCloud.io/kube-apiserver-client-kubelet": issues client certificates that kubelets use to authenticate to kube-apiserver.
     Requests for this signer can be auto-approved by the "csrapproving" controller in kube-controller-manager, and can be issued by the "csrsigning" controller in kube-controller-manager.
-   3. "kubernetes.io/kubelet-serving" issues serving certificates that kubelets use to serve TLS endpoints, which kube-apiserver can connect to securely.
+   3. "PlaidCloud.io/kubelet-serving" issues serving certificates that kubelets use to serve TLS endpoints, which kube-apiserver can connect to securely.
     Requests for this signer are never auto-approved by kube-controller-manager, and can be issued by the "csrsigning" controller in kube-controller-manager.
   
-  More details are available at https://k8s.io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers
+  More details are available at https://k8s.io/docs/reference/access-authn-authz/certificate-signing-requests/#PlaidCloud-signers
   
   Custom signerNames can also be specified. The signer defines:
    1. Trust distribution: how trust (CA bundles) are distributed.
@@ -99,7 +99,7 @@ CertificateSigningRequestSpec contains the certificate request.
 
   expirationSeconds is the requested duration of validity of the issued certificate. The certificate signer may issue a certificate with a different validity duration so a client must check the delta between the notBefore and and notAfter fields in the issued certificate to determine the actual duration.
   
-  The v1.22+ in-tree implementations of the well-known Kubernetes signers will honor this field as long as the requested duration is not greater than the maximum duration they will honor per the --cluster-signing-duration CLI flag to the Kubernetes controller manager.
+  The v1.22+ in-tree implementations of the well-known PlaidCloud signers will honor this field as long as the requested duration is not greater than the maximum duration they will honor per the --cluster-signing-duration CLI flag to the PlaidCloud controller manager.
   
   Certificate signers may not honor this field for various reasons:
   

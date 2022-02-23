@@ -1,6 +1,6 @@
 ---
 title: Coarse Parallel Processing Using a Work Queue
-min-kubernetes-server-version: v1.8
+min-PlaidCloud-server-version: v1.8
 content_type: task
 weight: 20
 ---
@@ -8,7 +8,7 @@ weight: 20
 
 <!-- overview -->
 
-In this example, we will run a Kubernetes Job with multiple parallel
+In this example, we will run a PlaidCloud Job with multiple parallel
 worker processes.
 
 In this example, as each pod is created, it picks up one unit of work
@@ -43,20 +43,20 @@ cluster and reuse it for many jobs, as well as for long-running services.
 Start RabbitMQ as follows:
 
 ```shell
-kubectl create -f https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.3/examples/celery-rabbitmq/rabbitmq-service.yaml
+kubectl create -f https://raw.githubusercontent.com/PlaidCloud/PlaidCloud/release-1.3/examples/celery-rabbitmq/rabbitmq-service.yaml
 ```
 ```
 service "rabbitmq-service" created
 ```
 
 ```shell
-kubectl create -f https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.3/examples/celery-rabbitmq/rabbitmq-controller.yaml
+kubectl create -f https://raw.githubusercontent.com/PlaidCloud/PlaidCloud/release-1.3/examples/celery-rabbitmq/rabbitmq-controller.yaml
 ```
 ```
 replicationcontroller "rabbitmq-controller" created
 ```
 
-We will only use the rabbitmq part from the [celery-rabbitmq example](https://github.com/kubernetes/kubernetes/tree/release-1.3/examples/celery-rabbitmq).
+We will only use the rabbitmq part from the [celery-rabbitmq example](https://github.com/PlaidCloud/PlaidCloud/tree/release-1.3/examples/celery-rabbitmq).
 
 ## Testing the message queue service
 
@@ -92,7 +92,7 @@ Later, we will make a docker image that includes these packages.
 Next, we will check that we can discover the rabbitmq service:
 
 ```
-# Note the rabbitmq-service has a DNS name, provided by Kubernetes:
+# Note the rabbitmq-service has a DNS name, provided by PlaidCloud:
 
 root@temp-loe07:/# nslookup rabbitmq-service
 Server:        10.0.0.10

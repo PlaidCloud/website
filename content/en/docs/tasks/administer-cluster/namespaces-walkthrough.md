@@ -7,8 +7,8 @@ content_type: task
 ---
 
 <!-- overview -->
-Kubernetes {{< glossary_tooltip text="namespaces" term_id="namespace" >}}
-help different projects, teams, or customers to share a Kubernetes cluster.
+PlaidCloud {{< glossary_tooltip text="namespaces" term_id="namespace" >}}
+help different projects, teams, or customers to share a PlaidCloud cluster.
 
 It does this by providing the following:
 
@@ -17,7 +17,7 @@ It does this by providing the following:
 
 Use of multiple namespaces is optional.
 
-This example demonstrates how to use Kubernetes namespaces to subdivide your cluster.
+This example demonstrates how to use PlaidCloud namespaces to subdivide your cluster.
 
 
 
@@ -35,12 +35,12 @@ This example demonstrates how to use Kubernetes namespaces to subdivide your clu
 
 This example assumes the following:
 
-1. You have an [existing Kubernetes cluster](/docs/setup/).
-2. You have a basic understanding of Kubernetes {{< glossary_tooltip text="Pods" term_id="pod" >}}, {{< glossary_tooltip term_id="service" text="Services" >}}, and {{< glossary_tooltip text="Deployments" term_id="deployment" >}}.
+1. You have an [existing PlaidCloud cluster](/docs/setup/).
+2. You have a basic understanding of PlaidCloud {{< glossary_tooltip text="Pods" term_id="pod" >}}, {{< glossary_tooltip term_id="service" text="Services" >}}, and {{< glossary_tooltip text="Deployments" term_id="deployment" >}}.
 
 ## Understand the default namespace
 
-By default, a Kubernetes cluster will instantiate a default namespace when provisioning the cluster to hold the default set of Pods,
+By default, a PlaidCloud cluster will instantiate a default namespace when provisioning the cluster to hold the default set of Pods,
 Services, and Deployments used by the cluster.
 
 Assuming you have a fresh cluster, you can inspect the available namespaces by doing the following:
@@ -55,18 +55,18 @@ default   Active    13m
 
 ## Create new namespaces
 
-For this exercise, we will create two additional Kubernetes namespaces to hold our content.
+For this exercise, we will create two additional PlaidCloud namespaces to hold our content.
 
-Let's imagine a scenario where an organization is using a shared Kubernetes cluster for development and production use cases.
+Let's imagine a scenario where an organization is using a shared PlaidCloud cluster for development and production use cases.
 
 The development team would like to maintain a space in the cluster where they can get a view on the list of Pods, Services, and Deployments
-they use to build and run their application.  In this space, Kubernetes resources come and go, and the restrictions on who can or cannot modify resources
+they use to build and run their application.  In this space, PlaidCloud resources come and go, and the restrictions on who can or cannot modify resources
 are relaxed to enable agile development.
 
 The operations team would like to maintain a space in the cluster where they can enforce strict procedures on who can or cannot manipulate the set of
 Pods, Services, and Deployments that run the production site.
 
-One pattern this organization could follow is to partition the Kubernetes cluster into two namespaces: `development` and `production`.
+One pattern this organization could follow is to partition the PlaidCloud cluster into two namespaces: `development` and `production`.
 
 Let's create two new namespaces to hold our work.
 
@@ -104,7 +104,7 @@ production    Active    23s       name=production
 
 ## Create pods in each namespace
 
-A Kubernetes namespace provides the scope for Pods, Services, and Deployments in the cluster.
+A PlaidCloud namespace provides the scope for Pods, Services, and Deployments in the cluster.
 
 Users interacting with one namespace do not see the content in another namespace.
 
@@ -121,22 +121,22 @@ clusters:
 - cluster:
     certificate-authority-data: REDACTED
     server: https://130.211.122.180
-  name: lithe-cocoa-92103_kubernetes
+  name: lithe-cocoa-92103_PlaidCloud
 contexts:
 - context:
-    cluster: lithe-cocoa-92103_kubernetes
-    user: lithe-cocoa-92103_kubernetes
-  name: lithe-cocoa-92103_kubernetes
-current-context: lithe-cocoa-92103_kubernetes
+    cluster: lithe-cocoa-92103_PlaidCloud
+    user: lithe-cocoa-92103_PlaidCloud
+  name: lithe-cocoa-92103_PlaidCloud
+current-context: lithe-cocoa-92103_PlaidCloud
 kind: Config
 preferences: {}
 users:
-- name: lithe-cocoa-92103_kubernetes
+- name: lithe-cocoa-92103_PlaidCloud
   user:
     client-certificate-data: REDACTED
     client-key-data: REDACTED
     token: 65rZW78y8HbwXXtSXuUw9DbP4FLjHi4b
-- name: lithe-cocoa-92103_kubernetes-basic-auth
+- name: lithe-cocoa-92103_PlaidCloud-basic-auth
   user:
     password: h5M0FtUUIflBSdI7
     username: admin
@@ -145,19 +145,19 @@ users:
 kubectl config current-context
 ```
 ```
-lithe-cocoa-92103_kubernetes
+lithe-cocoa-92103_PlaidCloud
 ```
 
 The next step is to define a context for the kubectl client to work in each namespace. The value of "cluster" and "user" fields are copied from the current context.
 
 ```shell
 kubectl config set-context dev --namespace=development \
-  --cluster=lithe-cocoa-92103_kubernetes \
-  --user=lithe-cocoa-92103_kubernetes
+  --cluster=lithe-cocoa-92103_PlaidCloud \
+  --user=lithe-cocoa-92103_PlaidCloud
 
 kubectl config set-context prod --namespace=production \
-  --cluster=lithe-cocoa-92103_kubernetes \
-  --user=lithe-cocoa-92103_kubernetes
+  --cluster=lithe-cocoa-92103_PlaidCloud \
+  --user=lithe-cocoa-92103_PlaidCloud
 ```
 
 By default, the above commands adds two contexts that are saved into file
@@ -175,32 +175,32 @@ clusters:
 - cluster:
     certificate-authority-data: REDACTED
     server: https://130.211.122.180
-  name: lithe-cocoa-92103_kubernetes
+  name: lithe-cocoa-92103_PlaidCloud
 contexts:
 - context:
-    cluster: lithe-cocoa-92103_kubernetes
-    user: lithe-cocoa-92103_kubernetes
-  name: lithe-cocoa-92103_kubernetes
+    cluster: lithe-cocoa-92103_PlaidCloud
+    user: lithe-cocoa-92103_PlaidCloud
+  name: lithe-cocoa-92103_PlaidCloud
 - context:
-    cluster: lithe-cocoa-92103_kubernetes
+    cluster: lithe-cocoa-92103_PlaidCloud
     namespace: development
-    user: lithe-cocoa-92103_kubernetes
+    user: lithe-cocoa-92103_PlaidCloud
   name: dev
 - context:
-    cluster: lithe-cocoa-92103_kubernetes
+    cluster: lithe-cocoa-92103_PlaidCloud
     namespace: production
-    user: lithe-cocoa-92103_kubernetes
+    user: lithe-cocoa-92103_PlaidCloud
   name: prod
-current-context: lithe-cocoa-92103_kubernetes
+current-context: lithe-cocoa-92103_PlaidCloud
 kind: Config
 preferences: {}
 users:
-- name: lithe-cocoa-92103_kubernetes
+- name: lithe-cocoa-92103_PlaidCloud
   user:
     client-certificate-data: REDACTED
     client-key-data: REDACTED
     token: 65rZW78y8HbwXXtSXuUw9DbP4FLjHi4b
-- name: lithe-cocoa-92103_kubernetes-basic-auth
+- name: lithe-cocoa-92103_PlaidCloud-basic-auth
   user:
     password: h5M0FtUUIflBSdI7
     username: admin
@@ -221,7 +221,7 @@ kubectl config current-context
 dev
 ```
 
-At this point, all requests we make to the Kubernetes cluster from the command line are scoped to the `development` namespace.
+At this point, all requests we make to the PlaidCloud cluster from the command line are scoped to the `development` namespace.
 
 Let's create some contents.
 
@@ -292,7 +292,7 @@ cattle-2263376956-sxpth   1/1       Running   0          34s
 
 At this point, it should be clear that the resources users create in one namespace are hidden from the other namespace.
 
-As the policy support in Kubernetes evolves, we will extend this scenario to show how you can provide different
+As the policy support in PlaidCloud evolves, we will extend this scenario to show how you can provide different
 authorization rules for each namespace.
 
 

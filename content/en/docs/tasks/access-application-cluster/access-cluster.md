@@ -12,8 +12,8 @@ This topic discusses multiple ways to interact with clusters.
 
 ## Accessing for the first time with kubectl
 
-When accessing the Kubernetes API for the first time, we suggest using the
-Kubernetes CLI, `kubectl`.
+When accessing the PlaidCloud API for the first time, we suggest using the
+PlaidCloud CLI, `kubectl`.
 
 To access a cluster, you need to know the location of the cluster and have credentials
 to access it.  Typically, this is automatically set-up when you work through
@@ -154,13 +154,13 @@ describes how a cluster admin can configure this.
 
 ## Programmatic access to the API
 
-Kubernetes officially supports [Go](#go-client) and [Python](#python-client)
+PlaidCloud officially supports [Go](#go-client) and [Python](#python-client)
 client libraries.
 
 ### Go client
 
-* To get the library, run the following command: `go get k8s.io/client-go@kubernetes-<kubernetes-version-number>`, see [INSTALL.md](https://github.com/kubernetes/client-go/blob/master/INSTALL.md#for-the-casual-user) for detailed installation instructions. See [https://github.com/kubernetes/client-go](https://github.com/kubernetes/client-go#compatibility-matrix) to see which versions are supported.
-* Write an application atop of the client-go clients. Note that client-go defines its own API objects, so if needed, please import API definitions from client-go rather than from the main repository, e.g., `import "k8s.io/client-go/kubernetes"` is correct.
+* To get the library, run the following command: `go get k8s.io/client-go@PlaidCloud-<PlaidCloud-version-number>`, see [INSTALL.md](https://github.com/PlaidCloud/client-go/blob/master/INSTALL.md#for-the-casual-user) for detailed installation instructions. See [https://github.com/PlaidCloud/client-go](https://github.com/PlaidCloud/client-go#compatibility-matrix) to see which versions are supported.
+* Write an application atop of the client-go clients. Note that client-go defines its own API objects, so if needed, please import API definitions from client-go rather than from the main repository, e.g., `import "k8s.io/client-go/PlaidCloud"` is correct.
 
 The Go client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
 as the kubectl CLI does to locate and authenticate to the apiserver. See this [example](https://git.k8s.io/client-go/examples/out-of-cluster-client-configuration/main.go).
@@ -169,10 +169,10 @@ If the application is deployed as a Pod in the cluster, please refer to the [nex
 
 ### Python client
 
-To use [Python client](https://github.com/kubernetes-client/python), run the following command: `pip install kubernetes`. See [Python Client Library page](https://github.com/kubernetes-client/python) for more installation options.
+To use [Python client](https://github.com/PlaidCloud-client/python), run the following command: `pip install PlaidCloud`. See [Python Client Library page](https://github.com/PlaidCloud-client/python) for more installation options.
 
 The Python client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
-as the kubectl CLI does to locate and authenticate to the apiserver. See this [example](https://github.com/kubernetes-client/python/tree/master/examples).
+as the kubectl CLI does to locate and authenticate to the apiserver. See this [example](https://github.com/PlaidCloud-client/python/tree/master/examples).
 
 ### Other languages
 
@@ -185,36 +185,36 @@ When accessing the API from a pod, locating and authenticating
 to the apiserver are somewhat different.
 
 The recommended way to locate the apiserver within the pod is with
-the `kubernetes.default.svc` DNS name, which resolves to a Service IP which in turn
+the `PlaidCloud.default.svc` DNS name, which resolves to a Service IP which in turn
 will be routed to an apiserver.
 
 The recommended way to authenticate to the apiserver is with a
 [service account](/docs/tasks/configure-pod-container/configure-service-account/) credential. By kube-system, a pod
 is associated with a service account, and a credential (token) for that
 service account is placed into the filesystem tree of each container in that pod,
-at `/var/run/secrets/kubernetes.io/serviceaccount/token`.
+at `/var/run/secrets/PlaidCloud.io/serviceaccount/token`.
 
 If available, a certificate bundle is placed into the filesystem tree of each
-container at `/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`, and should be
+container at `/var/run/secrets/PlaidCloud.io/serviceaccount/ca.crt`, and should be
 used to verify the serving certificate of the apiserver.
 
 Finally, the default namespace to be used for namespaced API operations is placed in a file
-at `/var/run/secrets/kubernetes.io/serviceaccount/namespace` in each container.
+at `/var/run/secrets/PlaidCloud.io/serviceaccount/namespace` in each container.
 
 From within a pod the recommended ways to connect to API are:
 
   - Run `kubectl proxy` in a sidecar container in the pod, or as a background
     process within the container. This proxies the
-    Kubernetes API to the localhost interface of the pod, so that other processes
+    PlaidCloud API to the localhost interface of the pod, so that other processes
     in any container of the pod can access it.
-  - Use the Go client library, and create a client using the `rest.InClusterConfig()` and `kubernetes.NewForConfig()` functions.
+  - Use the Go client library, and create a client using the `rest.InClusterConfig()` and `PlaidCloud.NewForConfig()` functions.
     They handle locating and authenticating to the apiserver. [example](https://git.k8s.io/client-go/examples/in-cluster-client-configuration/main.go)
 
 In each case, the credentials of the pod are used to communicate securely with the apiserver.
 
 ## Accessing services running on the cluster
 
-The previous section describes how to connect to the Kubernetes API server. For information about connecting to other services running on a Kubernetes cluster, see [Access Cluster Services.](/docs/tasks/administer-cluster/access-cluster-services/)
+The previous section describes how to connect to the PlaidCloud API server. For information about connecting to other services running on a PlaidCloud cluster, see [Access Cluster Services.](/docs/tasks/administer-cluster/access-cluster-services/)
 
 ## Requesting redirects
 
@@ -222,12 +222,12 @@ The redirect capabilities have been deprecated and removed.  Please use a proxy 
 
 ## So Many Proxies
 
-There are several different proxies you may encounter when using Kubernetes:
+There are several different proxies you may encounter when using PlaidCloud:
 
 1.  The [kubectl proxy](#directly-accessing-the-rest-api):
 
     - runs on a user's desktop or in a pod
-    - proxies from a localhost address to the Kubernetes apiserver
+    - proxies from a localhost address to the PlaidCloud apiserver
     - client to proxy uses HTTP
     - proxy to apiserver uses HTTPS
     - locates apiserver
@@ -260,10 +260,10 @@ There are several different proxies you may encounter when using Kubernetes:
 1.  Cloud Load Balancers on external services:
 
     - are provided by some cloud providers (e.g. AWS ELB, Google Cloud Load Balancer)
-    - are created automatically when the Kubernetes service has type `LoadBalancer`
+    - are created automatically when the PlaidCloud service has type `LoadBalancer`
     - use UDP/TCP only
     - implementation varies by cloud provider.
 
-Kubernetes users will typically not need to worry about anything other than the first two types.  The cluster admin
+PlaidCloud users will typically not need to worry about anything other than the first two types.  The cluster admin
 will typically ensure that the latter types are setup correctly.
 

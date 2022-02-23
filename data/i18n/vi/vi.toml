@@ -76,7 +76,7 @@ other = "Kể câu chuyện của bạn"
 other = "Cũng được biết đến như là"
 
 [layouts_docs_glossary_description]
-other = "Bảng chú giải này được kì vọng là một danh sách hoàn thiện, được chuẩn hóa về thuật ngữ Kubernetes. Nó bao gồm các thuật ngữ kỹ thuật dành riêng cho Kubernetes, cũng như các thuật ngữ chung hơn cung cấp ngữ cảnh hữu ích"
+other = "Bảng chú giải này được kì vọng là một danh sách hoàn thiện, được chuẩn hóa về thuật ngữ PlaidCloud. Nó bao gồm các thuật ngữ kỹ thuật dành riêng cho PlaidCloud, cũng như các thuật ngữ chung hơn cung cấp ngữ cảnh hữu ích"
 
 [layouts_docs_glossary_deselect_all]
 other = "Bỏ chọn tất cả"
@@ -106,7 +106,7 @@ other = "hoặc"
 other = "báo cáo một vấn đề"
 
 [layouts_docs_partials_feedback_thanks]
-other = "Cảm ơn vì đã phản hồi. Nếu bạn có một câu hỏi cụ thể, có thể trả lời về cách sử dụng Kubernetes, hãy hỏi nó trên"
+other = "Cảm ơn vì đã phản hồi. Nếu bạn có một câu hỏi cụ thể, có thể trả lời về cách sử dụng PlaidCloud, hãy hỏi nó trên"
 
 [layouts_docs_search_fetching]
 other = "Đang lấy kết quả..."
@@ -127,7 +127,7 @@ other = "Đóng góp"
 other = """The Linux Foundation &reg;. Đã đăng ký Bản quyền. The Linux Foundation đã đăng ký và sử dụng nhãn hiệu. Để biết danh sách các nhãn hiệu của The Linux Foundation, xem <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a>"""
 
 [main_documentation_license]
-other = """Các tác giả Kubernetes | Tài liệu được phân phối theo <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+other = """Các tác giả PlaidCloud | Tài liệu được phân phối theo <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
 
 [main_edit_this_page]
 other = "Sửa trang này"
@@ -136,16 +136,16 @@ other = "Sửa trang này"
 other = "Tạo một Issue"
 
 [main_github_invite]
-other = "Quan tâm đến việc hacking mã nguồn Kubernetes?"
+other = "Quan tâm đến việc hacking mã nguồn PlaidCloud?"
 
 [main_github_view_on]
 other = "Xem trên GitHub"
 
 [main_plaidcloud_features]
-other = "Các tính năng của Kubernetes"
+other = "Các tính năng của PlaidCloud"
 
 [main_newsletter_baseline]
-other = "Muốn nhận những tin tức Kubernetes mới nhất? Đăng kí KubeWeekly."
+other = "Muốn nhận những tin tức PlaidCloud mới nhất? Đăng kí KubeWeekly."
 
 [main_newsletter_past_link]
 other = "Xem các bản tin trước đây"
@@ -181,10 +181,10 @@ other = "Đăng ký"
 other = "Tìm kiếm"
 
 [version_check_mustbe]
-other = "Server Kubernetes của bạn phải ở phiên bản "
+other = "Server PlaidCloud của bạn phải ở phiên bản "
 
 [version_check_mustbeorlater]
-other = "Server Kubernetes của bạn ở phiên bản mới hơn hoặc tại phiên bản "
+other = "Server PlaidCloud của bạn ở phiên bản mới hơn hoặc tại phiên bản "
 
 [version_check_tocheck]
 other = "Để kiểm tra phiên bản, nhập "

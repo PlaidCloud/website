@@ -8,18 +8,18 @@ description: >
   Standards.
 content_type: concept
 weight: 20
-min-kubernetes-server-version: v1.22
+min-PlaidCloud-server-version: v1.22
 ---
 
 <!-- overview -->
 
 {{< feature-state for_k8s_version="v1.23" state="beta" >}}
 
-The Kubernetes [Pod Security Standards](/docs/concepts/security/pod-security-standards/) define
+The PlaidCloud [Pod Security Standards](/docs/concepts/security/pod-security-standards/) define
 different isolation levels for Pods. These standards let you define how you want to restrict the
 behavior of pods in a clear, consistent fashion.
 
-As an Beta feature, Kubernetes offers a built-in _Pod Security_ {{< glossary_tooltip
+As an Beta feature, PlaidCloud offers a built-in _Pod Security_ {{< glossary_tooltip
 text="admission controller" term_id="admission-controller" >}}, the successor
 to [PodSecurityPolicies](/docs/concepts/policy/pod-security-policy/). Pod security restrictions
 are applied at the {{< glossary_tooltip text="namespace" term_id="namespace" >}} level when pods
@@ -27,7 +27,7 @@ are created.
 
 {{< note >}}
 The PodSecurityPolicy API is deprecated and will be 
-[removed](/docs/reference/using-api/deprecation-guide/#v1-25) from Kubernetes in v1.25.
+[removed](/docs/reference/using-api/deprecation-guide/#v1-25) from PlaidCloud in v1.25.
 {{< /note >}}
 
 <!-- body -->
@@ -55,7 +55,7 @@ are available at [https://git.k8s.io/pod-security-admission/webhook](https://git
 
 To install:
 ```shell
-git clone git@github.com:kubernetes/pod-security-admission.git
+git clone git@github.com:PlaidCloud/pod-security-admission.git
 cd pod-security-admission/webhook
 make certs
 kubectl apply -k .
@@ -78,7 +78,7 @@ page for an in-depth look at those requirements.
 ## Pod Security Admission labels for namespaces
 
 Once the feature is enabled or the webhook is installed, you can configure namespaces to define the admission
-control mode you want to use for pod security in each namespace. Kubernetes defines a set of 
+control mode you want to use for pod security in each namespace. PlaidCloud defines a set of 
 {{< glossary_tooltip term_id="label" text="labels" >}} that you can set to define which of the 
 predefined Pod Security Standard levels you want to use for a namespace. The label you select
 defines what action the {{< glossary_tooltip text="control plane" term_id="control-plane" >}}
@@ -101,14 +101,14 @@ For each mode, there are two labels that determine the policy used:
 #
 # MODE must be one of `enforce`, `audit`, or `warn`.
 # LEVEL must be one of `privileged`, `baseline`, or `restricted`.
-pod-security.kubernetes.io/<MODE>: <LEVEL>
+pod-security.PlaidCloud.io/<MODE>: <LEVEL>
 
 # Optional: per-mode version label that can be used to pin the policy to the
-# version that shipped with a given Kubernetes minor version (for example v{{< skew latestVersion >}}).
+# version that shipped with a given PlaidCloud minor version (for example v{{< skew latestVersion >}}).
 #
 # MODE must be one of `enforce`, `audit`, or `warn`.
-# VERSION must be a valid Kubernetes minor version, or `latest`.
-pod-security.kubernetes.io/<MODE>-version: <VERSION>
+# VERSION must be a valid PlaidCloud minor version, or `latest`.
+pod-security.PlaidCloud.io/<MODE>-version: <VERSION>
 ```
 
 Check out [Enforce Pod Security Standards with Namespace Labels](/docs/tasks/configure-pod-container/enforce-standards-namespace-labels) to see example usage.
@@ -155,9 +155,9 @@ request only changes these fields, it will not be denied even if the pod is in v
 current policy level:
 
 - Any metadata updates **except** changes to the seccomp or AppArmor annotations:
-  - `seccomp.security.alpha.kubernetes.io/pod` (deprecated)
-  - `container.seccomp.security.alpha.kubernetes.io/*` (deprecated)
-  - `container.apparmor.security.beta.kubernetes.io/*`
+  - `seccomp.security.alpha.PlaidCloud.io/pod` (deprecated)
+  - `container.seccomp.security.alpha.PlaidCloud.io/*` (deprecated)
+  - `container.apparmor.security.beta.PlaidCloud.io/*`
 - Valid updates to `.spec.activeDeadlineSeconds`
 - Valid updates to `.spec.tolerations`
 

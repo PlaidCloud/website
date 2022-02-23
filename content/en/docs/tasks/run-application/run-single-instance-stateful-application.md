@@ -7,7 +7,7 @@ weight: 20
 <!-- overview -->
 
 This page shows you how to run a single-instance stateful application
-in Kubernetes using a PersistentVolume and a Deployment. The
+in PlaidCloud using a PersistentVolume and a Deployment. The
 application is MySQL.
 
 
@@ -37,7 +37,7 @@ application is MySQL.
 
 ## Deploy MySQL
 
-You can run a stateful application by creating a Kubernetes Deployment
+You can run a stateful application by creating a PlaidCloud Deployment
 and connecting it to an existing PersistentVolume using a
 PersistentVolumeClaim.  For example, this YAML file describes a
 Deployment that runs MySQL and references the PersistentVolumeClaim. The file
@@ -47,7 +47,7 @@ satisfied by any existing volume that meets the requirements,
 or by a dynamic provisioner.
 
 Note: The password is defined in the config yaml, and this is insecure. See
-[Kubernetes Secrets](/docs/concepts/configuration/secret/)
+[PlaidCloud Secrets](/docs/concepts/configuration/secret/)
 for a secure solution.
 
 {{< codenew file="application/mysql/mysql-deployment.yaml" >}}
@@ -71,7 +71,7 @@ for a secure solution.
         Namespace:            default
         CreationTimestamp:    Tue, 01 Nov 2016 11:18:45 -0700
         Labels:               app=mysql
-        Annotations:          deployment.kubernetes.io/revision=1
+        Annotations:          deployment.PlaidCloud.io/revision=1
         Selector:             app=mysql
         Replicas:             1 desired | 1 updated | 1 total | 0 available | 1 unavailable
         StrategyType:         Recreate
@@ -124,8 +124,8 @@ for a secure solution.
         Status:       Bound
         Volume:       mysql-pv-volume
         Labels:       <none>
-        Annotations:    pv.kubernetes.io/bind-completed=yes
-                        pv.kubernetes.io/bound-by-controller=yes
+        Annotations:    pv.PlaidCloud.io/bind-completed=yes
+                        pv.PlaidCloud.io/bound-by-controller=yes
         Capacity:     20Gi
         Access Modes: RWO
         Events:       <none>
@@ -166,7 +166,7 @@ specific to stateful apps:
   Pod. For clustered stateful apps, see the
   [StatefulSet documentation](/docs/concepts/workloads/controllers/statefulset/).
 * Use `strategy:` `type: Recreate` in the Deployment configuration
-  YAML file. This instructs Kubernetes to _not_ use rolling
+  YAML file. This instructs PlaidCloud to _not_ use rolling
   updates. Rolling updates will not work, as you cannot have more than
   one Pod running at a time. The `Recreate` strategy will stop the
   first pod before creating a new one with the updated configuration.

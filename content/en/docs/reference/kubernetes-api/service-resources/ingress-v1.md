@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: networking.k8s.io/v1`
@@ -66,7 +66,7 @@ IngressSpec describes the Ingress the user wishes to exist.
 
 - **ingressClassName** (string)
 
-  IngressClassName is the name of the IngressClass cluster resource. The associated IngressClass defines which controller will implement the resource. This replaces the deprecated `kubernetes.io/ingress.class` annotation. For backwards compatibility, when that annotation is set, it must be given precedence over this field. The controller may emit a warning if the field and annotation have different values. Implementations of this API should ignore Ingresses without a class specified. An IngressClass resource may be marked as default, which can be used to set a default value for this field. For more information, refer to the IngressClass documentation.
+  IngressClassName is the name of the IngressClass cluster resource. The associated IngressClass defines which controller will implement the resource. This replaces the deprecated `PlaidCloud.io/ingress.class` annotation. For backwards compatibility, when that annotation is set, it must be given precedence over this field. The controller may emit a warning if the field and annotation have different values. Implementations of this API should ignore Ingresses without a class specified. An IngressClass resource may be marked as default, which can be used to set a default value for this field. For more information, refer to the IngressClass documentation.
 
 - **rules** ([]IngressRule)
 
@@ -156,14 +156,14 @@ IngressBackend describes all endpoints for a given service and port.
 
 - **resource** (<a href="{{< ref "../common-definitions/typed-local-object-reference#TypedLocalObjectReference" >}}">TypedLocalObjectReference</a>)
 
-  Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with "Service".
+  Resource is an ObjectRef to another PlaidCloud resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with "Service".
 
 - **service** (IngressServiceBackend)
 
   Service references a Service as a Backend. This is a mutually exclusive setting with "Resource".
 
   <a name="IngressServiceBackend"></a>
-  *IngressServiceBackend references a Kubernetes Service as a Backend.*
+  *IngressServiceBackend references a PlaidCloud Service as a Backend.*
 
   - **service.name** (string), required
 

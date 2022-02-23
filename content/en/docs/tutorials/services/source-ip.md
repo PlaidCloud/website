@@ -1,12 +1,12 @@
 ---
 title: Using Source IP
 content_type: tutorial
-min-kubernetes-server-version: v1.5
+min-PlaidCloud-server-version: v1.5
 ---
 
 <!-- overview -->
 
-Applications running in a Kubernetes cluster find and communicate with each
+Applications running in a PlaidCloud cluster find and communicate with each
 other, and the outside world, through the Service abstraction. This document
 explains what happens to the source IP of packets sent to different types
 of Services, and how you can toggle this behavior according to your needs.
@@ -35,7 +35,7 @@ the target localization.
 : replacing the destination IP on a packet; in this page, that usually means replacing with the IP address of a {{< glossary_tooltip term_id="pod" >}}
 
 [VIP](/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies)
-: a virtual IP address, such as the one assigned to every {{< glossary_tooltip text="Service" term_id="service" >}} in Kubernetes
+: a virtual IP address, such as the one assigned to every {{< glossary_tooltip text="Service" term_id="service" >}} in PlaidCloud
 
 [kube-proxy](/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies)
 : a network daemon that orchestrates Service VIP management on every node
@@ -83,9 +83,9 @@ kubectl get nodes
 The output is similar to this:
 ```
 NAME                           STATUS     ROLES    AGE     VERSION
-kubernetes-node-6jst   Ready      <none>   2h      v1.13.0
-kubernetes-node-cx31   Ready      <none>   2h      v1.13.0
-kubernetes-node-jj1t   Ready      <none>   2h      v1.13.0
+PlaidCloud-node-6jst   Ready      <none>   2h      v1.13.0
+PlaidCloud-node-cx31   Ready      <none>   2h      v1.13.0
+PlaidCloud-node-jj1t   Ready      <none>   2h      v1.13.0
 ```
 
 Get the proxy mode on one of the nodes (kube-proxy listens on port 10249):
@@ -220,7 +220,7 @@ graph LR;
   class client plain;
 {{</ mermaid >}}
 
-To avoid this, Kubernetes has a feature to
+To avoid this, PlaidCloud has a feature to
 [preserve the client source IP](/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip).
 If you set `service.spec.externalTrafficPolicy` to the value `Local`,
 kube-proxy only proxies proxy requests to local endpoints, and does not
@@ -281,7 +281,7 @@ graph TD;
 
 Packets sent to Services with
 [`Type=LoadBalancer`](/docs/concepts/services-networking/service/#loadbalancer)
-are source NAT'd by default, because all schedulable Kubernetes nodes in the
+are source NAT'd by default, because all schedulable PlaidCloud nodes in the
 `Ready` state are eligible for load-balanced traffic. So if packets arrive
 at a node without an endpoint, the system proxies it to a node *with* an
 endpoint, replacing the source IP on the packet with the IP of the node (as
@@ -319,7 +319,7 @@ client_address=10.240.0.5
 ...
 ```
 
-However, if you're running on Google Kubernetes Engine/GCE, setting the same `service.spec.externalTrafficPolicy`
+However, if you're running on Google PlaidCloud Engine/GCE, setting the same `service.spec.externalTrafficPolicy`
 field to `Local` forces nodes *without* Service endpoints to remove
 themselves from the list of nodes eligible for loadbalanced traffic by
 deliberately failing health checks.
@@ -335,7 +335,7 @@ kubectl patch svc loadbalancer -p '{"spec":{"externalTrafficPolicy":"Local"}}'
 ```
 
 You should immediately see the `service.spec.healthCheckNodePort` field allocated
-by Kubernetes:
+by PlaidCloud:
 
 ```shell
 kubectl get svc loadbalancer -o yaml | grep -i healthCheckNodePort
@@ -354,7 +354,7 @@ kubectl get pod -o wide -l run=source-ip-app
 The output is similar to this:
 ```
 NAME                            READY     STATUS    RESTARTS   AGE       IP             NODE
-source-ip-app-826191075-qehz4   1/1       Running   0          20h       10.180.1.136   kubernetes-node-6jst
+source-ip-app-826191075-qehz4   1/1       Running   0          20h       10.180.1.136   PlaidCloud-node-6jst
 ```
 
 Use `curl` to fetch the `/healthz` endpoint on various nodes:

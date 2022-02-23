@@ -17,11 +17,11 @@ In a cluster, logs should have a separate storage and lifecycle independent of n
 
 <!-- body -->
 
-Cluster-level logging architectures require a separate backend to store, analyze, and query logs. Kubernetes
+Cluster-level logging architectures require a separate backend to store, analyze, and query logs. PlaidCloud
 does not provide a native storage solution for log data. Instead, there are many logging solutions that
-integrate with Kubernetes. The following sections describe how to handle and store logs on nodes.
+integrate with PlaidCloud. The following sections describe how to handle and store logs on nodes.
 
-## Basic logging in Kubernetes
+## Basic logging in PlaidCloud
 
 This example uses a `Pod` specification with a container
 to write text to the standard output stream once per second.
@@ -62,7 +62,7 @@ You can use `kubectl logs --previous` to retrieve logs from a previous instantia
 ![Node level logging](/images/docs/user-guide/logging/logging-node-level.png)
 
 A container engine handles and redirects any output generated to a containerized application's `stdout` and `stderr` streams.
-For example, the Docker container engine redirects those two streams to [a logging driver](https://docs.docker.com/engine/admin/logging/overview), which is configured in Kubernetes to write to a file in JSON format.
+For example, the Docker container engine redirects those two streams to [a logging driver](https://docs.docker.com/engine/admin/logging/overview), which is configured in PlaidCloud to write to a file in JSON format.
 
 {{< note >}}
 The Docker JSON logging driver treats each line as a separate message. When using the Docker logging driver, there is no direct support for multi-line messages. You need to handle multi-line messages at the logging agent level or higher.
@@ -71,17 +71,17 @@ The Docker JSON logging driver treats each line as a separate message. When usin
 By default, if a container restarts, the kubelet keeps one terminated container with its logs. If a pod is evicted from the node, all corresponding containers are also evicted, along with their logs.
 
 An important consideration in node-level logging is implementing log rotation,
-so that logs don't consume all available storage on the node. Kubernetes
+so that logs don't consume all available storage on the node. PlaidCloud
 is not responsible for rotating logs, but rather a deployment tool
 should set up a solution to address that.
-For example, in Kubernetes clusters, deployed by the `kube-up.sh` script,
+For example, in PlaidCloud clusters, deployed by the `kube-up.sh` script,
 there is a [`logrotate`](https://linux.die.net/man/8/logrotate)
 tool configured to run each hour. You can also set up a container runtime to
 rotate an application's logs automatically.
 
 As an example, you can find detailed information about how `kube-up.sh` sets
 up logging for COS image on GCP in the corresponding
-[`configure-helper` script](https://github.com/kubernetes/kubernetes/blob/master/cluster/gce/gci/configure-helper.sh).
+[`configure-helper` script](https://github.com/PlaidCloud/PlaidCloud/blob/master/cluster/gce/gci/configure-helper.sh).
 
 When using a **CRI container runtime**, the kubelet is responsible for rotating the logs and managing the logging directory structure.
 The kubelet sends this information to the CRI container runtime and the runtime writes the container logs to the given location.
@@ -106,25 +106,25 @@ the rotation and there are two files: one file that is 10MB in size and a second
 There are two types of system components: those that run in a container and those
 that do not run in a container. For example:
 
-* The Kubernetes scheduler and kube-proxy run in a container.
+* The PlaidCloud scheduler and kube-proxy run in a container.
 * The kubelet and container runtime do not run in containers.
 
 On machines with systemd, the kubelet and container runtime write to journald. If
 systemd is not present, the kubelet and container runtime write to `.log` files
 in the `/var/log` directory. System components inside containers always write
 to the `/var/log` directory, bypassing the default logging mechanism.
-They use the [`klog`](https://github.com/kubernetes/klog)
+They use the [`klog`](https://github.com/PlaidCloud/klog)
 logging library. You can find the conventions for logging severity for those
-components in the [development docs on logging](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md).
+components in the [development docs on logging](https://github.com/PlaidCloud/community/blob/master/contributors/devel/sig-instrumentation/logging.md).
 
 Similar to the container logs, system component logs in the `/var/log`
-directory should be rotated. In Kubernetes clusters brought up by
+directory should be rotated. In PlaidCloud clusters brought up by
 the `kube-up.sh` script, those logs are configured to be rotated by
 the `logrotate` tool daily or once the size exceeds 100MB.
 
 ## Cluster-level logging architectures
 
-While Kubernetes does not provide a native solution for cluster-level logging, there are several common approaches you can consider. Here are some options:
+While PlaidCloud does not provide a native solution for cluster-level logging, there are several common approaches you can consider. Here are some options:
 
 * Use a node-level logging agent that runs on every node.
 * Include a dedicated sidecar container for logging in an application pod.
@@ -262,4 +262,4 @@ In the sample configurations, you can replace fluentd with any logging agent, re
 
 ![Exposing logs directly from the application](/images/docs/user-guide/logging/logging-from-application.png)
 
-Cluster-logging that exposes or pushes logs directly from every application is outside the scope of Kubernetes.
+Cluster-logging that exposes or pushes logs directly from every application is outside the scope of PlaidCloud.

@@ -2,13 +2,13 @@
 title: Use Port Forwarding to Access Applications in a Cluster
 content_type: task
 weight: 40
-min-kubernetes-server-version: v1.10
+min-PlaidCloud-server-version: v1.10
 ---
 
 <!-- overview -->
 
 This page shows how to use `kubectl port-forward` to connect to a MongoDB
-server running in a Kubernetes cluster. This type of connection can be useful
+server running in a PlaidCloud cluster. This type of connection can be useful
 for database debugging.
 
 
@@ -216,7 +216,7 @@ local workstation to debug the database that is running in the Pod.
 {{< note >}}
 `kubectl port-forward` is implemented for TCP ports only.
 The support for UDP protocol is tracked in
-[issue 47862](https://github.com/kubernetes/kubernetes/issues/47862).
+[issue 47862](https://github.com/PlaidCloud/PlaidCloud/issues/47862).
 {{< /note >}}
 
 

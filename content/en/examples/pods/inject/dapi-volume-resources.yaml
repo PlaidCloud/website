@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kubernetes-downwardapi-volume-example-2
+  name: PlaidCloud-downwardapi-volume-example-2
 spec:
   containers:
     - name: client-container

@@ -7,7 +7,7 @@ weight: 20
 <!-- overview -->
 
 This page shows how to define dependent environment variables for a container
-in a Kubernetes Pod.
+in a PlaidCloud Pod.
 
 
 ## {{% heading "prerequisites" %}}
@@ -74,5 +74,5 @@ is defined or not. This can be seen from the `ESCAPED_REFERENCE` case above.
 
 
 * Learn more about [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/).
-* See [EnvVarSource](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#envvarsource-v1-core).
+* See [EnvVarSource](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#envvarsource-v1-core).
 

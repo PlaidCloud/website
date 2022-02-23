@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: discovery.k8s.io/v1`
@@ -87,7 +87,7 @@ EndpointSlice represents a subset of the endpoints that implement a service. For
 
   - **endpoints.deprecatedTopology** (map[string]string)
 
-    deprecatedTopology contains topology information part of the v1beta1 API. This field is deprecated, and will be removed when the v1beta1 API is removed (no sooner than kubernetes v1.24).  While this field can hold values, it is not writable through the v1 API, and any attempts to write to it will be silently ignored. Topology information can be found in the zone and nodeName fields instead.
+    deprecatedTopology contains topology information part of the v1beta1 API. This field is deprecated, and will be removed when the v1beta1 API is removed (no sooner than PlaidCloud v1.24).  While this field can hold values, it is not writable through the v1 API, and any attempts to write to it will be silently ignored. Topology information can be found in the zone and nodeName fields instead.
 
   - **endpoints.hints** (EndpointHints)
 
@@ -119,7 +119,7 @@ EndpointSlice represents a subset of the endpoints that implement a service. For
 
   - **endpoints.targetRef** (<a href="{{< ref "../common-definitions/object-reference#ObjectReference" >}}">ObjectReference</a>)
 
-    targetRef is a reference to a Kubernetes object that represents this endpoint.
+    targetRef is a reference to a PlaidCloud object that represents this endpoint.
 
   - **endpoints.zone** (string)
 
@@ -144,11 +144,11 @@ EndpointSlice represents a subset of the endpoints that implement a service. For
 
   - **ports.name** (string)
 
-    The name of this port. All ports in an EndpointSlice must have a unique name. If the EndpointSlice is dervied from a Kubernetes service, this corresponds to the Service.ports[].name. Name must either be an empty string or pass DNS_LABEL validation: * must be no more than 63 characters long. * must consist of lower case alphanumeric characters or '-'. * must start and end with an alphanumeric character. Default is empty string.
+    The name of this port. All ports in an EndpointSlice must have a unique name. If the EndpointSlice is dervied from a PlaidCloud service, this corresponds to the Service.ports[].name. Name must either be an empty string or pass DNS_LABEL validation: * must be no more than 63 characters long. * must consist of lower case alphanumeric characters or '-'. * must start and end with an alphanumeric character. Default is empty string.
 
   - **ports.appProtocol** (string)
 
-    The application protocol for this port. This field follows standard Kubernetes label syntax. Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and http://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as mycompany.com/my-custom-protocol.
+    The application protocol for this port. This field follows standard PlaidCloud label syntax. Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and http://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as mycompany.com/my-custom-protocol.
 
 
 

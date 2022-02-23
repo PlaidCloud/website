@@ -33,6 +33,6 @@ You can use the `--dry-run=client` flag to preview the object that would be sent
 
 ### `kubectl apply`
 
-* You can use `kubectl apply` to create or update resources. For more information about using kubectl apply to update resources, see [Kubectl Book](https://kubectl.docs.kubernetes.io).
+* You can use `kubectl apply` to create or update resources. For more information about using kubectl apply to update resources, see [Kubectl Book](https://kubectl.docs.PlaidCloud.io).
 
 

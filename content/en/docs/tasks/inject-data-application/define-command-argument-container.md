@@ -66,7 +66,7 @@ from the Pod:
     kubectl logs command-demo
     ```
 
-    The output shows the values of the HOSTNAME and KUBERNETES_PORT environment
+    The output shows the values of the HOSTNAME and PlaidCloud_PORT environment
     variables:
 
     ```
@@ -115,4 +115,4 @@ args: ["-c", "while true; do echo hello; sleep 10;done"]
 
 * Learn more about [configuring pods and containers](/docs/tasks/).
 * Learn more about [running commands in a container](/docs/tasks/debug-application-cluster/get-shell-running-container/).
-* See [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core).
+* See [Container](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#container-v1-core).

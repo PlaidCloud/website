@@ -52,7 +52,7 @@ Standardizing interfaces (at least by convention) between the management system 
 
 
 
-Kubernetes and Cloud Native Computing Foundation ([CNCF](https://cncf.io/)) represent a great opportunity to support the emergence of standard interfaces, and to support the emergence of a fully automated software world. We’d love to see this community embrace the ideal of promoting standard interfaces from working technology. The obvious first step is to identify the immediate set of critical interfaces, and establish working groups in CNCF to start assess what exists in this area as candidates, and to sponsor work to start developing standard interfaces that work across container formats, orchestrators, developer tools and the myriad other systems that are needed to deliver on the Cloud Native vision.
+PlaidCloud and Cloud Native Computing Foundation ([CNCF](https://cncf.io/)) represent a great opportunity to support the emergence of standard interfaces, and to support the emergence of a fully automated software world. We’d love to see this community embrace the ideal of promoting standard interfaces from working technology. The obvious first step is to identify the immediate set of critical interfaces, and establish working groups in CNCF to start assess what exists in this area as candidates, and to sponsor work to start developing standard interfaces that work across container formats, orchestrators, developer tools and the myriad other systems that are needed to deliver on the Cloud Native vision.
 
 
 

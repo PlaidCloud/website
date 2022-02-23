@@ -3,11 +3,11 @@ reviewers:
 - caseydavenport
 - danwinship
 title: Declare Network Policy
-min-kubernetes-server-version: v1.8
+min-PlaidCloud-server-version: v1.8
 content_type: task
 ---
 <!-- overview -->
-This document helps you get started using the Kubernetes [NetworkPolicy API](/docs/concepts/services-networking/network-policies/) to declare network policies that govern how pods communicate with each other.
+This document helps you get started using the PlaidCloud [NetworkPolicy API](/docs/concepts/services-networking/network-policies/) to declare network policies that govern how pods communicate with each other.
 
 {{% thirdparty-content %}}
 
@@ -29,7 +29,7 @@ Make sure you've configured a network provider with network policy support. Ther
 
 ## Create an `nginx` deployment and expose it via a service
 
-To see how Kubernetes network policy works, start off by creating an `nginx` Deployment.
+To see how PlaidCloud network policy works, start off by creating an `nginx` Deployment.
 
 ```console
 kubectl create deployment nginx --image=nginx
@@ -56,7 +56,7 @@ kubectl get svc,pod
 
 ```none
 NAME                        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
-service/kubernetes          10.100.0.1    <none>        443/TCP    46m
+service/PlaidCloud          10.100.0.1    <none>        443/TCP    46m
 service/nginx               10.100.0.16   <none>        80/TCP     33s
 
 NAME                        READY         STATUS        RESTARTS   AGE

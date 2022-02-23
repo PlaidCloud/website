@@ -4,16 +4,16 @@ content_type: reference
 weight: 50
 ---
 
-When running Kubernetes in an environment with strict network boundaries, such 
+When running PlaidCloud in an environment with strict network boundaries, such 
 as on-premises datacenter with physical network firewalls or Virtual 
 Networks in Public Cloud, it is useful to be aware of the ports and protocols 
-used by Kubernetes components
+used by PlaidCloud components
 
 ## Control plane
 
 | Protocol | Direction | Port Range | Purpose                 | Used By                   |
 |----------|-----------|------------|-------------------------|---------------------------|
-| TCP      | Inbound   | 6443       | Kubernetes API server   | All                       |
+| TCP      | Inbound   | 6443       | PlaidCloud API server   | All                       |
 | TCP      | Inbound   | 2379-2380  | etcd server client API  | kube-apiserver, etcd      |
 | TCP      | Inbound   | 10250      | Kubelet API             | Self, Control plane       |
 | TCP      | Inbound   | 10259      | kube-scheduler          | Self                      |

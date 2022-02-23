@@ -11,7 +11,7 @@ content_type: task
 
 {{< feature-state for_k8s_version="v1.12" state="beta" >}}
 
-Kubernetes keeps many aspects of how pods execute on nodes abstracted
+PlaidCloud keeps many aspects of how pods execute on nodes abstracted
 from the user. This is by design.  However, some workloads require
 stronger guarantees in terms of latency and/or performance in order to operate
 acceptably. The kubelet provides methods to enable more complex workload
@@ -64,7 +64,7 @@ This feature can be disabled completely using the `CPUManagerPolicyOptions` feat
 
 The policy options are split into two groups: alpha quality (hidden by default) and beta quality
 (visible by default). The groups are guarded respectively by the `CPUManagerPolicyAlphaOptions`
-and `CPUManagerPolicyBetaOptions` feature gates. Diverging from the Kubernetes standard, these
+and `CPUManagerPolicyBetaOptions` feature gates. Diverging from the PlaidCloud standard, these
 feature gates guard groups of options, because it would have been too cumbersome to add a feature
 gate for each individual option.
 

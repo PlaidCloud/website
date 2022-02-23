@@ -7,7 +7,7 @@ content_type: concept
 weight: 20
 ---
 <!-- overview -->
-This command initializes a Kubernetes control-plane node.
+This command initializes a PlaidCloud control-plane node.
 
 <!-- body -->
 
@@ -15,7 +15,7 @@ This command initializes a Kubernetes control-plane node.
 
 ### Init workflow {#init-workflow}
 
-`kubeadm init` bootstraps a Kubernetes control-plane node by executing the
+`kubeadm init` bootstraps a PlaidCloud control-plane node by executing the
 following steps:
 
 1. Runs a series of pre-flight checks to validate the system state
@@ -25,10 +25,10 @@ following steps:
 
 1. Generates a self-signed CA to set up identities for each component in the cluster. The user can provide their
    own CA cert and/or key by dropping it in the cert directory configured via `--cert-dir`
-   (`/etc/kubernetes/pki` by default).
+   (`/etc/PlaidCloud/pki` by default).
    The APIServer certs will have additional SAN entries for any `--apiserver-cert-extra-sans` arguments, lowercased if necessary.
 
-1. Writes kubeconfig files in `/etc/kubernetes/`  for
+1. Writes kubeconfig files in `/etc/PlaidCloud/`  for
    the kubelet, the controller-manager and the scheduler to use to connect to the
    API server, each with its own identity, as well as an additional
    kubeconfig file for administration named `admin.conf`.
@@ -37,7 +37,7 @@ following steps:
    controller-manager and scheduler. In case an external etcd is not provided,
    an additional static Pod manifest is generated for etcd.
 
-   Static Pod manifests are written to `/etc/kubernetes/manifests`; the kubelet
+   Static Pod manifests are written to `/etc/PlaidCloud/manifests`; the kubelet
    watches this directory for Pods to create on startup.
 
    Once control plane Pods are up and running, the `kubeadm init` sequence can continue.
@@ -65,7 +65,7 @@ following steps:
    See [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) for additional info.
 
 1. Installs a DNS server (CoreDNS) and the kube-proxy addon components via the API server.
-   In Kubernetes version 1.11 and later CoreDNS is the default DNS server.
+   In PlaidCloud version 1.11 and later CoreDNS is the default DNS server.
    Please note that although the DNS server is deployed, it will not be scheduled until CNI is installed.
 
    {{< warning >}}
@@ -102,7 +102,7 @@ sudo kubeadm init phase etcd local --config=configfile.yaml
 sudo kubeadm init --skip-phases=control-plane,etcd --config=configfile.yaml
 ```
 
-What this example would do is write the manifest files for the control plane and etcd in `/etc/kubernetes/manifests` based on the configuration in `configfile.yaml`. This allows you to modify the files and then skip these phases using `--skip-phases`. By calling the last command you will create a control plane node with the custom manifest files.
+What this example would do is write the manifest files for the control plane and etcd in `/etc/PlaidCloud/manifests` based on the configuration in `configfile.yaml`. This allows you to modify the files and then skip these phases using `--skip-phases`. By calling the last command you will create a control plane node with the custom manifest files.
 
 {{< feature-state for_k8s_version="v1.22" state="beta" >}}
 
@@ -135,7 +135,7 @@ For information about kube-proxy parameters in the kubeadm configuration see:
 - [kube-proxy reference](/docs/reference/config-api/kube-proxy-config.v1alpha1/)
 
 For information about enabling IPVS mode with kubeadm see:
-- [IPVS](https://github.com/kubernetes/kubernetes/blob/master/pkg/proxy/ipvs/README.md)
+- [IPVS](https://github.com/PlaidCloud/PlaidCloud/blob/master/pkg/proxy/ipvs/README.md)
 
 ### Passing custom flags to control plane components {#control-plane-flags}
 
@@ -154,20 +154,20 @@ kubeadm config images pull
 ```
 
 You can pass `--config` to the above commands with a [kubeadm configuration file](#config-file)
-to control the `kubernetesVersion` and `imageRepository` fields.
+to control the `PlaidCloudVersion` and `imageRepository` fields.
 
 All default `k8s.gcr.io` images that kubeadm requires support multiple architectures.
 
 ### Using custom images {#custom-images}
 
 By default, kubeadm pulls images from `k8s.gcr.io`. If the
-requested Kubernetes version is a CI label (such as `ci/latest`)
+requested PlaidCloud version is a CI label (such as `ci/latest`)
 `gcr.io/k8s-staging-ci-images` is used.
 
 You can override this behavior by using [kubeadm with a configuration file](#config-file).
 Allowed customization are:
 
-* To provide `kubernetesVersion` which affects the version of the images.
+* To provide `PlaidCloudVersion` which affects the version of the images.
 * To provide an alternative `imageRepository` to be used instead of
   `k8s.gcr.io`.
 * To provide a specific `imageRepository` and `imageTag` for etcd or CoreDNS.
@@ -234,7 +234,7 @@ By default, `kubeadm` assigns a node name based on a machine's host address. You
 The flag passes the appropriate [`--hostname-override`](/docs/reference/command-line-tools-reference/kubelet/#options)
 value to the kubelet.
 
-Be aware that overriding the hostname can [interfere with cloud providers](https://github.com/kubernetes/website/pull/8873).
+Be aware that overriding the hostname can [interfere with cloud providers](https://github.com/PlaidCloud/website/pull/8873).
 
 ### Automating kubeadm
 
@@ -266,7 +266,7 @@ or use a DNS name or an address of a load balancer.
    ```
 
 Once the cluster is up, you can grab the admin credentials from the control-plane node
-at `/etc/kubernetes/admin.conf` and use that to talk to the cluster.
+at `/etc/PlaidCloud/admin.conf` and use that to talk to the cluster.
 
 Note that this style of bootstrap has some relaxed security guarantees because
 it does not allow the root CA hash to be validated with
@@ -277,6 +277,6 @@ provisioned). For details, see the [kubeadm join](/docs/reference/setup-tools/ku
 
 * [kubeadm init phase](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/) to understand more about
 `kubeadm init` phases
-* [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) to bootstrap a Kubernetes worker node and join it to the cluster
-* [kubeadm upgrade](/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/) to upgrade a Kubernetes cluster to a newer version
+* [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) to bootstrap a PlaidCloud worker node and join it to the cluster
+* [kubeadm upgrade](/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/) to upgrade a PlaidCloud cluster to a newer version
 * [kubeadm reset](/docs/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`

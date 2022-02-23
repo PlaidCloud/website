@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: autoscaling/v2`
@@ -77,7 +77,7 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
   - **scaleTargetRef.name** (string), required
 
-    Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
+    Name of the referent; More info: http://PlaidCloud.io/docs/user-guide/identifiers#names
 
   - **scaleTargetRef.apiVersion** (string)
 
@@ -184,10 +184,10 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
   - **metrics.containerResource** (ContainerResourceMetricSource)
 
-    containerResource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. This is an alpha feature and can be enabled by the HPAContainerMetrics feature flag.
+    containerResource refers to a resource metric (such as those specified in requests and limits) known to PlaidCloud describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to PlaidCloud, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. This is an alpha feature and can be enabled by the HPAContainerMetrics feature flag.
 
     <a name="ContainerResourceMetricSource"></a>
-    *ContainerResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.  Only one "target" type should be set.*
+    *ContainerResourceMetricSource indicates how to scale on a resource metric known to PlaidCloud, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to PlaidCloud, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.  Only one "target" type should be set.*
 
     - **metrics.containerResource.container** (string), required
 
@@ -222,10 +222,10 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
   - **metrics.external** (ExternalMetricSource)
 
-    external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
+    external refers to a global metric that is not associated with any PlaidCloud object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
 
     <a name="ExternalMetricSource"></a>
-    *ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).*
+    *ExternalMetricSource indicates how to scale on a metric not associated with any PlaidCloud object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).*
 
     - **metrics.external.metric** (MetricIdentifier), required
 
@@ -240,7 +240,7 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
       - **metrics.external.metric.selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>)
 
-        selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
+        selector is the string-encoded form of a standard PlaidCloud label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
 
     - **metrics.external.target** (MetricTarget), required
 
@@ -267,10 +267,10 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
   - **metrics.object** (ObjectMetricSource)
 
-    object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
+    object refers to a metric describing a single PlaidCloud object (for example, hits-per-second on an Ingress object).
 
     <a name="ObjectMetricSource"></a>
-    *ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).*
+    *ObjectMetricSource indicates how to scale on a metric describing a PlaidCloud object (for example, hits-per-second on an Ingress object).*
 
     - **metrics.object.describedObject** (CrossVersionObjectReference), required
 
@@ -285,7 +285,7 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
       - **metrics.object.describedObject.name** (string), required
 
-        Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        Name of the referent; More info: http://PlaidCloud.io/docs/user-guide/identifiers#names
 
       - **metrics.object.describedObject.apiVersion** (string)
 
@@ -304,7 +304,7 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
       - **metrics.object.metric.selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>)
 
-        selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
+        selector is the string-encoded form of a standard PlaidCloud label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
 
     - **metrics.object.target** (MetricTarget), required
 
@@ -349,7 +349,7 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
       - **metrics.pods.metric.selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>)
 
-        selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
+        selector is the string-encoded form of a standard PlaidCloud label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
 
     - **metrics.pods.target** (MetricTarget), required
 
@@ -376,10 +376,10 @@ HorizontalPodAutoscalerSpec describes the desired functionality of the Horizonta
 
   - **metrics.resource** (ResourceMetricSource)
 
-    resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
+    resource refers to a resource metric (such as those specified in requests and limits) known to PlaidCloud describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to PlaidCloud, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
 
     <a name="ResourceMetricSource"></a>
-    *ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.  Only one "target" type should be set.*
+    *ResourceMetricSource indicates how to scale on a resource metric known to PlaidCloud, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to PlaidCloud, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.  Only one "target" type should be set.*
 
     - **metrics.resource.name** (string), required
 
@@ -471,10 +471,10 @@ HorizontalPodAutoscalerStatus describes the current status of a horizontal pod a
 
   - **currentMetrics.containerResource** (ContainerResourceMetricStatus)
 
-    container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
+    container resource refers to a resource metric (such as those specified in requests and limits) known to PlaidCloud describing a single container in each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to PlaidCloud, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
 
     <a name="ContainerResourceMetricStatus"></a>
-    *ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing a single container in each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.*
+    *ContainerResourceMetricStatus indicates the current value of a resource metric known to PlaidCloud, as specified in requests and limits, describing a single container in each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to PlaidCloud, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.*
 
     - **currentMetrics.containerResource.container** (string), required
 
@@ -505,10 +505,10 @@ HorizontalPodAutoscalerStatus describes the current status of a horizontal pod a
 
   - **currentMetrics.external** (ExternalMetricStatus)
 
-    external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
+    external refers to a global metric that is not associated with any PlaidCloud object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
 
     <a name="ExternalMetricStatus"></a>
-    *ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.*
+    *ExternalMetricStatus indicates the current value of a global metric not associated with any PlaidCloud object.*
 
     - **currentMetrics.external.current** (MetricValueStatus), required
 
@@ -542,14 +542,14 @@ HorizontalPodAutoscalerStatus describes the current status of a horizontal pod a
 
       - **currentMetrics.external.metric.selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>)
 
-        selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
+        selector is the string-encoded form of a standard PlaidCloud label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
 
   - **currentMetrics.object** (ObjectMetricStatus)
 
-    object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
+    object refers to a metric describing a single PlaidCloud object (for example, hits-per-second on an Ingress object).
 
     <a name="ObjectMetricStatus"></a>
-    *ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).*
+    *ObjectMetricStatus indicates the current value of a metric describing a PlaidCloud object (for example, hits-per-second on an Ingress object).*
 
     - **currentMetrics.object.current** (MetricValueStatus), required
 
@@ -583,7 +583,7 @@ HorizontalPodAutoscalerStatus describes the current status of a horizontal pod a
 
       - **currentMetrics.object.describedObject.name** (string), required
 
-        Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        Name of the referent; More info: http://PlaidCloud.io/docs/user-guide/identifiers#names
 
       - **currentMetrics.object.describedObject.apiVersion** (string)
 
@@ -602,7 +602,7 @@ HorizontalPodAutoscalerStatus describes the current status of a horizontal pod a
 
       - **currentMetrics.object.metric.selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>)
 
-        selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
+        selector is the string-encoded form of a standard PlaidCloud label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
 
   - **currentMetrics.pods** (PodsMetricStatus)
 
@@ -643,14 +643,14 @@ HorizontalPodAutoscalerStatus describes the current status of a horizontal pod a
 
       - **currentMetrics.pods.metric.selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>)
 
-        selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
+        selector is the string-encoded form of a standard PlaidCloud label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
 
   - **currentMetrics.resource** (ResourceMetricStatus)
 
-    resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
+    resource refers to a resource metric (such as those specified in requests and limits) known to PlaidCloud describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to PlaidCloud, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
 
     <a name="ResourceMetricStatus"></a>
-    *ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.*
+    *ResourceMetricStatus indicates the current value of a resource metric known to PlaidCloud, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to PlaidCloud, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.*
 
     - **currentMetrics.resource.current** (MetricValueStatus), required
 

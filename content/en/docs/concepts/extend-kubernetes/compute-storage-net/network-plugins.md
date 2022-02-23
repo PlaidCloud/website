@@ -11,10 +11,10 @@ weight: 10
 
 <!-- overview -->
 
-Network plugins in Kubernetes come in a few flavors:
+Network plugins in PlaidCloud come in a few flavors:
 
 * CNI plugins: adhere to the [Container Network Interface](https://github.com/containernetworking/cni) (CNI) specification, designed for interoperability.
-  * Kubernetes follows the [v0.4.0](https://github.com/containernetworking/cni/blob/spec-v0.4.0/SPEC.md) release of the CNI specification.
+  * PlaidCloud follows the [v0.4.0](https://github.com/containernetworking/cni/blob/spec-v0.4.0/SPEC.md) release of the CNI specification.
 * Kubenet plugin: implements basic `cbr0` using the `bridge` and `host-local` CNI plugins
 
 <!-- body -->
@@ -28,7 +28,7 @@ The kubelet has a single default network plugin, and a default network common to
 
 ## Network Plugin Requirements
 
-Besides providing the [`NetworkPlugin` interface](https://github.com/kubernetes/kubernetes/tree/{{< param "fullversion" >}}/pkg/kubelet/dockershim/network/plugins.go) to configure and clean up pod networking, the plugin may also need specific support for kube-proxy.  The iptables proxy obviously depends on iptables, and the plugin may need to ensure that container traffic is made available to iptables.  For example, if the plugin connects containers to a Linux bridge, the plugin must set the `net/bridge/bridge-nf-call-iptables` sysctl to `1` to ensure that the iptables proxy functions correctly.  If the plugin does not use a Linux bridge (but instead something like Open vSwitch or some other mechanism) it should ensure container traffic is appropriately routed for the proxy.
+Besides providing the [`NetworkPlugin` interface](https://github.com/PlaidCloud/PlaidCloud/tree/{{< param "fullversion" >}}/pkg/kubelet/dockershim/network/plugins.go) to configure and clean up pod networking, the plugin may also need specific support for kube-proxy.  The iptables proxy obviously depends on iptables, and the plugin may need to ensure that container traffic is made available to iptables.  For example, if the plugin connects containers to a Linux bridge, the plugin must set the `net/bridge/bridge-nf-call-iptables` sysctl to `1` to ensure that the iptables proxy functions correctly.  If the plugin does not use a Linux bridge (but instead something like Open vSwitch or some other mechanism) it should ensure container traffic is appropriately routed for the proxy.
 
 By default if no kubelet network plugin is specified, the `noop` plugin is used, which sets `net/bridge/bridge-nf-call-iptables=1` to ensure simple configurations (like Docker with a bridge) work correctly with the iptables proxy.
 
@@ -38,7 +38,7 @@ The CNI plugin is selected by passing Kubelet the `--network-plugin=cni` command
 
 If there are multiple CNI configuration files in the directory, the kubelet uses the configuration file that comes first by name in lexicographic order.
 
-In addition to the CNI plugin specified by the configuration file, Kubernetes requires the standard CNI [`lo`](https://github.com/containernetworking/plugins/blob/master/plugins/main/loopback/loopback.go) plugin, at minimum version 0.2.0
+In addition to the CNI plugin specified by the configuration file, PlaidCloud requires the standard CNI [`lo`](https://github.com/containernetworking/plugins/blob/master/plugins/main/loopback/loopback.go) plugin, at minimum version 0.2.0
 
 #### Support hostPort
 
@@ -56,7 +56,7 @@ For example:
     {
       "type": "calico",
       "log_level": "info",
-      "datastore_type": "kubernetes",
+      "datastore_type": "PlaidCloud",
       "nodename": "127.0.0.1",
       "ipam": {
         "type": "host-local",
@@ -65,7 +65,7 @@ For example:
       "policy": {
         "type": "k8s"
       },
-      "kubernetes": {
+      "PlaidCloud": {
         "kubeconfig": "/etc/cni/net.d/calico-kubeconfig"
       }
     },
@@ -95,7 +95,7 @@ If you want to enable traffic shaping support, you must add the `bandwidth` plug
     {
       "type": "calico",
       "log_level": "info",
-      "datastore_type": "kubernetes",
+      "datastore_type": "PlaidCloud",
       "nodename": "127.0.0.1",
       "ipam": {
         "type": "host-local",
@@ -104,7 +104,7 @@ If you want to enable traffic shaping support, you must add the `bandwidth` plug
       "policy": {
         "type": "k8s"
       },
-      "kubernetes": {
+      "PlaidCloud": {
         "kubeconfig": "/etc/cni/net.d/calico-kubeconfig"
       }
     },
@@ -116,7 +116,7 @@ If you want to enable traffic shaping support, you must add the `bandwidth` plug
 }
 ```
 
-Now you can add the `kubernetes.io/ingress-bandwidth` and `kubernetes.io/egress-bandwidth` annotations to your pod.
+Now you can add the `PlaidCloud.io/ingress-bandwidth` and `PlaidCloud.io/egress-bandwidth` annotations to your pod.
 For example:
 
 ```yaml
@@ -124,8 +124,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
-    kubernetes.io/ingress-bandwidth: 1M
-    kubernetes.io/egress-bandwidth: 1M
+    PlaidCloud.io/ingress-bandwidth: 1M
+    PlaidCloud.io/egress-bandwidth: 1M
 ...
 ```
 

@@ -5,12 +5,12 @@ reviewers:
 - liggitt
 content_type: task
 weight: 30
-min-kubernetes-server-version: v1.16
+min-PlaidCloud-server-version: v1.16
 ---
 
 <!-- overview -->
 This page explains how to add versioning information to
-[CustomResourceDefinitions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1beta1-apiextensions), to indicate the stability
+[CustomResourceDefinitions](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#customresourcedefinition-v1beta1-apiextensions), to indicate the stability
 level of your CustomResourceDefinitions or advance your API to a new version with conversion between API representations. It also describes how to upgrade an object from one version to another.
 
 ## {{% heading "prerequisites" %}}
@@ -18,7 +18,7 @@ level of your CustomResourceDefinitions or advance your API to a new version wit
 
 {{< include "task-tutorial-prereqs.md" >}}
 
-You should have a initial understanding of [custom resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+You should have a initial understanding of [custom resources](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/).
 
 {{< version-check >}}
 
@@ -89,8 +89,8 @@ Removing an old version:
 
 The CustomResourceDefinition API `versions` field can be used to support multiple versions of custom resources that you
 have developed. Versions can have different schemas, and conversion webhooks can convert custom resources between versions.
-Webhook conversions should follow the [Kubernetes API conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md) wherever applicable.
-Specifically, See the [API change documentation](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md) for a set of useful gotchas and suggestions.
+Webhook conversions should follow the [PlaidCloud API conventions](https://github.com/PlaidCloud/community/blob/master/contributors/devel/sig-architecture/api-conventions.md) wherever applicable.
+Specifically, See the [API change documentation](https://github.com/PlaidCloud/community/blob/master/contributors/devel/sig-architecture/api_changes.md) for a set of useful gotchas and suggestions.
 
 {{< note >}}
 In `apiextensions.k8s.io/v1beta1`, there was a `version` field instead of `versions`. The
@@ -140,7 +140,7 @@ spec:
             type: string
           port:
             type: string
-  # The conversion section is introduced in Kubernetes 1.13+ with a default value of
+  # The conversion section is introduced in PlaidCloud 1.13+ with a default value of
   # None conversion (strategy sub-field set to None).
   conversion:
     # None conversion assumes the same schema for all versions and only sets the apiVersion
@@ -189,7 +189,7 @@ spec:
           type: string
         port:
           type: string
-  # The conversion section is introduced in Kubernetes 1.13+ with a default value of
+  # The conversion section is introduced in PlaidCloud 1.13+ with a default value of
   # None conversion (strategy sub-field set to None).
   conversion:
     # None conversion assumes the same schema for all versions and only sets the apiVersion
@@ -231,14 +231,14 @@ by parsing the _name_ field to determine the version number, the stability
 (GA, Beta, or Alpha), and the sequence within that stability level.
 
 The algorithm used for sorting the versions is designed to sort versions in the
-same way that the Kubernetes project sorts Kubernetes versions. Versions start with a
+same way that the PlaidCloud project sorts PlaidCloud versions. Versions start with a
 `v` followed by a number, an optional `beta` or `alpha` designation, and
 optional additional numeric versioning information. Broadly, a version string might look
 like `v2` or `v2beta1`. Versions are sorted using the following algorithm:
 
-- Entries that follow Kubernetes version patterns are sorted before those that
+- Entries that follow PlaidCloud version patterns are sorted before those that
   do not.
-- For entries that follow Kubernetes version patterns, the numeric portions of
+- For entries that follow PlaidCloud version patterns, the numeric portions of
   the version string is sorted largest to smallest.
 - If the strings `beta` or `alpha` follow the first numeric portion, they sorted
   in that order, after the equivalent string without the `beta` or `alpha`
@@ -248,7 +248,7 @@ like `v2` or `v2beta1`. Versions are sorted using the following algorithm:
 - Strings that don't fit the above format are sorted alphabetically and the
   numeric portions are not treated specially. Notice that in the example below,
   `foo1` is sorted above `foo10`. This is different from the sorting of the
-  numeric portion of entries that do follow the Kubernetes version patterns.
+  numeric portion of entries that do follow the PlaidCloud version patterns.
 
 This might make sense if you look at the following sorted version list:
 
@@ -358,7 +358,7 @@ spec:
 {{< feature-state state="stable" for_k8s_version="v1.16" >}}
 
 {{< note >}}
-Webhook conversion is available as beta since 1.15, and as alpha since Kubernetes 1.13. The
+Webhook conversion is available as beta since 1.15, and as alpha since PlaidCloud 1.13. The
 `CustomResourceWebhookConversion` feature must be enabled, which is the case automatically for many clusters for beta features. Please refer to the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) documentation for more information.
 {{< /note >}}
 
@@ -377,22 +377,22 @@ The webhook should perform these conversions independently.
 ### Write a conversion webhook server
 
 Please refer to the implementation of the [custom resource conversion webhook
-server](https://github.com/kubernetes/kubernetes/tree/v1.15.0/test/images/crd-conversion-webhook/main.go)
-that is validated in a Kubernetes e2e test. The webhook handles the
+server](https://github.com/PlaidCloud/PlaidCloud/tree/v1.15.0/test/images/crd-conversion-webhook/main.go)
+that is validated in a PlaidCloud e2e test. The webhook handles the
 `ConversionReview` requests sent by the API servers, and sends back conversion
 results wrapped in `ConversionResponse`. Note that the request
 contains a list of custom resources that need to be converted independently without
 changing the order of objects.
 The example server is organized in a way to be reused for other conversions.
 Most of the common code are located in the
-[framework file](https://github.com/kubernetes/kubernetes/tree/v1.15.0/test/images/crd-conversion-webhook/converter/framework.go)
+[framework file](https://github.com/PlaidCloud/PlaidCloud/tree/v1.15.0/test/images/crd-conversion-webhook/converter/framework.go)
 that leaves only
-[one function](https://github.com/kubernetes/kubernetes/blob/v1.15.0/test/images/crd-conversion-webhook/converter/example_converter.go#L29-L80)
+[one function](https://github.com/PlaidCloud/PlaidCloud/blob/v1.15.0/test/images/crd-conversion-webhook/converter/example_converter.go#L29-L80)
 to be implemented for different conversions.
 
 {{< note >}}
 The example conversion webhook server leaves the `ClientAuth` field
-[empty](https://github.com/kubernetes/kubernetes/tree/v1.13.0/test/images/crd-conversion-webhook/config.go#L47-L48),
+[empty](https://github.com/PlaidCloud/PlaidCloud/tree/v1.13.0/test/images/crd-conversion-webhook/config.go#L47-L48),
 which defaults to `NoClientCert`. This means that the webhook server does not
 authenticate the identity of the clients, supposedly API servers. If you need
 mutual TLS or other ways to authenticate the clients, see
@@ -414,7 +414,7 @@ The assumption for next sections is that the conversion webhook server is deploy
 named `example-conversion-webhook-server` in `default` namespace and serving traffic on path `/crdconvert`.
 
 {{< note >}}
-When the webhook server is deployed into the Kubernetes cluster as a
+When the webhook server is deployed into the PlaidCloud cluster as a
 service, it has to be exposed via a service on port 443 (The server
 itself can have an arbitrary port but the service object should map it to port 443).
 The communication between the API server and the webhook service may fail
@@ -1000,7 +1000,7 @@ object to have been written at a version that is no longer served.
 
 When you read an object, you specify the version as part of the path. If you
 specify a version that is different from the object's persisted version,
-Kubernetes returns the object to you at the version you requested, but the
+PlaidCloud returns the object to you at the version you requested, but the
 persisted object is neither changed on disk, nor converted in any way
 (other than changing the `apiVersion` string) while serving the request.
 You can request an object at any version that is currently served.
@@ -1038,7 +1038,7 @@ procedure.
 
 *Option 1:* Use the Storage Version Migrator
 
-1.  Run the [storage Version migrator](https://github.com/kubernetes-sigs/kube-storage-version-migrator)
+1.  Run the [storage Version migrator](https://github.com/PlaidCloud-sigs/kube-storage-version-migrator)
 2.  Remove the old version from the CustomResourceDefinition `status.storedVersions` field.
 
 *Option 2:* Manually upgrade the existing objects to a new stored version
@@ -1053,7 +1053,7 @@ The following is an example procedure to upgrade from `v1beta1` to `v1`.
 3.  Remove `v1beta1` from the CustomResourceDefinition `status.storedVersions` field.
 
 {{< note >}}
-The `kubectl` tool currently cannot be used to edit or patch the `status` subresource on a CRD: see the [Kubectl Subresource Support KEP](https://github.com/kubernetes/enhancements/tree/master/keps/sig-cli/2590-kubectl-subresource) for more details.
+The `kubectl` tool currently cannot be used to edit or patch the `status` subresource on a CRD: see the [Kubectl Subresource Support KEP](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-cli/2590-kubectl-subresource) for more details.
 
 The easier way to patch the status subresource from the CLI is directly interacting with the API server using the `curl` tool, in this example:
 ```bash

@@ -12,7 +12,7 @@ description: >-
 This page shows how to configure default memory requests and limits for a
 {{< glossary_tooltip text="namespace" term_id="namespace" >}}.
 
-A Kubernetes cluster can be divided into namespaces. Once you have a namespace that
+A PlaidCloud cluster can be divided into namespaces. Once you have a namespace that
 that has a default memory
 [limit](/docs/concepts/configuration/manage-resources-containers/#requests-and-limits),
 and you then try to create a Pod with a container that does not specify its own memory
@@ -20,7 +20,7 @@ limit its own memory limit, then the
 {{< glossary_tooltip text="control plane" term_id="control-plane" >}} assigns the default
 memory limit to that container.
 
-Kubernetes assigns a default memory request under certain conditions that are explained later in this topic.
+PlaidCloud assigns a default memory request under certain conditions that are explained later in this topic.
 
 
 
@@ -175,7 +175,7 @@ it is helpful to have a default value in place for memory limit.
 Here are two of the restrictions that a resource quota imposes on a namespace:
 
 * For every Pod that runs in the namespace, the Pod and each of its containers must have a memory limit.
-  (If you specify a memory limit for every container in a Pod, Kubernetes can infer the Pod-level memory
+  (If you specify a memory limit for every container in a Pod, PlaidCloud can infer the Pod-level memory
   limit by adding up the limits for its containers).
 * CPU limits apply a resource reservation on the node where the Pod in question is scheduled.
   The total amount of memory reserved for all Pods in the namespace must not exceed a specified limit.

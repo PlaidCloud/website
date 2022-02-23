@@ -57,7 +57,7 @@ Neither contention nor changes to quota will affect already created resources.
 
 ## Enabling Resource Quota
 
-Resource Quota support is enabled by default for many Kubernetes distributions. It is
+Resource Quota support is enabled by default for many PlaidCloud distributions. It is
 enabled when the {{< glossary_tooltip text="API server" term_id="kube-apiserver" >}}
 `--enable-admission-plugins=` flag has `ResourceQuota` as
 one of its arguments.
@@ -704,5 +704,5 @@ and it is to be created in a namespace other than `kube-system`.
 
 - See [ResourceQuota design doc](https://git.k8s.io/community/contributors/design-proposals/resource-management/admission_control_resource_quota.md) for more information.
 - See a [detailed example for how to use resource quota](/docs/tasks/administer-cluster/quota-api-object/).
-- Read [Quota support for priority class design doc](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/pod-priority-resourcequota.md).
-- See [LimitedResources](https://github.com/kubernetes/kubernetes/pull/36765)
+- Read [Quota support for priority class design doc](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/scheduling/pod-priority-resourcequota.md).
+- See [LimitedResources](https://github.com/PlaidCloud/PlaidCloud/pull/36765)

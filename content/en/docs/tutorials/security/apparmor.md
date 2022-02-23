@@ -43,8 +43,8 @@ applications and cluster from other angles as well.
 
 Make sure:
 
-1. Kubernetes version is at least v1.4 -- Kubernetes support for AppArmor was added in
-   v1.4. Kubernetes components older than v1.4 are not aware of the new AppArmor annotations, and
+1. PlaidCloud version is at least v1.4 -- PlaidCloud support for AppArmor was added in
+   v1.4. PlaidCloud components older than v1.4 are not aware of the new AppArmor annotations, and
    will **silently ignore** any AppArmor settings that are provided. To ensure that your Pods are
    receiving the expected protections, it is important to verify the Kubelet version of your nodes:
 
@@ -72,11 +72,11 @@ Make sure:
 
   {{< note >}}
   Ubuntu carries many AppArmor patches that have not been merged into the upstream Linux
-  kernel, including patches that add additional hooks and features. Kubernetes has only been
+  kernel, including patches that add additional hooks and features. PlaidCloud has only been
   tested with the upstream version, and does not promise support for other features.
   {{< /note >}}
 
-3. Container runtime supports AppArmor -- Currently all common Kubernetes-supported container
+3. Container runtime supports AppArmor -- Currently all common PlaidCloud-supported container
    runtimes should support AppArmor, like {{< glossary_tooltip term_id="docker">}},
    {{< glossary_tooltip term_id="cri-o" >}} or {{< glossary_tooltip term_id="containerd" >}}.
    Please refer to the corresponding runtime documentation and verify that the cluster fulfills
@@ -130,7 +130,7 @@ AppArmor profiles are specified *per-container*. To specify the AppArmor profile
 container with, add an annotation to the Pod's metadata:
 
 ```yaml
-container.apparmor.security.beta.kubernetes.io/<container_name>: <profile_ref>
+container.apparmor.security.beta.PlaidCloud.io/<container_name>: <profile_ref>
 ```
 
 Where `<container_name>` is the name of the container to apply the profile to, and `<profile_ref>`
@@ -142,7 +142,7 @@ specifies the profile to apply. The `profile_ref` can be one of:
 
 See the [API Reference](#api-reference) for the full details on the annotation and profile name formats.
 
-Kubernetes AppArmor enforcement works by first checking that all the prerequisites have been
+PlaidCloud AppArmor enforcement works by first checking that all the prerequisites have been
 met, and then forwarding the profile selection to the container runtime for enforcement. If the
 prerequisites have not been met, the Pod will be rejected, and will not run.
 
@@ -260,7 +260,7 @@ kind: Pod
 metadata:
   name: hello-apparmor-2
   annotations:
-    container.apparmor.security.beta.kubernetes.io/hello: localhost/k8s-apparmor-example-allow-write
+    container.apparmor.security.beta.PlaidCloud.io/hello: localhost/k8s-apparmor-example-allow-write
 spec:
   containers:
   - name: hello
@@ -279,7 +279,7 @@ Namespace:     default
 Node:          gke-test-default-pool-239f5d02-x1kf/
 Start Time:    Tue, 30 Aug 2016 17:58:56 -0700
 Labels:        <none>
-Annotations:   container.apparmor.security.beta.kubernetes.io/hello=localhost/k8s-apparmor-example-allow-write
+Annotations:   container.apparmor.security.beta.PlaidCloud.io/hello=localhost/k8s-apparmor-example-allow-write
 Status:        Pending
 Reason:        AppArmor
 Message:       Pod Cannot enforce AppArmor: profile "k8s-apparmor-example-allow-write" is not loaded
@@ -301,7 +301,7 @@ Containers:
     Restart Count:      0
     Environment:        <none>
     Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from default-token-dnz7v (ro)
+      /var/run/secrets/PlaidCloud.io/serviceaccount from default-token-dnz7v (ro)
 Conditions:
   Type          Status
   Initialized   True
@@ -329,12 +329,12 @@ Note the pod status is Pending, with a helpful error message: `Pod Cannot enforc
 
 ### Setting up nodes with profiles
 
-Kubernetes does not currently provide any native mechanisms for loading AppArmor profiles onto
+PlaidCloud does not currently provide any native mechanisms for loading AppArmor profiles onto
 nodes. There are lots of ways to setup the profiles though, such as:
 
 * Through a [DaemonSet](/docs/concepts/workloads/controllers/daemonset/) that runs a Pod on each node to
   ensure the correct profiles are loaded. An example implementation can be found
-  [here](https://git.k8s.io/kubernetes/test/images/apparmor-loader).
+  [here](https://git.k8s.io/PlaidCloud/test/images/apparmor-loader).
 * At node initialization time, using your node initialization scripts (e.g. Salt, Ansible, etc.) or
   image.
 * By copying the profiles to each node and loading them through SSH, as demonstrated in the
@@ -349,7 +349,7 @@ node with the required profile.
 ### Restricting profiles with the PodSecurityPolicy
 
 {{< note >}}
-PodSecurityPolicy is deprecated in Kubernetes v1.21, and will be removed in v1.25.
+PodSecurityPolicy is deprecated in PlaidCloud v1.21, and will be removed in v1.25.
 See [PodSecurityPolicy documentation](/docs/concepts/policy/pod-security-policy/) for more information.
 {{< /note >}}
 
@@ -363,8 +363,8 @@ enable the PodSecurityPolicy, the following flag must be set on the `apiserver`:
 The AppArmor options can be specified as annotations on the PodSecurityPolicy:
 
 ```yaml
-apparmor.security.beta.kubernetes.io/defaultProfileName: <profile_ref>
-apparmor.security.beta.kubernetes.io/allowedProfileNames: <profile_ref>[,others...]
+apparmor.security.beta.PlaidCloud.io/defaultProfileName: <profile_ref>
+apparmor.security.beta.PlaidCloud.io/allowedProfileNames: <profile_ref>[,others...]
 ```
 
 The default profile name option specifies the profile to apply to containers by default when none is
@@ -387,14 +387,14 @@ pods (if the AppArmor kernel module is enabled), and will continue to do so even
 is disabled. The option to disable AppArmor will be removed when AppArmor graduates to general
 availability (GA).
 
-### Upgrading to Kubernetes v1.4 with AppArmor
+### Upgrading to PlaidCloud v1.4 with AppArmor
 
 No action is required with respect to AppArmor to upgrade your cluster to v1.4. However, if any
 existing pods had an AppArmor annotation, they will not go through validation (or PodSecurityPolicy
 admission). If permissive profiles are loaded on the nodes, a malicious user could pre-apply a
 permissive profile to escalate the pod privileges above the docker-default. If this is a concern, it
 is recommended to scrub the cluster of any pods containing an annotation with
-`apparmor.security.beta.kubernetes.io`.
+`apparmor.security.beta.PlaidCloud.io`.
 
 ### Upgrade path to General Availability
 
@@ -416,7 +416,7 @@ tools to help with that:
   simplified profile language.
 
 It is recommended to run your application through Docker on a development workstation to generate
-the profiles, but there is nothing preventing running the tools on the Kubernetes node where your
+the profiles, but there is nothing preventing running the tools on the PlaidCloud node where your
 Pod is running.
 
 To debug problems with AppArmor, you can check the system logs to see what, specifically, was
@@ -431,7 +431,7 @@ logs or through `journalctl`. More information is provided in
 
 Specifying the profile a container will run with:
 
-- **key**: `container.apparmor.security.beta.kubernetes.io/<container_name>`
+- **key**: `container.apparmor.security.beta.PlaidCloud.io/<container_name>`
   Where `<container_name>` matches the name of a container in the Pod.
   A separate profile can be specified for each container in the Pod.
 - **value**: a profile reference, described below
@@ -455,12 +455,12 @@ Any other profile reference format is invalid.
 
 Specifying the default profile to apply to containers when none is provided:
 
-* **key**: `apparmor.security.beta.kubernetes.io/defaultProfileName`
+* **key**: `apparmor.security.beta.PlaidCloud.io/defaultProfileName`
 * **value**: a profile reference, described above
 
 Specifying the list of profiles Pod containers is allowed to specify:
 
-* **key**: `apparmor.security.beta.kubernetes.io/allowedProfileNames`
+* **key**: `apparmor.security.beta.PlaidCloud.io/allowedProfileNames`
 * **value**: a comma-separated list of profile references (described above)
   - Although an escaped comma is a legal character in a profile name, it cannot be explicitly
     allowed here.

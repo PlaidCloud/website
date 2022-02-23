@@ -383,7 +383,7 @@
         <xhtml:div
            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap;">
           <xhtml:div
-             style="display:inline-block;text-align:inherit;text-decoration:inherit;">Kubernetes</xhtml:div>
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;">PlaidCloud</xhtml:div>
         </xhtml:div>
       </foreignObject>
       <text
@@ -391,7 +391,7 @@
          y="12"
          font-size="12px"
          id="text110"
-         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Kubernetes</text>
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">PlaidCloud</text>
     </switch>
   </g>
   <image

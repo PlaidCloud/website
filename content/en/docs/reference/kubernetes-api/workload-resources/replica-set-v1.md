@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: apps/v1`
@@ -62,15 +62,15 @@ ReplicaSetSpec is the specification of a ReplicaSet.
 
 - **selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>), required
 
-  Selector is a label query over pods that should match the replica count. Label keys and values that must match in order to be controlled by this replica set. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+  Selector is a label query over pods that should match the replica count. Label keys and values that must match in order to be controlled by this replica set. It must match the pod template's labels. More info: https://plaidcloud.com/docs/concepts/overview/working-with-objects/labels/#label-selectors
 
 - **template** (<a href="{{< ref "../workload-resources/pod-template-v1#PodTemplateSpec" >}}">PodTemplateSpec</a>)
 
-  Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+  Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://plaidcloud.com/docs/concepts/workloads/controllers/replicationcontroller#pod-template
 
 - **replicas** (int32)
 
-  Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
+  Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://plaidcloud.com/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
 
 - **minReadySeconds** (int32)
 
@@ -88,7 +88,7 @@ ReplicaSetStatus represents the current status of a ReplicaSet.
 
 - **replicas** (int32), required
 
-  Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
+  Replicas is the most recently oberved number of replicas. More info: https://plaidcloud.com/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
 
 - **availableReplicas** (int32)
 
@@ -160,7 +160,7 @@ ReplicaSetList is a collection of ReplicaSets.
 
 - **items** ([]<a href="{{< ref "../workload-resources/replica-set-v1#ReplicaSet" >}}">ReplicaSet</a>), required
 
-  List of ReplicaSets. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller
+  List of ReplicaSets. More info: https://plaidcloud.com/docs/concepts/workloads/controllers/replicationcontroller
 
 
 

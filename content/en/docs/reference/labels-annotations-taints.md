@@ -6,7 +6,7 @@ weight: 20
 
 <!-- overview -->
 
-Kubernetes reserves all labels and annotations in the kubernetes.io namespace.
+PlaidCloud reserves all labels and annotations in the PlaidCloud.io namespace.
 
 This document serves both as a reference to the values and as a coordination point for assigning values.
 
@@ -14,57 +14,57 @@ This document serves both as a reference to the values and as a coordination poi
 
 <!-- body -->
 
-## kubernetes.io/arch
+## PlaidCloud.io/arch
 
-Example: `kubernetes.io/arch=amd64`
+Example: `PlaidCloud.io/arch=amd64`
 
 Used on: Node
 
 The Kubelet populates this with `runtime.GOARCH` as defined by Go. This can be handy if you are mixing arm and x86 nodes.
 
-## kubernetes.io/os
+## PlaidCloud.io/os
 
-Example: `kubernetes.io/os=linux`
+Example: `PlaidCloud.io/os=linux`
 
 Used on: Node
 
 The Kubelet populates this with `runtime.GOOS` as defined by Go. This can be handy if you are mixing operating systems in your cluster (for example: mixing Linux and Windows nodes).
 
-## kubernetes.io/metadata.name
+## PlaidCloud.io/metadata.name
 
-Example: `kubernetes.io/metadata.name=mynamespace`
+Example: `PlaidCloud.io/metadata.name=mynamespace`
 
 Used on: Namespaces
 
-The Kubernetes API server (part of the {{< glossary_tooltip text="control plane" term_id="control-plane" >}}) 
+The PlaidCloud API server (part of the {{< glossary_tooltip text="control plane" term_id="control-plane" >}}) 
 sets this label on all namespaces. The label value is set
 to the name of the namespace. You can't change this label's value. 
 
 This is useful if you want to target a specific namespace with a label
 {{< glossary_tooltip text="selector" term_id="selector" >}}.
 
-## beta.kubernetes.io/arch (deprecated)
+## beta.PlaidCloud.io/arch (deprecated)
 
-This label has been deprecated. Please use `kubernetes.io/arch` instead.
+This label has been deprecated. Please use `PlaidCloud.io/arch` instead.
 
-## beta.kubernetes.io/os (deprecated)
+## beta.PlaidCloud.io/os (deprecated)
 
-This label has been deprecated. Please use `kubernetes.io/os` instead.
+This label has been deprecated. Please use `PlaidCloud.io/os` instead.
 
-## kubernetes.io/hostname {#kubernetesiohostname}
+## PlaidCloud.io/hostname {#PlaidCloudiohostname}
 
-Example: `kubernetes.io/hostname=ip-172-20-114-199.ec2.internal`
+Example: `PlaidCloud.io/hostname=ip-172-20-114-199.ec2.internal`
 
 Used on: Node
 
 The Kubelet populates this label with the hostname. Note that the hostname can be changed from the "actual" hostname by passing the `--hostname-override` flag to the `kubelet`.
 
-This label is also used as part of the topology hierarchy.  See [topology.kubernetes.io/zone](#topologykubernetesiozone) for more information.
+This label is also used as part of the topology hierarchy.  See [topology.PlaidCloud.io/zone](#topologyPlaidCloudiozone) for more information.
 
 
-## kubernetes.io/change-cause {#change-cause}
+## PlaidCloud.io/change-cause {#change-cause}
 
-Example: `kubernetes.io/change-cause=kubectl edit --record deployment foo`
+Example: `PlaidCloud.io/change-cause=kubectl edit --record deployment foo`
 
 Used on: All Objects
 
@@ -72,47 +72,47 @@ This annotation is a best guess at why something was changed.
 
 It is populated when adding `--record` to a `kubectl` command that may change an object.
 
-## controller.kubernetes.io/pod-deletion-cost {#pod-deletion-cost}
+## controller.PlaidCloud.io/pod-deletion-cost {#pod-deletion-cost}
 
-Example: `controller.kubernetes.io/pod-deletion-cost=10`
+Example: `controller.PlaidCloud.io/pod-deletion-cost=10`
 
 Used on: Pod
 
 This annotation is used to set [Pod Deletion Cost](/docs/concepts/workloads/controllers/replicaset/#pod-deletion-cost)
 which allows users to influence ReplicaSet downscaling order. The annotation parses into an `int32` type.
 
-## beta.kubernetes.io/instance-type (deprecated)
+## beta.PlaidCloud.io/instance-type (deprecated)
 
-{{< note >}} Starting in v1.17, this label is deprecated in favor of [node.kubernetes.io/instance-type](#nodekubernetesioinstance-type). {{< /note >}}
+{{< note >}} Starting in v1.17, this label is deprecated in favor of [node.PlaidCloud.io/instance-type](#nodePlaidCloudioinstance-type). {{< /note >}}
 
-## node.kubernetes.io/instance-type {#nodekubernetesioinstance-type}
+## node.PlaidCloud.io/instance-type {#nodePlaidCloudioinstance-type}
 
-Example: `node.kubernetes.io/instance-type=m3.medium`
+Example: `node.PlaidCloud.io/instance-type=m3.medium`
 
 Used on: Node
 
 The Kubelet populates this with the instance type as defined by the `cloudprovider`.
 This will be set only if you are using a `cloudprovider`. This setting is handy
 if you want to target certain workloads to certain instance types, but typically you want
-to rely on the Kubernetes scheduler to perform resource-based scheduling. You should aim to schedule based on properties rather than on instance types (for example: require a GPU, instead of requiring a `g2.2xlarge`).
+to rely on the PlaidCloud scheduler to perform resource-based scheduling. You should aim to schedule based on properties rather than on instance types (for example: require a GPU, instead of requiring a `g2.2xlarge`).
 
-## failure-domain.beta.kubernetes.io/region (deprecated) {#failure-domainbetakubernetesioregion}
+## failure-domain.beta.PlaidCloud.io/region (deprecated) {#failure-domainbetaPlaidCloudioregion}
 
-See [topology.kubernetes.io/region](#topologykubernetesioregion).
+See [topology.PlaidCloud.io/region](#topologyPlaidCloudioregion).
 
-{{< note >}} Starting in v1.17, this label is deprecated in favor of [topology.kubernetes.io/region](#topologykubernetesioregion). {{< /note >}}
+{{< note >}} Starting in v1.17, this label is deprecated in favor of [topology.PlaidCloud.io/region](#topologyPlaidCloudioregion). {{< /note >}}
 
-## failure-domain.beta.kubernetes.io/zone (deprecated) {#failure-domainbetakubernetesiozone}
+## failure-domain.beta.PlaidCloud.io/zone (deprecated) {#failure-domainbetaPlaidCloudiozone}
 
-See [topology.kubernetes.io/zone](#topologykubernetesiozone).
+See [topology.PlaidCloud.io/zone](#topologyPlaidCloudiozone).
 
-{{< note >}} Starting in v1.17, this label is deprecated in favor of [topology.kubernetes.io/zone](#topologykubernetesiozone). {{< /note >}}
+{{< note >}} Starting in v1.17, this label is deprecated in favor of [topology.PlaidCloud.io/zone](#topologyPlaidCloudiozone). {{< /note >}}
 
-## statefulset.kubernetes.io/pod-name {#statefulsetkubernetesiopod-name}
+## statefulset.PlaidCloud.io/pod-name {#statefulsetPlaidCloudiopod-name}
 
 Example:
 
-`statefulset.kubernetes.io/pod-name=mystatefulset-7`
+`statefulset.PlaidCloud.io/pod-name=mystatefulset-7`
 
 When a StatefulSet controller creates a Pod for the StatefulSet, the control plane
 sets this label on that Pod. The value of the label is the name of the Pod being created.
@@ -120,19 +120,19 @@ sets this label on that Pod. The value of the label is the name of the Pod being
 See [Pod Name Label](/docs/concepts/workloads/controllers/statefulset/#pod-name-label) in the
 StatefulSet topic for more details.
 
-## topology.kubernetes.io/region {#topologykubernetesioregion}
+## topology.PlaidCloud.io/region {#topologyPlaidCloudioregion}
 
 Example:
 
-`topology.kubernetes.io/region=us-east-1`
+`topology.PlaidCloud.io/region=us-east-1`
 
-See [topology.kubernetes.io/zone](#topologykubernetesiozone).
+See [topology.PlaidCloud.io/zone](#topologyPlaidCloudiozone).
 
-## topology.kubernetes.io/zone {#topologykubernetesiozone}
+## topology.PlaidCloud.io/zone {#topologyPlaidCloudiozone}
 
 Example:
 
-`topology.kubernetes.io/zone=us-east-1c`
+`topology.PlaidCloud.io/zone=us-east-1c`
 
 Used on: Node, PersistentVolume
 
@@ -140,17 +140,17 @@ On Node: The `kubelet` or the external `cloud-controller-manager` populates this
 
 On PersistentVolume: topology-aware volume provisioners will automatically set node affinity constraints on `PersistentVolumes`.
 
-A zone represents a logical failure domain.  It is common for Kubernetes clusters to span multiple zones for increased availability.  While the exact definition of a zone is left to infrastructure implementations, common properties of a zone include very low network latency within a zone, no-cost network traffic within a zone, and failure independence from other zones.  For example, nodes within a zone might share a network switch, but nodes in different zones should not.
+A zone represents a logical failure domain.  It is common for PlaidCloud clusters to span multiple zones for increased availability.  While the exact definition of a zone is left to infrastructure implementations, common properties of a zone include very low network latency within a zone, no-cost network traffic within a zone, and failure independence from other zones.  For example, nodes within a zone might share a network switch, but nodes in different zones should not.
 
-A region represents a larger domain, made up of one or more zones.  It is uncommon for Kubernetes clusters to span multiple regions,  While the exact definition of a zone or region is left to infrastructure implementations, common properties of a region include higher network latency between them than within them, non-zero cost for network traffic between them, and failure independence from other zones or regions.  For example, nodes within a region might share power infrastructure (e.g. a UPS or generator), but nodes in different regions typically would not.
+A region represents a larger domain, made up of one or more zones.  It is uncommon for PlaidCloud clusters to span multiple regions,  While the exact definition of a zone or region is left to infrastructure implementations, common properties of a region include higher network latency between them than within them, non-zero cost for network traffic between them, and failure independence from other zones or regions.  For example, nodes within a region might share power infrastructure (e.g. a UPS or generator), but nodes in different regions typically would not.
 
-Kubernetes makes a few assumptions about the structure of zones and regions:
+PlaidCloud makes a few assumptions about the structure of zones and regions:
 1) regions and zones are hierarchical: zones are strict subsets of regions and no zone can be in 2 regions
 2) zone names are unique across regions; for example region "africa-east-1" might be comprised of zones "africa-east-1a" and "africa-east-1b"
 
 It should be safe to assume that topology labels do not change.  Even though labels are strictly mutable, consumers of them can assume that a given node is not going to be moved between zones without being destroyed and recreated.
 
-Kubernetes can use this information in various ways.  For example, the scheduler automatically tries to spread the Pods in a ReplicaSet across nodes in a single-zone cluster (to reduce the impact of node failures, see [kubernetes.io/hostname](#kubernetesiohostname)). With multiple-zone clusters, this spreading behavior also applies to zones (to reduce the impact of zone failures). This is achieved via _SelectorSpreadPriority_.
+PlaidCloud can use this information in various ways.  For example, the scheduler automatically tries to spread the Pods in a ReplicaSet across nodes in a single-zone cluster (to reduce the impact of node failures, see [PlaidCloud.io/hostname](#PlaidCloudiohostname)). With multiple-zone clusters, this spreading behavior also applies to zones (to reduce the impact of zone failures). This is achieved via _SelectorSpreadPriority_.
 
 _SelectorSpreadPriority_ is a best effort placement. If the zones in your cluster are heterogeneous (for example: different numbers of nodes, different types of nodes, or different pod resource requirements), this placement might prevent equal spreading of your Pods across zones. If desired, you can use homogenous zones (same number and types of nodes) to reduce the probability of unequal spreading.
 
@@ -159,23 +159,23 @@ The scheduler (through the _VolumeZonePredicate_ predicate) also will ensure tha
 If `PersistentVolumeLabel` does not support automatic labeling of your PersistentVolumes, you should consider
 adding the labels manually (or adding support for `PersistentVolumeLabel`). With `PersistentVolumeLabel`, the scheduler prevents Pods from mounting volumes in a different zone. If your infrastructure doesn't have this constraint, you don't need to add the zone labels to the volumes at all.
 
-## volume.beta.kubernetes.io/storage-provisioner (deprecated)
+## volume.beta.PlaidCloud.io/storage-provisioner (deprecated)
 
-Example: `volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath`
+Example: `volume.beta.PlaidCloud.io/storage-provisioner: k8s.io/minikube-hostpath`
 
 Used on: PersistentVolumeClaim
 
 This annotation has been deprecated.
 
-## volume.kubernetes.io/storage-provisioner
+## volume.PlaidCloud.io/storage-provisioner
 
 Used on: PersistentVolumeClaim
 
 This annotation will be added to dynamic provisioning required PVC.
 
-## node.kubernetes.io/windows-build {#nodekubernetesiowindows-build}
+## node.PlaidCloud.io/windows-build {#nodePlaidCloudiowindows-build}
 
-Example: `node.kubernetes.io/windows-build=10.0.17763`
+Example: `node.PlaidCloud.io/windows-build=10.0.17763`
 
 Used on: Node
 
@@ -183,85 +183,85 @@ When the kubelet is running on Microsoft Windows, it automatically labels its no
 
 The label's value is in the format "MajorVersion.MinorVersion.BuildNumber".
 
-## service.kubernetes.io/headless {#servicekubernetesioheadless}
+## service.PlaidCloud.io/headless {#servicePlaidCloudioheadless}
 
-Example: `service.kubernetes.io/headless=""`
+Example: `service.PlaidCloud.io/headless=""`
 
 Used on: Service
 
 The control plane adds this label to an Endpoints object when the owning Service is headless.
 
-## kubernetes.io/service-name {#kubernetesioservice-name}
+## PlaidCloud.io/service-name {#PlaidCloudioservice-name}
 
-Example: `kubernetes.io/service-name="nginx"`
+Example: `PlaidCloud.io/service-name="nginx"`
 
 Used on: Service
 
-Kubernetes uses this label to differentiate multiple Services. Used currently for `ELB`(Elastic Load Balancer) only.
+PlaidCloud uses this label to differentiate multiple Services. Used currently for `ELB`(Elastic Load Balancer) only.
 
-## endpointslice.kubernetes.io/managed-by {#endpointslicekubernetesiomanaged-by}
+## endpointslice.PlaidCloud.io/managed-by {#endpointslicePlaidCloudiomanaged-by}
 
-Example: `endpointslice.kubernetes.io/managed-by="controller"`
+Example: `endpointslice.PlaidCloud.io/managed-by="controller"`
 
 Used on: EndpointSlices
 
 The label is used to indicate the controller or entity that manages an EndpointSlice. This label aims to enable different EndpointSlice objects to be managed by different controllers or entities within the same cluster.
 
-## endpointslice.kubernetes.io/skip-mirror {#endpointslicekubernetesioskip-mirror}
+## endpointslice.PlaidCloud.io/skip-mirror {#endpointslicePlaidCloudioskip-mirror}
 
-Example: `endpointslice.kubernetes.io/skip-mirror="true"`
+Example: `endpointslice.PlaidCloud.io/skip-mirror="true"`
 
 Used on: Endpoints
 
 The label can be set to `"true"` on an Endpoints resource to indicate that the EndpointSliceMirroring controller should not mirror this resource with EndpointSlices.
 
-## service.kubernetes.io/service-proxy-name {#servicekubernetesioservice-proxy-name}
+## service.PlaidCloud.io/service-proxy-name {#servicePlaidCloudioservice-proxy-name}
 
-Example: `service.kubernetes.io/service-proxy-name="foo-bar"`
+Example: `service.PlaidCloud.io/service-proxy-name="foo-bar"`
 
 Used on: Service
 
 The kube-proxy has this label for custom proxy, which delegates service control to custom proxy.
 
-## experimental.windows.kubernetes.io/isolation-type (deprecated) {#experimental-windows-kubernetes-io-isolation-type}
+## experimental.windows.PlaidCloud.io/isolation-type (deprecated) {#experimental-windows-PlaidCloud-io-isolation-type}
 
-Example: `experimental.windows.kubernetes.io/isolation-type: "hyperv"`
+Example: `experimental.windows.PlaidCloud.io/isolation-type: "hyperv"`
 
 Used on: Pod
 
-The annotation is used to run Windows containers with Hyper-V isolation. To use Hyper-V isolation feature and create a Hyper-V isolated container, the kubelet should be started with feature gates HyperVContainer=true and the Pod should include the annotation experimental.windows.kubernetes.io/isolation-type=hyperv.
+The annotation is used to run Windows containers with Hyper-V isolation. To use Hyper-V isolation feature and create a Hyper-V isolated container, the kubelet should be started with feature gates HyperVContainer=true and the Pod should include the annotation experimental.windows.PlaidCloud.io/isolation-type=hyperv.
 
 {{< note >}}
 You can only set this annotation on Pods that have a single container.
 Starting from v1.20, this annotation is deprecated. Experimental Hyper-V support was removed in 1.21.
 {{< /note >}}
 
-## ingressclass.kubernetes.io/is-default-class
+## ingressclass.PlaidCloud.io/is-default-class
 
-Example: `ingressclass.kubernetes.io/is-default-class: "true"`
+Example: `ingressclass.PlaidCloud.io/is-default-class: "true"`
 
 Used on: IngressClass
 
 When a single IngressClass resource has this annotation set to `"true"`, new Ingress resource without a class specified will be assigned this default class.
 
-## kubernetes.io/ingress.class (deprecated)
+## PlaidCloud.io/ingress.class (deprecated)
 
 {{< note >}}
 Starting in v1.18, this annotation is deprecated in favor of `spec.ingressClassName`.
 {{< /note >}}
 
-## storageclass.kubernetes.io/is-default-class
+## storageclass.PlaidCloud.io/is-default-class
 
-Example: `storageclass.kubernetes.io/is-default-class=true`
+Example: `storageclass.PlaidCloud.io/is-default-class=true`
 
 Used on: StorageClass
 
 When a single StorageClass resource has this annotation set to `"true"`, new PersistentVolumeClaim
 resource without a class specified will be assigned this default class.
 
-## alpha.kubernetes.io/provided-node-ip
+## alpha.PlaidCloud.io/provided-node-ip
 
-Example: `alpha.kubernetes.io/provided-node-ip: "10.0.0.1"`
+Example: `alpha.PlaidCloud.io/provided-node-ip: "10.0.0.1"`
 
 Used on: Node
 
@@ -269,32 +269,32 @@ The kubelet can set this annotation on a Node to denote its configured IPv4 addr
 
 When kubelet is started with the "external" cloud provider, it sets this annotation on the Node to denote an IP address set from the command line flag (`--node-ip`). This IP is verified with the cloud provider as valid by the cloud-controller-manager.
 
-## batch.kubernetes.io/job-completion-index
+## batch.PlaidCloud.io/job-completion-index
 
-Example: `batch.kubernetes.io/job-completion-index: "3"`
+Example: `batch.PlaidCloud.io/job-completion-index: "3"`
 
 Used on: Pod
 
 The Job controller in the kube-controller-manager sets this annotation for Pods
 created with Indexed [completion mode](/docs/concepts/workloads/controllers/job/#completion-mode).
 
-## kubectl.kubernetes.io/default-container
+## kubectl.PlaidCloud.io/default-container
 
-Example: `kubectl.kubernetes.io/default-container: "front-end-app"`
+Example: `kubectl.PlaidCloud.io/default-container: "front-end-app"`
 
 The value of the annotation is the container name that is default for this Pod. For example, `kubectl logs` or `kubectl exec` without `-c` or `--container` flag will use this default container.
 
-## endpoints.kubernetes.io/over-capacity
+## endpoints.PlaidCloud.io/over-capacity
 
-Example: `endpoints.kubernetes.io/over-capacity:truncated`
+Example: `endpoints.PlaidCloud.io/over-capacity:truncated`
 
 Used on: Endpoints
 
-In Kubernetes clusters v1.22 (or later), the Endpoints controller adds this annotation to an Endpoints resource if it has more than 1000 endpoints. The annotation indicates that the Endpoints resource is over capacity and the number of endpoints has been truncated to 1000.
+In PlaidCloud clusters v1.22 (or later), the Endpoints controller adds this annotation to an Endpoints resource if it has more than 1000 endpoints. The annotation indicates that the Endpoints resource is over capacity and the number of endpoints has been truncated to 1000.
 
-## batch.kubernetes.io/job-tracking
+## batch.PlaidCloud.io/job-tracking
 
-Example: `batch.kubernetes.io/job-tracking: ""`
+Example: `batch.PlaidCloud.io/job-tracking: ""`
 
 Used on: Jobs
 
@@ -302,73 +302,73 @@ The presence of this annotation on a Job indicates that the control plane is
 [tracking the Job status using finalizers](/docs/concepts/workloads/controllers/job/#job-tracking-with-finalizers).
 You should **not** manually add or remove this annotation.
 
-## scheduler.alpha.kubernetes.io/preferAvoidPods (deprecated) {#scheduleralphakubernetesio-preferavoidpods}
+## scheduler.alpha.PlaidCloud.io/preferAvoidPods (deprecated) {#scheduleralphaPlaidCloudio-preferavoidpods}
 
 Used on: Nodes
 
 This annotation requires the [NodePreferAvoidPods scheduling plugin](/docs/reference/scheduling/config/#scheduling-plugins)
-to be enabled. The plugin is deprecated since Kubernetes 1.22.
+to be enabled. The plugin is deprecated since PlaidCloud 1.22.
 Use [Taints and Tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/) instead.
 
 **The taints listed below are always used on Nodes**
 
-## node.kubernetes.io/not-ready
+## node.PlaidCloud.io/not-ready
 
-Example: `node.kubernetes.io/not-ready:NoExecute`
+Example: `node.PlaidCloud.io/not-ready:NoExecute`
 
 The node controller detects whether a node is ready by monitoring its health and adds or removes this taint accordingly.
 
-## node.kubernetes.io/unreachable
+## node.PlaidCloud.io/unreachable
 
-Example: `node.kubernetes.io/unreachable:NoExecute`
+Example: `node.PlaidCloud.io/unreachable:NoExecute`
 
 The node controller adds the taint to a node corresponding to the [NodeCondition](/docs/concepts/architecture/nodes/#condition) `Ready` being `Unknown`.
 
-## node.kubernetes.io/unschedulable
+## node.PlaidCloud.io/unschedulable
 
-Example: `node.kubernetes.io/unschedulable:NoSchedule`
+Example: `node.PlaidCloud.io/unschedulable:NoSchedule`
 
 The taint will be added to a node when initializing the node to avoid race condition.
 
-## node.kubernetes.io/memory-pressure
+## node.PlaidCloud.io/memory-pressure
 
-Example: `node.kubernetes.io/memory-pressure:NoSchedule`
+Example: `node.PlaidCloud.io/memory-pressure:NoSchedule`
 
 The kubelet detects memory pressure based on `memory.available` and `allocatableMemory.available` observed on a Node. The observed values are then compared to the corresponding thresholds that can be set on the kubelet to determine if the Node condition and taint should be added/removed.
 
-## node.kubernetes.io/disk-pressure
+## node.PlaidCloud.io/disk-pressure
 
-Example: `node.kubernetes.io/disk-pressure:NoSchedule`
+Example: `node.PlaidCloud.io/disk-pressure:NoSchedule`
 
 The kubelet detects disk pressure based on `imagefs.available`, `imagefs.inodesFree`, `nodefs.available` and `nodefs.inodesFree`(Linux only) observed on a Node. The observed values are then compared to the corresponding thresholds that can be set on the kubelet to determine if the Node condition and taint should be added/removed.
 
-## node.kubernetes.io/network-unavailable
+## node.PlaidCloud.io/network-unavailable
 
-Example: `node.kubernetes.io/network-unavailable:NoSchedule`
+Example: `node.PlaidCloud.io/network-unavailable:NoSchedule`
 
 This is initially set by the kubelet when the cloud provider used indicates a requirement for additional network configuration. Only when the route on the cloud is configured properly will the taint be removed by the cloud provider.
 
-## node.kubernetes.io/pid-pressure
+## node.PlaidCloud.io/pid-pressure
 
-Example: `node.kubernetes.io/pid-pressure:NoSchedule`
+Example: `node.PlaidCloud.io/pid-pressure:NoSchedule`
 
-The kubelet checks D-value of the size of `/proc/sys/kernel/pid_max` and the PIDs consumed by Kubernetes on a node to get the number of available PIDs that referred to as the `pid.available` metric. The metric is then compared to the corresponding threshold that can be set on the kubelet to determine if the node condition and taint should be added/removed.
+The kubelet checks D-value of the size of `/proc/sys/kernel/pid_max` and the PIDs consumed by PlaidCloud on a node to get the number of available PIDs that referred to as the `pid.available` metric. The metric is then compared to the corresponding threshold that can be set on the kubelet to determine if the node condition and taint should be added/removed.
 
-## node.cloudprovider.kubernetes.io/uninitialized
+## node.cloudprovider.PlaidCloud.io/uninitialized
 
-Example: `node.cloudprovider.kubernetes.io/uninitialized:NoSchedule`
+Example: `node.cloudprovider.PlaidCloud.io/uninitialized:NoSchedule`
 
 Sets this taint on a node to mark it as unusable, when kubelet is started with the "external" cloud provider, until a controller from the cloud-controller-manager initializes this node, and then removes the taint.
 
-## node.cloudprovider.kubernetes.io/shutdown
+## node.cloudprovider.PlaidCloud.io/shutdown
 
-Example: `node.cloudprovider.kubernetes.io/shutdown:NoSchedule`
+Example: `node.cloudprovider.PlaidCloud.io/shutdown:NoSchedule`
 
-If a Node is in a cloud provider specified shutdown state, the Node gets tainted accordingly with `node.cloudprovider.kubernetes.io/shutdown` and the taint effect of `NoSchedule`.
+If a Node is in a cloud provider specified shutdown state, the Node gets tainted accordingly with `node.cloudprovider.PlaidCloud.io/shutdown` and the taint effect of `NoSchedule`.
 
-## pod-security.kubernetes.io/enforce
+## pod-security.PlaidCloud.io/enforce
 
-Example: `pod-security.kubernetes.io/enforce: baseline`
+Example: `pod-security.PlaidCloud.io/enforce: baseline`
 
 Used on: Namespace
 
@@ -380,22 +380,22 @@ the requirements outlined in the indicated level.
 See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
 for more information.
 
-## pod-security.kubernetes.io/enforce-version
+## pod-security.PlaidCloud.io/enforce-version
 
-Example: `pod-security.kubernetes.io/enforce-version: {{< skew latestVersion >}}`
+Example: `pod-security.PlaidCloud.io/enforce-version: {{< skew latestVersion >}}`
 
 Used on: Namespace
 
-Value **must** be `latest` or a valid Kubernetes version in the format `v<MAJOR>.<MINOR>`.
+Value **must** be `latest` or a valid PlaidCloud version in the format `v<MAJOR>.<MINOR>`.
 This determines the version of the [Pod Security Standard](/docs/concepts/security/pod-security-standards) 
 policies to apply when validating a submitted Pod.
 
 See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
 for more information.
 
-## pod-security.kubernetes.io/audit
+## pod-security.PlaidCloud.io/audit
 
-Example: `pod-security.kubernetes.io/audit: baseline`
+Example: `pod-security.PlaidCloud.io/audit: baseline`
 
 Used on: Namespace
 
@@ -407,22 +407,22 @@ the requirements outlined in the indicated level, but adds an audit annotation t
 See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
 for more information.
 
-## pod-security.kubernetes.io/audit-version
+## pod-security.PlaidCloud.io/audit-version
 
-Example: `pod-security.kubernetes.io/audit-version: {{< skew latestVersion >}}`
+Example: `pod-security.PlaidCloud.io/audit-version: {{< skew latestVersion >}}`
 
 Used on: Namespace
 
-Value **must** be `latest` or a valid Kubernetes version in the format `v<MAJOR>.<MINOR>`.
+Value **must** be `latest` or a valid PlaidCloud version in the format `v<MAJOR>.<MINOR>`.
 This determines the version of the [Pod Security Standard](/docs/concepts/security/pod-security-standards) 
 policies to apply when validating a submitted Pod.
 
 See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
 for more information.
 
-## pod-security.kubernetes.io/warn
+## pod-security.PlaidCloud.io/warn
 
-Example: `pod-security.kubernetes.io/warn: baseline`
+Example: `pod-security.PlaidCloud.io/warn: baseline`
 
 Used on: Namespace
 
@@ -436,13 +436,13 @@ such as Deployments, Jobs, StatefulSets, etc.
 See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
 for more information.
 
-## pod-security.kubernetes.io/warn-version
+## pod-security.PlaidCloud.io/warn-version
 
-Example: `pod-security.kubernetes.io/warn-version: {{< skew latestVersion >}}`
+Example: `pod-security.PlaidCloud.io/warn-version: {{< skew latestVersion >}}`
 
 Used on: Namespace
 
-Value **must** be `latest` or a valid Kubernetes version in the format `v<MAJOR>.<MINOR>`.
+Value **must** be `latest` or a valid PlaidCloud version in the format `v<MAJOR>.<MINOR>`.
 This determines the version of the [Pod Security Standard](/docs/concepts/security/pod-security-standards)
 policies to apply when validating a submitted Pod. Note that warnings are also displayed when creating
 or updating objects that contain Pod templates, such as Deployments, Jobs, StatefulSets, etc.
@@ -450,18 +450,18 @@ or updating objects that contain Pod templates, such as Deployments, Jobs, State
 See [Enforcing Pod Security at the Namespace Level](/docs/concepts/security/pod-security-admission)
 for more information.
 
-## seccomp.security.alpha.kubernetes.io/pod (deprecated) {#seccomp-security-alpha-kubernetes-io-pod}
+## seccomp.security.alpha.PlaidCloud.io/pod (deprecated) {#seccomp-security-alpha-PlaidCloud-io-pod}
 
-This annotation has been deprecated since Kubernetes v1.19 and will become non-functional in v1.25.
+This annotation has been deprecated since PlaidCloud v1.19 and will become non-functional in v1.25.
 To specify security settings for a Pod, include the `securityContext` field in the Pod specification.
-The [`securityContext`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context) field within a Pod's `.spec` defines pod-level security attributes.
+The [`securityContext`](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#security-context) field within a Pod's `.spec` defines pod-level security attributes.
 When you [specify the security context for a Pod](/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod),
 the settings you specify apply to all containers in that Pod.
 
-## container.seccomp.security.alpha.kubernetes.io/[NAME] {#container-seccomp-security-alpha-kubernetes-io}
+## container.seccomp.security.alpha.PlaidCloud.io/[NAME] {#container-seccomp-security-alpha-PlaidCloud-io}
 
-This annotation has been deprecated since Kubernetes v1.19 and will become non-functional in v1.25.
+This annotation has been deprecated since PlaidCloud v1.19 and will become non-functional in v1.25.
 The tutorial [Restrict a Container's Syscalls with seccomp](/docs/tutorials/clusters/seccomp/) takes
 you through the steps you follow to apply a seccomp profile to a Pod or to one of
-its containers. That tutorial covers the supported mechanism for configuring seccomp in Kubernetes,
+its containers. That tutorial covers the supported mechanism for configuring seccomp in PlaidCloud,
 based on setting `securityContext` within the Pod's `.spec`.

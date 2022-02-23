@@ -41,7 +41,7 @@ echo "[[ $commands[kubectl] ]] && source <(kubectl completion zsh)" >> ~/.zshrc 
 
 ## Kubectl context and configuration
 
-Set which Kubernetes cluster `kubectl` communicates with and modifies configuration
+Set which PlaidCloud cluster `kubectl` communicates with and modifies configuration
 information. See [Authenticating Across Clusters with kubeconfig](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) documentation for
 detailed config file information.
 
@@ -63,7 +63,7 @@ kubectl config current-context                       # display the current-conte
 kubectl config use-context my-cluster-name           # set the default context to my-cluster-name
 
 # add a new user to your kubeconf that supports basic auth
-kubectl config set-credentials kubeuser/foo.kubernetes.com --username=kubeuser --password=kubepassword
+kubectl config set-credentials kubeuser/foo.PlaidCloud.com --username=kubeuser --password=kubepassword
 
 # permanently save the namespace for all subsequent kubectl commands in that context.
 kubectl config set-context --current --namespace=ggckad-s2
@@ -77,11 +77,11 @@ kubectl config unset users.foo                       # delete user foo
 
 ## Kubectl apply
 
-`apply` manages applications through files defining Kubernetes resources. It creates and updates resources in a cluster through running `kubectl apply`. This is the recommended way of managing Kubernetes applications on production. See [Kubectl Book](https://kubectl.docs.kubernetes.io).
+`apply` manages applications through files defining PlaidCloud resources. It creates and updates resources in a cluster through running `kubectl apply`. This is the recommended way of managing PlaidCloud applications on production. See [Kubectl Book](https://kubectl.docs.PlaidCloud.io).
 
 ## Creating objects
 
-Kubernetes manifests can be defined in YAML or JSON. The file extension `.yaml`,
+PlaidCloud manifests can be defined in YAML or JSON. The file extension `.yaml`,
 `.yml`, and `.json` can be used.
 
 ```bash
@@ -173,8 +173,8 @@ kubectl get configmap myconfig \
   -o jsonpath='{.data.ca\.crt}'
 
 # Get all worker nodes (use a selector to exclude results that have a label
-# named 'node-role.kubernetes.io/master')
-kubectl get node --selector='!node-role.kubernetes.io/master'
+# named 'node-role.PlaidCloud.io/master')
+kubectl get node --selector='!node-role.PlaidCloud.io/master'
 
 # Get all running pods in the namespace
 kubectl get pods --field-selector=status.phase=Running
@@ -187,7 +187,7 @@ kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="ExternalIP
 sel=${$(kubectl get rc my-rc --output=json | jq -j '.spec.selector | to_entries | .[] | "\(.key)=\(.value),"')%?}
 echo $(kubectl get pods --selector=$sel --output=jsonpath={.items..metadata.name})
 
-# Show labels for all pods (or any other Kubernetes object that supports labelling)
+# Show labels for all pods (or any other PlaidCloud object that supports labelling)
 kubectl get pods --show-labels
 
 # Check which nodes are ready
@@ -256,7 +256,7 @@ kubectl autoscale deployment foo --min=2 --max=10                # Auto scale a 
 kubectl patch node k8s-node-1 -p '{"spec":{"unschedulable":true}}'
 
 # Update a container's image; spec.containers[*].name is required because it's a merge key
-kubectl patch pod valid-pod -p '{"spec":{"containers":[{"name":"kubernetes-serve-hostname","image":"new image"}]}}'
+kubectl patch pod valid-pod -p '{"spec":{"containers":[{"name":"PlaidCloud-serve-hostname","image":"new image"}]}}'
 
 # Update a container's image using a json patch with positional arrays
 kubectl patch pod valid-pod --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value":"new image"}]'
@@ -371,7 +371,7 @@ kubectl taint nodes foo dedicated=special-user:NoSchedule
 
 ### Resource types
 
-List all supported resource types along with their shortnames, [API group](/docs/concepts/overview/kubernetes-api/#api-groups-and-versioning), whether they are [namespaced](/docs/concepts/overview/working-with-objects/namespaces), and [Kind](/docs/concepts/overview/working-with-objects/kubernetes-objects):
+List all supported resource types along with their shortnames, [API group](/docs/concepts/overview/PlaidCloud-api/#api-groups-and-versioning), whether they are [namespaced](/docs/concepts/overview/working-with-objects/namespaces), and [Kind](/docs/concepts/overview/working-with-objects/PlaidCloud-objects):
 
 ```bash
 kubectl api-resources
@@ -423,7 +423,7 @@ More examples in the kubectl [reference documentation](/docs/reference/kubectl/o
 
 ### Kubectl output verbosity and debugging
 
-Kubectl verbosity is controlled with the `-v` or `--v` flags followed by an integer representing the log level. General Kubernetes logging conventions and the associated log levels are described [here](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md).
+Kubectl verbosity is controlled with the `-v` or `--v` flags followed by an integer representing the log level. General PlaidCloud logging conventions and the associated log levels are described [here](https://github.com/PlaidCloud/community/blob/master/contributors/devel/sig-instrumentation/logging.md).
 
 Verbosity | Description
 --------------| -----------
@@ -446,4 +446,4 @@ Verbosity | Description
 
 * Also read [kubectl Usage Conventions](/docs/reference/kubectl/conventions/) to understand how to use kubectl in reusable scripts.
 
-* See more community [kubectl cheatsheets](https://github.com/dennyzhang/cheatsheet-kubernetes-A4).
+* See more community [kubectl cheatsheets](https://github.com/dennyzhang/cheatsheet-PlaidCloud-A4).

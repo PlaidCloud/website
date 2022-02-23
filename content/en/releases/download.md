@@ -1,18 +1,18 @@
 ---
-title: Download Kubernetes
+title: Download PlaidCloud
 type: docs
 ---
-## Core Kubernetes components
+## Core PlaidCloud components
 
-Find links to download Kubernetes components (and their checksums) in the [CHANGELOG](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG) files.
+Find links to download PlaidCloud components (and their checksums) in the [CHANGELOG](https://github.com/PlaidCloud/PlaidCloud/tree/master/CHANGELOG) files.
 
-Alternately, use [downloadkubernetes.com](https://www.downloadkubernetes.com/) to filter by version and architecture.
+Alternately, use [downloadPlaidCloud.com](https://www.downloadPlaidCloud.com/) to filter by version and architecture.
 
 ## kubectl
 
 <!-- overview -->
-The Kubernetes command-line tool, [kubectl](/docs/reference/kubectl/kubectl/), allows
-you to run commands against Kubernetes clusters.
+The PlaidCloud command-line tool, [kubectl](/docs/reference/kubectl/kubectl/), allows
+you to run commands against PlaidCloud clusters.
 
 You can use kubectl to deploy applications, inspect and manage cluster resources,
 and view logs. For more information including a complete list of kubectl operations, see the

@@ -13,7 +13,7 @@ tags:
 ---
  kube-proxy is a network proxy that runs on each
 {{< glossary_tooltip text="node" term_id="node" >}} in your cluster,
-implementing part of the Kubernetes
+implementing part of the PlaidCloud
 {{< glossary_tooltip term_id="service">}} concept.
 
 <!--more-->

@@ -17,15 +17,15 @@ weight: 40
 
 For clarity, this guide defines the following terms:
 
-* Node: A worker machine in Kubernetes, part of a cluster.
-* Cluster: A set of Nodes that run containerized applications managed by Kubernetes. For this example, and in most common Kubernetes deployments, nodes in the cluster are not part of the public internet.
+* Node: A worker machine in PlaidCloud, part of a cluster.
+* Cluster: A set of Nodes that run containerized applications managed by PlaidCloud. For this example, and in most common PlaidCloud deployments, nodes in the cluster are not part of the public internet.
 * Edge router: A router that enforces the firewall policy for your cluster. This could be a gateway managed by a cloud provider or a physical piece of hardware.
-* Cluster network: A set of links, logical or physical, that facilitate communication within a cluster according to the Kubernetes [networking model](/docs/concepts/cluster-administration/networking/).
-* Service: A Kubernetes {{< glossary_tooltip term_id="service" >}} that identifies a set of Pods using {{< glossary_tooltip text="label" term_id="label" >}} selectors. Unless mentioned otherwise, Services are assumed to have virtual IPs only routable within the cluster network.
+* Cluster network: A set of links, logical or physical, that facilitate communication within a cluster according to the PlaidCloud [networking model](/docs/concepts/cluster-administration/networking/).
+* Service: A PlaidCloud {{< glossary_tooltip term_id="service" >}} that identifies a set of Pods using {{< glossary_tooltip text="label" term_id="label" >}} selectors. Unless mentioned otherwise, Services are assumed to have virtual IPs only routable within the cluster network.
 
 ## What is Ingress?
 
-[Ingress](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#ingress-v1-networking-k8s-io) exposes HTTP and HTTPS routes from outside the cluster to
+[Ingress](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#ingress-v1-networking-k8s-io) exposes HTTP and HTTPS routes from outside the cluster to
 {{< link text="services" url="/docs/concepts/services-networking/service/" >}} within the cluster.
 Traffic routing is controlled by rules defined on the Ingress resource.
 
@@ -58,7 +58,7 @@ uses a service of type [Service.Type=NodePort](/docs/concepts/services-networkin
 
 You must have an [Ingress controller](/docs/concepts/services-networking/ingress-controllers) to satisfy an Ingress. Only creating an Ingress resource has no effect.
 
-You may need to deploy an Ingress controller such as [ingress-nginx](https://kubernetes.github.io/ingress-nginx/deploy/). You can choose from a number of
+You may need to deploy an Ingress controller such as [ingress-nginx](https://PlaidCloud.github.io/ingress-nginx/deploy/). You can choose from a number of
 [Ingress controllers](/docs/concepts/services-networking/ingress-controllers).
 
 Ideally, all Ingress controllers should fit the reference specification. In reality, the various Ingress
@@ -74,12 +74,12 @@ A minimal Ingress resource example:
 
 {{< codenew file="service/networking/minimal-ingress.yaml" >}}
 
-As with all other Kubernetes resources, an Ingress needs `apiVersion`, `kind`, and `metadata` fields.
+As with all other PlaidCloud resources, an Ingress needs `apiVersion`, `kind`, and `metadata` fields.
 The name of an Ingress object must be a valid
 [DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
 For general information about working with config files, see [deploying applications](/docs/tasks/run-application/run-stateless-application-deployment/), [configuring containers](/docs/tasks/configure-pod-container/configure-pod-configmap/), [managing resources](/docs/concepts/cluster-administration/manage-deployment/).
  Ingress frequently uses annotations to configure some options depending on the Ingress controller, an example of which
- is the [rewrite-target annotation](https://github.com/kubernetes/ingress-nginx/blob/master/docs/examples/rewrite/README.md).
+ is the [rewrite-target annotation](https://github.com/PlaidCloud/ingress-nginx/blob/master/docs/examples/rewrite/README.md).
 Different [Ingress controllers](/docs/concepts/services-networking/ingress-controllers) support different annotations. Review the documentation for
  your choice of Ingress controller to learn which annotations are supported.
 
@@ -93,8 +93,8 @@ should be defined.
 
 There are some ingress controllers, that work without the definition of a 
 default `IngressClass`. For example, the Ingress-NGINX controller can be 
-configured with a [flag](https://kubernetes.github.io/ingress-nginx/#what-is-the-flag-watch-ingress-without-class) 
-`--watch-ingress-without-class`. It is [recommended](https://kubernetes.github.io/ingress-nginx/#i-have-only-one-instance-of-the-ingresss-nginx-controller-in-my-cluster-what-should-i-do)  though, to specify the 
+configured with a [flag](https://PlaidCloud.github.io/ingress-nginx/#what-is-the-flag-watch-ingress-without-class) 
+`--watch-ingress-without-class`. It is [recommended](https://PlaidCloud.github.io/ingress-nginx/#i-have-only-one-instance-of-the-ingresss-nginx-controller-in-my-cluster-what-should-i-do)  though, to specify the 
 default `IngressClass` as shown [below](#default-ingress-class).
 
 ### Ingress rules
@@ -126,7 +126,7 @@ routed to your default backend.
 
 ### Resource backends {#resource-backend}
 
-A `Resource` backend is an ObjectRef to another Kubernetes resource within the
+A `Resource` backend is an ObjectRef to another PlaidCloud resource within the
 same namespace as the Ingress object. A `Resource` is a mutually exclusive
 setting with Service, and will fail validation if both are specified. A common
 usage for a `Resource` backend is to ingress data to an object storage backend
@@ -263,7 +263,7 @@ spec:
   parameters:
     # The parameters for this IngressClass are specified in a
     # ClusterIngressParameter (API group k8s.example.net) named
-    # "external-config-1". This definition tells Kubernetes to
+    # "external-config-1". This definition tells PlaidCloud to
     # look for a cluster-scoped parameter resource.
     scope: Cluster
     apiGroup: k8s.example.net
@@ -324,8 +324,8 @@ spec:
 ### Deprecated annotation
 
 Before the IngressClass resource and `ingressClassName` field were added in
-Kubernetes 1.18, Ingress classes were specified with a
-`kubernetes.io/ingress.class` annotation on the Ingress. This annotation was
+PlaidCloud 1.18, Ingress classes were specified with a
+`PlaidCloud.io/ingress.class` annotation on the Ingress. This annotation was
 never formally defined, but was widely supported by Ingress controllers.
 
 The newer `ingressClassName` field on Ingresses is a replacement for that
@@ -337,7 +337,7 @@ additional Ingress configuration, including the name of the Ingress controller.
 ### Default IngressClass {#default-ingress-class}
 
 You can mark a particular IngressClass as default for your cluster. Setting the
-`ingressclass.kubernetes.io/is-default-class` annotation to `true` on an
+`ingressclass.PlaidCloud.io/is-default-class` annotation to `true` on an
 IngressClass resource will ensure that new Ingresses without an
 `ingressClassName` field specified will be assigned this default IngressClass.
 
@@ -350,8 +350,8 @@ IngressClass is marked as default in your cluster.
 
 There are some ingress controllers, that work without the definition of a
 default `IngressClass`. For example, the Ingress-NGINX controller can be
-configured with a [flag](https://kubernetes.github.io/ingress-nginx/#what-is-the-flag-watch-ingress-without-class)
-`--watch-ingress-without-class`. It is [recommended](https://kubernetes.github.io/ingress-nginx/#i-have-only-one-instance-of-the-ingresss-nginx-controller-in-my-cluster-what-should-i-do)  though, to specify the
+configured with a [flag](https://PlaidCloud.github.io/ingress-nginx/#what-is-the-flag-watch-ingress-without-class)
+`--watch-ingress-without-class`. It is [recommended](https://PlaidCloud.github.io/ingress-nginx/#i-have-only-one-instance-of-the-ingresss-nginx-controller-in-my-cluster-what-should-i-do)  though, to specify the
 default `IngressClass`:
 
 {{< codenew file="service/networking/default-ingressclass.yaml" >}}
@@ -360,7 +360,7 @@ default `IngressClass`:
 
 ### Ingress backed by a single Service {#single-service-ingress}
 
-There are existing Kubernetes concepts that allow you to expose a single Service
+There are existing PlaidCloud concepts that allow you to expose a single Service
 (see [alternatives](#alternatives)). You can also do this with an Ingress by specifying a
 *default backend* with no rules.
 
@@ -510,7 +510,7 @@ metadata:
 data:
   tls.crt: base64 encoded cert
   tls.key: base64 encoded key
-type: kubernetes.io/tls
+type: PlaidCloud.io/tls
 ```
 
 Referencing this secret in an Ingress tells the Ingress controller to
@@ -530,7 +530,7 @@ section.
 {{< note >}}
 There is a gap between TLS features supported by various Ingress
 controllers. Please refer to documentation on
-[nginx](https://kubernetes.github.io/ingress-nginx/user-guide/tls/),
+[nginx](https://PlaidCloud.github.io/ingress-nginx/user-guide/tls/),
 [GCE](https://git.k8s.io/ingress-gce/README.md#frontend-https), or any other
 platform specific Ingress controller to understand how TLS works in your environment.
 {{< /note >}}
@@ -545,7 +545,7 @@ Ingress. You can instead get these features through the load balancer used for
 a Service.
 
 It's also worth noting that even though health checks are not exposed directly
-through the Ingress, there exist parallel concepts in Kubernetes such as
+through the Ingress, there exist parallel concepts in PlaidCloud such as
 [readiness probes](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 that allow you to achieve the same end result. Please review the controller
 specific documentation to see how they handle health checks (for example:
@@ -571,7 +571,7 @@ Rules:
   foo.bar.com
                /foo   service1:80 (10.8.0.90:80)
 Annotations:
-  nginx.ingress.kubernetes.io/rewrite-target:  /
+  nginx.ingress.PlaidCloud.io/rewrite-target:  /
 Events:
   Type     Reason  Age                From                     Message
   ----     ------  ----               ----                     -------
@@ -633,7 +633,7 @@ Rules:
   bar.baz.com
                /foo   service2:80 (10.8.0.91:80)
 Annotations:
-  nginx.ingress.kubernetes.io/rewrite-target:  /
+  nginx.ingress.PlaidCloud.io/rewrite-target:  /
 Events:
   Type     Reason  Age                From                     Message
   ----     ------  ----               ----                     -------
@@ -658,6 +658,6 @@ You can expose a Service in multiple ways that don't directly involve the Ingres
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about the [Ingress](/docs/reference/kubernetes-api/service-resources/ingress-v1/) API
+* Learn about the [Ingress](/docs/reference/PlaidCloud-api/service-resources/ingress-v1/) API
 * Learn about [Ingress controllers](/docs/concepts/services-networking/ingress-controllers/)
 * [Set up Ingress on Minikube with the NGINX Controller](/docs/tasks/access-application-cluster/ingress-minikube/)

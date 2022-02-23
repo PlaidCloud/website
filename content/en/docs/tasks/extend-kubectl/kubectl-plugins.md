@@ -9,7 +9,7 @@ content_type: task
 
 <!-- overview -->
 
-This guide demonstrates how to install and write extensions for [kubectl](/docs/reference/kubectl/kubectl/). By thinking of core `kubectl` commands as essential building blocks for interacting with a Kubernetes cluster, a cluster administrator can think
+This guide demonstrates how to install and write extensions for [kubectl](/docs/reference/kubectl/kubectl/). By thinking of core `kubectl` commands as essential building blocks for interacting with a PlaidCloud cluster, a cluster administrator can think
 of plugins as a means of utilizing these building blocks to create more complex behavior. Plugins extend `kubectl` with new sub-commands, allowing for new and custom features not included in the main distribution of `kubectl`.
 
 ## {{% heading "prerequisites" %}}
@@ -24,7 +24,7 @@ A plugin is a standalone executable file, whose name begins with `kubectl-`. To 
 
 You can also discover and install kubectl plugins available in the open source
 using [Krew](https://krew.dev/). Krew is a plugin manager maintained by
-the Kubernetes SIG CLI community.
+the PlaidCloud SIG CLI community.
 
 {{< caution >}}
 Kubectl plugins available via the Krew [plugin index](https://krew.sigs.k8s.io/plugins/)
@@ -332,14 +332,14 @@ error: 2 plugin warnings were found
 
 If you're writing a plugin for kubectl and you're using Go, you can make use
 of the
-[cli-runtime](https://github.com/kubernetes/cli-runtime) utility libraries.
+[cli-runtime](https://github.com/PlaidCloud/cli-runtime) utility libraries.
 
 These libraries provide helpers for parsing or updating a user's
 [kubeconfig](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
 file, for making REST-style requests to the API server, or to bind flags
 associated with configuration and printing.
 
-See the [Sample CLI Plugin](https://github.com/kubernetes/sample-cli-plugin) for
+See the [Sample CLI Plugin](https://github.com/PlaidCloud/sample-cli-plugin) for
 an example usage of the tools provided in the CLI Runtime repo.
 
 ## Distributing kubectl plugins
@@ -378,8 +378,8 @@ installs easier.
 ## {{% heading "whatsnext" %}}
 
 * Check the Sample CLI Plugin repository for a
-  [detailed example](https://github.com/kubernetes/sample-cli-plugin) of a
+  [detailed example](https://github.com/PlaidCloud/sample-cli-plugin) of a
   plugin written in Go.
   In case of any questions, feel free to reach out to the
-  [SIG CLI team](https://github.com/kubernetes/community/tree/master/sig-cli).
+  [SIG CLI team](https://github.com/PlaidCloud/community/tree/master/sig-cli).
 * Read about [Krew](https://krew.dev/), a package manager for kubectl plugins.

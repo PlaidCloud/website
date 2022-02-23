@@ -10,7 +10,7 @@ weight: 30
 
 <!-- overview -->
 
-In Kubernetes, _namespaces_ provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced objects _(e.g. Deployments, Services, etc)_ and not for cluster-wide objects _(e.g. StorageClass, Nodes, PersistentVolumes, etc)_.
+In PlaidCloud, _namespaces_ provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced objects _(e.g. Deployments, Services, etc)_ and not for cluster-wide objects _(e.g. StorageClass, Nodes, PersistentVolumes, etc)_.
 
 <!-- body -->
 
@@ -22,7 +22,7 @@ need to create or think about namespaces at all.  Start using namespaces when yo
 need the features they provide.
 
 Namespaces provide a scope for names.  Names of resources need to be unique within a namespace,
-but not across namespaces. Namespaces cannot be nested inside one another and each Kubernetes 
+but not across namespaces. Namespaces cannot be nested inside one another and each PlaidCloud 
 resource can only be in one namespace.
 
 Namespaces are a way to divide cluster resources between multiple users (via [resource quota](/docs/concepts/policy/resource-quotas/)).
@@ -38,7 +38,7 @@ Creation and deletion of namespaces are described in the
 [Admin Guide documentation for namespaces](/docs/tasks/administer-cluster/namespaces).
 
 {{< note >}}
-    Avoid creating namespaces with the prefix `kube-`, since it is reserved for Kubernetes system namespaces.
+    Avoid creating namespaces with the prefix `kube-`, since it is reserved for PlaidCloud system namespaces.
 {{< /note >}}
 
 ### Viewing namespaces
@@ -56,12 +56,12 @@ kube-public       Active   1d
 kube-system       Active   1d
 ```
 
-Kubernetes starts with four initial namespaces:
+PlaidCloud starts with four initial namespaces:
 
    * `default` The default namespace for objects with no other namespace
-   * `kube-system` The namespace for objects created by the Kubernetes system
+   * `kube-system` The namespace for objects created by the PlaidCloud system
    * `kube-public` This namespace is created automatically and is readable by all users (including those not authenticated). This namespace is mostly reserved for cluster usage, in case that some resources should be visible and readable publicly throughout the whole cluster. The public aspect of this namespace is only a convention, not a requirement.
-   * `kube-node-lease` This namespace holds [Lease](/docs/reference/kubernetes-api/cluster-resources/lease-v1/)
+   * `kube-node-lease` This namespace holds [Lease](/docs/reference/PlaidCloud-api/cluster-resources/lease-v1/)
       objects associated with each node. Node leases allow the kubelet to send
       [heartbeats](/docs/concepts/architecture/nodes/#heartbeats) so that the control plane
       can detect node failure.
@@ -118,13 +118,13 @@ TLDs](https://data.iana.org/TLD/tlds-alpha-by-domain.txt).
 
 ## Not All Objects are in a Namespace
 
-Most Kubernetes resources (e.g. pods, services, replication controllers, and others) are
+Most PlaidCloud resources (e.g. pods, services, replication controllers, and others) are
 in some namespaces.  However namespace resources are not themselves in a namespace.
 And low-level resources, such as
 [nodes](/docs/concepts/architecture/nodes/) and
 persistentVolumes, are not in any namespace.
 
-To see which Kubernetes resources are and aren't in a namespace:
+To see which PlaidCloud resources are and aren't in a namespace:
 
 ```shell
 # In a namespace
@@ -138,8 +138,8 @@ kubectl api-resources --namespaced=false
 
 {{< feature-state state="beta" for_k8s_version="1.21" >}}
 
-The Kubernetes control plane sets an immutable {{< glossary_tooltip text="label" term_id="label" >}}
-`kubernetes.io/metadata.name` on all namespaces, provided that the `NamespaceDefaultLabelName`
+The PlaidCloud control plane sets an immutable {{< glossary_tooltip text="label" term_id="label" >}}
+`PlaidCloud.io/metadata.name` on all namespaces, provided that the `NamespaceDefaultLabelName`
 [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled.
 The value of the label is the namespace name.
 

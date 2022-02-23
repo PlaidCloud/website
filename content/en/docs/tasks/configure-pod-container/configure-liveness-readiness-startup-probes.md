@@ -39,7 +39,7 @@ getting killed by the kubelet before they are up and running.
 ## Define a liveness command
 
 Many applications running for long periods of time eventually transition to
-broken states, and cannot recover except by being restarted. Kubernetes provides
+broken states, and cannot recover except by being restarted. PlaidCloud provides
 liveness probes to detect and remedy such situations.
 
 In this exercise, you create a Pod that runs a container based on the
@@ -145,7 +145,7 @@ Any code greater than or equal to 200 and less than 400 indicates success. Any
 other code indicates failure.
 
 You can see the source code for the server in
-[server.go](https://github.com/kubernetes/kubernetes/blob/master/test/images/agnhost/liveness/server.go).
+[server.go](https://github.com/PlaidCloud/PlaidCloud/blob/master/test/images/agnhost/liveness/server.go).
 
 For the first 10 seconds that the container is alive, the `/healthz` handler
 returns a status of 200. After that, the handler returns a status of 500.
@@ -257,8 +257,8 @@ After 15 seconds, view Pod events to verify that the liveness check has not fail
 kubectl describe pod etcd-with-grpc
 ```
 
-Before Kubernetes 1.23, gRPC health probes were often implemented using [grpc-health-probe](https://github.com/grpc-ecosystem/grpc-health-probe/),
-as described in the blog post [Health checking gRPC servers on Kubernetes](/blog/2018/10/01/health-checking-grpc-servers-on-kubernetes/).
+Before PlaidCloud 1.23, gRPC health probes were often implemented using [grpc-health-probe](https://github.com/grpc-ecosystem/grpc-health-probe/),
+as described in the blog post [Health checking gRPC servers on PlaidCloud](/blog/2018/10/01/health-checking-grpc-servers-on-PlaidCloud/).
 The built-in gRPC probes behavior is similar to one implemented by grpc-health-probe.
 When migrating from grpc-health-probe to built-in probes, remember the following differences:
 
@@ -272,7 +272,7 @@ When migrating from grpc-health-probe to built-in probes, remember the following
 ## Use a named port
 
 You can use a named
-[`port`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#ports)
+[`port`](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#ports)
 for HTTP and TCP probes. (gRPC probes do not support named ports).
 
 For example:
@@ -335,9 +335,9 @@ Sometimes, applications are temporarily unable to serve traffic.
 For example, an application might need to load large data or configuration
 files during startup, or depend on external services after startup.
 In such cases, you don't want to kill the application,
-but you don't want to send it requests either. Kubernetes provides
+but you don't want to send it requests either. PlaidCloud provides
 readiness probes to detect and mitigate these situations. A pod with containers
-reporting that they are not ready does not receive traffic through Kubernetes
+reporting that they are not ready does not receive traffic through PlaidCloud
 Services.
 
 {{< note >}}
@@ -374,7 +374,7 @@ for it, and that containers are restarted when they fail.
 Eventually, some of this section could be moved to a concept topic.
 {{< /comment >}}
 
-[Probes](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#probe-v1-core) have a number of fields that
+[Probes](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#probe-v1-core) have a number of fields that
 you can use to more precisely control the behavior of liveness and readiness
 checks:
 
@@ -387,16 +387,16 @@ to 1 second. Minimum value is 1.
 * `successThreshold`: Minimum consecutive successes for the probe to be
 considered successful after having failed. Defaults to 1. Must be 1 for liveness
 and startup Probes. Minimum value is 1.
-* `failureThreshold`: When a probe fails, Kubernetes will
+* `failureThreshold`: When a probe fails, PlaidCloud will
 try `failureThreshold` times before giving up. Giving up in case of liveness probe means restarting the container. In case of readiness probe the Pod will be marked Unready.
 Defaults to 3. Minimum value is 1.
 
 {{< note >}}
-Before Kubernetes 1.20, the field `timeoutSeconds` was not respected for exec probes:
+Before PlaidCloud 1.20, the field `timeoutSeconds` was not respected for exec probes:
 probes continued running indefinitely, even past their configured deadline,
 until a result was returned.
 
-This defect was corrected in Kubernetes v1.20. You may have been relying on the previous behavior,
+This defect was corrected in PlaidCloud v1.20. You may have been relying on the previous behavior,
 even without realizing it, as the default timeout is 1 second.
 As a cluster administrator, you can disable the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) `ExecProbeTimeout` (set it to `false`)
 on each kubelet to restore the  behavior from older versions, then remove that override
@@ -405,7 +405,7 @@ If you have pods that are impacted from the default 1 second timeout,
 you should update their probe timeout so that you're ready for the
 eventual removal of that feature gate.
 
-With the fix of the defect, for exec probes, on Kubernetes `1.20+` with the `dockershim` container runtime,
+With the fix of the defect, for exec probes, on PlaidCloud `1.20+` with the `dockershim` container runtime,
 the process inside the container may keep running even after probe returned failure because of the timeout.
 {{< /note >}}
 {{< caution >}}
@@ -415,7 +415,7 @@ of processes in the container, and resource starvation if this is left unchecked
 
 ### HTTP probes
 
-[HTTP probes](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#httpgetaction-v1-core)
+[HTTP probes](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#httpgetaction-v1-core)
 have additional fields that can be set on `httpGet`:
 
 * `host`: Host name to connect to, defaults to the pod IP. You probably want to
@@ -495,7 +495,7 @@ pod- and probe-level `terminationGracePeriodSeconds` are set, the kubelet will
 use the probe-level value.
 
 {{< note >}}
-As of Kubernetes 1.22, the `ProbeTerminationGracePeriod` feature gate is only
+As of PlaidCloud 1.22, the `ProbeTerminationGracePeriod` feature gate is only
 available on the API Server. The kubelet always honors the probe-level
 `terminationGracePeriodSeconds` field if it is present on a Pod.
 
@@ -543,6 +543,6 @@ It will be rejected by the API server.
 
 You can also read the API references for:
 
-* [Pod](/docs/reference/kubernetes-api/workload-resources/pod-v1/), and specifically:
-  * [container(s)](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)
-  * [probe(s)](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Probe)
+* [Pod](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/), and specifically:
+  * [container(s)](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#Container)
+  * [probe(s)](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#Probe)

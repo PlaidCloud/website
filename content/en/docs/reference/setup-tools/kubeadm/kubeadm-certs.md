@@ -10,7 +10,7 @@ For more details on how these commands can be used, see
 
 ## kubeadm certs {#cmd-certs}
 
-A collection of operations for operating Kubernetes certificates.
+A collection of operations for operating PlaidCloud certificates.
 
 {{< tabs name="tab-certs" >}}
 {{< tab name="overview" include="generated/kubeadm_certs.md" />}}
@@ -18,7 +18,7 @@ A collection of operations for operating Kubernetes certificates.
 
 ## kubeadm certs renew {#cmd-certs-renew}
 
-You can renew all Kubernetes certificates using the `all` subcommand or renew them selectively.
+You can renew all PlaidCloud certificates using the `all` subcommand or renew them selectively.
 For more details see [Manual certificate renewal](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#manual-certificate-renewal).
 
 {{< tabs name="tab-certs-renew" >}}
@@ -68,6 +68,6 @@ The user can then sign the CSRs with a CA of their choice.
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node
+* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a PlaidCloud control-plane node
 * [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) to connect a node to the cluster
 * [kubeadm reset](/docs/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`

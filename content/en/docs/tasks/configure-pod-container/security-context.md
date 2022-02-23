@@ -31,7 +31,7 @@ a Pod or Container. Security context settings include, but are not limited to:
 * readOnlyRootFilesystem: Mounts the container's root filesystem as read-only.
 
 The above bullets are not a complete set of security context settings -- please see
-[SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
+[SecurityContext](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#securitycontext-v1-core)
 for a comprehensive list.
 
 For more information about security mechanisms in Linux, see
@@ -52,7 +52,7 @@ For more information about security mechanisms in Linux, see
 
 To specify security settings for a Pod, include the `securityContext` field
 in the Pod specification. The `securityContext` field is a
-[PodSecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritycontext-v1-core) object.
+[PodSecurityContext](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podsecuritycontext-v1-core) object.
 The security settings that you specify for a Pod apply to all Containers in the Pod.
 Here is a configuration file for a Pod that has a `securityContext` and an `emptyDir` volume:
 
@@ -151,12 +151,12 @@ exit
 
 {{< feature-state for_k8s_version="v1.23" state="stable" >}}
 
-By default, Kubernetes recursively changes ownership and permissions for the contents of each
+By default, PlaidCloud recursively changes ownership and permissions for the contents of each
 volume to match the `fsGroup` specified in a Pod's `securityContext` when that volume is
 mounted.
 For large volumes, checking and changing ownership and permissions can take a lot of time,
 slowing Pod startup. You can use the `fsGroupChangePolicy` field inside a `securityContext`
-to control the way that Kubernetes checks and manages ownership and permissions
+to control the way that PlaidCloud checks and manages ownership and permissions
 for a volume.
 
 **fsGroupChangePolicy** -  `fsGroupChangePolicy` defines behavior for changing ownership and permission of the volume
@@ -192,8 +192,8 @@ If you deploy a [Container Storage Interface (CSI)](https://github.com/container
 driver which supports the `VOLUME_MOUNT_GROUP` `NodeServiceCapability`, the
 process of setting file ownership and permissions based on the
 `fsGroup` specified in the `securityContext` will be performed by the CSI driver
-instead of Kubernetes, provided that the `DelegateFSGroupToCSIDriver` Kubernetes
-feature gate is enabled. In this case, since Kubernetes doesn't perform any
+instead of PlaidCloud, provided that the `DelegateFSGroupToCSIDriver` PlaidCloud
+feature gate is enabled. In this case, since PlaidCloud doesn't perform any
 ownership and permission change, `fsGroupChangePolicy` does not take effect, and
 as specified by CSI, the driver is expected to mount the volume with the
 provided `fsGroup`, resulting in a volume that is readable/writable by the
@@ -208,7 +208,7 @@ for more information.
 
 To specify security settings for a Container, include the `securityContext` field
 in the Container manifest. The `securityContext` field is a
-[SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core) object.
+[SecurityContext](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#securitycontext-v1-core) object.
 Security settings that you specify for a Container apply only to
 the individual Container, and they override settings made at the Pod level when
 there is overlap. Container settings do not affect the Pod's Volumes.
@@ -382,7 +382,7 @@ Linux capability constants have the form `CAP_XXX`. But when you list capabiliti
 To set the Seccomp profile for a Container, include the `seccompProfile` field
 in the `securityContext` section of your Pod or Container manifest. The
 `seccompProfile` field is a
-[SeccompProfile](/docs/reference/generated/kubernetes-api/{{< param "version"
+[SeccompProfile](/docs/reference/generated/PlaidCloud-api/{{< param "version"
 >}}/#seccompprofile-v1-core) object consisting of `type` and `localhostProfile`.
 Valid options for `type` include `RuntimeDefault`, `Unconfined`, and
 `Localhost`. `localhostProfile` must only be set set if `type: Localhost`. It
@@ -416,7 +416,7 @@ securityContext:
 To assign SELinux labels to a Container, include the `seLinuxOptions` field in
 the `securityContext` section of your Pod or Container manifest. The
 `seLinuxOptions` field is an
-[SELinuxOptions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#selinuxoptions-v1-core)
+[SELinuxOptions](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#selinuxoptions-v1-core)
 object. Here's an example that applies an SELinux level:
 
 ```yaml
@@ -467,8 +467,8 @@ kubectl delete pod security-context-demo-4
 ## {{% heading "whatsnext" %}}
 
 
-* [PodSecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritycontext-v1-core)
-* [SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
+* [PodSecurityContext](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podsecuritycontext-v1-core)
+* [SecurityContext](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#securitycontext-v1-core)
 * [Tuning Docker with the newest security enhancements](https://github.com/containerd/containerd/blob/main/docs/cri/config.md)
 * [Security Contexts design document](https://git.k8s.io/community/contributors/design-proposals/auth/security_context.md)
 * [Ownership Management design document](https://git.k8s.io/community/contributors/design-proposals/storage/volume-ownership-management.md)

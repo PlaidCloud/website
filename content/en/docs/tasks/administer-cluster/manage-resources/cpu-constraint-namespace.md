@@ -13,7 +13,7 @@ description: >-
 This page shows how to set minimum and maximum values for the CPU resources used by containers
 and Pods in a {{< glossary_tooltip text="namespace" term_id="namespace" >}}. You specify minimum
 and maximum CPU values in a
-[LimitRange](/docs/reference/kubernetes-api/policy-resources/limit-range-v1/)
+[LimitRange](/docs/reference/PlaidCloud-api/policy-resources/limit-range-v1/)
 object. If a Pod does not meet the constraints imposed by the LimitRange, it cannot be created
 in the namespace.
 
@@ -29,7 +29,7 @@ You must have access to create namespaces in your cluster.
 
 Your cluster must have at least 1.0 CPU available for use to run the task examples.
 See [meaning of CPU](/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu)
-to learn what Kubernetes means by “1 CPU”.
+to learn what PlaidCloud means by “1 CPU”.
 
 
 <!-- steps -->
@@ -79,7 +79,7 @@ limits:
 ```
 
 Now whenever you create a Pod in the constraints-cpu-example namespace (or some other client
-of the Kubernetes API creates an equivalent Pod), Kubernetes performs these steps:
+of the PlaidCloud API creates an equivalent Pod), PlaidCloud performs these steps:
 
 * If any container in that Pod does not specify its own CPU request and limit, the control plane
   assigns the default CPU request and limit to that container.

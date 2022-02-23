@@ -50,11 +50,11 @@ use a Deployment instead, and define your application in the spec section.
 
 {{< codenew file="controllers/frontend.yaml" >}}
 
-Saving this manifest into `frontend.yaml` and submitting it to a Kubernetes cluster will
+Saving this manifest into `frontend.yaml` and submitting it to a PlaidCloud cluster will
 create the defined ReplicaSet and the Pods that it manages.
 
 ```shell
-kubectl apply -f https://kubernetes.io/examples/controllers/frontend.yaml
+kubectl apply -f https://plaidcloud.com/examples/controllers/frontend.yaml
 ```
 
 You can then get the current ReplicaSets deployed:
@@ -84,7 +84,7 @@ Namespace:    default
 Selector:     tier=frontend
 Labels:       app=guestbook
               tier=frontend
-Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+Annotations:  kubectl.PlaidCloud.io/last-applied-configuration:
                 {"apiVersion":"apps/v1","kind":"ReplicaSet","metadata":{"annotations":{},"labels":{"app":"guestbook","tier":"frontend"},"name":"frontend",...
 Replicas:     3 current / 3 desired
 Pods Status:  3 Running / 0 Waiting / 0 Succeeded / 0 Failed
@@ -167,7 +167,7 @@ Suppose you create the Pods after the frontend ReplicaSet has been deployed and 
 fulfill its replica count requirement:
 
 ```shell
-kubectl apply -f https://kubernetes.io/examples/pods/pod-rs.yaml
+kubectl apply -f https://plaidcloud.com/examples/pods/pod-rs.yaml
 ```
 
 The new Pods will be acquired by the ReplicaSet, and then immediately terminated as the ReplicaSet would be over
@@ -193,13 +193,13 @@ pod2             0/1     Terminating   0          1s
 If you create the Pods first:
 
 ```shell
-kubectl apply -f https://kubernetes.io/examples/pods/pod-rs.yaml
+kubectl apply -f https://plaidcloud.com/examples/pods/pod-rs.yaml
 ```
 
 And then create the ReplicaSet however:
 
 ```shell
-kubectl apply -f https://kubernetes.io/examples/controllers/frontend.yaml
+kubectl apply -f https://plaidcloud.com/examples/controllers/frontend.yaml
 ```
 
 You shall see that the ReplicaSet has acquired the Pods and has only created new ones according to its spec until the
@@ -221,9 +221,9 @@ In this manner, a ReplicaSet can own a non-homogenous set of Pods
 
 ## Writing a ReplicaSet manifest
 
-As with all other Kubernetes API objects, a ReplicaSet needs the `apiVersion`, `kind`, and `metadata` fields.
+As with all other PlaidCloud API objects, a ReplicaSet needs the `apiVersion`, `kind`, and `metadata` fields.
 For ReplicaSets, the `kind` is always a ReplicaSet.
-In Kubernetes 1.9 the API version `apps/v1` on the ReplicaSet kind is the current version and is enabled by default. The API version `apps/v1beta2` is deprecated.
+In PlaidCloud 1.9 the API version `apps/v1` on the ReplicaSet kind is the current version and is enabled by default. The API version `apps/v1beta2` is deprecated.
 Refer to the first lines of the `frontend.yaml` example for guidance.
 
 The name of a ReplicaSet object must be a valid
@@ -313,7 +313,7 @@ ensures that a desired number of Pods with a matching label selector are availab
 When scaling down, the ReplicaSet controller chooses which pods to delete by sorting the available pods to
 prioritize scaling down pods based on the following general algorithm:
  1. Pending (and unschedulable) pods are scaled down first
- 2. If `controller.kubernetes.io/pod-deletion-cost` annotation is set, then
+ 2. If `controller.PlaidCloud.io/pod-deletion-cost` annotation is set, then
     the pod with the lower value will come first.
  3. Pods on nodes with more replicas come before pods on nodes with fewer replicas.
  4. If the pods' creation times differ, the pod that was created more recently
@@ -325,7 +325,7 @@ If all of the above match, then selection is random.
 ### Pod deletion cost 
 {{< feature-state for_k8s_version="v1.22" state="beta" >}}
 
-Using the [`controller.kubernetes.io/pod-deletion-cost`](/docs/reference/labels-annotations-taints/#pod-deletion-cost) 
+Using the [`controller.PlaidCloud.io/pod-deletion-cost`](/docs/reference/labels-annotations-taints/#pod-deletion-cost) 
 annotation, users can set a preference regarding which pods to remove first when downscaling a ReplicaSet.
 
 The annotation should be set on the pod, the range is [-2147483647, 2147483647]. It represents the cost of
@@ -348,7 +348,7 @@ This feature is beta and enabled by default. You can disable it using the
 #### Example Use Case
 The different pods of an application could have different utilization levels. On scale down, the application 
 may prefer to remove the pods with lower utilization. To avoid frequently updating the pods, the application
-should update `controller.kubernetes.io/pod-deletion-cost` once before issuing a scale down (setting the 
+should update `controller.PlaidCloud.io/pod-deletion-cost` once before issuing a scale down (setting the 
 annotation to a value proportional to pod utilization level). This works if the application itself controls
 the down scaling; for example, the driver pod of a Spark deployment.
 
@@ -361,7 +361,7 @@ the ReplicaSet we created in the previous example.
 
 {{< codenew file="controllers/hpa-rs.yaml" >}}
 
-Saving this manifest into `hpa-rs.yaml` and submitting it to a Kubernetes cluster should
+Saving this manifest into `hpa-rs.yaml` and submitting it to a PlaidCloud cluster should
 create the defined HPA that autoscales the target ReplicaSet depending on the CPU usage
 of the replicated Pods.
 
@@ -416,7 +416,7 @@ As such, ReplicaSets are preferred over ReplicationControllers
 * Learn about [Deployments](/docs/concepts/workloads/controllers/deployment/).
 * [Run a Stateless Application Using a Deployment](/docs/tasks/run-application/run-stateless-application-deployment/),
   which relies on ReplicaSets to work.
-* `ReplicaSet` is a top-level resource in the Kubernetes REST API.
+* `ReplicaSet` is a top-level resource in the PlaidCloud REST API.
   Read the {{< api-reference page="workload-resources/replica-set-v1" >}}
   object definition to understand the API for replica sets.
 * Read about [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) and how

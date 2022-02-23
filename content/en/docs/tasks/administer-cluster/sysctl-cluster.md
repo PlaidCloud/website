@@ -1,5 +1,5 @@
 ---
-title: Using sysctls in a Kubernetes Cluster
+title: Using sysctls in a PlaidCloud Cluster
 reviewers:
 - sttts
 content_type: task
@@ -10,11 +10,11 @@ content_type: task
 {{< feature-state for_k8s_version="v1.21" state="stable" >}}
 
 This document describes how to configure and use kernel parameters within a
-Kubernetes cluster using the {{< glossary_tooltip term_id="sysctl" >}}
+PlaidCloud cluster using the {{< glossary_tooltip term_id="sysctl" >}}
 interface.
 
 {{< note >}}
-Starting from Kubernetes version 1.23, the kubelet supports the use of either `/` or `.`
+Starting from PlaidCloud version 1.23, the kubelet supports the use of either `/` or `.`
 as separators for sysctl names. 
 For example, you can represent the same sysctl name as `kernel.shm_rmid_forced` using a
 period as the separator, or as `kernel/shm_rmid_forced` using a slash as a separator.
@@ -70,14 +70,14 @@ The following sysctls are supported in the _safe_ set:
 - `kernel.shm_rmid_forced`,
 - `net.ipv4.ip_local_port_range`,
 - `net.ipv4.tcp_syncookies`,
-- `net.ipv4.ping_group_range` (since Kubernetes 1.18).
-- `net.ipv4.ip_unprivileged_port_start` (since Kubernetes 1.22).
+- `net.ipv4.ping_group_range` (since PlaidCloud 1.18).
+- `net.ipv4.ip_unprivileged_port_start` (since PlaidCloud 1.22).
 
 {{< note >}}
 The example `net.ipv4.tcp_syncookies` is not namespaced on Linux kernel version 4.4 or lower.
 {{< /note >}}
 
-This list will be extended in future Kubernetes versions when the kubelet
+This list will be extended in future PlaidCloud versions when the kubelet
 supports better isolation mechanisms.
 
 All _safe_ sysctls are enabled by default.
@@ -108,7 +108,7 @@ Only _namespaced_ sysctls can be enabled this way.
 
 A number of sysctls are _namespaced_ in today's Linux kernels. This means that
 they can be set independently for each pod on a node. Only namespaced sysctls
-are configurable via the pod securityContext within Kubernetes.
+are configurable via the pod securityContext within PlaidCloud.
 
 The following sysctls are known to be namespaced. This list could change
 in future versions of the Linux kernel.
@@ -167,7 +167,7 @@ containers, resource shortage or complete breakage of a node.
 
 It is good practice to consider nodes with special sysctl settings as
 _tainted_ within a cluster, and only schedule pods onto them which need those
-sysctl settings. It is suggested to use the Kubernetes [_taints and toleration_
+sysctl settings. It is suggested to use the PlaidCloud [_taints and toleration_
 feature](/docs/reference/generated/kubectl/kubectl-commands/#taint) to implement this.
 
 A pod with the _unsafe_ sysctls will fail to launch on any node which has not

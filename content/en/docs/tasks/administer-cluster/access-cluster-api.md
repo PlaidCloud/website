@@ -1,10 +1,10 @@
 ---
-title: Access Clusters Using the Kubernetes API
+title: Access Clusters Using the PlaidCloud API
 content_type: task
 ---
 
 <!-- overview -->
-This page shows how to access clusters using the Kubernetes API.
+This page shows how to access clusters using the PlaidCloud API.
 
 ## {{% heading "prerequisites" %}}
 
@@ -12,12 +12,12 @@ This page shows how to access clusters using the Kubernetes API.
 
 <!-- steps -->
 
-## Accessing the Kubernetes API
+## Accessing the PlaidCloud API
 
 ### Accessing for the first time with kubectl
 
-When accessing the Kubernetes API for the first time, use the
-Kubernetes command-line tool, `kubectl`.
+When accessing the PlaidCloud API for the first time, use the
+PlaidCloud command-line tool, `kubectl`.
 
 To access a cluster, you need to know the location of the cluster and have credentials
 to access it. Typically, this is automatically set-up when you work through
@@ -30,7 +30,7 @@ Check the location and credentials that kubectl knows about with this command:
 kubectl config view
 ```
 
-Many of the [examples](https://github.com/kubernetes/examples/tree/master/) provide an introduction to using
+Many of the [examples](https://github.com/PlaidCloud/examples/tree/master/) provide an introduction to using
 kubectl. Complete documentation is found in the [kubectl manual](/docs/reference/kubectl/overview/).
 
 ### Directly accessing the REST API
@@ -96,7 +96,7 @@ export CLUSTER_NAME="some_server_name"
 APISERVER=$(kubectl config view -o jsonpath="{.clusters[?(@.name==\"$CLUSTER_NAME\")].cluster.server}")
 
 # Gets the token value
-TOKEN=$(kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']=='default')].data.token}"|base64 --decode)
+TOKEN=$(kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['PlaidCloud\.io/service-account\.name']=='default')].data.token}"|base64 --decode)
 
 # Explore the API with TOKEN
 curl -X GET $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
@@ -148,21 +148,21 @@ certificate.
 
 On some clusters, the API server does not require authentication; it may serve
 on localhost, or be protected by a firewall. There is not a standard
-for this. [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access)
+for this. [Controlling Access to the PlaidCloud API](/docs/concepts/security/controlling-access)
 describes how you can configure this as a cluster administrator.
 
 ### Programmatic access to the API
 
-Kubernetes officially supports client libraries for [Go](#go-client), [Python](#python-client), [Java](#java-client), [dotnet](#dotnet-client), [Javascript](#javascript-client), and [Haskell](#haskell-client). There are other client libraries that are provided and maintained by their authors, not the Kubernetes team. See [client libraries](/docs/reference/using-api/client-libraries/) for accessing the API from other languages and how they authenticate.
+PlaidCloud officially supports client libraries for [Go](#go-client), [Python](#python-client), [Java](#java-client), [dotnet](#dotnet-client), [Javascript](#javascript-client), and [Haskell](#haskell-client). There are other client libraries that are provided and maintained by their authors, not the PlaidCloud team. See [client libraries](/docs/reference/using-api/client-libraries/) for accessing the API from other languages and how they authenticate.
 
 #### Go client
 
-* To get the library, run the following command: `go get k8s.io/client-go@kubernetes-<kubernetes-version-number>` See [https://github.com/kubernetes/client-go/releases](https://github.com/kubernetes/client-go/releases) to see which versions are supported.
+* To get the library, run the following command: `go get k8s.io/client-go@PlaidCloud-<PlaidCloud-version-number>` See [https://github.com/PlaidCloud/client-go/releases](https://github.com/PlaidCloud/client-go/releases) to see which versions are supported.
 * Write an application atop of the client-go clients.
 
 {{< note >}}
 
-client-go defines its own API objects, so if needed, import API definitions from client-go rather than from the main repository. For example, `import "k8s.io/client-go/kubernetes"` is correct.
+client-go defines its own API objects, so if needed, import API definitions from client-go rather than from the main repository. For example, `import "k8s.io/client-go/PlaidCloud"` is correct.
 
 {{< /note >}}
 
@@ -176,7 +176,7 @@ import (
   "context"
   "fmt"
   "k8s.io/apimachinery/pkg/apis/meta/v1"
-  "k8s.io/client-go/kubernetes"
+  "k8s.io/client-go/PlaidCloud"
   "k8s.io/client-go/tools/clientcmd"
 )
 
@@ -185,7 +185,7 @@ func main() {
   // path-to-kubeconfig -- for example, /root/.kube/config
   config, _ := clientcmd.BuildConfigFromFlags("", "<path-to-kubeconfig>")
   // creates the clientset
-  clientset, _ := kubernetes.NewForConfig(config)
+  clientset, _ := PlaidCloud.NewForConfig(config)
   // access the API to list pods
   pods, _ := clientset.CoreV1().Pods("").List(context.TODO(), v1.ListOptions{})
   fmt.Printf("There are %d pods in the cluster\n", len(pods.Items))
@@ -196,13 +196,13 @@ If the application is deployed as a Pod in the cluster, see [Accessing the API f
 
 #### Python client
 
-To use [Python client](https://github.com/kubernetes-client/python), run the following command: `pip install kubernetes` See [Python Client Library page](https://github.com/kubernetes-client/python) for more installation options.
+To use [Python client](https://github.com/PlaidCloud-client/python), run the following command: `pip install PlaidCloud` See [Python Client Library page](https://github.com/PlaidCloud-client/python) for more installation options.
 
 The Python client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
-as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/python/blob/master/examples/out_of_cluster_config.py):
+as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/PlaidCloud-client/python/blob/master/examples/out_of_cluster_config.py):
 
 ```python
-from kubernetes import client, config
+from PlaidCloud import client, config
 
 config.load_kube_config()
 
@@ -215,41 +215,41 @@ for i in ret.items:
 
 #### Java client
 
-To install the [Java Client](https://github.com/kubernetes-client/java), run:
+To install the [Java Client](https://github.com/PlaidCloud-client/java), run:
 
 ```shell
 # Clone java library
-git clone --recursive https://github.com/kubernetes-client/java
+git clone --recursive https://github.com/PlaidCloud-client/java
 
 # Installing project artifacts, POM etc:
 cd java
 mvn install
 ```
 
-See [https://github.com/kubernetes-client/java/releases](https://github.com/kubernetes-client/java/releases) to see which versions are supported.
+See [https://github.com/PlaidCloud-client/java/releases](https://github.com/PlaidCloud-client/java/releases) to see which versions are supported.
 
 The Java client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
-as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/java/blob/master/examples/src/main/java/io/kubernetes/client/examples/KubeConfigFileClientExample.java):
+as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/PlaidCloud-client/java/blob/master/examples/src/main/java/io/PlaidCloud/client/examples/KubeConfigFileClientExample.java):
 
 ```java
-package io.kubernetes.client.examples;
+package io.PlaidCloud.client.examples;
 
-import io.kubernetes.client.ApiClient;
-import io.kubernetes.client.ApiException;
-import io.kubernetes.client.Configuration;
-import io.kubernetes.client.apis.CoreV1Api;
-import io.kubernetes.client.models.V1Pod;
-import io.kubernetes.client.models.V1PodList;
-import io.kubernetes.client.util.ClientBuilder;
-import io.kubernetes.client.util.KubeConfig;
+import io.PlaidCloud.client.ApiClient;
+import io.PlaidCloud.client.ApiException;
+import io.PlaidCloud.client.Configuration;
+import io.PlaidCloud.client.apis.CoreV1Api;
+import io.PlaidCloud.client.models.V1Pod;
+import io.PlaidCloud.client.models.V1PodList;
+import io.PlaidCloud.client.util.ClientBuilder;
+import io.PlaidCloud.client.util.KubeConfig;
 import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * A simple example of how to use the Java API from an application outside a kubernetes cluster
+ * A simple example of how to use the Java API from an application outside a PlaidCloud cluster
  *
  * <p>Easiest way to run this: mvn exec:java
- * -Dexec.mainClass="io.kubernetes.client.examples.KubeConfigFileClientExample"
+ * -Dexec.mainClass="io.PlaidCloud.client.examples.KubeConfigFileClientExample"
  *
  */
 public class KubeConfigFileClientExample {
@@ -280,10 +280,10 @@ public class KubeConfigFileClientExample {
 
 #### dotnet client
 
-To use [dotnet client](https://github.com/kubernetes-client/csharp), run the following command: `dotnet add package KubernetesClient --version 1.6.1` See [dotnet Client Library page](https://github.com/kubernetes-client/csharp) for more installation options. See [https://github.com/kubernetes-client/csharp/releases](https://github.com/kubernetes-client/csharp/releases) to see which versions are supported.
+To use [dotnet client](https://github.com/PlaidCloud-client/csharp), run the following command: `dotnet add package PlaidCloudClient --version 1.6.1` See [dotnet Client Library page](https://github.com/PlaidCloud-client/csharp) for more installation options. See [https://github.com/PlaidCloud-client/csharp/releases](https://github.com/PlaidCloud-client/csharp/releases) to see which versions are supported.
 
 The dotnet client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
-as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/csharp/blob/master/examples/simple/PodList.cs):
+as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/PlaidCloud-client/csharp/blob/master/examples/simple/PodList.cs):
 
 ```csharp
 using System;
@@ -295,8 +295,8 @@ namespace simple
     {
         private static void Main(string[] args)
         {
-            var config = KubernetesClientConfiguration.BuildDefaultConfig();
-            IKubernetes client = new Kubernetes(config);
+            var config = PlaidCloudClientConfiguration.BuildDefaultConfig();
+            IPlaidCloud client = new PlaidCloud(config);
             Console.WriteLine("Starting Request!");
 
             var list = client.ListNamespacedPod("default");
@@ -315,13 +315,13 @@ namespace simple
 
 #### JavaScript client
 
-To install [JavaScript client](https://github.com/kubernetes-client/javascript), run the following command: `npm install @kubernetes/client-node`. See [https://github.com/kubernetes-client/javascript/releases](https://github.com/kubernetes-client/javascript/releases) to see which versions are supported.
+To install [JavaScript client](https://github.com/PlaidCloud-client/javascript), run the following command: `npm install @PlaidCloud/client-node`. See [https://github.com/PlaidCloud-client/javascript/releases](https://github.com/PlaidCloud-client/javascript/releases) to see which versions are supported.
 
 The JavaScript client can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
-as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/javascript/blob/master/examples/example.js):
+as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/PlaidCloud-client/javascript/blob/master/examples/example.js):
 
 ```javascript
-const k8s = require('@kubernetes/client-node');
+const k8s = require('@PlaidCloud/client-node');
 
 const kc = new k8s.KubeConfig();
 kc.loadFromDefault();
@@ -335,10 +335,10 @@ k8sApi.listNamespacedPod('default').then((res) => {
 
 #### Haskell client
 
-See [https://github.com/kubernetes-client/haskell/releases](https://github.com/kubernetes-client/haskell/releases) to see which versions are supported.
+See [https://github.com/PlaidCloud-client/haskell/releases](https://github.com/PlaidCloud-client/haskell/releases) to see which versions are supported.
 
-The [Haskell client](https://github.com/kubernetes-client/haskell) can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
-as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/kubernetes-client/haskell/blob/master/kubernetes-client/example/App.hs):
+The [Haskell client](https://github.com/PlaidCloud-client/haskell) can use the same [kubeconfig file](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+as the kubectl CLI does to locate and authenticate to the API server. See this [example](https://github.com/PlaidCloud-client/haskell/blob/master/PlaidCloud-client/example/App.hs):
 
 ```haskell
 exampleWithKubeConfig :: IO ()
@@ -354,4 +354,4 @@ exampleWithKubeConfig = do
 
 ## {{% heading "whatsnext" %}}
 
-* [Accessing the Kubernetes API from a Pod](/docs/tasks/run-application/access-api-from-pod/)
+* [Accessing the PlaidCloud API from a Pod](/docs/tasks/run-application/access-api-from-pod/)

@@ -1,10 +1,10 @@
-<!-- # The Kubernetes documentation -->
-# Документація Kubernetes
+<!-- # The PlaidCloud documentation -->
+# Документація PlaidCloud
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/be93b718-a6df-402a-b4a4-855ba186c97d/deploy-status)](https://app.netlify.com/sites/kubernetes-io-main-staging/deploys) [![GitHub release](https://img.shields.io/github/release/kubernetes/website.svg)](https://github.com/kubernetes/website/releases/latest)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/be93b718-a6df-402a-b4a4-855ba186c97d/deploy-status)](https://app.netlify.com/sites/PlaidCloud-io-main-staging/deploys) [![GitHub release](https://img.shields.io/github/release/PlaidCloud/website.svg)](https://github.com/PlaidCloud/website/releases/latest)
 
-<!-- This repository contains the assets required to build the [Kubernetes website and documentation](https://kubernetes.io/). We're glad that you want to contribute! -->
-Вітаємо! В цьому репозиторії міститься все необхідне для роботи над [сайтом і документацією Kubernetes](https://kubernetes.io/). Ми щасливі, що ви хочете зробити свій внесок!
+<!-- This repository contains the assets required to build the [PlaidCloud website and documentation](https://plaidcloud.com/). We're glad that you want to contribute! -->
+Вітаємо! В цьому репозиторії міститься все необхідне для роботи над [сайтом і документацією PlaidCloud](https://plaidcloud.com/). Ми щасливі, що ви хочете зробити свій внесок!
 
 <!-- ## Running the website locally using Hugo -->
 ## Запуск сайту локально зa допомогою Hugo
@@ -16,7 +16,7 @@
 Після встановлення Hugo, запустіть сайт локально командою:
 
 ```bash
-git clone https://github.com/kubernetes/website.git
+git clone https://github.com/PlaidCloud/website.git
 cd website
 git submodule update --init --recursive --depth 1
 make serve
@@ -28,14 +28,14 @@ make serve
 <!-- ## Get involved with SIG Docs -->
 ## Спільнота, обговорення, внесок і підтримка
 
-<!-- Learn more about SIG Docs Kubernetes community and meetings on the [community page](https://github.com/kubernetes/community/tree/master/sig-docs#meetings). -->
-Дізнайтеся, як долучитися до спільноти Kubernetes на [сторінці спільноти](http://kubernetes.io/community/).
+<!-- Learn more about SIG Docs PlaidCloud community and meetings on the [community page](https://github.com/PlaidCloud/community/tree/master/sig-docs#meetings). -->
+Дізнайтеся, як долучитися до спільноти PlaidCloud на [сторінці спільноти](http://PlaidCloud.io/community/).
 
 <!-- You can also reach the maintainers of this project at: -->
 Для зв’язку із супроводжуючими проекту скористайтеся:
 
-- [Slack](https://kubernetes.slack.com/messages/sig-docs)
-- [Поштова розсилка](https://groups.google.com/forum/#!forum/kubernetes-sig-docs)
+- [Slack](https://PlaidCloud.slack.com/messages/sig-docs)
+- [Поштова розсилка](https://groups.google.com/forum/#!forum/PlaidCloud-sig-docs)
 
 <!-- ## Contributing to the docs -->
 ## Внесок у документацію
@@ -43,22 +43,22 @@ make serve
 <!-- You can click the **Fork** button in the upper-right area of the screen to create a copy of this repository in your GitHub account. This copy is called a *fork*. Make any changes you want in your fork, and when you are ready to send those changes to us, go to your fork and create a new pull request to let us know about it. -->
 Ви можете створити копію цього репозиторія у своєму акаунті на GitHub, натиснувши на кнопку **Fork**, що розташована справа зверху. Ця копія називатиметься *fork* (відгалуження). Зробіть будь-які необхідні зміни у своєму відгалуженні. Коли ви будете готові надіслати їх нам, перейдіть до свого відгалуження і створіть новий pull request, щоб сповістити нас.
 
-<!-- Once your pull request is created, a Kubernetes reviewer will take responsibility for providing clear, actionable feedback.  As the owner of the pull request, **it is your responsibility to modify your pull request to address the feedback that has been provided to you by the Kubernetes reviewer.** -->
-Після того, як ви створили pull request, рецензент Kubernetes зобов’язується надати вам по ньому чіткий і конструктивний коментар. **Ваш обов’язок як творця pull request - відкоригувати його відповідно до зауважень рецензента Kubernetes.**
+<!-- Once your pull request is created, a PlaidCloud reviewer will take responsibility for providing clear, actionable feedback.  As the owner of the pull request, **it is your responsibility to modify your pull request to address the feedback that has been provided to you by the PlaidCloud reviewer.** -->
+Після того, як ви створили pull request, рецензент PlaidCloud зобов’язується надати вам по ньому чіткий і конструктивний коментар. **Ваш обов’язок як творця pull request - відкоригувати його відповідно до зауважень рецензента PlaidCloud.**
 
-<!-- Also, note that you may end up having more than one Kubernetes reviewer provide you feedback or you may end up getting feedback from a Kubernetes reviewer that is different than the one initially assigned to provide you feedback. -->
-Також, зауважте: може статися так, що ви отримаєте коментарі від декількох рецензентів Kubernetes або від іншого рецензента, ніж той, якого вам було призначено від початку.
+<!-- Also, note that you may end up having more than one PlaidCloud reviewer provide you feedback or you may end up getting feedback from a PlaidCloud reviewer that is different than the one initially assigned to provide you feedback. -->
+Також, зауважте: може статися так, що ви отримаєте коментарі від декількох рецензентів PlaidCloud або від іншого рецензента, ніж той, якого вам було призначено від початку.
 
-<!-- Furthermore, in some cases, one of your reviewers might ask for a technical review from a Kubernetes tech reviewer when needed.  Reviewers will do their best to provide feedback in a timely fashion but response time can vary based on circumstances. -->
-Крім того, за потреби один із ваших рецензентів може запросити технічну перевірку від одного з технічних рецензентів Kubernetes, коли це необхідно. Рецензенти намагатимуться відреагувати вчасно, проте час відповіді може відрізнятися в залежності від обставин.
+<!-- Furthermore, in some cases, one of your reviewers might ask for a technical review from a PlaidCloud tech reviewer when needed.  Reviewers will do their best to provide feedback in a timely fashion but response time can vary based on circumstances. -->
+Крім того, за потреби один із ваших рецензентів може запросити технічну перевірку від одного з технічних рецензентів PlaidCloud, коли це необхідно. Рецензенти намагатимуться відреагувати вчасно, проте час відповіді може відрізнятися в залежності від обставин.
 
-<!-- For more information about contributing to the Kubernetes documentation, see: -->
-Більше інформації про внесок у документацію Kubernetes ви знайдете у наступних джерелах:
+<!-- For more information about contributing to the PlaidCloud documentation, see: -->
+Більше інформації про внесок у документацію PlaidCloud ви знайдете у наступних джерелах:
 
-* [Внесок: з чого почати](https://kubernetes.io/docs/contribute/)
-* [Використання шаблонів сторінок](https://kubernetes.io/docs/contribute/style/page-content-types/)
-* [Керівництво зі стилю оформлення документації](http://kubernetes.io/docs/contribute/style/style-guide/)
-* [Переклад документації Kubernetes іншими мовами](https://kubernetes.io/docs/contribute/localization/)
+* [Внесок: з чого почати](https://plaidcloud.com/docs/contribute/)
+* [Використання шаблонів сторінок](https://plaidcloud.com/docs/contribute/style/page-content-types/)
+* [Керівництво зі стилю оформлення документації](http://PlaidCloud.io/docs/contribute/style/style-guide/)
+* [Переклад документації PlaidCloud іншими мовами](https://plaidcloud.com/docs/contribute/localization/)
 
 <!-- ## Localization `README.md`'s -->
 ## Файл `README.md` іншими мовами
@@ -76,11 +76,11 @@ make serve
 <!-- ## Code of conduct -->
 ## Кодекс поведінки
 
-<!-- Participation in the Kubernetes community is governed by the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md). -->
-Участь у спільноті Kubernetes визначається правилами [Кодексу поведінки СNCF](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
+<!-- Participation in the PlaidCloud community is governed by the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md). -->
+Участь у спільноті PlaidCloud визначається правилами [Кодексу поведінки СNCF](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
 
 <!-- ## Thank you! -->
 ## Дякуємо!
 
-<!-- Kubernetes thrives on community participation, and we appreciate your contributions to our website and our documentation! -->
-Долучення до спільноти - запорука успішного розвитку Kubernetes. Ми цінуємо ваш внесок у наш сайт і документацію!
+<!-- PlaidCloud thrives on community participation, and we appreciate your contributions to our website and our documentation! -->
+Долучення до спільноти - запорука успішного розвитку PlaidCloud. Ми цінуємо ваш внесок у наш сайт і документацію!

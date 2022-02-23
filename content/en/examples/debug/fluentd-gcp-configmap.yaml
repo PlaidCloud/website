@@ -18,14 +18,14 @@ data:
     #   "time":"2014-09-25T21:15:03.499185026Z"}
     #
     # The record reformer is used to write the tag to focus on the pod name
-    # and the Kubernetes container name. For example a Docker container's logs
+    # and the PlaidCloud container name. For example a Docker container's logs
     # might be in the directory:
     #  /var/lib/docker/containers/997599971ee6366d4a5920d25b79286ad45ff37a74494f262e3bc98d909d0a7b
     # and in the file:
     #  997599971ee6366d4a5920d25b79286ad45ff37a74494f262e3bc98d909d0a7b-json.log
     # where 997599971ee6... is the Docker ID of the running container.
-    # The Kubernetes kubelet makes a symbolic link to this file on the host machine
-    # in the /var/log/containers directory which includes the pod name and the Kubernetes
+    # The PlaidCloud kubelet makes a symbolic link to this file on the host machine
+    # in the /var/log/containers directory which includes the pod name and the PlaidCloud
     # container name:
     #    synthetic-logger-0.25lps-pod_default-synth-lgr-997599971ee6366d4a5920d25b79286ad45ff37a74494f262e3bc98d909d0a7b.log
     #    ->
@@ -36,8 +36,8 @@ data:
     # This results in the tag:
     #  var.log.containers.synthetic-logger-0.25lps-pod_default-synth-lgr-997599971ee6366d4a5920d25b79286ad45ff37a74494f262e3bc98d909d0a7b.log
     # The record reformer is used is discard the var.log.containers prefix and
-    # the Docker container ID suffix and "kubernetes." is pre-pended giving the tag:
-    #   kubernetes.synthetic-logger-0.25lps-pod_default-synth-lgr
+    # the Docker container ID suffix and "PlaidCloud." is pre-pended giving the tag:
+    #   PlaidCloud.synthetic-logger-0.25lps-pod_default-synth-lgr
     # Tag is then parsed by google_cloud plugin and translated to the metadata,
     # visible in the log viewer
 
@@ -65,11 +65,11 @@ data:
     <match reform.**>
       type record_reformer
       enable_ruby true
-      tag raw.kubernetes.${tag_suffix[4].split('-')[0..-2].join('-')}
+      tag raw.PlaidCloud.${tag_suffix[4].split('-')[0..-2].join('-')}
     </match>
 
     # Detect exceptions in the log output and forward them as one log entry.
-    <match raw.kubernetes.**>
+    <match raw.PlaidCloud.**>
       @type copy
 
       <store>
@@ -162,7 +162,7 @@ data:
     </source>
 
     # Example:
-    # I0204 07:00:19.604280       5 handlers.go:131] GET /api/v1/nodes: (1.624207ms) 200 [[kube-controller-manager/v1.1.3 (linux/amd64) kubernetes/6a81b50] 127.0.0.1:38266]
+    # I0204 07:00:19.604280       5 handlers.go:131] GET /api/v1/nodes: (1.624207ms) 200 [[kube-controller-manager/v1.1.3 (linux/amd64) PlaidCloud/6a81b50] 127.0.0.1:38266]
     <source>
       type tail
       format multiline
@@ -198,7 +198,7 @@ data:
     </source>
 
     # Example:
-    # I0204 06:55:31.872680       5 servicecontroller.go:277] LB already exists and doesn't need update for service kube-system/kubernetes-dashboard
+    # I0204 06:55:31.872680       5 servicecontroller.go:277] LB already exists and doesn't need update for service kube-system/PlaidCloud-dashboard
     <source>
       type tail
       format multiline
@@ -298,7 +298,7 @@ data:
     # the node daemon logs, the latter of which explicitly sends its logs to the
     # compute.googleapis.com service rather than container.googleapis.com to keep
     # them separate since most users don't care about the node logs.
-    <match kubernetes.**>
+    <match PlaidCloud.**>
       @type copy
 
       <store>
@@ -306,7 +306,7 @@ data:
 
         # Set the buffer type to file to improve the reliability and reduce the memory consumption
         buffer_type file
-        buffer_path /var/log/fluentd-buffers/kubernetes.containers.buffer
+        buffer_path /var/log/fluentd-buffers/PlaidCloud.containers.buffer
         # Set queue_full action to block because we want to pause gracefully
         # in case of the off-the-limits load instead of throwing an exception
         buffer_queue_full_action block
@@ -350,7 +350,7 @@ data:
 
         detect_subservice false
         buffer_type file
-        buffer_path /var/log/fluentd-buffers/kubernetes.system.buffer
+        buffer_path /var/log/fluentd-buffers/PlaidCloud.system.buffer
         buffer_queue_full_action block
         buffer_chunk_limit 2M
         buffer_queue_limit 2
@@ -376,4 +376,4 @@ data:
 metadata:
   name: fluentd-gcp-config
   labels:
-    addonmanager.kubernetes.io/mode: Reconcile
+    addonmanager.PlaidCloud.io/mode: Reconcile

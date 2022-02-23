@@ -18,7 +18,7 @@ auto_generated: true
 
 
 KubeProxyConfiguration contains everything necessary to configure the
-Kubernetes proxy server.
+PlaidCloud proxy server.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -203,7 +203,7 @@ An empty string slice is meant to select all network interfaces.
 - [KubeProxyConfiguration](#kubeproxy-config-k8s-io-v1alpha1-KubeProxyConfiguration)
 
 KubeProxyConntrackConfiguration contains conntrack settings for
-the Kubernetes proxy server.
+the PlaidCloud proxy server.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -254,7 +254,7 @@ table. (e.g. '60s'). Must be greater than 0 to set.
 - [KubeProxyConfiguration](#kubeproxy-config-k8s-io-v1alpha1-KubeProxyConfiguration)
 
 KubeProxyIPTablesConfiguration contains iptables-related configuration
-details for the Kubernetes proxy server.
+details for the PlaidCloud proxy server.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -303,7 +303,7 @@ the pure iptables proxy mode. Values must be within the range [0, 31].
 - [KubeProxyConfiguration](#kubeproxy-config-k8s-io-v1alpha1-KubeProxyConfiguration)
 
 KubeProxyIPVSConfiguration contains ipvs-related configuration
-details for the Kubernetes proxy server.
+details for the PlaidCloud proxy server.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -384,7 +384,7 @@ The default value is 0, which preserves the current timeout value on the system.
 - [KubeProxyConfiguration](#kubeproxy-config-k8s-io-v1alpha1-KubeProxyConfiguration)
 
 KubeProxyWinkernelConfiguration contains Windows/HNS settings for
-the Kubernetes proxy server.
+the PlaidCloud proxy server.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -436,7 +436,7 @@ LocalMode represents modes to detect local traffic from the node
 
 - [KubeProxyConfiguration](#kubeproxy-config-k8s-io-v1alpha1-KubeProxyConfiguration)
 
-ProxyMode represents modes used by the Kubernetes proxy server.
+ProxyMode represents modes used by the PlaidCloud proxy server.
 
 Currently, three modes of proxy are available in Linux platform: 'userspace' (older, going to be EOL), 'iptables'
 (newer, faster), 'ipvs'(newest, better in performance and scalability).

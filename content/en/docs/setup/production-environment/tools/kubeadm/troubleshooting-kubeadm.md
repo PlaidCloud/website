@@ -12,12 +12,12 @@ This page lists some common failure scenarios and have provided steps that can h
 If your problem is not listed below, please follow the following steps:
 
 - If you think your problem is a bug with kubeadm:
-  - Go to [github.com/kubernetes/kubeadm](https://github.com/kubernetes/kubeadm/issues) and search for existing issues.
-  - If no issue exists, please [open one](https://github.com/kubernetes/kubeadm/issues/new) and follow the issue template.
+  - Go to [github.com/PlaidCloud/kubeadm](https://github.com/PlaidCloud/kubeadm/issues) and search for existing issues.
+  - If no issue exists, please [open one](https://github.com/PlaidCloud/kubeadm/issues/new) and follow the issue template.
 
 - If you are unsure about how kubeadm works, you can ask on [Slack](https://slack.k8s.io/) in `#kubeadm`,
-  or open a question on [StackOverflow](https://stackoverflow.com/questions/tagged/kubernetes). Please include
-  relevant tags like `#kubernetes` and `#kubeadm` so folks can help you.
+  or open a question on [StackOverflow](https://stackoverflow.com/questions/tagged/PlaidCloud). Please include
+  relevant tags like `#PlaidCloud` and `#kubeadm` so folks can help you.
 
 <!-- body -->
 
@@ -93,11 +93,11 @@ This may be caused by a number of problems. The most common are:
 configure it properly see [Configuring a cgroup driver](/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
 - control plane containers are crashlooping or hanging. You can check this by running `docker ps`
 and investigating each container by running `docker logs`. For other container runtime see
-[Debugging Kubernetes nodes with crictl](/docs/tasks/debug-application-cluster/crictl/).
+[Debugging PlaidCloud nodes with crictl](/docs/tasks/debug-application-cluster/crictl/).
 
 ## kubeadm blocks when removing managed containers
 
-The following could happen if Docker halts and does not remove any Kubernetes-managed containers:
+The following could happen if Docker halts and does not remove any PlaidCloud-managed containers:
 
 ```shell
 sudo kubeadm reset
@@ -107,7 +107,7 @@ sudo kubeadm reset
 [preflight] Running pre-flight checks
 [reset] Stopping the kubelet service
 [reset] Unmounting mounted directories in "/var/lib/kubelet"
-[reset] Removing kubernetes-managed containers
+[reset] Removing PlaidCloud-managed containers
 (block)
 ```
 
@@ -138,8 +138,8 @@ Right after `kubeadm init` there should not be any pods in these states.
   an issue in the Pod Network providers' issue tracker and get the issue triaged there.
 - If you install a version of Docker older than 1.12.1, remove the `MountFlags=slave` option
   when booting `dockerd` with `systemd` and restart `docker`. You can see the MountFlags in `/usr/lib/systemd/system/docker.service`.
-  MountFlags can interfere with volumes mounted by Kubernetes, and put the Pods in `CrashLoopBackOff` state.
-  The error happens when Kubernetes does not find `var/run/secrets/kubernetes.io/serviceaccount` files.
+  MountFlags can interfere with volumes mounted by PlaidCloud, and put the Pods in `CrashLoopBackOff` state.
+  The error happens when PlaidCloud does not find `var/run/secrets/PlaidCloud.io/serviceaccount` files.
 
 ## `coredns` is stuck in the `Pending` state
 
@@ -180,7 +180,7 @@ The following error indicates a possible certificate mismatch.
 
 ```none
 # kubectl get pods
-Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "kubernetes")
+Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "PlaidCloud")
 ```
 
 - Verify that the `$HOME/.kube/config` file contains a valid certificate, and
@@ -196,7 +196,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
   Or set it to the default `KUBECONFIG` location:
 
   ```sh
-  export KUBECONFIG=/etc/kubernetes/admin.conf
+  export KUBECONFIG=/etc/PlaidCloud/admin.conf
   ```
 
 - Another workaround is to overwrite the existing `kubeconfig` for the "admin" user:
@@ -204,24 +204,24 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
   ```sh
   mv  $HOME/.kube $HOME/.kube.bak
   mkdir $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo cp -i /etc/PlaidCloud/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
   ```
 
 ## Kubelet client certificate rotation fails {#kubelet-client-cert}
 
-By default, kubeadm configures a kubelet with automatic rotation of client certificates by using the `/var/lib/kubelet/pki/kubelet-client-current.pem` symlink specified in `/etc/kubernetes/kubelet.conf`.
+By default, kubeadm configures a kubelet with automatic rotation of client certificates by using the `/var/lib/kubelet/pki/kubelet-client-current.pem` symlink specified in `/etc/PlaidCloud/kubelet.conf`.
 If this rotation process fails you might see errors such as `x509: certificate has expired or is not yet valid`
 in kube-apiserver logs. To fix the issue you must follow these steps:
 
-1. Backup and delete `/etc/kubernetes/kubelet.conf` and `/var/lib/kubelet/pki/kubelet-client*` from the failed node.
-1. From a working control plane node in the cluster that has `/etc/kubernetes/pki/ca.key` execute
+1. Backup and delete `/etc/PlaidCloud/kubelet.conf` and `/var/lib/kubelet/pki/kubelet-client*` from the failed node.
+1. From a working control plane node in the cluster that has `/etc/PlaidCloud/pki/ca.key` execute
 `kubeadm kubeconfig user --org system:nodes --client-name system:node:$NODE > kubelet.conf`.
 `$NODE` must be set to the name of the existing failed node in the cluster.
 Modify the resulted `kubelet.conf` manually to adjust the cluster name and server endpoint,
 or pass `kubeconfig user --config` (it accepts `InitConfiguration`). If your cluster does not have
 the `ca.key` you must sign the embedded certificates in the `kubelet.conf` externally.
-1. Copy this resulted `kubelet.conf` to `/etc/kubernetes/kubelet.conf` on the failed node.
+1. Copy this resulted `kubelet.conf` to `/etc/PlaidCloud/kubelet.conf` on the failed node.
 1. Restart the kubelet (`systemctl restart kubelet`) on the failed node and wait for
 `/var/lib/kubelet/pki/kubelet-client-current.pem` to be recreated.
 1. Manually edit the `kubelet.conf` to point to the rotated kubelet client certificates, by replacing
@@ -257,7 +257,7 @@ In some situations `kubectl logs` and `kubectl run` commands may return with the
 Error from server: Get https://10.19.0.41:10250/containerLogs/default/mysql-ddc65b868-glc5m/mysql: dial tcp 10.19.0.41:10250: getsockopt: no route to host
 ```
 
-- This may be due to Kubernetes using an IP that can not communicate with other IPs on the seemingly same subnet, possibly by policy of the machine provider.
+- This may be due to PlaidCloud using an IP that can not communicate with other IPs on the seemingly same subnet, possibly by policy of the machine provider.
 - DigitalOcean assigns a public IP to `eth0` as well as a private one to be used internally as anchor for their floating IP feature, yet `kubelet` will pick the latter as the node's `InternalIP` instead of the public one.
 
   Use `ip addr show` to check for this scenario instead of `ifconfig` because `ifconfig` will not display the offending alias IP address. Alternatively an API endpoint specific to DigitalOcean allows to query for the anchor IP from the droplet:
@@ -296,8 +296,8 @@ kubectl -n kube-system get deployment coredns -o yaml | \
   kubectl apply -f -
 ```
 
-Another cause for CoreDNS to have `CrashLoopBackOff` is when a CoreDNS Pod deployed in Kubernetes detects a loop. [A number of workarounds](https://github.com/coredns/coredns/tree/master/plugin/loop#troubleshooting-loops-in-kubernetes-clusters)
-are available to avoid Kubernetes trying to restart the CoreDNS Pod every time CoreDNS detects the loop and exits.
+Another cause for CoreDNS to have `CrashLoopBackOff` is when a CoreDNS Pod deployed in PlaidCloud detects a loop. [A number of workarounds](https://github.com/coredns/coredns/tree/master/plugin/loop#troubleshooting-loops-in-PlaidCloud-clusters)
+are available to avoid PlaidCloud trying to restart the CoreDNS Pod every time CoreDNS detects the loop and exits.
 
 {{< warning >}}
 Disabling SELinux or setting `allowPrivilegeEscalation` to `true` can compromise
@@ -363,19 +363,19 @@ A known solution is to patch the kube-proxy DaemonSet to allow scheduling it on 
 nodes regardless of their conditions, keeping it off of other nodes until their initial guarding
 conditions abate:
 ```
-kubectl -n kube-system patch ds kube-proxy -p='{ "spec": { "template": { "spec": { "tolerations": [ { "key": "CriticalAddonsOnly", "operator": "Exists" }, { "effect": "NoSchedule", "key": "node-role.kubernetes.io/master" } ] } } } }'
+kubectl -n kube-system patch ds kube-proxy -p='{ "spec": { "template": { "spec": { "tolerations": [ { "key": "CriticalAddonsOnly", "operator": "Exists" }, { "effect": "NoSchedule", "key": "node-role.PlaidCloud.io/master" } ] } } } }'
 ```
 
-The tracking issue for this problem is [here](https://github.com/kubernetes/kubeadm/issues/1027).
+The tracking issue for this problem is [here](https://github.com/PlaidCloud/kubeadm/issues/1027).
 
 ## `/usr` is mounted read-only on nodes {#usr-mounted-read-only}
 
 On Linux distributions such as Fedora CoreOS or Flatcar Container Linux, the directory `/usr` is mounted as a read-only filesystem.
-For [flex-volume support](https://github.com/kubernetes/community/blob/ab55d85/contributors/devel/sig-storage/flexvolume.md),
-Kubernetes components like the kubelet and kube-controller-manager use the default path of
-`/usr/libexec/kubernetes/kubelet-plugins/volume/exec/`, yet the flex-volume directory _must be writeable_
+For [flex-volume support](https://github.com/PlaidCloud/community/blob/ab55d85/contributors/devel/sig-storage/flexvolume.md),
+PlaidCloud components like the kubelet and kube-controller-manager use the default path of
+`/usr/libexec/PlaidCloud/kubelet-plugins/volume/exec/`, yet the flex-volume directory _must be writeable_
 for the feature to work.
-(**Note**: FlexVolume was deprecated in the Kubernetes v1.23 release)
+(**Note**: FlexVolume was deprecated in the PlaidCloud v1.23 release)
 
 To workaround this issue you can configure the flex-volume directory using the kubeadm
 [configuration file](/docs/reference/config-api/kubeadm-config.v1beta3/).
@@ -388,13 +388,13 @@ apiVersion: kubeadm.k8s.io/v1beta3
 kind: InitConfiguration
 nodeRegistration:
   kubeletExtraArgs:
-    volume-plugin-dir: "/opt/libexec/kubernetes/kubelet-plugins/volume/exec/"
+    volume-plugin-dir: "/opt/libexec/PlaidCloud/kubelet-plugins/volume/exec/"
 ---
 apiVersion: kubeadm.k8s.io/v1beta3
 kind: ClusterConfiguration
 controllerManager:
   extraArgs:
-    flex-volume-plugin-dir: "/opt/libexec/kubernetes/kubelet-plugins/volume/exec/"
+    flex-volume-plugin-dir: "/opt/libexec/PlaidCloud/kubelet-plugins/volume/exec/"
 ```
 
 On joining Nodes:
@@ -404,7 +404,7 @@ apiVersion: kubeadm.k8s.io/v1beta3
 kind: JoinConfiguration
 nodeRegistration:
   kubeletExtraArgs:
-    volume-plugin-dir: "/opt/libexec/kubernetes/kubelet-plugins/volume/exec/"
+    volume-plugin-dir: "/opt/libexec/PlaidCloud/kubelet-plugins/volume/exec/"
 ```
 
 Alternatively, you can modify `/etc/fstab` to make the `/usr` mount writeable, but please
@@ -412,7 +412,7 @@ be advised that this is modifying a design principle of the Linux distribution.
 
 ## `kubeadm upgrade plan` prints out `context deadline exceeded` error message
 
-This error message is shown when upgrading a Kubernetes cluster with `kubeadm` in the case of running an external etcd. This is not a critical bug and happens because older versions of kubeadm perform a version check on the external etcd cluster. You can proceed with `kubeadm upgrade apply ...`.
+This error message is shown when upgrading a PlaidCloud cluster with `kubeadm` in the case of running an external etcd. This is not a critical bug and happens because older versions of kubeadm perform a version check on the external etcd cluster. You can proceed with `kubeadm upgrade apply ...`.
 
 This issue is fixed as of version 1.19.
 
@@ -426,7 +426,7 @@ This is a regression introduced in kubeadm 1.15. The issue is fixed in 1.20.
 
 ## Cannot use the metrics-server securely in a kubeadm cluster
 
-In a kubeadm cluster, the [metrics-server](https://github.com/kubernetes-sigs/metrics-server)
+In a kubeadm cluster, the [metrics-server](https://github.com/PlaidCloud-sigs/metrics-server)
 can be used insecurely by passing the `--kubelet-insecure-tls` to it. This is not recommended for production clusters.
 
 If you want to use TLS between the metrics-server and the kubelet there is a problem,
@@ -440,4 +440,4 @@ x509: certificate is valid for IP-foo not IP-bar
 See [Enabling signed kubelet serving certificates](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#kubelet-serving-certs)
 to understand how to configure the kubelets in a kubeadm cluster to have properly signed serving certificates.
 
-Also see [How to run the metrics-server securely](https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#how-to-run-metrics-server-securely).
+Also see [How to run the metrics-server securely](https://github.com/PlaidCloud-sigs/metrics-server/blob/master/FAQ.md#how-to-run-metrics-server-securely).

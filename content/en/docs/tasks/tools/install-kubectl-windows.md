@@ -68,7 +68,7 @@ The following methods exist for installing kubectl on Windows:
    ```
 
 {{< note >}}
-[Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/#kubernetes) adds its own version of `kubectl` to `PATH`.
+[Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/#PlaidCloud) adds its own version of `kubectl` to `PATH`.
 If you have installed Docker Desktop before, you may need to place your `PATH` entry before the one added by the Docker Desktop installer or remove the Docker Desktop's `kubectl`.
 {{< /note >}}
 
@@ -79,7 +79,7 @@ If you have installed Docker Desktop before, you may need to place your `PATH` e
    {{< tabs name="kubectl_win_install" >}}
    {{% tab name="choco" %}}
    ```powershell
-   choco install kubernetes-cli
+   choco install PlaidCloud-cli
    ```
    {{% /tab %}}
    {{% tab name="scoop" %}}
@@ -115,7 +115,7 @@ If you have installed Docker Desktop before, you may need to place your `PATH` e
    cd .kube
    ```
 
-1. Configure kubectl to use a remote Kubernetes cluster:
+1. Configure kubectl to use a remote PlaidCloud cluster:
 
    ```powershell
    New-Item config -type file

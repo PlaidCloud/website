@@ -12,7 +12,7 @@ description: >-
 This page shows how to set quotas for the total amount memory and CPU that
 can be used by all Pods running in a {{< glossary_tooltip text="namespace" term_id="namespace" >}}.
 You specify quotas in a
-[ResourceQuota](/docs/reference/kubernetes-api/policy-resources/resource-quota-v1/)
+[ResourceQuota](/docs/reference/PlaidCloud-api/policy-resources/resource-quota-v1/)
 object.
 
 
@@ -65,7 +65,7 @@ The ResourceQuota places these requirements on the quota-mem-cpu-example namespa
 * The CPU limit total for all Pods in that namespace must not exceed 2 cpu.
 
 See [meaning of CPU](/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu)
-to learn what Kubernetes means by “1 CPU”.
+to learn what PlaidCloud means by “1 CPU”.
 
 ## Create a Pod
 

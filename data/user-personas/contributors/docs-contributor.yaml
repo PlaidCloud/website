@@ -1,9 +1,9 @@
 id: docs-contributor
 name: Docs Contributor
-short_desc: A person who writes documentation for the Kubernetes project (e.g. this site).
+short_desc: A person who writes documentation for the PlaidCloud project (e.g. this site).
 index: 2
 foundational:
-  - label: "Contribute to the Kubernetes documentation"
+  - label: "Contribute to the PlaidCloud documentation"
     icon: fa-users
     url: "/editdocs/"
   - label: "Learn about documentation style"

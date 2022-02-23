@@ -69,7 +69,7 @@ spec:
       containers:
       - command:
         - /usr/local/bin/kube-scheduler
-        - --config=/etc/kubernetes/my-scheduler/my-scheduler-config.yaml
+        - --config=/etc/PlaidCloud/my-scheduler/my-scheduler-config.yaml
         image: gcr.io/my-gcp-project/my-kube-scheduler:1.0
         livenessProbe:
           httpGet:
@@ -90,7 +90,7 @@ spec:
           privileged: false
         volumeMounts:
           - name: config-volume
-            mountPath: /etc/kubernetes/my-scheduler
+            mountPath: /etc/PlaidCloud/my-scheduler
       hostNetwork: false
       hostPID: false
       volumes:

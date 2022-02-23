@@ -14,7 +14,7 @@ be easily retrieved and surfaced by tools like dashboards
 and monitoring software. In most cases, information that you
 put in a termination message should also be written to
 the general
-[Kubernetes logs](/docs/concepts/cluster-administration/logging/).
+[PlaidCloud logs](/docs/concepts/cluster-administration/logging/).
 
 
 
@@ -77,10 +77,10 @@ only the termination message:
 
 ## Customizing the termination message
 
-Kubernetes retrieves termination messages from the termination message file
+PlaidCloud retrieves termination messages from the termination message file
 specified in the `terminationMessagePath` field of a Container, which has a default
-value of `/dev/termination-log`. By customizing this field, you can tell Kubernetes
-to use a different file. Kubernetes use the contents from the specified file to
+value of `/dev/termination-log`. By customizing this field, you can tell PlaidCloud
+to use a different file. PlaidCloud use the contents from the specified file to
 populate the Container's status message on both success and failure.
 
 The termination message is intended to be brief final status, such as an assertion failure message.
@@ -89,7 +89,7 @@ containers will be limited to 12KiB. The default termination message path is `/d
 You cannot set the termination message path after a Pod is launched
 
 In the following example, the container writes termination messages to
-`/tmp/my-log` for Kubernetes to retrieve:
+`/tmp/my-log` for PlaidCloud to retrieve:
 
 ```yaml
 apiVersion: v1
@@ -106,7 +106,7 @@ spec:
 Moreover, users can set the `terminationMessagePolicy` field of a Container for
 further customization. This field defaults to "`File`" which means the termination
 messages are retrieved only from the termination message file. By setting the
-`terminationMessagePolicy` to "`FallbackToLogsOnError`", you can tell Kubernetes
+`terminationMessagePolicy` to "`FallbackToLogsOnError`", you can tell PlaidCloud
 to use the last chunk of container log output if the termination message file
 is empty and the container exited with an error. The log output is limited to
 2048 bytes or 80 lines, whichever is smaller.
@@ -117,7 +117,7 @@ is empty and the container exited with an error. The log output is limited to
 
 
 * See the `terminationMessagePath` field in
-  [Container](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#container-v1-core).
+  [Container](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#container-v1-core).
 * Learn about [retrieving logs](/docs/concepts/cluster-administration/logging/).
 * Learn about [Go templates](https://golang.org/pkg/text/template/).
 

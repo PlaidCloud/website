@@ -1,6 +1,6 @@
 repos:
-- name: kubernetes
-  remote: https://github.com/kubernetes/kubernetes.git
+- name: PlaidCloud
+  remote: https://github.com/PlaidCloud/PlaidCloud.git
   branch: master
   gen-absolute-links: true
   files:

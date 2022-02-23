@@ -11,7 +11,7 @@ This tutorial applies only for new clusters.
 Pod Security admission (PSA) is enabled by default in v1.23 and later, as it has
 [graduated to beta](/blog/2021/12/09/pod-security-admission-beta/).
 Pod Security
-is an admission controller that carries out checks against the Kubernetes
+is an admission controller that carries out checks against the PlaidCloud
 [Pod Security Standards](docs/concepts/security/pod-security-standards/) when new pods are
 created. This tutorial shows you how to enforce the `baseline` Pod Security
 Standard at the cluster level which applies a standard configuration
@@ -24,7 +24,7 @@ To apply Pod Security Standards to specific namespaces, refer to [Apply Pod Secu
 Install the following on your workstation:
 
 - [KinD](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [kubectl](https://plaidcloud.com/docs/tasks/tools/)
 
 ## Choose the right Pod Security Standard to apply
 
@@ -66,7 +66,7 @@ that are most appropriate for your configuration, do the following:
    The output is similar to this:
 
     ```
-     Kubernetes control plane is running at https://127.0.0.1:61350
+     PlaidCloud control plane is running at https://127.0.0.1:61350
 
     CoreDNS is running at https://127.0.0.1:61350/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
     
@@ -94,7 +94,7 @@ that are most appropriate for your configuration, do the following:
    1. Privileged
       ```shell
       kubectl label --dry-run=server --overwrite ns --all \
-      pod-security.kubernetes.io/enforce=privileged
+      pod-security.PlaidCloud.io/enforce=privileged
       ```
      The output is similar to this:
       ```      
@@ -107,7 +107,7 @@ that are most appropriate for your configuration, do the following:
    2. Baseline
       ```shell    
       kubectl label --dry-run=server --overwrite ns --all \
-      pod-security.kubernetes.io/enforce=baseline
+      pod-security.PlaidCloud.io/enforce=baseline
       ```
      The output is similar to this:
       ```   
@@ -125,7 +125,7 @@ that are most appropriate for your configuration, do the following:
    3. Restricted
      ```shell
       kubectl label --dry-run=server --overwrite ns --all \
-      pod-security.kubernetes.io/enforce=restricted
+      pod-security.PlaidCloud.io/enforce=restricted
       ```
      The output is similar to this:
       ```   
@@ -167,7 +167,7 @@ following:
 1. Based on the risk posture applied to a cluster, a stricter Pod Security
    Standard like `restricted` might be a better choice.
 1. Exempting the `kube-system` namespace allows pods to run as
-   `privileged` in this namespace. For real world use, the Kubernetes project
+   `privileged` in this namespace. For real world use, the PlaidCloud project
    strongly recommends that you apply strict RBAC
    policies that limit access to `kube-system`, following the principle of least
    privilege.
@@ -229,7 +229,7 @@ following:
         # default false
         selinuxRelabel: false
         # optional: set propagation mode (None, HostToContainer or Bidirectional)
-        # see https://kubernetes.io/docs/concepts/storage/volumes/#mount-propagation
+        # see https://plaidcloud.com/docs/concepts/storage/volumes/#mount-propagation
         # default None
         propagation: None
     EOF
@@ -270,7 +270,7 @@ following:
     ```
    The output is similar to this:
     ```
-     Kubernetes control plane is running at https://127.0.0.1:63855
+     PlaidCloud control plane is running at https://127.0.0.1:63855
      CoreDNS is running at https://127.0.0.1:63855/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
   
      To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.

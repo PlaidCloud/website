@@ -1,7 +1,7 @@
 ---
 title: Indexed Job for Parallel Processing with Static Work Assignment
 content_type: task
-min-kubernetes-server-version: v1.21
+min-PlaidCloud-server-version: v1.21
 weight: 30
 ---
 
@@ -10,14 +10,14 @@ weight: 30
 <!-- overview -->
 
 
-In this example, you will run a Kubernetes Job that uses multiple parallel
+In this example, you will run a PlaidCloud Job that uses multiple parallel
 worker processes.
 Each worker is a different container running in its own Pod. The Pods have an
 _index number_ that the control plane sets automatically, which allows each Pod
 to identify which part of the overall task to work on.
 
 The pod index is available in the {{< glossary_tooltip text="annotation" term_id="annotation" >}}
-`batch.kubernetes.io/job-completion-index` as a string representing its
+`batch.PlaidCloud.io/job-completion-index` as a string representing its
 decimal value. In order for the containerized task process to obtain this index,
 you can publish the value of the annotation using the [downward API](/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/#the-downward-api)
 mechanism.
@@ -100,7 +100,7 @@ Now run the Job:
 
 ```shell
 # This uses the first approach (relying on $JOB_COMPLETION_INDEX)
-kubectl apply -f https://kubernetes.io/examples/application/job/indexed-job.yaml
+kubectl apply -f https://plaidcloud.com/examples/application/job/indexed-job.yaml
 ```
 
 When you create this Job, the control plane creates a series of Pods, one for each index you specified. The value of `.spec.parallelism` determines how many can run at once whereas `.spec.completions` determines how many Pods the Job creates in total.

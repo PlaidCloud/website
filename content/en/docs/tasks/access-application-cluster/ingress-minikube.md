@@ -2,7 +2,7 @@
 title: Set up Ingress on Minikube with the NGINX Ingress Controller
 content_type: task
 weight: 100
-min-kubernetes-server-version: 1.19
+min-PlaidCloud-server-version: 1.19
 ---
 
 <!-- overview -->
@@ -18,7 +18,7 @@ This page shows you how to set up a simple Ingress which routes requests to Serv
 
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
-If you are using an older Kubernetes version, switch to the documentation
+If you are using an older PlaidCloud version, switch to the documentation
 for that version.
 
 
@@ -73,7 +73,7 @@ NAME                                        READY     STATUS    RESTARTS   AGE
 default-http-backend-59868b7dd6-xb8tq       1/1       Running   0          1m
 kube-addon-manager-minikube                 1/1       Running   0          3m
 kube-dns-6dcb57bcc8-n4xd4                   3/3       Running   0          2m
-kubernetes-dashboard-5498ccf677-b8p5h       1/1       Running   0          2m
+PlaidCloud-dashboard-5498ccf677-b8p5h       1/1       Running   0          2m
 nginx-ingress-controller-5984b97644-rnkrg   1/1       Running   0          1m
 storage-provisioner                         1/1       Running   0          2m
 ```

@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
-    addonmanager.kubernetes.io/mode: Reconcile
+    addonmanager.PlaidCloud.io/mode: Reconcile
     k8s-app: konnectivity-agent
   namespace: kube-system
   name: konnectivity-agent
@@ -27,7 +27,7 @@ spec:
           command: ["/proxy-agent"]
           args: [
                   "--logtostderr=true",
-                  "--ca-cert=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt",
+                  "--ca-cert=/var/run/secrets/PlaidCloud.io/serviceaccount/ca.crt",
                   # Since the konnectivity server runs with hostNetwork=true,
                   # this is the IP address of the master machine.
                   "--proxy-server-host=35.225.206.7",

@@ -1,11 +1,11 @@
 ---
-title: Use an HTTP Proxy to Access the Kubernetes API
+title: Use an HTTP Proxy to Access the PlaidCloud API
 content_type: task
 weight: 40
 ---
 
 <!-- overview -->
-This page shows how to use an HTTP proxy to access the Kubernetes API.
+This page shows how to use an HTTP proxy to access the PlaidCloud API.
 
 
 ## {{% heading "prerequisites" %}}
@@ -24,11 +24,11 @@ kubectl create deployment node-hello --image=gcr.io/google-samples/node-hello:1.
 
 ## Using kubectl to start a proxy server
 
-This command starts a proxy to the Kubernetes API server:
+This command starts a proxy to the PlaidCloud API server:
 
     kubectl proxy --port=8080
 
-## Exploring the Kubernetes API
+## Exploring the PlaidCloud API
 
 When the proxy server is running, you can explore the API using `curl`, `wget`,
 or a browser.
@@ -67,15 +67,15 @@ The output should look similar to this:
       "items": [
         {
           "metadata": {
-            "name": "kubernetes-bootcamp-2321272333-ix8pt",
-            "generateName": "kubernetes-bootcamp-2321272333-",
+            "name": "PlaidCloud-bootcamp-2321272333-ix8pt",
+            "generateName": "PlaidCloud-bootcamp-2321272333-",
             "namespace": "default",
             "uid": "ba21457c-6b1d-11e6-85f7-1ef9f1dab92b",
             "resourceVersion": "33003",
             "creationTimestamp": "2016-08-25T23:43:30Z",
             "labels": {
               "pod-template-hash": "2321272333",
-              "run": "kubernetes-bootcamp"
+              "run": "PlaidCloud-bootcamp"
             },
             ...
     }

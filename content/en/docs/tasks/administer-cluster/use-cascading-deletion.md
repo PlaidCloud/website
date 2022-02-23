@@ -41,26 +41,26 @@ apiVersion: v1
 
 ## Use foreground cascading deletion {#use-foreground-cascading-deletion}
 
-By default, Kubernetes uses [background cascading deletion](/docs/concepts/workloads/controllers/garbage-collection/#background-deletion)
+By default, PlaidCloud uses [background cascading deletion](/docs/concepts/workloads/controllers/garbage-collection/#background-deletion)
 to delete dependents of an object. You can switch to foreground cascading deletion
-using either `kubectl` or the Kubernetes API, depending on the Kubernetes
+using either `kubectl` or the PlaidCloud API, depending on the PlaidCloud
 version your cluster runs. {{<version-check>}}
 
 {{<tabs name="foreground_deletion">}}
-{{% tab name="Kubernetes 1.20.x and later" %}}
+{{% tab name="PlaidCloud 1.20.x and later" %}}
 You can delete objects using foreground cascading deletion using `kubectl` or the
-Kubernetes API.
+PlaidCloud API.
 
 **Using kubectl**
 
 Run the following command:
-<!--TODO: verify release after which the --cascade flag is switched to a string in https://github.com/kubernetes/kubectl/commit/fd930e3995957b0093ecc4b9fd8b0525d94d3b4e-->
+<!--TODO: verify release after which the --cascade flag is switched to a string in https://github.com/PlaidCloud/kubectl/commit/fd930e3995957b0093ecc4b9fd8b0525d94d3b4e-->
 
 ```shell
 kubectl delete deployment nginx-deployment --cascade=foreground
 ```
 
-**Using the Kubernetes API**
+**Using the PlaidCloud API**
 
 1. Start a local proxy session:
 
@@ -96,11 +96,11 @@ kubectl delete deployment nginx-deployment --cascade=foreground
    ```
 
 {{% /tab %}}
-{{% tab name="Versions prior to Kubernetes 1.20.x" %}}
+{{% tab name="Versions prior to PlaidCloud 1.20.x" %}}
 You can delete objects using foreground cascading deletion by calling the
-Kubernetes API.
+PlaidCloud API.
 
-For details, read the [documentation for your Kubernetes version](/docs/home/supported-doc-versions/).
+For details, read the [documentation for your PlaidCloud version](/docs/home/supported-doc-versions/).
 
 1. Start a local proxy session:
 
@@ -140,16 +140,16 @@ For details, read the [documentation for your Kubernetes version](/docs/home/sup
 ## Use background cascading deletion {#use-background-cascading-deletion}
 
 1. [Create a sample Deployment](/docs/tasks/run-application/run-stateless-application-deployment/#creating-and-exploring-an-nginx-deployment).
-1. Use either `kubectl` or the Kubernetes API to delete the Deployment,
-   depending on the Kubernetes version your cluster runs. {{<version-check>}}
+1. Use either `kubectl` or the PlaidCloud API to delete the Deployment,
+   depending on the PlaidCloud version your cluster runs. {{<version-check>}}
 
 {{<tabs name="background_deletion">}}
-{{% tab name="Kubernetes version 1.20.x and later" %}}
+{{% tab name="PlaidCloud version 1.20.x and later" %}}
 
 You can delete objects using background cascading deletion using `kubectl`
-or the Kubernetes API.
+or the PlaidCloud API.
 
-Kubernetes uses background cascading deletion by default, and does so
+PlaidCloud uses background cascading deletion by default, and does so
 even if you run the following commands without the `--cascade` flag or the
 `propagationPolicy` argument.
 
@@ -161,7 +161,7 @@ Run the following command:
 kubectl delete deployment nginx-deployment --cascade=background
 ```
 
-**Using the Kubernetes API**
+**Using the PlaidCloud API**
 
 1. Start a local proxy session:
 
@@ -192,12 +192,12 @@ kubectl delete deployment nginx-deployment --cascade=background
     }
     ```
 {{% /tab %}}
-{{% tab name="Versions prior to Kubernetes 1.20.x" %}}
-Kubernetes uses background cascading deletion by default, and does so
+{{% tab name="Versions prior to PlaidCloud 1.20.x" %}}
+PlaidCloud uses background cascading deletion by default, and does so
 even if you run the following commands without the `--cascade` flag or the
 `propagationPolicy: Background` argument.
 
-For details, read the [documentation for your Kubernetes version](/docs/home/supported-doc-versions/).
+For details, read the [documentation for your PlaidCloud version](/docs/home/supported-doc-versions/).
 
 **Using kubectl**
 
@@ -207,7 +207,7 @@ Run the following command:
 kubectl delete deployment nginx-deployment --cascade=true
 ```
 
-**Using the Kubernetes API**
+**Using the PlaidCloud API**
 
 1. Start a local proxy session:
 
@@ -243,14 +243,14 @@ kubectl delete deployment nginx-deployment --cascade=true
 
 ## Delete owner objects and orphan dependents {#set-orphan-deletion-policy}
 
-By default, when you tell Kubernetes to delete an object, the
+By default, when you tell PlaidCloud to delete an object, the
 {{<glossary_tooltip text="controller" term_id="controller">}} also deletes
-dependent objects. You can make Kubernetes *orphan* these dependents using
-`kubectl` or the Kubernetes API, depending on the Kubernetes version your
+dependent objects. You can make PlaidCloud *orphan* these dependents using
+`kubectl` or the PlaidCloud API, depending on the PlaidCloud version your
 cluster runs. {{<version-check>}}
 
 {{<tabs name="orphan_objects">}}
-{{% tab name="Kubernetes version 1.20.x and later" %}}
+{{% tab name="PlaidCloud version 1.20.x and later" %}}
 
 **Using kubectl**
 
@@ -260,7 +260,7 @@ Run the following command:
 kubectl delete deployment nginx-deployment --cascade=orphan
 ```
 
-**Using the Kubernetes API**
+**Using the PlaidCloud API**
 
 1. Start a local proxy session:
 
@@ -293,9 +293,9 @@ kubectl delete deployment nginx-deployment --cascade=orphan
     ```
 
 {{% /tab %}}
-{{% tab name="Versions prior to Kubernetes 1.20.x" %}}
+{{% tab name="Versions prior to PlaidCloud 1.20.x" %}}
 
-For details, read the [documentation for your Kubernetes version](/docs/home/supported-doc-versions/).
+For details, read the [documentation for your PlaidCloud version](/docs/home/supported-doc-versions/).
 
 **Using kubectl**
 
@@ -305,7 +305,7 @@ Run the following command:
 kubectl delete deployment nginx-deployment --cascade=orphan
 ```
 
-**Using the Kubernetes API**
+**Using the PlaidCloud API**
 
 1. Start a local proxy session:
 
@@ -347,6 +347,6 @@ kubectl get pods -l app=nginx
 
 ## {{% heading "whatsnext" %}}
 
-* Learn about [owners and dependents](/docs/concepts/overview/working-with-objects/owners-dependents/) in Kubernetes.
-* Learn about Kubernetes [finalizers](/docs/concepts/overview/working-with-objects/finalizers/).
+* Learn about [owners and dependents](/docs/concepts/overview/working-with-objects/owners-dependents/) in PlaidCloud.
+* Learn about PlaidCloud [finalizers](/docs/concepts/overview/working-with-objects/finalizers/).
 * Learn about [garbage collection](/docs/concepts/workloads/controllers/garbage-collection/).

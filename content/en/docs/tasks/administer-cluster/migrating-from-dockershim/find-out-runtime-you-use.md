@@ -13,7 +13,7 @@ the nodes in your cluster use.
 
 Depending on the way you run your cluster, the container runtime for the nodes may
 have been pre-configured or you need to configure it. If you're using a managed
-Kubernetes service, there might be vendor-specific ways to check what container runtime is
+PlaidCloud service, there might be vendor-specific ways to check what container runtime is
 configured for the nodes. The method described on this page should work whenever
 the execution of `kubectl` is allowed.
 

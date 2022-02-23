@@ -1,7 +1,7 @@
 # See the OWNERS docs at https://go.k8s.io/owners
 
 # Localized strings for Vietnamese.
-# Teams and members are visible at https://github.com/orgs/kubernetes/teams.
+# Teams and members are visible at https://github.com/orgs/PlaidCloud/teams.
 
 reviewers:
 - sig-docs-vi-reviews

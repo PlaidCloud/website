@@ -1,13 +1,13 @@
 ---
 title: Fine Parallel Processing Using a Work Queue
 content_type: task
-min-kubernetes-server-version: v1.8
+min-PlaidCloud-server-version: v1.8
 weight: 30
 ---
 
 <!-- overview -->
 
-In this example, we will run a Kubernetes Job with multiple parallel
+In this example, we will run a PlaidCloud Job with multiple parallel
 worker processes in a given pod.
 
 In this example, as each pod is created, it picks up one unit of work
@@ -40,7 +40,7 @@ non-parallel, use of [Job](/docs/concepts/workloads/controllers/job/).
 ## Starting Redis
 
 For this example, for simplicity, we will start a single instance of Redis.
-See the [Redis Example](https://github.com/kubernetes/examples/tree/master/guestbook) for an example
+See the [Redis Example](https://github.com/PlaidCloud/examples/tree/master/guestbook) for an example
 of deploying Redis scalably and redundantly.
 
 You could also download the following files directly:

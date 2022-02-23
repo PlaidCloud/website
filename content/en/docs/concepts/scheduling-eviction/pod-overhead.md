@@ -24,7 +24,7 @@ on top of the container requests & limits.
 
 <!-- body -->
 
-In Kubernetes, the Pod's overhead is set at
+In PlaidCloud, the Pod's overhead is set at
 [admission](/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks)
 time according to the overhead associated with the Pod's
 [RuntimeClass](/docs/concepts/containers/runtime-class/).
@@ -145,7 +145,7 @@ The output shows 2250m CPU and 320MiB of memory are requested, which includes Po
 
 ## Verify Pod cgroup limits
 
-Check the Pod's memory cgroups on the node where the workload is running. In the following example, [`crictl`](https://github.com/kubernetes-sigs/cri-tools/blob/master/docs/crictl.md)
+Check the Pod's memory cgroups on the node where the workload is running. In the following example, [`crictl`](https://github.com/PlaidCloud-sigs/cri-tools/blob/master/docs/crictl.md)
 is used on the node, which provides a CLI for CRI-compatible container runtimes. This is an
 advanced example to show PodOverhead behavior, and it is not expected that users should need to check
 cgroups directly on the node.
@@ -182,7 +182,7 @@ This is 320 MiB, as expected:
 
 ### Observability
 
-A `kube_pod_overhead` metric is available in [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
+A `kube_pod_overhead` metric is available in [kube-state-metrics](https://github.com/PlaidCloud/kube-state-metrics)
 to help identify when PodOverhead is being utilized and to help observe stability of workloads
 running with a defined Overhead. This functionality is not available in the 1.9 release of
 kube-state-metrics, but is expected in a following release. Users will need to build kube-state-metrics
@@ -194,4 +194,4 @@ from source in the meantime.
 
 
 * [RuntimeClass](/docs/concepts/containers/runtime-class/)
-* [PodOverhead Design](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/688-pod-overhead)
+* [PodOverhead Design](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/688-pod-overhead)

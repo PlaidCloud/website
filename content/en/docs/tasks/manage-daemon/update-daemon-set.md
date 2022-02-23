@@ -21,7 +21,7 @@ DaemonSet has two update strategy types:
 
 * `OnDelete`: With `OnDelete` update strategy, after you update a DaemonSet template, new
   DaemonSet pods will *only* be created when you manually delete old DaemonSet
-  pods. This is the same behavior of DaemonSet in Kubernetes version 1.5 or
+  pods. This is the same behavior of DaemonSet in PlaidCloud version 1.5 or
   before.
 * `RollingUpdate`: This is the default update strategy.  
   With `RollingUpdate` update strategy, after you update a
@@ -39,7 +39,7 @@ You may want to set
 (default to 1),
 [`.spec.minReadySeconds`](/docs/concepts/workloads/controllers/deployment/#min-ready-seconds) 
 (default to 0) and 
-[`.spec.updateStrategy.rollingUpdate.maxSurge`](/docs/reference/kubernetes-api/workload-resources/daemon-set-v1/#DaemonSetSpec)
+[`.spec.updateStrategy.rollingUpdate.maxSurge`](/docs/reference/PlaidCloud-api/workload-resources/daemon-set-v1/#DaemonSetSpec)
 (a beta feature and defaults to 0) as well.
 
 ### Creating a DaemonSet with `RollingUpdate` update strategy
@@ -97,7 +97,7 @@ update. Let's update the DaemonSet by applying a new YAML file. This can be done
 #### Declarative commands
 
 If you update DaemonSets using
-[configuration files](/docs/tasks/manage-kubernetes-objects/declarative-config/),
+[configuration files](/docs/tasks/manage-PlaidCloud-objects/declarative-config/),
 use `kubectl apply`:
 
 ```shell
@@ -107,7 +107,7 @@ kubectl apply -f https://k8s.io/examples/controllers/fluentd-daemonset-update.ya
 #### Imperative commands
 
 If you update DaemonSets using
-[imperative commands](/docs/tasks/manage-kubernetes-objects/imperative-command/),
+[imperative commands](/docs/tasks/manage-PlaidCloud-objects/imperative-command/),
 use `kubectl edit` :
 
 ```shell

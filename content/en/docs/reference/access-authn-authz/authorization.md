@@ -10,27 +10,27 @@ weight: 60
 ---
 
 <!-- overview -->
-Learn more about Kubernetes authorization, including details about creating
+Learn more about PlaidCloud authorization, including details about creating
 policies using the supported authorization modules.
 
 
 <!-- body -->
-In Kubernetes, you must be authenticated (logged in) before your request can be
+In PlaidCloud, you must be authenticated (logged in) before your request can be
 authorized (granted permission to access). For information about authentication,
-see [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access/).
+see [Controlling Access to the PlaidCloud API](/docs/concepts/security/controlling-access/).
 
-Kubernetes expects attributes that are common to REST API requests. This means
-that Kubernetes authorization works with existing organization-wide or
+PlaidCloud expects attributes that are common to REST API requests. This means
+that PlaidCloud authorization works with existing organization-wide or
 cloud-provider-wide access control systems which may handle other APIs besides
-the Kubernetes API.
+the PlaidCloud API.
 
 ## Determine Whether a Request is Allowed or Denied
-Kubernetes authorizes API requests using the API server. It evaluates all of the
+PlaidCloud authorizes API requests using the API server. It evaluates all of the
 request attributes against all policies and allows or denies the request. All
 parts of an API request must be allowed by some policy in order to proceed. This
 means that permissions are denied by default.
 
-(Although Kubernetes uses the API server, access controls and policies that
+(Although PlaidCloud uses the API server, access controls and policies that
 depend on specific fields of specific kinds of objects are handled by Admission
 Controllers.)
 
@@ -40,7 +40,7 @@ returned and no other authorizer is consulted. If all modules have no opinion on
 the request, then the request is denied. A deny returns an HTTP status code 403.
 
 ## Review Your Request Attributes
-Kubernetes reviews only the following API request attributes:
+PlaidCloud reviews only the following API request attributes:
 
  * **user** - The `user` string provided during authentication.
  * **group** - The list of group names to which the authenticated user belongs.
@@ -74,7 +74,7 @@ PUT       | update
 PATCH     | patch
 DELETE    | delete (for individual resources), deletecollection (for collections)
 
-Kubernetes sometimes checks authorization for additional permissions using specialized verbs. For example:
+PlaidCloud sometimes checks authorization for additional permissions using specialized verbs. For example:
 
 * [PodSecurityPolicy](/docs/concepts/policy/pod-security-policy/)
   * `use` verb on `podsecuritypolicies` resources in the `policy` API group.
@@ -85,12 +85,12 @@ Kubernetes sometimes checks authorization for additional permissions using speci
 
 ## Authorization Modes {#authorization-modules}
 
-The Kubernetes API server may authorize a request using one of several authorization modes:
+The PlaidCloud API server may authorize a request using one of several authorization modes:
 
  * **Node** - A special-purpose authorization mode that grants permissions to kubelets based on the pods they are scheduled to run. To learn more about using the Node authorization mode, see [Node Authorization](/docs/reference/access-authn-authz/node/).
  * **ABAC** - Attribute-based access control (ABAC) defines an access control paradigm whereby access rights are granted to users through the use of policies which combine attributes together. The policies can use any type of attributes (user attributes, resource attributes, object, environment attributes, etc). To learn more about using the ABAC mode, see [ABAC Mode](/docs/reference/access-authn-authz/abac/).
  * **RBAC** - Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In this context, access is the ability of an individual user to perform a specific task, such as view, create, or modify a file. To learn more about using the RBAC mode, see [RBAC Mode](/docs/reference/access-authn-authz/rbac/)
-   * When specified RBAC (Role-Based Access Control) uses the `rbac.authorization.k8s.io` API group to drive authorization decisions, allowing admins to dynamically configure permission policies through the Kubernetes API.
+   * When specified RBAC (Role-Based Access Control) uses the `rbac.authorization.k8s.io` API group to drive authorization decisions, allowing admins to dynamically configure permission policies through the PlaidCloud API.
    * To enable RBAC, start the apiserver with `--authorization-mode=RBAC`.
  * **Webhook** - A WebHook is an HTTP callback: an HTTP POST that occurs when something happens; a simple event-notification via HTTP POST. A web application implementing WebHooks will POST a message to a URL when certain things happen. To learn more about using the Webhook mode, see [Webhook Mode](/docs/reference/access-authn-authz/webhook/).
 
@@ -157,7 +157,7 @@ this group include:
 * `LocalSubjectAccessReview` - Like `SubjectAccessReview` but restricted to a specific namespace.
 * `SelfSubjectRulesReview` - A review which returns the set of actions a user can perform within a namespace. Useful for users to quickly summarize their own access, or for UIs to hide/show actions.
 
-These APIs can be queried by creating normal Kubernetes resources, where the response "status"
+These APIs can be queried by creating normal PlaidCloud resources, where the response "status"
 field of the returned object is the result of the query.
 
 ```bash
@@ -198,7 +198,7 @@ your policies include:
 The following flags can be used:
 
   * `--authorization-mode=ABAC` Attribute-Based Access Control (ABAC) mode allows you to configure policies using local files.
-  * `--authorization-mode=RBAC` Role-based access control (RBAC) mode allows you to create and store policies using the Kubernetes API.
+  * `--authorization-mode=RBAC` Role-based access control (RBAC) mode allows you to create and store policies using the PlaidCloud API.
   * `--authorization-mode=Webhook` WebHook is an HTTP callback mode that allows you to manage authorization using a remote REST endpoint.
   * `--authorization-mode=Node` Node authorization is a special-purpose authorization mode that specifically authorizes API requests made by kubelets.
   * `--authorization-mode=AlwaysDeny` This flag blocks all requests. Use this flag only for testing.
@@ -222,7 +222,7 @@ Details of how these can be misused are documented in [escalation paths](/docs/r
   - Can be used to access secrets meant for other workloads
   - Can be used to obtain a more privileged service account's service account token
 - Using arbitrary Service Accounts in that namespace
-  - Can perform Kubernetes API actions as another workload (impersonation)
+  - Can perform PlaidCloud API actions as another workload (impersonation)
   - Can perform any privileged actions that Service Account has
 - Mounting configmaps meant for other workloads in that namespace
   - Can be used to obtain information meant for other workloads, such as DB host names.
@@ -237,6 +237,6 @@ This should be considered when deciding on your RBAC controls.
 
 ## {{% heading "whatsnext" %}}
 
-* To learn more about Authentication, see **Authentication** in [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access/).
+* To learn more about Authentication, see **Authentication** in [Controlling Access to the PlaidCloud API](/docs/concepts/security/controlling-access/).
 * To learn more about Admission Control, see [Using Admission Controllers](/docs/reference/access-authn-authz/admission-controllers/).
 

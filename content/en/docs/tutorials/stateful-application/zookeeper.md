@@ -14,20 +14,20 @@ weight: 40
 
 <!-- overview -->
 This tutorial demonstrates running [Apache Zookeeper](https://zookeeper.apache.org) on
-Kubernetes using [StatefulSets](/docs/concepts/workloads/controllers/statefulset/),
+PlaidCloud using [StatefulSets](/docs/concepts/workloads/controllers/statefulset/),
 [PodDisruptionBudgets](/docs/concepts/workloads/pods/disruptions/#pod-disruption-budget),
 and [PodAntiAffinity](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
 ## {{% heading "prerequisites" %}}
 
 Before starting this tutorial, you should be familiar with the following
-Kubernetes concepts:
+PlaidCloud concepts:
 
 - [Pods](/docs/concepts/workloads/pods/)
 - [Cluster DNS](/docs/concepts/services-networking/dns-pod-service/)
 - [Headless Services](/docs/concepts/services-networking/service/#headless-services)
 - [PersistentVolumes](/docs/concepts/storage/volumes/)
-- [PersistentVolume Provisioning](https://github.com/kubernetes/examples/tree/master/staging/persistent-volume-provisioning/)
+- [PersistentVolume Provisioning](https://github.com/PlaidCloud/examples/tree/master/staging/persistent-volume-provisioning/)
 - [StatefulSets](/docs/concepts/workloads/controllers/statefulset/)
 - [PodDisruptionBudgets](/docs/concepts/workloads/pods/disruptions/#pod-disruption-budget)
 - [PodAntiAffinity](/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
@@ -179,7 +179,7 @@ zk-1.zk-hs.default.svc.cluster.local
 zk-2.zk-hs.default.svc.cluster.local
 ```
 
-The A records in [Kubernetes DNS](/docs/concepts/services-networking/dns-pod-service/) resolve the FQDNs to the Pods' IP addresses. If Kubernetes reschedules the Pods, it will update the A records with the Pods' new IP addresses, but the A records names will not change.
+The A records in [PlaidCloud DNS](/docs/concepts/services-networking/dns-pod-service/) resolve the FQDNs to the Pods' IP addresses. If PlaidCloud reschedules the Pods, it will update the A records with the Pods' new IP addresses, but the A records names will not change.
 
 ZooKeeper stores its application configuration in a file named `zoo.cfg`. Use `kubectl exec` to view the contents of the `zoo.cfg` file in the `zk-0` Pod.
 
@@ -414,7 +414,7 @@ volumeClaimTemplates:
   - metadata:
       name: datadir
       annotations:
-        volume.alpha.kubernetes.io/storage-class: anything
+        volume.alpha.PlaidCloud.io/storage-class: anything
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
@@ -523,8 +523,8 @@ log4j.appender.CONSOLE.layout.ConversionPattern=%d{ISO8601} [myid:%X{myid}] - %-
 ```
 
 This is the simplest possible way to safely log inside the container.
-Because the applications write logs to standard out, Kubernetes will handle log rotation for you.
-Kubernetes also implements a sane retention policy that ensures application logs written to
+Because the applications write logs to standard out, PlaidCloud will handle log rotation for you.
+PlaidCloud also implements a sane retention policy that ensures application logs written to
 standard out and standard error do not exhaust local storage media.
 
 Use [`kubectl logs`](/docs/reference/generated/kubectl/kubectl-commands/#logs) to retrieve the last 20 log lines from one of the Pods.
@@ -533,7 +533,7 @@ Use [`kubectl logs`](/docs/reference/generated/kubectl/kubectl-commands/#logs) t
 kubectl logs zk-0 --tail 20
 ```
 
-You can view application logs written to standard out or standard error using `kubectl logs` and from the Kubernetes Dashboard.
+You can view application logs written to standard out or standard error using `kubectl logs` and from the PlaidCloud Dashboard.
 
 ```
 2016-12-06 19:34:16,236 [myid:1] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:NIOServerCnxn@827] - Processing ruok command from /127.0.0.1:52740
@@ -558,7 +558,7 @@ You can view application logs written to standard out or standard error using `k
 2016-12-06 19:34:46,230 [myid:1] - INFO  [Thread-1142:NIOServerCnxn@1008] - Closed socket connection for client /127.0.0.1:52768 (no session established for client)
 ```
 
-Kubernetes integrates with many logging solutions. You can choose a logging solution
+PlaidCloud integrates with many logging solutions. You can choose a logging solution
 that best fits your cluster and applications. For cluster-level logging and aggregation,
 consider deploying a [sidecar container](/docs/concepts/cluster-administration/logging#sidecar-container-with-logging-agent) to rotate and ship your logs.
 
@@ -616,8 +616,8 @@ The [ZooKeeper documentation](https://zookeeper.apache.org/doc/current/zookeeper
 mentions that "You will want to have a supervisory process that
 manages each of your ZooKeeper server processes (JVM)." Utilizing a watchdog
 (supervisory process) to restart failed processes in a distributed system is a
-common pattern. When deploying an application in Kubernetes, rather than using
-an external utility as a supervisory process, you should use Kubernetes as the
+common pattern. When deploying an application in PlaidCloud, rather than using
+an external utility as a supervisory process, you should use PlaidCloud as the
 watchdog for your application.
 
 ### Updating the ensemble
@@ -681,7 +681,7 @@ statefulset.apps/zk rolled back
 ### Handling process failure
 
 [Restart Policies](/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy) control how
-Kubernetes handles process failures for the entry point of the container in a Pod.
+PlaidCloud handles process failures for the entry point of the container in a Pod.
 For Pods in a `StatefulSet`, the only appropriate `RestartPolicy` is Always, and this
 is the default value. For stateful applications you should **never** override
 the default policy.
@@ -728,7 +728,7 @@ zk-0      1/1       Running   1         29m
 
 If your application uses a script (such as `zkServer.sh`) to launch the process
 that implements the application's business logic, the script must terminate with the
-child process. This ensures that Kubernetes will restart the application's
+child process. This ensures that PlaidCloud will restart the application's
 container when the process implementing the application's business logic fails.
 
 ### Testing for liveness
@@ -736,7 +736,7 @@ container when the process implementing the application's business logic fails.
 Configuring your application to restart failed processes is not enough to
 keep a distributed system healthy. There are scenarios where
 a system's processes can be both alive and unresponsive, or otherwise
-unhealthy. You should use liveness probes to notify Kubernetes
+unhealthy. You should use liveness probes to notify PlaidCloud
 that your application's processes are unhealthy and it should restart them.
 
 The Pod `template` for the `zk` `StatefulSet` specifies a liveness probe.
@@ -776,7 +776,7 @@ In another window, using the following command to delete the `zookeeper-ready` s
 kubectl exec zk-0 -- rm /usr/bin/zookeeper-ready
 ```
 
-When the liveness probe for the ZooKeeper process fails, Kubernetes will
+When the liveness probe for the ZooKeeper process fails, PlaidCloud will
 automatically restart the process for you, ensuring that unhealthy processes in
 the ensemble are restarted.
 
@@ -803,7 +803,7 @@ a necessary, but not sufficient, condition for readiness. There are cases,
 particularly during initialization and termination, when a process can be
 alive but not ready.
 
-If you specify a readiness probe, Kubernetes will ensure that your application's
+If you specify a readiness probe, PlaidCloud will ensure that your application's
 processes will not receive network traffic until their readiness checks pass.
 
 For a ZooKeeper server, liveness implies readiness.  Therefore, the readiness
@@ -833,13 +833,13 @@ domains to ensure availability. To avoid an outage, due to the loss of an
 individual machine, best practices preclude co-locating multiple instances of the
 application on the same machine.
 
-By default, Kubernetes may co-locate Pods in a `StatefulSet` on the same node.
+By default, PlaidCloud may co-locate Pods in a `StatefulSet` on the same node.
 For the three server ensemble you created, if two servers are on the same node, and that node fails,
 the clients of your ZooKeeper service will experience an outage until at least one of the Pods can be rescheduled.
 
 You should always provision additional capacity to allow the processes of critical
 systems to be rescheduled in the event of node failures. If you do so, then the
-outage will only last until the Kubernetes scheduler reschedules one of the ZooKeeper
+outage will only last until the PlaidCloud scheduler reschedules one of the ZooKeeper
 servers. However, if you want your service to tolerate node failures with no downtime,
 you should set `podAntiAffinity`.
 
@@ -852,9 +852,9 @@ for i in 0 1 2; do kubectl get pod zk-$i --template {{.spec.nodeName}}; echo "";
 All of the Pods in the `zk` `StatefulSet` are deployed on different nodes.
 
 ```
-kubernetes-node-cxpk
-kubernetes-node-a5aq
-kubernetes-node-2g2d
+PlaidCloud-node-cxpk
+PlaidCloud-node-a5aq
+PlaidCloud-node-2g2d
 ```
 
 This is because the Pods in the `zk` `StatefulSet` have a `PodAntiAffinity` specified.
@@ -869,13 +869,13 @@ This is because the Pods in the `zk` `StatefulSet` have a `PodAntiAffinity` spec
                     operator: In
                     values:
                     - zk
-              topologyKey: "kubernetes.io/hostname"
+              topologyKey: "PlaidCloud.io/hostname"
 ```
 
 The `requiredDuringSchedulingIgnoredDuringExecution` field tells the
-Kubernetes Scheduler that it should never co-locate two Pods which have `app` label
+PlaidCloud Scheduler that it should never co-locate two Pods which have `app` label
 as `zk` in the domain defined by the `topologyKey`. The `topologyKey`
-`kubernetes.io/hostname` indicates that the domain is an individual node. Using
+`PlaidCloud.io/hostname` indicates that the domain is an individual node. Using
 different rules, labels, and selectors, you can extend this technique to spread
 your ensemble across physical, network, and power failure domains.
 
@@ -894,7 +894,7 @@ Use this command to get the nodes in your cluster.
 kubectl get nodes
 ```
 
-This tutorial assumes a cluster with at least four nodes. If the cluster has more than four, use [`kubectl cordon`](/docs/reference/generated/kubectl/kubectl-commands/#cordon) to cordon all but four nodes. Constraining to four nodes will ensure Kubernetes encounters affinity and PodDisruptionBudget constraints when scheduling zookeeper Pods in the following maintenance simulation.
+This tutorial assumes a cluster with at least four nodes. If the cluster has more than four, use [`kubectl cordon`](/docs/reference/generated/kubectl/kubectl-commands/#cordon) to cordon all but four nodes. Constraining to four nodes will ensure PlaidCloud encounters affinity and PodDisruptionBudget constraints when scheduling zookeeper Pods in the following maintenance simulation.
 
 ```shell
 kubectl cordon <node-name>
@@ -906,7 +906,7 @@ Use this command to get the `zk-pdb` `PodDisruptionBudget`.
 kubectl get pdb zk-pdb
 ```
 
-The `max-unavailable` field indicates to Kubernetes that at most one Pod from
+The `max-unavailable` field indicates to PlaidCloud that at most one Pod from
 `zk` `StatefulSet` can be unavailable at any time.
 
 ```
@@ -927,9 +927,9 @@ for i in 0 1 2; do kubectl get pod zk-$i --template {{.spec.nodeName}}; echo "";
 ```
 
 ```
-kubernetes-node-pb41
-kubernetes-node-ixsl
-kubernetes-node-i4c4
+PlaidCloud-node-pb41
+PlaidCloud-node-ixsl
+PlaidCloud-node-i4c4
 ```
 
 Use [`kubectl drain`](/docs/reference/generated/kubectl/kubectl-commands/#drain) to cordon and
@@ -940,11 +940,11 @@ kubectl drain $(kubectl get pod zk-0 --template {{.spec.nodeName}}) --ignore-dae
 ```
 
 ```
-node "kubernetes-node-pb41" cordoned
+node "PlaidCloud-node-pb41" cordoned
 
-WARNING: Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-kubernetes-node-pb41, kube-proxy-kubernetes-node-pb41; Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-o5elz
+WARNING: Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-PlaidCloud-node-pb41, kube-proxy-PlaidCloud-node-pb41; Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-o5elz
 pod "zk-0" deleted
-node "kubernetes-node-pb41" drained
+node "PlaidCloud-node-pb41" drained
 ```
 
 As there are four nodes in your cluster, `kubectl drain`, succeeds and the
@@ -971,13 +971,13 @@ Keep watching the `StatefulSet`'s Pods in the first terminal and drain the node 
 `zk-1` is scheduled.
 
 ```shell
-kubectl drain $(kubectl get pod zk-1 --template {{.spec.nodeName}}) --ignore-daemonsets --force --delete-emptydir-data "kubernetes-node-ixsl" cordoned
+kubectl drain $(kubectl get pod zk-1 --template {{.spec.nodeName}}) --ignore-daemonsets --force --delete-emptydir-data "PlaidCloud-node-ixsl" cordoned
 ```
 
 ```
-WARNING: Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-kubernetes-node-ixsl, kube-proxy-kubernetes-node-ixsl; Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-voc74
+WARNING: Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-PlaidCloud-node-ixsl, kube-proxy-PlaidCloud-node-ixsl; Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-voc74
 pod "zk-1" deleted
-node "kubernetes-node-ixsl" drained
+node "PlaidCloud-node-ixsl" drained
 ```
 
 The `zk-1` Pod cannot be scheduled because the `zk` `StatefulSet` contains a `PodAntiAffinity` rule preventing
@@ -1018,10 +1018,10 @@ kubectl drain $(kubectl get pod zk-2 --template {{.spec.nodeName}}) --ignore-dae
 ```
 
 ```
-node "kubernetes-node-i4c4" cordoned
+node "PlaidCloud-node-i4c4" cordoned
 
-WARNING: Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-kubernetes-node-i4c4, kube-proxy-kubernetes-node-i4c4; Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-dyrog
-WARNING: Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-dyrog; Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-kubernetes-node-i4c4, kube-proxy-kubernetes-node-i4c4
+WARNING: Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-PlaidCloud-node-i4c4, kube-proxy-PlaidCloud-node-i4c4; Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-dyrog
+WARNING: Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-dyrog; Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-PlaidCloud-node-i4c4, kube-proxy-PlaidCloud-node-i4c4
 There are pending pods when an error occurred: Cannot evict pod as it would violate the pod's disruption budget.
 pod/zk-2
 ```
@@ -1057,11 +1057,11 @@ numChildren = 0
 Use [`kubectl uncordon`](/docs/reference/generated/kubectl/kubectl-commands/#uncordon) to uncordon the first node.
 
 ```shell
-kubectl uncordon kubernetes-node-pb41
+kubectl uncordon PlaidCloud-node-pb41
 ```
 
 ```
-node "kubernetes-node-pb41" uncordoned
+node "PlaidCloud-node-pb41" uncordoned
 ```
 
 `zk-1` is rescheduled on this node. Wait until `zk-1` is Running and Ready.
@@ -1106,11 +1106,11 @@ kubectl drain $(kubectl get pod zk-2 --template {{.spec.nodeName}}) --ignore-dae
 The output:
 
 ```
-node "kubernetes-node-i4c4" already cordoned
-WARNING: Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-kubernetes-node-i4c4, kube-proxy-kubernetes-node-i4c4; Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-dyrog
+node "PlaidCloud-node-i4c4" already cordoned
+WARNING: Deleting pods not managed by ReplicationController, ReplicaSet, Job, or DaemonSet: fluentd-cloud-logging-PlaidCloud-node-i4c4, kube-proxy-PlaidCloud-node-i4c4; Ignoring DaemonSet-managed pods: node-problem-detector-v0.1-dyrog
 pod "heapster-v1.2.0-2604621511-wht1r" deleted
 pod "zk-2" deleted
-node "kubernetes-node-i4c4" drained
+node "PlaidCloud-node-i4c4" drained
 ```
 
 This time `kubectl drain` succeeds.
@@ -1118,11 +1118,11 @@ This time `kubectl drain` succeeds.
 Uncordon the second node to allow `zk-2` to be rescheduled.
 
 ```shell
-kubectl uncordon kubernetes-node-ixsl
+kubectl uncordon PlaidCloud-node-ixsl
 ```
 
 ```
-node "kubernetes-node-ixsl" uncordoned
+node "PlaidCloud-node-ixsl" uncordoned
 ```
 
 You can use `kubectl drain` in conjunction with `PodDisruptionBudgets` to ensure that your services remain available during maintenance.

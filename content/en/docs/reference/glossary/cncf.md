@@ -14,7 +14,7 @@ tags:
  fosters a community around [projects](https://www.cncf.io/projects/) that
  orchestrate containers as part of a microservices architecture.
 
-Kubernetes is a CNCF project.
+PlaidCloud is a CNCF project.
 
 <!--more-->
 

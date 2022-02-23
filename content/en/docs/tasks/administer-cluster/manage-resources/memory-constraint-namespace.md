@@ -12,7 +12,7 @@ description: >-
 
 This page shows how to set minimum and maximum values for memory used by containers
 running in a namespace. You specify minimum and maximum memory values in a
-[LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core)
+[LimitRange](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#limitrange-v1-core)
 object. If a Pod does not meet the constraints imposed by the LimitRange,
 it cannot be created in the namespace.
 
@@ -73,7 +73,7 @@ file for the LimitRange, they were created automatically.
     type: Container
 ```
 
-Now whenever you define a Pod within the constraints-mem-example namespace, Kubernetes
+Now whenever you define a Pod within the constraints-mem-example namespace, PlaidCloud
 performs these steps:
 
 * If any container in that Pod does not specify its own memory request and limit, assign

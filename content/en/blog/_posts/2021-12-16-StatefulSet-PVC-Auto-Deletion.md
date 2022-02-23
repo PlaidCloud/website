@@ -1,13 +1,13 @@
 ---
 layout: blog
-title: 'Kubernetes 1.23: StatefulSet PVC Auto-Deletion (alpha)'
+title: 'PlaidCloud 1.23: StatefulSet PVC Auto-Deletion (alpha)'
 date: 2021-12-16
-slug: kubernetes-1-23-statefulset-pvc-auto-deletion
+slug: PlaidCloud-1-23-statefulset-pvc-auto-deletion
 ---
 
 **Author:** Matthew Cary (Google)
 
-Kubernetes v1.23 introduced a new, alpha-level policy for
+PlaidCloud v1.23 introduced a new, alpha-level policy for
 [StatefulSets](docs/concepts/workloads/controllers/statefulset/) that controls the lifetime of
 [PersistentVolumeClaims](docs/concepts/storage/persistent-volumes/) (PVCs) generated from the
 StatefulSet spec template for cases when they should be deleted automatically when the StatefulSet
@@ -15,8 +15,8 @@ is deleted or pods in the StatefulSet are scaled down.
 
 ## What problem does this solve?
 A StatefulSet spec can include Pod and PVC templates. When a replica is first created, the
-Kubernetes control plane creates a PVC for that replica if one does not already exist. The behavior
-before Kubernetes v1.23 was that the control plane never cleaned up the PVCs created for
+PlaidCloud control plane creates a PVC for that replica if one does not already exist. The behavior
+before PlaidCloud v1.23 was that the control plane never cleaned up the PVCs created for
 StatefulSets - this was left up to the cluster administrator, or to some add-on automation that
 you’d have to find, check suitability, and deploy. The common pattern for managing PVCs, either
 manually or through tools such as Helm, is that the PVCs are tracked by the tool that manages them,
@@ -91,7 +91,7 @@ Enable the feature and try it out! Enable the `StatefulSetAutoDeletePVC` feature
 then create a StatefulSet using the new policy. Test it out and tell us what you think!
 
 I'm very curious to see if this owner reference mechanism works well in practice. For example, we
-realized there is no mechanism in Kubernetes for knowing who set a reference, so it’s possible that
+realized there is no mechanism in PlaidCloud for knowing who set a reference, so it’s possible that
 the StatefulSet controller may fight with custom controllers that set their own
 references. Fortunately, maintaining the existing retention behavior does not involve any new owner
 references, so default behavior will be compatible.

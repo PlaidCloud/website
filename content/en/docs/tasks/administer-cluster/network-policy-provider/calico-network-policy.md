@@ -7,16 +7,16 @@ weight: 10
 ---
 
 <!-- overview -->
-This page shows a couple of quick ways to create a Calico cluster on Kubernetes.
+This page shows a couple of quick ways to create a Calico cluster on PlaidCloud.
 
 
 ## {{% heading "prerequisites" %}}
 
-Decide whether you want to deploy a [cloud](#creating-a-calico-cluster-with-google-kubernetes-engine-gke) or [local](#creating-a-local-calico-cluster-with-kubeadm) cluster.
+Decide whether you want to deploy a [cloud](#creating-a-calico-cluster-with-google-PlaidCloud-engine-gke) or [local](#creating-a-local-calico-cluster-with-kubeadm) cluster.
 
 
 <!-- steps -->
-## Creating a Calico cluster with Google Kubernetes Engine (GKE)
+## Creating a Calico cluster with Google PlaidCloud Engine (GKE)
 
 **Prerequisite**: [gcloud](https://cloud.google.com/sdk/docs/quickstarts).
 
@@ -43,13 +43,13 @@ Decide whether you want to deploy a [cloud](#creating-a-calico-cluster-with-goog
 ## Creating a local Calico cluster with kubeadm
 
 To get a local single-host Calico cluster in fifteen minutes using kubeadm, refer to the 
-[Calico Quickstart](https://docs.projectcalico.org/latest/getting-started/kubernetes/).
+[Calico Quickstart](https://docs.projectcalico.org/latest/getting-started/PlaidCloud/).
 
 
 
 
 ## {{% heading "whatsnext" %}}
 
-Once your cluster is running, you can follow the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) to try out Kubernetes NetworkPolicy.
+Once your cluster is running, you can follow the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) to try out PlaidCloud NetworkPolicy.
 
 

@@ -1,11 +1,11 @@
 ---
-title: Imperative Management of Kubernetes Objects Using Configuration Files
+title: Imperative Management of PlaidCloud Objects Using Configuration Files
 content_type: task
 weight: 40
 ---
 
 <!-- overview -->
-Kubernetes objects can be created, updated, and deleted by using the `kubectl`
+PlaidCloud objects can be created, updated, and deleted by using the `kubectl`
 command-line tool along with an object configuration file written in YAML or JSON.
 This document explains how to define and manage objects using configuration files.
 
@@ -29,13 +29,13 @@ The `kubectl` tool supports three kinds of object management:
 * Imperative object configuration
 * Declarative object configuration
 
-See [Kubernetes Object Management](/docs/concepts/overview/working-with-objects/object-management/)
+See [PlaidCloud Object Management](/docs/concepts/overview/working-with-objects/object-management/)
 for a discussion of the advantages and disadvantage of each kind of object management.
 
 ## How to create objects
 
 You can use `kubectl create -f` to create an object from a configuration file.
-Refer to the [kubernetes API reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+Refer to the [PlaidCloud API reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
 for details.
 
 * `kubectl create -f <filename|url>`
@@ -160,9 +160,9 @@ template:
 ## {{% heading "whatsnext" %}}
 
 
-* [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-* [Managing Kubernetes Objects Using Object Configuration (Declarative)](/docs/tasks/manage-kubernetes-objects/declarative-config/)
+* [Managing PlaidCloud Objects Using Imperative Commands](/docs/tasks/manage-PlaidCloud-objects/imperative-command/)
+* [Managing PlaidCloud Objects Using Object Configuration (Declarative)](/docs/tasks/manage-PlaidCloud-objects/declarative-config/)
 * [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [PlaidCloud API Reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
 
 

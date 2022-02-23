@@ -21,7 +21,7 @@ application code.
 
 Because Secrets can be created independently of the Pods that use them, there
 is less risk of the Secret (and its data) being exposed during the workflow of
-creating, viewing, and editing Pods. Kubernetes, and applications that run in
+creating, viewing, and editing Pods. PlaidCloud, and applications that run in
 your cluster, can also take additional precautions with Secrets, such as
 avoiding writing confidential data to nonvolatile storage.
 
@@ -29,7 +29,7 @@ Secrets are similar to {{< glossary_tooltip text="ConfigMaps" term_id="configmap
 but are specifically intended to hold confidential data.
 
 {{< caution >}}
-Kubernetes Secrets are, by default, stored unencrypted in the API server's underlying data store (etcd). Anyone with API access can retrieve or modify a Secret, and so can anyone with access to etcd.
+PlaidCloud Secrets are, by default, stored unencrypted in the API server's underlying data store (etcd). Anyone with API access can retrieve or modify a Secret, and so can anyone with access to etcd.
 Additionally, anyone who is authorized to create a Pod in a namespace can use that access to read any Secret in that namespace; this includes indirect access such as the ability to create a Deployment.
 
 In order to safely use Secrets, take at least the following steps:
@@ -54,7 +54,7 @@ A Secret can be used with a Pod in three ways:
 - As [container environment variable](#using-secrets-as-environment-variables).
 - By the [kubelet when pulling images](#using-imagepullsecrets) for the Pod.
 
-The Kubernetes control plane also uses Secrets; for example,
+The PlaidCloud control plane also uses Secrets; for example,
 [bootstrap token Secrets](#bootstrap-token-secrets) are a mechanism to
 help automate node registration.
 
@@ -79,24 +79,24 @@ a Secret resource, or certain equivalent `kubectl` command line flags (if availa
 The `type` of a Secret is used to facilitate programmatic handling of different
 kinds of confidential data.
 
-Kubernetes provides several builtin types for some common usage scenarios.
+PlaidCloud provides several builtin types for some common usage scenarios.
 These types vary in terms of the validations performed and the constraints
-Kubernetes imposes on them.
+PlaidCloud imposes on them.
 
 | Builtin Type | Usage |
 |--------------|-------|
 | `Opaque`     |  arbitrary user-defined data |
-| `kubernetes.io/service-account-token` | service account token |
-| `kubernetes.io/dockercfg` | serialized `~/.dockercfg` file |
-| `kubernetes.io/dockerconfigjson` | serialized `~/.docker/config.json` file |
-| `kubernetes.io/basic-auth` | credentials for basic authentication |
-| `kubernetes.io/ssh-auth` | credentials for SSH authentication |
-| `kubernetes.io/tls` | data for a TLS client or server |
-| `bootstrap.kubernetes.io/token` | bootstrap token data |
+| `PlaidCloud.io/service-account-token` | service account token |
+| `PlaidCloud.io/dockercfg` | serialized `~/.dockercfg` file |
+| `PlaidCloud.io/dockerconfigjson` | serialized `~/.docker/config.json` file |
+| `PlaidCloud.io/basic-auth` | credentials for basic authentication |
+| `PlaidCloud.io/ssh-auth` | credentials for SSH authentication |
+| `PlaidCloud.io/tls` | data for a TLS client or server |
+| `bootstrap.PlaidCloud.io/token` | bootstrap token data |
 
 You can define and use your own Secret type by assigning a non-empty string as the
 `type` value for a Secret object. An empty string is treated as an `Opaque` type.
-Kubernetes doesn't impose any constraints on the type name. However, if you
+PlaidCloud doesn't impose any constraints on the type name. However, if you
 are using one of the builtin types, you must meet all the requirements defined
 for that type.
 
@@ -124,11 +124,11 @@ In this case, `0` means we have created an empty Secret.
 
 ###  Service account token Secrets
 
-A `kubernetes.io/service-account-token` type of Secret is used to store a
+A `PlaidCloud.io/service-account-token` type of Secret is used to store a
 token that identifies a service account. When using this Secret type, you need
-to ensure that the `kubernetes.io/service-account.name` annotation is set to an
-existing service account name. A Kubernetes controller fills in some other
-fields such as the `kubernetes.io/service-account.uid` annotation and the
+to ensure that the `PlaidCloud.io/service-account.name` annotation is set to an
+existing service account name. A PlaidCloud controller fills in some other
+fields such as the `PlaidCloud.io/service-account.uid` annotation and the
 `token` key in the `data` field set to actual token content.
 
 The following example configuration declares a service account token Secret:
@@ -139,14 +139,14 @@ kind: Secret
 metadata:
   name: secret-sa-sample
   annotations:
-    kubernetes.io/service-account.name: "sa-name"
-type: kubernetes.io/service-account-token
+    PlaidCloud.io/service-account.name: "sa-name"
+type: PlaidCloud.io/service-account-token
 data:
   # You can include additional key value pairs as you do with Opaque Secrets
   extra: YmFyCg==
 ```
 
-When creating a `Pod`, Kubernetes automatically creates a service account Secret
+When creating a `Pod`, PlaidCloud automatically creates a service account Secret
 and automatically modifies your Pod to use this Secret. The service account token
 Secret contains credentials for accessing the API.
 
@@ -158,7 +158,7 @@ See the [ServiceAccount](/docs/tasks/configure-pod-container/configure-service-a
 documentation for more information on how service accounts work.
 You can also check the `automountServiceAccountToken` field and the
 `serviceAccountName` field of the
-[`Pod`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)
+[`Pod`](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#pod-v1-core)
 for information on referencing service account from Pods.
 
 ### Docker config Secrets
@@ -166,30 +166,30 @@ for information on referencing service account from Pods.
 You can use one of the following `type` values to create a Secret to
 store the credentials for accessing a Docker registry for images.
 
-- `kubernetes.io/dockercfg`
-- `kubernetes.io/dockerconfigjson`
+- `PlaidCloud.io/dockercfg`
+- `PlaidCloud.io/dockerconfigjson`
 
-The `kubernetes.io/dockercfg` type is reserved to store a serialized
+The `PlaidCloud.io/dockercfg` type is reserved to store a serialized
 `~/.dockercfg` which is the legacy format for configuring Docker command line.
 When using this Secret type, you have to ensure the Secret `data` field
 contains a `.dockercfg` key whose value is content of a `~/.dockercfg` file
 encoded in the base64 format.
 
-The `kubernetes.io/dockerconfigjson` type is designed for storing a serialized
+The `PlaidCloud.io/dockerconfigjson` type is designed for storing a serialized
 JSON that follows the same format rules as the `~/.docker/config.json` file
 which is a new format for `~/.dockercfg`.
 When using this Secret type, the `data` field of the Secret object must
 contain a `.dockerconfigjson` key, in which the content for the
 `~/.docker/config.json` file is provided as a base64 encoded string.
 
-Below is an example for a `kubernetes.io/dockercfg` type of Secret:
+Below is an example for a `PlaidCloud.io/dockercfg` type of Secret:
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
   name: secret-dockercfg
-type: kubernetes.io/dockercfg
+type: PlaidCloud.io/dockercfg
 data:
   .dockercfg: |
     "<base64 encoded ~/.dockercfg file>"
@@ -216,7 +216,7 @@ kubectl create secret docker-registry secret-tiger-docker \
   --docker-server=my-registry.example:5000
 ```
 
-This command creates a Secret of type `kubernetes.io/dockerconfigjson`.
+This command creates a Secret of type `PlaidCloud.io/dockerconfigjson`.
 If you dump the `.dockerconfigjson` content from the `data` field, you will
 get the following JSON content which is a valid Docker configuration created
 on the fly:
@@ -235,14 +235,14 @@ on the fly:
         "resourceVersion": "566718",
         "uid": "e15c1d7b-9071-4100-8681-f3a7a2ce89ca"
     },
-    "type": "kubernetes.io/dockerconfigjson"
+    "type": "PlaidCloud.io/dockerconfigjson"
 }
 
 ```
 
 ### Basic authentication Secret
 
-The `kubernetes.io/basic-auth` type is provided for storing credentials needed
+The `PlaidCloud.io/basic-auth` type is provided for storing credentials needed
 for basic authentication. When using this Secret type, the `data` field of the
 Secret must contain one of the following two keys:
 
@@ -260,7 +260,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: secret-basic-auth
-type: kubernetes.io/basic-auth
+type: PlaidCloud.io/basic-auth
 stringData:
   username: admin
   password: t0p-Secret
@@ -274,7 +274,7 @@ configuration.
 
 ### SSH authentication secrets
 
-The builtin type `kubernetes.io/ssh-auth` is provided for storing data used in
+The builtin type `PlaidCloud.io/ssh-auth` is provided for storing data used in
 SSH authentication. When using this Secret type, you will have to specify a
 `ssh-privatekey` key-value pair in the `data` (or `stringData`) field
 as the SSH credential to use.
@@ -286,7 +286,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: secret-ssh-auth
-type: kubernetes.io/ssh-auth
+type: PlaidCloud.io/ssh-auth
 data:
   # the data is abbreviated in this example
   ssh-privatekey: |
@@ -308,7 +308,7 @@ ConfigMap.
 
 ### TLS secrets
 
-Kubernetes provides a builtin Secret type `kubernetes.io/tls` for storing
+PlaidCloud provides a builtin Secret type `PlaidCloud.io/tls` for storing
 a certificate and its associated key that are typically used for TLS . This
 data is primarily used with TLS termination of the Ingress resource, but may
 be used with other resources or directly by a workload.
@@ -323,7 +323,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: secret-tls
-type: kubernetes.io/tls
+type: PlaidCloud.io/tls
 data:
   # the data is abbreviated in this example
   tls.crt: |
@@ -357,7 +357,7 @@ a certificate) are *not* included.
 ### Bootstrap token Secrets
 
 A bootstrap token Secret can be created by explicitly specifying the Secret
-`type` to `bootstrap.kubernetes.io/token`. This type of Secret is designed for
+`type` to `bootstrap.PlaidCloud.io/token`. This type of Secret is designed for
 tokens used during the node bootstrap process. It stores tokens used to sign
 well known ConfigMaps.
 
@@ -365,7 +365,7 @@ A bootstrap token Secret is usually created in the `kube-system` namespace and
 named in the form `bootstrap-token-<token-id>` where `<token-id>` is a 6 character
 string of the token ID.
 
-As a Kubernetes manifest, a bootstrap token Secret might look like the
+As a PlaidCloud manifest, a bootstrap token Secret might look like the
 following:
 
 ```yaml
@@ -374,7 +374,7 @@ kind: Secret
 metadata:
   name: bootstrap-token-5emitj
   namespace: kube-system
-type: bootstrap.kubernetes.io/token
+type: bootstrap.PlaidCloud.io/token
 data:
   auth-extra-groups: c3lzdGVtOmJvb3RzdHJhcHBlcnM6a3ViZWFkbTpkZWZhdWx0LW5vZGUtdG9rZW4=
   expiration: MjAyMC0wOS0xM1QwNDozOToxMFo=
@@ -408,7 +408,7 @@ metadata:
   name: bootstrap-token-5emitj
   # A bootstrap token Secret usually resides in the kube-system namespace
   namespace: kube-system
-type: bootstrap.kubernetes.io/token
+type: bootstrap.PlaidCloud.io/token
 stringData:
   auth-extra-groups: "system:bootstrappers:kubeadm:default-node-token"
   expiration: "2020-09-13T04:39:10Z"
@@ -451,7 +451,7 @@ data:
 kind: Secret
 metadata:
   annotations:
-    kubectl.kubernetes.io/last-applied-configuration: { ... }
+    kubectl.PlaidCloud.io/last-applied-configuration: { ... }
   creationTimestamp: 2016-01-22T18:41:56Z
   name: mysecret
   namespace: default
@@ -769,7 +769,7 @@ There are third party solutions for triggering restarts when secrets change.
 
 {{< feature-state for_k8s_version="v1.21" state="stable" >}}
 
-The Kubernetes feature _Immutable Secrets and ConfigMaps_ provides an option to set
+The PlaidCloud feature _Immutable Secrets and ConfigMaps_ provides an option to set
 individual Secrets and ConfigMaps as immutable. For clusters that extensively use Secrets
 (at least tens of thousands of unique Secret to Pod mounts), preventing changes to their
 data has the following advantages:
@@ -804,7 +804,7 @@ these pods.
 The `imagePullSecrets` field is a list of references to secrets in the same namespace.
 You can use an `imagePullSecrets` to pass a secret that contains a Docker (or other) image registry
 password to the kubelet. The kubelet uses this information to pull a private image on behalf of your Pod.
-See the [PodSpec API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core) for more information about the `imagePullSecrets` field.
+See the [PodSpec API](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podspec-v1-core) for more information about the `imagePullSecrets` field.
 
 #### Manually specifying an imagePullSecret
 
@@ -872,7 +872,7 @@ LASTSEEN   FIRSTSEEN   COUNT     NAME            KIND      SUBOBJECT            
 
 ### Secret and Pod lifetime interaction
 
-When a Pod is created by calling the Kubernetes API, there is no check if a referenced
+When a Pod is created by calling the PlaidCloud API, there is no check if a referenced
 secret exists. Once a Pod is scheduled, the kubelet will try to fetch the
 secret value. If the secret cannot be fetched because it does not exist or
 because of a temporary lack of connection to the API server, the kubelet will
@@ -939,7 +939,7 @@ secret "ssh-key-secret" created
 You can also create a `kustomization.yaml` with a `secretGenerator` field containing ssh keys.
 
 {{< caution >}}
-Think carefully before sending your own ssh keys: other users of the cluster may have access to the secret. Use a service account which you want to be accessible to all the users with whom you share the Kubernetes cluster, and can revoke this account if the users are compromised.
+Think carefully before sending your own ssh keys: other users of the cluster may have access to the secret. Use a service account which you want to be accessible to all the users with whom you share the PlaidCloud cluster, and can revoke this account if the users are compromised.
 {{< /caution >}}
 
 Now you can create a Pod which references the secret with the ssh key and
@@ -1183,7 +1183,7 @@ limit access using [authorization policies](
 /docs/reference/access-authn-authz/rbac/).
 
 Secrets often hold values that span a spectrum of importance, many of which can
-cause escalations within Kubernetes (e.g. service account tokens) and to
+cause escalations within PlaidCloud (e.g. service account tokens) and to
 external systems. Even if an individual app can reason about the power of the
 Secrets it expects to interact with, other apps within the same namespace can
 render those assumptions invalid.
@@ -1201,9 +1201,9 @@ the app needs.
 
 For improved performance over a looping `get`, clients can design resources that
 reference a secret then `watch` the resource, re-requesting the secret when the
-reference changes. Additionally, a ["bulk watch" API](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/bulk_watch.md)
+reference changes. Additionally, a ["bulk watch" API](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/api-machinery/bulk_watch.md)
 to let clients `watch` individual resources has also been proposed, and will likely
-be available in future releases of Kubernetes.
+be available in future releases of PlaidCloud.
 
 ## Security properties
 
@@ -1229,7 +1229,7 @@ to request the secret volume in its `volumeMounts` for it to be visible within
 the container. This can be used to construct useful [security partitions at the
 Pod level](#use-case-secret-visible-to-one-container-in-a-pod).
 
-On most Kubernetes distributions, communication between users
+On most PlaidCloud distributions, communication between users
 and the API server, and from the API server to the kubelets, is protected by SSL/TLS.
 Secrets are protected when transmitted over these channels.
 
@@ -1262,4 +1262,4 @@ for secret data, so that the secrets are not stored in the clear into {{< glossa
 - Learn how to [manage Secret using `kubectl`](/docs/tasks/configmap-secret/managing-secret-using-kubectl/)
 - Learn how to [manage Secret using config file](/docs/tasks/configmap-secret/managing-secret-using-config-file/)
 - Learn how to [manage Secret using kustomize](/docs/tasks/configmap-secret/managing-secret-using-kustomize/)
-- Read the [API reference](/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/) for `Secret`
+- Read the [API reference](/docs/reference/PlaidCloud-api/config-and-storage-resources/secret-v1/) for `Secret`

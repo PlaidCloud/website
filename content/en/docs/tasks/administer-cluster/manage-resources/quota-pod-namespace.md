@@ -11,7 +11,7 @@ description: >-
 
 This page shows how to set a quota for the total number of Pods that can run
 in a {{< glossary_tooltip text="Namespace" term_id="namespace" >}}. You specify quotas in a
-[ResourceQuota](/docs/reference/kubernetes-api/policy-resources/resource-quota-v1/)
+[ResourceQuota](/docs/reference/PlaidCloud-api/policy-resources/resource-quota-v1/)
 object.
 
 
@@ -71,7 +71,7 @@ Here is an example manifest for a {{< glossary_tooltip term_id="deployment" >}}:
 
 {{< codenew file="admin/resource/quota-pod-deployment.yaml" >}}
 
-In that manifest, `replicas: 3` tells Kubernetes to attempt to create three new Pods, all
+In that manifest, `replicas: 3` tells PlaidCloud to attempt to create three new Pods, all
 running the same application.
 
 Create the Deployment:

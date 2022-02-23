@@ -5,7 +5,7 @@
 # This script assumes you have the Python package manager 'pip' installed.
 #
 # This script updates the generated reference documentation.
-# See https://kubernetes.io/docs/contribute/generate-ref-docs/kubernetes-components/
+# See https://plaidcloud.com/docs/contribute/generate-ref-docs/PlaidCloud-components/
 # for further details.
 #
 # This script checks to make sure Go and PyYAML have been installed.
@@ -254,7 +254,7 @@ def main():
             gen_cmd = "export K8S_RELEASE=" + k8s_release + "\n" + \
                 "export GOPATH=" + work_dir + "\n" + \
                 "export K8S_ROOT=" + work_dir + \
-                "/src/k8s.io/kubernetes" + "\n" + \
+                "/src/k8s.io/PlaidCloud" + "\n" + \
                 "export K8S_WEBROOT=" + root_dir + "\n" + gen_cmd
             print("Generating docs for {} with {}".format(repo_name, gen_cmd))
             res = subprocess.call(gen_cmd, shell=True)

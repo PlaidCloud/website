@@ -2,7 +2,7 @@
 title: Device Plugin
 id: device-plugin
 date: 2019-02-02
-full_link: /docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/
+full_link: /docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/
 short_description: >
   Software extensions to let Pods access devices that need vendor-specific initialization or setup
 aka:
@@ -25,5 +25,5 @@ You can deploy a device plugin as a {{< glossary_tooltip term_id="daemonset" >}}
 or install the device plugin software directly on each target Node.
 
 See
-[Device Plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
+[Device Plugins](/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/)
 for more information.

@@ -4,14 +4,14 @@ metadata:
   name: fluentd-gcp-v2.0
   labels:
     k8s-app: fluentd-gcp
-    kubernetes.io/cluster-service: "true"
-    addonmanager.kubernetes.io/mode: Reconcile
+    PlaidCloud.io/cluster-service: "true"
+    addonmanager.PlaidCloud.io/mode: Reconcile
     version: v2.0
 spec:
   selector:
     matchLabels:
       k8s-app: fluentd-gcp
-      kubernetes.io/cluster-service: "true"
+      PlaidCloud.io/cluster-service: "true"
       version: v2.0
   updateStrategy:
     type: RollingUpdate
@@ -19,13 +19,13 @@ spec:
     metadata:
       labels:
         k8s-app: fluentd-gcp
-        kubernetes.io/cluster-service: "true"
+        PlaidCloud.io/cluster-service: "true"
         version: v2.0
       # This annotation ensures that fluentd does not get evicted if the node
       # supports critical pod annotation based priority scheme.
       # Note that this does not guarantee admission on the nodes (#40573).
       annotations:
-        scheduler.alpha.kubernetes.io/critical-pod: ''
+        scheduler.alpha.PlaidCloud.io/critical-pod: ''
     spec:
       dnsPolicy: Default
       containers:
@@ -93,9 +93,9 @@ spec:
                 exit 1;
               fi;
       nodeSelector:
-        beta.kubernetes.io/fluentd-ds-ready: "true"
+        beta.PlaidCloud.io/fluentd-ds-ready: "true"
       tolerations:
-      - key: "node.alpha.kubernetes.io/ismaster"
+      - key: "node.alpha.PlaidCloud.io/ismaster"
         effect: "NoSchedule"
       terminationGracePeriodSeconds: 30
       volumes:

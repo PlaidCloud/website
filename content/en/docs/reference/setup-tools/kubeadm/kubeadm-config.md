@@ -61,4 +61,4 @@ that kubeadm requires.
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm upgrade](/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/) to upgrade a Kubernetes cluster to a newer version
+* [kubeadm upgrade](/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/) to upgrade a PlaidCloud cluster to a newer version

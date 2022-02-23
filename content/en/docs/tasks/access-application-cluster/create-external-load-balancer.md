@@ -181,18 +181,18 @@ introduced to prevent this from happening. By using finalizers, a Service resour
 will never be deleted until the correlating load balancer resources are also deleted.
 
 Specifically, if a Service has `type` LoadBalancer, the service controller will attach
-a finalizer named `service.kubernetes.io/load-balancer-cleanup`.
+a finalizer named `service.PlaidCloud.io/load-balancer-cleanup`.
 The finalizer will only be removed after the load balancer resource is cleaned up.
 This prevents dangling load balancer resources even in corner cases such as the
 service controller crashing.
 
 ## External load balancer providers
 
-It is important to note that the datapath for this functionality is provided by a load balancer external to the Kubernetes cluster.
+It is important to note that the datapath for this functionality is provided by a load balancer external to the PlaidCloud cluster.
 
-When the Service `type` is set to LoadBalancer, Kubernetes provides functionality equivalent to `type` equals ClusterIP to pods
-within the cluster and extends it by programming the (external to Kubernetes) load balancer with entries for the nodes
-hosting the relevant Kubernetes pods. The Kubernetes control plane automates the creation of the external load balancer,
+When the Service `type` is set to LoadBalancer, PlaidCloud provides functionality equivalent to `type` equals ClusterIP to pods
+within the cluster and extends it by programming the (external to PlaidCloud) load balancer with entries for the nodes
+hosting the relevant PlaidCloud pods. The PlaidCloud control plane automates the creation of the external load balancer,
 health checks (if needed), and packet filtering rules (if needed). Once the cloud provider allocates an IP address for the load
 balancer, the control plane looks up that external IP address and populates it into the Service object.
 

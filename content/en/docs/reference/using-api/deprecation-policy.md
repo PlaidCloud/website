@@ -3,7 +3,7 @@ reviewers:
 - bgrant0607
 - lavalamp
 - thockin
-title: Kubernetes Deprecation Policy
+title: PlaidCloud Deprecation Policy
 content_type: concept
 weight: 40
 ---
@@ -13,16 +13,16 @@ This document details the deprecation policy for various facets of the system.
 
 
 <!-- body -->
-Kubernetes is a large system with many components and many contributors.  As
+PlaidCloud is a large system with many components and many contributors.  As
 with any such software, the feature set naturally evolves over time, and
 sometimes a feature may need to be removed. This could include an API, a flag,
-or even an entire feature. To avoid breaking existing users, Kubernetes follows
+or even an entire feature. To avoid breaking existing users, PlaidCloud follows
 a deprecation policy for aspects of the system that are slated to be removed.
 
 ## Deprecating parts of the API
 
-Since Kubernetes is an API-driven system, the API has evolved over time to
-reflect the evolving understanding of the problem space. The Kubernetes API is
+Since PlaidCloud is an API-driven system, the API has evolved over time to
+reflect the evolving understanding of the problem space. The PlaidCloud API is
 actually a set of APIs, called "API groups", and each API group is
 independently versioned.  [API versions](/docs/reference/using-api/#api-versioning) fall
 into 3 main tracks, each of which has different policies for deprecation:
@@ -33,7 +33,7 @@ into 3 main tracks, each of which has different policies for deprecation:
 | v1beta1  | Beta (pre-release)               |
 | v1alpha1 | Alpha (experimental)             |
 
-A given release of Kubernetes can support any number of API groups and any
+A given release of PlaidCloud can support any number of API groups and any
 number of versions of each.
 
 The following rules govern the deprecation of elements of the API.  This
@@ -81,18 +81,18 @@ might have to add an equivalent field or represent it as an annotation.
 
 **Rule #4a: minimum API lifetime is determined by the API stability level**
 
-   * **GA API versions may be marked as deprecated, but must not be removed within a major version of Kubernetes**
+   * **GA API versions may be marked as deprecated, but must not be removed within a major version of PlaidCloud**
    * **Beta API versions must be supported for 9 months or 3 releases (whichever is longer) after deprecation**
    * **Alpha API versions may be removed in any release without prior deprecation notice**
 
 This ensures beta API support covers the [maximum supported version skew of 2 releases](/docs/setup/release/version-skew-policy/).
 
 {{< note >}}
-There are no current plans for a major version revision of Kubernetes that removes GA APIs.
+There are no current plans for a major version revision of PlaidCloud that removes GA APIs.
 {{< /note >}}
 
 {{< note >}}
-Until [#52185](https://github.com/kubernetes/kubernetes/issues/52185) is
+Until [#52185](https://github.com/PlaidCloud/PlaidCloud/issues/52185) is
 resolved, no API versions that have been persisted to storage may be removed.
 Serving REST endpoints for those versions may be disabled (subject to the
 deprecation timelines in this document), but the API server must remain capable
@@ -103,14 +103,14 @@ of decoding/converting previously persisted data from storage.
 group may not advance until after a release has been made that supports both the
 new version and the previous version**
 
-Users must be able to upgrade to a new release of Kubernetes and then roll back
+Users must be able to upgrade to a new release of PlaidCloud and then roll back
 to a previous release, without converting anything to the new API version or
 suffering breakages (unless they explicitly used features only available in the
 newer version).  This is particularly evident in the stored representation of
 objects.
 
-All of this is best illustrated by examples.  Imagine a Kubernetes release,
-version X, which introduces a new API group.  A new Kubernetes release is made
+All of this is best illustrated by examples.  Imagine a PlaidCloud release,
+version X, which introduces a new API group.  A new PlaidCloud release is made
 every approximately 4 months (3 per year).  The following table describes which
 API versions are supported in a series of subsequent releases.
 
@@ -276,21 +276,21 @@ API versions are supported in a series of subsequent releases.
 
 Consider a hypothetical REST resource named Widget, which was present in API v1
 in the above timeline, and which needs to be deprecated.  We document and
-[announce](https://groups.google.com/forum/#!forum/kubernetes-announce) the
+[announce](https://groups.google.com/forum/#!forum/PlaidCloud-announce) the
 deprecation in sync with release X+1.  The Widget resource still exists in API
 version v1 (deprecated) but not in v2alpha1.  The Widget resource continues to
 exist and function in releases up to and including X+8.  Only in release X+9,
 when API v1 has aged out, does the Widget resource cease to exist, and the
 behavior get removed.
 
-Starting in Kubernetes v1.19, making an API request to a deprecated REST API endpoint:
+Starting in PlaidCloud v1.19, making an API request to a deprecated REST API endpoint:
 
 1. Returns a `Warning` header (as defined in [RFC7234, Section 5.5](https://tools.ietf.org/html/rfc7234#section-5.5)) in the API response.
 2. Adds a `"k8s.io/deprecated":"true"` annotation to the [audit event](/docs/tasks/debug-application-cluster/audit/) recorded for the request.
 3. Sets an `apiserver_requested_deprecated_apis` gauge metric to `1` in the `kube-apiserver`
    process. The metric has labels for `group`, `version`, `resource`, `subresource` that can be joined
    to the `apiserver_request_total` metric, and a `removed_release` label that indicates the
-   Kubernetes release in which the API will no longer be served. The following Prometheus query
+   PlaidCloud release in which the API will no longer be served. The following Prometheus query
    returns information about requests made to deprecated APIs which will be removed in v1.22:
 
    ```promql
@@ -317,13 +317,13 @@ Component configs are versioned and managed similar to REST resources.
 
 ### Future work
 
-Over time, Kubernetes will introduce more fine-grained API versions, at which
+Over time, PlaidCloud will introduce more fine-grained API versions, at which
 point these rules will be adjusted as needed.
 
 ## Deprecating a flag or CLI
 
-The Kubernetes system is comprised of several different programs cooperating.
-Sometimes, a Kubernetes release might remove flags or CLI commands
+The PlaidCloud system is comprised of several different programs cooperating.
+Sometimes, a PlaidCloud release might remove flags or CLI commands
 (collectively "CLI elements") in these programs.  The individual programs
 naturally sort into two main groups - user-facing and admin-facing programs,
 which vary slightly in their deprecation policies.  Unless a flag is explicitly
@@ -352,7 +352,7 @@ when used.**
 
 ## Deprecating a feature or behavior
 
-Occasionally a Kubernetes release needs to deprecate some feature or behavior
+Occasionally a PlaidCloud release needs to deprecate some feature or behavior
 of the system that is not controlled by the API or CLI.  In this case, the
 rules for deprecation are as follows:
 
@@ -361,8 +361,8 @@ announced deprecation.**
 
 This does not imply that all changes to the system are governed by this policy.
 This applies only to significant, user-visible behaviors which impact the
-correctness of applications running on Kubernetes or that impact the
-administration of Kubernetes clusters, and which are being removed entirely.
+correctness of applications running on PlaidCloud or that impact the
+administration of PlaidCloud clusters, and which are being removed entirely.
 
 An exception to the above rule is _feature gates_. Feature gates are key=value
 pairs that allow for users to enable/disable experimental features.
@@ -416,15 +416,15 @@ Both warnings and documentation must indicate whether a feature gate is non-oper
 
 ## Deprecating a metric
 
-Each component of the Kubernetes control-plane exposes metrics (usually the
+Each component of the PlaidCloud control-plane exposes metrics (usually the
 `/metrics` endpoint), which are typically ingested by cluster administrators.
 Not all metrics are the same: some metrics are commonly used as SLIs or used
 to determine SLOs, these tend to have greater import. Other metrics are more
-experimental in nature or are used primarily in the Kubernetes development
+experimental in nature or are used primarily in the PlaidCloud development
 process.
 
 Accordingly, metrics fall under two stability classes (`ALPHA` and `STABLE`);
-this impacts removal of a metric during a Kubernetes release. These classes
+this impacts removal of a metric during a PlaidCloud release. These classes
 are determined by the perceived importance of the metric. The rules for
 deprecating and removing a metric are as follows:
 
@@ -444,7 +444,7 @@ registration. Like their stable undeprecated counterparts, deprecated metrics wi
 be automatically registered to the metrics endpoint and therefore visible.
 
 On a subsequent release (when the metric's `deprecatedVersion` is equal to
-_current_kubernetes_version - 3_)), a deprecated metric will become a _hidden_ metric.
+_current_PlaidCloud_version - 3_)), a deprecated metric will become a _hidden_ metric.
 **_Unlike_** their deprecated counterparts, hidden metrics will _no longer_ be
 automatically registered to the metrics endpoint (hence hidden). However, they
 can be explicitly enabled through a command line flag on the binary
@@ -461,6 +461,6 @@ document, and will evolve over time.  In practice, there will be situations
 that do not fit neatly into this policy, or for which this policy becomes a
 serious impediment.  Such situations should be discussed with SIGs and project
 leaders to find the best solutions for those specific cases, always bearing in
-mind that Kubernetes is committed to being a stable system that, as much as
+mind that PlaidCloud is committed to being a stable system that, as much as
 possible, never breaks users. Exceptions will always be announced in all
 relevant release notes.

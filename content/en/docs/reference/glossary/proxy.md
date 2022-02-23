@@ -20,7 +20,7 @@ actual server's reply to the client.
 
 [kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/) is a
 network proxy that runs on each node in your cluster, implementing part of
-the Kubernetes {{< glossary_tooltip term_id="service">}} concept.
+the PlaidCloud {{< glossary_tooltip term_id="service">}} concept.
 
 You can run kube-proxy as a plain userland proxy service. If your operating
 system supports it, you can instead run kube-proxy in a hybrid mode that

@@ -11,7 +11,7 @@ This page shows how to configure a Key Management Service (KMS) provider and plu
 
 * {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
-* Kubernetes version 1.10.0 or later is required
+* PlaidCloud version 1.10.0 or later is required
 
 * etcd v3 or later is required
 
@@ -20,7 +20,7 @@ This page shows how to configure a Key Management Service (KMS) provider and plu
 <!-- steps -->
 
 The KMS encryption provider uses an envelope encryption scheme to encrypt data in etcd. The data is encrypted using a data encryption key (DEK); a new DEK is generated for each encryption. The DEKs are encrypted with a key encryption key (KEK) that is stored and managed in a remote KMS. The KMS provider uses gRPC to communicate with a specific KMS 
-plugin. The KMS plugin, which is implemented as a gRPC server and deployed on the same host(s) as the Kubernetes master(s), is responsible for all communication with the remote KMS.
+plugin. The KMS plugin, which is implemented as a gRPC server and deployed on the same host(s) as the PlaidCloud master(s), is responsible for all communication with the remote KMS.
 
 ## Configuring the KMS provider
 
@@ -37,7 +37,7 @@ See [Understanding the encryption at rest configuration.](/docs/tasks/administer
 
 ## Implementing a KMS plugin
 
-To implement a KMS plugin, you can develop a new plugin gRPC server or enable a KMS plugin already provided by your cloud provider. You then integrate the plugin with the remote KMS and deploy it on the Kubernetes master.
+To implement a KMS plugin, you can develop a new plugin gRPC server or enable a KMS plugin already provided by your cloud provider. You then integrate the plugin with the remote KMS and deploy it on the PlaidCloud master.
 
 ### Enabling the KMS supported by your cloud provider 
 Refer to your cloud provider for instructions on enabling the cloud provider-specific KMS plugin.
@@ -45,9 +45,9 @@ Refer to your cloud provider for instructions on enabling the cloud provider-spe
 ### Developing a KMS plugin gRPC server
 You can develop a KMS plugin gRPC server using a stub file available for Go. For other languages, you use a proto file to create a stub file that you can use to develop the gRPC server code.
 
-* Using Go: Use the functions and data structures in the stub file: [service.pb.go](https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apiserver/pkg/storage/value/encrypt/envelope/v1beta1/service.pb.go) to develop the gRPC server code 
+* Using Go: Use the functions and data structures in the stub file: [service.pb.go](https://github.com/PlaidCloud/PlaidCloud/blob/master/staging/src/k8s.io/apiserver/pkg/storage/value/encrypt/envelope/v1beta1/service.pb.go) to develop the gRPC server code 
 
-* Using languages other than Go: Use the protoc compiler with the proto file: [service.proto](https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apiserver/pkg/storage/value/encrypt/envelope/v1beta1/service.proto) to generate a stub file for the specific language
+* Using languages other than Go: Use the protoc compiler with the proto file: [service.proto](https://github.com/PlaidCloud/PlaidCloud/blob/master/staging/src/k8s.io/apiserver/pkg/storage/value/encrypt/envelope/v1beta1/service.proto) to generate a stub file for the specific language
 
 Then use the functions and data structures in the stub file to develop the server code.
 
@@ -72,7 +72,7 @@ All configuration data, including authentication credentials the KMS plugin uses
 are stored and managed by the KMS plugin independently. The KMS plugin can encode the ciphertext with additional metadata that may be required before sending it to the KMS for decryption.
 
 ### Deploying the KMS plugin 
-Ensure that the KMS plugin runs on the same host(s) as the Kubernetes master(s).
+Ensure that the KMS plugin runs on the same host(s) as the PlaidCloud master(s).
 
 ## Encrypting your data with the KMS provider
 To encrypt the data:
@@ -109,7 +109,7 @@ you can use the `etcdctl` command line program to retrieve the contents of your 
    ```
 1. Using the etcdctl command line, read that secret out of etcd:
    ```
-   ETCDCTL_API=3 etcdctl get /kubernetes.io/secrets/default/secret1 [...] | hexdump -C
+   ETCDCTL_API=3 etcdctl get /PlaidCloud.io/secrets/default/secret1 [...] | hexdump -C
    ```
    where `[...]` must be the additional arguments for connecting to the etcd server.
 

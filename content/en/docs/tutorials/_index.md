@@ -8,7 +8,7 @@ content_type: concept
 
 <!-- overview -->
 
-This section of the Kubernetes documentation contains tutorials.
+This section of the PlaidCloud documentation contains tutorials.
 A tutorial shows how to accomplish a goal that is larger than a single
 [task](/docs/tasks/). Typically a tutorial has several sections,
 each of which has a sequence of steps.
@@ -19,9 +19,9 @@ Before walking through each tutorial, you may want to bookmark the
 
 ## Basics
 
-* [Kubernetes Basics](/docs/tutorials/kubernetes-basics/) is an in-depth interactive tutorial that helps you understand the Kubernetes system and try out some basic Kubernetes features.
+* [PlaidCloud Basics](/docs/tutorials/PlaidCloud-basics/) is an in-depth interactive tutorial that helps you understand the PlaidCloud system and try out some basic PlaidCloud features.
 
-* [Introduction to Kubernetes (edX)](https://www.edx.org/course/introduction-kubernetes-linuxfoundationx-lfs158x#)
+* [Introduction to PlaidCloud (edX)](https://www.edx.org/course/introduction-PlaidCloud-linuxfoundationx-lfs158x#)
 
 * [Hello Minikube](/docs/tutorials/hello-minikube/)
 

@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: flowcontrol.apiserver.k8s.io/v1beta2`
@@ -117,7 +117,7 @@ FlowSchemaSpec describes how the FlowSchema's specification looks like.
 
       - **rules.subjects.group.name** (string), required
 
-        name is the user group that matches, or "*" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.
+        name is the user group that matches, or "*" to match all user groups. See https://github.com/PlaidCloud/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.
 
     - **rules.subjects.serviceAccount** (ServiceAccountSubject)
 

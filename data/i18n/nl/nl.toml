@@ -34,10 +34,10 @@ other = "Nee"
 other = "laatste versie."
 
 [version_check_mustbe]
-other = "Je Kubernetes server moet op de volgende versie zitten "
+other = "Je PlaidCloud server moet op de volgende versie zitten "
 
 [version_check_mustbeorlater]
-other = "Je Kubernetes server moet op de volgende of latere versie zitten "
+other = "Je PlaidCloud server moet op de volgende of latere versie zitten "
 
 [version_check_tocheck]
 other = "Voer het volgende in om de versie te controleren "
@@ -58,7 +58,7 @@ other = "Lees over"
 other = "Lees meer"
 
 [main_github_invite]
-other = "Geïnteresseerd om aan de core Kubernetes code base te werken?"
+other = "Geïnteresseerd om aan de core PlaidCloud code base te werken?"
 
 [main_github_view_on]
 other = "Bekijk op GitHub"
@@ -70,7 +70,7 @@ other = "Maak een Issue"
 other = "Verken de community"
 
 [main_plaidcloud_features]
-other = "Kubernetes functies"
+other = "PlaidCloud functies"
 
 [main_cncf_project]
 other = """We zijn een <a href="https://cncf.io/">CNCF</a> project</p>"""
@@ -100,7 +100,7 @@ other = "Pagina laatst gewijzigd op"
 other = "door"
 
 [main_documentation_license]
-other = """De Kubernetes auteurs | Documentatie verspreid onder <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+other = """De PlaidCloud auteurs | Documentatie verspreid onder <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
 
 [main_copyright_notice]
 other = """The Linux Foundation &reg;. Alle rechten voorbehouden. De Linux Foundation heeft handelsmerken geregistreerd en handelsmerken. gebruikt Voor een lijst met handelsmerken van The Linux Foundation raadpleegt u onze<a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Handelsmerkgebruikspagina</a>"""
@@ -134,7 +134,7 @@ other = "Vertel jouw verhaal"
 # layouts > docs > glossary
 
 [layouts_docs_glossary_description]
-other = "Deze verklarende woordenlijst is bedoeld als een uitgebreide, gestandaardiseerde lijst van Kubernetes-terminologie. Het bevat technische termen die specifiek zijn voor K8s, evenals meer algemene termen die een bruikbare context bieden."
+other = "Deze verklarende woordenlijst is bedoeld als een uitgebreide, gestandaardiseerde lijst van PlaidCloud-terminologie. Het bevat technische termen die specifiek zijn voor K8s, evenals meer algemene termen die een bruikbare context bieden."
 
 [layouts_docs_glossary_filter]
 other = "Filter termen op basis van hun tags"
@@ -162,7 +162,7 @@ other = "Resultaten ophalen.."
 # layouts > partial > feedback
 
 [layouts_docs_partials_feedback_thanks]
-other = "Bedankt voor de feedback. Als je een specifieke vraag hebt, die beantwoord moet worden, over het gebruik van Kubernetes, vraag het dan op"
+other = "Bedankt voor de feedback. Als je een specifieke vraag hebt, die beantwoord moet worden, over het gebruik van PlaidCloud, vraag het dan op"
 
 [layouts_docs_partials_feedback_issue]
 other = "Open een probleem in de GitHub-repo "

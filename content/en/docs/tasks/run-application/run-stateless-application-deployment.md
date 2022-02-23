@@ -1,13 +1,13 @@
 ---
 title: Run a Stateless Application Using a Deployment
-min-kubernetes-server-version: v1.9
+min-PlaidCloud-server-version: v1.9
 content_type: tutorial
 weight: 10
 ---
 
 <!-- overview -->
 
-This page shows how to run an application using a Kubernetes Deployment object.
+This page shows how to run an application using a PlaidCloud Deployment object.
 
 
 
@@ -34,7 +34,7 @@ This page shows how to run an application using a Kubernetes Deployment object.
 
 ## Creating and exploring an nginx deployment
 
-You can run an application by creating a Kubernetes Deployment object, and you
+You can run an application by creating a PlaidCloud Deployment object, and you
 can describe a Deployment in a YAML file. For example, this YAML file describes
 a Deployment that runs the nginx:1.14.2 Docker image:
 
@@ -55,7 +55,7 @@ a Deployment that runs the nginx:1.14.2 Docker image:
         Namespace:    default
         CreationTimestamp:  Tue, 30 Aug 2016 18:11:37 -0700
         Labels:     app=nginx
-        Annotations:    deployment.kubernetes.io/revision=1
+        Annotations:    deployment.PlaidCloud.io/revision=1
         Selector:   app=nginx
         Replicas:   2 desired | 2 updated | 2 total | 2 available | 0 unavailable
         StrategyType:   RollingUpdate
@@ -144,7 +144,7 @@ Delete the deployment by name:
 
 The preferred way to create a replicated application is to use a Deployment,
 which in turn uses a ReplicaSet. Before the Deployment and ReplicaSet were
-added to Kubernetes, replicated applications were configured using a
+added to PlaidCloud, replicated applications were configured using a
 [ReplicationController](/docs/concepts/workloads/controllers/replicationcontroller/).
 
 

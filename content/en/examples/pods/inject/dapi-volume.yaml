@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kubernetes-downwardapi-volume-example
+  name: PlaidCloud-downwardapi-volume-example
   labels:
     zone: us-est-coast
     cluster: test-cluster1

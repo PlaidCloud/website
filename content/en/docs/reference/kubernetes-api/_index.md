@@ -1,8 +1,8 @@
 ---
-title: "Kubernetes API"
+title: "PlaidCloud API"
 weight: 30
 ---
 
 <!-- overview -->
 
-{{< glossary_definition prepend="Kubernetes' API is" term_id="kubernetes-api" length="all" >}}
+{{< glossary_definition prepend="PlaidCloud' API is" term_id="PlaidCloud-api" length="all" >}}

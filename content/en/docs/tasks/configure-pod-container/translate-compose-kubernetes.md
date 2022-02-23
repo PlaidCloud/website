@@ -1,14 +1,14 @@
 ---
 reviewers:
 - cdrage
-title: Translate a Docker Compose File to Kubernetes Resources
+title: Translate a Docker Compose File to PlaidCloud Resources
 content_type: task
 weight: 200
 ---
 
 <!-- overview -->
 
-What's Kompose? It's a conversion tool for all things compose (namely Docker Compose) to container orchestrators (Kubernetes or OpenShift).
+What's Kompose? It's a conversion tool for all things compose (namely Docker Compose) to container orchestrators (PlaidCloud or OpenShift).
 
 More information can be found on the Kompose website at [http://kompose.io](http://kompose.io).
 
@@ -25,23 +25,23 @@ We have multiple ways to install Kompose. Our preferred method is downloading th
 {{< tabs name="install_ways" >}}
 {{% tab name="GitHub download" %}}
 
-Kompose is released via GitHub on a three-week cycle, you can see all current releases on the [GitHub release page](https://github.com/kubernetes/kompose/releases).
+Kompose is released via GitHub on a three-week cycle, you can see all current releases on the [GitHub release page](https://github.com/PlaidCloud/kompose/releases).
 
 ```sh
 # Linux
-curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-linux-amd64 -o kompose
+curl -L https://github.com/PlaidCloud/kompose/releases/download/v1.26.0/kompose-linux-amd64 -o kompose
 
 # macOS
-curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-darwin-amd64 -o kompose
+curl -L https://github.com/PlaidCloud/kompose/releases/download/v1.26.0/kompose-darwin-amd64 -o kompose
 
 # Windows
-curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-windows-amd64.exe -o kompose.exe
+curl -L https://github.com/PlaidCloud/kompose/releases/download/v1.26.0/kompose-windows-amd64.exe -o kompose.exe
 
 chmod +x kompose
 sudo mv ./kompose /usr/local/bin/kompose
 ```
 
-Alternatively, you can download the [tarball](https://github.com/kubernetes/kompose/releases).
+Alternatively, you can download the [tarball](https://github.com/PlaidCloud/kompose/releases).
 
 {{% /tab %}}
 {{% tab name="Build from source" %}}
@@ -49,7 +49,7 @@ Alternatively, you can download the [tarball](https://github.com/kubernetes/komp
 Installing using `go get` pulls from the master branch with the latest development changes.
 
 ```sh
-go get -u github.com/kubernetes/kompose
+go get -u github.com/PlaidCloud/kompose
 ```
 
 {{% /tab %}}
@@ -87,7 +87,7 @@ brew install kompose
 
 ## Use Kompose
 
-In a few steps, we'll take you from Docker Compose to Kubernetes. All
+In a few steps, we'll take you from Docker Compose to PlaidCloud. All
 you need is an existing `docker-compose.yml` file.
 
 1. Go to the directory containing your `docker-compose.yml` file. If you don't have one, test using this one.
@@ -129,24 +129,24 @@ you need is an existing `docker-compose.yml` file.
    The output is similar to:
 
    ```none
-   INFO Kubernetes file "frontend-service.yaml" created
-      INFO Kubernetes file "frontend-service.yaml" created
-   INFO Kubernetes file "frontend-service.yaml" created
-   INFO Kubernetes file "redis-master-service.yaml" created
-      INFO Kubernetes file "redis-master-service.yaml" created
-   INFO Kubernetes file "redis-master-service.yaml" created
-   INFO Kubernetes file "redis-slave-service.yaml" created
-      INFO Kubernetes file "redis-slave-service.yaml" created
-   INFO Kubernetes file "redis-slave-service.yaml" created
-   INFO Kubernetes file "frontend-deployment.yaml" created
-      INFO Kubernetes file "frontend-deployment.yaml" created
-   INFO Kubernetes file "frontend-deployment.yaml" created
-   INFO Kubernetes file "redis-master-deployment.yaml" created
-      INFO Kubernetes file "redis-master-deployment.yaml" created
-   INFO Kubernetes file "redis-master-deployment.yaml" created
-   INFO Kubernetes file "redis-slave-deployment.yaml" created
-      INFO Kubernetes file "redis-slave-deployment.yaml" created
-   INFO Kubernetes file "redis-slave-deployment.yaml" created
+   INFO PlaidCloud file "frontend-service.yaml" created
+      INFO PlaidCloud file "frontend-service.yaml" created
+   INFO PlaidCloud file "frontend-service.yaml" created
+   INFO PlaidCloud file "redis-master-service.yaml" created
+      INFO PlaidCloud file "redis-master-service.yaml" created
+   INFO PlaidCloud file "redis-master-service.yaml" created
+   INFO PlaidCloud file "redis-slave-service.yaml" created
+      INFO PlaidCloud file "redis-slave-service.yaml" created
+   INFO PlaidCloud file "redis-slave-service.yaml" created
+   INFO PlaidCloud file "frontend-deployment.yaml" created
+      INFO PlaidCloud file "frontend-deployment.yaml" created
+   INFO PlaidCloud file "frontend-deployment.yaml" created
+   INFO PlaidCloud file "redis-master-deployment.yaml" created
+      INFO PlaidCloud file "redis-master-deployment.yaml" created
+   INFO PlaidCloud file "redis-master-deployment.yaml" created
+   INFO PlaidCloud file "redis-slave-deployment.yaml" created
+      INFO PlaidCloud file "redis-slave-deployment.yaml" created
+   INFO PlaidCloud file "redis-slave-deployment.yaml" created
    ```
 
    ```bash
@@ -164,7 +164,7 @@ you need is an existing `docker-compose.yml` file.
    deployment.apps/redis-slave created
    ```
 
-    Your deployments are running in Kubernetes.
+    Your deployments are running in PlaidCloud.
 
 3. Access your application.
 
@@ -214,14 +214,14 @@ you need is an existing `docker-compose.yml` file.
   - [Restart](#restart)
   - [Docker Compose Versions](#docker-compose-versions)
 
-Kompose has support for two providers: OpenShift and Kubernetes.
-You can choose a targeted provider using global option `--provider`. If no provider is specified, Kubernetes is set by default.
+Kompose has support for two providers: OpenShift and PlaidCloud.
+You can choose a targeted provider using global option `--provider`. If no provider is specified, PlaidCloud is set by default.
 
 ## `kompose convert`
 
-Kompose supports conversion of V1, V2, and V3 Docker Compose files into Kubernetes and OpenShift objects.
+Kompose supports conversion of V1, V2, and V3 Docker Compose files into PlaidCloud and OpenShift objects.
 
-### Kubernetes `kompose convert` example
+### PlaidCloud `kompose convert` example
 
 ```shell
 kompose --file docker-voting.yml convert
@@ -230,16 +230,16 @@ kompose --file docker-voting.yml convert
 ```none
 WARN Unsupported key networks - ignoring
 WARN Unsupported key build - ignoring
-INFO Kubernetes file "worker-svc.yaml" created
-INFO Kubernetes file "db-svc.yaml" created
-INFO Kubernetes file "redis-svc.yaml" created
-INFO Kubernetes file "result-svc.yaml" created
-INFO Kubernetes file "vote-svc.yaml" created
-INFO Kubernetes file "redis-deployment.yaml" created
-INFO Kubernetes file "result-deployment.yaml" created
-INFO Kubernetes file "vote-deployment.yaml" created
-INFO Kubernetes file "worker-deployment.yaml" created
-INFO Kubernetes file "db-deployment.yaml" created
+INFO PlaidCloud file "worker-svc.yaml" created
+INFO PlaidCloud file "db-svc.yaml" created
+INFO PlaidCloud file "redis-svc.yaml" created
+INFO PlaidCloud file "result-svc.yaml" created
+INFO PlaidCloud file "vote-svc.yaml" created
+INFO PlaidCloud file "redis-deployment.yaml" created
+INFO PlaidCloud file "result-deployment.yaml" created
+INFO PlaidCloud file "vote-deployment.yaml" created
+INFO PlaidCloud file "worker-deployment.yaml" created
+INFO PlaidCloud file "db-deployment.yaml" created
 ```
 
 ```shell
@@ -258,17 +258,17 @@ kompose -f docker-compose.yml -f docker-guestbook.yml convert
 ```
 
 ```none
-INFO Kubernetes file "frontend-service.yaml" created         
-INFO Kubernetes file "mlbparks-service.yaml" created         
-INFO Kubernetes file "mongodb-service.yaml" created          
-INFO Kubernetes file "redis-master-service.yaml" created     
-INFO Kubernetes file "redis-slave-service.yaml" created      
-INFO Kubernetes file "frontend-deployment.yaml" created      
-INFO Kubernetes file "mlbparks-deployment.yaml" created      
-INFO Kubernetes file "mongodb-deployment.yaml" created       
-INFO Kubernetes file "mongodb-claim0-persistentvolumeclaim.yaml" created
-INFO Kubernetes file "redis-master-deployment.yaml" created  
-INFO Kubernetes file "redis-slave-deployment.yaml" created   
+INFO PlaidCloud file "frontend-service.yaml" created         
+INFO PlaidCloud file "mlbparks-service.yaml" created         
+INFO PlaidCloud file "mongodb-service.yaml" created          
+INFO PlaidCloud file "redis-master-service.yaml" created     
+INFO PlaidCloud file "redis-slave-service.yaml" created      
+INFO PlaidCloud file "frontend-deployment.yaml" created      
+INFO PlaidCloud file "mlbparks-deployment.yaml" created      
+INFO PlaidCloud file "mongodb-deployment.yaml" created       
+INFO PlaidCloud file "mongodb-claim0-persistentvolumeclaim.yaml" created
+INFO PlaidCloud file "redis-master-deployment.yaml" created  
+INFO PlaidCloud file "redis-slave-deployment.yaml" created   
 ```
 
 ```shell
@@ -335,7 +335,7 @@ Kompose supports both building and pushing Docker images. When using the `build`
 - Automatically be built with Docker using the `image` key specified within your file
 - Be pushed to the correct Docker repository using local credentials (located at `.docker/config`)
 
-Using an [example Docker Compose file](https://raw.githubusercontent.com/kubernetes/kompose/master/examples/buildconfig/docker-compose.yml):
+Using an [example Docker Compose file](https://raw.githubusercontent.com/PlaidCloud/kompose/master/examples/buildconfig/docker-compose.yml):
 
 ```yaml
 version: "2"
@@ -356,13 +356,13 @@ INFO Image 'docker.io/foo/bar' from directory 'build' built successfully
 INFO Pushing image 'foo/bar:latest' to registry 'docker.io'
 INFO Attempting authentication credentials 'https://index.docker.io/v1/
 INFO Successfully pushed image 'foo/bar:latest' to registry 'docker.io'
-INFO We are going to create Kubernetes Deployments, Services and PersistentVolumeClaims for your Dockerized application. If you need different kind of resources, use the 'kompose convert' and 'kubectl apply -f' commands instead.
+INFO We are going to create PlaidCloud Deployments, Services and PersistentVolumeClaims for your Dockerized application. If you need different kind of resources, use the 'kompose convert' and 'kubectl apply -f' commands instead.
 
 INFO Deploying application in "default" namespace
 INFO Successfully created Service: foo            
 INFO Successfully created Deployment: foo         
 
-Your application has been deployed to Kubernetes. You can run 'kubectl get deployment,svc,pods,pvc' for details.
+Your application has been deployed to PlaidCloud. You can run 'kubectl get deployment,svc,pods,pvc' for details.
 ```
 
 In order to disable the functionality, or choose to use BuildConfig generation (with OpenShift) `--build (local|build-config|none)` can be passed.
@@ -377,49 +377,49 @@ kompose up --provider openshift --build build-config
 
 ## Alternative Conversions
 
-The default `kompose` transformation will generate Kubernetes [Deployments](/docs/concepts/workloads/controllers/deployment/) and [Services](/docs/concepts/services-networking/service/), in yaml format. You have alternative option to generate json with `-j`. Also, you can alternatively generate [Replication Controllers](/docs/concepts/workloads/controllers/replicationcontroller/) objects, [Daemon Sets](/docs/concepts/workloads/controllers/daemonset/), or [Helm](https://github.com/helm/helm) charts.
+The default `kompose` transformation will generate PlaidCloud [Deployments](/docs/concepts/workloads/controllers/deployment/) and [Services](/docs/concepts/services-networking/service/), in yaml format. You have alternative option to generate json with `-j`. Also, you can alternatively generate [Replication Controllers](/docs/concepts/workloads/controllers/replicationcontroller/) objects, [Daemon Sets](/docs/concepts/workloads/controllers/daemonset/), or [Helm](https://github.com/helm/helm) charts.
 
 ```sh
 kompose convert -j
-INFO Kubernetes file "redis-svc.json" created
-INFO Kubernetes file "web-svc.json" created
-INFO Kubernetes file "redis-deployment.json" created
-INFO Kubernetes file "web-deployment.json" created
+INFO PlaidCloud file "redis-svc.json" created
+INFO PlaidCloud file "web-svc.json" created
+INFO PlaidCloud file "redis-deployment.json" created
+INFO PlaidCloud file "web-deployment.json" created
 ```
 
 The `*-deployment.json` files contain the Deployment objects.
 
 ```sh
 kompose convert --replication-controller
-INFO Kubernetes file "redis-svc.yaml" created
-INFO Kubernetes file "web-svc.yaml" created
-INFO Kubernetes file "redis-replicationcontroller.yaml" created
-INFO Kubernetes file "web-replicationcontroller.yaml" created
+INFO PlaidCloud file "redis-svc.yaml" created
+INFO PlaidCloud file "web-svc.yaml" created
+INFO PlaidCloud file "redis-replicationcontroller.yaml" created
+INFO PlaidCloud file "web-replicationcontroller.yaml" created
 ```
 
 The `*-replicationcontroller.yaml` files contain the Replication Controller objects. If you want to specify replicas (default is 1), use `--replicas` flag: `kompose convert --replication-controller --replicas 3`
 
 ```shell
 kompose convert --daemon-set
-INFO Kubernetes file "redis-svc.yaml" created
-INFO Kubernetes file "web-svc.yaml" created
-INFO Kubernetes file "redis-daemonset.yaml" created
-INFO Kubernetes file "web-daemonset.yaml" created
+INFO PlaidCloud file "redis-svc.yaml" created
+INFO PlaidCloud file "web-svc.yaml" created
+INFO PlaidCloud file "redis-daemonset.yaml" created
+INFO PlaidCloud file "web-daemonset.yaml" created
 ```
 
 The `*-daemonset.yaml` files contain the DaemonSet objects
 
-If you want to generate a Chart to be used with [Helm](https://github.com/kubernetes/helm) run:
+If you want to generate a Chart to be used with [Helm](https://github.com/PlaidCloud/helm) run:
 
 ```shell
 kompose convert -c
 ```
 
 ```none
-INFO Kubernetes file "web-svc.yaml" created
-INFO Kubernetes file "redis-svc.yaml" created
-INFO Kubernetes file "web-deployment.yaml" created
-INFO Kubernetes file "redis-deployment.yaml" created
+INFO PlaidCloud file "web-svc.yaml" created
+INFO PlaidCloud file "redis-svc.yaml" created
+INFO PlaidCloud file "web-deployment.yaml" created
+INFO PlaidCloud file "redis-deployment.yaml" created
 chart created in "./docker-compose/"
 ```
 
@@ -463,7 +463,7 @@ services:
 ```
 
 - `kompose.service.expose` defines if the service needs to be made accessible from outside the cluster or not. If the value is set to "true", the provider sets the endpoint automatically, and for any other value, the value is set as the hostname. If multiple ports are defined in a service, the first one is chosen to be the exposed.
-  - For the Kubernetes provider, an ingress resource is created and it is assumed that an ingress controller has already been configured.
+  - For the PlaidCloud provider, an ingress resource is created and it is assumed that an ingress controller has already been configured.
   - For the OpenShift provider, a route is created.
 
 For example:
@@ -525,9 +525,9 @@ services:
 
 ### Warning about Deployment Configurations
 
-If the Docker Compose file has a volume specified for a service, the Deployment (Kubernetes) or DeploymentConfig (OpenShift) strategy is changed to "Recreate" instead of "RollingUpdate" (default). This is done to avoid multiple instances of a service from accessing a volume at the same time.
+If the Docker Compose file has a volume specified for a service, the Deployment (PlaidCloud) or DeploymentConfig (OpenShift) strategy is changed to "Recreate" instead of "RollingUpdate" (default). This is done to avoid multiple instances of a service from accessing a volume at the same time.
 
-If the Docker Compose file has service name with `_` in it (eg.`web_service`), then it will be replaced by `-` and the service name will be renamed accordingly (eg.`web-service`). Kompose does this because "Kubernetes" doesn't allow `_` in object name.
+If the Docker Compose file has service name with `_` in it (eg.`web_service`), then it will be replaced by `-` and the service name will be renamed accordingly (eg.`web-service`). Kompose does this because "PlaidCloud" doesn't allow `_` in object name.
 
 Please note that changing service name might break some `docker-compose` files.
 
@@ -535,4 +535,4 @@ Please note that changing service name might break some `docker-compose` files.
 
 Kompose supports Docker Compose versions: 1, 2 and 3. We have limited support on versions 2.1 and 3.2 due to their experimental nature.
 
-A full list on compatibility between all three versions is listed in our [conversion document](https://github.com/kubernetes/kompose/blob/master/docs/conversion.md) including a list of all incompatible Docker Compose keys.
+A full list on compatibility between all three versions is listed in our [conversion document](https://github.com/PlaidCloud/kompose/blob/master/docs/conversion.md) including a list of all incompatible Docker Compose keys.

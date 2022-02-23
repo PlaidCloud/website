@@ -4,7 +4,7 @@ content_type: task
 ---
 
 <!-- overview -->
-This page shows how to change the reclaim policy of a Kubernetes
+This page shows how to change the reclaim policy of a PlaidCloud
 PersistentVolume.
 
 
@@ -91,7 +91,7 @@ kubectl patch pv <your-pv-name> -p "{\"spec\":{\"persistentVolumeReclaimPolicy\"
 ### References {#reference}
 
 * {{< api-reference page="config-and-storage-resources/persistent-volume-v1" >}}
-  * Pay attention to the `.spec.persistentVolumeReclaimPolicy` [field](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeSpec) of PersistentVolume.
+  * Pay attention to the `.spec.persistentVolumeReclaimPolicy` [field](https://plaidcloud.com/docs/reference/PlaidCloud-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeSpec) of PersistentVolume.
 * {{< api-reference page="config-and-storage-resources/persistent-volume-claim-v1" >}}
 
 

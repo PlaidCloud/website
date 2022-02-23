@@ -8,7 +8,7 @@ weight: 50
 
 <!-- overview -->
 
-This page explains the two options for configuring the topology of your highly available (HA) Kubernetes clusters.
+This page explains the two options for configuring the topology of your highly available (HA) PlaidCloud clusters.
 
 You can set up an HA cluster:
 

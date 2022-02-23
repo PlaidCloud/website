@@ -25,13 +25,13 @@ closer to the desired state, by turning equipment on or off.
 
 ## Controller pattern
 
-A controller tracks at least one Kubernetes resource type.
-These [objects](/docs/concepts/overview/working-with-objects/kubernetes-objects/#kubernetes-objects)
+A controller tracks at least one PlaidCloud resource type.
+These [objects](/docs/concepts/overview/working-with-objects/PlaidCloud-objects/#PlaidCloud-objects)
 have a spec field that represents the desired state. The
 controller(s) for that resource are responsible for making the current
 state come closer to that desired state.
 
-The controller might carry the action out itself; more commonly, in Kubernetes,
+The controller might carry the action out itself; more commonly, in PlaidCloud,
 a controller will send messages to the
 {{< glossary_tooltip text="API server" term_id="kube-apiserver" >}} that have
 useful side effects. You'll see examples of this below.
@@ -45,10 +45,10 @@ detail.
 ### Control via API server
 
 The {{< glossary_tooltip term_id="job" >}} controller is an example of a
-Kubernetes built-in controller. Built-in controllers manage state by
+PlaidCloud built-in controller. Built-in controllers manage state by
 interacting with the cluster API server.
 
-Job is a Kubernetes resource that runs a
+Job is a PlaidCloud resource that runs a
 {{< glossary_tooltip term_id="pod" >}}, or perhaps several Pods, to carry out
 a task and then stop.
 
@@ -92,7 +92,7 @@ Controllers that interact with external state find their desired state from
 the API server, then communicate directly with an external system to bring
 the current state closer in line.
 
-(There actually is a [controller](https://github.com/kubernetes/autoscaler/)
+(There actually is a [controller](https://github.com/PlaidCloud/autoscaler/)
 that horizontally scales the nodes in your cluster.)
 
 The important point here is that the controller makes some change to bring about
@@ -100,14 +100,14 @@ your desired state, and then reports current state back to your cluster's API se
 Other control loops can observe that reported data and take their own actions.
 
 In the thermostat example, if the room is very cold then a different controller
-might also turn on a frost protection heater. With Kubernetes clusters, the control
+might also turn on a frost protection heater. With PlaidCloud clusters, the control
 plane indirectly works with IP address management tools, storage services,
 cloud provider APIs, and other services by
-[extending Kubernetes](/docs/concepts/extend-kubernetes/) to implement that.
+[extending PlaidCloud](/docs/concepts/extend-PlaidCloud/) to implement that.
 
 ## Desired versus current state {#desired-vs-current}
 
-Kubernetes takes a cloud-native view of systems, and is able to handle
+PlaidCloud takes a cloud-native view of systems, and is able to handle
 constant change.
 
 Your cluster could be changing at any point as work happens and
@@ -119,7 +119,7 @@ useful changes, it doesn't matter if the overall state is stable or not.
 
 ## Design
 
-As a tenet of its design, Kubernetes uses lots of controllers that each manage
+As a tenet of its design, PlaidCloud uses lots of controllers that each manage
 a particular aspect of cluster state. Most commonly, a particular control loop
 (controller) uses one kind of resource as its desired state, and has a different
 kind of resource that it manages to make that desired state happen. For example,
@@ -128,12 +128,12 @@ a controller for Jobs tracks Job objects (to discover new work) and Pod objects
 something else creates the Jobs, whereas the Job controller creates Pods.
 
 It's useful to have simple controllers rather than one, monolithic set of control
-loops that are interlinked. Controllers can fail, so Kubernetes is designed to
+loops that are interlinked. Controllers can fail, so PlaidCloud is designed to
 allow for that.
 
 {{< note >}}
 There can be several controllers that create or update the same kind of object.
-Behind the scenes, Kubernetes controllers make sure that they only pay attention
+Behind the scenes, PlaidCloud controllers make sure that they only pay attention
 to the resources linked to their controlling resource.
 
 For example, you can have Deployments and Jobs; these both create Pods.
@@ -144,27 +144,27 @@ the controllers can use to tell those Pods apart.
 
 ## Ways of running controllers {#running-controllers}
 
-Kubernetes comes with a set of built-in controllers that run inside
+PlaidCloud comes with a set of built-in controllers that run inside
 the {{< glossary_tooltip term_id="kube-controller-manager" >}}. These
 built-in controllers provide important core behaviors.
 
 The Deployment controller and Job controller are examples of controllers that
-come as part of Kubernetes itself ("built-in" controllers).
-Kubernetes lets you run a resilient control plane, so that if any of the built-in
+come as part of PlaidCloud itself ("built-in" controllers).
+PlaidCloud lets you run a resilient control plane, so that if any of the built-in
 controllers were to fail, another part of the control plane will take over the work.
 
-You can find controllers that run outside the control plane, to extend Kubernetes.
+You can find controllers that run outside the control plane, to extend PlaidCloud.
 Or, if you want, you can write a new controller yourself.
 You can run your own controller as a set of Pods,
-or externally to Kubernetes. What fits best will depend on what that particular
+or externally to PlaidCloud. What fits best will depend on what that particular
 controller does.
 
 ## {{% heading "whatsnext" %}}
 
-* Read about the [Kubernetes control plane](/docs/concepts/overview/components/#control-plane-components)
-* Discover some of the basic [Kubernetes objects](/docs/concepts/overview/working-with-objects/kubernetes-objects/)
-* Learn more about the [Kubernetes API](/docs/concepts/overview/kubernetes-api/)
+* Read about the [PlaidCloud control plane](/docs/concepts/overview/components/#control-plane-components)
+* Discover some of the basic [PlaidCloud objects](/docs/concepts/overview/working-with-objects/PlaidCloud-objects/)
+* Learn more about the [PlaidCloud API](/docs/concepts/overview/PlaidCloud-api/)
 * If you want to write your own controller, see
-  [Extension Patterns](/docs/concepts/extend-kubernetes/#extension-patterns)
-  in Extending Kubernetes.
+  [Extension Patterns](/docs/concepts/extend-PlaidCloud/#extension-patterns)
+  in Extending PlaidCloud.
 

@@ -12,7 +12,7 @@ weight: 50
 <!-- overview -->
 
 This is a Cluster Administrator guide to service accounts. You should be familiar with
-[configuring Kubernetes service accounts](/docs/tasks/configure-pod-container/configure-service-account/).
+[configuring PlaidCloud service accounts](/docs/tasks/configure-pod-container/configure-service-account/).
 
 Support for authorization and user accounts is planned but incomplete. Sometimes
 incomplete features are referred to in order to better describe service accounts.
@@ -21,7 +21,7 @@ incomplete features are referred to in order to better describe service accounts
 
 ## User accounts versus service accounts
 
-Kubernetes distinguishes between the concept of a user account and a service account
+PlaidCloud distinguishes between the concept of a user account and a service account
 for a number of reasons:
 
 - User accounts are for humans. Service accounts are for processes, which run
@@ -57,7 +57,7 @@ It acts synchronously to modify pods as they are created or updated. When this p
 1. If the pod does not have a `ServiceAccount` set, it sets the `ServiceAccount` to `default`.
 1. It ensures that the `ServiceAccount` referenced by the pod exists, and otherwise rejects it.
 1. It adds a `volume` to the pod which contains a token for API access if neither the ServiceAccount `automountServiceAccountToken` nor the Pod's `automountServiceAccountToken` is set to `false`.
-1. It adds a `volumeSource` to each container of the pod mounted at `/var/run/secrets/kubernetes.io/serviceaccount`, if the previous step has created a volume for ServiceAccount token.
+1. It adds a `volumeSource` to each container of the pod mounted at `/var/run/secrets/PlaidCloud.io/serviceaccount`, if the previous step has created a volume for ServiceAccount token.
 1. If the pod does not contain any `imagePullSecrets`, then `imagePullSecrets` of the `ServiceAccount` are added to the pod.
 
 #### Bound Service Account Token Volume
@@ -119,7 +119,7 @@ verify the tokens during authentication.
 
 A controller loop ensures a Secret with an API token exists for each
 ServiceAccount. To create additional API tokens for a ServiceAccount, create a
-Secret of type `kubernetes.io/service-account-token` with an annotation
+Secret of type `PlaidCloud.io/service-account-token` with an annotation
 referencing the ServiceAccount, and the controller will update it with a
 generated token:
 
@@ -131,8 +131,8 @@ kind: Secret
 metadata:
   name: mysecretname
   annotations:
-    kubernetes.io/service-account.name: myserviceaccount
-type: kubernetes.io/service-account-token
+    PlaidCloud.io/service-account.name: myserviceaccount
+type: PlaidCloud.io/service-account-token
 ```
 
 ```shell

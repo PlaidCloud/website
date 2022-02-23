@@ -5,7 +5,7 @@ main_menu: false
 
 This page serves two purposes:
 
-- Demonstrate how the Kubernetes documentation uses Markdown
+- Demonstrate how the PlaidCloud documentation uses Markdown
 - Provide a "smoke test" document we can use to test HTML, CSS, and template
   changes that affect the overall documentation.
 
@@ -195,7 +195,7 @@ grouping of back-ticks:
 ls -l
 ```
 
-Common languages used in Kubernetes documentation code blocks include:
+Common languages used in PlaidCloud documentation code blocks include:
 
 - `bash` / `shell` (both work the same)
 - `go`
@@ -218,11 +218,11 @@ source for this page).
 ## Links
 
 To format a link, put the link text inside square brackets, followed by the
-link target in parentheses. [Link to Kubernetes.io](https://kubernetes.io/) or
-[Relative link to Kubernetes.io](/)
+link target in parentheses. [Link to PlaidCloud.io](https://plaidcloud.com/) or
+[Relative link to PlaidCloud.io](/)
 
 You can also use HTML, but it is not preferred.
-<a href="https://kubernetes.io/">Link to Kubernetes.io</a>
+<a href="https://plaidcloud.com/">Link to PlaidCloud.io</a>
 
 ## Images
 
@@ -242,10 +242,10 @@ figure in Markdown link syntax as shown below.
 {{< figure src="/images/pencil.png" title="Pencil icon" caption="Image used to illustrate the figure shortcode" width="200px" >}}
 
 Even if you choose not to use the figure shortcode, an image can also be a link. This
-time the pencil icon links to the Kubernetes website. Outer square brackets enclose
+time the pencil icon links to the PlaidCloud website. Outer square brackets enclose
 the entire image tag, and the link target is in the parentheses at the end.
 
-[![pencil icon](/images/pencil.png)](https://kubernetes.io)
+[![pencil icon](/images/pencil.png)](https://plaidcloud.com)
 
 You can also use HTML for images, but it is not preferred.
 
@@ -287,7 +287,7 @@ tables, use HTML instead.
 ## Visualizations with Mermaid
 
 You can use [Mermaid JS](https://mermaidjs.github.io) visualizations.
-The Mermaid JS version is specified in [/layouts/partials/head.html](https://github.com/kubernetes/website/blob/main/layouts/partials/head.html)
+The Mermaid JS version is specified in [/layouts/partials/head.html](https://github.com/PlaidCloud/website/blob/main/layouts/partials/head.html)
 
 ```
 {{</* mermaid */>}}

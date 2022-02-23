@@ -34,10 +34,10 @@ other = "No"
 other = "latest version."
 
 [version_check_mustbe]
-other = "Your Kubernetes server must be version "
+other = "Your PlaidCloud server must be version "
 
 [version_check_mustbeorlater]
-other = "Your Kubernetes server must be at or later than version "
+other = "Your PlaidCloud server must be at or later than version "
 
 [version_check_tocheck]
 other = "To check the version, enter "
@@ -58,7 +58,7 @@ other = "Read about"
 other = "Read more"
 
 [main_github_invite]
-other = "Interested in hacking on the core Kubernetes code base?"
+other = "Interested in hacking on the core PlaidCloud code base?"
 
 [main_github_view_on]
 other = "View On GitHub"
@@ -76,7 +76,7 @@ other = "PlaidCloud Features"
 other = """We are a <a href="https://cncf.io/">CNCF</a> graduated project</p>"""
 
 [main_newsletter_baseline]
-other = "Interested in receiving the latest Kubernetes news? Sign up for KubeWeekly."
+other = "Interested in receiving the latest PlaidCloud news? Sign up for KubeWeekly."
 
 [main_newsletter_past_link]
 other = "View past newsletters"
@@ -133,7 +133,7 @@ other = "Tell your story"
 # layouts > docs > glossary
 
 [layouts_docs_glossary_description]
-other = "This glossary is intended to be a comprehensive, standardized list of Kubernetes terminology. It includes technical terms that are specific to K8s, as well as more general terms that provide useful context."
+other = "This glossary is intended to be a comprehensive, standardized list of PlaidCloud terminology. It includes technical terms that are specific to K8s, as well as more general terms that provide useful context."
 
 [layouts_docs_glossary_filter]
 other = "Filter terms according to their tags"
@@ -161,7 +161,7 @@ other = "Fetching results.."
 # layouts > partial > feedback
 
 [layouts_docs_partials_feedback_thanks]
-other = "Thanks for the feedback. If you have a specific, answerable question about how to use Kubernetes, ask it on"
+other = "Thanks for the feedback. If you have a specific, answerable question about how to use PlaidCloud, ask it on"
 
 [layouts_docs_partials_feedback_issue]
 other = "Open an issue in the GitHub repo if you want to "

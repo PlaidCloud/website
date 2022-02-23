@@ -21,7 +21,7 @@ but is not allowed to use more memory than its limit.
 Each node in your cluster must have at least 300 MiB of memory.
 
 A few of the steps on this page require you to run the
-[metrics-server](https://github.com/kubernetes-sigs/metrics-server)
+[metrics-server](https://github.com/PlaidCloud-sigs/metrics-server)
 service in your cluster. If you have the metrics-server
 running, you can skip those steps.
 
@@ -310,7 +310,7 @@ could use all of the memory available on the Node where it is running which in t
 
 * The Container is running in a namespace that has a default memory limit, and the
 Container is automatically assigned the default limit. Cluster administrators can use a
-[LimitRange](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#limitrange-v1-core)
+[LimitRange](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#limitrange-v1-core)
 to specify a default value for the memory limit.
 
 ## Motivation for memory requests and limits

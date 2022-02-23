@@ -30,7 +30,7 @@ A minimal configuration looks as follows:
 apiVersion: kubescheduler.config.k8s.io/v1beta2
 kind: KubeSchedulerConfiguration
 clientConnection:
-  kubeconfig: /etc/srv/kubernetes/kube-scheduler/kubeconfig
+  kubeconfig: /etc/srv/PlaidCloud/kube-scheduler/kubeconfig
 ```
 
 ## Profiles

@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: apiextensions.k8s.io/v1`
@@ -120,7 +120,7 @@ CustomResourceDefinitionSpec describes how a user wants their resource to appear
 
   - **versions.additionalPrinterColumns** ([]CustomResourceColumnDefinition)
 
-    additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.
+    additionalPrinterColumns specifies additional columns returned in Table output. See https://plaidcloud.com/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.
 
     <a name="CustomResourceColumnDefinition"></a>
     *CustomResourceColumnDefinition specifies a column for server side printing.*
@@ -192,7 +192,7 @@ CustomResourceDefinitionSpec describes how a user wants their resource to appear
 
       - **versions.subresources.scale.labelSelectorPath** (string)
 
-        labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.
+        labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://plaidcloud.com/docs/tasks/access-PlaidCloud-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.
 
     - **versions.subresources.status** (CustomResourceSubresourceStatus)
 
@@ -276,7 +276,7 @@ CustomResourceDefinitionSpec describes how a user wants their resource to appear
 
 - **preserveUnknownFields** (boolean)
 
-  preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.
+  preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://plaidcloud.com/docs/tasks/access-PlaidCloud-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.
 
 
 
@@ -433,13 +433,13 @@ JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-sc
 - **uniqueItems** (boolean)
 
 
-- **x-kubernetes-embedded-resource** (boolean)
+- **x-PlaidCloud-embedded-resource** (boolean)
 
-  x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).
+  x-PlaidCloud-embedded-resource defines that the value is an embedded PlaidCloud runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-PlaidCloud-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).
 
-- **x-kubernetes-int-or-string** (boolean)
+- **x-PlaidCloud-int-or-string** (boolean)
 
-  x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:
+  x-PlaidCloud-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:
   
   1) anyOf:
      - type: integer
@@ -450,34 +450,34 @@ JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-sc
        - type: string
      - ... zero or more
 
-- **x-kubernetes-list-map-keys** ([]string)
+- **x-PlaidCloud-list-map-keys** ([]string)
 
-  x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type `map` by specifying the keys used as the index of the map.
+  x-PlaidCloud-list-map-keys annotates an array with the x-PlaidCloud-list-type `map` by specifying the keys used as the index of the map.
   
-  This tag MUST only be used on lists that have the "x-kubernetes-list-type" extension set to "map". Also, the values specified for this attribute must be a scalar typed field of the child structure (no nesting is supported).
+  This tag MUST only be used on lists that have the "x-PlaidCloud-list-type" extension set to "map". Also, the values specified for this attribute must be a scalar typed field of the child structure (no nesting is supported).
   
   The properties specified must either be required or have a default value, to ensure those properties are present for all list items.
 
-- **x-kubernetes-list-type** (string)
+- **x-PlaidCloud-list-type** (string)
 
-  x-kubernetes-list-type annotates an array to further describe its topology. This extension must only be used on lists and may have 3 possible values:
+  x-PlaidCloud-list-type annotates an array to further describe its topology. This extension must only be used on lists and may have 3 possible values:
   
   1) `atomic`: the list is treated as a single entity, like a scalar.
        Atomic lists will be entirely replaced when updated. This extension
        may be used on any type of list (struct, scalar, ...).
   2) `set`:
        Sets are lists that must not have multiple items with the same value. Each
-       value must be a scalar, an object with x-kubernetes-map-type `atomic` or an
-       array with x-kubernetes-list-type `atomic`.
+       value must be a scalar, an object with x-PlaidCloud-map-type `atomic` or an
+       array with x-PlaidCloud-list-type `atomic`.
   3) `map`:
        These lists are like maps in that their elements have a non-index key
        used to identify them. Order is preserved upon merge. The map tag
        must only be used on a list with elements of type object.
   Defaults to atomic for arrays.
 
-- **x-kubernetes-map-type** (string)
+- **x-PlaidCloud-map-type** (string)
 
-  x-kubernetes-map-type annotates an object to further describe its topology. This extension must only be used when type is object and may have 2 possible values:
+  x-PlaidCloud-map-type annotates an object to further describe its topology. This extension must only be used when type is object and may have 2 possible values:
   
   1) `granular`:
        These maps are actual maps (key-value pairs) and each fields are independent
@@ -486,31 +486,31 @@ JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-sc
   2) `atomic`: the list is treated as a single entity, like a scalar.
        Atomic maps will be entirely replaced when updated.
 
-- **x-kubernetes-preserve-unknown-fields** (boolean)
+- **x-PlaidCloud-preserve-unknown-fields** (boolean)
 
-  x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.
+  x-PlaidCloud-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.
 
-- **x-kubernetes-validations** ([]ValidationRule)
+- **x-PlaidCloud-validations** ([]ValidationRule)
 
   *Patch strategy: merge on key `rule`*
   
   *Map: unique values on key rule will be kept during a merge*
   
-  x-kubernetes-validations describes a list of validation rules written in the CEL expression language. This field is an alpha-level. Using this field requires the feature gate `CustomResourceValidationExpressions` to be enabled.
+  x-PlaidCloud-validations describes a list of validation rules written in the CEL expression language. This field is an alpha-level. Using this field requires the feature gate `CustomResourceValidationExpressions` to be enabled.
 
   <a name="ValidationRule"></a>
   *ValidationRule describes a validation rule written in the CEL expression language.*
 
-  - **x-kubernetes-validations.rule** (string), required
+  - **x-PlaidCloud-validations.rule** (string), required
 
-    Rule represents the expression which will be evaluated by CEL. ref: https://github.com/google/cel-spec The Rule is scoped to the location of the x-kubernetes-validations extension in the schema. The `self` variable in the CEL expression is bound to the scoped value. Example: - Rule scoped to the root of a resource with a status subresource: {"rule": "self.status.actual \<= self.spec.maxDesired"}
+    Rule represents the expression which will be evaluated by CEL. ref: https://github.com/google/cel-spec The Rule is scoped to the location of the x-PlaidCloud-validations extension in the schema. The `self` variable in the CEL expression is bound to the scoped value. Example: - Rule scoped to the root of a resource with a status subresource: {"rule": "self.status.actual \<= self.spec.maxDesired"}
     
     If the Rule is scoped to an object with properties, the accessible properties of the object are field selectable via `self.field` and field presence can be checked via `has(self.field)`. Null valued fields are treated as absent fields in CEL expressions. If the Rule is scoped to an object with additionalProperties (i.e. a map) the value of the map are accessible via `self[mapKey]`, map containment can be checked via `mapKey in self` and all entries of the map are accessible via CEL macros and functions such as `self.all(...)`. If the Rule is scoped to an array, the elements of the array are accessible via `self[i]` and also by macros and functions. If the Rule is scoped to a scalar, `self` is bound to the scalar value. Examples: - Rule scoped to a map of objects: {"rule": "self.components['Widget'].priority \< 10"} - Rule scoped to a list of integers: {"rule": "self.values.all(value, value >= 0 && value \< 100)"} - Rule scoped to a string value: {"rule": "self.startsWith('kube')"}
     
-    The `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the object and from any x-kubernetes-embedded-resource annotated objects. No other metadata properties are accessible.
+    The `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the object and from any x-PlaidCloud-embedded-resource annotated objects. No other metadata properties are accessible.
     
-    Unknown data preserved in custom resources via x-kubernetes-preserve-unknown-fields is not accessible in CEL expressions. This includes: - Unknown field values that are preserved by object schemas with x-kubernetes-preserve-unknown-fields. - Object properties where the property schema is of an "unknown type". An "unknown type" is recursively defined as:
-      - A schema with no type and x-kubernetes-preserve-unknown-fields set to true
+    Unknown data preserved in custom resources via x-PlaidCloud-preserve-unknown-fields is not accessible in CEL expressions. This includes: - Unknown field values that are preserved by object schemas with x-PlaidCloud-preserve-unknown-fields. - Object properties where the property schema is of an "unknown type". An "unknown type" is recursively defined as:
+      - A schema with no type and x-PlaidCloud-preserve-unknown-fields set to true
       - An array where the items schema is of an "unknown type"
       - An object where the additionalProperties schema is of an "unknown type"
     
@@ -522,14 +522,14 @@ JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-sc
       - Rule accessing a property named "x-prop": {"rule": "self.x__dash__prop > 0"}
       - Rule accessing a property named "redact__d": {"rule": "self.redact__underscores__d > 0"}
     
-    Equality on arrays with x-kubernetes-list-type of 'set' or 'map' ignores element order, i.e. [1, 2] == [2, 1]. Concatenation on arrays with x-kubernetes-list-type use the semantics of the list type:
+    Equality on arrays with x-PlaidCloud-list-type of 'set' or 'map' ignores element order, i.e. [1, 2] == [2, 1]. Concatenation on arrays with x-PlaidCloud-list-type use the semantics of the list type:
       - 'set': `X + Y` performs a union where the array positions of all elements in `X` are preserved and
         non-intersecting elements in `Y` are appended, retaining their partial order.
       - 'map': `X + Y` performs a merge where the array positions of all keys in `X` are preserved but the values
         are overwritten by values in `Y` when the key sets of `X` and `Y` intersect. Elements in `Y` with
         non-intersecting keys are appended, retaining their partial order.
 
-  - **x-kubernetes-validations.message** (string)
+  - **x-PlaidCloud-validations.message** (string)
 
     Message represents the message displayed when validation fails. The message is required if the Rule contains line breaks. The message must not contain line breaks. If unset, the message is "failed rule: {Rule}". e.g. "must be a URL with the host matching spec.host"
 

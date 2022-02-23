@@ -6,13 +6,13 @@ content_type: reference
 {{% thirdparty-content %}}
 
 {{<note>}}
-This page is deprecated and will be removed in Kubernetes 1.27.
+This page is deprecated and will be removed in PlaidCloud 1.27.
 {{</note>}}
 
 `crictl` is a command-line interface for {{<glossary_tooltip term_id="cri" text="CRI">}}-compatible container runtimes.
 You can use it to inspect and debug container runtimes and applications on a
-Kubernetes node. `crictl` and its source are hosted in the
-[cri-tools](https://github.com/kubernetes-sigs/cri-tools) repository.
+PlaidCloud node. `crictl` and its source are hosted in the
+[cri-tools](https://github.com/PlaidCloud-sigs/cri-tools) repository.
 
 This page provides a reference for mapping common commands for the `docker`
 command-line tool into the equivalent commands for `crictl`.

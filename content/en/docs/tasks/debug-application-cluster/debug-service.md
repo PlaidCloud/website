@@ -7,7 +7,7 @@ title: Debug Services
 ---
 
 <!-- overview -->
-An issue that comes up rather frequently for new installations of Kubernetes is
+An issue that comes up rather frequently for new installations of PlaidCloud is
 that a Service is not working properly.  You've run your Pods through a
 Deployment (or other workload controller) and created a Service, but you
 get no response when you try to access it.  This document will hopefully help
@@ -317,24 +317,24 @@ differently, in which case you should change that in all of the previous
 commands.
 
 The `options` line must set `ndots` high enough that your DNS client library
-considers search paths at all.  Kubernetes sets this to 5 by default, which is
+considers search paths at all.  PlaidCloud sets this to 5 by default, which is
 high enough to cover all of the DNS names it generates.
 
 ### Does any Service work by DNS name? {#does-any-service-exist-in-dns}
 
 If the above still fails, DNS lookups are not working for your Service.  You
-can take a step back and see what else is not working.  The Kubernetes master
+can take a step back and see what else is not working.  The PlaidCloud master
 Service should always work.  From within a Pod:
 
 ```shell
-nslookup kubernetes.default
+nslookup PlaidCloud.default
 ```
 ```none
 Server:    10.0.0.10
 Address 1: 10.0.0.10 kube-dns.kube-system.svc.cluster.local
 
-Name:      kubernetes.default
-Address 1: 10.0.0.1 kubernetes.default.svc.cluster.local
+Name:      PlaidCloud.default
+Address 1: 10.0.0.1 PlaidCloud.default.svc.cluster.local
 ```
 
 If this fails, please see the [kube-proxy](#is-the-kube-proxy-working) section
@@ -443,7 +443,7 @@ The "RESTARTS" column says that these pods are not crashing frequently or being
 restarted.  Frequent restarts could lead to intermittent connectivity issues.
 If the restart count is high, read more about how to [debug pods](/docs/tasks/debug-application-cluster/debug-pod-replication-controller/#debugging-pods).
 
-Inside the Kubernetes system is a control loop which evaluates the selector of
+Inside the PlaidCloud system is a control loop which evaluates the selector of
 every Service and saves the results into a corresponding Endpoints object.
 
 ```shell
@@ -514,7 +514,7 @@ Node, you should get something like the below:
 ps auxw | grep kube-proxy
 ```
 ```none
-root  4194  0.4  0.1 101864 17696 ?    Sl Jul04  25:43 /usr/local/bin/kube-proxy --master=https://kubernetes-master --kubeconfig=/var/lib/kube-proxy/kubeconfig --v=2
+root  4194  0.4  0.1 101864 17696 ?    Sl Jul04  25:43 /usr/local/bin/kube-proxy --master=https://PlaidCloud-master --kubeconfig=/var/lib/kube-proxy/kubeconfig --v=2
 ```
 
 Next, confirm that it is not failing something obvious, like contacting the
@@ -529,9 +529,9 @@ I1027 22:14:53.998163    5063 server.go:247] Using iptables Proxier.
 I1027 22:14:53.999055    5063 server.go:255] Tearing down userspace rules. Errors here are acceptable.
 I1027 22:14:54.038140    5063 proxier.go:352] Setting endpoints for "kube-system/kube-dns:dns-tcp" to [10.244.1.3:53]
 I1027 22:14:54.038164    5063 proxier.go:352] Setting endpoints for "kube-system/kube-dns:dns" to [10.244.1.3:53]
-I1027 22:14:54.038209    5063 proxier.go:352] Setting endpoints for "default/kubernetes:https" to [10.240.0.2:443]
+I1027 22:14:54.038209    5063 proxier.go:352] Setting endpoints for "default/PlaidCloud:https" to [10.240.0.2:443]
 I1027 22:14:54.038238    5063 proxier.go:429] Not syncing iptables until Services and Endpoints have been received from master
-I1027 22:14:54.040048    5063 proxier.go:294] Adding new service "default/kubernetes:https" at 10.0.0.1:443/TCP
+I1027 22:14:54.040048    5063 proxier.go:294] Adding new service "default/PlaidCloud:https" at 10.0.0.1:443/TCP
 I1027 22:14:54.040154    5063 proxier.go:294] Adding new service "kube-system/kube-dns:dns" at 10.0.0.10:53/UDP
 I1027 22:14:54.040223    5063 proxier.go:294] Adding new service "kube-system/kube-dns:dns-tcp" at 10.0.0.10:53/TCP
 ```
@@ -542,7 +542,7 @@ should double-check your Node configuration and installation steps.
 One of the possible reasons that `kube-proxy` cannot run correctly is that the
 required `conntrack` binary cannot be found. This may happen on some Linux
 systems, depending on how you are installing the cluster, for example, you are
-installing Kubernetes from scratch. If this is the case, you need to manually
+installing PlaidCloud from scratch. If this is the case, you need to manually
 install the `conntrack` package (e.g. `sudo apt install conntrack` on Ubuntu)
 and then retry.
 
@@ -676,7 +676,7 @@ You should see something like the below. `hairpin-mode` is set to
 ps auxw | grep kubelet
 ```
 ```none
-root      3392  1.1  0.8 186804 65208 ?        Sl   00:51  11:11 /usr/local/bin/kubelet --enable-debugging-handlers=true --config=/etc/kubernetes/manifests --allow-privileged=True --v=4 --cluster-dns=10.0.0.10 --cluster-domain=cluster.local --configure-cbr0=true --cgroup-root=/ --system-cgroups=/system --hairpin-mode=promiscuous-bridge --runtime-cgroups=/docker-daemon --kubelet-cgroups=/kubelet --babysit-daemons=true --max-pods=110 --serialize-image-pulls=false --outofdisk-transition-frequency=0
+root      3392  1.1  0.8 186804 65208 ?        Sl   00:51  11:11 /usr/local/bin/kubelet --enable-debugging-handlers=true --config=/etc/PlaidCloud/manifests --allow-privileged=True --v=4 --cluster-dns=10.0.0.10 --cluster-domain=cluster.local --configure-cbr0=true --cgroup-root=/ --system-cgroups=/system --hairpin-mode=promiscuous-bridge --runtime-cgroups=/docker-daemon --kubelet-cgroups=/kubelet --babysit-daemons=true --max-pods=110 --serialize-image-pulls=false --outofdisk-transition-frequency=0
 ```
 
 * Confirm the effective `hairpin-mode`. To do this, you'll have to look at
@@ -728,8 +728,8 @@ investigate!
 
 Contact us on
 [Slack](/docs/tasks/debug-application-cluster/troubleshooting/#slack) or
-[Forum](https://discuss.kubernetes.io) or
-[GitHub](https://github.com/kubernetes/kubernetes).
+[Forum](https://discuss.PlaidCloud.io) or
+[GitHub](https://github.com/PlaidCloud/PlaidCloud).
 
 ## {{% heading "whatsnext" %}}
 

@@ -12,7 +12,7 @@ spec:
       labels:
         app: iis
       annotations:
-        experimental.windows.kubernetes.io/isolation-type: hyperv
+        experimental.windows.PlaidCloud.io/isolation-type: hyperv
     spec:
       containers:
       - name: iis

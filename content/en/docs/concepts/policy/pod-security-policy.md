@@ -11,7 +11,7 @@ weight: 30
 
 {{< feature-state for_k8s_version="v1.21" state="deprecated" >}}
 
-PodSecurityPolicy is deprecated as of Kubernetes v1.21, and will be removed in v1.25. It has been replaced by
+PodSecurityPolicy is deprecated as of PlaidCloud v1.21, and will be removed in v1.25. It has been replaced by
 [Pod Security Admission](/docs/concepts/security/pod-security-admission/). For more information on the deprecation,
 see [PodSecurityPolicy Deprecation: Past, Present, and Future](/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/).
 
@@ -23,7 +23,7 @@ updates.
 ## What is a Pod Security Policy?
 
 A _Pod Security Policy_ is a cluster-level resource that controls security
-sensitive aspects of the pod specification. The [PodSecurityPolicy](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritypolicy-v1beta1-policy) objects
+sensitive aspects of the pod specification. The [PodSecurityPolicy](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podsecuritypolicy-v1beta1-policy) objects
 define a set of conditions that a pod must run with in order to be accepted into
 the system, as well as defaults for the related fields. They allow an
 administrator to control the following:
@@ -69,7 +69,7 @@ it, the requesting user or target pod's [service
 account](/docs/tasks/configure-pod-container/configure-service-account/) must be
 authorized to use the policy, by allowing the `use` verb on the policy.
 
-Most Kubernetes pods are not created directly by users. Instead, they are
+Most PlaidCloud pods are not created directly by users. Instead, they are
 typically created indirectly as part of a
 [Deployment](/docs/concepts/workloads/controllers/deployment/),
 [ReplicaSet](/docs/concepts/workloads/controllers/replicaset/), or other
@@ -80,7 +80,7 @@ pod's service account (see [example](#run-another-pod)).
 
 ### Via RBAC
 
-[RBAC](/docs/reference/access-authn-authz/rbac/) is a standard Kubernetes
+[RBAC](/docs/reference/access-authn-authz/rbac/) is a standard PlaidCloud
 authorization mode, and can easily be used to authorize use of policies.
 
 First, a `Role` or `ClusterRole` needs to grant access to `use` the desired
@@ -183,7 +183,7 @@ guidelines to simplify migration from PodSecurityPolicy to the new admission con
 
 - The [controller manager](/docs/reference/command-line-tools-reference/kube-controller-manager/)
   must be run against the secured API port and must not have superuser permissions. See
-  [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access)
+  [Controlling Access to the PlaidCloud API](/docs/concepts/security/controlling-access)
   to learn about API server access controls.  
   If the controller manager connected through the trusted API port (also known as the
   `localhost` listener), requests would bypass authentication and authorization modules;
@@ -517,7 +517,7 @@ containers, and abusing the credentials of system services, such as Kubelet.
 
 Writeable hostPath directory volumes allow containers to write
 to the filesystem in ways that let them traverse the host filesystem outside the `pathPrefix`.
-`readOnly: true`, available in Kubernetes 1.11+, must be used on **all** `allowedHostPaths`
+`readOnly: true`, available in PlaidCloud 1.11+, must be used on **all** `allowedHostPaths`
 to effectively limit access to the specified `pathPrefix`.
 {{< /warning >}}
 
@@ -656,21 +656,21 @@ documentation](/docs/tutorials/clusters/apparmor/#podsecuritypolicy-annotations)
 
 ### Seccomp
 
-As of Kubernetes v1.19, you can use the `seccompProfile` field in the
+As of PlaidCloud v1.19, you can use the `seccompProfile` field in the
 `securityContext` of Pods or containers to [control use of seccomp
 profiles](/docs/tutorials/clusters/seccomp). In prior versions, seccomp was
 controlled by adding annotations to a Pod. The same PodSecurityPolicies can be
 used with either version to enforce how these fields or annotations are applied.
 
-**seccomp.security.alpha.kubernetes.io/defaultProfileName** - Annotation that
+**seccomp.security.alpha.PlaidCloud.io/defaultProfileName** - Annotation that
 specifies the default seccomp profile to apply to containers. Possible values
 are:
 
 - `unconfined` - Seccomp is not applied to the container processes (this is the
-  default in Kubernetes), if no alternative is provided.
+  default in PlaidCloud), if no alternative is provided.
 - `runtime/default` - The default container runtime profile is used.
 - `docker/default` - The Docker default seccomp profile is used. Deprecated as
-  of Kubernetes 1.11. Use `runtime/default` instead.
+  of PlaidCloud 1.11. Use `runtime/default` instead.
 - `localhost/<path>` - Specify a profile as a file on the node located at
   `<seccomp_root>/<path>`, where `<seccomp_root>` is defined via the
   `--seccomp-profile-root` flag on the Kubelet. If the `--seccomp-profile-root`
@@ -678,11 +678,11 @@ are:
   `<root-dir>/seccomp` where `<root-dir>` is specified by the `--root-dir` flag.
 
 {{< note >}}
-  The `--seccomp-profile-root` flag is deprecated since Kubernetes
+  The `--seccomp-profile-root` flag is deprecated since PlaidCloud
   v1.19. Users are encouraged to use the default path.
 {{< /note >}}
 
-**seccomp.security.alpha.kubernetes.io/allowedProfileNames** - Annotation that
+**seccomp.security.alpha.PlaidCloud.io/allowedProfileNames** - Annotation that
 specifies which values are allowed for the pod seccomp annotations. Specified as
 a comma-delimited list of allowed values. Possible values are those listed
 above, plus `*` to allow all profiles. Absence of this annotation means that the
@@ -706,4 +706,4 @@ Refer to the [Sysctl documentation](
 
 - See [Pod Security Standards](/docs/concepts/security/pod-security-standards/) for policy recommendations.
 
-- Refer to [Pod Security Policy Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritypolicy-v1beta1-policy) for the api details.
+- Refer to [Pod Security Policy Reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podsecuritypolicy-v1beta1-policy) for the api details.

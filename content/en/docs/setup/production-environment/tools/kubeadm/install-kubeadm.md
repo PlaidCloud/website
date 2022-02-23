@@ -19,7 +19,7 @@ For information on how to create a cluster with kubeadm once you have performed 
 ## {{% heading "prerequisites" %}}
 
 
-* A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
+* A compatible Linux host. The PlaidCloud project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
 * 2 GB or more of RAM per machine (any less will leave little room for your apps).
 * 2 CPUs or more.
 * Full network connectivity between all machines in the cluster (public or private network is fine).
@@ -37,14 +37,14 @@ For information on how to create a cluster with kubeadm once you have performed 
 * The product_uuid can be checked by using the command `sudo cat /sys/class/dmi/id/product_uuid`
 
 It is very likely that hardware devices will have unique addresses, although some virtual machines may have
-identical values. Kubernetes uses these values to uniquely identify the nodes in the cluster.
+identical values. PlaidCloud uses these values to uniquely identify the nodes in the cluster.
 If these values are not unique to each node, the installation process
-may [fail](https://github.com/kubernetes/kubeadm/issues/31).
+may [fail](https://github.com/PlaidCloud/kubeadm/issues/31).
 
 ## Check network adapters
 
-If you have more than one network adapter, and your Kubernetes components are not reachable on the default
-route, we recommend you add IP route(s) so Kubernetes cluster addresses go via the appropriate adapter.
+If you have more than one network adapter, and your PlaidCloud components are not reachable on the default
+route, we recommend you add IP route(s) so PlaidCloud cluster addresses go via the appropriate adapter.
 
 ## Letting iptables see bridged traffic
 
@@ -64,12 +64,12 @@ EOF
 sudo sysctl --system
 ```
 
-For more details please see the [Network Plugin Requirements](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#network-plugin-requirements) page.
+For more details please see the [Network Plugin Requirements](/docs/concepts/extend-PlaidCloud/compute-storage-net/network-plugins/#network-plugin-requirements) page.
 
 ## Check required ports
 These
 [required ports](/docs/reference/ports-and-protocols/)
-need to be open in order for Kubernetes components to communicate with each other. You can use telnet to check if a port is open. For example:
+need to be open in order for PlaidCloud components to communicate with each other. You can use telnet to check if a port is open. For example:
 
 ```shell
 telnet 127.0.0.1 6443
@@ -81,13 +81,13 @@ documentation for the plugins about what port(s) those need.
 
 ## Installing runtime {#installing-runtime}
 
-To run containers in Pods, Kubernetes uses a
+To run containers in Pods, PlaidCloud uses a
 {{< glossary_tooltip term_id="container-runtime" text="container runtime" >}}.
 
 {{< tabs name="container_runtime" >}}
 {{% tab name="Linux nodes" %}}
 
-By default, Kubernetes uses the
+By default, PlaidCloud uses the
 {{< glossary_tooltip term_id="cri" text="Container Runtime Interface">}} (CRI)
 to interface with your chosen container runtime.
 
@@ -136,7 +136,7 @@ You will install these packages on all of your machines:
 * `kubectl`: the command line util to talk to your cluster.
 
 kubeadm **will not** install or manage `kubelet` or `kubectl` for you, so you will
-need to ensure they match the version of the Kubernetes control plane you want
+need to ensure they match the version of the PlaidCloud control plane you want
 kubeadm to install for you. If you do not, there is a risk of a version skew occurring that
 can lead to unexpected, buggy behaviour. However, _one_ minor version skew between the
 kubelet and the control plane is supported, but the kubelet version may never exceed the API
@@ -146,20 +146,20 @@ but not vice versa.
 For information about installing `kubectl`, see [Install and set up kubectl](/docs/tasks/tools/).
 
 {{< warning >}}
-These instructions exclude all Kubernetes packages from any system upgrades.
-This is because kubeadm and Kubernetes require
+These instructions exclude all PlaidCloud packages from any system upgrades.
+This is because kubeadm and PlaidCloud require
 [special attention to upgrade](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
 {{</ warning >}}
 
 For more information on version skews, see:
 
-* Kubernetes [version and version-skew policy](/docs/setup/release/version-skew-policy/)
+* PlaidCloud [version and version-skew policy](/docs/setup/release/version-skew-policy/)
 * Kubeadm-specific [version skew policy](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#version-skew-policy)
 
 {{< tabs name="k8s_install" >}}
 {{% tab name="Debian-based distributions" %}}
 
-1. Update the `apt` package index and install packages needed to use the Kubernetes `apt` repository:
+1. Update the `apt` package index and install packages needed to use the PlaidCloud `apt` repository:
 
    ```shell
    sudo apt-get update
@@ -169,13 +169,13 @@ For more information on version skews, see:
 2. Download the Google Cloud public signing key:
 
    ```shell
-   sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+   sudo curl -fsSLo /usr/share/keyrings/PlaidCloud-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
    ```
 
-3. Add the Kubernetes `apt` repository:
+3. Add the PlaidCloud `apt` repository:
 
    ```shell
-   echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   echo "deb [signed-by=/usr/share/keyrings/PlaidCloud-archive-keyring.gpg] https://apt.PlaidCloud.io/ PlaidCloud-xenial main" | sudo tee /etc/apt/sources.list.d/PlaidCloud.list
    ```
 
 4. Update `apt` package index, install kubelet, kubeadm and kubectl, and pin their version:
@@ -189,10 +189,10 @@ For more information on version skews, see:
 {{% /tab %}}
 {{% tab name="Red Hat-based distributions" %}}
 ```bash
-cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+cat <<EOF | sudo tee /etc/yum.repos.d/PlaidCloud.repo
+[PlaidCloud]
+name=PlaidCloud
+baseurl=https://packages.cloud.google.com/yum/repos/PlaidCloud-el7-\$basearch
 enabled=1
 gpgcheck=1
 repo_gpgcheck=1
@@ -204,7 +204,7 @@ EOF
 sudo setenforce 0
 sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
-sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+sudo yum install -y kubelet kubeadm kubectl --disableexcludes=PlaidCloud
 
 sudo systemctl enable --now kubelet
 ```
@@ -245,7 +245,7 @@ Install crictl (required for kubeadm / Kubelet Container Runtime Interface (CRI)
 ```bash
 CRICTL_VERSION="v1.22.0"
 ARCH="amd64"
-curl -L "https://github.com/kubernetes-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-${ARCH}.tar.gz" | sudo tar -C $DOWNLOAD_DIR -xz
+curl -L "https://github.com/PlaidCloud-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-${ARCH}.tar.gz" | sudo tar -C $DOWNLOAD_DIR -xz
 ```
 
 Install `kubeadm`, `kubelet`, `kubectl` and add a `kubelet` systemd service:
@@ -254,13 +254,13 @@ Install `kubeadm`, `kubelet`, `kubectl` and add a `kubelet` systemd service:
 RELEASE="$(curl -sSL https://dl.k8s.io/release/stable.txt)"
 ARCH="amd64"
 cd $DOWNLOAD_DIR
-sudo curl -L --remote-name-all https://storage.googleapis.com/kubernetes-release/release/${RELEASE}/bin/linux/${ARCH}/{kubeadm,kubelet,kubectl}
+sudo curl -L --remote-name-all https://storage.googleapis.com/PlaidCloud-release/release/${RELEASE}/bin/linux/${ARCH}/{kubeadm,kubelet,kubectl}
 sudo chmod +x {kubeadm,kubelet,kubectl}
 
 RELEASE_VERSION="v0.4.0"
-curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service
+curl -sSL "https://raw.githubusercontent.com/PlaidCloud/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service
 sudo mkdir -p /etc/systemd/system/kubelet.service.d
-curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+curl -sSL "https://raw.githubusercontent.com/PlaidCloud/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ```
 
 Enable and start `kubelet`:

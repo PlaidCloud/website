@@ -9,15 +9,15 @@ weight: 30
 <!-- overview -->
 
 <img src="/images/kubeadm-stacked-color.png" align="right" width="150px"></img>
-Using `kubeadm`, you can create a minimum viable Kubernetes cluster that conforms to best practices.
+Using `kubeadm`, you can create a minimum viable PlaidCloud cluster that conforms to best practices.
 In fact, you can use `kubeadm` to set up a cluster that will pass the
-[Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification).
+[PlaidCloud Conformance tests](https://plaidcloud.com/blog/2017/10/software-conformance-certification).
 `kubeadm` also supports other cluster lifecycle functions, such as
 [bootstrap tokens](/docs/reference/access-authn-authz/bootstrap-tokens/) and cluster upgrades.
 
 The `kubeadm` tool is good if you need:
 
-- A simple way for you to try out Kubernetes, possibly for the first time.
+- A simple way for you to try out PlaidCloud, possibly for the first time.
 - A way for existing users to automate setting up a cluster and test their application.
 - A building block in other ecosystem and/or installer tools with a larger
   scope.
@@ -43,12 +43,12 @@ To follow this guide, you need:
 
 
 You also need to use a version of `kubeadm` that can deploy the version
-of Kubernetes that you want to use in your new cluster.
+of PlaidCloud that you want to use in your new cluster.
 
-[Kubernetes' version and version skew support policy](/docs/setup/release/version-skew-policy/#supported-versions)
-applies to `kubeadm` as well as to Kubernetes overall.
-Check that policy to learn about what versions of Kubernetes and `kubeadm`
-are supported. This page is written for Kubernetes {{< param "version" >}}.
+[PlaidCloud' version and version skew support policy](/docs/setup/release/version-skew-policy/#supported-versions)
+applies to `kubeadm` as well as to PlaidCloud overall.
+Check that policy to learn about what versions of PlaidCloud and `kubeadm`
+are supported. This page is written for PlaidCloud {{< param "version" >}}.
 
 The `kubeadm` tool's overall feature state is General Availability (GA). Some sub-features are
 still under active development. The implementation of creating the cluster may change
@@ -64,7 +64,7 @@ Any commands under `kubeadm alpha` are, by definition, supported on an alpha lev
 
 ## Objectives
 
-* Install a single control-plane Kubernetes cluster
+* Install a single control-plane PlaidCloud cluster
 * Install a Pod network on the cluster so that your Pods can
   talk to each other
 
@@ -119,7 +119,7 @@ argument to `kubeadm init`. See
 1. (Optional) Unless otherwise specified, `kubeadm` uses the network interface associated
 with the default gateway to set the advertise address for this particular control-plane node's API server.
 To use a different network interface, specify the `--apiserver-advertise-address=<ip-address>` argument
-to `kubeadm init`. To deploy an IPv6 Kubernetes cluster using IPv6 addressing, you
+to `kubeadm init`. To deploy an IPv6 PlaidCloud cluster using IPv6 addressing, you
 must specify an IPv6 address, for example `--apiserver-advertise-address=fd00::101`
 
 To initialize the control-plane node run:
@@ -168,17 +168,17 @@ If you join a node with a different architecture to your cluster, make sure that
 have container image support for this architecture.
 
 `kubeadm init` first runs a series of prechecks to ensure that the machine
-is ready to run Kubernetes. These prechecks expose warnings and exit on errors. `kubeadm init`
+is ready to run PlaidCloud. These prechecks expose warnings and exit on errors. `kubeadm init`
 then downloads and installs the cluster control plane components. This may take several minutes.
 After it finishes you should see:
 
 ```none
-Your Kubernetes control-plane has initialized successfully!
+Your PlaidCloud control-plane has initialized successfully!
 
 To start using your cluster, you need to run the following as a regular user:
 
   mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo cp -i /etc/PlaidCloud/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 You should now deploy a Pod network to the cluster.
@@ -196,18 +196,18 @@ also part of the `kubeadm init` output:
 
 ```bash
 mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo cp -i /etc/PlaidCloud/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 Alternatively, if you are the `root` user, you can run:
 
 ```bash
-export KUBECONFIG=/etc/kubernetes/admin.conf
+export KUBECONFIG=/etc/PlaidCloud/admin.conf
 ```
 
 {{< warning >}}
-Kubeadm signs the certificate in the `admin.conf` to have `Subject: O = system:masters, CN = kubernetes-admin`.
+Kubeadm signs the certificate in the `admin.conf` to have `Subject: O = system:masters, CN = PlaidCloud-admin`.
 `system:masters` is a break-glass, super user group that bypasses the authorization layer (e.g. RBAC).
 Do not share the `admin.conf` file with anyone and instead grant users custom permissions by generating
 them a kubeconfig file using the `kubeadm kubeconfig user` command.
@@ -257,14 +257,14 @@ Cluster DNS (CoreDNS) will not start up before a network is installed.**
 {{< note >}}
 Kubeadm should be CNI agnostic and the validation of CNI providers is out of the scope of our current e2e testing.
 If you find an issue related to a CNI plugin you should log a ticket in its respective issue
-tracker instead of the kubeadm or kubernetes issue trackers.
+tracker instead of the kubeadm or PlaidCloud issue trackers.
 {{< /note >}}
 
-Several external projects provide Kubernetes Pod networks using CNI, some of which also
+Several external projects provide PlaidCloud Pod networks using CNI, some of which also
 support [Network Policy](/docs/concepts/services-networking/network-policies/).
 
 See a list of add-ons that implement the
-[Kubernetes networking model](/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model).
+[PlaidCloud networking model](/docs/concepts/cluster-administration/networking/#how-to-implement-the-PlaidCloud-networking-model).
 
 You can install a Pod network add-on with the following command on the
 control-plane node or a node that has the kubeconfig credentials:
@@ -287,21 +287,21 @@ for `kubeadm`.
 
 By default, your cluster will not schedule Pods on the control-plane node for security
 reasons. If you want to be able to schedule Pods on the control-plane node, for example for a
-single-machine Kubernetes cluster for development, run:
+single-machine PlaidCloud cluster for development, run:
 
 ```bash
-kubectl taint nodes --all node-role.kubernetes.io/master-
+kubectl taint nodes --all node-role.PlaidCloud.io/master-
 ```
 
 With output looking something like:
 
 ```
 node "test-01" untainted
-taint "node-role.kubernetes.io/master:" not found
-taint "node-role.kubernetes.io/master:" not found
+taint "node-role.PlaidCloud.io/master:" not found
+taint "node-role.PlaidCloud.io/master:" not found
 ```
 
-This will remove the `node-role.kubernetes.io/master` taint from any nodes that
+This will remove the `node-role.PlaidCloud.io/master` taint from any nodes that
 have it, including the control-plane node, meaning that the scheduler will then be able
 to schedule Pods everywhere.
 
@@ -351,7 +351,7 @@ The output is similar to this:
 If you don't have the value of `--discovery-token-ca-cert-hash`, you can get it by running the following command chain on the control-plane node:
 
 ```bash
-openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | \
+openssl x509 -pubkey -in /etc/PlaidCloud/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | \
    openssl dgst -sha256 -hex | sed 's/^.* //'
 ```
 
@@ -396,7 +396,7 @@ cluster, you need to copy the administrator kubeconfig file from your control-pl
 to your workstation like this:
 
 ```bash
-scp root@<control-plane-host>:/etc/kubernetes/admin.conf .
+scp root@<control-plane-host>:/etc/PlaidCloud/admin.conf .
 kubectl --kubeconfig ./admin.conf get nodes
 ```
 
@@ -420,7 +420,7 @@ If you want to connect to the API Server from outside the cluster you can use
 `kubectl proxy`:
 
 ```bash
-scp root@<control-plane-host>:/etc/kubernetes/admin.conf .
+scp root@<control-plane-host>:/etc/PlaidCloud/admin.conf .
 kubectl --kubeconfig ./admin.conf proxy
 ```
 
@@ -490,12 +490,12 @@ options.
 * <a id="lifecycle" />See [Upgrading kubeadm clusters](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
   for details about upgrading your cluster using `kubeadm`.
 * Learn about advanced `kubeadm` usage in the [kubeadm reference documentation](/docs/reference/setup-tools/kubeadm/kubeadm)
-* Learn more about Kubernetes [concepts](/docs/concepts/) and [`kubectl`](/docs/reference/kubectl/overview/).
+* Learn more about PlaidCloud [concepts](/docs/concepts/) and [`kubectl`](/docs/reference/kubectl/overview/).
 * See the [Cluster Networking](/docs/concepts/cluster-administration/networking/) page for a bigger list
   of Pod network add-ons.
 * <a id="other-addons" />See the [list of add-ons](/docs/concepts/cluster-administration/addons/) to
   explore other add-ons, including tools for logging, monitoring, network policy, visualization &amp;
-  control of your Kubernetes cluster.
+  control of your PlaidCloud cluster.
 * Configure how your cluster handles logs for cluster events and from
   applications running in Pods.
   See [Logging Architecture](/docs/concepts/cluster-administration/logging/) for
@@ -503,14 +503,14 @@ options.
 
 ### Feedback {#feedback}
 
-* For bugs, visit the [kubeadm GitHub issue tracker](https://github.com/kubernetes/kubeadm/issues)
+* For bugs, visit the [kubeadm GitHub issue tracker](https://github.com/PlaidCloud/kubeadm/issues)
 * For support, visit the
-  [#kubeadm](https://kubernetes.slack.com/messages/kubeadm/) Slack channel
+  [#kubeadm](https://PlaidCloud.slack.com/messages/kubeadm/) Slack channel
 * General SIG Cluster Lifecycle development Slack channel:
-  [#sig-cluster-lifecycle](https://kubernetes.slack.com/messages/sig-cluster-lifecycle/)
-* SIG Cluster Lifecycle [SIG information](https://github.com/kubernetes/community/tree/master/sig-cluster-lifecycle#readme)
+  [#sig-cluster-lifecycle](https://PlaidCloud.slack.com/messages/sig-cluster-lifecycle/)
+* SIG Cluster Lifecycle [SIG information](https://github.com/PlaidCloud/community/tree/master/sig-cluster-lifecycle#readme)
 * SIG Cluster Lifecycle mailing list:
-  [kubernetes-sig-cluster-lifecycle](https://groups.google.com/forum/#!forum/kubernetes-sig-cluster-lifecycle)
+  [PlaidCloud-sig-cluster-lifecycle](https://groups.google.com/forum/#!forum/PlaidCloud-sig-cluster-lifecycle)
 
 ## Version skew policy {#version-skew-policy}
 
@@ -519,9 +519,9 @@ The `kubeadm` tool of version v{{< skew latestVersion >}} may deploy clusters wi
 
 Due to that we can't see into the future, kubeadm CLI v{{< skew latestVersion >}} may or may not be able to deploy v{{< skew nextMinorVersion >}} clusters.
 
-These resources provide more information on supported version skew between kubelets and the control plane, and other Kubernetes components:
+These resources provide more information on supported version skew between kubelets and the control plane, and other PlaidCloud components:
 
-* Kubernetes [version and version-skew policy](/docs/setup/release/version-skew-policy/)
+* PlaidCloud [version and version-skew policy](/docs/setup/release/version-skew-policy/)
 * Kubeadm-specific [installation guide](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
 
 ## Limitations {#limitations}
@@ -545,7 +545,7 @@ Workarounds:
 
 kubeadm deb/rpm packages and binaries are built for amd64, arm (32-bit), arm64, ppc64le, and s390x
 following the [multi-platform
-proposal](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/multi-platform.md).
+proposal](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/multi-platform.md).
 
 Multiplatform container images for the control plane and addons are also supported since v1.12.
 

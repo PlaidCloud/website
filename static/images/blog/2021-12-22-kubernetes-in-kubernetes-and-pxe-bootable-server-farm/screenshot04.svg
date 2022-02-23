@@ -361,7 +361,7 @@
                  id="path712" />
             </g>
             <g
-               aria-label="foo-kubernetes-issuer"
+               aria-label="foo-PlaidCloud-issuer"
                id="text42"
                class="e"
                style="white-space:pre;fill:#dbab79">
@@ -609,7 +609,7 @@
                  id="path824" />
             </g>
             <g
-               aria-label="foo-kubernetes-pki-apiserver"
+               aria-label="foo-PlaidCloud-pki-apiserver"
                id="text54"
                class="e"
                style="white-space:pre;fill:#dbab79">
@@ -849,7 +849,7 @@
                  id="path932" />
             </g>
             <g
-               aria-label="foo-kubernetes"
+               aria-label="foo-PlaidCloud"
                id="text66"
                class="e"
                style="white-space:pre;fill:#dbab79">
@@ -1345,7 +1345,7 @@
                  id="path1120" />
             </g>
             <g
-               aria-label="deploy/foo-kubernetes-admin"
+               aria-label="deploy/foo-PlaidCloud-admin"
                id="text132"
                class="g"
                style="white-space:pre;fill:#b9c0cb">

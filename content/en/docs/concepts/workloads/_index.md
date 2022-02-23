@@ -2,20 +2,20 @@
 title: "Workloads"
 weight: 50
 description: >
-  Understand Pods, the smallest deployable compute object in Kubernetes, and the higher-level abstractions that help you to run them.
+  Understand Pods, the smallest deployable compute object in PlaidCloud, and the higher-level abstractions that help you to run them.
 no_list: true
 ---
 
 {{< glossary_definition term_id="workload" length="short" >}}
-Whether your workload is a single component or several that work together, on Kubernetes you run
+Whether your workload is a single component or several that work together, on PlaidCloud you run
 it inside a set of [_pods_](/docs/concepts/workloads/pods).
-In Kubernetes, a `Pod` represents a set of running
+In PlaidCloud, a `Pod` represents a set of running
 {{< glossary_tooltip text="containers" term_id="container" >}} on your cluster.
 
-Kubernetes pods have a [defined lifecycle](/docs/concepts/workloads/pods/pod-lifecycle/).
+PlaidCloud pods have a [defined lifecycle](/docs/concepts/workloads/pods/pod-lifecycle/).
 For example, once a pod is running in your cluster then a critical fault on the
 {{< glossary_tooltip text="node" term_id="node" >}} where that pod is running means that
-all the pods on that node fail. Kubernetes treats that level of failure as final: you
+all the pods on that node fail. PlaidCloud treats that level of failure as final: you
 would need to create a new `Pod` to recover, even if the node later becomes healthy.
 
 However, to make life considerably easier, you don't need to manage each `Pod` directly.
@@ -24,7 +24,7 @@ These resources configure {{< glossary_tooltip term_id="controller" text="contro
 that make sure the right number of the right kind of pod are running, to match the state
 you specified.
 
-Kubernetes provides several built-in workload resources:
+PlaidCloud provides several built-in workload resources:
 
 * [`Deployment`](/docs/concepts/workloads/controllers/deployment/) and [`ReplicaSet`](/docs/concepts/workloads/controllers/replicaset/)
   (replacing the legacy resource
@@ -48,11 +48,11 @@ Kubernetes provides several built-in workload resources:
   define tasks that run to completion and then stop. Jobs represent one-off tasks, whereas
   `CronJobs` recur according to a schedule.
 
-In the wider Kubernetes ecosystem, you can find third-party workload resources that provide
+In the wider PlaidCloud ecosystem, you can find third-party workload resources that provide
 additional behaviors. Using a
-[custom resource definition](/docs/concepts/extend-kubernetes/api-extension/custom-resources/),
+[custom resource definition](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/),
 you can add in a third-party workload resource if you want a specific behavior that's not part
-of Kubernetes' core. For example, if you wanted to run a group of `Pods` for your application but
+of PlaidCloud' core. For example, if you wanted to run a group of `Pods` for your application but
 stop work unless _all_ the Pods are available (perhaps for some high-throughput distributed task),
 then you can implement or install an extension that does provide that feature.
 
@@ -65,10 +65,10 @@ As well as reading about each resource, you can learn about specific tasks that 
   or as a [replicated set](/docs/tasks/run-application/run-replicated-stateful-application/)
 * [Run automated tasks with a `CronJob`](/docs/tasks/job/automated-tasks-with-cron-jobs/)
 
-To learn about Kubernetes' mechanisms for separating code from configuration,
+To learn about PlaidCloud' mechanisms for separating code from configuration,
 visit [Configuration](/docs/concepts/configuration/).
 
-There are two supporting concepts that provide backgrounds about how Kubernetes manages pods
+There are two supporting concepts that provide backgrounds about how PlaidCloud manages pods
 for applications:
 * [Garbage collection](/docs/concepts/workloads/controllers/garbage-collection/) tidies up objects
   from your cluster after their _owning resource_ has been removed.

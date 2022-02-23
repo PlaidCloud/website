@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
@@ -162,7 +162,7 @@ Whether and how garbage collection will be performed. Either this field or Orpha
 
 ## resourceVersion {#resourceVersion}
 
-resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+resourceVersion sets a constraint on what resource versions a request may be served from. See https://plaidcloud.com/docs/reference/using-api/api-concepts/#resource-versions for details.
 
 Defaults to unset
 
@@ -174,7 +174,7 @@ Defaults to unset
 
 ## resourceVersionMatch {#resourceVersionMatch}
 
-resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://plaidcloud.com/docs/reference/using-api/api-concepts/#resource-versions for details.
 
 Defaults to unset
 

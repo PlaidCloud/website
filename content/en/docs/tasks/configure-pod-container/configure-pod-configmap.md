@@ -10,7 +10,7 @@ card:
 <!-- overview -->
 Many applications rely on configuration which is used during either application initialization or runtime.
 Most of the times there is a requirement to adjust values assigned to configuration parameters.
-ConfigMaps is the kubernetes way to inject application pods with configuration data. 
+ConfigMaps is the PlaidCloud way to inject application pods with configuration data. 
 ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable. This page provides a series of usage examples demonstrating how to create ConfigMaps and configure Pods using data stored in ConfigMaps.
 
 
@@ -56,8 +56,8 @@ For example:
 mkdir -p configure-pod-container/configmap/
 
 # Download the sample files into `configure-pod-container/configmap/` directory
-wget https://kubernetes.io/examples/configmap/game.properties -O configure-pod-container/configmap/game.properties
-wget https://kubernetes.io/examples/configmap/ui.properties -O configure-pod-container/configmap/ui.properties
+wget https://plaidcloud.com/examples/configmap/game.properties -O configure-pod-container/configmap/game.properties
+wget https://plaidcloud.com/examples/configmap/ui.properties -O configure-pod-container/configmap/ui.properties
 
 # Create the configmap
 kubectl create configmap game-config --from-file=configure-pod-container/configmap/
@@ -217,7 +217,7 @@ Use the option `--from-env-file` to create a ConfigMap from an env-file, for exa
 #   There is no special handling of quotation marks (i.e. they will be part of the ConfigMap value)).
 
 # Download the sample files into `configure-pod-container/configmap/` directory
-wget https://kubernetes.io/examples/configmap/game-env-file.properties -O configure-pod-container/configmap/game-env-file.properties
+wget https://plaidcloud.com/examples/configmap/game-env-file.properties -O configure-pod-container/configmap/game-env-file.properties
 
 # The env-file `game-env-file.properties` looks like below
 cat configure-pod-container/configmap/game-env-file.properties
@@ -263,7 +263,7 @@ The behavior of passing `--from-env-file` multiple times is demonstrated by:
 
 ```shell
 # Download the sample files into `configure-pod-container/configmap/` directory
-wget https://kubernetes.io/examples/configmap/ui-env-file.properties -O configure-pod-container/configmap/ui-env-file.properties
+wget https://plaidcloud.com/examples/configmap/ui-env-file.properties -O configure-pod-container/configmap/ui-env-file.properties
 
 # Create the configmap
 kubectl create configmap config-multi-env-files \
@@ -400,7 +400,7 @@ kubectl describe configmaps/game-config-4-m9dm2f92bt
 Name:         game-config-4-m9dm2f92bt
 Namespace:    default
 Labels:       <none>
-Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+Annotations:  kubectl.PlaidCloud.io/last-applied-configuration:
                 {"apiVersion":"v1","data":{"game.properties":"enemies=aliens\nlives=3\nenemies.cheat=true\nenemies.cheat.level=noGoodRotten\nsecret.code.p...
 
 Data
@@ -477,7 +477,7 @@ configmap/special-config-2-c92b5mmcf2 created
    Create the Pod:
 
  ```shell
- kubectl create -f https://kubernetes.io/examples/pods/pod-single-configmap-env-variable.yaml
+ kubectl create -f https://plaidcloud.com/examples/pods/pod-single-configmap-env-variable.yaml
  ```
 
    Now, the Pod's output includes environment variable `SPECIAL_LEVEL_KEY=very`.
@@ -491,7 +491,7 @@ configmap/special-config-2-c92b5mmcf2 created
    Create the ConfigMap:
 
  ```shell
- kubectl create -f https://kubernetes.io/examples/configmap/configmaps.yaml
+ kubectl create -f https://plaidcloud.com/examples/configmap/configmaps.yaml
  ```
 
 * Define the environment variables in the Pod specification.
@@ -501,7 +501,7 @@ configmap/special-config-2-c92b5mmcf2 created
   Create the Pod:
 
  ```shell
- kubectl create -f https://kubernetes.io/examples/pods/pod-multiple-configmap-env-variable.yaml
+ kubectl create -f https://plaidcloud.com/examples/pods/pod-multiple-configmap-env-variable.yaml
  ```
 
   Now, the Pod's output includes environment variables `SPECIAL_LEVEL_KEY=very` and `LOG_LEVEL=INFO`.
@@ -509,7 +509,7 @@ configmap/special-config-2-c92b5mmcf2 created
 ## Configure all key-value pairs in a ConfigMap as container environment variables
 
 {{< note >}}
-This functionality is available in Kubernetes v1.6 and later.
+This functionality is available in PlaidCloud v1.6 and later.
 {{< /note >}}
 
 * Create a ConfigMap containing multiple key-value pairs.
@@ -519,7 +519,7 @@ This functionality is available in Kubernetes v1.6 and later.
   Create the ConfigMap:
 
  ```shell
- kubectl create -f https://kubernetes.io/examples/configmap/configmap-multikeys.yaml
+ kubectl create -f https://plaidcloud.com/examples/configmap/configmap-multikeys.yaml
  ```
 
 * Use `envFrom` to define all of the ConfigMap's data as container environment variables. The key from the ConfigMap becomes the environment variable name in the Pod.
@@ -529,7 +529,7 @@ This functionality is available in Kubernetes v1.6 and later.
  Create the Pod:
 
  ```shell
- kubectl create -f https://kubernetes.io/examples/pods/pod-configmap-envFrom.yaml
+ kubectl create -f https://plaidcloud.com/examples/pods/pod-configmap-envFrom.yaml
  ```
 
  Now, the Pod's output includes environment variables `SPECIAL_LEVEL=very` and `SPECIAL_TYPE=charm`.
@@ -537,7 +537,7 @@ This functionality is available in Kubernetes v1.6 and later.
 
 ## Use ConfigMap-defined environment variables in Pod commands
 
-You can use ConfigMap-defined environment variables in the `command` and `args` of a container using the `$(VAR_NAME)` Kubernetes substitution syntax.
+You can use ConfigMap-defined environment variables in the `command` and `args` of a container using the `$(VAR_NAME)` PlaidCloud substitution syntax.
 
 For example, the following Pod specification
 
@@ -546,7 +546,7 @@ For example, the following Pod specification
 created by running
 
 ```shell
-kubectl create -f https://kubernetes.io/examples/pods/pod-configmap-env-var-valueFrom.yaml
+kubectl create -f https://plaidcloud.com/examples/pods/pod-configmap-env-var-valueFrom.yaml
 ```
 
 produces the following output in the `test-container` container:
@@ -566,7 +566,7 @@ The examples in this section refer to a ConfigMap named special-config, shown be
 Create the ConfigMap:
 
 ```shell
-kubectl create -f https://kubernetes.io/examples/configmap/configmap-multikeys.yaml
+kubectl create -f https://plaidcloud.com/examples/configmap/configmap-multikeys.yaml
 ```
 
 ### Populate a Volume with data stored in a ConfigMap
@@ -580,7 +580,7 @@ The `command` section lists directory files with names that match the keys in Co
 Create the Pod:
 
 ```shell
-kubectl create -f https://kubernetes.io/examples/pods/pod-configmap-volume.yaml
+kubectl create -f https://plaidcloud.com/examples/pods/pod-configmap-volume.yaml
 ```
 
 When the pod runs, the command `ls /etc/config/` produces the output below:
@@ -608,7 +608,7 @@ In this case, the `SPECIAL_LEVEL` item will be mounted in the `config-volume` vo
 Create the Pod:
 
 ```shell
-kubectl create -f https://kubernetes.io/examples/pods/pod-configmap-volume-specific-key.yaml
+kubectl create -f https://plaidcloud.com/examples/pods/pod-configmap-volume-specific-key.yaml
 ```
 
 When the pod runs, the command `cat /etc/config/keys` produces the output below:
@@ -654,7 +654,7 @@ A container using a ConfigMap as a [subPath](/docs/concepts/storage/volumes/#usi
 The ConfigMap API resource stores configuration data as key-value pairs. The data can be consumed in pods or provide the configurations for system components such as controllers. ConfigMap is similar to [Secrets](/docs/concepts/configuration/secret/), but provides a means of working with strings that don't contain sensitive information. Users and system components alike can store configuration data in ConfigMap.
 
 {{< note >}}
-ConfigMaps should reference properties files, not replace them. Think of the ConfigMap as representing something similar to the Linux `/etc` directory and its contents. For example, if you create a [Kubernetes Volume](/docs/concepts/storage/volumes/) from a ConfigMap, each data item in the ConfigMap is represented by an individual file in the volume.
+ConfigMaps should reference properties files, not replace them. Think of the ConfigMap as representing something similar to the Linux `/etc` directory and its contents. For example, if you create a [PlaidCloud Volume](/docs/concepts/storage/volumes/) from a ConfigMap, each data item in the ConfigMap is represented by an individual file in the volume.
 {{< /note >}}
 
 The ConfigMap's `data` field contains the configuration data. As shown in the example below, this can be simple -- like individual properties defined using `--from-literal` -- or complex -- like configuration files or JSON blobs defined using `--from-file`.

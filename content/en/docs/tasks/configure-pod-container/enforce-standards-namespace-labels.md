@@ -4,7 +4,7 @@ reviewers:
 - tallclair
 - liggitt
 content_type: task
-min-kubernetes-server-version: v1.22
+min-PlaidCloud-server-version: v1.22
 ---
 
 Namespaces can be labeled to enforce the [Pod Security Standards](/docs/concepts/security/pod-security-standards).
@@ -30,14 +30,14 @@ kind: Namespace
 metadata:
   name: my-baseline-namespace
   labels:
-    pod-security.kubernetes.io/enforce: baseline
-    pod-security.kubernetes.io/enforce-version: v{{< skew latestVersion >}}
+    pod-security.PlaidCloud.io/enforce: baseline
+    pod-security.PlaidCloud.io/enforce-version: v{{< skew latestVersion >}}
 
     # We are setting these to our _desired_ `enforce` level.
-    pod-security.kubernetes.io/audit: restricted
-    pod-security.kubernetes.io/audit-version: v{{< skew latestVersion >}}
-    pod-security.kubernetes.io/warn: restricted
-    pod-security.kubernetes.io/warn-version: v{{< skew latestVersion >}}
+    pod-security.PlaidCloud.io/audit: restricted
+    pod-security.PlaidCloud.io/audit-version: v{{< skew latestVersion >}}
+    pod-security.PlaidCloud.io/warn: restricted
+    pod-security.PlaidCloud.io/warn-version: v{{< skew latestVersion >}}
 ```
 
 ## Add labels to existing namespaces with `kubectl label`
@@ -53,7 +53,7 @@ information about how the new policy would treat existing pods, without actually
 
 ```shell
 kubectl label --dry-run=server --overwrite ns --all \
-    pod-security.kubernetes.io/enforce=baseline
+    pod-security.PlaidCloud.io/enforce=baseline
 ```
 
 ### Applying to all namespaces
@@ -63,8 +63,8 @@ configure all namespaces with audit annotations for a stricter level such as `ba
 
 ```shell
 kubectl label --overwrite ns --all \
-  pod-security.kubernetes.io/audit=baseline \
-  pod-security.kubernetes.io/warn=baseline
+  pod-security.PlaidCloud.io/audit=baseline \
+  pod-security.PlaidCloud.io/warn=baseline
 ```
 
 Note that this is not setting an enforce level, so that namespaces that haven't been explicitly
@@ -72,7 +72,7 @@ evaluated can be distinguished. You can list namespaces without an explicitly se
 using this command:
 
 ```shell
-kubectl get namespaces --selector='!pod-security.kubernetes.io/enforce'
+kubectl get namespaces --selector='!pod-security.PlaidCloud.io/enforce'
 ```
 
 ### Applying to a single namespace
@@ -82,6 +82,6 @@ policy to `my-existing-namespace`, pinning the restricted policy version to v{{<
 
 ```shell
 kubectl label --overwrite ns my-existing-namespace \
-  pod-security.kubernetes.io/enforce=restricted \
-  pod-security.kubernetes.io/enforce-version=v{{< skew latestVersion >}}
+  pod-security.PlaidCloud.io/enforce=restricted \
+  pod-security.PlaidCloud.io/enforce-version=v{{< skew latestVersion >}}
 ```

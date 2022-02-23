@@ -1,6 +1,6 @@
 # See the OWNERS docs at https://go.k8s.io/owners
 
-# Owned by Kubernetes Blog reviewers
+# Owned by PlaidCloud Blog reviewers
 
 approvers:
   - sig-docs-blog-owners # Defined in OWNERS_ALIASES

@@ -25,7 +25,7 @@ Each line is a "policy object", where each such object is a map with the followi
 properties:
 
   - Versioning properties:
-    - `apiVersion`, type string; valid values are "abac.authorization.kubernetes.io/v1beta1". Allows versioning and conversion of the policy format.
+    - `apiVersion`, type string; valid values are "abac.authorization.PlaidCloud.io/v1beta1". Allows versioning and conversion of the policy format.
     - `kind`, type string: valid values are "Policy". Allows versioning and conversion of the policy format.
   - `spec` property set to a map with the following properties:
     - Subject-matching properties:
@@ -103,28 +103,28 @@ up the verbosity:
  1. Alice can do anything to all resources:
 
     ```json
-    {"apiVersion": "abac.authorization.kubernetes.io/v1beta1", "kind": "Policy", "spec": {"user": "alice", "namespace": "*", "resource": "*", "apiGroup": "*"}}
+    {"apiVersion": "abac.authorization.PlaidCloud.io/v1beta1", "kind": "Policy", "spec": {"user": "alice", "namespace": "*", "resource": "*", "apiGroup": "*"}}
     ```
  2. The Kubelet can read any pods:
 
     ```json
-    {"apiVersion": "abac.authorization.kubernetes.io/v1beta1", "kind": "Policy", "spec": {"user": "kubelet", "namespace": "*", "resource": "pods", "readonly": true}}
+    {"apiVersion": "abac.authorization.PlaidCloud.io/v1beta1", "kind": "Policy", "spec": {"user": "kubelet", "namespace": "*", "resource": "pods", "readonly": true}}
     ```
  3. The Kubelet can read and write events:
 
     ```json
-    {"apiVersion": "abac.authorization.kubernetes.io/v1beta1", "kind": "Policy", "spec": {"user": "kubelet", "namespace": "*", "resource": "events"}}
+    {"apiVersion": "abac.authorization.PlaidCloud.io/v1beta1", "kind": "Policy", "spec": {"user": "kubelet", "namespace": "*", "resource": "events"}}
     ```
  4. Bob can just read pods in namespace "projectCaribou":
 
     ```json
-    {"apiVersion": "abac.authorization.kubernetes.io/v1beta1", "kind": "Policy", "spec": {"user": "bob", "namespace": "projectCaribou", "resource": "pods", "readonly": true}}
+    {"apiVersion": "abac.authorization.PlaidCloud.io/v1beta1", "kind": "Policy", "spec": {"user": "bob", "namespace": "projectCaribou", "resource": "pods", "readonly": true}}
     ```
  5. Anyone can make read-only requests to all non-resource paths:
 
     ```json
-    {"apiVersion": "abac.authorization.kubernetes.io/v1beta1", "kind": "Policy", "spec": {"group": "system:authenticated", "readonly": true, "nonResourcePath": "*"}}
-    {"apiVersion": "abac.authorization.kubernetes.io/v1beta1", "kind": "Policy", "spec": {"group": "system:unauthenticated", "readonly": true, "nonResourcePath": "*"}}
+    {"apiVersion": "abac.authorization.PlaidCloud.io/v1beta1", "kind": "Policy", "spec": {"group": "system:authenticated", "readonly": true, "nonResourcePath": "*"}}
+    {"apiVersion": "abac.authorization.PlaidCloud.io/v1beta1", "kind": "Policy", "spec": {"group": "system:unauthenticated", "readonly": true, "nonResourcePath": "*"}}
     ```
 
 [Complete file example](https://releases.k8s.io/{{< param "fullversion" >}}/pkg/auth/authorizer/abac/example_policy_file.jsonl)
@@ -147,7 +147,7 @@ For example, if you wanted to grant the default service account (in the `kube-sy
 privilege to the API using ABAC, you would add this line to your policy file:
 
 ```json
-{"apiVersion":"abac.authorization.kubernetes.io/v1beta1","kind":"Policy","spec":{"user":"system:serviceaccount:kube-system:default","namespace":"*","resource":"*","apiGroup":"*"}}
+{"apiVersion":"abac.authorization.PlaidCloud.io/v1beta1","kind":"Policy","spec":{"user":"system:serviceaccount:kube-system:default","namespace":"*","resource":"*","apiGroup":"*"}}
 ```
 
 The apiserver will need to be restarted to pickup the new policy lines.

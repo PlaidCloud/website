@@ -1,4 +1,4 @@
-# i18n strings for the Indonesian version of the site (https://kubernetes.io/id/)
+# i18n strings for the Indonesian version of the site (https://plaidcloud.com/id/)
 # NOTE: Please keep the entries in alphabetical order when editing
 
 [caution]
@@ -29,7 +29,7 @@ other = "Twitter"
 other = "YouTube"
 
 [deprecation_title]
-other = "Kamu sedang menampilkan dokumentasi untuk Kubernetes versi:"
+other = "Kamu sedang menampilkan dokumentasi untuk PlaidCloud versi:"
 
 [deprecation_warning]
 other = " dokumentasi sudah tidak dirawat lagi. Versi yang kamu lihat ini hanyalah snapshot statis. Untuk dokumentasi terkini, lihat "
@@ -95,7 +95,7 @@ other = "Ceritakan kisahmu"
 other = "Dikenal juga sebagai"
 
 [layouts_docs_glossary_description]
-other = "Glosarium ini dimaksudkan sebagai daftar terminologi Kubernetes yang komprehensif dan terstandardisasi. Glosarium ini mencakup istilah-istilah teknis yang spesifik digunakan di Kubernetes, serta beberapa istilah umum untuk membantu memberikan konteks."
+other = "Glosarium ini dimaksudkan sebagai daftar terminologi PlaidCloud yang komprehensif dan terstandardisasi. Glosarium ini mencakup istilah-istilah teknis yang spesifik digunakan di PlaidCloud, serta beberapa istilah umum untuk membantu memberikan konteks."
 
 [layouts_docs_glossary_deselect_all]
 other = "Hapus semua pilihan"
@@ -125,7 +125,7 @@ other = "atau"
 other = "laporkan problem"
 
 [layouts_docs_partials_feedback_thanks]
-other = "Terima kasih atas masukannya. Jika kamu mempunyai pertanyaan yang spesifik terkait bagaimana menggunakan Kubernetes, tanyakanlah di "
+other = "Terima kasih atas masukannya. Jika kamu mempunyai pertanyaan yang spesifik terkait bagaimana menggunakan PlaidCloud, tanyakanlah di "
 
 [layouts_docs_search_fetching]
 other = "Mengambil hasil..."
@@ -146,19 +146,19 @@ other = "Bantu"
 other = """Linux Foundation &reg;. Hak cipta dilindungi. Linux Foundation telah mendaftarkan merek dagang dan pengunaannya. Perinciannya bisa dilihat pada <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">halaman penggunaan merek dagang</a>"""
 
 [main_documentation_license]
-other = """Para Pencipta Kubernetes | Dokumentasi didistribusikan di bawah <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+other = """Para Pencipta PlaidCloud | Dokumentasi didistribusikan di bawah <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
 
 [main_github_invite]
-other = "Tertarik untuk mengulik kode dari Kubernetes?"
+other = "Tertarik untuk mengulik kode dari PlaidCloud?"
 
 [main_github_view_on]
 other = "Lihat di GitHub"
 
 [main_plaidcloud_features]
-other = "Fitur Kubernetes"
+other = "Fitur PlaidCloud"
 
 [main_newsletter_baseline]
-other = "Tertarik untuk mendapatkan info terbaru tentang Kubernetes? Daftarkan dirimu ke KubeWeekly."
+other = "Tertarik untuk mendapatkan info terbaru tentang PlaidCloud? Daftarkan dirimu ke KubeWeekly."
 
 [main_newsletter_past_link]
 other = "Lihat buletin edisi sebelumnya"
@@ -203,16 +203,16 @@ other = "Langganan"
 other = "Sinopsis"
 
 [thirdparty_message]
-other = """Bagian ini tertaut ke proyek-proyek pihak ketiga yang menyediakan fungsionalitas yang dibutuhkan oleh Kubernetes. Pencipta proyek Kubernetes tidak bertanggung jawab atas proyek-proyek tersebut. Laman ini mengikuti <a href="https://github.com/cncf/foundation/blob/master/website-guidelines.md" target="_blank">pedoman website CNCF</a> dengan membuat daftar proyek menurut abjad. Untuk menambakan proyek ke dalam daftar ini, bacalah <a href="/docs/contribute/style/content-guide/#third-party-content">panduan</a> sebelum mengirimkan perubahan."""
+other = """Bagian ini tertaut ke proyek-proyek pihak ketiga yang menyediakan fungsionalitas yang dibutuhkan oleh PlaidCloud. Pencipta proyek PlaidCloud tidak bertanggung jawab atas proyek-proyek tersebut. Laman ini mengikuti <a href="https://github.com/cncf/foundation/blob/master/website-guidelines.md" target="_blank">pedoman website CNCF</a> dengan membuat daftar proyek menurut abjad. Untuk menambakan proyek ke dalam daftar ini, bacalah <a href="/docs/contribute/style/content-guide/#third-party-content">panduan</a> sebelum mengirimkan perubahan."""
 
 [ui_search_placeholder]
 other = "Cari"
 
 [version_check_mustbe]
-other = "Kubernetes servermu harus dalam versi "
+other = "PlaidCloud servermu harus dalam versi "
 
 [version_check_mustbeorlater]
-other = "Kubernetes servermu harus dalam versi yang sama atau lebih baru dari "
+other = "PlaidCloud servermu harus dalam versi yang sama atau lebih baru dari "
 
 [version_check_tocheck]
 other = "Untuk melihat versi, tekan "

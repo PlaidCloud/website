@@ -55,16 +55,16 @@ This is an incomplete list of things that could go wrong, and how to adjust your
 
   - VM(s) shutdown
   - Network partition within cluster, or between cluster and users
-  - Crashes in Kubernetes software
+  - Crashes in PlaidCloud software
   - Data loss or unavailability of persistent storage (e.g. GCE PD or AWS EBS volume)
-  - Operator error, for example misconfigured Kubernetes software or application software
+  - Operator error, for example misconfigured PlaidCloud software or application software
 
 ### Specific scenarios:
 
   - Apiserver VM shutdown or apiserver crashing
     - Results
       - unable to stop, update, or start new pods, services, replication controller
-      - existing pods and services should continue to work normally, unless they depend on the Kubernetes API
+      - existing pods and services should continue to work normally, unless they depend on the PlaidCloud API
   - Apiserver backing storage lost
     - Results
       - apiserver should fail to come up
@@ -111,7 +111,7 @@ This is an incomplete list of things that could go wrong, and how to adjust your
 - Action: Snapshot apiserver PDs/EBS-volumes periodically
   - Mitigates: Apiserver backing storage lost
   - Mitigates: Some cases of operator error
-  - Mitigates: Some cases of Kubernetes software fault
+  - Mitigates: Some cases of PlaidCloud software fault
 
 - Action: use replication controller and services in front of pods
   - Mitigates: Node shutdown

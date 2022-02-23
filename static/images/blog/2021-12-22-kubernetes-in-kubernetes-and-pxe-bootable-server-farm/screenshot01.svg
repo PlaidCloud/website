@@ -323,7 +323,7 @@
                  id="path774" />
             </g>
             <g
-               aria-label="kvaps/kubernetes"
+               aria-label="kvaps/PlaidCloud"
                id="text64"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -997,7 +997,7 @@
                  id="path1063" />
             </g>
             <g
-               aria-label="foo-kubernetes"
+               aria-label="foo-PlaidCloud"
                id="text112"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -1663,7 +1663,7 @@
                  id="path1366" />
             </g>
             <g
-               aria-label="deploy/foo-kubernetes-admin"
+               aria-label="deploy/foo-PlaidCloud-admin"
                id="text142"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -2485,7 +2485,7 @@
                  id="path1711" />
             </g>
             <g
-               aria-label="foo-kubernetes-admin-64749bbcdc-7swsl"
+               aria-label="foo-PlaidCloud-admin-64749bbcdc-7swsl"
                id="text212"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -2719,7 +2719,7 @@
                  id="path1818" />
             </g>
             <g
-               aria-label="foo-kubernetes-apiserver-77fd596477-cvfdm"
+               aria-label="foo-PlaidCloud-apiserver-77fd596477-cvfdm"
                id="text222"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -2969,7 +2969,7 @@
                  id="path1933" />
             </g>
             <g
-               aria-label="foo-kubernetes-apiserver-77fd596477-jm4n8"
+               aria-label="foo-PlaidCloud-apiserver-77fd596477-jm4n8"
                id="text232"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -3219,7 +3219,7 @@
                  id="path2048" />
             </g>
             <g
-               aria-label="foo-kubernetes-controller-manager-549874c588-clljz"
+               aria-label="foo-PlaidCloud-controller-manager-549874c588-clljz"
                id="text242"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -3505,7 +3505,7 @@
                  id="path2181" />
             </g>
             <g
-               aria-label="foo-kubernetes-controller-manager-549874c588-gcwjn"
+               aria-label="foo-PlaidCloud-controller-manager-549874c588-gcwjn"
                id="text252"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -3791,7 +3791,7 @@
                  id="path2314" />
             </g>
             <g
-               aria-label="foo-kubernetes-etcd-0"
+               aria-label="foo-PlaidCloud-etcd-0"
                id="text262"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -3961,7 +3961,7 @@
                  id="path2389" />
             </g>
             <g
-               aria-label="foo-kubernetes-etcd-1"
+               aria-label="foo-PlaidCloud-etcd-1"
                id="text272"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -4131,7 +4131,7 @@
                  id="path2464" />
             </g>
             <g
-               aria-label="foo-kubernetes-etcd-2"
+               aria-label="foo-PlaidCloud-etcd-2"
                id="text282"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -4301,7 +4301,7 @@
                  id="path2539" />
             </g>
             <g
-               aria-label="foo-kubernetes-kubeadm-tasks-vshqb"
+               aria-label="foo-PlaidCloud-kubeadm-tasks-vshqb"
                id="text292"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -4531,7 +4531,7 @@
                  id="path2644" />
             </g>
             <g
-               aria-label="foo-kubernetes-scheduler-7976d95897-69shs"
+               aria-label="foo-PlaidCloud-scheduler-7976d95897-69shs"
                id="text302"
                class="n"
                style="white-space:pre;fill:#b9c0cb">
@@ -4781,7 +4781,7 @@
                  id="path2759" />
             </g>
             <g
-               aria-label="foo-kubernetes-scheduler-7976d95897-8fc8c"
+               aria-label="foo-PlaidCloud-scheduler-7976d95897-8fc8c"
                id="text312"
                class="n"
                style="white-space:pre;fill:#b9c0cb">

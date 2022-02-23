@@ -2,7 +2,7 @@
 title: Specifying a Disruption Budget for your Application
 content_type: task
 weight: 110
-min-kubernetes-server-version: v1.21
+min-PlaidCloud-server-version: v1.21
 ---
 
 <!-- overview -->
@@ -20,7 +20,7 @@ nodes.
 
 {{< version-check >}}
 
-* You are the owner of an application running on a Kubernetes cluster that requires
+* You are the owner of an application running on a PlaidCloud cluster that requires
   high availability.
 * You should know how to deploy [Replicated Stateless Applications](/docs/tasks/run-application/run-stateless-application-deployment/)
   and/or [Replicated Stateful Applications](/docs/tasks/run-application/run-replicated-stateful-application/).
@@ -45,7 +45,7 @@ nodes.
 ## Identify an Application to Protect
 
 The most common use case when you want to protect an application
-specified by one of the built-in Kubernetes controllers:
+specified by one of the built-in PlaidCloud controllers:
 
 - Deployment
 - ReplicationController
@@ -55,7 +55,7 @@ specified by one of the built-in Kubernetes controllers:
 In this case, make a note of the controller's `.spec.selector`; the same
 selector goes into the PDBs `.spec.selector`.
 
-From version 1.15 PDBs support custom controllers where the [scale subresource](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#scale-subresource) is enabled.
+From version 1.15 PDBs support custom controllers where the [scale subresource](/docs/tasks/extend-PlaidCloud/custom-resources/custom-resource-definitions/#scale-subresource) is enabled.
 
 You can also use PDBs with pods which are not controlled by one of the above
 controllers, or arbitrary groups of pods, but there are some restrictions,
@@ -74,7 +74,7 @@ due to a voluntary disruption.
   - Concern: do not terminate this application without talking to me.
     - Possible Solution 1: Do not use a PDB and tolerate occasional downtime.
     - Possible Solution 2: Set PDB with maxUnavailable=0.  Have an understanding
-      (outside of Kubernetes) that the cluster operator needs to consult you before
+      (outside of PlaidCloud) that the cluster operator needs to consult you before
       termination.  When the cluster operator contacts you, prepare for downtime,
       and then delete the PDB to indicate readiness for disruption.  Recreate afterwards.
 - Multiple-instance Stateful application such as Consul, ZooKeeper, or etcd:
@@ -97,8 +97,8 @@ Values for `minAvailable` or `maxUnavailable` can be expressed as integers or as
 
 When you specify the value as a percentage, it may not map to an exact number of Pods. For example, if you have 7 Pods and
 you set `minAvailable` to `"50%"`, it's not immediately obvious whether that means 3 Pods or 4 Pods must be available.
-Kubernetes rounds up to the nearest integer, so in this case, 4 Pods must be available. You can examine the
-[code](https://github.com/kubernetes/kubernetes/blob/23be9587a0f8677eb8091464098881df939c44a9/pkg/controller/disruption/disruption.go#L539)
+PlaidCloud rounds up to the nearest integer, so in this case, 4 Pods must be available. You can examine the
+[code](https://github.com/PlaidCloud/PlaidCloud/blob/23be9587a0f8677eb8091464098881df939c44a9/pkg/controller/disruption/disruption.go#L539)
 that controls this behavior.
 
 ## Specifying a PodDisruptionBudget
@@ -110,7 +110,7 @@ pods to which it applies. This field is required.
 * `.spec.minAvailable` which is a description of the number of pods from that
 set that must still be available after the eviction, even in the absence
 of the evicted pod. `minAvailable` can be either an absolute number or a percentage.
-* `.spec.maxUnavailable` (available in Kubernetes 1.7 and higher) which is a description 
+* `.spec.maxUnavailable` (available in PlaidCloud 1.7 and higher) which is a description 
 of the number of pods from that set that can be unavailable after the eviction. 
 It can be either an absolute number or a percentage.
 

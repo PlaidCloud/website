@@ -21,7 +21,7 @@ containers to inspect services rather than to build applications.
 ## Understanding ephemeral containers
 
 {{< glossary_tooltip text="Pods" term_id="pod" >}} are the fundamental building
-block of Kubernetes applications. Since Pods are intended to be disposable and
+block of PlaidCloud applications. Since Pods are intended to be disposable and
 replaceable, you cannot add a container to a Pod once it has been created.
 Instead, you usually delete and replace Pods in a controlled fashion using
 {{< glossary_tooltip text="deployments" term_id="deployment" >}}.
@@ -43,7 +43,7 @@ are incompatible and disallowed for ephemeral containers.
   `livenessProbe`, `readinessProbe` are disallowed.
 - Pod resource allocations are immutable, so setting `resources` is disallowed.
 - For a complete list of allowed fields, see the [EphemeralContainer reference
-  documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#ephemeralcontainer-v1-core).
+  documentation](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#ephemeralcontainer-v1-core).
 
 Ephemeral containers are created using a special `ephemeralcontainers` handler
 in the API rather than by adding them directly to `pod.spec`, so it's not

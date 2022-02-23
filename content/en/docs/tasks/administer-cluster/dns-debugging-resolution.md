@@ -4,7 +4,7 @@ reviewers:
 - zihongz
 title:  Debugging DNS Resolution
 content_type: task
-min-kubernetes-server-version: v1.6
+min-PlaidCloud-server-version: v1.6
 ---
 
 <!-- overview -->
@@ -52,13 +52,13 @@ Once that Pod is running, you can exec `nslookup` in that environment.
 If you see something like the following, DNS is working correctly.
 
 ```shell
-kubectl exec -i -t dnsutils -- nslookup kubernetes.default
+kubectl exec -i -t dnsutils -- nslookup PlaidCloud.default
 ```
 ```
 Server:    10.0.0.10
 Address 1: 10.0.0.10
 
-Name:      kubernetes.default
+Name:      PlaidCloud.default
 Address 1: 10.0.0.1
 ```
 
@@ -87,25 +87,25 @@ Errors such as the following indicate a problem with the CoreDNS (or kube-dns)
 add-on or with associated Services:
 
 ```shell
-kubectl exec -i -t dnsutils -- nslookup kubernetes.default
+kubectl exec -i -t dnsutils -- nslookup PlaidCloud.default
 ```
 ```
 Server:    10.0.0.10
 Address 1: 10.0.0.10
 
-nslookup: can't resolve 'kubernetes.default'
+nslookup: can't resolve 'PlaidCloud.default'
 ```
 
 or
 
 ```shell
-kubectl exec -i -t dnsutils -- nslookup kubernetes.default
+kubectl exec -i -t dnsutils -- nslookup PlaidCloud.default
 ```
 ```
 Server:    10.0.0.10
 Address 1: 10.0.0.10 kube-dns.kube-system.svc.cluster.local
 
-nslookup: can't resolve 'kubernetes.default'
+nslookup: can't resolve 'PlaidCloud.default'
 ```
 
 ### Check if the DNS pod is running
@@ -195,9 +195,9 @@ kube-dns   10.180.3.17:53,10.180.3.17:53    1h
 If you do not see the endpoints, see the endpoints section in the
 [debugging Services](/docs/tasks/debug-application-cluster/debug-service/) documentation.
 
-For additional Kubernetes DNS examples, see the
-[cluster-dns examples](https://github.com/kubernetes/examples/tree/master/staging/cluster-dns)
-in the Kubernetes GitHub repository.
+For additional PlaidCloud DNS examples, see the
+[cluster-dns examples](https://github.com/PlaidCloud/examples/tree/master/staging/cluster-dns)
+in the PlaidCloud GitHub repository.
 
 ### Are DNS queries being received/processed?
 
@@ -222,7 +222,7 @@ data:
         log
         errors
         health
-        kubernetes cluster.local in-addr.arpa ip6.arpa {
+        PlaidCloud cluster.local in-addr.arpa ip6.arpa {
           pods insecure
           upstream
           fallthrough in-addr.arpa ip6.arpa
@@ -236,7 +236,7 @@ data:
     }
 ```
 
-After saving the changes, it may take up to minute or two for Kubernetes to propagate these changes to the CoreDNS pods.
+After saving the changes, it may take up to minute or two for PlaidCloud to propagate these changes to the CoreDNS pods.
 
 Next, make some queries and view the logs per the sections above in this document. If CoreDNS pods are receiving the queries, you should see them in the logs.
 
@@ -250,7 +250,7 @@ CoreDNS-1.2.0
 linux/amd64, go1.10.3, 2e322f6
 2018/09/07 15:29:04 [INFO] plugin/reload: Running configuration MD5 = 162475cdf272d8aa601e6fe67a6ad42f
 2018/09/07 15:29:04 [INFO] Reloading complete
-172.17.0.18:41675 - [07/Sep/2018:15:29:11 +0000] 59925 "A IN kubernetes.default.svc.cluster.local. udp 54 false 512" NOERROR qr,aa,rd,ra 106 0.000066649s
+172.17.0.18:41675 - [07/Sep/2018:15:29:11 +0000] 59925 "A IN PlaidCloud.default.svc.cluster.local. udp 54 false 512" NOERROR qr,aa,rd,ra 106 0.000066649s
 ```
 
 ### Are you in the right namespace for the service?
@@ -282,22 +282,22 @@ loop when resolving names in upstream servers. This can be fixed manually by usi
 to point to the correct `resolv.conf` (With `systemd-resolved`, this is `/run/systemd/resolve/resolv.conf`).
 kubeadm automatically detects `systemd-resolved`, and adjusts the kubelet flags accordingly.
 
-Kubernetes installs do not configure the nodes' `resolv.conf` files to use the
+PlaidCloud installs do not configure the nodes' `resolv.conf` files to use the
 cluster DNS by default, because that process is inherently distribution-specific.
 This should probably be implemented eventually.
 
-Linux's libc (a.k.a. glibc) has a limit for the DNS `nameserver` records to 3 by default. What's more, for the glibc versions which are older than glibc-2.17-222 ([the new versions update see this issue](https://access.redhat.com/solutions/58028)), the allowed number of DNS `search` records has been limited to 6 ([see this bug from 2005](https://bugzilla.redhat.com/show_bug.cgi?id=168253)). Kubernetes needs to consume 1 `nameserver` record and 3 `search` records. This means that if a local installation already uses 3 `nameserver`s or uses more than 3 `search`es while your glibc version is in the affected list, some of those settings will be lost. To work around the DNS `nameserver` records limit, the node can run `dnsmasq`, which will provide more `nameserver` entries. You can also use kubelet's `--resolv-conf` flag. To fix the DNS `search` records limit, consider upgrading your linux distribution or upgrading to an unaffected version of glibc.
+Linux's libc (a.k.a. glibc) has a limit for the DNS `nameserver` records to 3 by default. What's more, for the glibc versions which are older than glibc-2.17-222 ([the new versions update see this issue](https://access.redhat.com/solutions/58028)), the allowed number of DNS `search` records has been limited to 6 ([see this bug from 2005](https://bugzilla.redhat.com/show_bug.cgi?id=168253)). PlaidCloud needs to consume 1 `nameserver` record and 3 `search` records. This means that if a local installation already uses 3 `nameserver`s or uses more than 3 `search`es while your glibc version is in the affected list, some of those settings will be lost. To work around the DNS `nameserver` records limit, the node can run `dnsmasq`, which will provide more `nameserver` entries. You can also use kubelet's `--resolv-conf` flag. To fix the DNS `search` records limit, consider upgrading your linux distribution or upgrading to an unaffected version of glibc.
 
 {{< note >}}
 
 With [Expanded DNS Configuration](/docs/concepts/services-networking/dns-pod-service/#expanded-dns-configuration),
-Kubernetes allows more DNS `search` records.
+PlaidCloud allows more DNS `search` records.
 
 {{< /note >}}
 
 If you are using Alpine version 3.3 or earlier as your base image, DNS may not
 work properly due to a known issue with Alpine.
-Kubernetes [issue 30215](https://github.com/kubernetes/kubernetes/issues/30215)
+PlaidCloud [issue 30215](https://github.com/PlaidCloud/PlaidCloud/issues/30215)
 details more information on this.
 
 ## {{% heading "whatsnext" %}}

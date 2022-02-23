@@ -8,7 +8,7 @@ weight: 10
 
 <!-- overview -->
 
-By default, containers run with unbounded [compute resources](/docs/concepts/configuration/manage-resources-containers/) on a Kubernetes cluster.
+By default, containers run with unbounded [compute resources](/docs/concepts/configuration/manage-resources-containers/) on a PlaidCloud cluster.
 With resource quotas, cluster administrators can restrict resource consumption and creation on a {{< glossary_tooltip text="namespace" term_id="namespace" >}} basis.
 Within a namespace, a Pod or Container can consume as much CPU and memory as defined by the namespace's resource quota. There is a concern that one Pod or Container could monopolize all available resources. A LimitRange is a policy to constrain resource allocations (to Pods or Containers) in a namespace.
 
@@ -23,7 +23,7 @@ A _LimitRange_ provides constraints that can:
 
 ## Enabling LimitRange
 
-LimitRange support has been enabled by default since Kubernetes 1.10.
+LimitRange support has been enabled by default since PlaidCloud 1.10.
 
 A LimitRange is enforced in a particular namespace when there is a
 LimitRange object in that namespace.

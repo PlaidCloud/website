@@ -1,21 +1,21 @@
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference conent, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
-Upgrade your Kubernetes cluster to the specified version
+Upgrade your PlaidCloud cluster to the specified version
 
 ### Synopsis
 
 
-Upgrade your Kubernetes cluster to the specified version
+Upgrade your PlaidCloud cluster to the specified version
 
 ```
 kubeadm upgrade apply [version]
@@ -34,14 +34,14 @@ kubeadm upgrade apply [version]
 <td colspan="2">--allow-experimental-upgrades</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Show unstable versions of Kubernetes as an upgrade alternative and allow upgrading to an alpha/beta/release candidate versions of Kubernetes.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Show unstable versions of PlaidCloud as an upgrade alternative and allow upgrading to an alpha/beta/release candidate versions of PlaidCloud.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--allow-release-candidate-upgrades</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Show release candidate versions of Kubernetes as an upgrade alternative and allow upgrading to a release candidate versions of Kubernetes.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Show release candidate versions of PlaidCloud as an upgrade alternative and allow upgrading to a release candidate versions of PlaidCloud.</p></td>
 </tr>
 
 <tr>
@@ -101,7 +101,7 @@ kubeadm upgrade apply [version]
 </tr>
 
 <tr>
-<td colspan="2">--kubeconfig string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/etc/kubernetes/admin.conf"</td>
+<td colspan="2">--kubeconfig string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/etc/PlaidCloud/admin.conf"</td>
 </tr>
 <tr>
 <td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The kubeconfig file to use when talking to the cluster. If the flag is not set, a set of standard locations can be searched for an existing kubeconfig file.</p></td>

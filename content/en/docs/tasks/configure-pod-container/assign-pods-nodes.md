@@ -5,8 +5,8 @@ weight: 120
 ---
 
 <!-- overview -->
-This page shows how to assign a Kubernetes Pod to a particular node in a
-Kubernetes cluster.
+This page shows how to assign a PlaidCloud Pod to a particular node in a
+PlaidCloud cluster.
 
 
 ## {{% heading "prerequisites" %}}
@@ -30,9 +30,9 @@ Kubernetes cluster.
 
     ```shell
     NAME      STATUS    ROLES    AGE     VERSION        LABELS
-    worker0   Ready     <none>   1d      v1.13.0        ...,kubernetes.io/hostname=worker0
-    worker1   Ready     <none>   1d      v1.13.0        ...,kubernetes.io/hostname=worker1
-    worker2   Ready     <none>   1d      v1.13.0        ...,kubernetes.io/hostname=worker2
+    worker0   Ready     <none>   1d      v1.13.0        ...,PlaidCloud.io/hostname=worker0
+    worker1   Ready     <none>   1d      v1.13.0        ...,PlaidCloud.io/hostname=worker1
+    worker2   Ready     <none>   1d      v1.13.0        ...,PlaidCloud.io/hostname=worker2
     ```
 1. Chose one of your nodes, and add a label to it:
 
@@ -52,9 +52,9 @@ Kubernetes cluster.
 
     ```shell
     NAME      STATUS    ROLES    AGE     VERSION        LABELS
-    worker0   Ready     <none>   1d      v1.13.0        ...,disktype=ssd,kubernetes.io/hostname=worker0
-    worker1   Ready     <none>   1d      v1.13.0        ...,kubernetes.io/hostname=worker1
-    worker2   Ready     <none>   1d      v1.13.0        ...,kubernetes.io/hostname=worker2
+    worker0   Ready     <none>   1d      v1.13.0        ...,disktype=ssd,PlaidCloud.io/hostname=worker0
+    worker1   Ready     <none>   1d      v1.13.0        ...,PlaidCloud.io/hostname=worker1
+    worker2   Ready     <none>   1d      v1.13.0        ...,PlaidCloud.io/hostname=worker2
     ```
 
     In the preceding output, you can see that the `worker0` node has a

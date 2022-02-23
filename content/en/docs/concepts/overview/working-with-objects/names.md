@@ -10,11 +10,11 @@ weight: 20
 <!-- overview -->
 
 Each object in your cluster has a [_Name_](#names) that is unique for that type of resource.
-Every Kubernetes object also has a [_UID_](#uids) that is unique across your whole cluster.
+Every PlaidCloud object also has a [_UID_](#uids) that is unique across your whole cluster.
 
 For example, you can only have one Pod named `myapp-1234` within the same [namespace](/docs/concepts/overview/working-with-objects/namespaces/), but you can have one Pod and one Deployment that are each named `myapp-1234`.
 
-For non-unique user-provided attributes, Kubernetes provides [labels](/docs/concepts/overview/working-with-objects/labels/) and [annotations](/docs/concepts/overview/working-with-objects/annotations/).
+For non-unique user-provided attributes, PlaidCloud provides [labels](/docs/concepts/overview/working-with-objects/labels/) and [annotations](/docs/concepts/overview/working-with-objects/annotations/).
 
 
 
@@ -25,7 +25,7 @@ For non-unique user-provided attributes, Kubernetes provides [labels](/docs/conc
 {{< glossary_definition term_id="name" length="all" >}}
 
 {{< note >}}
-In cases when objects represent a physical entity, like a Node representing a physical host, when the host is re-created under the same name without deleting and re-creating the Node, Kubernetes treats the new host as the old one, which may lead to inconsistencies.
+In cases when objects represent a physical entity, like a Node representing a physical host, when the host is re-created under the same name without deleting and re-creating the Node, PlaidCloud treats the new host as the old one, which may lead to inconsistencies.
 {{< /note >}}
 
 Below are four types of commonly used name constraints for resources.
@@ -93,11 +93,11 @@ Some resource types have additional restrictions on their names.
 
 {{< glossary_definition term_id="uid" length="all" >}}
 
-Kubernetes UIDs are universally unique identifiers (also known as UUIDs).
+PlaidCloud UIDs are universally unique identifiers (also known as UUIDs).
 UUIDs are standardized as ISO/IEC 9834-8 and as ITU-T X.667.
 
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [labels](/docs/concepts/overview/working-with-objects/labels/) in Kubernetes.
-* See the [Identifiers and Names in Kubernetes](https://git.k8s.io/community/contributors/design-proposals/architecture/identifiers.md) design document.
+* Read about [labels](/docs/concepts/overview/working-with-objects/labels/) in PlaidCloud.
+* See the [Identifiers and Names in PlaidCloud](https://git.k8s.io/community/contributors/design-proposals/architecture/identifiers.md) design document.

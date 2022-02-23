@@ -18,7 +18,7 @@ This page describes the resources available to Containers in the Container envir
 
 ## Container environment
 
-The Kubernetes Container environment provides several important resources to Containers:
+The PlaidCloud Container environment provides several important resources to Containers:
 
 * A filesystem, which is a combination of an [image](/docs/concepts/containers/images/) and one or more [volumes](/docs/concepts/storage/volumes/).
 * Information about the Container itself.
@@ -40,7 +40,7 @@ as are any environment variables specified statically in the container image.
 ### Cluster information
 
 A list of all services that were running when a Container was created is available to that Container as environment variables.
-This list is limited to services within the same namespace as the new Container's Pod and Kubernetes control plane services.
+This list is limited to services within the same namespace as the new Container's Pod and PlaidCloud control plane services.
 
 For a service named *foo* that maps to a Container named *bar*,
 the following variables are defined:

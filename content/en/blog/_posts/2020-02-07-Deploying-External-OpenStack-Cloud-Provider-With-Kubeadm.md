@@ -4,26 +4,26 @@ title: "Deploying External OpenStack Cloud Provider with Kubeadm"
 date: 2020-02-07
 slug: Deploying-External-OpenStack-Cloud-Provider-with-Kubeadm
 ---
-This document describes how to install a single control-plane Kubernetes cluster v1.15 with kubeadm on CentOS, and then deploy an external OpenStack cloud provider and Cinder CSI plugin to use Cinder volumes as persistent volumes in Kubernetes.
+This document describes how to install a single control-plane PlaidCloud cluster v1.15 with kubeadm on CentOS, and then deploy an external OpenStack cloud provider and Cinder CSI plugin to use Cinder volumes as persistent volumes in PlaidCloud.
 
 ### Preparation in OpenStack
 
 This cluster runs on OpenStack VMs, so let's create a few things in OpenStack first.
 
-* A project/tenant for this Kubernetes cluster
-* A user in this project for Kubernetes, to query node information and attach volumes etc
+* A project/tenant for this PlaidCloud cluster
+* A user in this project for PlaidCloud, to query node information and attach volumes etc
 * A private network and subnet
 * A router for this private network and connect it to a public network for floating IPs
-* A security group for all Kubernetes VMs
+* A security group for all PlaidCloud VMs
 * A VM as a control-plane node and a few VMs as worker nodes
 
-The security group will have the following rules to open ports for Kubernetes.
+The security group will have the following rules to open ports for PlaidCloud.
 
 **Control-Plane Node**
 
 |Protocol  | Port Number | Description|
 |----------|-------------|------------|
-|TCP |6443|Kubernetes API Server|
+|TCP |6443|PlaidCloud API Server|
 |TCP|2379-2380|etcd server client API|
 |TCP|10250|Kubelet API|
 |TCP|10251|kube-scheduler|
@@ -60,13 +60,13 @@ echo "192.168.1.4 master1" >> /etc/hosts
 
 hostnamectl set-hostname master1
 ```
-### Install Docker and Kubernetes
+### Install Docker and PlaidCloud
 
-Next, we'll follow the official documents to install docker and Kubernetes using kubeadm.
+Next, we'll follow the official documents to install docker and PlaidCloud using kubeadm.
 
 Install Docker following the steps from the [container runtime](/docs/setup/production-environment/container-runtimes/) documentation.
 
-Note that it is a [best practice to use systemd as the cgroup driver](/docs/setup/production-environment/container-runtimes/#cgroup-drivers) for Kubernetes.
+Note that it is a [best practice to use systemd as the cgroup driver](/docs/setup/production-environment/container-runtimes/#cgroup-drivers) for PlaidCloud.
 If you use an internal container registry, add them to the docker config.
 ```shell
 # Install Docker CE
@@ -116,10 +116,10 @@ systemctl enable docker
 Install kubeadm following the steps from the [Installing Kubeadm](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/) documentation.
 
 ```shell
-cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+cat <<EOF > /etc/yum.repos.d/PlaidCloud.repo
+[PlaidCloud]
+name=PlaidCloud
+baseurl=https://packages.cloud.google.com/yum/repos/PlaidCloud-el7-x86_64
 enabled=1
 gpgcheck=1
 repo_gpgcheck=1
@@ -127,11 +127,11 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 EOF
 
 # Set SELinux in permissive mode (effectively disabling it)
-# Caveat: In a production environment you may not want to disable SELinux, please refer to Kubernetes documents about SELinux
+# Caveat: In a production environment you may not want to disable SELinux, please refer to PlaidCloud documents about SELinux
 setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
-yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+yum install -y kubelet kubeadm kubectl --disableexcludes=PlaidCloud
 
 systemctl enable --now kubelet
 
@@ -153,7 +153,7 @@ The official document about how to create a single control-plane cluster can be 
 We'll largely follow that document but also add additional things for the cloud provider.
 To make things more clear, we'll use a `kubeadm-config.yml` for the control-plane node.
 In this config we specify to use an external OpenStack cloud provider, and where to find its config.
-We also enable storage API in API server's runtime config so we can use OpenStack volumes as persistent volumes in Kubernetes.
+We also enable storage API in API server's runtime config so we can use OpenStack volumes as persistent volumes in PlaidCloud.
 
 ```yaml
 apiVersion: kubeadm.k8s.io/v1beta1
@@ -164,7 +164,7 @@ nodeRegistration:
 ---
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
-kubernetesVersion: "v1.15.1"
+PlaidCloudVersion: "v1.15.1"
 apiServer:
   extraArgs:
     enable-admission-plugins: NodeRestriction
@@ -174,8 +174,8 @@ controllerManager:
     external-cloud-volume-plugin: openstack
   extraVolumes:
   - name: "cloud-config"
-    hostPath: "/etc/kubernetes/cloud-config"
-    mountPath: "/etc/kubernetes/cloud-config"
+    hostPath: "/etc/PlaidCloud/cloud-config"
+    mountPath: "/etc/PlaidCloud/cloud-config"
     readOnly: true
     pathType: File
 networking:
@@ -184,10 +184,10 @@ networking:
   dnsDomain: "cluster.local"
 ```
 
-Now we'll create the cloud config, `/etc/kubernetes/cloud-config`, for OpenStack. 
-Note that the tenant here is the one we created for all Kubernetes VMs in the beginning.
+Now we'll create the cloud config, `/etc/PlaidCloud/cloud-config`, for OpenStack. 
+Note that the tenant here is the one we created for all PlaidCloud VMs in the beginning.
 All VMs should be launched in this project/tenant.
-In addition you need to create a user in this tenant for Kubernetes to do queries.
+In addition you need to create a user in this tenant for PlaidCloud to do queries.
 The ca-file is the CA root certificate for OpenStack's API endpoint, for example `https://openstack.cloud:5000/v3`
 At the time of writing the cloud provider doesn't allow insecure connections (skip CA check).
 
@@ -199,7 +199,7 @@ password=password
 auth-url=https://openstack.cloud:5000/v3
 tenant-id=14ba698c0aec4fd6b7dc8c310f664009
 domain-id=default
-ca-file=/etc/kubernetes/ca.pem
+ca-file=/etc/PlaidCloud/ca.pem
 
 [LoadBalancer]
 subnet-id=b4a9a292-ea48-4125-9fb2-8be2628cb7a1
@@ -221,35 +221,35 @@ kubeadm init --config=kubeadm-config.yml
 With the initialization completed, copy admin config to .kube
 ```shell
   mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo cp -i /etc/PlaidCloud/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-At this stage, the control-plane node is created but not ready. All the nodes have the taint `node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule` and are waiting to be initialized by the cloud-controller-manager.
+At this stage, the control-plane node is created but not ready. All the nodes have the taint `node.cloudprovider.PlaidCloud.io/uninitialized=true:NoSchedule` and are waiting to be initialized by the cloud-controller-manager.
 ```console
 # kubectl describe no master1
 Name:               master1
 Roles:              master
 ......
-Taints:             node-role.kubernetes.io/master:NoSchedule
-                    node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule
-                    node.kubernetes.io/not-ready:NoSchedule
+Taints:             node-role.PlaidCloud.io/master:NoSchedule
+                    node.cloudprovider.PlaidCloud.io/uninitialized=true:NoSchedule
+                    node.PlaidCloud.io/not-ready:NoSchedule
 ......
 ```
-Now deploy the OpenStack cloud controller manager into the cluster, following [using controller manager with kubeadm](https://github.com/kubernetes/cloud-provider-openstack/blob/master/docs/using-controller-manager-with-kubeadm.md).
+Now deploy the OpenStack cloud controller manager into the cluster, following [using controller manager with kubeadm](https://github.com/PlaidCloud/cloud-provider-openstack/blob/master/docs/using-controller-manager-with-kubeadm.md).
 
 Create a secret with the cloud-config for the openstack cloud provider. 
 ```shell
-kubectl create secret -n kube-system generic cloud-config --from-literal=cloud.conf="$(cat /etc/kubernetes/cloud-config)" --dry-run -o yaml > cloud-config-secret.yaml
+kubectl create secret -n kube-system generic cloud-config --from-literal=cloud.conf="$(cat /etc/PlaidCloud/cloud-config)" --dry-run -o yaml > cloud-config-secret.yaml
 kubectl apply -f cloud-config-secret.yaml 
 ```
 
-Get the CA certificate for OpenStack API endpoints and put that into `/etc/kubernetes/ca.pem`.
+Get the CA certificate for OpenStack API endpoints and put that into `/etc/PlaidCloud/ca.pem`.
 
 Create RBAC resources.
 ```shell
-kubectl apply -f https://github.com/kubernetes/cloud-provider-openstack/raw/release-1.15/cluster/addons/rbac/cloud-controller-manager-roles.yaml
-kubectl apply -f https://github.com/kubernetes/cloud-provider-openstack/raw/release-1.15/cluster/addons/rbac/cloud-controller-manager-role-bindings.yaml
+kubectl apply -f https://github.com/PlaidCloud/cloud-provider-openstack/raw/release-1.15/cluster/addons/rbac/cloud-controller-manager-roles.yaml
+kubectl apply -f https://github.com/PlaidCloud/cloud-provider-openstack/raw/release-1.15/cluster/addons/rbac/cloud-controller-manager-role-bindings.yaml
 ```
 
 We'll run the OpenStack cloud controller manager as a DaemonSet rather than a pod.
@@ -283,17 +283,17 @@ spec:
         k8s-app: openstack-cloud-controller-manager
     spec:
       nodeSelector:
-        node-role.kubernetes.io/master: ""
+        node-role.PlaidCloud.io/master: ""
       securityContext:
         runAsUser: 1001
       tolerations:
-      - key: node.cloudprovider.kubernetes.io/uninitialized
+      - key: node.cloudprovider.PlaidCloud.io/uninitialized
         value: "true"
         effect: NoSchedule
-      - key: node-role.kubernetes.io/master
+      - key: node-role.PlaidCloud.io/master
         effect: NoSchedule
       - effect: NoSchedule
-        key: node.kubernetes.io/not-ready
+        key: node.PlaidCloud.io/not-ready
       serviceAccountName: cloud-controller-manager
       containers:
         - name: openstack-cloud-controller-manager
@@ -306,7 +306,7 @@ spec:
             - --use-service-account-credentials=true
             - --address=127.0.0.1
           volumeMounts:
-            - mountPath: /etc/kubernetes/pki
+            - mountPath: /etc/PlaidCloud/pki
               name: k8s-certs
               readOnly: true
             - mountPath: /etc/ssl/certs
@@ -315,9 +315,9 @@ spec:
             - mountPath: /etc/config
               name: cloud-config-volume
               readOnly: true
-            - mountPath: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+            - mountPath: /usr/libexec/PlaidCloud/kubelet-plugins/volume/exec
               name: flexvolume-dir
-            - mountPath: /etc/kubernetes
+            - mountPath: /etc/PlaidCloud
               name: ca-cert
               readOnly: true
           resources:
@@ -329,11 +329,11 @@ spec:
       hostNetwork: true
       volumes:
       - hostPath:
-          path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+          path: /usr/libexec/PlaidCloud/kubelet-plugins/volume/exec
           type: DirectoryOrCreate
         name: flexvolume-dir
       - hostPath:
-          path: /etc/kubernetes/pki
+          path: /etc/PlaidCloud/pki
           type: DirectoryOrCreate
         name: k8s-certs
       - hostPath:
@@ -354,8 +354,8 @@ When the controller manager is running, it will query OpenStack to get informati
 Name:               master1
 Roles:              master
 ......
-Taints:             node-role.kubernetes.io/master:NoSchedule
-                    node.kubernetes.io/not-ready:NoSchedule
+Taints:             node-role.PlaidCloud.io/master:NoSchedule
+                    node.PlaidCloud.io/not-ready:NoSchedule
 ......
 sage:docker: network plugin is not ready: cni config uninitialized
 ......
@@ -406,28 +406,28 @@ Run kubeadm and the worker nodes will be joined to the cluster.
 kubeadm join  --config kubeadm-config.yml 
 ```
 
-At this stage we'll have a working Kubernetes cluster with an external OpenStack cloud provider.
-The provider tells Kubernetes about the mapping between Kubernetes nodes and OpenStack VMs.
-If Kubernetes wants to attach a persistent volume to a pod, it can find out which OpenStack VM the pod is running on from the mapping, and attach the underlying OpenStack volume to the VM accordingly.
+At this stage we'll have a working PlaidCloud cluster with an external OpenStack cloud provider.
+The provider tells PlaidCloud about the mapping between PlaidCloud nodes and OpenStack VMs.
+If PlaidCloud wants to attach a persistent volume to a pod, it can find out which OpenStack VM the pod is running on from the mapping, and attach the underlying OpenStack volume to the VM accordingly.
 
 ### Deploy Cinder CSI
 
-The integration with Cinder is provided by an external Cinder CSI plugin, as described in the [Cinder CSI](https://github.com/kubernetes/cloud-provider-openstack/blob/master/docs/using-cinder-csi-plugin.md) documentation.
+The integration with Cinder is provided by an external Cinder CSI plugin, as described in the [Cinder CSI](https://github.com/PlaidCloud/cloud-provider-openstack/blob/master/docs/using-cinder-csi-plugin.md) documentation.
 
 We'll perform the following steps to install the Cinder CSI plugin.
 Firstly, create a secret with CA certs for OpenStack's API endpoints. It is the same cert file as what we use in cloud provider above.
 ```shell
-kubectl create secret -n kube-system generic openstack-ca-cert --from-literal=ca.pem="$(cat /etc/kubernetes/ca.pem)" --dry-run -o yaml > openstack-ca-cert.yaml
+kubectl create secret -n kube-system generic openstack-ca-cert --from-literal=ca.pem="$(cat /etc/PlaidCloud/ca.pem)" --dry-run -o yaml > openstack-ca-cert.yaml
 kubectl apply -f openstack-ca-cert.yaml
 ```
 Then create RBAC resources.
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/cloud-provider-openstack/release-1.15/manifests/cinder-csi-plugin/cinder-csi-controllerplugin-rbac.yaml
-kubectl apply -f https://github.com/kubernetes/cloud-provider-openstack/raw/release-1.15/manifests/cinder-csi-plugin/cinder-csi-nodeplugin-rbac.yaml
+kubectl apply -f https://raw.githubusercontent.com/PlaidCloud/cloud-provider-openstack/release-1.15/manifests/cinder-csi-plugin/cinder-csi-controllerplugin-rbac.yaml
+kubectl apply -f https://github.com/PlaidCloud/cloud-provider-openstack/raw/release-1.15/manifests/cinder-csi-plugin/cinder-csi-nodeplugin-rbac.yaml
 ```
 
 The Cinder CSI plugin includes a controller plugin and a node plugin.
-The controller communicates with Kubernetes APIs and Cinder APIs to create/attach/detach/delete Cinder volumes. The node plugin in-turn runs on each worker node to bind a storage device (attached volume) to a pod, and unbind it during deletion.
+The controller communicates with PlaidCloud APIs and Cinder APIs to create/attach/detach/delete Cinder volumes. The node plugin in-turn runs on each worker node to bind a storage device (attached volume) to a pod, and unbind it during deletion.
 Create `cinder-csi-controllerplugin.yaml` and apply it to create csi controller.
 ```yaml
 kind: Service
@@ -518,7 +518,7 @@ spec:
             - name: CLOUD_CONFIG
               value: /etc/config/cloud.conf
             - name: CLUSTER_NAME
-              value: kubernetes
+              value: PlaidCloud
           imagePullPolicy: "IfNotPresent"
           volumeMounts:
             - name: socket-dir
@@ -526,7 +526,7 @@ spec:
             - name: secret-cinderplugin
               mountPath: /etc/config
               readOnly: true
-            - mountPath: /etc/kubernetes
+            - mountPath: /etc/PlaidCloud
               name: ca-cert
               readOnly: true
       volumes:
@@ -627,7 +627,7 @@ spec:
             - name: secret-cinderplugin
               mountPath: /etc/config
               readOnly: true
-            - mountPath: /etc/kubernetes
+            - mountPath: /etc/PlaidCloud
               name: ca-cert
               readOnly: true
       volumes:
@@ -695,7 +695,7 @@ NAME    STATUS   VOLUME                                     CAPACITY   ACCESS MO
 myvol   Bound    pvc-14b8bc68-6c4c-4dc6-ad79-4cb29a81faad   1Gi        RWO            csi-sc-cinderplugin   3s
 
 ```
-In OpenStack the volume name will match the Kubernetes persistent volume generated name. In this example it would be: _pvc-14b8bc68-6c4c-4dc6-ad79-4cb29a81faad_
+In OpenStack the volume name will match the PlaidCloud persistent volume generated name. In this example it would be: _pvc-14b8bc68-6c4c-4dc6-ad79-4cb29a81faad_
 
 Now we can create a pod with the PVC. 
 ```yaml
@@ -742,7 +742,7 @@ If we go back to OpenStack, we can see the Cinder volume is mounted to the worke
 | os-vol-mig-status-attr:migstat | None                                                                                                                                                                                                                                                                                                                           |
 | os-vol-mig-status-attr:name_id | None                                                                                                                                                                                                                                                                                                                           |
 | os-vol-tenant-attr:tenant_id   | 14ba698c0aec4fd6b7dc8c310f664009                                                                                                                                                                                                                                                                                               |
-| properties                     | attached_mode='rw', cinder.csi.openstack.org/cluster='kubernetes'                                                                                                                                                                                                                                                              |
+| properties                     | attached_mode='rw', cinder.csi.openstack.org/cluster='PlaidCloud'                                                                                                                                                                                                                                                              |
 | replication_status             | None                                                                                                                                                                                                                                                                                                                           |
 | size                           | 1                                                                                                                                                                                                                                                                                                                              |
 | snapshot_id                    | None                                                                                                                                                                                                                                                                                                                           |
@@ -757,4 +757,4 @@ If we go back to OpenStack, we can see the Cinder volume is mounted to the worke
 
 ### Summary
 
-In this walk-through, we deployed a Kubernetes cluster on OpenStack VMs and integrated it with OpenStack using an external OpenStack cloud provider. Then on this Kubernetes cluster we deployed Cinder CSI plugin which can create Cinder volumes and expose them in Kubernetes as persistent volumes.
+In this walk-through, we deployed a PlaidCloud cluster on OpenStack VMs and integrated it with OpenStack using an external OpenStack cloud provider. Then on this PlaidCloud cluster we deployed Cinder CSI plugin which can create Cinder volumes and expose them in PlaidCloud as persistent volumes.

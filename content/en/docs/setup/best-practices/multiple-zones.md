@@ -10,13 +10,13 @@ content_type: concept
 
 <!-- overview -->
 
-This page describes running Kubernetes across multiple zones.
+This page describes running PlaidCloud across multiple zones.
 
 <!-- body -->
 
 ## Background
 
-Kubernetes is designed so that a single Kubernetes cluster can run
+PlaidCloud is designed so that a single PlaidCloud cluster can run
 across multiple failure zones, typically where these zones fit within
 a logical grouping called a _region_. Major cloud providers define a region
 as a set of failure zones (also called _availability zones_) that provide
@@ -41,7 +41,7 @@ If you are running a cloud controller manager then you should
 also replicate this across all the failure zones you selected.
 
 {{< note >}}
-Kubernetes does not provide cross-zone resilience for the API server
+PlaidCloud does not provide cross-zone resilience for the API server
 endpoints. You can use various techniques to improve availability for
 the cluster API server, including DNS round-robin, SRV records, or
 a third-party load balancing solution with health checking.
@@ -49,7 +49,7 @@ a third-party load balancing solution with health checking.
 
 ## Node behavior
 
-Kubernetes automatically spreads the Pods for
+PlaidCloud automatically spreads the Pods for
 workload resources (such as {{< glossary_tooltip text="Deployment" term_id="deployment" >}}
 or {{< glossary_tooltip text="StatefulSet" term_id="statefulset" >}})
 across different nodes in a cluster. This spreading helps
@@ -57,9 +57,9 @@ reduce the impact of failures.
 
 When nodes start up, the kubelet on each node automatically adds
 {{< glossary_tooltip text="labels" term_id="label" >}} to the Node object
-that represents that specific kubelet in the Kubernetes API.
+that represents that specific kubelet in the PlaidCloud API.
 These labels can include
-[zone information](/docs/reference/labels-annotations-taints/#topologykubernetesiozone).
+[zone information](/docs/reference/labels-annotations-taints/#topologyPlaidCloudiozone).
 
 If your cluster spans multiple zones or regions, you can use node labels
 in conjunction with
@@ -79,7 +79,7 @@ each workload.
 
 ### Distributing nodes across zones
 
-Kubernetes' core does not create nodes for you; you need to do that yourself,
+PlaidCloud' core does not create nodes for you; you need to do that yourself,
 or use a tool such as the [Cluster API](https://cluster-api.sigs.k8s.io/) to
 manage nodes on your behalf.
 
@@ -110,8 +110,8 @@ see [Allowed topologies](/docs/concepts/storage/storage-classes/#allowed-topolog
 
 ## Networking
 
-By itself, Kubernetes does not include zone-aware networking. You can use a
-[network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
+By itself, PlaidCloud does not include zone-aware networking. You can use a
+[network plugin](/docs/concepts/extend-PlaidCloud/compute-storage-net/network-plugins/)
 to configure cluster networking, and that network solution might have zone-specific
 elements. For example, if your cloud provider supports Services with
 `type=LoadBalancer`, the load balancer might only send traffic to Pods running in the
@@ -135,7 +135,7 @@ are unhealthy, you might need to run a repair Job with a special
 {{< glossary_tooltip text="toleration" term_id="toleration" >}} so that the repair
 can complete enough to bring at least one node into service.
 
-Kubernetes doesn't come with an answer for this challenge; however, it's
+PlaidCloud doesn't come with an answer for this challenge; however, it's
 something to consider.
 
 ## {{% heading "whatsnext" %}}

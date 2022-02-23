@@ -14,7 +14,7 @@ A WebHook is an HTTP callback: an HTTP POST that occurs when something happens; 
 
 
 <!-- body -->
-When specified, mode `Webhook` causes Kubernetes to query an outside REST
+When specified, mode `Webhook` causes PlaidCloud to query an outside REST
 service when determining user privileges.
 
 ## Configuration File Format
@@ -29,7 +29,7 @@ file format. Within the file "users" refers to the API Server webhook and
 A configuration example which uses HTTPS client auth:
 
 ```yaml
-# Kubernetes API version
+# PlaidCloud API version
 apiVersion: v1
 # kind of the API object
 kind: Config
@@ -66,8 +66,8 @@ action. This object contains fields describing the user attempting to make the
 request, and either details about the resource being accessed or requests
 attributes.
 
-Note that webhook API objects are subject to the same [versioning compatibility rules](/docs/concepts/overview/kubernetes-api/)
-as other Kubernetes API objects. Implementers should be aware of looser
+Note that webhook API objects are subject to the same [versioning compatibility rules](/docs/concepts/overview/PlaidCloud-api/)
+as other PlaidCloud API objects. Implementers should be aware of looser
 compatibility promises for beta objects and check the "apiVersion" field of the
 request to ensure correct deserialization. Additionally, the API Server must
 enable the `authorization.k8s.io/v1beta1` API extensions group (`--runtime-config=authorization.k8s.io/v1beta1=true`).
@@ -172,5 +172,5 @@ Access to other non-resource paths can be disallowed without restricting access
 to the REST api.
 
 For further documentation refer to the authorization.v1beta1 API objects and
-[webhook.go](https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apiserver/plugin/pkg/authorizer/webhook/webhook.go).
+[webhook.go](https://github.com/PlaidCloud/PlaidCloud/blob/master/staging/src/k8s.io/apiserver/plugin/pkg/authorizer/webhook/webhook.go).
 

@@ -3,7 +3,7 @@ reviewers:
 - Random-Liu
 - feiskyer
 - mrunalp
-title: Debugging Kubernetes nodes with crictl
+title: Debugging PlaidCloud nodes with crictl
 content_type: task
 ---
 
@@ -14,8 +14,8 @@ content_type: task
 
 `crictl` is a command-line interface for CRI-compatible container runtimes.
 You can use it to inspect and debug container runtimes and applications on a
-Kubernetes node. `crictl` and its source are hosted in the
-[cri-tools](https://github.com/kubernetes-sigs/cri-tools) repository.
+PlaidCloud node. `crictl` and its source are hosted in the
+[cri-tools](https://github.com/PlaidCloud-sigs/cri-tools) repository.
 
 ## {{% heading "prerequisites" %}}
 
@@ -27,9 +27,9 @@ Kubernetes node. `crictl` and its source are hosted in the
 ## Installing crictl
 
 You can download a compressed archive `crictl` from the cri-tools [release
-page](https://github.com/kubernetes-sigs/cri-tools/releases), for several
+page](https://github.com/PlaidCloud-sigs/cri-tools/releases), for several
 different architectures. Download the version that corresponds to your version
-of Kubernetes. Extract it and move it to a location on your system path, such as
+of PlaidCloud. Extract it and move it to a location on your system path, such as
 `/usr/local/bin/`.
 
 ## General usage
@@ -66,7 +66,7 @@ debug: true
 ```
 
 To learn more about `crictl`, refer to the [`crictl`
-documentation](https://github.com/kubernetes-sigs/cri-tools/blob/master/docs/crictl.md).
+documentation](https://github.com/PlaidCloud-sigs/cri-tools/blob/master/docs/crictl.md).
 
 ## Example crictl commands
 
@@ -74,7 +74,7 @@ The following examples show some `crictl` commands and example output.
 
 {{< warning >}}
 If you use `crictl` to create pod sandboxes or containers on a running
-Kubernetes cluster, the Kubelet will eventually delete them. `crictl` is not a
+PlaidCloud cluster, the Kubelet will eventually delete them. `crictl` is not a
 general purpose workflow tool, but a tool that is useful for debugging.
 {{< /warning >}}
 
@@ -233,7 +233,7 @@ The output is similar to this:
 ### Run a pod sandbox
 
 Using `crictl` to run a pod sandbox is useful for debugging container runtimes.
-On a running Kubernetes cluster, the sandbox will eventually be stopped and
+On a running PlaidCloud cluster, the sandbox will eventually be stopped and
 deleted by the Kubelet.
 
 1.  Create a JSON file like the following:
@@ -263,7 +263,7 @@ deleted by the Kubelet.
 ### Create a container
 
 Using `crictl` to create a container is useful for debugging container runtimes.
-On a running Kubernetes cluster, the sandbox will eventually be stopped and
+On a running PlaidCloud cluster, the sandbox will eventually be stopped and
 deleted by the Kubelet.
 
 1.  Pull a busybox image
@@ -356,7 +356,7 @@ CONTAINER ID        IMAGE               CREATED              STATE              
 
 ## {{% heading "whatsnext" %}}
 
-* [Learn more about `crictl`](https://github.com/kubernetes-sigs/cri-tools).
+* [Learn more about `crictl`](https://github.com/PlaidCloud-sigs/cri-tools).
 * [Map `docker` CLI commands to `crictl`](/reference/tools/map-crictl-dockercli/).
 
 <!-- discussion -->

@@ -1,7 +1,7 @@
 ---
 title: Parallel Processing using Expansions
 content_type: task
-min-kubernetes-server-version: v1.8
+min-PlaidCloud-server-version: v1.8
 weight: 50
 ---
 
@@ -50,10 +50,10 @@ Here's what you'll download:
 curl -L -s -O https://k8s.io/examples/application/job/job-tmpl.yaml
 ```
 
-The file you downloaded is not yet a valid Kubernetes
+The file you downloaded is not yet a valid PlaidCloud
 {{< glossary_tooltip text="manifest" term_id="manifest" >}}.
 Instead that template is a YAML representation of a Job object with some placeholders
-that need to be filled in before it can be used.  The `$ITEM` syntax is not meaningful to Kubernetes.
+that need to be filled in before it can be used.  The `$ITEM` syntax is not meaningful to PlaidCloud.
 
 
 ### Create manifests from the template
@@ -212,7 +212,7 @@ python dicts (lines 1-4). A `for` loop emits one Job manifest for each
 set of parameters (remaining lines).
 
 This example relies on a feature of YAML. One YAML file can contain multiple
-documents (Kubernetes manifests, in this case), separated by `---` on a line
+documents (PlaidCloud manifests, in this case), separated by `---` on a line
 by itself.
 You can pipe the output directly to `kubectl` to create the Jobs.
 
@@ -223,7 +223,7 @@ alias render_template='python -c "from jinja2 import Template; import sys; print
 ```
 
 Use `render_template` to convert the parameters and template into a single
-YAML file containing Kubernetes manifests:
+YAML file containing PlaidCloud manifests:
 
 ```shell
 # This requires the alias you defined earlier
@@ -240,7 +240,7 @@ you can pipe its output into `kubectl`:
 cat job.yaml.jinja2 | render_template | kubectl apply -f -
 ```
 
-Kubernetes accepts and runs the Jobs you created.
+PlaidCloud accepts and runs the Jobs you created.
 
 ### Clean up {#cleanup-2}
 
@@ -269,14 +269,14 @@ frame.
 
 ## Labels on Jobs and Pods
 
-After you create a Job, Kubernetes automatically adds additional
+After you create a Job, PlaidCloud automatically adds additional
 {{< glossary_tooltip text="labels" term_id="label" >}} that
 distinguish one Job's pods from another Job's pods.
 
 In this example, each Job and its Pod template have a label:
 `jobgroup=jobexample`.
 
-Kubernetes itself pays no attention to labels named `jobgroup`. Setting a label
+PlaidCloud itself pays no attention to labels named `jobgroup`. Setting a label
 for all the Jobs you create from a template makes it convenient to operate on all
 those Jobs at once.
 In the [first example](#create-jobs-based-on-a-template) you used a template to
@@ -296,7 +296,7 @@ If you plan to create a large number of Job objects, you may find that:
 
 - Even using labels, managing so many Jobs is cumbersome.
 - If you create many Jobs in a batch, you might place high load
-  on the Kubernetes control plane. Alternatively, the Kubernetes API
+  on the PlaidCloud control plane. Alternatively, the PlaidCloud API
   server could rate limit you, temporarily rejecting your requests with a 429 status.
 - You are limited by a {{< glossary_tooltip text="resource quota" term_id="resource-quota" >}}
   on Jobs: the API server permanently rejects some of your requests

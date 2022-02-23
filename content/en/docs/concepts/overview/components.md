@@ -1,10 +1,10 @@
 ---
 reviewers:
 - lavalamp
-title: Kubernetes Components
+title: PlaidCloud Components
 content_type: concept
 description: >
-  A Kubernetes cluster consists of the components that represent the control plane
+  A PlaidCloud cluster consists of the components that represent the control plane
   and a set of machines called nodes.
 weight: 20
 card: 
@@ -13,13 +13,13 @@ card:
 ---
 
 <!-- overview -->
-When you deploy Kubernetes, you get a cluster.
-{{< glossary_definition term_id="cluster" length="all" prepend="A Kubernetes cluster consists of">}}
+When you deploy PlaidCloud, you get a cluster.
+{{< glossary_definition term_id="cluster" length="all" prepend="A PlaidCloud cluster consists of">}}
 
 This document outlines the various components you need to have for
-a complete and working Kubernetes cluster.
+a complete and working PlaidCloud cluster.
 
-{{< figure src="/images/docs/components-of-kubernetes.svg" alt="Components of Kubernetes" caption="The components of a Kubernetes cluster" class="diagram-large" >}}
+{{< figure src="/images/docs/components-of-PlaidCloud.svg" alt="Components of PlaidCloud" caption="The components of a PlaidCloud cluster" class="diagram-large" >}}
 
 <!-- body -->
 ## Control Plane Components
@@ -61,7 +61,7 @@ Some types of these controllers are:
 {{< glossary_definition term_id="cloud-controller-manager" length="short" >}}
 
 The cloud-controller-manager only runs controllers that are specific to your cloud provider.
-If you are running Kubernetes on your own premises, or in a learning environment inside your
+If you are running PlaidCloud on your own premises, or in a learning environment inside your
 own PC, the cluster does not have a cloud controller manager.
 
 As with the kube-controller-manager, the cloud-controller-manager combines several logically
@@ -76,7 +76,7 @@ The following controllers can have cloud provider dependencies:
 
 ## Node Components
 
-Node components run on every node, maintaining running pods and providing the Kubernetes runtime environment.
+Node components run on every node, maintaining running pods and providing the PlaidCloud runtime environment.
 
 ### kubelet
 
@@ -92,7 +92,7 @@ Node components run on every node, maintaining running pods and providing the Ku
 
 ## Addons
 
-Addons use Kubernetes resources ({{< glossary_tooltip term_id="daemonset" >}},
+Addons use PlaidCloud resources ({{< glossary_tooltip term_id="daemonset" >}},
 {{< glossary_tooltip term_id="deployment" >}}, etc)
 to implement cluster features. Because these are providing cluster-level features, namespaced resources
 for addons belong within the `kube-system` namespace.
@@ -102,15 +102,15 @@ see [Addons](/docs/concepts/cluster-administration/addons/).
 
 ### DNS
 
-While the other addons are not strictly required, all Kubernetes clusters should have [cluster DNS](/docs/concepts/services-networking/dns-pod-service/), as many examples rely on it.
+While the other addons are not strictly required, all PlaidCloud clusters should have [cluster DNS](/docs/concepts/services-networking/dns-pod-service/), as many examples rely on it.
 
-Cluster DNS is a DNS server, in addition to the other DNS server(s) in your environment, which serves DNS records for Kubernetes services.
+Cluster DNS is a DNS server, in addition to the other DNS server(s) in your environment, which serves DNS records for PlaidCloud services.
 
-Containers started by Kubernetes automatically include this DNS server in their DNS searches.
+Containers started by PlaidCloud automatically include this DNS server in their DNS searches.
 
 ### Web UI (Dashboard)
 
-[Dashboard](/docs/tasks/access-application-cluster/web-ui-dashboard/) is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications running in the cluster, as well as the cluster itself.
+[Dashboard](/docs/tasks/access-application-cluster/web-ui-dashboard/) is a general purpose, web-based UI for PlaidCloud clusters. It allows users to manage and troubleshoot applications running in the cluster, as well as the cluster itself.
 
 ### Container Resource Monitoring
 

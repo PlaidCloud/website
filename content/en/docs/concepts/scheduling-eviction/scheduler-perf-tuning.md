@@ -11,7 +11,7 @@ weight: 100
 {{< feature-state for_k8s_version="v1.14" state="beta" >}}
 
 [kube-scheduler](/docs/concepts/scheduling-eviction/kube-scheduler/#kube-scheduler)
-is the Kubernetes default scheduler. It is responsible for placement of Pods
+is the PlaidCloud default scheduler. It is responsible for placement of Pods
 on Nodes in a cluster.
 
 Nodes in a cluster that meet the scheduling requirements of a Pod are
@@ -22,7 +22,7 @@ the Pod. The scheduler then notifies the API server about this decision
 in a process called _Binding_.
 
 This page explains performance tuning optimizations that are relevant for
-large Kubernetes clusters.
+large PlaidCloud clusters.
 
 <!-- body -->
 
@@ -45,7 +45,7 @@ had set a value of 100.
 To change the value, edit the
 [kube-scheduler configuration file](/docs/reference/config-api/kube-scheduler-config.v1beta3/)
 and then restart the scheduler.
-In many cases, the configuration file can be found at `/etc/kubernetes/config/kube-scheduler.yaml`.
+In many cases, the configuration file can be found at `/etc/PlaidCloud/config/kube-scheduler.yaml`.
 
 After you have made this change, you can run
 
@@ -73,7 +73,7 @@ describes the process in detail.
 
 ### Default threshold
 
-If you don't specify a threshold, Kubernetes calculates a figure using a
+If you don't specify a threshold, PlaidCloud calculates a figure using a
 linear formula that yields 50% for a 100-node cluster and yields 10%
 for a 5000-node cluster. The lower bound for the automatic value is 5%.
 

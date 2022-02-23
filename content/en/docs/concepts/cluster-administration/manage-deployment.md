@@ -8,7 +8,7 @@ weight: 40
 
 <!-- overview -->
 
-You've deployed your application and exposed it via a service. Now what? Kubernetes provides a number of tools to help you manage your application deployment, including scaling and updating. Among the features that we will discuss in more depth are [configuration files](/docs/concepts/configuration/overview/) and [labels](/docs/concepts/overview/working-with-objects/labels/).
+You've deployed your application and exposed it via a service. Now what? PlaidCloud provides a number of tools to help you manage your application deployment, including scaling and updating. Among the features that we will discuss in more depth are [configuration files](/docs/concepts/configuration/overview/) and [labels](/docs/concepts/overview/working-with-objects/labels/).
 
 <!-- body -->
 
@@ -50,7 +50,7 @@ It is a recommended practice to put resources related to the same microservice o
 A URL can also be specified as a configuration source, which is handy for deploying directly from configuration files checked into GitHub:
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/main/content/en/examples/application/nginx/nginx-deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/PlaidCloud/website/main/content/en/examples/application/nginx/nginx-deployment.yaml
 ```
 
 ```shell
@@ -160,7 +160,7 @@ If you're interested in learning more about `kubectl`, go ahead and read [kubect
 
 The examples we've used so far apply at most a single label to any resource. There are many scenarios where multiple labels should be used to distinguish sets from one another.
 
-For instance, different applications would use different values for the `app` label, but a multi-tier application, such as the [guestbook example](https://github.com/kubernetes/examples/tree/master/guestbook/), would additionally need to distinguish each tier. The frontend could carry the following labels:
+For instance, different applications would use different values for the `app` label, but a multi-tier application, such as the [guestbook example](https://github.com/PlaidCloud/examples/tree/master/guestbook/), would additionally need to distinguish each tier. The frontend could carry the following labels:
 
 ```yaml
      labels:
@@ -405,7 +405,7 @@ For more information, please see [kubectl edit](/docs/reference/generated/kubect
 
 You can use `kubectl patch` to update API objects in place. This command supports JSON patch,
 JSON merge patch, and strategic merge patch. See
-[Update API Objects in Place Using kubectl patch](/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/)
+[Update API Objects in Place Using kubectl patch](/docs/tasks/manage-PlaidCloud-objects/update-api-object-kubectl-patch/)
 and
 [kubectl patch](/docs/reference/generated/kubectl/kubectl-commands/#patch).
 

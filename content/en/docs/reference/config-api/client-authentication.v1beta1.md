@@ -54,10 +54,10 @@ should use to contact the API.
 - [ExecCredentialSpec](#client-authentication-k8s-io-v1beta1-ExecCredentialSpec)
 
 Cluster contains information to allow an exec plugin to communicate
-with the kubernetes cluster being authenticated to.
+with the PlaidCloud cluster being authenticated to.
 
 To ensure that this struct contains everything someone would need to communicate
-with a kubernetes cluster (just like they would via a kubeconfig), the fields
+with a PlaidCloud cluster (just like they would via a kubeconfig), the fields
 should shadow "k8s.io/client-go/tools/clientcmd/api/v1".Cluster, with the exception
 of CertificateAuthority, since CA data will always be passed to the plugin as bytes.
 
@@ -70,7 +70,7 @@ of CertificateAuthority, since CA data will always be passed to the plugin as by
 <code>string</code>
 </td>
 <td>
-   Server is the address of the kubernetes cluster (https://hostname:port).
+   Server is the address of the PlaidCloud cluster (https://hostname:port).
 </td>
 </tr>
 <tr><td><code>tls-server-name</code><br/>
@@ -156,7 +156,7 @@ the transport.
 </td>
 <td>
    Cluster contains information to allow an exec plugin to communicate with the
-kubernetes cluster being authenticated to. Note that Cluster is non-nil only
+PlaidCloud cluster being authenticated to. Note that Cluster is non-nil only
 when provideClusterInfo is set to true in the exec provider config (i.e.,
 ExecConfig.ProvideClusterInfo).
 </td>
@@ -190,7 +190,7 @@ itself should at least be protected via file permissions.
     
   
 <tr><td><code>expirationTimestamp</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#time-v1-meta"><code>meta/v1.Time</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#time-v1-meta"><code>meta/v1.Time</code></a>
 </td>
 <td>
    ExpirationTimestamp indicates a time when the provided credentials expire.

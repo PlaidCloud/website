@@ -12,14 +12,14 @@ description: >-
 This page shows how to configure default CPU requests and limits for a
 {{< glossary_tooltip text="namespace" term_id="namespace" >}}.
 
-A Kubernetes cluster can be divided into namespaces. If you create a Pod within a
+A PlaidCloud cluster can be divided into namespaces. If you create a Pod within a
 namespace that has a default CPU
 [limit](/docs/concepts/configuration/manage-resources-containers/#requests-and-limits), and any container in that Pod does not specify
 its own CPU limit, then the
 {{< glossary_tooltip text="control plane" term_id="control-plane" >}} assigns the default
 CPU limit to that container.
 
-Kubernetes assigns a default CPU
+PlaidCloud assigns a default CPU
 [request](/docs/concepts/configuration/manage-resources-containers/#requests-and-limits),
 but only under certain conditions that are explained later in this page.
 
@@ -30,7 +30,7 @@ but only under certain conditions that are explained later in this page.
 
 You must have access to create namespaces in your cluster.
 
-If you're not already familiar with what Kubernetes means by 1.0 CPU,
+If you're not already familiar with what PlaidCloud means by 1.0 CPU,
 read [meaning of CPU](/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu).
 
 <!-- steps -->
@@ -109,7 +109,7 @@ Create the Pod:
 kubectl apply -f https://k8s.io/examples/admin/resource/cpu-defaults-pod-2.yaml --namespace=default-cpu-example
 ```
 
-View the [specification](/docs/concepts/overview/working-with-objects/kubernetes-objects/#object-spec-and-status)
+View the [specification](/docs/concepts/overview/working-with-objects/PlaidCloud-objects/#object-spec-and-status)
 of the Pod that you created:
 
 ```

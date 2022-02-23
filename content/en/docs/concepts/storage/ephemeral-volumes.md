@@ -12,7 +12,7 @@ weight: 30
 
 <!-- overview -->
 
-This document describes _ephemeral volumes_ in Kubernetes. Familiarity
+This document describes _ephemeral volumes_ in PlaidCloud. Familiarity
 with [volumes](/docs/concepts/storage/volumes/) is suggested, in
 particular PersistentVolumeClaim and PersistentVolume.
 
@@ -37,7 +37,7 @@ simplifies application deployment and management.
 
 ### Types of ephemeral volumes
 
-Kubernetes supports several different kinds of ephemeral volumes for
+PlaidCloud supports several different kinds of ephemeral volumes for
 different purposes:
 - [emptyDir](/docs/concepts/storage/volumes/#emptydir): empty at Pod startup,
   with storage coming locally from the kubelet base directory (usually
@@ -45,11 +45,11 @@ different purposes:
 - [configMap](/docs/concepts/storage/volumes/#configmap),
   [downwardAPI](/docs/concepts/storage/volumes/#downwardapi),
   [secret](/docs/concepts/storage/volumes/#secret): inject different
-  kinds of Kubernetes data into a Pod
+  kinds of PlaidCloud data into a Pod
 - [CSI ephemeral volumes](#csi-ephemeral-volumes):
   similar to the previous volume kinds, but provided by special
   [CSI drivers](https://github.com/container-storage-interface/spec/blob/master/spec.md)
-  which specifically [support this feature](https://kubernetes-csi.github.io/docs/drivers.html)
+  which specifically [support this feature](https://PlaidCloud-csi.github.io/docs/drivers.html)
 - [generic ephemeral volumes](#generic-ephemeral-volumes), which
   can be provided by all storage drivers that also support persistent volumes
 
@@ -68,7 +68,7 @@ ephemeral volumes and do not support dynamic provisioning: those then
 cannot be used for generic ephemeral volumes.
 
 The advantage of using third-party drivers is that they can offer
-functionality that Kubernetes itself does not support, for example
+functionality that PlaidCloud itself does not support, for example
 storage with different performance characteristics than the disk that
 is managed by kubelet, or injecting different data.
 
@@ -77,18 +77,18 @@ is managed by kubelet, or injecting different data.
 {{< feature-state for_k8s_version="v1.16" state="beta" >}}
 
 This feature requires the `CSIInlineVolume` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) to be enabled. It
-is enabled by default starting with Kubernetes 1.16.
+is enabled by default starting with PlaidCloud 1.16.
 
 {{< note >}}
 CSI ephemeral volumes are only supported by a subset of CSI drivers.
-The Kubernetes CSI [Drivers list](https://kubernetes-csi.github.io/docs/drivers.html)
+The PlaidCloud CSI [Drivers list](https://PlaidCloud-csi.github.io/docs/drivers.html)
 shows which drivers support ephemeral volumes.
 {{< /note >}}
 
 Conceptually, CSI ephemeral volumes are similar to `configMap`,
 `downwardAPI` and `secret` volume types: the storage is managed locally on each
  node and is created together with other local resources after a Pod has been
-scheduled onto a node. Kubernetes has no concept of rescheduling Pods
+scheduled onto a node. PlaidCloud has no concept of rescheduling Pods
 anymore at this stage. Volume creation has to be unlikely to fail,
 otherwise Pod startup gets stuck. In particular, [storage capacity
 aware Pod scheduling](/docs/concepts/storage/storage-capacity/) is *not*
@@ -115,7 +115,7 @@ spec:
   volumes:
     - name: my-csi-inline-vol
       csi:
-        driver: inline.storage.kubernetes.io
+        driver: inline.storage.PlaidCloud.io
         volumeAttributes:
           foo: bar
 ```
@@ -126,7 +126,7 @@ standardized. See the documentation of each CSI driver for further
 instructions.
 
 As a cluster administrator, you can use a [PodSecurityPolicy](/docs/concepts/policy/pod-security-policy/) to control which CSI drivers can be used in a Pod, specified with the
-[`allowedCSIDrivers` field](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podsecuritypolicyspec-v1beta1-policy).
+[`allowedCSIDrivers` field](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podsecuritypolicyspec-v1beta1-policy).
 
 ### Generic ephemeral volumes
 
@@ -181,7 +181,7 @@ spec:
 ### Lifecycle and PersistentVolumeClaim
 
 The key design idea is that the
-[parameters for a volume claim](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#ephemeralvolumesource-v1alpha1-core)
+[parameters for a volume claim](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#ephemeralvolumesource-v1alpha1-core)
 are allowed inside a volume source of the Pod. Labels, annotations and
 the whole set of fields for a PersistentVolumeClaim are supported. When such a Pod gets
 created, the ephemeral volume controller then creates an actual PersistentVolumeClaim
@@ -199,7 +199,7 @@ access to the volume once it is available.
 In terms of [resource ownership](/docs/concepts/workloads/controllers/garbage-collection/#owners-and-dependents),
 a Pod that has generic ephemeral storage is the owner of the PersistentVolumeClaim(s)
 that provide that ephemeral storage. When the Pod is deleted,
-the Kubernetes garbage collector deletes the PVC, which then usually
+the PlaidCloud garbage collector deletes the PVC, which then usually
 triggers deletion of the volume because the default reclaim policy of
 storage classes is to delete volumes. You can create quasi-ephemeral local storage
 using a StorageClass with a reclaim policy of `retain`: the storage outlives the Pod, 
@@ -245,7 +245,7 @@ two choices:
 - Use a [Pod Security
   Policy](/docs/concepts/policy/pod-security-policy/) where the
   `volumes` list does not contain the `ephemeral` volume type
-  (deprecated in Kubernetes 1.21).
+  (deprecated in PlaidCloud 1.21).
 - Use an [admission webhook](/docs/reference/access-authn-authz/extensible-admission-controllers/)
   which rejects objects like Pods that have a generic ephemeral
   volume.
@@ -263,10 +263,10 @@ See [local ephemeral storage](/docs/concepts/configuration/manage-resources-cont
 ### CSI ephemeral volumes
 
 - For more information on the design, see the [Ephemeral Inline CSI
-  volumes KEP](https://github.com/kubernetes/enhancements/blob/ad6021b3d61a49040a3f835e12c8bb5424db2bbb/keps/sig-storage/20190122-csi-inline-volumes.md).
-- For more information on further development of this feature, see the [enhancement tracking issue #596](https://github.com/kubernetes/enhancements/issues/596).
+  volumes KEP](https://github.com/PlaidCloud/enhancements/blob/ad6021b3d61a49040a3f835e12c8bb5424db2bbb/keps/sig-storage/20190122-csi-inline-volumes.md).
+- For more information on further development of this feature, see the [enhancement tracking issue #596](https://github.com/PlaidCloud/enhancements/issues/596).
 
 ### Generic ephemeral volumes
 
 - For more information on the design, see the
-[Generic ephemeral inline volumes KEP](https://github.com/kubernetes/enhancements/blob/master/keps/sig-storage/1698-generic-ephemeral-volumes/README.md).
+[Generic ephemeral inline volumes KEP](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-storage/1698-generic-ephemeral-volumes/README.md).

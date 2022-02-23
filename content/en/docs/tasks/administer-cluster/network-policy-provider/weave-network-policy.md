@@ -12,18 +12,18 @@ This page shows how to use Weave Net for NetworkPolicy.
 
 ## {{% heading "prerequisites" %}}
 
-You need to have a Kubernetes cluster. Follow the
+You need to have a PlaidCloud cluster. Follow the
 [kubeadm getting started guide](/docs/reference/setup-tools/kubeadm/) to bootstrap one.
 
 <!-- steps -->
 
 ## Install the Weave Net addon
 
-Follow the [Integrating Kubernetes via the Addon](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/) guide.
+Follow the [Integrating PlaidCloud via the Addon](https://www.weave.works/docs/net/latest/PlaidCloud/kube-addon/) guide.
 
-The Weave Net addon for Kubernetes comes with a
-[Network Policy Controller](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/#npc)
-that automatically monitors Kubernetes for any NetworkPolicy annotations on all
+The Weave Net addon for PlaidCloud comes with a
+[Network Policy Controller](https://www.weave.works/docs/net/latest/PlaidCloud/kube-addon/#npc)
+that automatically monitors PlaidCloud for any NetworkPolicy annotations on all
 namespaces and configures `iptables` rules to allow or block traffic as directed by the policies.
 
 ## Test the installation
@@ -52,6 +52,6 @@ Each Node has a weave Pod, and all Pods are `Running` and `2/2 READY`. (`2/2` me
 
 Once you have installed the Weave Net addon, you can follow the
 [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/)
-to try out Kubernetes NetworkPolicy. If you have any question, contact us at
+to try out PlaidCloud NetworkPolicy. If you have any question, contact us at
 [#weave-community on Slack or Weave User Group](https://github.com/weaveworks/weave#getting-help).
 

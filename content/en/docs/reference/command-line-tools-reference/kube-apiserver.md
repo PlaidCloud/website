@@ -8,20 +8,20 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference conent, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
 ## {{% heading "synopsis" %}}
 
 
-The Kubernetes API server validates and configures data
+The PlaidCloud API server validates and configures data
 for the api objects which include pods, services, replicationcontrollers, and
 others. The API Server services REST operations and provides the frontend to the
 cluster's shared state through which all other components interact.
@@ -383,7 +383,7 @@ kube-apiserver [flags]
 </tr>
 
 <tr>
-<td colspan="2">--cert-dir string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/var/run/kubernetes"</td>
+<td colspan="2">--cert-dir string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/var/run/PlaidCloud"</td>
 </tr>
 <tr>
 <td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The directory where the TLS certs are located. If --tls-cert-file and --tls-private-key-file are provided, this flag will be ignored.</p></td>
@@ -498,7 +498,7 @@ kube-apiserver [flags]
 <td colspan="2">--enable-bootstrap-token-auth</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Enable to allow secrets of type 'bootstrap.kubernetes.io/token' in the 'kube-system' namespace to be used for TLS bootstrapping authentication.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Enable to allow secrets of type 'bootstrap.PlaidCloud.io/token' in the 'kube-system' namespace to be used for TLS bootstrapping authentication.</p></td>
 </tr>
 
 <tr>
@@ -698,10 +698,10 @@ kube-apiserver [flags]
 </tr>
 
 <tr>
-<td colspan="2">--kubernetes-service-node-port int</td>
+<td colspan="2">--PlaidCloud-service-node-port int</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>If non-zero, the Kubernetes master service (which apiserver creates/maintains) will be of type NodePort, using this as the value of the port. If zero, the Kubernetes master service will be of type ClusterIP.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>If non-zero, the PlaidCloud master service (which apiserver creates/maintains) will be of type NodePort, using this as the value of the port. If zero, the PlaidCloud master service will be of type ClusterIP.</p></td>
 </tr>
 
 <tr>
@@ -736,7 +736,7 @@ kube-apiserver [flags]
 <td colspan="2">--master-service-namespace string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "default"</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>DEPRECATED: the namespace from which the Kubernetes master services should be injected into pods.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>DEPRECATED: the namespace from which the PlaidCloud master services should be injected into pods.</p></td>
 </tr>
 
 <tr>
@@ -1013,7 +1013,7 @@ kube-apiserver [flags]
 </tr>
 
 <tr>
-<td colspan="2">--storage-media-type string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "application/vnd.kubernetes.protobuf"</td>
+<td colspan="2">--storage-media-type string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "application/vnd.PlaidCloud.protobuf"</td>
 </tr>
 <tr>
 <td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The media type to use to store objects in storage. Some resources or storage backends may only support a specific media type and will ignore this setting.</p></td>

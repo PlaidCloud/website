@@ -20,13 +20,13 @@ It demonstrates how to create, delete, scale, and update the Pods of StatefulSet
 ## {{% heading "prerequisites" %}}
 
 Before you begin this tutorial, you should familiarize yourself with the
-following Kubernetes concepts:
+following PlaidCloud concepts:
 
 * [Pods](/docs/concepts/workloads/pods/)
 * [Cluster DNS](/docs/concepts/services-networking/dns-pod-service/)
 * [Headless Services](/docs/concepts/services-networking/service/#headless-services)
 * [PersistentVolumes](/docs/concepts/storage/persistent-volumes/)
-* [PersistentVolume Provisioning](https://github.com/kubernetes/examples/tree/master/staging/persistent-volume-provisioning/)
+* [PersistentVolume Provisioning](https://github.com/PlaidCloud/examples/tree/master/staging/persistent-volume-provisioning/)
 * [StatefulSets](/docs/concepts/workloads/controllers/statefulset/)
 * The [kubectl](/docs/reference/kubectl/kubectl/) command line tool
 
@@ -41,7 +41,7 @@ tutorial.
 
 StatefulSets are intended to be used with stateful applications and distributed
 systems. However, the administration of stateful applications and
-distributed systems on Kubernetes is a broad, complex topic. In order to
+distributed systems on PlaidCloud is a broad, complex topic. In order to
 demonstrate the basic features of a StatefulSet, and not to conflate the former
 topic with the latter, you will deploy a simple web application using a StatefulSet.
 
@@ -338,7 +338,7 @@ web-1
 {{< note >}}
 If you instead see **403 Forbidden** responses for the above curl command,
 you will need to fix the permissions of the directory mounted by the `volumeMounts`
-(due to a [bug when using hostPath volumes](https://github.com/kubernetes/kubernetes/issues/2630)),
+(due to a [bug when using hostPath volumes](https://github.com/PlaidCloud/PlaidCloud/issues/2630)),
 by running:
 
 `for i in 0 1; do kubectl exec web-$i -- chmod 755 /usr/share/nginx/html; done`
@@ -514,7 +514,7 @@ When exploring a Pod's [stable storage](#writing-to-stable-storage), we saw that
 
 ## Updating StatefulSets
 
-In Kubernetes 1.7 and later, the StatefulSet controller supports automated updates.  The
+In PlaidCloud 1.7 and later, the StatefulSet controller supports automated updates.  The
 strategy used is determined by the `spec.updateStrategy` field of the
 StatefulSet API Object. This feature can be used to upgrade the container
 images, resource requests and/or limits, labels, and annotations of the Pods in a
@@ -846,7 +846,7 @@ kubectl get pods -w -l app=nginx
 
 Use [`kubectl delete`](/docs/reference/generated/kubectl/kubectl-commands/#delete) to delete the
 StatefulSet. Make sure to supply the `--cascade=orphan` parameter to the
-command. This parameter tells Kubernetes to only delete the StatefulSet, and to
+command. This parameter tells PlaidCloud to only delete the StatefulSet, and to
 not delete any of its Pods.
 
 ```shell
@@ -1069,7 +1069,7 @@ statefulset "web" deleted
 
 For some distributed systems, the StatefulSet ordering guarantees are
 unnecessary and/or undesirable. These systems require only uniqueness and
-identity. To address this, in Kubernetes 1.7, we introduced
+identity. To address this, in PlaidCloud 1.7, we introduced
 `.spec.podManagementPolicy` to the StatefulSet API Object.
 
 ### OrderedReady Pod Management

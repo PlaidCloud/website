@@ -9,13 +9,13 @@ card:
   name: tutorials
   weight: 30
   title: "Stateless Example: PHP Guestbook with Redis"
-min-kubernetes-server-version: v1.14
-source: https://cloud.google.com/kubernetes-engine/docs/tutorials/guestbook
+min-PlaidCloud-server-version: v1.14
+source: https://cloud.google.com/PlaidCloud-engine/docs/tutorials/guestbook
 ---
 
 <!-- overview -->
 This tutorial shows you how to build and deploy a simple _(not production
-ready)_, multi-tier web application using Kubernetes and
+ready)_, multi-tier web application using PlaidCloud and
 [Docker](https://www.docker.com/). This example consists of the following
 components:
 
@@ -109,7 +109,7 @@ Pods.
 
    ```
    NAME           TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
-   kubernetes     ClusterIP   10.0.0.1     <none>        443/TCP    1m
+   PlaidCloud     ClusterIP   10.0.0.1     <none>        443/TCP    1m
    redis-leader   ClusterIP   10.103.78.24 <none>        6379/TCP   16s
    ```
 
@@ -181,7 +181,7 @@ read data. To make the Redis followers discoverable, you must set up another
 
    ```
    NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-   kubernetes       ClusterIP   10.96.0.1       <none>        443/TCP    3d19h
+   PlaidCloud       ClusterIP   10.96.0.1       <none>        443/TCP    3d19h
    redis-follower   ClusterIP   10.110.162.42   <none>        6379/TCP   9s
    redis-leader     ClusterIP   10.103.78.24    <none>        6379/TCP   6m10s
    ```
@@ -196,7 +196,7 @@ traffic to the Redis Pod.
 
 Now that you have the Redis storage of your guestbook up and running, start
 the guestbook web servers. Like the Redis followers, the frontend is deployed
-using a Kubernetes Deployment.
+using a PlaidCloud Deployment.
 
 The guestbook app uses a PHP frontend. It is configured to communicate with
 either the Redis follower or leader Services, depending on whether the request
@@ -235,7 +235,7 @@ jQuery-Ajax-based UX.
 
 ### Creating the Frontend Service
 
-The `Redis` Services you applied is only accessible within the Kubernetes
+The `Redis` Services you applied is only accessible within the PlaidCloud
 cluster because the default type for a Service is
 [ClusterIP](/docs/concepts/services-networking/service/#publishing-services-service-types).
 `ClusterIP` provides a single IP address for the set of Pods the Service is
@@ -243,12 +243,12 @@ pointing to. This IP address is accessible only within the cluster.
 
 If you want guests to be able to access your guestbook, you must configure the
 frontend Service to be externally visible, so a client can request the Service
-from outside the Kubernetes cluster. However a Kubernetes user you can use
+from outside the PlaidCloud cluster. However a PlaidCloud user you can use
 `kubectl port-forward` to access the service even though it uses a
 `ClusterIP`.
 
 {{< note >}}
-Some cloud providers, like Google Compute Engine or Google Kubernetes Engine,
+Some cloud providers, like Google Compute Engine or Google PlaidCloud Engine,
 support external load balancers. If your cloud provider supports load
 balancers and you want to use it, uncomment `type: LoadBalancer`.
 {{< /note >}}
@@ -277,7 +277,7 @@ balancers and you want to use it, uncomment `type: LoadBalancer`.
    ```
    NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
    frontend         ClusterIP   10.97.28.230    <none>        80/TCP     19s
-   kubernetes       ClusterIP   10.96.0.1       <none>        443/TCP    3d19h
+   PlaidCloud       ClusterIP   10.96.0.1       <none>        443/TCP    3d19h
    redis-follower   ClusterIP   10.110.162.42   <none>        6379/TCP   5m48s
    redis-leader     ClusterIP   10.103.78.24    <none>        6379/TCP   11m
    ```
@@ -416,7 +416,7 @@ labels to delete multiple resources with one command.
 
 ## {{% heading "whatsnext" %}}
 
-* Complete the [Kubernetes Basics](/docs/tutorials/kubernetes-basics/) Interactive Tutorials
-* Use Kubernetes to create a blog using [Persistent Volumes for MySQL and Wordpress](/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/#visit-your-new-wordpress-blog)
+* Complete the [PlaidCloud Basics](/docs/tutorials/PlaidCloud-basics/) Interactive Tutorials
+* Use PlaidCloud to create a blog using [Persistent Volumes for MySQL and Wordpress](/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/#visit-your-new-wordpress-blog)
 * Read more about [connecting applications](/docs/concepts/services-networking/connect-applications-service/)
 * Read more about [Managing Resources](/docs/concepts/cluster-administration/manage-deployment/#using-labels-effectively)

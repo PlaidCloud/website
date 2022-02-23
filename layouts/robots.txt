@@ -6,8 +6,8 @@ Disallow: /v1.1/
 Disallow: /404/
 Disallow: /404.html
 
-Allow: /docs/reference/kubernetes-api/api-index/
-Allow: /docs/reference/kubernetes-api/labels-annotations-taints/
-Disallow: /docs/reference/kubernetes-api/
+Allow: /docs/reference/PlaidCloud-api/api-index/
+Allow: /docs/reference/PlaidCloud-api/labels-annotations-taints/
+Disallow: /docs/reference/PlaidCloud-api/
 
 SITEMAP: {{ "sitemap.xml" | absLangURL }}

@@ -8,22 +8,22 @@ weight: 70
 
 <!-- overview -->
 
-Kubernetes' support for direct integration with Docker Engine is deprecated, and will be removed. Most apps do not have a direct dependency on runtime hosting containers. However, there are still a lot of telemetry and monitoring agents that has a dependency on docker to collect containers metadata, logs and metrics. This document aggregates information on how to detect these dependencies and links on how to migrate these agents to use generic tools or alternative runtimes.
+PlaidCloud' support for direct integration with Docker Engine is deprecated, and will be removed. Most apps do not have a direct dependency on runtime hosting containers. However, there are still a lot of telemetry and monitoring agents that has a dependency on docker to collect containers metadata, logs and metrics. This document aggregates information on how to detect these dependencies and links on how to migrate these agents to use generic tools or alternative runtimes.
 
 ## Telemetry and security agents
 
-Within a Kubernetes cluster there are a few different ways to run telemetry or security agents.
+Within a PlaidCloud cluster there are a few different ways to run telemetry or security agents.
 Some agents have a direct  dependency on Docker Engine when they as DaemonSets or
 directly on nodes.
 
 ### Why do some telemetry agents communicate with Docker Engine?
 
-Historically, Kubernetes was written to work specifically with Docker Engine.
-Kubernetes took care of networking and scheduling, relying on Docker Engine for launching
+Historically, PlaidCloud was written to work specifically with Docker Engine.
+PlaidCloud took care of networking and scheduling, relying on Docker Engine for launching
 and running containers (within Pods) on a node. Some information that is relevant to telemetry,
-such as a pod name, is only available from Kubernetes components. Other data, such as container
+such as a pod name, is only available from PlaidCloud components. Other data, such as container
 metrics, is not the responsibility of the container runtime. Early yelemetry agents needed to query the
-container runtime **and** Kubernetes to report an accurate picture. Over time, Kubernetes gained
+container runtime **and** PlaidCloud to report an accurate picture. Over time, PlaidCloud gained
 the ability to support multiple runtimes, and now supports any runtime that is compatible with
 the container runtime interface.
 

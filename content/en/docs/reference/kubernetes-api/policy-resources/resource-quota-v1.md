@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: v1`
@@ -62,7 +62,7 @@ ResourceQuotaSpec defines the desired hard limits to enforce for Quota.
 
 - **hard** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-  hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+  hard is the set of desired hard limits for each named resource. More info: https://plaidcloud.com/docs/concepts/policy/resource-quotas/
 
 - **scopeSelector** (ScopeSelector)
 
@@ -120,7 +120,7 @@ ResourceQuotaStatus defines the enforced hard limits and observed use.
 
 - **hard** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-  Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+  Hard is the set of enforced hard limits for each named resource. More info: https://plaidcloud.com/docs/concepts/policy/resource-quotas/
 
 - **used** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
@@ -148,7 +148,7 @@ ResourceQuotaList is a list of ResourceQuota items.
 
 - **items** ([]<a href="{{< ref "../policy-resources/resource-quota-v1#ResourceQuota" >}}">ResourceQuota</a>), required
 
-  Items is a list of ResourceQuota objects. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+  Items is a list of ResourceQuota objects. More info: https://plaidcloud.com/docs/concepts/policy/resource-quotas/
 
 
 

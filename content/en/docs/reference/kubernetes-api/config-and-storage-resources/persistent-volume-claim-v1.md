@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: v1`
@@ -44,11 +44,11 @@ PersistentVolumeClaim is a user's request for and claim to a persistent volume
 
 - **spec** (<a href="{{< ref "../config-and-storage-resources/persistent-volume-claim-v1#PersistentVolumeClaimSpec" >}}">PersistentVolumeClaimSpec</a>)
 
-  Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+  Spec defines the desired characteristics of a volume requested by a pod author. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 - **status** (<a href="{{< ref "../config-and-storage-resources/persistent-volume-claim-v1#PersistentVolumeClaimStatus" >}}">PersistentVolumeClaimStatus</a>)
 
-  Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+  Status represents the current information/status of a persistent volume claim. Read-only. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 
 
@@ -62,7 +62,7 @@ PersistentVolumeClaimSpec describes the common attributes of storage devices and
 
 - **accessModes** ([]string)
 
-  AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+  AccessModes contains the desired access modes the volume should have. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#access-modes-1
 
 - **selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>)
 
@@ -70,18 +70,18 @@ PersistentVolumeClaimSpec describes the common attributes of storage devices and
 
 - **resources** (ResourceRequirements)
 
-  Resources represents the minimum resources the volume should have. If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements that are lower than previous value but must still be higher than capacity recorded in the status field of the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+  Resources represents the minimum resources the volume should have. If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements that are lower than previous value but must still be higher than capacity recorded in the status field of the claim. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#resources
 
   <a name="ResourceRequirements"></a>
   *ResourceRequirements describes the compute resource requirements.*
 
   - **resources.limits** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    Limits describes the maximum amount of compute resources allowed. More info: https://plaidcloud.com/docs/concepts/configuration/manage-resources-containers/
 
   - **resources.requests** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://plaidcloud.com/docs/concepts/configuration/manage-resources-containers/
 
 - **volumeName** (string)
 
@@ -89,7 +89,7 @@ PersistentVolumeClaimSpec describes the common attributes of storage devices and
 
 - **storageClassName** (string)
 
-  Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+  Name of the StorageClass required by the claim. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#class-1
 
 - **volumeMode** (string)
 
@@ -123,7 +123,7 @@ PersistentVolumeClaimStatus is the current status of a persistent volume claim.
 
 - **accessModes** ([]string)
 
-  AccessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+  AccessModes contains the actual access modes the volume backing the PVC has. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#access-modes-1
 
 - **allocatedResources** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
@@ -211,7 +211,7 @@ PersistentVolumeClaimList is a list of PersistentVolumeClaim items.
 
 - **items** ([]<a href="{{< ref "../config-and-storage-resources/persistent-volume-claim-v1#PersistentVolumeClaim" >}}">PersistentVolumeClaim</a>), required
 
-  A list of persistent volume claims. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+  A list of persistent volume claims. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 
 

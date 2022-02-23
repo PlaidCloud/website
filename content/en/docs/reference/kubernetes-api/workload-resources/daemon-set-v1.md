@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: apps/v1`
@@ -62,11 +62,11 @@ DaemonSetSpec is the specification of a daemon set.
 
 - **selector** (<a href="{{< ref "../common-definitions/label-selector#LabelSelector" >}}">LabelSelector</a>), required
 
-  A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+  A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels. More info: https://plaidcloud.com/docs/concepts/overview/working-with-objects/labels/#label-selectors
 
 - **template** (<a href="{{< ref "../workload-resources/pod-template-v1#PodTemplateSpec" >}}">PodTemplateSpec</a>), required
 
-  An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+  An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://plaidcloud.com/docs/concepts/workloads/controllers/replicationcontroller#pod-template
 
 - **minReadySeconds** (int32)
 
@@ -136,15 +136,15 @@ DaemonSetStatus represents the current status of a daemon set.
 
 - **numberMisscheduled** (int32), required
 
-  The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+  The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://plaidcloud.com/docs/concepts/workloads/controllers/daemonset/
 
 - **desiredNumberScheduled** (int32), required
 
-  The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+  The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://plaidcloud.com/docs/concepts/workloads/controllers/daemonset/
 
 - **currentNumberScheduled** (int32), required
 
-  The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+  The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://plaidcloud.com/docs/concepts/workloads/controllers/daemonset/
 
 - **updatedNumberScheduled** (int32)
 

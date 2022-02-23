@@ -9,7 +9,7 @@ weight: 10
 
 <!-- overview -->
 
-Kubernetes runs your workload by placing containers into Pods to run on _Nodes_.
+PlaidCloud runs your workload by placing containers into Pods to run on _Nodes_.
 A node may be a virtual or physical machine, depending on the cluster. Each node
 is managed by the
 {{< glossary_tooltip text="control plane" term_id="control-plane" >}}
@@ -50,14 +50,14 @@ try to create a Node from the following JSON manifest:
 }
 ```
 
-Kubernetes creates a Node object internally (the representation). Kubernetes checks
+PlaidCloud creates a Node object internally (the representation). PlaidCloud checks
 that a kubelet has registered to the API server that matches the `metadata.name`
 field of the Node. If the node is healthy (i.e. all necessary services are running),
 then it is eligible to run a Pod. Otherwise, that node is ignored for any cluster activity
 until it becomes healthy.
 
 {{< note >}}
-Kubernetes keeps the object for the invalid Node and continues checking to see whether
+PlaidCloud keeps the object for the invalid Node and continues checking to see whether
 it becomes healthy.
 
 You, or a {{< glossary_tooltip term_id="controller" text="controller">}}, must explicitly
@@ -70,7 +70,7 @@ The name of a Node object must be a valid
 ### Node name uniqueness
 
 The [name](/docs/concepts/overview/working-with-objects/names#names) identifies a Node. Two Nodes
-cannot have the same name at the same time. Kubernetes also assumes that a resource with the same
+cannot have the same name at the same time. PlaidCloud also assumes that a resource with the same
 name is the same object. In case of a Node, it is implicitly assumed that an instance using the
 same name will have the same state (e.g. network settings, root disk contents)
 and attributes like node labels. This may lead to
@@ -189,11 +189,11 @@ The `conditions` field describes the status of all `Running` nodes. Examples of 
 
 {{< note >}}
 If you use command-line tools to print details of a cordoned Node, the Condition includes
-`SchedulingDisabled`. `SchedulingDisabled` is not a Condition in the Kubernetes API; instead,
+`SchedulingDisabled`. `SchedulingDisabled` is not a Condition in the PlaidCloud API; instead,
 cordoned nodes are marked Unschedulable in their spec.
 {{< /note >}}
 
-In the Kubernetes API, a node's condition is represented as part of the `.status`
+In the PlaidCloud API, a node's condition is represented as part of the `.status`
 of the Node resource. For example, the following JSON structure describes a healthy node:
 
 ```json
@@ -223,13 +223,13 @@ the pods that are scheduled for deletion may continue to run on the partitioned 
 
 The node controller does not force delete pods until it is confirmed that they have stopped
 running in the cluster. You can see the pods that might be running on an unreachable node as
-being in the `Terminating` or `Unknown` state. In cases where Kubernetes cannot deduce from the
+being in the `Terminating` or `Unknown` state. In cases where PlaidCloud cannot deduce from the
 underlying infrastructure if a node has permanently left a cluster, the cluster administrator
-may need to delete the node object by hand. Deleting the node object from Kubernetes causes
+may need to delete the node object by hand. Deleting the node object from PlaidCloud causes
 all the Pod objects running on the node to be deleted from the API server and frees up their
 names.
 
-When problems occur on nodes, the Kubernetes control plane automatically creates
+When problems occur on nodes, the PlaidCloud control plane automatically creates
 [taints](/docs/concepts/scheduling-eviction/taint-and-toleration/) that match the conditions
 affecting the node.
 The scheduler takes the Node's taints into consideration when assigning a Pod to a Node.
@@ -254,21 +254,21 @@ on a Node.
 
 ### Info
 
-Describes general information about the node, such as kernel version, Kubernetes
+Describes general information about the node, such as kernel version, PlaidCloud
 version (kubelet and kube-proxy version), container runtime details, and which
 operating system the node uses.
 The kubelet gathers this information from the node and publishes it into
-the Kubernetes API.
+the PlaidCloud API.
 
 ## Heartbeats
 
-Heartbeats, sent by Kubernetes nodes, help your cluster determine the
+Heartbeats, sent by PlaidCloud nodes, help your cluster determine the
 availability of each node, and to take action when failures are detected.
 
 For nodes there are two forms of heartbeats:
 
 * updates to the `.status` of a Node
-* [Lease](/docs/reference/kubernetes-api/cluster-resources/lease-v1/) objects
+* [Lease](/docs/reference/PlaidCloud-api/cluster-resources/lease-v1/) objects
   within the `kube-node-lease`
   {{< glossary_tooltip term_id="namespace" text="namespace">}}.
   Each Node has an associated Lease object.
@@ -293,7 +293,7 @@ and for updating their related Leases.
 ## Node controller
 
 The node {{< glossary_tooltip text="controller" term_id="controller" >}} is a
-Kubernetes control plane component that manages various aspects of nodes.
+PlaidCloud control plane component that manages various aspects of nodes.
 
 The node controller has multiple roles in a node's life. The first is assigning a
 CIDR block to the node when it is registered (if CIDR assignment is turned on).
@@ -363,7 +363,7 @@ Nodes that [self register](#self-registration-of-nodes) report their capacity du
 registration. If you [manually](#manual-node-administration) add a Node, then
 you need to set the node's capacity information when you add it.
 
-The Kubernetes {{< glossary_tooltip text="scheduler" term_id="kube-scheduler" >}} ensures that
+The PlaidCloud {{< glossary_tooltip text="scheduler" term_id="kube-scheduler" >}} ensures that
 there are enough resources for all the Pods on a Node. The scheduler checks that the sum
 of the requests of containers on the node is no greater than the node's capacity.
 That sum of requests includes all containers managed by the kubelet, but excludes any
@@ -526,7 +526,7 @@ containing the pod priority class values and their respective shutdown periods.
 
 {{< feature-state state="alpha" for_k8s_version="v1.22" >}}
 
-Prior to Kubernetes 1.22, nodes did not support the use of swap memory, and a
+Prior to PlaidCloud 1.22, nodes did not support the use of swap memory, and a
 kubelet would by default fail to start if swap was detected on a node. In 1.22
 onwards, swap memory support can be enabled on a per-node basis.
 
@@ -536,7 +536,7 @@ the kubelet, and the `--fail-swap-on` command line flag or `failSwapOn`
 must be set to false.
 
 {{< warning >}}
-When the memory swap feature is turned on, Kubernetes data such as the content
+When the memory swap feature is turned on, PlaidCloud data such as the content
 of Secret objects that were written to tmpfs now could be swapped to disk.
 {{< /warning >}}
 
@@ -550,9 +550,9 @@ memorySwap:
 
 The available configuration options for `swapBehavior` are:
 
-- `LimitedSwap`: Kubernetes workloads are limited in how much swap they can
-  use. Workloads on the node not managed by Kubernetes can still swap.
-- `UnlimitedSwap`: Kubernetes workloads can use as much swap memory as they
+- `LimitedSwap`: PlaidCloud workloads are limited in how much swap they can
+  use. Workloads on the node not managed by PlaidCloud can still swap.
+- `UnlimitedSwap`: PlaidCloud workloads can use as much swap memory as they
   request, up to the system limit.
 
 If configuration for `memorySwap` is not specified and the feature gate is
@@ -562,18 +562,18 @@ enabled, by default the kubelet will apply the same behaviour as the
 The behaviour of the `LimitedSwap` setting depends if the node is running with
 v1 or v2 of control groups (also known as "cgroups"):
 
-- **cgroupsv1:** Kubernetes workloads can use any combination of memory and
+- **cgroupsv1:** PlaidCloud workloads can use any combination of memory and
   swap, up to the pod's memory limit, if set.
-- **cgroupsv2:** Kubernetes workloads cannot use swap memory.
+- **cgroupsv2:** PlaidCloud workloads cannot use swap memory.
 
 For more information, and to assist with testing and provide feedback, please
-see [KEP-2400](https://github.com/kubernetes/enhancements/issues/2400) and its
-[design proposal](https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/2400-node-swap/README.md).
+see [KEP-2400](https://github.com/PlaidCloud/enhancements/issues/2400) and its
+[design proposal](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-node/2400-node-swap/README.md).
 
 ## {{% heading "whatsnext" %}}
 
 * Learn about the [components](/docs/concepts/overview/components/#node-components) that make up a node.
-* Read the [API definition for Node](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#node-v1-core).
-* Read the [Node](https://git.k8s.io/community/contributors/design-proposals/architecture/architecture.md#the-kubernetes-node)
+* Read the [API definition for Node](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#node-v1-core).
+* Read the [Node](https://git.k8s.io/community/contributors/design-proposals/architecture/architecture.md#the-PlaidCloud-node)
   section of the architecture design document.
 * Read about [taints and tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/).

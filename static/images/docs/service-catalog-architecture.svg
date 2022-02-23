@@ -131,7 +131,7 @@
         <tspan font-family="Arial" font-size="12" font-weight="500" fill="#383838" x="0" y="39.785156" textLength="80.02734">Service Details</tspan>
       </text>
       <text transform="translate(259 432.2383)" fill="black">
-        <tspan font-family="Arial" font-size="16" font-weight="500" x=".08203125" y="14" textLength="81.83594">Kubernetes</tspan>
+        <tspan font-family="Arial" font-size="16" font-weight="500" x=".08203125" y="14" textLength="81.83594">PlaidCloud</tspan>
       </text>
     </g>
   </g>

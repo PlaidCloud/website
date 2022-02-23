@@ -155,11 +155,12 @@ other = "Contribute"
 
 [main_copyright_notice]
 other = """PlaidCloud &reg;. All rights reserved. PlaidCloud is a registered trademark of Tartan Solutions"""
+
 [main_documentation_license]
 other = """Tartan Solutions, Inc  |  PlaidCloud is our SaaS platform for Financial Analytics"""
 
 [main_github_invite]
-other = "Interested in hacking on the core Kubernetes code base?"
+other = "Interested in hacking on the core PlaidCloud code base?"
 
 [main_github_view_on]
 other = "View On GitHub"

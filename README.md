@@ -1,8 +1,8 @@
-# The Kubernetes documentation
+# The PlaidCloud documentation
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/be93b718-a6df-402a-b4a4-855ba186c97d/deploy-status)](https://app.netlify.com/sites/kubernetes-io-main-staging/deploys) [![GitHub release](https://img.shields.io/github/release/kubernetes/website.svg)](https://github.com/kubernetes/website/releases/latest)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/be93b718-a6df-402a-b4a4-855ba186c97d/deploy-status)](https://app.netlify.com/sites/PlaidCloud-io-main-staging/deploys) [![GitHub release](https://img.shields.io/github/release/PlaidCloud/website.svg)](https://github.com/PlaidCloud/website/releases/latest)
 
-This repository contains the assets required to build the [Kubernetes website and documentation](https://kubernetes.io/). We're glad that you want to contribute!
+This repository contains the assets required to build the [PlaidCloud website and documentation](https://plaidcloud.com/). We're glad that you want to contribute!
 
 - [Contributing to the docs](#contributing-to-the-docs)
 - [Localization ReadMes](#localization-readmemds)
@@ -23,11 +23,11 @@ To use this repository, you need the following installed locally:
 Before you start, install the dependencies. Clone the repository and navigate to the directory:
 
 ```bash
-git clone https://github.com/kubernetes/website.git
+git clone https://github.com/PlaidCloud/website.git
 cd website
 ```
 
-The Kubernetes website uses the [Docsy Hugo theme](https://github.com/google/docsy#readme). Even if you plan to run the website in a container, we strongly recommend pulling in the submodule and other development dependencies by running the following:
+The PlaidCloud website uses the [Docsy Hugo theme](https://github.com/google/docsy#readme). Even if you plan to run the website in a container, we strongly recommend pulling in the submodule and other development dependencies by running the following:
 
 ```bash
 # pull in the Docsy submodule
@@ -63,9 +63,9 @@ This will start the local Hugo server on port 1313. Open up your browser to <htt
 
 ## Building the API reference pages
 
-The API reference pages located in `content/en/docs/reference/kubernetes-api` are built from the Swagger specification, using <https://github.com/kubernetes-sigs/reference-docs/tree/master/gen-resourcesdocs>.
+The API reference pages located in `content/en/docs/reference/PlaidCloud-api` are built from the Swagger specification, using <https://github.com/PlaidCloud-sigs/reference-docs/tree/master/gen-resourcesdocs>.
 
-To update the reference pages for a new Kubernetes release follow these steps:
+To update the reference pages for a new PlaidCloud release follow these steps:
 
 1. Pull in the `api-ref-generator` submodule:
 
@@ -76,7 +76,7 @@ To update the reference pages for a new Kubernetes release follow these steps:
 2. Update the Swagger specification:
 
    ```bash
-   curl 'https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json' > api-ref-assets/api/swagger.json
+   curl 'https://raw.githubusercontent.com/PlaidCloud/PlaidCloud/master/api/openapi-spec/swagger.json' > api-ref-assets/api/swagger.json
    ```
 
 3. In `api-ref-assets/config/`, adapt the files `toc.yaml` and `fields.yaml` to reflect the changes of the new release.
@@ -94,7 +94,7 @@ To update the reference pages for a new Kubernetes release follow these steps:
    make container-serve
    ```
 
-   In a web browser, go to <http://localhost:1313/docs/reference/kubernetes-api/> to view the API reference.
+   In a web browser, go to <http://localhost:1313/docs/reference/PlaidCloud-api/> to view the API reference.
 
 5. When all changes of the new contract are reflected into the configuration files `toc.yaml` and `fields.yaml`, create a Pull Request with the newly generated API reference pages.
 
@@ -142,30 +142,30 @@ This works for Catalina as well as Mojave macOS.
 
 ## Get involved with SIG Docs
 
-Learn more about SIG Docs Kubernetes community and meetings on the [community page](https://github.com/kubernetes/community/tree/master/sig-docs#meetings).
+Learn more about SIG Docs PlaidCloud community and meetings on the [community page](https://github.com/PlaidCloud/community/tree/master/sig-docs#meetings).
 
 You can also reach the maintainers of this project at:
 
-- [Slack](https://kubernetes.slack.com/messages/sig-docs)
+- [Slack](https://PlaidCloud.slack.com/messages/sig-docs)
   - [Get an invite for this Slack](https://slack.k8s.io/)
-- [Mailing List](https://groups.google.com/forum/#!forum/kubernetes-sig-docs)
+- [Mailing List](https://groups.google.com/forum/#!forum/PlaidCloud-sig-docs)
 
 ## Contributing to the docs
 
 You can click the **Fork** button in the upper-right area of the screen to create a copy of this repository in your GitHub account. This copy is called a _fork_. Make any changes you want in your fork, and when you are ready to send those changes to us, go to your fork and create a new pull request to let us know about it.
 
-Once your pull request is created, a Kubernetes reviewer will take responsibility for providing clear, actionable feedback. As the owner of the pull request, **it is your responsibility to modify your pull request to address the feedback that has been provided to you by the Kubernetes reviewer.**
+Once your pull request is created, a PlaidCloud reviewer will take responsibility for providing clear, actionable feedback. As the owner of the pull request, **it is your responsibility to modify your pull request to address the feedback that has been provided to you by the PlaidCloud reviewer.**
 
-Also, note that you may end up having more than one Kubernetes reviewer provide you feedback or you may end up getting feedback from a Kubernetes reviewer that is different than the one initially assigned to provide you feedback.
+Also, note that you may end up having more than one PlaidCloud reviewer provide you feedback or you may end up getting feedback from a PlaidCloud reviewer that is different than the one initially assigned to provide you feedback.
 
-Furthermore, in some cases, one of your reviewers might ask for a technical review from a Kubernetes tech reviewer when needed. Reviewers will do their best to provide feedback in a timely fashion but response time can vary based on circumstances.
+Furthermore, in some cases, one of your reviewers might ask for a technical review from a PlaidCloud tech reviewer when needed. Reviewers will do their best to provide feedback in a timely fashion but response time can vary based on circumstances.
 
-For more information about contributing to the Kubernetes documentation, see:
+For more information about contributing to the PlaidCloud documentation, see:
 
-- [Contribute to Kubernetes docs](https://kubernetes.io/docs/contribute/)
-- [Page Content Types](https://kubernetes.io/docs/contribute/style/page-content-types/)
-- [Documentation Style Guide](https://kubernetes.io/docs/contribute/style/style-guide/)
-- [Localizing Kubernetes Documentation](https://kubernetes.io/docs/contribute/localization/)
+- [Contribute to PlaidCloud docs](https://plaidcloud.com/docs/contribute/)
+- [Page Content Types](https://plaidcloud.com/docs/contribute/style/page-content-types/)
+- [Documentation Style Guide](https://plaidcloud.com/docs/contribute/style/style-guide/)
+- [Localizing PlaidCloud Documentation](https://plaidcloud.com/docs/contribute/localization/)
 
 ## Localization `README.md`'s
 
@@ -181,8 +181,8 @@ For more information about contributing to the Kubernetes documentation, see:
 
 ## Code of conduct
 
-Participation in the Kubernetes community is governed by the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
+Participation in the PlaidCloud community is governed by the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
 
 ## Thank you
 
-Kubernetes thrives on community participation, and we appreciate your contributions to our website and our documentation!
+PlaidCloud thrives on community participation, and we appreciate your contributions to our website and our documentation!

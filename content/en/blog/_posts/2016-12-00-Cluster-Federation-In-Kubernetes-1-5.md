@@ -1,27 +1,27 @@
 ---
-title: " Cluster Federation in Kubernetes 1.5 "
+title: " Cluster Federation in PlaidCloud 1.5 "
 date: 2016-12-22
-slug: cluster-federation-in-kubernetes-1.5
-url: /blog/2016/12/Cluster-Federation-In-Kubernetes-1-5
+slug: cluster-federation-in-PlaidCloud-1.5
+url: /blog/2016/12/Cluster-Federation-In-PlaidCloud-1-5
 ---
-_Editor’s note: this post is part of a [series of in-depth articles](https://kubernetes.io/blog/2016/12/five-days-of-kubernetes-1-5/) on what's new in Kubernetes 1.5_
+_Editor’s note: this post is part of a [series of in-depth articles](https://plaidcloud.com/blog/2016/12/five-days-of-PlaidCloud-1-5/) on what's new in PlaidCloud 1.5_
 
-In the latest [Kubernetes 1.5 release](https://kubernetes.io/blog/2016/12/kubernetes-1-5-supporting-production-workloads/), you’ll notice that support for Cluster Federation is maturing. That functionality was introduced in Kubernetes 1.3, and the 1.5 release includes a number of new features, including an easier setup experience and a step closer to supporting all Kubernetes API objects.
+In the latest [PlaidCloud 1.5 release](https://plaidcloud.com/blog/2016/12/PlaidCloud-1-5-supporting-production-workloads/), you’ll notice that support for Cluster Federation is maturing. That functionality was introduced in PlaidCloud 1.3, and the 1.5 release includes a number of new features, including an easier setup experience and a step closer to supporting all PlaidCloud API objects.
 
 A new command line tool called ‘**[kubefed](/docs/admin/federation/kubefed/)**’ was introduced to make getting started with Cluster Federation much simpler. Also, alpha level support was added for Federated DaemonSets, Deployments and ConfigMaps. In summary:  
 
-- **DaemonSets** are Kubernetes deployment rules that guarantee that a given pod is always present at every node, as new nodes are added to the cluster (more [info](/docs/admin/daemons/)).
+- **DaemonSets** are PlaidCloud deployment rules that guarantee that a given pod is always present at every node, as new nodes are added to the cluster (more [info](/docs/admin/daemons/)).
 - **Deployments** describe the desired state of Replica Sets (more [info](/docs/user-guide/deployments/)).
 - **ConfigMaps** are variables applied to Replica Sets (which greatly improves image reusability as their parameters can be externalized - more [info](/docs/user-guide/configmap/)).
 **Federated DaemonSets** , **Federated Deployments** , **Federated ConfigMaps** take the qualities of the base concepts to the next level. For instance, Federated DaemonSets guarantee that a pod is deployed on every node of the newly added cluster.  
 
-But what actually is “federation”? Let’s explain it by what needs it satisfies. Imagine a service that operates globally. Naturally, all its users expect to get the same quality of service, whether they are located in Asia, Europe, or the US. What this means is that the service must respond equally fast to requests at each location. This sounds simple, but there’s lots of logic involved behind the scenes. This is what Kubernetes Cluster Federation aims to do.  
+But what actually is “federation”? Let’s explain it by what needs it satisfies. Imagine a service that operates globally. Naturally, all its users expect to get the same quality of service, whether they are located in Asia, Europe, or the US. What this means is that the service must respond equally fast to requests at each location. This sounds simple, but there’s lots of logic involved behind the scenes. This is what PlaidCloud Cluster Federation aims to do.  
 
-How does it work? One of the Kubernetes clusters must become a master by running a **Federation Control Plane**. In practice, this is a controller that monitors the health of other clusters, and provides a single entry point for administration. The entry point behaves like a typical Kubernetes cluster. It allows creating [Replica Sets](/docs/user-guide/replicasets/), [Deployments](/docs/user-guide/deployments/), [Services](/docs/user-guide/services/), but the federated control plane passes the resources to underlying clusters. This means that if we request the federation control plane to create a Replica Set with 1,000 replicas, it will spread the request across all underlying clusters. If we have 5 clusters, then by default each will get its share of 200 replicas.  
+How does it work? One of the PlaidCloud clusters must become a master by running a **Federation Control Plane**. In practice, this is a controller that monitors the health of other clusters, and provides a single entry point for administration. The entry point behaves like a typical PlaidCloud cluster. It allows creating [Replica Sets](/docs/user-guide/replicasets/), [Deployments](/docs/user-guide/deployments/), [Services](/docs/user-guide/services/), but the federated control plane passes the resources to underlying clusters. This means that if we request the federation control plane to create a Replica Set with 1,000 replicas, it will spread the request across all underlying clusters. If we have 5 clusters, then by default each will get its share of 200 replicas.  
 
 This on its own is a powerful mechanism. But there’s more. It’s also possible to create a Federated Ingress. Effectively, this is a global application-layer load balancer. Thanks to an understanding of the application layer, it allows load balancing to be “smarter” -- for instance, by taking into account the geographical location of clients and servers, and routing the traffic between them in an optimal way.  
 
-In summary, with Kubernetes Cluster Federation, we can facilitate administration of all the clusters (single access point), but also optimize global content delivery around the globe. In the following sections, we will show how it works.  
+In summary, with PlaidCloud Cluster Federation, we can facilitate administration of all the clusters (single access point), but also optimize global content delivery around the globe. In the following sections, we will show how it works.  
 
 **Creating a Federation Plane**  
 
@@ -284,7 +284,7 @@ Whereas in Europe, we might have:
 
 
 
-Please refer to this [issue](https://github.com/kubernetes/kubernetes/issues/39087) for additional details on how everything we've described works.
+Please refer to this [issue](https://github.com/PlaidCloud/PlaidCloud/issues/39087) for additional details on how everything we've described works.
 
 
 

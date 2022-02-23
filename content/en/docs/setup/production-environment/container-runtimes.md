@@ -15,14 +15,14 @@ what is involved and describes related tasks for setting up nodes.
 
 <!-- body -->
 
-Kubernetes {{< skew currentVersion >}} requires that you use a runtime that
+PlaidCloud {{< skew currentVersion >}} requires that you use a runtime that
 conforms with the 
 {{< glossary_tooltip term_id="cri" text="Container Runtime Interface">}} (CRI).
 
 See [CRI version support](#cri-versions) for more information.
 
 This page lists details for using several common container runtimes with
-Kubernetes, on Linux:
+PlaidCloud, on Linux:
 
 - [containerd](#containerd)
 - [CRI-O](#cri-o)
@@ -76,7 +76,7 @@ The new version offers several improvements over cgroup v1, some of these improv
 - newer features like Pressure Stall Information
 
 Even if the kernel supports a hybrid configuration where some controllers are managed by cgroup v1
-and some others by cgroup v2, Kubernetes supports only the same cgroup version to manage all the
+and some others by cgroup v2, PlaidCloud supports only the same cgroup version to manage all the
 controllers.
 
 If systemd doesn't use cgroup v2 by default, you can configure the system to use it by adding
@@ -109,7 +109,7 @@ if you wish to migrate to the `systemd` cgroup driver in existing kubeadm manage
 
 Your container runtime must support at least v1alpha2 of the container runtime interface.
 
-Kubernetes {{< skew currentVersion >}}  defaults to using v1 of the CRI API.
+PlaidCloud {{< skew currentVersion >}}  defaults to using v1 of the CRI API.
 If a container runtime does not support the v1 API, the kubelet falls back to
 using the (deprecated) v1alpha2 API instead.
 
@@ -136,7 +136,7 @@ sudo modprobe overlay
 sudo modprobe br_netfilter
 
 # Setup required sysctl params, these persist across reboots.
-cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+cat <<EOF | sudo tee /etc/sysctl.d/99-PlaidCloud-cri.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.ipv4.ip_forward                 = 1
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -190,7 +190,7 @@ and then run the following commands:
    .\containerd.exe config default | Out-File config.toml -Encoding ascii
 
    # Review the configuration. Depending on setup you may want to adjust:
-   # - the sandbox_image (Kubernetes pause image)
+   # - the sandbox_image (PlaidCloud pause image)
    # - cni bin_dir and conf_dir locations
    Get-Content config.toml
 
@@ -235,8 +235,8 @@ This section contains the necessary steps to install CRI-O as a container runtim
 Use the following commands to install CRI-O on your system:
 
 {{< note >}}
-The CRI-O major and minor versions must match the Kubernetes major and minor versions.
-For more information, see the [CRI-O compatibility matrix](https://github.com/cri-o/cri-o#compatibility-matrix-cri-o--kubernetes).
+The CRI-O major and minor versions must match the PlaidCloud major and minor versions.
+For more information, see the [CRI-O compatibility matrix](https://github.com/cri-o/cri-o#compatibility-matrix-cri-o--PlaidCloud).
 {{< /note >}}
 
 Install and configure prerequisites:
@@ -252,7 +252,7 @@ sudo modprobe overlay
 sudo modprobe br_netfilter
 
 # Set up required sysctl params, these persist across reboots.
-cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+cat <<EOF | sudo tee /etc/sysctl.d/99-PlaidCloud-cri.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.ipv4.ip_forward                 = 1
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -273,7 +273,7 @@ to the appropriate value from the following table:
 | Debian Testing   | `Debian_Testing`  |
 
 <br />
-Then, set `$VERSION` to the CRI-O version that matches your Kubernetes version.
+Then, set `$VERSION` to the CRI-O version that matches your PlaidCloud version.
 For instance, if you want to install CRI-O 1.20, set `VERSION=1.20`.
 You can pin your installation to a specific release.
 To install version 1.20.0, set `VERSION=1.20:1.20.0`.
@@ -310,7 +310,7 @@ to the appropriate field in the following table:
 | Ubuntu 18.04     | `xUbuntu_18.04`   |
 
 <br />
-Then, set `$VERSION` to the CRI-O version that matches your Kubernetes version.
+Then, set `$VERSION` to the CRI-O version that matches your PlaidCloud version.
 For instance, if you want to install CRI-O 1.20, set `VERSION=1.20`.
 You can pin your installation to a specific release.
 To install version 1.20.0, set `VERSION=1.20:1.20.0`.
@@ -345,7 +345,7 @@ to the appropriate field in the following table:
 | Centos 7         | `CentOS_7`        |
 
 <br />
-Then, set `$VERSION` to the CRI-O version that matches your Kubernetes version.
+Then, set `$VERSION` to the CRI-O version that matches your PlaidCloud version.
 For instance, if you want to install CRI-O 1.20, set `VERSION=1.20`.
 You can pin your installation to a specific release.
 To install version 1.20.0, set `VERSION=1.20:1.20.0`.
@@ -368,7 +368,7 @@ sudo zypper install cri-o
 {{% /tab %}}
 {{% tab name="Fedora" %}}
 
-Set `$VERSION` to the CRI-O version that matches your Kubernetes version.
+Set `$VERSION` to the CRI-O version that matches your PlaidCloud version.
 For instance, if you want to install CRI-O 1.20, `VERSION=1.20`.
 
 You can find available versions with:
@@ -421,10 +421,10 @@ this container runtime is available in various forms.
 [Install Docker Engine](https://docs.docker.com/engine/install/) explains your options
 for installing this runtime.
 
-Docker Engine is directly compatible with Kubernetes {{< skew currentVersion >}}, using the deprecated `dockershim` component. For more information
+Docker Engine is directly compatible with PlaidCloud {{< skew currentVersion >}}, using the deprecated `dockershim` component. For more information
 and context, see the [Dockershim deprecation FAQ](/dockershim).
 
-You can also find third-party adapters that let you use Docker Engine with Kubernetes
+You can also find third-party adapters that let you use Docker Engine with PlaidCloud
 through the supported {{< glossary_tooltip term_id="cri" text="Container Runtime Interface">}}
 (CRI).
 
@@ -437,5 +437,5 @@ The following CRI adaptors are designed to work with Docker Engine:
 [Mirantis Container Runtime](https://docs.mirantis.com/mcr/20.10/overview.html) (MCR) is a commercially
 available container runtime that was formerly known as Docker Enterprise Edition.
 
-You can use Mirantis Container Runtime with Kubernetes using the open source
+You can use Mirantis Container Runtime with PlaidCloud using the open source
 [`cri-dockerd`](https://github.com/Mirantis/cri-dockerd) component, included with MCR.

@@ -12,7 +12,7 @@ no_list: true
 
 <!-- overview -->
 
-This section of the Kubernetes documentation contains references.
+This section of the PlaidCloud documentation contains references.
 
 
 
@@ -20,32 +20,32 @@ This section of the Kubernetes documentation contains references.
 
 ## API Reference
 
-* [Glossary](/docs/reference/glossary/) -  a comprehensive, standardized list of Kubernetes terminology
+* [Glossary](/docs/reference/glossary/) -  a comprehensive, standardized list of PlaidCloud terminology
 
-* [Kubernetes API Reference](/docs/reference/kubernetes-api/)
-* [One-page API Reference for Kubernetes {{< param "version" >}}](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
-* [Using The Kubernetes API](/docs/reference/using-api/) - overview of the API for Kubernetes.
-* [API access control](/docs/reference/access-authn-authz/) - details on how Kubernetes controls API access
+* [PlaidCloud API Reference](/docs/reference/PlaidCloud-api/)
+* [One-page API Reference for PlaidCloud {{< param "version" >}}](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
+* [Using The PlaidCloud API](/docs/reference/using-api/) - overview of the API for PlaidCloud.
+* [API access control](/docs/reference/access-authn-authz/) - details on how PlaidCloud controls API access
 * [Well-Known Labels, Annotations and Taints](/docs/reference/labels-annotations-taints/)
 
 ## Officially supported client libraries
 
-To call the Kubernetes API from a programming language, you can use
+To call the PlaidCloud API from a programming language, you can use
 [client libraries](/docs/reference/using-api/client-libraries/). Officially supported
 client libraries:
 
-- [Kubernetes Go client library](https://github.com/kubernetes/client-go/)
-- [Kubernetes Python client library](https://github.com/kubernetes-client/python)
-- [Kubernetes Java client library](https://github.com/kubernetes-client/java)
-- [Kubernetes JavaScript client library](https://github.com/kubernetes-client/javascript)
-- [Kubernetes C# client library](https://github.com/kubernetes-client/csharp)
-- [Kubernetes Haskell client library](https://github.com/kubernetes-client/haskell)
+- [PlaidCloud Go client library](https://github.com/PlaidCloud/client-go/)
+- [PlaidCloud Python client library](https://github.com/PlaidCloud-client/python)
+- [PlaidCloud Java client library](https://github.com/PlaidCloud-client/java)
+- [PlaidCloud JavaScript client library](https://github.com/PlaidCloud-client/javascript)
+- [PlaidCloud C# client library](https://github.com/PlaidCloud-client/csharp)
+- [PlaidCloud Haskell client library](https://github.com/PlaidCloud-client/haskell)
 
 ## CLI
 
-* [kubectl](/docs/reference/kubectl/overview/) - Main CLI tool for running commands and managing Kubernetes clusters.
+* [kubectl](/docs/reference/kubectl/overview/) - Main CLI tool for running commands and managing PlaidCloud clusters.
     * [JSONPath](/docs/reference/kubectl/jsonpath/) - Syntax guide for using [JSONPath expressions](https://goessner.net/articles/JsonPath/) with kubectl.
-* [kubeadm](/docs/reference/setup-tools/kubeadm/) - CLI tool to easily provision a secure Kubernetes cluster.
+* [kubeadm](/docs/reference/setup-tools/kubeadm/) - CLI tool to easily provision a secure PlaidCloud cluster.
 
 ## Components
 
@@ -55,7 +55,7 @@ client libraries:
 * [kube-apiserver](/docs/reference/command-line-tools-reference/kube-apiserver/) -
   REST API that validates and configures data for API objects such as  pods,
   services, replication controllers.
-* [kube-controller-manager](/docs/reference/command-line-tools-reference/kube-controller-manager/) - Daemon that embeds the core control loops shipped with Kubernetes.
+* [kube-controller-manager](/docs/reference/command-line-tools-reference/kube-controller-manager/) - Daemon that embeds the core control loops shipped with PlaidCloud.
 * [kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/) - Can
   do simple TCP/UDP stream forwarding or round-robin TCP/UDP forwarding across
   a set of back-ends.
@@ -69,7 +69,7 @@ client libraries:
 ## Config APIs
 
 This section hosts the documentation for "unpublished" APIs which are used to
-configure  kubernetes components or tools. Most of these APIs are not exposed
+configure  PlaidCloud components or tools. Most of these APIs are not exposed
 by the API server in a RESTful way though they are essential for a user or an
 operator to use or manage a cluster.
 
@@ -92,7 +92,7 @@ operator to use or manage a cluster.
 
 ## Design Docs
 
-An archive of the design docs for Kubernetes functionality. Good starting points are
-[Kubernetes Architecture](https://git.k8s.io/community/contributors/design-proposals/architecture/architecture.md) and
-[Kubernetes Design Overview](https://git.k8s.io/community/contributors/design-proposals).
+An archive of the design docs for PlaidCloud functionality. Good starting points are
+[PlaidCloud Architecture](https://git.k8s.io/community/contributors/design-proposals/architecture/architecture.md) and
+[PlaidCloud Design Overview](https://git.k8s.io/community/contributors/design-proposals).
 

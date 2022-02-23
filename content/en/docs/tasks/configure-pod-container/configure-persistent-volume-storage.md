@@ -25,7 +25,7 @@ PersistentVolume.
 ## {{% heading "prerequisites" %}}
 
 
-* You need to have a Kubernetes cluster that has only one Node, and the
+* You need to have a PlaidCloud cluster that has only one Node, and the
 {{< glossary_tooltip text="kubectl" term_id="kubectl" >}}
 command-line tool must be configured to communicate with your cluster. If you
 do not already have a single-node cluster, you can create one by using
@@ -56,7 +56,7 @@ In the `/mnt/data` directory, create an `index.html` file:
 ```shell
 # This again assumes that your Node uses "sudo" to run commands
 # as the superuser
-sudo sh -c "echo 'Hello from Kubernetes storage' > /mnt/data/index.html"
+sudo sh -c "echo 'Hello from PlaidCloud storage' > /mnt/data/index.html"
 ```
 
 {{< note >}}
@@ -72,23 +72,23 @@ cat /mnt/data/index.html
 
 The output should be:
 ```
-Hello from Kubernetes storage
+Hello from PlaidCloud storage
 ```
 
 You can now close the shell to your Node.
 
 ## Create a PersistentVolume
 
-In this exercise, you create a *hostPath* PersistentVolume. Kubernetes supports
+In this exercise, you create a *hostPath* PersistentVolume. PlaidCloud supports
 hostPath for development and testing on a single-node cluster. A hostPath
 PersistentVolume uses a file or directory on the Node to emulate network-attached storage.
 
 In a production cluster, you would not use hostPath. Instead a cluster administrator
 would provision a network resource like a Google Compute Engine persistent disk,
 an NFS share, or an Amazon Elastic Block Store volume. Cluster administrators can also
-use [StorageClasses](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#storageclass-v1-storage)
+use [StorageClasses](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#storageclass-v1-storage)
 to set up
-[dynamic provisioning](https://kubernetes.io/blog/2016/10/dynamic-provisioning-and-storage-in-kubernetes).
+[dynamic provisioning](https://plaidcloud.com/blog/2016/10/dynamic-provisioning-and-storage-in-PlaidCloud).
 
 Here is the configuration file for the hostPath PersistentVolume:
 
@@ -134,7 +134,7 @@ Create the PersistentVolumeClaim:
 
     kubectl apply -f https://k8s.io/examples/pods/storage/pv-claim.yaml
 
-After you create the PersistentVolumeClaim, the Kubernetes control plane looks
+After you create the PersistentVolumeClaim, the PlaidCloud control plane looks
 for a PersistentVolume that satisfies the claim's requirements. If the control
 plane finds a suitable PersistentVolume with the same StorageClass, it binds the
 claim to the volume.
@@ -206,7 +206,7 @@ curl http://localhost/
 The output shows the text that you wrote to the `index.html` file on the
 hostPath volume:
 
-    Hello from Kubernetes storage
+    Hello from PlaidCloud storage
 
 
 If you see that message, you have successfully configured a Pod to
@@ -255,14 +255,14 @@ need for coordination with users, an administrator can annotate a PersistentVolu
 with a GID. Then the GID is automatically added to any Pod that uses the
 PersistentVolume.
 
-Use the `pv.beta.kubernetes.io/gid` annotation as follows:
+Use the `pv.beta.PlaidCloud.io/gid` annotation as follows:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pv1
   annotations:
-    pv.beta.kubernetes.io/gid: "1234"
+    pv.beta.PlaidCloud.io/gid: "1234"
 ```
 When a Pod consumes a PersistentVolume that has a GID annotation, the annotated GID
 is applied to all containers in the Pod in the same way that GIDs specified in the
@@ -286,10 +286,10 @@ PersistentVolume are not present on the Pod resource itself.
 
 ### Reference
 
-* [PersistentVolume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolume-v1-core)
-* [PersistentVolumeSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumespec-v1-core)
-* [PersistentVolumeClaim](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumeclaim-v1-core)
-* [PersistentVolumeClaimSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#persistentvolumeclaimspec-v1-core)
+* [PersistentVolume](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#persistentvolume-v1-core)
+* [PersistentVolumeSpec](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#persistentvolumespec-v1-core)
+* [PersistentVolumeClaim](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#persistentvolumeclaim-v1-core)
+* [PersistentVolumeClaimSpec](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#persistentvolumeclaimspec-v1-core)
 
 
 

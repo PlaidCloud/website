@@ -6,7 +6,7 @@ weight: 60
 
 <!-- overview -->
 
-This page shows how to create a Kubernetes Service object that external
+This page shows how to create a PlaidCloud Service object that external
 clients can use to access an application running in a cluster. The Service
 provides load balancing for an application that has two running instances.
 
@@ -124,7 +124,7 @@ Here is the configuration file for the application Deployment:
    and `<node-port>` is the NodePort value for your service. The
    response to a successful request is a hello message:
    ```shell
-   Hello Kubernetes!
+   Hello PlaidCloud!
    ```
 
 ## Using a service configuration file

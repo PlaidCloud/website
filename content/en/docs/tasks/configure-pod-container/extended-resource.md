@@ -31,7 +31,7 @@ That will configure one of your Nodes to advertise a dongle resource.
 
 To request an extended resource, include the `resources:requests` field in your
 Container manifest. Extended resources are fully qualified with any domain outside of
-`*.kubernetes.io/`. Valid extended resource names have the form `example.com/foo` where
+`*.PlaidCloud.io/`. Valid extended resource names have the form `example.com/foo` where
 `example.com` is replaced with your organization's domain and `foo` is a
 descriptive resource name.
 
@@ -75,7 +75,7 @@ two dongles.
 
 {{< codenew file="pods/resource/extended-resource-pod-2.yaml" >}}
 
-Kubernetes will not be able to satisfy the request for two dongles, because the first Pod
+PlaidCloud will not be able to satisfy the request for two dongles, because the first Pod
 used three of the four available dongles.
 
 Attempt to create a Pod:

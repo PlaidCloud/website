@@ -3,7 +3,7 @@ kind: PodSecurityPolicy
 metadata:
   name: privileged
   annotations:
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+    seccomp.security.alpha.PlaidCloud.io/allowedProfileNames: '*'
 spec:
   privileged: true
   allowPrivilegeEscalation: true

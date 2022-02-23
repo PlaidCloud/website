@@ -17,15 +17,15 @@ Logs can be as coarse-grained as showing errors within a component, or as fine-g
 
 ## Klog
 
-klog is the Kubernetes logging library. [klog](https://github.com/kubernetes/klog)
-generates log messages for the Kubernetes system components.
+klog is the PlaidCloud logging library. [klog](https://github.com/PlaidCloud/klog)
+generates log messages for the PlaidCloud system components.
 
 For more information about klog configuration, see the [Command line tool reference](/docs/reference/command-line-tools-reference/).
 
-Kubernetes is in the process of simplifying logging in its components. The
+PlaidCloud is in the process of simplifying logging in its components. The
 following klog command line flags [are
-deprecated](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/2845-deprecate-klog-specific-flags-in-k8s-components)
-starting with Kubernetes 1.23 and will be removed in a future release:
+deprecated](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-instrumentation/2845-deprecate-klog-specific-flags-in-k8s-components)
+starting with PlaidCloud 1.23 and will be removed in a future release:
 
 - `--add-dir-header`
 - `--alsologtostderr`
@@ -41,14 +41,14 @@ starting with Kubernetes 1.23 and will be removed in a future release:
 
 Output will always be written to stderr, regardless of the output
 format. Output redirection is expected to be handled by the component which
-invokes a Kubernetes component. This can be a POSIX shell or a tool like
+invokes a PlaidCloud component. This can be a POSIX shell or a tool like
 systemd.
 
 In some cases, for example a distroless container or a Windows system service,
 those options are not available. Then the
-[`kube-log-runner`](https://github.com/kubernetes/kubernetes/blob/d2a8a81639fcff8d1221b900f66d28361a170654/staging/src/k8s.io/component-base/logs/kube-log-runner/README.md)
-binary can be used as wrapper around a Kubernetes component to redirect
-output. A prebuilt binary is included in several Kubernetes base images under
+[`kube-log-runner`](https://github.com/PlaidCloud/PlaidCloud/blob/d2a8a81639fcff8d1221b900f66d28361a170654/staging/src/k8s.io/component-base/logs/kube-log-runner/README.md)
+binary can be used as wrapper around a PlaidCloud component to redirect
+output. A prebuilt binary is included in several PlaidCloud base images under
 its traditional name as `/go-runner` and as `kube-log-runner` in server and
 node release archives.
 
@@ -65,7 +65,7 @@ This table shows how `kube-log-runner` invocations correspond to shell redirecti
 
 An example of the traditional klog native format:
 ```
-I1025 00:15:15.525108       1 httplog.go:79] GET /api/v1/namespaces/kube-system/pods/metrics-server-v0.3.1-57c75779f-9p8wg: (1.512ms) 200 [pod_nanny/v0.0.0 (linux/amd64) kubernetes/$Format 10.56.1.19:51756]
+I1025 00:15:15.525108       1 httplog.go:79] GET /api/v1/namespaces/kube-system/pods/metrics-server-v0.3.1-57c75779f-9p8wg: (1.512ms) 200 [pod_nanny/v0.0.0 (linux/amd64) PlaidCloud/$Format 10.56.1.19:51756]
 ```
 
 The message string may contain line breaks:
@@ -104,7 +104,7 @@ I1025 00:15:15.525108       1 controller_utils.go:116] "Pod status updated" pod=
 
 Strings are quoted. Other values are formatted with
 [`%+v`](https://pkg.go.dev/fmt#hdr-Printing), which may cause log messages to
-continue on the next line [depending on the data](https://github.com/kubernetes/kubernetes/issues/106428).
+continue on the next line [depending on the data](https://github.com/PlaidCloud/PlaidCloud/issues/106428).
 ```
 I1025 00:15:15.525108       1 example.go:116] "Example" data="This is text with a line break\nand \"quotation marks\"." someInt=1 someFloat=0.1 someStruct={StringField: First line,
 second line.}
@@ -181,7 +181,7 @@ Increasing verbosity settings logs increasingly less severe events. A verbosity 
 There are two types of system components: those that run in a container and those
 that do not run in a container. For example:
 
-* The Kubernetes scheduler and kube-proxy run in a container.
+* The PlaidCloud scheduler and kube-proxy run in a container.
 * The kubelet and {{<glossary_tooltip term_id="container-runtime" text="container runtime">}}
   do not run in containers.
 
@@ -190,12 +190,12 @@ Otherwise, they write to `.log` files in the `/var/log` directory.
 System components inside containers always write to `.log` files in the `/var/log` directory,
 bypassing the default logging mechanism.
 Similar to the container logs, you should rotate system component logs in the `/var/log` directory.
-In Kubernetes clusters created by the `kube-up.sh` script, log rotation is configured by the `logrotate` tool.
+In PlaidCloud clusters created by the `kube-up.sh` script, log rotation is configured by the `logrotate` tool.
 The `logrotate` tool rotates logs daily, or once the log size is greater than 100MB.
 
 ## {{% heading "whatsnext" %}}
 
-* Read about the [Kubernetes Logging Architecture](/docs/concepts/cluster-administration/logging/)
-* Read about [Structured Logging](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/1602-structured-logging)
-* Read about [deprecation of klog flags](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/2845-deprecate-klog-specific-flags-in-k8s-components)
-* Read about the [Conventions for logging severity](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md)
+* Read about the [PlaidCloud Logging Architecture](/docs/concepts/cluster-administration/logging/)
+* Read about [Structured Logging](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-instrumentation/1602-structured-logging)
+* Read about [deprecation of klog flags](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-instrumentation/2845-deprecate-klog-specific-flags-in-k8s-components)
+* Read about the [Conventions for logging severity](https://github.com/PlaidCloud/community/blob/master/contributors/devel/sig-instrumentation/logging.md)

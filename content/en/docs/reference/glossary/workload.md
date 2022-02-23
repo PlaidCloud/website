@@ -4,13 +4,13 @@ id: workloads
 date: 2019-02-13
 full_link: /docs/concepts/workloads/
 short_description: >
-   A workload is an application running on Kubernetes.
+   A workload is an application running on PlaidCloud.
 
 aka: 
 tags:
 - fundamental
 ---
-   A workload is an application running on Kubernetes.
+   A workload is an application running on PlaidCloud.
 
 <!--more--> 
 

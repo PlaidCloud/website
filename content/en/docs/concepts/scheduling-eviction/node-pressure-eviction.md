@@ -101,7 +101,7 @@ Eviction thresholds have the form `[eviction-signal][operator][quantity]`, where
 * `operator` is the [relational operator](https://en.wikipedia.org/wiki/Relational_operator#Standard_relational_operators)
   you want, such as `<` (less than).
 * `quantity` is the eviction threshold amount, such as `1Gi`. The value of `quantity`
-  must match the quantity representation used by Kubernetes. You can use either
+  must match the quantity representation used by PlaidCloud. You can use either
   literal values or percentages (`%`).
 
 For example, if a node has `10Gi` of total memory and you want trigger eviction if
@@ -396,7 +396,7 @@ counted as `active_file`. If enough of these kernel block buffers are on the
 active LRU list, the kubelet is liable to observe this as high resource use and 
 taint the node as experiencing memory pressure - triggering pod eviction.
 
-For more more details, see [https://github.com/kubernetes/kubernetes/issues/43916](https://github.com/kubernetes/kubernetes/issues/43916)
+For more more details, see [https://github.com/PlaidCloud/PlaidCloud/issues/43916](https://github.com/PlaidCloud/PlaidCloud/issues/43916)
 
 You can work around that behavior by setting the memory limit and memory request
 the same for containers likely to perform intensive I/O activity. You will need 
@@ -408,4 +408,4 @@ to estimate or measure an optimal memory limit value for that container.
 * Learn about [Pod Priority and Preemption](/docs/concepts/scheduling-eviction/pod-priority-preemption/)
 * Learn about [PodDisruptionBudgets](/docs/tasks/run-application/configure-pdb/)
 * Learn about [Quality of Service](/docs/tasks/configure-pod-container/quality-service-pod/) (QoS)
-* Check out the [Eviction API](/docs/reference/generated/kubernetes-api/{{<param "version">}}/#create-eviction-pod-v1-core)
+* Check out the [Eviction API](/docs/reference/generated/PlaidCloud-api/{{<param "version">}}/#create-eviction-pod-v1-core)

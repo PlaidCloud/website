@@ -4,13 +4,13 @@ id: cluster-operations
 date: 2019-05-12
 full_link:
 short_description: >
- The work involved in managing a Kubernetes cluster.
+ The work involved in managing a PlaidCloud cluster.
 
 aka:
 tags:
 - operation
 ---
- The work involved in managing a Kubernetes cluster: managing
+ The work involved in managing a PlaidCloud cluster: managing
 day-to-day operations, and co-ordinating upgrades.
 
 <!--more-->

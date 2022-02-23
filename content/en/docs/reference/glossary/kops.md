@@ -4,14 +4,14 @@ id: kops
 date: 2018-04-12
 full_link: /docs/getting-started-guides/kops/
 short_description: >
-  A CLI tool that helps you create, destroy, upgrade and maintain production-grade, highly available, Kubernetes clusters.
+  A CLI tool that helps you create, destroy, upgrade and maintain production-grade, highly available, PlaidCloud clusters.
 
 aka: 
 tags:
 - tool
 - operation
 ---
- A CLI tool that helps you create, destroy, upgrade and maintain production-grade, highly available, Kubernetes clusters.
+ A CLI tool that helps you create, destroy, upgrade and maintain production-grade, highly available, PlaidCloud clusters.
 
 <!--more--> 
 

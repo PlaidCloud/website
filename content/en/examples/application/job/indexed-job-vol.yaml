@@ -24,4 +24,4 @@ spec:
           items:
           - path: "data.txt"
             fieldRef:
-              fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']
+              fieldPath: metadata.annotations['batch.PlaidCloud.io/job-completion-index']

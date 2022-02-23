@@ -21,7 +21,7 @@ replication.
 
 {{< note >}}
 **This is not a production configuration**. MySQL settings remain on insecure defaults to keep the focus
-on general patterns for running stateful applications in Kubernetes.
+on general patterns for running stateful applications in PlaidCloud.
 {{< /note >}}
 
 
@@ -93,7 +93,7 @@ kubectl apply -f https://k8s.io/examples/application/mysql/mysql-services.yaml
 The Headless Service provides a home for the DNS entries that the StatefulSet
 controller creates for each Pod that's part of the set.
 Because the Headless Service is named `mysql`, the Pods are accessible by
-resolving `<pod-name>.mysql` from within any other Pod in the same Kubernetes
+resolving `<pod-name>.mysql` from within any other Pod in the same PlaidCloud
 cluster and namespace.
 
 The Client Service, called `mysql-read`, is a normal Service with its own
@@ -205,7 +205,7 @@ Ready before starting Pod `N+1`.
 After the Init Containers complete successfully, the regular containers run.
 The MySQL Pods consist of a `mysql` container that runs the actual `mysqld`
 server, and an `xtrabackup` container that acts as a
-[sidecar](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns).
+[sidecar](https://plaidcloud.com/blog/2015/06/the-distributed-system-toolkit-patterns).
 
 The `xtrabackup` sidecar looks at the cloned data files and determines if
 it's necessary to initialize MySQL replication on the replica.
@@ -354,7 +354,7 @@ and then return on its own.
 
 ### Drain a Node
 
-If your Kubernetes cluster has multiple Nodes, you can simulate Node downtime
+If your PlaidCloud cluster has multiple Nodes, you can simulate Node downtime
 (such as when Nodes are upgraded) by issuing a
 [drain](/docs/reference/generated/kubectl/kubectl-commands/#drain).
 
@@ -368,7 +368,7 @@ The Node name should show up in the last column:
 
 ```
 NAME      READY     STATUS    RESTARTS   AGE       IP            NODE
-mysql-2   2/2       Running   0          15m       10.244.5.27   kubernetes-node-9l2t
+mysql-2   2/2       Running   0          15m       10.244.5.27   PlaidCloud-node-9l2t
 ```
 
 Then drain the Node by running the following command, which cordons it so
@@ -392,14 +392,14 @@ It should look something like this:
 
 ```
 NAME      READY   STATUS          RESTARTS   AGE       IP            NODE
-mysql-2   2/2     Terminating     0          15m       10.244.1.56   kubernetes-node-9l2t
+mysql-2   2/2     Terminating     0          15m       10.244.1.56   PlaidCloud-node-9l2t
 [...]
-mysql-2   0/2     Pending         0          0s        <none>        kubernetes-node-fjlm
-mysql-2   0/2     Init:0/2        0          0s        <none>        kubernetes-node-fjlm
-mysql-2   0/2     Init:1/2        0          20s       10.244.5.32   kubernetes-node-fjlm
-mysql-2   0/2     PodInitializing 0          21s       10.244.5.32   kubernetes-node-fjlm
-mysql-2   1/2     Running         0          22s       10.244.5.32   kubernetes-node-fjlm
-mysql-2   2/2     Running         0          30s       10.244.5.32   kubernetes-node-fjlm
+mysql-2   0/2     Pending         0          0s        <none>        PlaidCloud-node-fjlm
+mysql-2   0/2     Init:0/2        0          0s        <none>        PlaidCloud-node-fjlm
+mysql-2   0/2     Init:1/2        0          20s       10.244.5.32   PlaidCloud-node-fjlm
+mysql-2   0/2     PodInitializing 0          21s       10.244.5.32   PlaidCloud-node-fjlm
+mysql-2   1/2     Running         0          22s       10.244.5.32   PlaidCloud-node-fjlm
+mysql-2   2/2     Running         0          30s       10.244.5.32   PlaidCloud-node-fjlm
 ```
 
 And again, you should see server ID `102` disappear from the

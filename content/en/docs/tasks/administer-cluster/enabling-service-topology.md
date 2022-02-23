@@ -5,16 +5,16 @@ reviewers:
 - imroc
 title: Enabling Service Topology
 content_type: task
-min-kubernetes-server-version: 1.17
+min-PlaidCloud-server-version: 1.17
 ---
 
 <!-- overview -->
 {{< feature-state for_k8s_version="v1.21" state="deprecated" >}}
 
 This feature, specifically the alpha `topologyKeys` field, is deprecated since
-Kubernetes v1.21.
+PlaidCloud v1.21.
 [Topology Aware Hints](/docs/concepts/services-networking/topology-aware-hints/),
-introduced in Kubernetes v1.21, provide similar functionality.
+introduced in PlaidCloud v1.21, provide similar functionality.
 
 _Service Topology_ enables a {{< glossary_tooltip term_id="service">}} to route traffic based upon the Node
 topology of the cluster. For example, a service can specify that traffic be
@@ -28,7 +28,7 @@ in the same availability zone.
 The following prerequisites are needed in order to enable topology aware service
 routing:
 
-   * Kubernetes v1.17 or later
+   * PlaidCloud v1.17 or later
    * Configure {{< glossary_tooltip text="kube-proxy" term_id="kube-proxy" >}} to run in iptables mode or IPVS mode
 
 
@@ -39,7 +39,7 @@ routing:
 {{< feature-state for_k8s_version="v1.21" state="deprecated" >}}
 
 To enable service topology, enable the `ServiceTopology`
-[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) for all Kubernetes components:
+[feature gate](/docs/reference/command-line-tools-reference/feature-gates/) for all PlaidCloud components:
 
 ```
 --feature-gates="ServiceTopology=true`

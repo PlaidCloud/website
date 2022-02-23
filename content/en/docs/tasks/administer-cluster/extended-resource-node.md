@@ -8,7 +8,7 @@ content_type: task
 
 This page shows how to specify extended resources for a Node.
 Extended resources allow cluster administrators to advertise node-level
-resources that would otherwise be unknown to Kubernetes.
+resources that would otherwise be unknown to PlaidCloud.
 
 
 
@@ -34,7 +34,7 @@ Choose one of your Nodes to use for this exercise.
 ## Advertise a new extended resource on one of your Nodes
 
 To advertise a new extended resource on a Node, send an HTTP PATCH request to
-the Kubernetes API server. For example, suppose one of your Nodes has four dongles
+the PlaidCloud API server. For example, suppose one of your Nodes has four dongles
 attached. Here's an example of a PATCH request that advertises four dongle resources
 for your Node.
 
@@ -53,11 +53,11 @@ Host: k8s-master:8080
 ]
 ```
 
-Note that Kubernetes does not need to know what a dongle is or what a dongle is for.
-The preceding PATCH request tells Kubernetes that your Node has four things that
+Note that PlaidCloud does not need to know what a dongle is or what a dongle is for.
+The preceding PATCH request tells PlaidCloud that your Node has four things that
 you call dongles.
 
-Start a proxy, so that you can easily send requests to the Kubernetes API server:
+Start a proxy, so that you can easily send requests to the PlaidCloud API server:
 
 ```shell
 kubectl proxy
@@ -117,8 +117,8 @@ by all components running on the Node. And just as application developers
 can create Pods that request a certain amount of memory and CPU, they can
 create Pods that request a certain number of dongles.
 
-Extended resources are opaque to Kubernetes; Kubernetes does not
-know anything about what they are. Kubernetes knows only that a Node
+Extended resources are opaque to PlaidCloud; PlaidCloud does not
+know anything about what they are. PlaidCloud knows only that a Node
 has a certain number of them. Extended resources must be advertised in integer
 amounts. For example, a Node can advertise four dongles, but not 4.5 dongles.
 
@@ -166,7 +166,7 @@ Host: k8s-master:8080
 ]
 ```
 
-Start a proxy, so that you can easily send requests to the Kubernetes API server:
+Start a proxy, so that you can easily send requests to the PlaidCloud API server:
 
 ```shell
 kubectl proxy

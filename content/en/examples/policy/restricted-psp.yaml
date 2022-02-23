@@ -3,9 +3,9 @@ kind: PodSecurityPolicy
 metadata:
   name: restricted
   annotations:
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
-    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
+    seccomp.security.alpha.PlaidCloud.io/allowedProfileNames: 'docker/default,runtime/default'
+    apparmor.security.beta.PlaidCloud.io/allowedProfileNames: 'runtime/default'
+    apparmor.security.beta.PlaidCloud.io/defaultProfileName:  'runtime/default'
 spec:
   privileged: false
   # Required to prevent escalations to root.

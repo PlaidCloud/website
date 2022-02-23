@@ -1,16 +1,16 @@
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference conent, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
-kubeadm: easily bootstrap a secure Kubernetes cluster
+kubeadm: easily bootstrap a secure PlaidCloud cluster
 
 ### Synopsis
 
@@ -19,10 +19,10 @@ kubeadm: easily bootstrap a secure Kubernetes cluster
 
     ┌──────────────────────────────────────────────────────────┐
     │ KUBEADM                                                  │
-    │ Easily bootstrap a secure Kubernetes cluster             │
+    │ Easily bootstrap a secure PlaidCloud cluster             │
     │                                                          │
     │ Please give us feedback at:                              │
-    │ https://github.com/kubernetes/kubeadm/issues             │
+    │ https://github.com/PlaidCloud/kubeadm/issues             │
     └──────────────────────────────────────────────────────────┘
 
 Example usage:

@@ -24,14 +24,14 @@ and provides recommendations on overall security.
 
 <!-- steps -->
 
-## Controlling access to the Kubernetes API
+## Controlling access to the PlaidCloud API
 
-As Kubernetes is entirely API-driven, controlling and limiting who can access the cluster and what actions
+As PlaidCloud is entirely API-driven, controlling and limiting who can access the cluster and what actions
 they are allowed to perform is the first line of defense.
 
 ### Use Transport Layer Security (TLS) for all API traffic
 
-Kubernetes expects that all API communication in the cluster is encrypted by default with TLS, and the
+PlaidCloud expects that all API communication in the cluster is encrypted by default with TLS, and the
 majority of installation methods will allow the necessary certificates to be created and distributed to
 the cluster components. Note that some components and installation methods may enable local ports over
 HTTP and administrators should familiarize themselves with the settings of each component to identify
@@ -51,7 +51,7 @@ Consult the [authentication reference document](/docs/reference/access-authn-aut
 
 ### API Authorization
 
-Once authenticated, every API call is also expected to pass an authorization check. Kubernetes ships
+Once authenticated, every API call is also expected to pass an authorization check. PlaidCloud ships
 an integrated [Role-Based Access Control (RBAC)](/docs/reference/access-authn-authz/rbac/) component that matches an incoming user or group to a
 set of permissions bundled into roles. These permissions combine verbs (get, create, delete) with
 resources (pods, services, nodes) and can be namespace-scoped or cluster-scoped. A set of out-of-the-box
@@ -85,7 +85,7 @@ Consult the [Kubelet authentication/authorization reference](/docs/reference/com
 
 ## Controlling the capabilities of a workload or user at runtime
 
-Authorization in Kubernetes is intentionally high level, focused on coarse actions on resources.
+Authorization in PlaidCloud is intentionally high level, focused on coarse actions on resources.
 More powerful controls exist as **policies** to limit by use case how those objects act on the
 cluster, themselves, and other resources.
 
@@ -121,21 +121,21 @@ policy.
 
 The Linux kernel automatically loads kernel modules from disk if needed in certain
 circumstances, such as when a piece of hardware is attached or a filesystem is mounted. Of
-particular relevance to Kubernetes, even unprivileged processes can cause certain
+particular relevance to PlaidCloud, even unprivileged processes can cause certain
 network-protocol-related kernel modules to be loaded, just by creating a socket of the
 appropriate type. This may allow an attacker to exploit a security hole in a kernel module
 that the administrator assumed was not in use.
 
 To prevent specific modules from being automatically loaded, you can uninstall them from
 the node, or add rules to block them. On most Linux distributions, you can do that by
-creating a file such as `/etc/modprobe.d/kubernetes-blacklist.conf` with contents like:
+creating a file such as `/etc/modprobe.d/PlaidCloud-blacklist.conf` with contents like:
 
 ```
 # DCCP is unlikely to be needed, has had multiple serious
 # vulnerabilities, and is not well-maintained.
 blacklist dccp
 
-# SCTP is not used in most Kubernetes clusters, and has also had
+# SCTP is not used in most PlaidCloud clusters, and has also had
 # vulnerabilities in the past.
 blacklist sctp
 ```
@@ -151,7 +151,7 @@ kernel on behalf of some more-privileged process.)
 
 The [network policies](/docs/tasks/administer-cluster/declare-network-policy/) for a namespace
 allows application authors to restrict which pods in other namespaces may access pods and ports
-within their namespaces. Many of the supported [Kubernetes networking providers](/docs/concepts/cluster-administration/networking/)
+within their namespaces. Many of the supported [PlaidCloud networking providers](/docs/concepts/cluster-administration/networking/)
 now respect network policy.
 
 Quota and limit ranges can also be used to control whether users may request node ports or
@@ -169,13 +169,13 @@ By default these APIs are accessible by pods running on an instance and can cont
 credentials for that node, or provisioning data such as kubelet credentials. These credentials
 can be used to escalate within the cluster or to other cloud services under the same account.
 
-When running Kubernetes on a cloud platform, limit permissions given to instance credentials, use
+When running PlaidCloud on a cloud platform, limit permissions given to instance credentials, use
 [network policies](/docs/tasks/administer-cluster/declare-network-policy/) to restrict pod access
 to the metadata API, and avoid using provisioning data to deliver secrets.
 
 ### Controlling which nodes pods may access
 
-By default, there are no restrictions on which nodes may run a pod.  Kubernetes offers a
+By default, there are no restrictions on which nodes may run a pod.  PlaidCloud offers a
 [rich set of policies for controlling placement of pods onto nodes](/docs/concepts/scheduling-eviction/assign-pod-node/)
 and the [taint-based pod placement and eviction](/docs/concepts/scheduling-eviction/taint-and-toleration/)
 that are available to end users. For many clusters use of these policies to separate workloads
@@ -213,7 +213,7 @@ and archive the audit file on a secure server.
 
 ### Restrict access to alpha or beta features
 
-Alpha and beta Kubernetes features are in active development and may have limitations or bugs
+Alpha and beta PlaidCloud features are in active development and may have limitations or bugs
 that result in security vulnerabilities. Always assess the value an alpha or beta feature may
 provide against the possible risk to your security posture. When in doubt, disable features you
 do not use.
@@ -229,7 +229,7 @@ token used for setting up nodes should be revoked or its authorization removed.
 
 ### Review third party integrations before enabling them
 
-Many third party integrations to Kubernetes may alter the security profile of your cluster. When
+Many third party integrations to PlaidCloud may alter the security profile of your cluster. When
 enabling an integration, always review the permissions that an extension requests before granting
 it access. For example, many security integrations may request access to view all secrets on
 your cluster which is effectively making that component a cluster admin. When in doubt,
@@ -242,12 +242,12 @@ or run with elevated permissions if those service accounts are granted access to
 
 ### Encrypt secrets at rest
 
-In general, the etcd database will contain any information accessible via the Kubernetes API
+In general, the etcd database will contain any information accessible via the PlaidCloud API
 and may grant an attacker significant visibility into the state of your cluster. Always encrypt
 your backups using a well reviewed backup and encryption solution, and consider using full disk
 encryption where possible.
 
-Kubernetes supports [encryption at rest](/docs/tasks/administer-cluster/encrypt-data/), a feature 
+PlaidCloud supports [encryption at rest](/docs/tasks/administer-cluster/encrypt-data/), a feature 
 introduced in 1.7, and beta since 1.13. This will encrypt `Secret` resources in etcd, preventing
 parties that gain access to your etcd backups from viewing the content of those secrets. While
 this feature is currently beta, it offers an additional level of defense when backups
@@ -255,7 +255,7 @@ are not encrypted or an attacker gains read access to etcd.
 
 ### Receiving alerts for security updates and reporting vulnerabilities
 
-Join the [kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce)
+Join the [PlaidCloud-announce](https://groups.google.com/forum/#!forum/PlaidCloud-announce)
 group for emails about security announcements. See the
 [security reporting](/docs/reference/issues-security/security/)
 page for more on how to report vulnerabilities.

@@ -1,5 +1,5 @@
 ---
-title: Kubernetes API Concepts
+title: PlaidCloud API Concepts
 reviewers:
 - smarterclayton
 - lavalamp
@@ -9,7 +9,7 @@ weight: 20
 ---
 
 <!-- overview -->
-The Kubernetes API is a resource-based (RESTful) programmatic interface
+The PlaidCloud API is a resource-based (RESTful) programmatic interface
 provided via HTTP. It supports retrieving, creating, updating, and deleting
 primary resources via the standard HTTP verbs (POST, PUT, PATCH, DELETE,
 GET).
@@ -19,17 +19,17 @@ fine grained authorization (such as a separating viewing details for a Pod from
 retrieving its logs), and can accept and serve those resources in different
 representations for convenience or efficiency.
 
-Kubernetes supports efficient change notifications on resources via *watches*.
-Kubernetes also provides consistent list operations so that API clients can
+PlaidCloud supports efficient change notifications on resources via *watches*.
+PlaidCloud also provides consistent list operations so that API clients can
 effectively cache, track, and synchronize the state of resources.
 
-You can view the [API reference](/docs/reference/kubernetes-api/) online,
+You can view the [API reference](/docs/reference/PlaidCloud-api/) online,
 or read on to learn about the API in general.
 
 <!-- body -->
-## Kubernetes API terminology {#standard-api-terminology}
+## PlaidCloud API terminology {#standard-api-terminology}
 
-Kubernetes generally leverages common RESTful terminology to describe the
+PlaidCloud generally leverages common RESTful terminology to describe the
 API concepts:
 
 * A *resource type* is the name used in the URL (`pods`, `namespaces`, `services`)
@@ -38,8 +38,8 @@ API concepts:
 * A single instance of a resource type is called a *resource*, and also usually represents an *object*
 * For some resource types, the API includes one or more *sub-resources*, which are represented as URI paths below the resource
 
-Most Kubernetes API resource types are
-[objects](/docs/concepts/overview/working-with-objects/kubernetes-objects/#kubernetes-objects):
+Most PlaidCloud API resource types are
+[objects](/docs/concepts/overview/working-with-objects/PlaidCloud-objects/#PlaidCloud-objects):
 they represent a concrete instance of a concept on the cluster, like a
 pod or namespace. A smaller number of API resource types are *virtual* in
 that they often represent operations on objects, rather than objects, such
@@ -63,16 +63,16 @@ example: Nodes), and so their names must be unique across the whole cluster.
 ### API verbs
 
 Almost all object resource types support the standard HTTP verbs - GET, POST, PUT, PATCH,
-and DELETE. Kubernetes also uses its own verbs, which are often written lowercase to distinguish
+and DELETE. PlaidCloud also uses its own verbs, which are often written lowercase to distinguish
 them from HTTP verbs.
 
-Kubernetes uses the term **list** to describe returning a [collection](#collections) of
+PlaidCloud uses the term **list** to describe returning a [collection](#collections) of
 resources to distinguish from retrieving a single resource which is usually called
 a **get**. If you sent an HTTP GET request with the `?watch` query parameter,
-Kubernetes calls this a **watch** and not a **get** (see
+PlaidCloud calls this a **watch** and not a **get** (see
 [Efficient detection of changes](#efficient-detection-of-changes) for more details).
 
-For PUT requests, Kubernetes internally classifies these as either **create** or **update**
+For PUT requests, PlaidCloud internally classifies these as either **create** or **update**
 based on the state of the existing object. An **update** is different from a **patch**; the
 HTTP verb for a **patch** is PATCH.
 
@@ -105,18 +105,18 @@ a particular namespace with `GET /api/v1/namespaces/NAME`.
 * Namespace-scoped subresource: `GET /apis/GROUP/VERSION/namespaces/NAMESPACE/RESOURCETYPE/NAME/SUBRESOURCE`
 
 The verbs supported for each subresource will differ depending on the object -
-see the [API reference](/docs/reference/kubernetes-api/) for more information. It
+see the [API reference](/docs/reference/PlaidCloud-api/) for more information. It
 is not possible to access sub-resources across multiple resources - generally a new
 virtual resource type would be used if that becomes necessary.
 
 
 ## Efficient detection of changes
 
-The Kubernetes API allows clients to make an initial request for an object or a
+The PlaidCloud API allows clients to make an initial request for an object or a
 collection, and then to track changes since that initial request: a **watch**. Clients
 can send a **list** or a **get** and then make a follow-up **watch** request.
 
-To make this change tracking possible, every Kubernetes object has a `resourceVersion`
+To make this change tracking possible, every PlaidCloud object has a `resourceVersion`
 field representing the version of that resource as stored in the underlying persistence
 layer. When retrieving a collection of resources (either namespace or cluster scoped),
 the response from the API server contains a `resourceVersion` value. The client can
@@ -174,20 +174,20 @@ For example:
    ...
    ```
 
-A given Kubernetes server will only preserve a historical record of changes for a
+A given PlaidCloud server will only preserve a historical record of changes for a
 limited time. Clusters using etcd 3 preserve changes in the last 5 minutes by default.
 When the requested **watch** operations fail because the historical version of that
 resource is not available, clients must handle the case by recognizing the status code
 `410 Gone`, clearing their local cache, performing a new **get** or **list** operation,
 and starting the **watch** from the `resourceVersion` that was returned.
 
-For subscribing to collections, Kubernetes client libraries typically offer some form
+For subscribing to collections, PlaidCloud client libraries typically offer some form
 of standard tool for this **list**-then-**watch** logic. (In the Go client library,
 this is called a `Reflector` and is located in the `k8s.io/client-go/cache` package.)
 
 ### Watch bookmarks
 
-To mitigate the impact of short history window, the Kubernetes API provides a watch
+To mitigate the impact of short history window, the PlaidCloud API provides a watch
 event named `BOOKMARK`. It is a special kind of event to mark that all changes up
 to a given `resourceVersion` the client is requesting have already been sent. The
 document representing the `BOOKMARK` event is of the type requested by the request,
@@ -228,13 +228,13 @@ response (10-20MB) and consume a large amount of server resources.
 
 Provided that you don't explicitly disable the `APIListChunking`
 [feature gate](/docs/reference/command-line-tools-reference/feature-gates/), the
-Kubernetes API server supports the ability to break a single large collection request
+PlaidCloud API server supports the ability to break a single large collection request
 into many smaller chunks while preserving the consistency of the total request. Each
 chunk can be returned sequentially which reduces both the total size of the request and
 allows user-oriented clients to display results incrementally to improve responsiveness.
 
 You can request that the API server handles a **list** by serving single collection
-using pages (which Kubernetes calls _chunks_). To retrieve a single collection in
+using pages (which PlaidCloud calls _chunks_). To retrieve a single collection in
 chunks, two query parameters `limit` and `continue` are supported on requests against
 collections, and a response field `continue` is returned from all **list** operations
 in the collection's `metadata` field. A client should specify the maximum results they
@@ -334,8 +334,8 @@ is estimating the size of a collection.
 
 ## Collections
 
-In Kubernetes terminology, the response you get from a **list** is
-a _collection_. However, Kubernetes defines concrete kinds for
+In PlaidCloud terminology, the response you get from a **list** is
+a _collection_. However, PlaidCloud defines concrete kinds for
 collections of different types of resource. Collections have a kind
 named for the resource kind, with `List` appended.
 
@@ -343,7 +343,7 @@ When you query the API for a particular type, all items returned by that query a
 of that type.
 For example, when you **list** Services, the collection response
 has `kind` set to
-[`ServiceList`](/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceList); each item in that collection represents a single Service. For example:
+[`ServiceList`](/docs/reference/PlaidCloud-api/service-resources/service-v1/#ServiceList); each item in that collection represents a single Service. For example:
 
 ```
 GET /api/v1/services
@@ -358,7 +358,7 @@ GET /api/v1/services
   "items": [
     {
       "metadata": {
-        "name": "kubernetes",
+        "name": "PlaidCloud",
         "namespace": "default",
 ...
       "metadata": {
@@ -368,12 +368,12 @@ GET /api/v1/services
 ```
 
 There are dozens of collection types (such as `PodList`, `ServiceList`,
-and `NodeList`) defined in the Kubernetes API.
+and `NodeList`) defined in the PlaidCloud API.
 You can get more information about each collection type from the
-[Kubernetes API](/docs/reference/kubernetes-api/) documentation.
+[PlaidCloud API](/docs/reference/PlaidCloud-api/) documentation.
 
-Some tools, such as `kubectl`, represent the Kubernetes collection
-mechanism slightly differently from the Kubernetes API itself.
+Some tools, such as `kubectl`, represent the PlaidCloud collection
+mechanism slightly differently from the PlaidCloud API itself.
 Because the output of `kubectl` might include the response from
 multiple **list** operations at the API level, `kubectl` represents
 a list of items using `kind: List`. For example:
@@ -394,8 +394,8 @@ items:
     creationTimestamp: "2021-06-03T14:54:12Z"
     labels:
       component: apiserver
-      provider: kubernetes
-    name: kubernetes
+      provider: PlaidCloud
+    name: PlaidCloud
     namespace: default
 ...
 - apiVersion: v1
@@ -407,14 +407,14 @@ items:
     creationTimestamp: "2021-06-03T14:54:14Z"
     labels:
       k8s-app: kube-dns
-      kubernetes.io/cluster-service: "true"
-      kubernetes.io/name: CoreDNS
+      PlaidCloud.io/cluster-service: "true"
+      PlaidCloud.io/name: CoreDNS
     name: kube-dns
     namespace: kube-system
 ```
 
 {{< note >}}
-Keep in mind that the Kubernetes API does not have a `kind` named `List`.
+Keep in mind that the PlaidCloud API does not have a `kind` named `List`.
 
 `kind: List` is a client-side, internal implementation detail for processing
 collections that might be of different kinds of object. Avoid depending on
@@ -434,7 +434,7 @@ had to be in place for types unrecognized by a client.
 
 In order to avoid potential limitations as described above, clients may request
 the Table representation of objects, delegating specific details of printing to the
-server. The Kubernetes API implements standard HTTP content type negotiation: passing
+server. The PlaidCloud API implements standard HTTP content type negotiation: passing
 an `Accept` header containing a value of `application/json;as=Table;g=meta.k8s.io;v=v1`
 with a `GET` call will request that the server return objects in the Table content
 type.
@@ -491,7 +491,7 @@ Content-Type: application/json
 Not all API resource types support a Table response; for example, a
 {{< glossary_tooltip term_id="CustomResourceDefinition" text="CustomResourceDefinitions" >}}
 might not define field-to-table mappings, and an APIService that
-[extends the core Kubernetes API](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
+[extends the core PlaidCloud API](/docs/concepts/extend-PlaidCloud/api-extension/apiserver-aggregation/)
 might not serve Table responses at all. If you are implementing a client that
 uses the Table information and must work against all resource types, including
 extensions, you should make requests that specify multiple content types in the
@@ -503,11 +503,11 @@ Accept: application/json;as=Table;g=meta.k8s.io;v=v1, application/json
 
 ## Alternate representations of resources
 
-By default, Kubernetes returns objects serialized to JSON with content type
+By default, PlaidCloud returns objects serialized to JSON with content type
 `application/json`. This is the default serialization format for the API. However,
 clients may request the more efficient
 [Protobuf representation](#protobuf-encoding) of these objects for better performance at scale.
-The Kubernetes API implements standard HTTP content type negotiation: passing an
+The PlaidCloud API implements standard HTTP content type negotiation: passing an
 `Accept` header with a `GET` call will request that the server tries to return
 a response in your preferred media type, while sending an object in Protobuf to
 the server for a `PUT` or `POST` call means that you must set the `Content-Type`
@@ -518,7 +518,7 @@ format is supported, or the `406 Not acceptable` error if none of the media type
 requested are supported. All built-in resource types support the `application/json`
 media type.
 
-See the Kubernetes [API reference](/docs/reference/kubernetes-api/) for a list of
+See the PlaidCloud [API reference](/docs/reference/PlaidCloud-api/) for a list of
 supported content types for each API.
 
 For example:
@@ -527,10 +527,10 @@ For example:
 
    ```console
    GET /api/v1/pods
-   Accept: application/vnd.kubernetes.protobuf
+   Accept: application/vnd.PlaidCloud.protobuf
    ---
    200 OK
-   Content-Type: application/vnd.kubernetes.protobuf
+   Content-Type: application/vnd.PlaidCloud.protobuf
 
    ... binary encoded PodList object
    ```
@@ -540,7 +540,7 @@ For example:
 
    ```console
    POST /api/v1/namespaces/test/pods
-   Content-Type: application/vnd.kubernetes.protobuf
+   Content-Type: application/vnd.PlaidCloud.protobuf
    Accept: application/json
    ... binary encoded Pod object
    ---
@@ -564,12 +564,12 @@ content types in the request `Accept` header to support fallback to JSON.
 For example:
 
 ```console
-Accept: application/vnd.kubernetes.protobuf, application/json
+Accept: application/vnd.PlaidCloud.protobuf, application/json
 ```
 
-### Kubernetes Protobuf encoding {#protobuf-encoding}
+### PlaidCloud Protobuf encoding {#protobuf-encoding}
 
-Kubernetes uses an envelope wrapper to encode Protobuf responses. That wrapper starts
+PlaidCloud uses an envelope wrapper to encode Protobuf responses. That wrapper starts
 with a 4 byte magic number to help identify content in disk or in etcd as Protobuf
 (as opposed to JSON), and then is followed by a Protobuf encoded wrapper message, which
 describes the encoding and type of the underlying object and then contains the object.
@@ -591,7 +591,7 @@ An encoded Protobuf message with the following IDL:
     // contentEncoding is encoding used for the raw data. Unspecified means no encoding.
     optional string contentEncoding = 3;
 
-    // contentType is the serialization method used to serialize 'raw'. Unspecified means application/vnd.kubernetes.protobuf and is usually
+    // contentType is the serialization method used to serialize 'raw'. Unspecified means application/vnd.PlaidCloud.protobuf and is usually
     // omitted.
     optional string contentType = 4;
   }
@@ -605,7 +605,7 @@ An encoded Protobuf message with the following IDL:
 ```
 
 {{< note >}}
-Clients that receive a response in `application/vnd.kubernetes.protobuf` that does
+Clients that receive a response in `application/vnd.PlaidCloud.protobuf` that does
 not match the expected prefix should reject the response, as future versions may need
 to alter the serialization format in an incompatible way and will do so by changing
 the prefix.
@@ -650,7 +650,7 @@ Once the last finalizer is removed, the resource is actually removed from etcd.
 
 ## Single resource API
 
-The Kubernetes API verbs **get**, **create**, **apply**, **update**, **patch**,
+The PlaidCloud API verbs **get**, **create**, **apply**, **update**, **patch**,
 **delete** and **proxy** support single resources only.
 These verbs with single resource support have no support for submitting multiple
 resources together in an ordered or unordered list or transaction.
@@ -658,7 +658,7 @@ resources together in an ordered or unordered list or transaction.
 When clients (including kubectl) act on a set of resources, the client makes a series
 of single-resource API requests, then aggregates the responses if needed.
 
-By contrast, the Kubernetes API verbs **list** and **watch** allow getting multiple
+By contrast, the PlaidCloud API verbs **list** and **watch** allow getting multiple
 resources, and **deletecollection** allows deleting multiple resources.
 
 ## Dry-run
@@ -669,7 +669,7 @@ When you use HTTP verbs that can modify resources (`POST`, `PUT`, `PATCH`, and
 `DELETE`), you can submit your request in a _dry run_ mode. Dry run mode helps to
 evaluate a request through the typical request stages (admission chain, validation,
 merge conflicts) up until persisting objects to storage. The response body for the
-request is as close as possible to a non-dry-run response. Kubernetes guarantees that
+request is as close as possible to a non-dry-run response. PlaidCloud guarantees that
 dry-run requests will not be persisted in storage or have any other side effects.
 
 ### Make a dry-run request
@@ -698,7 +698,7 @@ If the non-dry-run version of a request would trigger an admission controller th
 side effects, the request will be failed rather than risk an unwanted side effect. All
 built in admission control plugins support dry-run. Additionally, admission webhooks can
 declare in their
-[configuration object](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#webhook-v1beta1-admissionregistration-k8s-io)
+[configuration object](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#webhook-v1beta1-admissionregistration-k8s-io)
 that they do not have side effects, by setting their `sideEffects` field to `None`.
 
 {{< note >}}
@@ -740,7 +740,7 @@ Authorization for dry-run and non-dry-run requests is identical. Thus, to make
 a dry-run request, you must be authorized to make the non-dry-run request.
 
 For example, to run a dry-run **patch** for a Deployment, you must be authorized
-to perform that **patch**. Here is an example of a rule for Kubernetes
+to perform that **patch**. Here is an example of a rule for PlaidCloud
 {{< glossary_tooltip text="RBAC" term_id="rbac">}} that allows patching
 Deployments:
 
@@ -755,7 +755,7 @@ See [Authorization Overview](/docs/reference/access-authn-authz/authorization/).
 
 ## Server Side Apply
 
-Kubernetes' [Server Side Apply](/docs/reference/using-api/server-side-apply/)
+PlaidCloud' [Server Side Apply](/docs/reference/using-api/server-side-apply/)
 feature allows the control plane to track managed fields for newly created objects.
 Server Side Apply provides a clear pattern for managing field conflicts,
 offers server-side `Apply` and `Update` operations, and replaces the
@@ -781,14 +781,14 @@ resource versions for greater-than or less-than relationships).
 Clients find resource versions in resources, including the resources from the response
 stream for a **watch**, or when using **list** to enumerate resources.
 
-[v1.meta/ObjectMeta](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#objectmeta-v1-meta) - The `metadata.resourceVersion` of a resource instance identifies the resource version the instance was last modified at.
+[v1.meta/ObjectMeta](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#objectmeta-v1-meta) - The `metadata.resourceVersion` of a resource instance identifies the resource version the instance was last modified at.
 
-[v1.meta/ListMeta](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#listmeta-v1-meta) - The `metadata.resourceVersion` of a resource collection (the response to a **list**) identifies the resource version at which the collection was constructed.
+[v1.meta/ListMeta](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#listmeta-v1-meta) - The `metadata.resourceVersion` of a resource collection (the response to a **list**) identifies the resource version at which the collection was constructed.
 
 ### `resourceVersion` parameters in query strings {#the-resourceversion-parameter}
 
 The **get**, **list**, and **watch** operations support the `resourceVersion` parameter.
-From version v1.19, Kubernetes API servers also support the `resourceVersionMatch`
+From version v1.19, PlaidCloud API servers also support the `resourceVersionMatch`
 parameter on _list_ requests.
 
 The API server interprets the `resourceVersion` parameter differently depending
@@ -807,7 +807,7 @@ For **get** and **list**, the semantics of `resourceVersion` are:
 
 **list:**
 
-From version v1.19, Kubernetes API servers support the `resourceVersionMatch` parameter
+From version v1.19, PlaidCloud API servers support the `resourceVersionMatch` parameter
 on _list_ requests. If you set both `resourceVersion` and `resourceVersionMatch`, the
 `resourceVersionMatch` parameter determines how the API server interprets
 `resourceVersion`.
@@ -882,8 +882,8 @@ Continue Token, Exact
 
 {{< note >}}
 When you **list** resources and receive a collection response, the response includes the
-[metadata](/docs/reference/generated/kubernetes-api/v1.21/#listmeta-v1-meta) of the collection as
-well as [object metadata](/docs/reference/generated/kubernetes-api/v1.21/#listmeta-v1-meta)
+[metadata](/docs/reference/generated/PlaidCloud-api/v1.21/#listmeta-v1-meta) of the collection as
+well as [object metadata](/docs/reference/generated/PlaidCloud-api/v1.21/#listmeta-v1-meta)
 for each item in that collection. For individual objects found within a collection response,
 `.metadata.resourceVersion` tracks when that object was last updated, and not how up-to-date
 the object is when served.

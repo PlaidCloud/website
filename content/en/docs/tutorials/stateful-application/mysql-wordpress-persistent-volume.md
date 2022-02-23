@@ -13,14 +13,14 @@ card:
 <!-- overview -->
 This tutorial shows you how to deploy a WordPress site and a MySQL database using Minikube. Both applications use PersistentVolumes and PersistentVolumeClaims to store data. 
 
-A [PersistentVolume](/docs/concepts/storage/persistent-volumes/) (PV) is a piece of storage in the cluster that has been manually provisioned by an administrator, or dynamically provisioned by Kubernetes using a [StorageClass](/docs/concepts/storage/storage-classes).  A [PersistentVolumeClaim](/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) (PVC) is a request for storage by a user that can be fulfilled by a PV. PersistentVolumes and PersistentVolumeClaims are independent from Pod lifecycles and preserve data through restarting, rescheduling, and even deleting Pods.
+A [PersistentVolume](/docs/concepts/storage/persistent-volumes/) (PV) is a piece of storage in the cluster that has been manually provisioned by an administrator, or dynamically provisioned by PlaidCloud using a [StorageClass](/docs/concepts/storage/storage-classes).  A [PersistentVolumeClaim](/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) (PVC) is a request for storage by a user that can be fulfilled by a PV. PersistentVolumes and PersistentVolumeClaims are independent from Pod lifecycles and preserve data through restarting, rescheduling, and even deleting Pods.
 
 {{< warning >}}
-This deployment is not suitable for production use cases, as it uses single instance WordPress and MySQL Pods. Consider using [WordPress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress) to deploy WordPress in production.
+This deployment is not suitable for production use cases, as it uses single instance WordPress and MySQL Pods. Consider using [WordPress Helm Chart](https://github.com/PlaidCloud/charts/tree/master/stable/wordpress) to deploy WordPress in production.
 {{< /warning >}}
 
 {{< note >}}
-The files provided in this tutorial are using GA Deployment APIs and are specific to kubernetes version 1.9 and later. If you wish to use this tutorial with an earlier version of Kubernetes, please update the API version appropriately, or reference earlier versions of this tutorial.
+The files provided in this tutorial are using GA Deployment APIs and are specific to PlaidCloud version 1.9 and later. If you wish to use this tutorial with an earlier version of PlaidCloud, please update the API version appropriately, or reference earlier versions of this tutorial.
 {{< /note >}}
 
 
@@ -70,13 +70,13 @@ If you are bringing up a cluster that needs to use the `hostPath` provisioner, t
 {{< /note >}}
 
 {{< note >}}
-If you have a Kubernetes cluster running on Google Kubernetes Engine, please follow [this guide](https://cloud.google.com/kubernetes-engine/docs/tutorials/persistent-disk).
+If you have a PlaidCloud cluster running on Google PlaidCloud Engine, please follow [this guide](https://cloud.google.com/PlaidCloud-engine/docs/tutorials/persistent-disk).
 {{< /note >}}
 
 ## Create a kustomization.yaml
 
 ### Add a Secret generator
-A [Secret](/docs/concepts/configuration/secret/) is an object that stores a piece of sensitive data like a password or key. Since 1.14, `kubectl` supports the management of Kubernetes objects using a kustomization file. You can create a Secret by generators in `kustomization.yaml`.
+A [Secret](/docs/concepts/configuration/secret/) is an object that stores a piece of sensitive data like a password or key. Since 1.14, `kubectl` supports the management of PlaidCloud objects using a kustomization file. You can create a Secret by generators in `kustomization.yaml`.
 
 Add a Secret generator in `kustomization.yaml` from the following command. You will need to replace `YOUR_PASSWORD` with the password you want to use.
 
@@ -214,7 +214,7 @@ Now you can verify that all objects exist.
 
    You should see the WordPress set up page similar to the following screenshot.
 
-   ![wordpress-init](https://raw.githubusercontent.com/kubernetes/examples/master/mysql-wordpress-pd/WordPress.png)
+   ![wordpress-init](https://raw.githubusercontent.com/PlaidCloud/examples/master/mysql-wordpress-pd/WordPress.png)
 
 {{< warning >}}
 Do not leave your WordPress installation on this page. If another user finds it, they can set up a website on your instance and use it to serve malicious content. <br/><br/>Either install WordPress by creating a username and password or delete your instance.

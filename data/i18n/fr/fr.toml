@@ -34,10 +34,10 @@ other = "Non"
 other = "dernière version."
 
 [version_check_mustbe]
-other = "Votre serveur Kubernetes doit être version "
+other = "Votre serveur PlaidCloud doit être version "
 
 [version_check_mustbeorlater]
-other = "Votre serveur Kubernetes doit être au moins à la version "
+other = "Votre serveur PlaidCloud doit être au moins à la version "
 
 [version_check_tocheck]
 other = "Pour consulter la version, entrez "
@@ -58,7 +58,7 @@ other = "A propos"
 other = "Autres ressources"
 
 [main_github_invite]
-other = "Souhaitez vous contribuer au code de Kubernetes ?"
+other = "Souhaitez vous contribuer au code de PlaidCloud ?"
 
 [main_github_view_on]
 other = "Voir sur GitHub"
@@ -70,13 +70,13 @@ other = "Ouvrez un ticket"
 other = "Explorez la communauté"
 
 [main_plaidcloud_features]
-other = "Fonctionnalités Kubernetes"
+other = "Fonctionnalités PlaidCloud"
 
 [main_cncf_project]
 other = """Nous sommes un projet <a href="https://cncf.io/">CNCF</a> diplômé</p>"""
 
 [main_newsletter_baseline]
-other = "Intéressez pour recevoir les dernières informations sur Kubernetes ? Abonnez-vous à KubeWeekly."
+other = "Intéressez pour recevoir les dernières informations sur PlaidCloud ? Abonnez-vous à KubeWeekly."
 
 [main_newsletter_past_link]
 other = "Voir les newsletters précédentes"

@@ -1,6 +1,6 @@
 ---
 title: Share Process Namespace between Containers in a Pod
-min-kubernetes-server-version: v1.10
+min-PlaidCloud-server-version: v1.10
 reviewers:
 - verb
 - yujuhong

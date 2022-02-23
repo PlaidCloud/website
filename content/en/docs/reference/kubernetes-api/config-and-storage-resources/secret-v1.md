@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: v1`
@@ -56,7 +56,7 @@ Secret holds secret data of a certain type. The total bytes of the values in the
 
 - **type** (string)
 
-  Used to facilitate programmatic handling of secret data. More info: https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
+  Used to facilitate programmatic handling of secret data. More info: https://plaidcloud.com/docs/concepts/configuration/secret/#secret-types
 
 
 
@@ -80,7 +80,7 @@ SecretList is a list of Secret.
 
 - **items** ([]<a href="{{< ref "../config-and-storage-resources/secret-v1#Secret" >}}">Secret</a>), required
 
-  Items is a list of secret objects. More info: https://kubernetes.io/docs/concepts/configuration/secret
+  Items is a list of secret objects. More info: https://plaidcloud.com/docs/concepts/configuration/secret
 
 
 

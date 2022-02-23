@@ -6,7 +6,7 @@ reviewers:
 - kow3ns
 title: Safely Drain a Node
 content_type: task
-min-kubernetes-server-version: 1.5
+min-PlaidCloud-server-version: 1.5
 ---
 
 <!-- overview -->
@@ -64,7 +64,7 @@ First, identify the name of the node you wish to drain. You can list all of the 
 kubectl get nodes
 ```
 
-Next, tell Kubernetes to drain the node:
+Next, tell PlaidCloud to drain the node:
 
 ```shell
 kubectl drain <node name>
@@ -77,7 +77,7 @@ If you leave the node in the cluster during the maintenance operation, you need 
 ```shell
 kubectl uncordon <node name>
 ```
-afterwards to tell Kubernetes that it can resume scheduling new pods onto the node.
+afterwards to tell PlaidCloud that it can resume scheduling new pods onto the node.
 
 ## Draining multiple nodes in parallel
 
@@ -91,7 +91,7 @@ For example, if you have a StatefulSet with three replicas and have
 set a PodDisruptionBudget for that set specifying `minAvailable: 2`,
 `kubectl drain` only evicts a pod from the StatefulSet if all three
 replicas pods are ready; if then you issue multiple drain commands in
-parallel, Kubernetes respects the PodDisruptionBudget and ensure
+parallel, PlaidCloud respects the PodDisruptionBudget and ensure
 that only 1 (calculated as `replicas - minAvailable`) Pod is unavailable
 at any given time. Any drains that would cause the number of ready
 replicas to fall below the specified budget are blocked.
@@ -102,7 +102,7 @@ If you prefer not to use [kubectl drain](/docs/reference/generated/kubectl/kubec
 to avoid calling to an external command, or to get finer control over the pod
 eviction process), you can also programmatically cause evictions using the eviction API.
 
-You should first be familiar with using [Kubernetes language clients](/docs/tasks/administer-cluster/access-cluster-api/#programmatic-access-to-the-api) to access the API.
+You should first be familiar with using [PlaidCloud language clients](/docs/tasks/administer-cluster/access-cluster-api/#programmatic-access-to-the-api) to access the API.
 
 The eviction subresource of a
 Pod can be thought of as a kind of policy-controlled DELETE operation on the Pod
@@ -184,7 +184,7 @@ In this case, there are two potential solutions:
 - After a suitably long wait, `DELETE` the Pod from your cluster's control plane, instead
   of using the eviction API.
 
-Kubernetes does not specify what the behavior should be in this case; it is up to the
+PlaidCloud does not specify what the behavior should be in this case; it is up to the
 application owners and cluster owners to establish an agreement on behavior in these cases.
 
 ## {{% heading "whatsnext" %}}

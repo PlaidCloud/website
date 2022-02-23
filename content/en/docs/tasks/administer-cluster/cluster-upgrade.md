@@ -5,7 +5,7 @@ content_type: task
 
 <!-- overview -->
 This page provides an overview of the steps you should follow to upgrade a
-Kubernetes cluster.
+PlaidCloud cluster.
 
 The way that you upgrade a cluster depends on how you initially deployed it
 and on any subsequent changes.
@@ -16,14 +16,14 @@ At a high level, the steps you perform are:
 - Upgrade the nodes in your cluster
 - Upgrade clients such as {{< glossary_tooltip text="kubectl" term_id="kubectl" >}}
 - Adjust manifests and other resources based on the API changes that accompany the
-  new Kubernetes version
+  new PlaidCloud version
 
 ## {{% heading "prerequisites" %}}
 
-You must have an existing cluster. This page is about upgrading from Kubernetes
-{{< skew prevMinorVersion >}} to Kubernetes {{< skew latestVersion >}}. If your cluster
-is not currently running Kubernetes {{< skew prevMinorVersion >}} then please check
-the documentation for the version of Kubernetes that you plan to upgrade to.
+You must have an existing cluster. This page is about upgrading from PlaidCloud
+{{< skew prevMinorVersion >}} to PlaidCloud {{< skew latestVersion >}}. If your cluster
+is not currently running PlaidCloud {{< skew prevMinorVersion >}} then please check
+the documentation for the version of PlaidCloud that you plan to upgrade to.
 
 ## Upgrade approaches
 
@@ -68,19 +68,19 @@ up steps for maintenance.
 ### Switch your cluster's storage API version
 
 The objects that are serialized into etcd for a cluster's internal
-representation of the Kubernetes resources active in the cluster are
+representation of the PlaidCloud resources active in the cluster are
 written using a particular version of the API.
 
 When the supported API changes, these objects may need to be rewritten
 in the newer API. Failure to do this will eventually result in resources
-that are no longer decodable or usable by the Kubernetes API server.
+that are no longer decodable or usable by the PlaidCloud API server.
 
 For each affected object, fetch it using the latest supported API and then
 write it back also using the latest supported API.
 
 ### Update manifests
 
-Upgrading to a new Kubernetes version can provide new APIs.
+Upgrading to a new PlaidCloud version can provide new APIs.
 
 You can use `kubectl convert` command to convert manifests between different API versions.
 For example:

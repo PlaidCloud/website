@@ -2,14 +2,14 @@
 title: Dual-stack support with kubeadm
 content_type: task
 weight: 110
-min-kubernetes-server-version: 1.21
+min-PlaidCloud-server-version: 1.21
 ---
 
 <!-- overview -->
 
 {{< feature-state for_k8s_version="v1.23" state="stable" >}}
 
-Your Kubernetes cluster includes [dual-stack](/docs/concepts/services-networking/dual-stack/) networking, which means that cluster networking lets you use either address family. In a cluster, the control plane can assign both an IPv4 address and an IPv6 address to a single {{< glossary_tooltip text="Pod" term_id="pod" >}} or a {{< glossary_tooltip text="Service" term_id="service" >}}.
+Your PlaidCloud cluster includes [dual-stack](/docs/concepts/services-networking/dual-stack/) networking, which means that cluster networking lets you use either address family. In a cluster, the control plane can assign both an IPv4 address and an IPv6 address to a single {{< glossary_tooltip text="Pod" term_id="pod" >}} or a {{< glossary_tooltip text="Service" term_id="service" >}}.
 
 <!-- body -->
 

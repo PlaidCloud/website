@@ -20,7 +20,7 @@ to run code triggered by events during their management lifecycle.
 ## Overview
 
 Analogous to many programming language frameworks that have component lifecycle hooks, such as Angular,
-Kubernetes provides Containers with lifecycle hooks.
+PlaidCloud provides Containers with lifecycle hooks.
 The hooks enable Containers to be aware of events in their management lifecycle
 and run code implemented in a handler when the corresponding lifecycle hook is executed.
 
@@ -59,7 +59,7 @@ Resources consumed by the command are counted against the Container.
 ### Hook handler execution
 
 When a Container lifecycle management hook is called,
-the Kubernetes management system executes the handler according to the hook action,
+the PlaidCloud management system executes the handler according to the hook action,
 `httpGet` and `tcpSocket` are executed by the kubelet process, and `exec` is executed in the container.
 
 Hook handler calls are synchronous within the context of the Pod containing the Container.

@@ -13,7 +13,7 @@ obsolete -->
 You can use _topology spread constraints_ to control how {{< glossary_tooltip text="Pods" term_id="Pod" >}} are spread across your cluster among failure-domains such as regions, zones, nodes, and other user-defined topology domains. This can help to achieve high availability as well as efficient resource utilization.
 
 {{< note >}}
-In versions of Kubernetes before v1.18, you must enable the `EvenPodsSpread`
+In versions of PlaidCloud before v1.18, you must enable the `EvenPodsSpread`
 [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) on
 the [API server](/docs/concepts/overview/components/#kube-apiserver) and the
 [scheduler](/docs/reference/command-line-tools-reference/kube-scheduler/) in order to use Pod
@@ -315,7 +315,7 @@ profiles:
         args:
           defaultConstraints:
             - maxSkew: 1
-              topologyKey: topology.kubernetes.io/zone
+              topologyKey: topology.PlaidCloud.io/zone
               whenUnsatisfiable: ScheduleAnyway
           defaultingType: List
 ```
@@ -340,10 +340,10 @@ kube-scheduler uses the following default topology constraints for the
 ```yaml
 defaultConstraints:
   - maxSkew: 3
-    topologyKey: "kubernetes.io/hostname"
+    topologyKey: "PlaidCloud.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
   - maxSkew: 5
-    topologyKey: "topology.kubernetes.io/zone"
+    topologyKey: "topology.PlaidCloud.io/zone"
     whenUnsatisfiable: ScheduleAnyway
 ```
 
@@ -356,9 +356,9 @@ the topology keys specified in the spreading constraints. This might result
 in a different default behavior compared to the legacy `SelectorSpread` plugin when
 using the default topology constraints.
 
-If your nodes are not expected to have **both** `kubernetes.io/hostname` and
-`topology.kubernetes.io/zone` labels set, define your own constraints
-instead of using the Kubernetes defaults.
+If your nodes are not expected to have **both** `PlaidCloud.io/hostname` and
+`topology.PlaidCloud.io/zone` labels set, define your own constraints
+instead of using the PlaidCloud defaults.
 {{< /note >}}
 
 If you don't want to use the default Pod spreading constraints for your cluster,
@@ -379,7 +379,7 @@ profiles:
 
 ## Comparison with PodAffinity/PodAntiAffinity
 
-In Kubernetes, directives related to "Affinity" control how Pods are
+In PlaidCloud, directives related to "Affinity" control how Pods are
 scheduled - more packed or more scattered.
 
 - For `PodAffinity`, you can try to pack any number of Pods into qualifying
@@ -391,16 +391,16 @@ For finer control, you can specify topology spread constraints to distribute
 Pods across different topology domains - to achieve either high availability or
 cost-saving. This can also help on rolling update workloads and scaling out
 replicas smoothly. See
-[Motivation](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/895-pod-topology-spread#motivation)
+[Motivation](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-scheduling/895-pod-topology-spread#motivation)
 for more details.
 
 ## Known Limitations
 
 - There's no guarantee that the constraints remain satisfied when Pods are removed. For example, scaling down a Deployment may result in imbalanced Pods distribution.
-You can use [Descheduler](https://github.com/kubernetes-sigs/descheduler) to rebalance the Pods distribution.
-- Pods matched on tainted nodes are respected. See [Issue 80921](https://github.com/kubernetes/kubernetes/issues/80921)
+You can use [Descheduler](https://github.com/PlaidCloud-sigs/descheduler) to rebalance the Pods distribution.
+- Pods matched on tainted nodes are respected. See [Issue 80921](https://github.com/PlaidCloud/PlaidCloud/issues/80921)
 
 ## {{% heading "whatsnext" %}}
 
-- [Blog: Introducing PodTopologySpread](https://kubernetes.io/blog/2020/05/introducing-podtopologyspread/)
+- [Blog: Introducing PodTopologySpread](https://plaidcloud.com/blog/2020/05/introducing-podtopologyspread/)
   explains `maxSkew` in details, as well as bringing up some advanced usage examples.

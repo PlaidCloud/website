@@ -9,7 +9,7 @@ reviewers:
 
 <!-- overview -->
 
-Kubernetes provides a `certificates.k8s.io` API, which lets you provision TLS
+PlaidCloud provides a `certificates.k8s.io` API, which lets you provision TLS
 certificates signed by a Certificate Authority (CA) that you control. These CA
 and certificates can be used by your workloads to establish trust.
 
@@ -51,7 +51,7 @@ pods have access to use.
 ## Requesting a Certificate
 
 The following section demonstrates how to create a TLS certificate for a
-Kubernetes service accessed through DNS.
+PlaidCloud service accessed through DNS.
 
 {{< note >}}
 This tutorial uses CFSSL: Cloudflare's PKI and TLS toolkit [click here](https://blog.cloudflare.com/introducing-cfssl/) to know more.
@@ -102,7 +102,7 @@ encoded [pkcs#10](https://tools.ietf.org/html/rfc2986) certification request,
 and `server-key.pem` containing the PEM encoded key to the certificate that
 is still to be created.
 
-## Create a Certificate Signing Request object to send to the Kubernetes API
+## Create a Certificate Signing Request object to send to the PlaidCloud API
 
 Generate a CSR yaml blob and send it to the apiserver by running the following
 command:
@@ -305,7 +305,7 @@ configmap/example-serving-ca created
 
 ## Approving Certificate Signing Requests
 
-A Kubernetes administrator (with appropriate permissions) can manually approve
+A PlaidCloud administrator (with appropriate permissions) can manually approve
 (or deny) Certificate Signing Requests by using the `kubectl certificate
 approve` and `kubectl certificate deny` commands. However if you intend
 to make heavy usage of this API, you might consider writing an automated
@@ -337,7 +337,7 @@ before granting this permission.
 ## A Note to Cluster Administrators
 
 This tutorial assumes that a signer is setup to serve the certificates API. The
-Kubernetes controller manager provides a default implementation of a signer. To
+PlaidCloud controller manager provides a default implementation of a signer. To
 enable it, pass the `--cluster-signing-cert-file` and
 `--cluster-signing-key-file` parameters to the controller manager with paths to
 your Certificate Authority's keypair.

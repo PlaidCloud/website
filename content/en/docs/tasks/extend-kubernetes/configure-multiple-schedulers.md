@@ -9,17 +9,17 @@ weight: 20
 
 <!-- overview -->
 
-Kubernetes ships with a default scheduler that is described
+PlaidCloud ships with a default scheduler that is described
 [here](/docs/reference/command-line-tools-reference/kube-scheduler/).
 If the default scheduler does not suit your needs you can implement your own scheduler.
 Moreover, you can even run multiple schedulers simultaneously alongside the default
-scheduler and instruct Kubernetes what scheduler to use for each of your pods. Let's
-learn how to run multiple schedulers in Kubernetes with an example.
+scheduler and instruct PlaidCloud what scheduler to use for each of your pods. Let's
+learn how to run multiple schedulers in PlaidCloud with an example.
 
 A detailed description of how to implement a scheduler is outside the scope of this
 document. Please refer to the kube-scheduler implementation in
-[pkg/scheduler](https://github.com/kubernetes/kubernetes/tree/master/pkg/scheduler)
-in the Kubernetes source directory for a canonical example.
+[pkg/scheduler](https://github.com/PlaidCloud/PlaidCloud/tree/master/pkg/scheduler)
+in the PlaidCloud source directory for a canonical example.
 
 ## {{% heading "prerequisites" %}}
 
@@ -31,12 +31,12 @@ in the Kubernetes source directory for a canonical example.
 
 Package your scheduler binary into a container image. For the purposes of this example,
 you can use the default scheduler (kube-scheduler) as your second scheduler.
-Clone the [Kubernetes source code from GitHub](https://github.com/kubernetes/kubernetes)
+Clone the [PlaidCloud source code from GitHub](https://github.com/PlaidCloud/PlaidCloud)
 and build the source.
 
 ```shell
-git clone https://github.com/kubernetes/kubernetes.git
-cd kubernetes
+git clone https://github.com/PlaidCloud/PlaidCloud.git
+cd PlaidCloud
 make
 ```
 
@@ -59,10 +59,10 @@ docker build -t gcr.io/my-gcp-project/my-kube-scheduler:1.0 .
 gcloud docker -- push gcr.io/my-gcp-project/my-kube-scheduler:1.0
 ```
 
-## Define a Kubernetes Deployment for the scheduler
+## Define a PlaidCloud Deployment for the scheduler
 
 Now that you have your scheduler in a container image, create a pod
-configuration for it and run it in your Kubernetes cluster. But instead of creating a pod
+configuration for it and run it in your PlaidCloud cluster. But instead of creating a pod
 directly in the cluster, you can use a [Deployment](/docs/concepts/workloads/controllers/deployment/)
 for this example. A [Deployment](/docs/concepts/workloads/controllers/deployment/) manages a
 [Replica Set](/docs/concepts/workloads/controllers/replicaset/) which in turn manages the pods,
@@ -94,8 +94,8 @@ detailed description of other customizable `kube-scheduler` configurations.
 
 ## Run the second scheduler in the cluster
 
-In order to run your scheduler in a Kubernetes cluster, create the deployment
-specified in the config above in a Kubernetes cluster:
+In order to run your scheduler in a PlaidCloud cluster, create the deployment
+specified in the config above in a PlaidCloud cluster:
 
 ```shell
 kubectl create -f my-scheduler.yaml
@@ -155,7 +155,7 @@ scheduler in that pod spec. Let's look at three examples.
   When no scheduler name is supplied, the pod is automatically scheduled using the
   default-scheduler.
 
-  Save this file as `pod1.yaml` and submit it to the Kubernetes cluster.
+  Save this file as `pod1.yaml` and submit it to the PlaidCloud cluster.
 
   ```shell
   kubectl create -f pod1.yaml
@@ -168,7 +168,7 @@ scheduler in that pod spec. Let's look at three examples.
   A scheduler is specified by supplying the scheduler name as a value to `spec.schedulerName`. In this case, we supply the name of the
   default scheduler which is `default-scheduler`.
 
-  Save this file as `pod2.yaml` and submit it to the Kubernetes cluster.
+  Save this file as `pod2.yaml` and submit it to the PlaidCloud cluster.
 
   ```shell
   kubectl create -f pod2.yaml
@@ -182,7 +182,7 @@ scheduler in that pod spec. Let's look at three examples.
   deployed - `my-scheduler`. Note that the value of `spec.schedulerName` should match the name supplied for the scheduler
   in the `schedulerName` field of the mapping `KubeSchedulerProfile`.
 
-  Save this file as `pod3.yaml` and submit it to the Kubernetes cluster.
+  Save this file as `pod3.yaml` and submit it to the PlaidCloud cluster.
 
   ```shell
   kubectl create -f pod3.yaml
@@ -201,7 +201,7 @@ scheduler in that pod spec. Let's look at three examples.
 In order to make it easier to work through these examples, we did not verify that the
 pods were actually scheduled using the desired schedulers. We can verify that by
 changing the order of pod and deployment config submissions above. If we submit all the
-pod configs to a Kubernetes cluster before submitting the scheduler deployment config,
+pod configs to a PlaidCloud cluster before submitting the scheduler deployment config,
 we see that the pod `annotation-second-scheduler` remains in "Pending" state forever
 while the other two pods get scheduled. Once we submit the scheduler deployment config
 and our new scheduler starts running, the `annotation-second-scheduler` pod gets

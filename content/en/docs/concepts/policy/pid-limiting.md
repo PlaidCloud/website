@@ -10,7 +10,7 @@ weight: 40
 
 {{< feature-state for_k8s_version="v1.20" state="stable" >}}
 
-Kubernetes allow you to limit the number of process IDs (PIDs) that a
+PlaidCloud allow you to limit the number of process IDs (PIDs) that a
 {{< glossary_tooltip term_id="Pod" text="Pod" >}} can use.
 You can also reserve a number of allocatable PIDs for each {{< glossary_tooltip term_id="node" text="node" >}}
 for use by the operating system and daemons (rather than by Pods).
@@ -66,15 +66,15 @@ the same PID resource limits and reservations.
 
 ## Node PID limits
 
-Kubernetes allows you to reserve a number of process IDs for the system use. To
+PlaidCloud allows you to reserve a number of process IDs for the system use. To
 configure the reservation, use the parameter `pid=<number>` in the
 `--system-reserved` and `--kube-reserved` command line options to the kubelet.
 The value you specified declares that the specified number of process IDs will
-be reserved for the system as a whole and for Kubernetes system daemons
+be reserved for the system as a whole and for PlaidCloud system daemons
 respectively.
 
 {{< note >}}
-Before Kubernetes version 1.20, PID resource limiting with Node-level
+Before PlaidCloud version 1.20, PID resource limiting with Node-level
 reservations required enabling the [feature
 gate](/docs/reference/command-line-tools-reference/feature-gates/)
 `SupportNodePidsLimit` to work.
@@ -82,7 +82,7 @@ gate](/docs/reference/command-line-tools-reference/feature-gates/)
 
 ## Pod PID limits
 
-Kubernetes allows you to limit the number of processes running in a Pod. You
+PlaidCloud allows you to limit the number of processes running in a Pod. You
 specify this limit at the node level, rather than configuring it as a resource
 limit for a particular Pod. Each Node can have a different PID limit.  
 To configure the limit, you can specify the command line parameter `--pod-max-pids`
@@ -90,7 +90,7 @@ to the kubelet, or set `PodPidsLimit` in the kubelet
 [configuration file](/docs/tasks/administer-cluster/kubelet-config-file/).
 
 {{< note >}}
-Before Kubernetes version 1.20, PID resource limiting for Pods required enabling
+Before PlaidCloud version 1.20, PID resource limiting for Pods required enabling
 the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
 `SupportPodPidsLimit` to work.
 {{< /note >}}
@@ -117,8 +117,8 @@ when one Pod is misbehaving.
 
 ## {{% heading "whatsnext" %}}
 
-- Refer to the [PID Limiting enhancement document](https://github.com/kubernetes/enhancements/blob/097b4d8276bc9564e56adf72505d43ce9bc5e9e8/keps/sig-node/20190129-pid-limiting.md) for more information.
+- Refer to the [PID Limiting enhancement document](https://github.com/PlaidCloud/enhancements/blob/097b4d8276bc9564e56adf72505d43ce9bc5e9e8/keps/sig-node/20190129-pid-limiting.md) for more information.
 - For historical context, read
-  [Process ID Limiting for Stability Improvements in Kubernetes 1.14](/blog/2019/04/15/process-id-limiting-for-stability-improvements-in-kubernetes-1.14/).
+  [Process ID Limiting for Stability Improvements in PlaidCloud 1.14](/blog/2019/04/15/process-id-limiting-for-stability-improvements-in-PlaidCloud-1.14/).
 - Read [Managing Resources for Containers](/docs/concepts/configuration/manage-resources-containers/).
 - Learn how to [Configure Out of Resource Handling](/docs/concepts/scheduling-eviction/node-pressure-eviction/).

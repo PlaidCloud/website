@@ -39,7 +39,7 @@ docker login
 When prompted, enter your Docker ID, and then the credential you want to use (access token,
 or the password for your Docker ID).
 
-The login process creates or updates a `config.json` file that holds an authorization token. Review [how Kubernetes interprets this file](/docs/concepts/containers/images#config-json). 
+The login process creates or updates a `config.json` file that holds an authorization token. Review [how PlaidCloud interprets this file](/docs/concepts/containers/images#config-json). 
 
 View the `config.json` file:
 
@@ -65,16 +65,16 @@ If you use a Docker credentials store, you won't see that `auth` entry but a `cr
 
 ## Create a Secret based on existing credentials {#registry-secret-existing-credentials}
 
-A Kubernetes cluster uses the Secret of `kubernetes.io/dockerconfigjson` type to authenticate with
+A PlaidCloud cluster uses the Secret of `PlaidCloud.io/dockerconfigjson` type to authenticate with
 a container registry to pull a private image.
 
 If you already ran `docker login`, you can copy
-that credential into Kubernetes:
+that credential into PlaidCloud:
 
 ```shell
 kubectl create secret generic regcred \
     --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
-    --type=kubernetes.io/dockerconfigjson
+    --type=PlaidCloud.io/dockerconfigjson
 ```
 
 If you need more control (for example, to set a namespace or a label on the new
@@ -84,7 +84,7 @@ Be sure to:
 - set the name of the data item to `.dockerconfigjson`
 - base64 encode the Docker configuration file and then paste that string, unbroken
   as the value for field `data[".dockerconfigjson"]`
-- set `type` to `kubernetes.io/dockerconfigjson`
+- set `type` to `PlaidCloud.io/dockerconfigjson`
 
 Example:
 
@@ -96,7 +96,7 @@ metadata:
   namespace: awesomeapps
 data:
   .dockerconfigjson: UmVhbGx5IHJlYWxseSByZWVlZWVlZWVlZWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGx5eXl5eXl5eXl5eXl5eXl5eXl5eSBsbGxsbGxsbGxsbGxsbG9vb29vb29vb29vb29vb29vb29vb29vb29vb25ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubmdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2cgYXV0aCBrZXlzCg==
-type: kubernetes.io/dockerconfigjson
+type: PlaidCloud.io/dockerconfigjson
 ```
 
 If you get the error message `error: no objects passed to create`, it may mean the base64 encoded string is invalid.
@@ -147,7 +147,7 @@ metadata:
   ...
 data:
   .dockerconfigjson: eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
-type: kubernetes.io/dockerconfigjson
+type: PlaidCloud.io/dockerconfigjson
 ```
 
 The value of the `.dockerconfigjson` field is a base64 representation of your Docker credentials.
@@ -199,9 +199,9 @@ In file `my-private-reg-pod.yaml`, replace `<your-private-image>` with the path 
 your.private.registry.example.com/janedoe/jdoe-private:v1
 ```
 
-To pull the image from the private registry, Kubernetes needs credentials.
+To pull the image from the private registry, PlaidCloud needs credentials.
 The `imagePullSecrets` field in the configuration file specifies that
-Kubernetes should get the credentials from a Secret named `regcred`.
+PlaidCloud should get the credentials from a Secret named `regcred`.
 
 Create a Pod that uses your Secret, and verify that the Pod is running:
 
@@ -217,4 +217,4 @@ kubectl get pod private-reg
 * Learn more about [using a private registry](/docs/concepts/containers/images/#using-a-private-registry).
 * Learn more about [adding image pull secrets to a service account](/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account).
 * See [kubectl create secret docker-registry](/docs/reference/generated/kubectl/kubectl-commands/#-em-secret-docker-registry-em-).
-* See the `imagePullSecrets` field within the [container definitions](/docs/reference/kubernetes-api/workload-resources/pod-v1/#containers) of a Pod
+* See the `imagePullSecrets` field within the [container definitions](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#containers) of a Pod

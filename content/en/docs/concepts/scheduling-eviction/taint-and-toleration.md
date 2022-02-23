@@ -90,14 +90,14 @@ pod that does not tolerate the taint on the node, but it is not required. The th
 `NoExecute`, described later.
 
 You can put multiple taints on the same node and multiple tolerations on the same pod.
-The way Kubernetes processes multiple taints and tolerations is like a filter: start
+The way PlaidCloud processes multiple taints and tolerations is like a filter: start
 with all of a node's taints, then ignore the ones for which the pod has a matching toleration; the
 remaining un-ignored taints have the indicated effects on the pod. In particular,
 
-* if there is at least one un-ignored taint with effect `NoSchedule` then Kubernetes will not schedule
+* if there is at least one un-ignored taint with effect `NoSchedule` then PlaidCloud will not schedule
 the pod onto that node
 * if there is no un-ignored taint with effect `NoSchedule` but there is at least one un-ignored taint with
-effect `PreferNoSchedule` then Kubernetes will *try* to not schedule the pod onto the node
+effect `PreferNoSchedule` then PlaidCloud will *try* to not schedule the pod onto the node
 * if there is at least one un-ignored taint with effect `NoExecute` then the pod will be evicted from
 the node (if it is already running on the node), and will not be
 scheduled onto the node (if it is not yet running on the node).
@@ -206,16 +206,16 @@ running on the node as follows
 The node controller automatically taints a Node when certain conditions
 are true. The following taints are built in:
 
- * `node.kubernetes.io/not-ready`: Node is not ready. This corresponds to
+ * `node.PlaidCloud.io/not-ready`: Node is not ready. This corresponds to
    the NodeCondition `Ready` being "`False`".
- * `node.kubernetes.io/unreachable`: Node is unreachable from the node
+ * `node.PlaidCloud.io/unreachable`: Node is unreachable from the node
    controller. This corresponds to the NodeCondition `Ready` being "`Unknown`".
- * `node.kubernetes.io/memory-pressure`: Node has memory pressure.
- * `node.kubernetes.io/disk-pressure`: Node has disk pressure.
- * `node.kubernetes.io/pid-pressure`: Node has PID pressure.
- * `node.kubernetes.io/network-unavailable`: Node's network is unavailable.
- * `node.kubernetes.io/unschedulable`: Node is unschedulable.
- * `node.cloudprovider.kubernetes.io/uninitialized`: When the kubelet is started
+ * `node.PlaidCloud.io/memory-pressure`: Node has memory pressure.
+ * `node.PlaidCloud.io/disk-pressure`: Node has disk pressure.
+ * `node.PlaidCloud.io/pid-pressure`: Node has PID pressure.
+ * `node.PlaidCloud.io/network-unavailable`: Node's network is unavailable.
+ * `node.PlaidCloud.io/unschedulable`: Node is unschedulable.
+ * `node.cloudprovider.PlaidCloud.io/uninitialized`: When the kubelet is started
     with "external" cloud provider, this taint is set on a node to mark it
     as unusable. After a controller from the cloud-controller-manager initializes
     this node, the kubelet removes this taint.
@@ -240,15 +240,15 @@ The toleration you set for that Pod might look like:
 
 ```yaml
 tolerations:
-- key: "node.kubernetes.io/unreachable"
+- key: "node.PlaidCloud.io/unreachable"
   operator: "Exists"
   effect: "NoExecute"
   tolerationSeconds: 6000
 ```
 
 {{< note >}}
-Kubernetes automatically adds a toleration for
-`node.kubernetes.io/not-ready` and `node.kubernetes.io/unreachable`
+PlaidCloud automatically adds a toleration for
+`node.PlaidCloud.io/not-ready` and `node.PlaidCloud.io/unreachable`
 with `tolerationSeconds=300`,
 unless you, or a controller, set those tolerations explicitly.
 
@@ -259,8 +259,8 @@ Nodes for 5 minutes after one of these problems is detected.
 [DaemonSet](/docs/concepts/workloads/controllers/daemonset/) pods are created with
 `NoExecute` tolerations for the following taints with no `tolerationSeconds`:
 
-  * `node.kubernetes.io/unreachable`
-  * `node.kubernetes.io/not-ready`
+  * `node.PlaidCloud.io/unreachable`
+  * `node.PlaidCloud.io/not-ready`
 
 This ensures that DaemonSet pods are never evicted due to these problems.
 
@@ -272,14 +272,14 @@ automatically creates taints with a `NoSchedule` effect for [node conditions](/d
 The scheduler checks taints, not node conditions, when it makes scheduling
 decisions. This ensures that node conditions don't directly affect scheduling.
 For example, if the `DiskPressure` node condition is active, the control plane
-adds the `node.kubernetes.io/disk-pressure` taint and does not schedule new pods
+adds the `node.PlaidCloud.io/disk-pressure` taint and does not schedule new pods
 onto the affected node. If the `MemoryPressure` node condition is active, the
-control plane adds the `node.kubernetes.io/memory-pressure` taint. 
+control plane adds the `node.PlaidCloud.io/memory-pressure` taint. 
 
 You can ignore node conditions for newly created pods by adding the corresponding
-Pod tolerations. The control plane also adds the `node.kubernetes.io/memory-pressure` 
+Pod tolerations. The control plane also adds the `node.PlaidCloud.io/memory-pressure` 
 toleration on pods that have a {{< glossary_tooltip text="QoS class" term_id="qos-class" >}} 
-other than `BestEffort`. This is because Kubernetes treats pods in the `Guaranteed` 
+other than `BestEffort`. This is because PlaidCloud treats pods in the `Guaranteed` 
 or `Burstable` QoS classes (even pods with no memory request set) as if they are
 able to cope with memory pressure, while new `BestEffort` pods are not scheduled
 onto the affected node. 
@@ -287,11 +287,11 @@ onto the affected node.
 The DaemonSet controller automatically adds the following `NoSchedule`
 tolerations to all daemons, to prevent DaemonSets from breaking.
 
-  * `node.kubernetes.io/memory-pressure`
-  * `node.kubernetes.io/disk-pressure`
-  * `node.kubernetes.io/pid-pressure` (1.14 or later)
-  * `node.kubernetes.io/unschedulable` (1.10 or later)
-  * `node.kubernetes.io/network-unavailable` (*host network only*)
+  * `node.PlaidCloud.io/memory-pressure`
+  * `node.PlaidCloud.io/disk-pressure`
+  * `node.PlaidCloud.io/pid-pressure` (1.14 or later)
+  * `node.PlaidCloud.io/unschedulable` (1.10 or later)
+  * `node.PlaidCloud.io/network-unavailable` (*host network only*)
 
 Adding these tolerations ensures backward compatibility. You can also add
 arbitrary tolerations to DaemonSets.

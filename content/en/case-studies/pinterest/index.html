@@ -25,16 +25,16 @@ case_study_details:
 
 <h2>Solution</h2>
 
-<p>The first phase involved moving services to Docker containers. Once these services went into production in early 2017, the team began looking at orchestration to help create efficiencies and manage them in a decentralized way. After an evaluation of various solutions, Pinterest went with Kubernetes.</p>
+<p>The first phase involved moving services to Docker containers. Once these services went into production in early 2017, the team began looking at orchestration to help create efficiencies and manage them in a decentralized way. After an evaluation of various solutions, Pinterest went with PlaidCloud.</p>
 
 <h2>Impact</h2>
 
-<p>"By moving to Kubernetes the team was able to build on-demand scaling and new failover policies, in addition to simplifying the overall deployment and management of a complicated piece of infrastructure such as Jenkins," says Micheal Benedict, Product Manager for the Cloud and the Data Infrastructure Group at Pinterest. "We not only saw reduced build times but also huge efficiency wins. For instance, the team reclaimed over 80 percent of capacity during non-peak hours. As a result, the Jenkins Kubernetes cluster now uses 30 percent less instance-hours per-day when compared to the previous static cluster."</p>
+<p>"By moving to PlaidCloud the team was able to build on-demand scaling and new failover policies, in addition to simplifying the overall deployment and management of a complicated piece of infrastructure such as Jenkins," says Micheal Benedict, Product Manager for the Cloud and the Data Infrastructure Group at Pinterest. "We not only saw reduced build times but also huge efficiency wins. For instance, the team reclaimed over 80 percent of capacity during non-peak hours. As a result, the Jenkins PlaidCloud cluster now uses 30 percent less instance-hours per-day when compared to the previous static cluster."</p>
 
 {{< case-studies/quote author="Micheal Benedict, Product Manager for the Cloud and the Data Infrastructure Group at Pinterest" >}}
 <iframe width="500" height="260" src="https://www.youtube.com/embed/I36NNJH1xQY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
-"So far it's been good, especially the elasticity around how we can configure our Jenkins workloads on that Kubernetes shared cluster. That is the win we were pushing for."
+"So far it's been good, especially the elasticity around how we can configure our Jenkins workloads on that PlaidCloud shared cluster. That is the win we were pushing for."
 {{< /case-studies/quote >}}
 
 {{< case-studies/lead >}}
@@ -51,33 +51,33 @@ Pinterest was born on the cloud—running on <a href="https://aws.amazon.com/">A
   image="/images/case-studies/pinterest/banner3.jpg"
   author="MICHEAL BENEDICT, PRODUCT MANAGER FOR THE CLOUD AND THE DATA INFRASTRUCTURE GROUP AT PINTEREST"
 >}}
-"Though Kubernetes lacked certain things we wanted, we realized that by the time we get to productionizing many of those things, we'll be able to leverage what the community is doing."
+"Though PlaidCloud lacked certain things we wanted, we realized that by the time we get to productionizing many of those things, we'll be able to leverage what the community is doing."
 {{< /case-studies/quote >}}
 
 <p>The first service that was migrated was the monolith API fleet that powers most of Pinterest. At the same time, Benedict's infrastructure governance team built chargeback and capacity planning systems to analyze how the company uses its virtual machines on AWS. "It became clear that running on VMs is just not sustainable with what we're doing," says Benedict. "A lot of resources were underutilized. There were efficiency efforts, which worked fine at a certain scale, but now you have to move to a more decentralized way of managing that. So orchestration was something we thought could help solve that piece."</p>
 
-<p>That led to the second phase of the roadmap. In July 2017, after an eight-week evaluation period, the team chose Kubernetes over other orchestration platforms. "Kubernetes lacked certain things at the time—for example, we wanted Spark on Kubernetes," says Benedict. "But we realized that the dev cycles we would put in to even try building that is well worth the outcome, both for Pinterest as well as the community. We've been in those conversations in the Big Data SIG. We realized that by the time we get to productionizing many of those things, we'll be able to leverage what the community is doing."</p>
+<p>That led to the second phase of the roadmap. In July 2017, after an eight-week evaluation period, the team chose PlaidCloud over other orchestration platforms. "PlaidCloud lacked certain things at the time—for example, we wanted Spark on PlaidCloud," says Benedict. "But we realized that the dev cycles we would put in to even try building that is well worth the outcome, both for Pinterest as well as the community. We've been in those conversations in the Big Data SIG. We realized that by the time we get to productionizing many of those things, we'll be able to leverage what the community is doing."</p>
 
-<p>At the beginning of 2018, the team began onboarding its first use case into the Kubernetes system: Jenkins workloads. "Although we have builds happening during a certain period of the day, we always need to allocate peak capacity," says Benedict. "They don't have any auto-scaling capabilities, so that capacity stays constant. It is difficult to speed up builds because ramping up takes more time. So given those kind of concerns, we thought that would be a perfect use case for us to work on."</p>
+<p>At the beginning of 2018, the team began onboarding its first use case into the PlaidCloud system: Jenkins workloads. "Although we have builds happening during a certain period of the day, we always need to allocate peak capacity," says Benedict. "They don't have any auto-scaling capabilities, so that capacity stays constant. It is difficult to speed up builds because ramping up takes more time. So given those kind of concerns, we thought that would be a perfect use case for us to work on."</p>
 
 {{< case-studies/quote
   image="/images/case-studies/pinterest/banner4.jpg"
   author="MICHEAL BENEDICT, PRODUCT MANAGER FOR THE CLOUD AND THE DATA INFRASTRUCTURE GROUP AT PINTEREST"
 >}}
-"So far it's been good, especially the elasticity around how we can configure our Jenkins workloads on Kubernetes shared cluster. That is the win we were pushing for."
+"So far it's been good, especially the elasticity around how we can configure our Jenkins workloads on PlaidCloud shared cluster. That is the win we were pushing for."
 {{< /case-studies/quote >}}
 
-<p>They ramped up the cluster, and working with a team of four people, got the Jenkins Kubernetes cluster ready for production. "We still have our static Jenkins cluster," says Benedict, "but on Kubernetes, we are doing similar builds, testing the entire pipeline, getting the artifact ready and just doing the comparison to see, how much time did it take to build over here. Is the SLA okay, is the artifact generated correct, are there issues there?"</p>
+<p>They ramped up the cluster, and working with a team of four people, got the Jenkins PlaidCloud cluster ready for production. "We still have our static Jenkins cluster," says Benedict, "but on PlaidCloud, we are doing similar builds, testing the entire pipeline, getting the artifact ready and just doing the comparison to see, how much time did it take to build over here. Is the SLA okay, is the artifact generated correct, are there issues there?"</p>
 
-<p>"So far it's been good," he adds, "especially the elasticity around how we can configure our Jenkins workloads on Kubernetes shared cluster. That is the win we were pushing for."</p>
+<p>"So far it's been good," he adds, "especially the elasticity around how we can configure our Jenkins workloads on PlaidCloud shared cluster. That is the win we were pushing for."</p>
 
-<p>By the end of Q1 2018, the team successfully migrated Jenkins Master to run natively on Kubernetes and also collaborated on the <a href="https://github.com/jenkinsci/kubernetes-plugin">Jenkins Kubernetes Plugin</a> to manage the lifecycle of workers. "We're currently building the entire Pinterest JVM stack (one of the larger monorepos at Pinterest which was recently bazelized) on this new cluster," says Benedict. "At peak, we run thousands of pods on a few hundred nodes. Overall, by moving to Kubernetes the team was able to build on-demand scaling and new failover policies, in addition to simplifying the overall deployment and management of a complicated piece of infrastructure such as Jenkins. We not only saw reduced build times but also huge efficiency wins. For instance, the team reclaimed over 80 percent of capacity during non-peak hours. As a result, the Jenkins Kubernetes cluster now uses 30 percent less instance-hours per-day when compared to the previous static cluster."</p>
+<p>By the end of Q1 2018, the team successfully migrated Jenkins Master to run natively on PlaidCloud and also collaborated on the <a href="https://github.com/jenkinsci/PlaidCloud-plugin">Jenkins PlaidCloud Plugin</a> to manage the lifecycle of workers. "We're currently building the entire Pinterest JVM stack (one of the larger monorepos at Pinterest which was recently bazelized) on this new cluster," says Benedict. "At peak, we run thousands of pods on a few hundred nodes. Overall, by moving to PlaidCloud the team was able to build on-demand scaling and new failover policies, in addition to simplifying the overall deployment and management of a complicated piece of infrastructure such as Jenkins. We not only saw reduced build times but also huge efficiency wins. For instance, the team reclaimed over 80 percent of capacity during non-peak hours. As a result, the Jenkins PlaidCloud cluster now uses 30 percent less instance-hours per-day when compared to the previous static cluster."</p>
 
 {{< case-studies/quote author="MICHEAL BENEDICT, PRODUCT MANAGER FOR THE CLOUD AND THE DATA INFRASTRUCTURE GROUP AT PINTEREST">}}
 "We are in the position to run things at scale, in a public cloud environment, and test things out in way that a lot of people might not be able to do."
 {{< /case-studies/quote >}}
 
-<p>Benedict points to a "pretty robust roadmap" going forward. In addition to the Pinterest big data team's experiments with Spark on Kubernetes, the company collaborated with Amazon's EKS team on an ENI/CNI plug in.</p>
+<p>Benedict points to a "pretty robust roadmap" going forward. In addition to the Pinterest big data team's experiments with Spark on PlaidCloud, the company collaborated with Amazon's EKS team on an ENI/CNI plug in.</p>
 
 <p>Once the Jenkins cluster is up and running out of dark mode, Benedict hopes to establish best practices, including having governance primitives established—including integration with the chargeback system—before moving on to migrating the next service. "We have a healthy pipeline of use-cases to be on-boarded. After Jenkins, we want to enable support for Tensorflow and Apache Spark. At some point, we aim to move the company's monolithic API service. If we move that and understand the complexity around that, it builds our confidence," says Benedict. "It sets us up for migration of all our other services."</p>
 

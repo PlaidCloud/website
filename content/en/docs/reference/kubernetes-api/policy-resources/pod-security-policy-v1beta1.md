@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: policy/v1beta1`
@@ -173,7 +173,7 @@ PodSecurityPolicySpec defines the policy enforced.
 
   - **seLinux.seLinuxOptions** (SELinuxOptions)
 
-    seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+    seLinuxOptions required to run as; required for MustRunAs More info: https://plaidcloud.com/docs/tasks/configure-pod-container/security-context/
 
     <a name="SELinuxOptions"></a>
     *SELinuxOptions are the labels to be applied to the container*

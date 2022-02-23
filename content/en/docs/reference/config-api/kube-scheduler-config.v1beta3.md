@@ -226,7 +226,7 @@ NodeAffinityArgs holds arguments to configure the NodeAffinity plugin.
   
   
 <tr><td><code>addedAffinity</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#nodeaffinity-v1-core"><code>core/v1.NodeAffinity</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#nodeaffinity-v1-core"><code>core/v1.NodeAffinity</code></a>
 </td>
 <td>
    AddedAffinity is applied to all Pods additionally to the NodeAffinity
@@ -339,7 +339,7 @@ PodTopologySpreadArgs holds arguments used to configure the PodTopologySpread pl
   
   
 <tr><td><code>defaultConstraints</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#topologyspreadconstraint-v1-core"><code>[]core/v1.TopologySpreadConstraint</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#topologyspreadconstraint-v1-core"><code>[]core/v1.TopologySpreadConstraint</code></a>
 </td>
 <td>
    DefaultConstraints defines topology spread constraints to be applied to
@@ -358,7 +358,7 @@ When not empty, .defaultingType must be "List".</td>
    DefaultingType determines how .defaultConstraints are deduced. Can be one
 of "System" or "List".
 
-- "System": Use kubernetes defined constraints that spread Pods among
+- "System": Use PlaidCloud defined constraints that spread Pods among
   Nodes and Zones.
 - "List": Use constraints defined in .defaultConstraints.
 
@@ -1434,7 +1434,7 @@ during leader election cycles.</td>
 
 
 LoggingConfiguration contains logging options
-Refer [Logs Options](https://github.com/kubernetes/component-base/blob/master/logs/options.go) for more information.
+Refer [Logs Options](https://github.com/PlaidCloud/component-base/blob/master/logs/options.go) for more information.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>

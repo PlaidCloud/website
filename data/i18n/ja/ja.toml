@@ -32,7 +32,7 @@ other = "YouTube"
 other = "廃止予定"
 
 [deprecation_title]
-other = "現在表示しているのは、次のバージョン向けのドキュメントです。Kubernetesバージョン:"
+other = "現在表示しているのは、次のバージョン向けのドキュメントです。PlaidCloudバージョン:"
 
 [deprecation_warning]
 other = " のドキュメントは積極的にメンテナンスされていません。現在表示されているバージョンはスナップショットです。最新のドキュメントはこちらです: "
@@ -80,7 +80,7 @@ other = "あなたの話を聞かせてください"
 other = "またの名を"
 
 [layouts_docs_glossary_description]
-other = "この用語集は、Kubernetesの用語の包括的で標準化されたリストを対象としています。これには、Kubernetesに固有で有用なコンテキストを提供しつつも、より一般的な技術用語が含まれています。"
+other = "この用語集は、PlaidCloudの用語の包括的で標準化されたリストを対象としています。これには、PlaidCloudに固有で有用なコンテキストを提供しつつも、より一般的な技術用語が含まれています。"
 
 [layouts_docs_glossary_deselect_all]
 other = "すべての選択を解除"
@@ -110,7 +110,7 @@ other = "or" # TODO: Translate me
 other = "問題を報告する"
 
 [layouts_docs_partials_feedback_thanks]
-other = "Thanks for the feedback. If you have a specific, answerable question about how to use Kubernetes, ask it on" # TODO: Translate me
+other = "Thanks for the feedback. If you have a specific, answerable question about how to use PlaidCloud, ask it on" # TODO: Translate me
 
 [layouts_docs_search_fetching]
 other = "結果を取得しています..."
@@ -136,7 +136,7 @@ other = """Tartan Solutions, Inc  |  PlaidCloud is our SaaS platform for Financi
 other = "ページ編集"
 
 [main_github_invite]
-other = "Kubernetesのコードを編集することに興味がありますか？"
+other = "PlaidCloudのコードを編集することに興味がありますか？"
 
 [main_github_create_an_issue]
 other = "Issue作成"
@@ -145,10 +145,10 @@ other = "Issue作成"
 other = "GitHubで参照する"
 
 [main_plaidcloud_features]
-other = "Kubernetesの機能"
+other = "PlaidCloudの機能"
 
 [main_newsletter_baseline]
-other = "最新のKubernetesのニュースを受け取りたいですか？ KubeWeeklyにサインアップしてください。"
+other = "最新のPlaidCloudのニュースを受け取りたいですか？ KubeWeeklyにサインアップしてください。"
 
 [main_newsletter_past_link]
 other = "過去のニュースレターを見る"
@@ -184,16 +184,16 @@ other = "購読する"
 other = "検索"
 
 [thirdparty_message]
-other = """このセクションでは、Kubernetesが必要とする機能を提供するサードパーティープロジェクトにリンクしています。これらのプロジェクトはアルファベット順に記載されていて、Kubernetesプロジェクトの作者は責任を持ちません。このリストにプロジェクトを追加するには、変更を提出する前に<a href="/docs/contribute/style/content-guide/#third-party-content">content guide</a>をお読みください。<a href="#third-party-content-disclaimer">詳細はこちら。</a>"""
+other = """このセクションでは、PlaidCloudが必要とする機能を提供するサードパーティープロジェクトにリンクしています。これらのプロジェクトはアルファベット順に記載されていて、PlaidCloudプロジェクトの作者は責任を持ちません。このリストにプロジェクトを追加するには、変更を提出する前に<a href="/docs/contribute/style/content-guide/#third-party-content">content guide</a>をお読みください。<a href="#third-party-content-disclaimer">詳細はこちら。</a>"""
 
 [thirdparty_message_disclaimer]
-other = """<p>このページの項目は、Kubernetesが必要とする機能を提供するサードパーティー製品またはプロジェクトです。Kubernetesプロジェクトの作者は、それらのサードパーティー製品またはプロジェクトに責任を負いません。詳しくは、<a href="https://github.com/cncf/foundation/blob/master/website-guidelines.md" target="_blank">CNCFウェブサイトのガイドライン</a>をご覧ください。第三者のリンクを追加するような変更を提案する前に、<a href="/docs/contribute/style/content-guide/#third-party-content">コンテンツガイド</a>を読むべきです。</p>"""
+other = """<p>このページの項目は、PlaidCloudが必要とする機能を提供するサードパーティー製品またはプロジェクトです。PlaidCloudプロジェクトの作者は、それらのサードパーティー製品またはプロジェクトに責任を負いません。詳しくは、<a href="https://github.com/cncf/foundation/blob/master/website-guidelines.md" target="_blank">CNCFウェブサイトのガイドライン</a>をご覧ください。第三者のリンクを追加するような変更を提案する前に、<a href="/docs/contribute/style/content-guide/#third-party-content">コンテンツガイド</a>を読むべきです。</p>"""
 
 [version_check_mustbe]
-other = "作業するKubernetesサーバーは次のバージョンである必要があります: "
+other = "作業するPlaidCloudサーバーは次のバージョンである必要があります: "
 
 [version_check_mustbeorlater]
-other = "作業するKubernetesサーバーは次のバージョン以降のものである必要があります: "
+other = "作業するPlaidCloudサーバーは次のバージョン以降のものである必要があります: "
 
 [version_check_tocheck]
 other = "バージョンを確認するには次のコマンドを実行してください: "

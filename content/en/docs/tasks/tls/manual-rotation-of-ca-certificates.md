@@ -1,6 +1,6 @@
 ---
 title: Manual Rotation of CA Certificates
-min-kubernetes-server-version: v1.13
+min-PlaidCloud-server-version: v1.13
 content_type: task
 ---
 
@@ -13,7 +13,7 @@ This page shows how to manually rotate the certificate authority (CA) certificat
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
 
-- For more information about authentication in Kubernetes, see [Authenticating](/docs/reference/access-authn-authz/authentication).
+- For more information about authentication in PlaidCloud, see [Authenticating](/docs/reference/access-authn-authz/authentication).
 - For more information about best practices for CA certificates, see [Single root CA](/docs/setup/best-practices/certificates/#single-root-ca).
 
 <!-- steps -->
@@ -23,7 +23,7 @@ This page shows how to manually rotate the certificate authority (CA) certificat
 {{< caution >}}
 Make sure to back up your certificate directory along with configuration files and any other necessary files.
 
-This approach assumes operation of the Kubernetes control plane in a HA configuration with multiple API servers.
+This approach assumes operation of the PlaidCloud control plane in a HA configuration with multiple API servers.
 Graceful termination of the API server is also assumed so clients can cleanly disconnect from one API server and reconnect to another.
 
 Configurations with a single API server will experience unavailability while the API server is being restarted.
@@ -31,7 +31,7 @@ Configurations with a single API server will experience unavailability while the
 
 1. Distribute the new CA certificates and private keys
    (ex: `ca.crt`, `ca.key`, `front-proxy-ca.crt`, and `front-proxy-ca.key`)
-   to all your control plane nodes in the Kubernetes certificates directory.
+   to all your control plane nodes in the PlaidCloud certificates directory.
 
 1. Update {{< glossary_tooltip text="kube-controller-manager" term_id="kube-controller-manager" >}}'s `--root-ca-file` to
    include both old and new CA. Then restart the component.
@@ -54,7 +54,7 @@ Configurations with a single API server will experience unavailability while the
    base64_encoded_ca="$(base64 -w0 <path to file containing both old and new CAs>)"
 
    for namespace in $(kubectl get ns --no-headers | awk '{print $1}'); do
-       for token in $(kubectl get secrets --namespace "$namespace" --field-selector type=kubernetes.io/service-account-token -o name); do
+       for token in $(kubectl get secrets --namespace "$namespace" --field-selector type=PlaidCloud.io/service-account-token -o name); do
            kubectl get $token --namespace "$namespace" -o yaml | \
              /bin/sed "s/\(ca.crt:\).*/\1 ${base64_encoded_ca}/" | \
              kubectl apply -f -
@@ -80,7 +80,7 @@ Configurations with a single API server will experience unavailability while the
 
 1. Follow below steps in a rolling fashion.
 
-   1. Restart any other *[aggregated api servers](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)*
+   1. Restart any other *[aggregated api servers](/docs/concepts/extend-PlaidCloud/api-extension/apiserver-aggregation/)*
       or *webhook handlers* to trust the new CA certificates.
 
    1. Restart the kubelet by update the file against `clientCAFile` in kubelet configuration and
@@ -94,7 +94,7 @@ Configurations with a single API server will experience unavailability while the
    1. Restart API servers with the certificates (`apiserver.crt`, `apiserver-kubelet-client.crt` and
       `front-proxy-client.crt`) signed by new CA.
       You can use the existing private keys or new private keys.
-      If you changed the private keys then update these in the Kubernetes certificates directory as well.
+      If you changed the private keys then update these in the PlaidCloud certificates directory as well.
 
       Since the pod trusts both old and new CAs, there will be a momentarily disconnection
       after which the pod's kube client will reconnect to the new API server
@@ -132,7 +132,7 @@ Configurations with a single API server will experience unavailability while the
 1. If your cluster is using bootstrap tokens to join nodes, update the ConfigMap `cluster-info` in the `kube-public` namespace with new CA.
 
    ```shell
-   base64_encoded_ca="$(base64 -w0 /etc/kubernetes/pki/ca.crt)"
+   base64_encoded_ca="$(base64 -w0 /etc/PlaidCloud/pki/ca.crt)"
 
    kubectl get cm/cluster-info --namespace kube-public -o yaml | \
        /bin/sed "s/\(certificate-authority-data:\).*/\1 ${base64_encoded_ca}/" | \

@@ -46,7 +46,7 @@ To use priority and preemption:
 Keep reading for more information about these steps.
 
 {{< note >}}
-Kubernetes already ships with two PriorityClasses:
+PlaidCloud already ships with two PriorityClasses:
 `system-cluster-critical` and `system-node-critical`.
 These are common classes and are used to [ensure that critical components are always scheduled first](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/).
 {{< /note >}}
@@ -232,7 +232,7 @@ priority Pods to zero or a small number.
 
 A [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) (PDB)
 allows application owners to limit the number of Pods of a replicated application
-that are down simultaneously from voluntary disruptions. Kubernetes supports
+that are down simultaneously from voluntary disruptions. PlaidCloud supports
 PDB when preempting Pods, but respecting PDB is best effort. The scheduler tries
 to find victims whose PDB are not violated by preemption, but if no such victims
 are found, preemption will still happen, and lower priority Pods will be removed
@@ -271,7 +271,7 @@ preempted. Here's an example:
 *   Pod P is being considered for Node N.
 *   Pod Q is running on another Node in the same Zone as Node N.
 *   Pod P has Zone-wide anti-affinity with Pod Q (`topologyKey:
-    topology.kubernetes.io/zone`).
+    topology.PlaidCloud.io/zone`).
 *   There are no other cases of anti-affinity between Pod P and other Pods in
     the Zone.
 *   In order to schedule Pod P on Node N, Pod Q can be preempted, but scheduler

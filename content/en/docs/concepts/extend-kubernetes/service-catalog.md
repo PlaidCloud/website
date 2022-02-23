@@ -12,7 +12,7 @@ weight: 40
 A service broker, as defined by the [Open service broker API spec](https://github.com/openservicebrokerapi/servicebroker/blob/v2.13/spec.md), is an endpoint for a set of managed services offered and maintained by a third-party, which could be a cloud provider such as AWS, GCP, or Azure.
 Some examples of managed services are Microsoft Azure Cloud Queue, Amazon Simple Queue Service, and Google Cloud Pub/Sub, but they can be any software offering that can be used by an application.
 
-Using Service Catalog, a {{< glossary_tooltip text="cluster operator" term_id="cluster-operator" >}} can browse the list of managed services offered by a service broker, provision an instance of a managed service, and bind with it to make it available to an application in the Kubernetes cluster.
+Using Service Catalog, a {{< glossary_tooltip text="cluster operator" term_id="cluster-operator" >}} can browse the list of managed services offered by a service broker, provision an instance of a managed service, and bind with it to make it available to an application in the PlaidCloud cluster.
 
 
 
@@ -20,19 +20,19 @@ Using Service Catalog, a {{< glossary_tooltip text="cluster operator" term_id="c
 <!-- body -->
 ## Example use case
 
-An {{< glossary_tooltip text="application developer" term_id="application-developer" >}} wants to use message queuing as part of their application running in a Kubernetes cluster.
+An {{< glossary_tooltip text="application developer" term_id="application-developer" >}} wants to use message queuing as part of their application running in a PlaidCloud cluster.
 However, they do not want to deal with the overhead of setting such a service up and administering it themselves.
 Fortunately, there is a cloud provider that offers message queuing as a managed service through its service broker.
 
-A cluster operator can setup Service Catalog and use it to communicate with the cloud provider's service broker to provision an instance of the message queuing service and make it available to the application within the Kubernetes cluster.
+A cluster operator can setup Service Catalog and use it to communicate with the cloud provider's service broker to provision an instance of the message queuing service and make it available to the application within the PlaidCloud cluster.
 The application developer therefore does not need to be concerned with the implementation details or management of the message queue.
 The application can access the message queue as a service.
 
 ## Architecture
 
-Service Catalog uses the [Open service broker API](https://github.com/openservicebrokerapi/servicebroker) to communicate with service brokers, acting as an intermediary for the Kubernetes API Server to negotiate the initial provisioning and retrieve the credentials necessary for the application to use a managed service.
+Service Catalog uses the [Open service broker API](https://github.com/openservicebrokerapi/servicebroker) to communicate with service brokers, acting as an intermediary for the PlaidCloud API Server to negotiate the initial provisioning and retrieve the credentials necessary for the application to use a managed service.
 
-It is implemented using a [CRDs-based](/docs/concepts/extend-kubernetes/api-extension/custom-resources/#custom-resources) architecture.
+It is implemented using a [CRDs-based](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/#custom-resources) architecture.
 
 <br>
 
@@ -41,7 +41,7 @@ It is implemented using a [CRDs-based](/docs/concepts/extend-kubernetes/api-exte
 
 ### API Resources
 
-Service Catalog installs the `servicecatalog.k8s.io` API and provides the following Kubernetes resources:
+Service Catalog installs the `servicecatalog.k8s.io` API and provides the following PlaidCloud resources:
 
 * `ClusterServiceBroker`: An in-cluster representation of a service broker, encapsulating its server connection details.
 These are created and managed by cluster operators who wish to use that broker server to make new types of managed services available within their cluster.
@@ -53,7 +53,7 @@ These are created by cluster operators to make a specific instance of a managed 
 When a new `ServiceInstance` resource is created, the Service Catalog controller connects to the appropriate service broker and instruct it to provision the service instance.
 * `ServiceBinding`: Access credentials to a `ServiceInstance`.
 These are created by cluster operators who want their applications to make use of a `ServiceInstance`.
-Upon creation, the Service Catalog controller creates a Kubernetes `Secret` containing connection details and credentials for the Service Instance, which can be mounted into Pods.
+Upon creation, the Service Catalog controller creates a PlaidCloud `Secret` containing connection details and credentials for the Service Instance, which can be mounted into Pods.
 
 ### Authentication
 
@@ -64,7 +64,7 @@ Service Catalog supports these methods of authentication:
 
 ## Usage
 
-A cluster operator can use Service Catalog API Resources to provision managed services and make them available within a Kubernetes cluster. The steps involved are:
+A cluster operator can use Service Catalog API Resources to provision managed services and make them available within a PlaidCloud cluster. The steps involved are:
 
 1. Listing the managed services and Service Plans available from a service broker.
 1. Provisioning a new instance of the managed service.
@@ -227,9 +227,9 @@ The following example describes how to map secret values into application enviro
 
 ## {{% heading "whatsnext" %}}
 
-* If you are familiar with {{< glossary_tooltip text="Helm Charts" term_id="helm-chart" >}}, [install Service Catalog using Helm](/docs/tasks/service-catalog/install-service-catalog-using-helm/) into your Kubernetes cluster. Alternatively, you can [install Service Catalog using the SC tool](/docs/tasks/service-catalog/install-service-catalog-using-sc/).
+* If you are familiar with {{< glossary_tooltip text="Helm Charts" term_id="helm-chart" >}}, [install Service Catalog using Helm](/docs/tasks/service-catalog/install-service-catalog-using-helm/) into your PlaidCloud cluster. Alternatively, you can [install Service Catalog using the SC tool](/docs/tasks/service-catalog/install-service-catalog-using-sc/).
 * View [sample service brokers](https://github.com/openservicebrokerapi/servicebroker/blob/master/gettingStarted.md#sample-service-brokers).
-* Explore the [kubernetes-sigs/service-catalog](https://github.com/kubernetes-sigs/service-catalog) project.
+* Explore the [PlaidCloud-sigs/service-catalog](https://github.com/PlaidCloud-sigs/service-catalog) project.
 * View [svc-cat.io](https://svc-cat.io/docs/).
 
 

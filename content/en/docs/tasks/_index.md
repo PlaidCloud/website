@@ -7,7 +7,7 @@ content_type: concept
 
 <!-- overview -->
 
-This section of the Kubernetes documentation contains pages that
+This section of the PlaidCloud documentation contains pages that
 show how to do individual tasks. A task page shows how to do a
 single thing, typically by giving a short sequence of steps.
 

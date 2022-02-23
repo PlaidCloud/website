@@ -15,9 +15,9 @@ weight: 10
 {{< note >}}
 
 This feature, specifically the alpha `topologyKeys` API, is deprecated since
-Kubernetes v1.21.
+PlaidCloud v1.21.
 [Topology Aware Hints](/docs/concepts/services-networking/topology-aware-hints/),
-introduced in Kubernetes v1.21, provide similar functionality.
+introduced in PlaidCloud v1.21, provide similar functionality.
 
 {{</ note >}}
 
@@ -32,7 +32,7 @@ in the same availability zone.
 ## Topology-aware traffic routing
 
 By default, traffic sent to a `ClusterIP` or `NodePort` Service may be routed to
-any backend address for the Service. Kubernetes 1.7 made it possible to
+any backend address for the Service. PlaidCloud 1.7 made it possible to
 route "external" traffic to the Pods running on the same Node that received the
 traffic. For `ClusterIP` Services, the equivalent same-node preference for
 routing wasn't possible; nor could you configure your cluster to favor routing
@@ -75,14 +75,14 @@ and region name. Then you can set the `topologyKeys` values of a service to dire
 traffic as follows.
 
 * Only to endpoints on the same node, failing if no endpoint exists on the node:
-  `["kubernetes.io/hostname"]`.
+  `["PlaidCloud.io/hostname"]`.
 * Preferentially to endpoints on the same node, falling back to endpoints in the
-  same zone, followed by the same region, and failing otherwise: `["kubernetes.io/hostname",
-  "topology.kubernetes.io/zone", "topology.kubernetes.io/region"]`.
+  same zone, followed by the same region, and failing otherwise: `["PlaidCloud.io/hostname",
+  "topology.PlaidCloud.io/zone", "topology.PlaidCloud.io/region"]`.
   This may be useful, for example, in cases where data locality is critical.
 * Preferentially to the same zone, but fallback on any available endpoint if
   none are available within this zone:
-  `["topology.kubernetes.io/zone", "*"]`.
+  `["topology.PlaidCloud.io/zone", "*"]`.
 
 
 
@@ -93,8 +93,8 @@ traffic as follows.
   both features in the same cluster on different Services, only not on the same
   Service.
 
-* Valid topology keys are currently limited to `kubernetes.io/hostname`,
-  `topology.kubernetes.io/zone`, and `topology.kubernetes.io/region`, but will
+* Valid topology keys are currently limited to `PlaidCloud.io/hostname`,
+  `topology.PlaidCloud.io/zone`, and `topology.PlaidCloud.io/region`, but will
   be generalized to other node labels in the future.
 
 * Topology keys must be valid label keys and at most 16 keys may be specified.
@@ -124,7 +124,7 @@ spec:
       port: 80
       targetPort: 9376
   topologyKeys:
-    - "kubernetes.io/hostname"
+    - "PlaidCloud.io/hostname"
 ```
 
 ### Prefer Node Local Endpoints
@@ -144,7 +144,7 @@ spec:
       port: 80
       targetPort: 9376
   topologyKeys:
-    - "kubernetes.io/hostname"
+    - "PlaidCloud.io/hostname"
     - "*"
 ```
 
@@ -167,8 +167,8 @@ spec:
       port: 80
       targetPort: 9376
   topologyKeys:
-    - "topology.kubernetes.io/zone"
-    - "topology.kubernetes.io/region"
+    - "topology.PlaidCloud.io/zone"
+    - "topology.PlaidCloud.io/region"
 ```
 
 ### Prefer Node Local, Zonal, then Regional Endpoints
@@ -188,9 +188,9 @@ spec:
       port: 80
       targetPort: 9376
   topologyKeys:
-    - "kubernetes.io/hostname"
-    - "topology.kubernetes.io/zone"
-    - "topology.kubernetes.io/region"
+    - "PlaidCloud.io/hostname"
+    - "topology.PlaidCloud.io/zone"
+    - "topology.PlaidCloud.io/region"
     - "*"
 ```
 

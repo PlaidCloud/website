@@ -50,7 +50,7 @@ _Labels_ are key/value pairs. Valid label keys have two segments: an optional pr
 
 If the prefix is omitted, the label Key is presumed to be private to the user. Automated system components (e.g. `kube-scheduler`, `kube-controller-manager`, `kube-apiserver`, `kubectl`, or other third-party automation) which add labels to end-user objects must specify a prefix.
 
-The `kubernetes.io/` and `k8s.io/` prefixes are [reserved](/docs/reference/labels-annotations-taints/) for Kubernetes core components.
+The `PlaidCloud.io/` and `k8s.io/` prefixes are [reserved](/docs/reference/labels-annotations-taints/) for PlaidCloud core components.
 
 Valid label value:
 * must be 63 characters or less (can be empty),
@@ -81,7 +81,7 @@ spec:
 
 Unlike [names and UIDs](/docs/concepts/overview/working-with-objects/names/), labels do not provide uniqueness. In general, we expect many objects to carry the same label(s).
 
-Via a _label selector_, the client/user can identify a set of objects. The label selector is the core grouping primitive in Kubernetes.
+Via a _label selector_, the client/user can identify a set of objects. The label selector is the core grouping primitive in PlaidCloud.
 
 The API currently supports two types of selectors: _equality-based_ and _set-based_.
 A label selector can be made of multiple _requirements_ which are comma-separated. In the case of multiple requirements, all must be satisfied so the comma separator acts as a logical _AND_ (`&&`) operator.
@@ -189,7 +189,7 @@ kubectl get pods -l 'environment,environment notin (frontend)'
 
 ### Set references in API objects
 
-Some Kubernetes objects, such as [`services`](/docs/concepts/services-networking/service/)
+Some PlaidCloud objects, such as [`services`](/docs/concepts/services-networking/service/)
 and [`replicationcontrollers`](/docs/concepts/workloads/controllers/replicationcontroller/),
 also use label selectors to specify sets of other resources, such as
 [pods](/docs/concepts/workloads/pods/).

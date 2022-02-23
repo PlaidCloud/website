@@ -27,7 +27,7 @@ Container images are usually given a name such as `pause`, `example/mycontainer`
 Images can also include a registry hostname; for example: `fictional.registry.example/imagename`,
 and possibly a port number as well; for example: `fictional.registry.example:10443/imagename`.
 
-If you don't specify a registry hostname, Kubernetes assumes that you mean the Docker public registry.
+If you don't specify a registry hostname, PlaidCloud assumes that you mean the Docker public registry.
 
 After the image name part you can add a _tag_ (as also using with commands such
 as `docker` and `podman`).
@@ -37,7 +37,7 @@ Image tags consist of lowercase and uppercase letters, digits, underscores (`_`)
 periods (`.`), and dashes (`-`).  
 There are additional rules about where you can place the separator
 characters (`_`, `-`, and `.`) inside an image tag.  
-If you don't specify a tag, Kubernetes assumes you mean the tag `latest`.
+If you don't specify a tag, PlaidCloud assumes you mean the tag `latest`.
 
 ## Updating images
 
@@ -91,7 +91,7 @@ the image's digest;
 replace `<image-name>:<tag>` with `<image-name>@<digest>`
 (for example, `image@sha256:45b23dee08af5e43a7fea6c4cf9c25ccf269ee113168c19722f87876677c5cb2`).
 
-When using image tags, if the image registry were to change the code that the tag on that image represents, you might end up with a mix of Pods running the old and new code. An image digest uniquely identifies a specific version of the image, so Kubernetes runs the same code every time it starts a container with that image name and digest specified. Specifying an image fixes the code that you run so that a change at the registry cannot lead to that mix of versions.
+When using image tags, if the image registry were to change the code that the tag on that image represents, you might end up with a mix of Pods running the old and new code. An image digest uniquely identifies a specific version of the image, so PlaidCloud runs the same code every time it starts a container with that image name and digest specified. Specifying an image fixes the code that you run so that a change at the registry cannot lead to that mix of versions.
 
 There are third-party [admission controllers](/docs/reference/access-authn-authz/admission-controllers/)
 that mutate Pods (and pod templates) when they are created, so that the
@@ -128,9 +128,9 @@ If you would like to always force a pull, you can do one of the following:
 
 - Set the `imagePullPolicy` of the container to `Always`.
 - Omit the `imagePullPolicy` and use `:latest` as the tag for the image to use;
-  Kubernetes will set the policy to `Always` when you submit the Pod.
+  PlaidCloud will set the policy to `Always` when you submit the Pod.
 - Omit the `imagePullPolicy` and the tag for the image to use;
-  Kubernetes will set the policy to `Always` when you submit the Pod.
+  PlaidCloud will set the policy to `Always` when you submit the Pod.
 - Enable the [AlwaysPullImages](/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) admission controller.
 
 
@@ -140,19 +140,19 @@ When a kubelet starts creating containers for a Pod using a container runtime,
 it might be possible the container is in [Waiting](/docs/concepts/workloads/pods/pod-lifecycle/#container-state-waiting)
 state because of `ImagePullBackOff`.
 
-The status `ImagePullBackOff` means that a container could not start because Kubernetes
+The status `ImagePullBackOff` means that a container could not start because PlaidCloud
 could not pull a container image (for reasons such as invalid image name, or pulling
 from a private registry without `imagePullSecret`). The `BackOff` part indicates
-that Kubernetes will keep trying to pull the image, with an increasing back-off delay.
+that PlaidCloud will keep trying to pull the image, with an increasing back-off delay.
 
-Kubernetes raises the delay between each attempt until it reaches a compiled-in limit,
+PlaidCloud raises the delay between each attempt until it reaches a compiled-in limit,
 which is 300 seconds (5 minutes).
 
 ## Multi-architecture images with image indexes
 
 As well as providing binary images, a container registry can also serve a [container image index](https://github.com/opencontainers/image-spec/blob/master/image-index.md). An image index can point to multiple [image manifests](https://github.com/opencontainers/image-spec/blob/master/manifest.md) for architecture-specific versions of a container. The idea is that you can have a name for an image (for example: `pause`, `example/mycontainer`, `kube-apiserver`) and allow different systems to fetch the right binary image for the machine architecture they are using.
 
-Kubernetes itself typically names container images with a suffix `-$(ARCH)`. For backward compatibility, please generate the older images with suffixes. The idea is to generate say `pause` image which has the manifest for all the arch(es) and say `pause-amd64` which is backwards compatible for older configurations or YAML files which may have hard coded the images with suffixes.
+PlaidCloud itself typically names container images with a suffix `-$(ARCH)`. For backward compatibility, please generate the older images with suffixes. The idea is to generate say `pause` image which has the manifest for all the arch(es) and say `pause-amd64` which is backwards compatible for older configurations or YAML files which may have hard coded the images with suffixes.
 
 ## Using a private registry
 
@@ -181,7 +181,7 @@ runtime to authenticate to a private container registry.
 This approach is suitable if you can control node configuration.
 
 {{< note >}}
-Default Kubernetes only supports the `auths` and `HttpHeaders` section in Docker configuration.
+Default PlaidCloud only supports the `auths` and `HttpHeaders` section in Docker configuration.
 Docker credential helpers (`credHelpers` or `credsStore`) are not supported.
 {{< /note >}}
 
@@ -268,8 +268,8 @@ registry keys are added to the `.docker/config.json`.
 ### Interpretation of config.json {#config-json}
 
 The interpretation of `config.json` varies between the original Docker
-implementation and the Kubernetes interpretation. In Docker, the `auths` keys
-can only specify root URLs, whereas Kubernetes allows glob URLs as well as
+implementation and the PlaidCloud interpretation. In Docker, the `auths` keys
+can only specify root URLs, whereas PlaidCloud allows glob URLs as well as
 prefix-matched paths. This means that a `config.json` like this is valid:
 
 ```json
@@ -358,7 +358,7 @@ This is the recommended approach to run containers based on images
 in private registries.
 {{< /note >}}
 
-Kubernetes supports specifying container image registry keys on a Pod.
+PlaidCloud supports specifying container image registry keys on a Pod.
 
 #### Creating a Secret with a Docker config
 
@@ -369,7 +369,7 @@ kubectl create secret docker-registry <name> --docker-server=DOCKER_REGISTRY_SER
 ```
 
 If you already have a Docker credentials file then, rather than using the above
-command, you can import the credentials file as a Kubernetes
+command, you can import the credentials file as a PlaidCloud
 {{< glossary_tooltip text="Secrets" term_id="secret" >}}.  
 [Create a Secret based on existing Docker credentials](/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) explains how to set this up.
 
@@ -435,7 +435,7 @@ common use cases and suggested solutions.
      - It may be hosted on the [Docker Hub](https://hub.docker.com/signup), or elsewhere.
      - Manually configure .docker/config.json on each node as described above.
    - Or, run an internal private registry behind your firewall with open read access.
-     - No Kubernetes configuration is required.
+     - No PlaidCloud configuration is required.
    - Use a hosted container image registry service that controls image access
      - It will work better with cluster autoscaling than manual node configuration.
    - Or, on a cluster where changing the node configuration is inconvenient, use `imagePullSecrets`.

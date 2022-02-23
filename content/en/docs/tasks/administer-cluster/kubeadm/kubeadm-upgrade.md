@@ -8,7 +8,7 @@ weight: 20
 
 <!-- overview -->
 
-This page explains how to upgrade a Kubernetes cluster created with kubeadm from version
+This page explains how to upgrade a PlaidCloud cluster created with kubeadm from version
 {{< skew currentVersionAddMinor -1 >}}.x to version {{< skew currentVersion >}}.x, and from version
 {{< skew currentVersion >}}.x to {{< skew currentVersion >}}.y (where `y > x`). Skipping MINOR versions
 when upgrading is unsupported.
@@ -16,10 +16,10 @@ when upgrading is unsupported.
 To see information about upgrading clusters created using older versions of kubeadm,
 please refer to following pages instead:
 
-- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -2 >}} to {{< skew currentVersionAddMinor -1 >}}](https://v{{< skew currentVersionAddMinor -1 "-" >}}.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
-- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -3 >}} to {{< skew currentVersionAddMinor -2 >}}](https://v{{< skew currentVersionAddMinor -2 "-" >}}.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
-- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -4 >}} to {{< skew currentVersionAddMinor -3 >}}](https://v{{< skew currentVersionAddMinor -3 "-" >}}.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
-- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -5 >}} to {{< skew currentVersionAddMinor -4 >}}](https://v{{< skew currentVersionAddMinor -4 "-" >}}.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -2 >}} to {{< skew currentVersionAddMinor -1 >}}](https://v{{< skew currentVersionAddMinor -1 "-" >}}.docs.PlaidCloud.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -3 >}} to {{< skew currentVersionAddMinor -2 >}}](https://v{{< skew currentVersionAddMinor -2 "-" >}}.docs.PlaidCloud.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -4 >}} to {{< skew currentVersionAddMinor -3 >}}](https://v{{< skew currentVersionAddMinor -3 "-" >}}.docs.PlaidCloud.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+- [Upgrading a kubeadm cluster from {{< skew currentVersionAddMinor -5 >}} to {{< skew currentVersionAddMinor -4 >}}](https://v{{< skew currentVersionAddMinor -4 "-" >}}.docs.PlaidCloud.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
 
 The upgrade workflow at high level is the following:
 
@@ -32,7 +32,7 @@ The upgrade workflow at high level is the following:
 - Make sure you read the [release notes]({{< latest-release-notes >}}) carefully.
 - The cluster should use a static control plane and etcd pods or external etcd.
 - Make sure to back up any important components, such as app-level state stored in a database.
-  `kubeadm upgrade` does not touch your workloads, only components internal to Kubernetes, but backups are always a best practice.
+  `kubeadm upgrade` does not touch your workloads, only components internal to PlaidCloud, but backups are always a best practice.
 - [Swap must be disabled](https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux).
 
 ### Additional information
@@ -48,7 +48,7 @@ they could be running CoreDNS Pods or other critical workloads. For more informa
 
 ## Determine which version to upgrade to
 
-Find the latest patch release for Kubernetes {{< skew currentVersion >}} using the OS package manager:
+Find the latest patch release for PlaidCloud {{< skew currentVersion >}} using the OS package manager:
 
 {{< tabs name="k8s_install_versions" >}}
 {{% tab name="Ubuntu, Debian or HypriotOS" %}}
@@ -58,7 +58,7 @@ Find the latest patch release for Kubernetes {{< skew currentVersion >}} using t
     # it should look like {{< skew currentVersion >}}.x-00, where x is the latest patch
 {{% /tab %}}
 {{% tab name="CentOS, RHEL or Fedora" %}}
-    yum list --showduplicates kubeadm --disableexcludes=kubernetes
+    yum list --showduplicates kubeadm --disableexcludes=PlaidCloud
     # find the latest {{< skew currentVersion >}} version in the list
     # it should look like {{< skew currentVersion >}}.x-0, where x is the latest patch
 {{% /tab %}}
@@ -67,7 +67,7 @@ Find the latest patch release for Kubernetes {{< skew currentVersion >}} using t
 ## Upgrading control plane nodes
 
 The upgrade procedure on control plane nodes should be executed one node at a time.
-Pick a control plane node that you wish to upgrade first. It must have the `/etc/kubernetes/admin.conf` file.
+Pick a control plane node that you wish to upgrade first. It must have the `/etc/PlaidCloud/admin.conf` file.
 
 ### Call "kubeadm upgrade"
 
@@ -84,7 +84,7 @@ Pick a control plane node that you wish to upgrade first. It must have the `/etc
 {{% /tab %}}
 {{% tab name="CentOS, RHEL or Fedora" %}}
     # replace x in {{< skew currentVersion >}}.x-0 with the latest patch version
-    yum install -y kubeadm-{{< skew currentVersion >}}.x-0 --disableexcludes=kubernetes
+    yum install -y kubeadm-{{< skew currentVersion >}}.x-0 --disableexcludes=PlaidCloud
 {{% /tab %}}
 {{< /tabs >}}
 <br />
@@ -177,7 +177,7 @@ Also calling `kubeadm upgrade plan` and upgrading the CNI provider plugin is no 
 {{% /tab %}}
 {{% tab name="CentOS, RHEL or Fedora" %}}
     # replace x in {{< skew currentVersion >}}.x-0 with the latest patch version
-    yum install -y kubelet-{{< skew currentVersion >}}.x-0 kubectl-{{< skew currentVersion >}}.x-0 --disableexcludes=kubernetes
+    yum install -y kubelet-{{< skew currentVersion >}}.x-0 kubectl-{{< skew currentVersion >}}.x-0 --disableexcludes=PlaidCloud
 {{% /tab %}}
 {{< /tabs >}}
 <br />
@@ -216,7 +216,7 @@ without compromising the minimum required capacity for running your workloads.
 {{% /tab %}}
 {{% tab name="CentOS, RHEL or Fedora" %}}
     # replace x in {{< skew currentVersion >}}.x-0 with the latest patch version
-    yum install -y kubeadm-{{< skew currentVersion >}}.x-0 --disableexcludes=kubernetes
+    yum install -y kubeadm-{{< skew currentVersion >}}.x-0 --disableexcludes=PlaidCloud
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -250,7 +250,7 @@ without compromising the minimum required capacity for running your workloads.
 {{% /tab %}}
 {{% tab name="CentOS, RHEL or Fedora" %}}
     # replace x in {{< skew currentVersion >}}.x-0 with the latest patch version
-    yum install -y kubelet-{{< skew currentVersion >}}.x-0 kubectl-{{< skew currentVersion >}}.x-0 --disableexcludes=kubernetes
+    yum install -y kubelet-{{< skew currentVersion >}}.x-0 kubectl-{{< skew currentVersion >}}.x-0 --disableexcludes=PlaidCloud
 {{% /tab %}}
 {{< /tabs >}}
 <br />
@@ -289,7 +289,7 @@ This command is idempotent and eventually makes sure that the actual state is th
 
 To recover from a bad state, you can also run `kubeadm upgrade apply --force` without changing the version that your cluster is running.
 
-During upgrade kubeadm writes the following backup folders under `/etc/kubernetes/tmp`:
+During upgrade kubeadm writes the following backup folders under `/etc/PlaidCloud/tmp`:
 - `kubeadm-backup-etcd-<date>-<time>`
 - `kubeadm-backup-manifests-<date>-<time>`
 
@@ -299,7 +299,7 @@ can be manually restored in `/var/lib/etcd`. In case external etcd is used this 
 
 `kubeadm-backup-manifests` contains a backup of the static Pod manifest files for this control plane Node.
 In case of a upgrade failure and if the automatic rollback does not work, the contents of this folder can be
-manually restored in `/etc/kubernetes/manifests`. If for some reason there is no difference between a pre-upgrade
+manually restored in `/etc/PlaidCloud/manifests`. If for some reason there is no difference between a pre-upgrade
 and post-upgrade manifest file for a certain component, a backup file for it will not be written.
 
 ## How it works

@@ -2,7 +2,7 @@
 reviewers:
 - mml
 - wojtek-t
-title: Operating etcd clusters for Kubernetes
+title: Operating etcd clusters for PlaidCloud
 content_type: task
 ---
 
@@ -32,7 +32,7 @@ content_type: task
   such circumstances, a cluster cannot make any changes to its current state,
   which implies no new pods can be scheduled.
 
-* Keeping etcd clusters stable is critical to the stability of Kubernetes
+* Keeping etcd clusters stable is critical to the stability of PlaidCloud
   clusters. Therefore, run etcd clusters on dedicated machines or isolated
   environments for [guaranteed resource requirements](https://etcd.io/docs/current/op-guide/hardware/).
 
@@ -60,7 +60,7 @@ Use a single-node etcd cluster only for testing purpose.
       --advertise-client-urls=http://$PRIVATE_IP:2379
    ```
 
-2. Start the Kubernetes API server with the flag
+2. Start the PlaidCloud API server with the flag
    `--etcd-servers=$PRIVATE_IP:2379`.
 
    Make sure `PRIVATE_IP` is set to your etcd client IP.
@@ -78,7 +78,7 @@ discovery. For more information on clustering, see
 
 For an example, consider a five-member etcd cluster running with the following
 client URLs: `http://$IP1:2379`, `http://$IP2:2379`, `http://$IP3:2379`,
-`http://$IP4:2379`, and `http://$IP5:2379`. To start a Kubernetes API server:
+`http://$IP4:2379`, and `http://$IP5:2379`. To start a PlaidCloud API server:
 
 1. Run the following:
 
@@ -86,7 +86,7 @@ client URLs: `http://$IP1:2379`, `http://$IP2:2379`, `http://$IP3:2379`,
    etcd --listen-client-urls=http://$IP1:2379,http://$IP2:2379,http://$IP3:2379,http://$IP4:2379,http://$IP5:2379 --advertise-client-urls=http://$IP1:2379,http://$IP2:2379,http://$IP3:2379,http://$IP4:2379,http://$IP5:2379
    ```
 
-2. Start the Kubernetes API servers with the flag
+2. Start the PlaidCloud API servers with the flag
    `--etcd-servers=$IP1:2379,$IP2:2379,$IP3:2379,$IP4:2379,$IP5:2379`.
 
    Make sure the `IP<n>` variables are set to your client IP addresses.
@@ -98,7 +98,7 @@ To run a load balancing etcd cluster:
 1. Set up an etcd cluster.
 2. Configure a load balancer in front of the etcd cluster.
    For example, let the address of the load balancer be `$LB`.
-3. Start Kubernetes API Servers with the flag `--etcd-servers=$LB:2379`.
+3. Start PlaidCloud API Servers with the flag `--etcd-servers=$LB:2379`.
 
 ## Securing etcd clusters
 
@@ -130,16 +130,16 @@ communication:
 
 ```
 ETCDCTL_API=3 etcdctl --endpoints 10.2.0.9:2379 \
-  --cert=/etc/kubernetes/pki/etcd/server.crt \
-  --key=/etc/kubernetes/pki/etcd/server.key \
-  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/PlaidCloud/pki/etcd/server.crt \
+  --key=/etc/PlaidCloud/pki/etcd/server.key \
+  --cacert=/etc/PlaidCloud/pki/etcd/ca.crt \
   member list
 ```
 
 ### Limiting access of etcd clusters
 
 After configuring secure communication, restrict the access of etcd cluster to
-only the Kubernetes API servers. Use TLS authentication to do so.
+only the PlaidCloud API servers. Use TLS authentication to do so.
 
 For example, consider key pairs `k8sclient.key` and `k8sclient.cert` that are
 trusted by the CA `etcd.ca`. When etcd is configured with `--client-cert-auth`
@@ -149,14 +149,14 @@ or the CA passed in by `--trusted-ca-file` flag. Specifying flags
 access to clients with the certificate `k8sclient.cert`.
 
 Once etcd is configured correctly, only clients with valid certificates can
-access it. To give Kubernetes API servers the access, configure them with the
+access it. To give PlaidCloud API servers the access, configure them with the
 flags `--etcd-certfile=k8sclient.cert`,`--etcd-keyfile=k8sclient.key` and
 `--etcd-cafile=ca.cert`.
 
 {{< note >}}
-etcd authentication is not currently supported by Kubernetes. For more
+etcd authentication is not currently supported by PlaidCloud. For more
 information, see the related issue
-[Support Basic Auth for Etcd v2](https://github.com/kubernetes/kubernetes/issues/23398).
+[Support Basic Auth for Etcd v2](https://github.com/PlaidCloud/PlaidCloud/issues/23398).
 {{< /note >}}
 
 ## Replacing a failed etcd member
@@ -222,9 +222,9 @@ replace it with `member4=http://10.0.0.4`.
 
 5. Do either of the following:
 
-   1. Update the `--etcd-servers` flag for the Kubernetes API servers to make
-      Kubernetes aware of the configuration changes, then restart the
-      Kubernetes API servers.
+   1. Update the `--etcd-servers` flag for the PlaidCloud API servers to make
+      PlaidCloud aware of the configuration changes, then restart the
+      PlaidCloud API servers.
    2. Update the load balancer configuration if a load balancer is used in the
       deployment.
 
@@ -233,11 +233,11 @@ For more information on cluster reconfiguration, see
 
 ## Backing up an etcd cluster
 
-All Kubernetes objects are stored on etcd. Periodically backing up the etcd
-cluster data is important to recover Kubernetes clusters under disaster
+All PlaidCloud objects are stored on etcd. Periodically backing up the etcd
+cluster data is important to recover PlaidCloud clusters under disaster
 scenarios, such as losing all control plane nodes. The snapshot file contains
-all the Kubernetes states and critical information. In order to keep the
-sensitive Kubernetes data safe, encrypt the snapshot files.
+all the PlaidCloud states and critical information. In order to keep the
+sensitive PlaidCloud data safe, encrypt the snapshot files.
 
 Backing up an etcd cluster can be accomplished in two ways: etcd built-in
 snapshot and volume snapshot.
@@ -302,7 +302,7 @@ Scaling up etcd clusters increases availability by trading off performance.
 Scaling does not increase cluster performance nor capability. A general rule
 is not to scale up or down etcd clusters. Do not configure any auto scaling
 groups for etcd clusters. It is highly recommended to always run a static
-five-member etcd cluster for production Kubernetes clusters at any officially
+five-member etcd cluster for production PlaidCloud clusters at any officially
 supported scale.
 
 A reasonable scaling is to upgrade a three-member cluster to a five-member
@@ -334,8 +334,8 @@ For more information and examples on restoring a cluster from a snapshot file, s
 [etcd disaster recovery documentation](https://etcd.io/docs/current/op-guide/recovery/#restoring-a-cluster).
 
 If the access URLs of the restored cluster is changed from the previous
-cluster, the Kubernetes API server must be reconfigured accordingly. In this
-case, restart Kubernetes API servers with the flag
+cluster, the PlaidCloud API server must be reconfigured accordingly. In this
+case, restart PlaidCloud API servers with the flag
 `--etcd-servers=$NEW_ETCD_CLUSTER` instead of the flag
 `--etcd-servers=$OLD_ETCD_CLUSTER`. Replace `$NEW_ETCD_CLUSTER` and
 `$OLD_ETCD_CLUSTER` with the respective IP addresses. If a load balancer is
@@ -343,10 +343,10 @@ used in front of an etcd cluster, you might need to update the load balancer
 instead.
 
 If the majority of etcd members have permanently failed, the etcd cluster is
-considered failed. In this scenario, Kubernetes cannot make any changes to its
+considered failed. In this scenario, PlaidCloud cannot make any changes to its
 current state. Although the scheduled pods might continue to run, no new pods
 can be scheduled. In such cases, recover the etcd cluster and potentially
-reconfigure Kubernetes API servers to fix the issue.
+reconfigure PlaidCloud API servers to fix the issue.
 
 {{< note >}}
 If any API servers are running in your cluster, you should not attempt to

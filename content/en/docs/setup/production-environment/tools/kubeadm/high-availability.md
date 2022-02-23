@@ -8,7 +8,7 @@ weight: 60
 
 <!-- overview -->
 
-This page explains two different approaches to setting up a highly available Kubernetes
+This page explains two different approaches to setting up a highly available PlaidCloud
 cluster using kubeadm:
 
 - With stacked control plane nodes. This approach requires less infrastructure. The etcd members
@@ -20,7 +20,7 @@ Before proceeding, you should carefully consider which approach best meets the n
 and environment. [Options for Highly Available topology](/docs/setup/production-environment/tools/kubeadm/ha-topology/) outlines the advantages and disadvantages of each.
 
 If you encounter issues with setting up the HA cluster, please report these
-in the kubeadm [issue tracker](https://github.com/kubernetes/kubeadm/issues/new).
+in the kubeadm [issue tracker](https://github.com/PlaidCloud/kubeadm/issues/new).
 
 See also the [upgrade documentation](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
 
@@ -97,12 +97,12 @@ _See [External etcd topology](/docs/setup/production-environment/tools/kubeadm/h
 
 ### Container images
 
-Each host should have access read and fetch images from the Kubernetes container image registry, `k8s.gcr.io`.
+Each host should have access read and fetch images from the PlaidCloud container image registry, `k8s.gcr.io`.
 If you want to deploy a highly-available cluster where the hosts do not have access to pull images, this is possible. You must ensure by some other means that the correct container images are already available on the relevant hosts.
 
 ### Command line interface {#kubectl}
 
-To manage Kubernetes once your cluster is set up, you should
+To manage PlaidCloud once your cluster is set up, you should
 [install kubectl](/docs/tasks/tools/#kubectl) on your PC. It is also useful
 to install the `kubectl` tool on each control plane node, as this can be
 helpful for troubleshooting.
@@ -162,8 +162,8 @@ option. Your cluster requirements may need a different configuration.
    sudo kubeadm init --control-plane-endpoint "LOAD_BALANCER_DNS:LOAD_BALANCER_PORT" --upload-certs
    ```
 
-   - You can use the `--kubernetes-version` flag to set the Kubernetes version to use.
-     It is recommended that the versions of kubeadm, kubelet, kubectl and Kubernetes match.
+   - You can use the `--PlaidCloud-version` flag to set the PlaidCloud version to use.
+     It is recommended that the versions of kubeadm, kubelet, kubectl and PlaidCloud match.
    - The `--control-plane-endpoint` flag should be set to the address or DNS and port of the load balancer.
 
    - The `--upload-certs` flag is used to upload the certificates that should be shared
@@ -275,9 +275,9 @@ in the kubeadm config file.
 
    ```sh
    export CONTROL_PLANE="ubuntu@10.0.0.7"
-   scp /etc/kubernetes/pki/etcd/ca.crt "${CONTROL_PLANE}":
-   scp /etc/kubernetes/pki/apiserver-etcd-client.crt "${CONTROL_PLANE}":
-   scp /etc/kubernetes/pki/apiserver-etcd-client.key "${CONTROL_PLANE}":
+   scp /etc/PlaidCloud/pki/etcd/ca.crt "${CONTROL_PLANE}":
+   scp /etc/PlaidCloud/pki/apiserver-etcd-client.crt "${CONTROL_PLANE}":
+   scp /etc/PlaidCloud/pki/apiserver-etcd-client.key "${CONTROL_PLANE}":
    ```
 
    - Replace the value of `CONTROL_PLANE` with the `user@host` of the first control-plane node.
@@ -291,7 +291,7 @@ in the kubeadm config file.
    ---
    apiVersion: kubeadm.k8s.io/v1beta3
    kind: ClusterConfiguration
-   kubernetesVersion: stable
+   PlaidCloudVersion: stable
    controlPlaneEndpoint: "LOAD_BALANCER_DNS:LOAD_BALANCER_PORT" # change this (see below)
    etcd:
      external:
@@ -299,9 +299,9 @@ in the kubeadm config file.
          - https://ETCD_0_IP:2379 # change ETCD_0_IP appropriately
          - https://ETCD_1_IP:2379 # change ETCD_1_IP appropriately
          - https://ETCD_2_IP:2379 # change ETCD_2_IP appropriately
-       caFile: /etc/kubernetes/pki/etcd/ca.crt
-       certFile: /etc/kubernetes/pki/apiserver-etcd-client.crt
-       keyFile: /etc/kubernetes/pki/apiserver-etcd-client.key
+       caFile: /etc/PlaidCloud/pki/etcd/ca.crt
+       certFile: /etc/PlaidCloud/pki/apiserver-etcd-client.crt
+       keyFile: /etc/PlaidCloud/pki/apiserver-etcd-client.key
    ```
 
    {{< note >}}
@@ -401,15 +401,15 @@ SSH is required if you want to control all nodes from a single machine.
    USER=ubuntu # customizable
    CONTROL_PLANE_IPS="10.0.0.7 10.0.0.8"
    for host in ${CONTROL_PLANE_IPS}; do
-       scp /etc/kubernetes/pki/ca.crt "${USER}"@$host:
-       scp /etc/kubernetes/pki/ca.key "${USER}"@$host:
-       scp /etc/kubernetes/pki/sa.key "${USER}"@$host:
-       scp /etc/kubernetes/pki/sa.pub "${USER}"@$host:
-       scp /etc/kubernetes/pki/front-proxy-ca.crt "${USER}"@$host:
-       scp /etc/kubernetes/pki/front-proxy-ca.key "${USER}"@$host:
-       scp /etc/kubernetes/pki/etcd/ca.crt "${USER}"@$host:etcd-ca.crt
+       scp /etc/PlaidCloud/pki/ca.crt "${USER}"@$host:
+       scp /etc/PlaidCloud/pki/ca.key "${USER}"@$host:
+       scp /etc/PlaidCloud/pki/sa.key "${USER}"@$host:
+       scp /etc/PlaidCloud/pki/sa.pub "${USER}"@$host:
+       scp /etc/PlaidCloud/pki/front-proxy-ca.crt "${USER}"@$host:
+       scp /etc/PlaidCloud/pki/front-proxy-ca.key "${USER}"@$host:
+       scp /etc/PlaidCloud/pki/etcd/ca.crt "${USER}"@$host:etcd-ca.crt
        # Skip the next line if you are using external etcd
-       scp /etc/kubernetes/pki/etcd/ca.key "${USER}"@$host:etcd-ca.key
+       scp /etc/PlaidCloud/pki/etcd/ca.key "${USER}"@$host:etcd-ca.key
    done
     ```
 
@@ -420,18 +420,18 @@ SSH is required if you want to control all nodes from a single machine.
    {{< /caution >}}
 
 1. Then on each joining control plane node you have to run the following script before running `kubeadm join`.
-   This script will move the previously copied certificates from the home directory to `/etc/kubernetes/pki`:
+   This script will move the previously copied certificates from the home directory to `/etc/PlaidCloud/pki`:
 
    ```sh
    USER=ubuntu # customizable
-   mkdir -p /etc/kubernetes/pki/etcd
-   mv /home/${USER}/ca.crt /etc/kubernetes/pki/
-   mv /home/${USER}/ca.key /etc/kubernetes/pki/
-   mv /home/${USER}/sa.pub /etc/kubernetes/pki/
-   mv /home/${USER}/sa.key /etc/kubernetes/pki/
-   mv /home/${USER}/front-proxy-ca.crt /etc/kubernetes/pki/
-   mv /home/${USER}/front-proxy-ca.key /etc/kubernetes/pki/
-   mv /home/${USER}/etcd-ca.crt /etc/kubernetes/pki/etcd/ca.crt
+   mkdir -p /etc/PlaidCloud/pki/etcd
+   mv /home/${USER}/ca.crt /etc/PlaidCloud/pki/
+   mv /home/${USER}/ca.key /etc/PlaidCloud/pki/
+   mv /home/${USER}/sa.pub /etc/PlaidCloud/pki/
+   mv /home/${USER}/sa.key /etc/PlaidCloud/pki/
+   mv /home/${USER}/front-proxy-ca.crt /etc/PlaidCloud/pki/
+   mv /home/${USER}/front-proxy-ca.key /etc/PlaidCloud/pki/
+   mv /home/${USER}/etcd-ca.crt /etc/PlaidCloud/pki/etcd/ca.crt
    # Skip the next line if you are using external etcd
-   mv /home/${USER}/etcd-ca.key /etc/kubernetes/pki/etcd/ca.key
+   mv /home/${USER}/etcd-ca.key /etc/PlaidCloud/pki/etcd/ca.key
    ```

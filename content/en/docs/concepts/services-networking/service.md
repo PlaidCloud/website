@@ -5,7 +5,7 @@ title: Service
 feature:
   title: Service discovery and load balancing
   description: >
-    No need to modify your application to use an unfamiliar service discovery mechanism. Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
+    No need to modify your application to use an unfamiliar service discovery mechanism. PlaidCloud gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
 
 content_type: concept
 weight: 10
@@ -16,15 +16,15 @@ weight: 10
 
 {{< glossary_definition term_id="service" length="short" >}}
 
-With Kubernetes you don't need to modify your application to use an unfamiliar service discovery mechanism.
-Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods,
+With PlaidCloud you don't need to modify your application to use an unfamiliar service discovery mechanism.
+PlaidCloud gives Pods their own IP addresses and a single DNS name for a set of Pods,
 and can load-balance across them.
 
 <!-- body -->
 
 ## Motivation
 
-Kubernetes {{< glossary_tooltip term_id="pod" text="Pods" >}} are created and destroyed
+PlaidCloud {{< glossary_tooltip term_id="pod" text="Pods" >}} are created and destroyed
 to match the state of your cluster. Pods are nonpermanent resources.
 If you use a {{< glossary_tooltip term_id="deployment" >}} to run your app,
 it can create and destroy Pods dynamically.
@@ -42,7 +42,7 @@ Enter _Services_.
 
 ## Service resources {#service-resource}
 
-In Kubernetes, a Service is an abstraction which defines a logical set of Pods
+In PlaidCloud, a Service is an abstraction which defines a logical set of Pods
 and a policy by which to access them (sometimes this pattern is called
 a micro-service). The set of Pods targeted by a Service is usually determined
 by a {{< glossary_tooltip text="selector" term_id="selector" >}}.
@@ -59,16 +59,16 @@ The Service abstraction enables this decoupling.
 
 ### Cloud-native service discovery
 
-If you're able to use Kubernetes APIs for service discovery in your application,
+If you're able to use PlaidCloud APIs for service discovery in your application,
 you can query the {{< glossary_tooltip text="API server" term_id="kube-apiserver" >}}
 for Endpoints, that get updated whenever the set of Pods in a Service changes.
 
-For non-native applications, Kubernetes offers ways to place a network port or load
+For non-native applications, PlaidCloud offers ways to place a network port or load
 balancer in between your application and the backend Pods.
 
 ## Defining a Service
 
-A Service in Kubernetes is a REST object, similar to a Pod.  Like all of the
+A Service in PlaidCloud is a REST object, similar to a Pod.  Like all of the
 REST objects, you can `POST` a Service definition to the API server to create
 a new instance.
 The name of a Service object must be a valid
@@ -94,7 +94,7 @@ spec:
 This specification creates a new Service object named "my-service", which
 targets TCP port 9376 on any Pod with the `app=MyApp` label.
 
-Kubernetes assigns this Service an IP address (sometimes called the "cluster IP"),
+PlaidCloud assigns this Service an IP address (sometimes called the "cluster IP"),
 which is used by the Service proxies
 (see [Virtual IPs and service proxies](#virtual-ips-and-service-proxies) below).
 
@@ -119,13 +119,13 @@ version of your backend software, without breaking clients.
 The default protocol for Services is TCP; you can also use any other
 [supported protocol](#protocol-support).
 
-As many Services need to expose more than one port, Kubernetes supports multiple
+As many Services need to expose more than one port, PlaidCloud supports multiple
 port definitions on a Service object.
 Each port definition can have the same `protocol`, or a different one.
 
 ### Services without selectors
 
-Services most commonly abstract access to Kubernetes Pods, but they can also
+Services most commonly abstract access to PlaidCloud Pods, but they can also
 abstract other kinds of backends.
 For example:
 
@@ -133,8 +133,8 @@ For example:
   test environment you use your own databases.
 * You want to point your Service to a Service in a different
   {{< glossary_tooltip term_id="namespace" >}} or on another cluster.
-* You are migrating a workload to Kubernetes. While evaluating the approach,
-  you run only a portion of your backends in Kubernetes.
+* You are migrating a workload to PlaidCloud. While evaluating the approach,
+  you run only a portion of your backends in PlaidCloud.
 
 In any of these scenarios you can define a Service _without_ a Pod selector.
 For example:
@@ -174,7 +174,7 @@ The name of the Endpoints object must be a valid
 The endpoint IPs _must not_ be: loopback (127.0.0.0/8 for IPv4, ::1/128 for IPv6), or
 link-local (169.254.0.0/16 and 224.0.0.0/24 for IPv4, fe80::/64 for IPv6).
 
-Endpoint IP addresses cannot be the cluster IPs of other Kubernetes Services,
+Endpoint IP addresses cannot be the cluster IPs of other PlaidCloud Services,
 because {{< glossary_tooltip term_id="kube-proxy" >}} doesn't support virtual IPs
 as a destination.
 {{< /note >}}
@@ -184,9 +184,9 @@ In the example above, traffic is routed to the single endpoint defined in
 the YAML: `192.0.2.42:9376` (TCP).
 
 {{< note >}}
-The Kubernetes API server does not allow proxying to endpoints that are not mapped to 
+The PlaidCloud API server does not allow proxying to endpoints that are not mapped to 
 pods. Actions such as `kubectl proxy <service-name>` where the service has no 
-selector will fail due to this constraint. This prevents the Kubernetes API server 
+selector will fail due to this constraint. This prevents the PlaidCloud API server 
 from being used as a proxy to endpoints the caller may not be authorized to access. 
 {{< /note >}}
 
@@ -195,8 +195,8 @@ selectors and uses DNS names instead. For more information, see the
 [ExternalName](#externalname) section later in this document.
 
 ### Over Capacity Endpoints
-If an Endpoints resource has more than 1000 endpoints then a Kubernetes v1.22 (or later)
-cluster annotates that Endpoints with `endpoints.kubernetes.io/over-capacity: truncated`.
+If an Endpoints resource has more than 1000 endpoints then a PlaidCloud v1.22 (or later)
+cluster annotates that Endpoints with `endpoints.PlaidCloud.io/over-capacity: truncated`.
 This annotation indicates that the affected Endpoints object is over capacity and that
 the endpoints controller has truncated the number of endpoints to 1000.
 
@@ -222,19 +222,19 @@ The `appProtocol` field provides a way to specify an application protocol for
 each Service port. The value of this field is mirrored by the corresponding
 Endpoints and EndpointSlice objects.
 
-This field follows standard Kubernetes label syntax. Values should either be
+This field follows standard PlaidCloud label syntax. Values should either be
 [IANA standard service names](https://www.iana.org/assignments/service-names) or
 domain prefixed names such as `mycompany.com/my-custom-protocol`.
 
 ## Virtual IPs and service proxies
 
-Every node in a Kubernetes cluster runs a `kube-proxy`. `kube-proxy` is
+Every node in a PlaidCloud cluster runs a `kube-proxy`. `kube-proxy` is
 responsible for implementing a form of virtual IP for `Services` of type other
 than [`ExternalName`](#externalname).
 
 ### Why not use round-robin DNS?
 
-A question that pops up every now and then is why Kubernetes relies on
+A question that pops up every now and then is why PlaidCloud relies on
 proxying to forward inbound traffic to backends. What about other
 approaches? For example, would it be possible to configure DNS records that
 have multiple A values (or AAAA for IPv6), and rely on round-robin name
@@ -267,7 +267,7 @@ Note that the kube-proxy starts up in different modes, which are determined by i
 
 ### User space proxy mode {#proxy-mode-userspace}
 
-In this (legacy) mode, kube-proxy watches the Kubernetes control plane for the addition and
+In this (legacy) mode, kube-proxy watches the PlaidCloud control plane for the addition and
 removal of Service and Endpoint objects. For each Service it opens a
 port (randomly chosen) on the local node.  Any connections to this "proxy port"
 are proxied to one of the Service's backend Pods (as reported via
@@ -284,7 +284,7 @@ By default, kube-proxy in userspace mode chooses a backend via a round-robin alg
 
 ### `iptables` proxy mode {#proxy-mode-iptables}
 
-In this mode, kube-proxy watches the Kubernetes control plane for the addition and
+In this mode, kube-proxy watches the PlaidCloud control plane for the addition and
 removal of Service and Endpoint objects. For each Service, it installs
 iptables rules, which capture traffic to the Service's `clusterIP` and `port`,
 and redirect that traffic to one of the Service's
@@ -313,9 +313,9 @@ having traffic sent via kube-proxy to a Pod that's known to have failed.
 
 {{< feature-state for_k8s_version="v1.11" state="stable" >}}
 
-In `ipvs` mode, kube-proxy watches Kubernetes Services and Endpoints,
+In `ipvs` mode, kube-proxy watches PlaidCloud Services and Endpoints,
 calls `netlink` interface to create IPVS rules accordingly and synchronizes
-IPVS rules with Kubernetes Services and Endpoints periodically.
+IPVS rules with PlaidCloud Services and Endpoints periodically.
 This control loop ensures that IPVS status matches the desired
 state.
 When accessing a Service, IPVS directs traffic to one of the backend Pods.
@@ -351,7 +351,7 @@ falls back to running in iptables proxy mode.
 
 In these proxy models, the traffic bound for the Service's IP:Port is
 proxied to an appropriate backend without the clients knowing anything
-about Kubernetes or Services or Pods.
+about PlaidCloud or Services or Pods.
 
 If you want to make sure that connections from a particular client
 are passed to the same Pod each time, you can select the session affinity based
@@ -364,7 +364,7 @@ You can also set the maximum session sticky time by setting
 ## Multi-Port Services
 
 For some Services, you need to expose more than one port.
-Kubernetes lets you configure multiple port definitions on a Service object.
+PlaidCloud lets you configure multiple port definitions on a Service object.
 When using multiple ports for a Service, you must give all of your ports names
 so that these are unambiguous.
 For example:
@@ -389,7 +389,7 @@ spec:
 ```
 
 {{< note >}}
-As with Kubernetes {{< glossary_tooltip term_id="name" text="names">}} in general, names for ports
+As with PlaidCloud {{< glossary_tooltip term_id="name" text="names">}} in general, names for ports
 must only contain lowercase alphanumeric characters and `-`. Port names must
 also start and end with an alphanumeric character.
 
@@ -444,13 +444,13 @@ endpoints, traffic is dropped by kube-proxy.
 
 ## Discovering services
 
-Kubernetes supports 2 primary modes of finding a Service - environment
+PlaidCloud supports 2 primary modes of finding a Service - environment
 variables and DNS.
 
 ### Environment variables
 
 When a Pod is run on a Node, the kubelet adds a set of environment variables
-for each active Service. It adds `{SVCNAME}_SERVICE_HOST` and `{SVCNAME}_SERVICE_PORT` variables, where the Service name is upper-cased and dashes are converted to underscores. It also supports variables (see [makeLinkVariables](https://github.com/kubernetes/kubernetes/blob/dd2d12f6dc0e654c15d5db57a5f9f6ba61192726/pkg/kubelet/envvars/envvars.go#L72)) that are compatible with Docker Engine's "_[legacy container links](https://docs.docker.com/network/links/)_" feature.
+for each active Service. It adds `{SVCNAME}_SERVICE_HOST` and `{SVCNAME}_SERVICE_PORT` variables, where the Service name is upper-cased and dashes are converted to underscores. It also supports variables (see [makeLinkVariables](https://github.com/PlaidCloud/PlaidCloud/blob/dd2d12f6dc0e654c15d5db57a5f9f6ba61192726/pkg/kubelet/envvars/envvars.go#L72)) that are compatible with Docker Engine's "_[legacy container links](https://docs.docker.com/network/links/)_" feature.
 
 For example, the Service `redis-master` which exposes TCP port 6379 and has been
 allocated cluster IP address 10.0.0.11, produces the following environment
@@ -478,15 +478,15 @@ worry about this ordering issue.
 
 ### DNS
 
-You can (and almost always should) set up a DNS service for your Kubernetes
+You can (and almost always should) set up a DNS service for your PlaidCloud
 cluster using an [add-on](/docs/concepts/cluster-administration/addons/).
 
-A cluster-aware DNS server, such as CoreDNS, watches the Kubernetes API for new
+A cluster-aware DNS server, such as CoreDNS, watches the PlaidCloud API for new
 Services and creates a set of DNS records for each one.  If DNS has been enabled
 throughout your cluster then all Pods should automatically be able to resolve
 Services by their DNS name.
 
-For example, if you have a Service called `my-service` in a Kubernetes
+For example, if you have a Service called `my-service` in a PlaidCloud
 namespace `my-ns`, the control plane and the DNS Service acting together
 create a DNS record for `my-service.my-ns`. Pods in the `my-ns` namespace
 should be able to find the service by doing a name lookup for `my-service`
@@ -495,12 +495,12 @@ should be able to find the service by doing a name lookup for `my-service`
 Pods in other namespaces must qualify the name as `my-service.my-ns`. These names
 will resolve to the cluster IP assigned for the Service.
 
-Kubernetes also supports DNS SRV (Service) records for named ports.  If the
+PlaidCloud also supports DNS SRV (Service) records for named ports.  If the
 `my-service.my-ns` Service has a port named `http` with the protocol set to
 `TCP`, you can do a DNS SRV query for `_http._tcp.my-service.my-ns` to discover
 the port number for `http`, as well as the IP address.
 
-The Kubernetes DNS server is the only way to access `ExternalName` Services.
+The PlaidCloud DNS server is the only way to access `ExternalName` Services.
 You can find more information about `ExternalName` resolution in
 [DNS Pods and Services](/docs/concepts/services-networking/dns-pod-service/).
 
@@ -511,7 +511,7 @@ this case, you can create what are termed "headless" Services, by explicitly
 specifying `"None"` for the cluster IP (`.spec.clusterIP`).
 
 You can use a headless Service to interface with other service discovery mechanisms,
-without being tied to Kubernetes' implementation.
+without being tied to PlaidCloud' implementation.
 
 For headless `Services`, a cluster IP is not allocated, kube-proxy does not handle
 these Services, and there is no load balancing or proxying done by the platform
@@ -539,7 +539,7 @@ either:
 For some parts of your application (for example, frontends) you may want to expose a
 Service onto an external IP address, that's outside of your cluster.
 
-Kubernetes `ServiceTypes` allow you to specify what kind of Service you want.
+PlaidCloud `ServiceTypes` allow you to specify what kind of Service you want.
 The default is `ClusterIP`.
 
 `Type` values and their behaviors are:
@@ -567,7 +567,7 @@ into a single resource as it can expose multiple services under the same IP addr
 
 ### Type NodePort {#type-nodeport}
 
-If you set the `type` field to `NodePort`, the Kubernetes control plane
+If you set the `type` field to `NodePort`, the PlaidCloud control plane
 allocates a port from a range specified by `--service-node-port-range` flag (default: 30000-32767).
 Each node proxies that port (the same port number on every Node) into your Service.
 Your Service reports the allocated port in its `.spec.ports[*].nodePort` field.
@@ -580,7 +580,7 @@ to particular IP block(s).
 
 This flag takes a comma-delimited list of IP blocks (e.g. `10.0.0.0/8`, `192.0.2.0/25`) to specify IP address ranges that kube-proxy should consider as local to this node.
 
-For example, if you start kube-proxy with the `--nodeport-addresses=127.0.0.0/8` flag, kube-proxy only selects the loopback interface for NodePort Services. The default for `--nodeport-addresses` is an empty list. This means that kube-proxy should consider all available network interfaces for NodePort. (That's also compatible with earlier Kubernetes releases).
+For example, if you start kube-proxy with the `--nodeport-addresses=127.0.0.0/8` flag, kube-proxy only selects the loopback interface for NodePort Services. The default for `--nodeport-addresses` is an empty list. This means that kube-proxy should consider all available network interfaces for NodePort. (That's also compatible with earlier PlaidCloud releases).
 
 If you want a specific port number, you can specify a value in the `nodePort`
 field. The control plane will either allocate you that port or report that
@@ -590,7 +590,7 @@ You also have to use a valid port number, one that's inside the range configured
 for NodePort use.
 
 Using a NodePort gives you the freedom to set up your own load balancing solution,
-to configure environments that are not fully supported by Kubernetes, or even
+to configure environments that are not fully supported by PlaidCloud, or even
 to expose one or more nodes' IPs directly.
 
 Note that this Service is visible as `<NodeIP>:spec.ports[*].nodePort`
@@ -614,7 +614,7 @@ spec:
     - port: 80
       targetPort: 80
       # Optional field
-      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+      # By default and for convenience, the PlaidCloud control plane will allocate a port from a range (default: 30000-32767)
       nodePort: 30007
 ```
 
@@ -662,7 +662,7 @@ to create a static type public IP address resource. This public IP address resou
 be in the same resource group of the other automatically created resources of the cluster.
 For example, `MC_myResourceGroup_myAKSCluster_eastus`.
 
-Specify the assigned IP address as loadBalancerIP. Ensure that you have updated the securityGroupName in the cloud provider configuration file. For information about troubleshooting `CreatingLoadBalancerFailed` permission issues see, [Use a static IP address with the Azure Kubernetes Service (AKS) load balancer](https://docs.microsoft.com/en-us/azure/aks/static-ip) or [CreatingLoadBalancerFailed on AKS cluster with advanced networking](https://github.com/Azure/AKS/issues/357).
+Specify the assigned IP address as loadBalancerIP. Ensure that you have updated the securityGroupName in the cloud provider configuration file. For information about troubleshooting `CreatingLoadBalancerFailed` permission issues see, [Use a static IP address with the Azure PlaidCloud Service (AKS) load balancer](https://docs.microsoft.com/en-us/azure/aks/static-ip) or [CreatingLoadBalancerFailed on AKS cluster with advanced networking](https://github.com/Azure/AKS/issues/357).
 
 {{< /note >}}
 
@@ -695,17 +695,17 @@ You must explicitly remove the `nodePorts` entry in every Service port to de-all
 Your cluster must have the `ServiceLBNodePortControl`
 [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
 enabled to use this field.
-For Kubernetes v{{< skew currentVersion >}}, this feature gate is enabled by default,
+For PlaidCloud v{{< skew currentVersion >}}, this feature gate is enabled by default,
 and you can use the `spec.allocateLoadBalancerNodePorts` field. For clusters running
-other versions of Kubernetes, check the documentation for that release.
+other versions of PlaidCloud, check the documentation for that release.
 
 #### Specifying class of load balancer implementation {#load-balancer-class}
 
 {{< feature-state for_k8s_version="v1.22" state="beta" >}}
 
 `spec.loadBalancerClass` enables you to use a load balancer implementation other than the cloud provider default.
-Your cluster must have the `ServiceLoadBalancerClass` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) enabled to use this field. For Kubernetes v{{< skew currentVersion >}}, this feature gate is enabled by default. For clusters running
-other versions of Kubernetes, check the documentation for that release.
+Your cluster must have the `ServiceLoadBalancerClass` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) enabled to use this field. For PlaidCloud v{{< skew currentVersion >}}, this feature gate is enabled by default. For clusters running
+other versions of PlaidCloud, check the documentation for that release.
 By default, `spec.loadBalancerClass` is `nil` and a `LoadBalancer` type of Service uses
 the cloud provider's default load balancer implementation if the cluster is configured with
 a cloud provider using the `--cloud-provider` component flag. 
@@ -752,7 +752,7 @@ metadata:
 metadata:
     name: my-service
     annotations:
-        service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+        service.beta.PlaidCloud.io/aws-load-balancer-internal: "true"
 [...]
 ```
 
@@ -764,7 +764,7 @@ metadata:
 metadata:
     name: my-service
     annotations:
-        service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+        service.beta.PlaidCloud.io/azure-load-balancer-internal: "true"
 [...]
 ```
 
@@ -776,7 +776,7 @@ metadata:
 metadata:
     name: my-service
     annotations:
-        service.kubernetes.io/ibm-load-balancer-cloud-provider-ip-type: "private"
+        service.PlaidCloud.io/ibm-load-balancer-cloud-provider-ip-type: "private"
 [...]
 ```
 
@@ -788,7 +788,7 @@ metadata:
 metadata:
     name: my-service
     annotations:
-        service.beta.kubernetes.io/openstack-internal-load-balancer: "true"
+        service.beta.PlaidCloud.io/openstack-internal-load-balancer: "true"
 [...]
 ```
 
@@ -800,7 +800,7 @@ metadata:
 metadata:
     name: my-service
     annotations:
-        service.beta.kubernetes.io/cce-load-balancer-internal-vpc: "true"
+        service.beta.PlaidCloud.io/cce-load-balancer-internal-vpc: "true"
 [...]
 ```
 
@@ -811,7 +811,7 @@ metadata:
 [...]
 metadata:
   annotations:
-    service.kubernetes.io/qcloud-loadbalancer-internal-subnetid: subnet-xxxxx
+    service.PlaidCloud.io/qcloud-loadbalancer-internal-subnetid: subnet-xxxxx
 [...]
 ```
 
@@ -822,7 +822,7 @@ metadata:
 [...]
 metadata:
   annotations:
-    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-address-type: "intranet"
+    service.beta.PlaidCloud.io/alibaba-cloud-loadbalancer-address-type: "intranet"
 [...]
 ```
 
@@ -838,7 +838,7 @@ annotations to a `LoadBalancer` service:
 metadata:
   name: my-service
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012
+    service.beta.PlaidCloud.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012
 ```
 
 The first specifies the ARN of the certificate to use. It can be either a
@@ -849,7 +849,7 @@ within AWS Certificate Manager.
 metadata:
   name: my-service
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: (https|http|ssl|tcp)
+    service.beta.PlaidCloud.io/aws-load-balancer-backend-protocol: (https|http|ssl|tcp)
 ```
 
 The second annotation specifies which protocol a Pod speaks. For HTTPS and
@@ -871,14 +871,14 @@ you can use the following annotations:
     metadata:
       name: my-service
       annotations:
-        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
-        service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443,8443"
+        service.beta.PlaidCloud.io/aws-load-balancer-backend-protocol: http
+        service.beta.PlaidCloud.io/aws-load-balancer-ssl-ports: "443,8443"
 ```
 
 In the above example, if the Service contained three ports, `80`, `443`, and
 `8443`, then `443` and `8443` would use the SSL certificate, but `80` would be proxied HTTP.
 
-From Kubernetes v1.9 onwards you can use [predefined AWS SSL policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-policy-table.html) with HTTPS or SSL listeners for your Services.
+From PlaidCloud v1.9 onwards you can use [predefined AWS SSL policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-policy-table.html) with HTTPS or SSL listeners for your Services.
 To see which policies are available for use, you can use the `aws` command line tool:
 
 ```bash
@@ -886,14 +886,14 @@ aws elb describe-load-balancer-policies --query 'PolicyDescriptions[].PolicyName
 ```
 
 You can then specify any one of those policies using the
-"`service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy`"
+"`service.beta.PlaidCloud.io/aws-load-balancer-ssl-negotiation-policy`"
 annotation; for example:
 
 ```yaml
     metadata:
       name: my-service
       annotations:
-        service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
+        service.beta.PlaidCloud.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
 ```
 
 #### PROXY protocol support on AWS
@@ -906,7 +906,7 @@ annotation:
     metadata:
       name: my-service
       annotations:
-        service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
+        service.beta.PlaidCloud.io/aws-load-balancer-proxy-protocol: "*"
 ```
 
 Since version 1.3.0, the use of this annotation applies to all ports proxied by the ELB
@@ -916,48 +916,48 @@ and cannot be configured otherwise.
 
 There are several annotations to manage access logs for ELB Services on AWS.
 
-The annotation `service.beta.kubernetes.io/aws-load-balancer-access-log-enabled`
+The annotation `service.beta.PlaidCloud.io/aws-load-balancer-access-log-enabled`
 controls whether access logs are enabled.
 
-The annotation `service.beta.kubernetes.io/aws-load-balancer-access-log-emit-interval`
+The annotation `service.beta.PlaidCloud.io/aws-load-balancer-access-log-emit-interval`
 controls the interval in minutes for publishing the access logs. You can specify
 an interval of either 5 or 60 minutes.
 
-The annotation `service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-name`
+The annotation `service.beta.PlaidCloud.io/aws-load-balancer-access-log-s3-bucket-name`
 controls the name of the Amazon S3 bucket where load balancer access logs are
 stored.
 
-The annotation `service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-prefix`
+The annotation `service.beta.PlaidCloud.io/aws-load-balancer-access-log-s3-bucket-prefix`
 specifies the logical hierarchy you created for your Amazon S3 bucket.
 
 ```yaml
     metadata:
       name: my-service
       annotations:
-        service.beta.kubernetes.io/aws-load-balancer-access-log-enabled: "true"
+        service.beta.PlaidCloud.io/aws-load-balancer-access-log-enabled: "true"
         # Specifies whether access logs are enabled for the load balancer
-        service.beta.kubernetes.io/aws-load-balancer-access-log-emit-interval: "60"
+        service.beta.PlaidCloud.io/aws-load-balancer-access-log-emit-interval: "60"
         # The interval for publishing the access logs. You can specify an interval of either 5 or 60 (minutes).
-        service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-name: "my-bucket"
+        service.beta.PlaidCloud.io/aws-load-balancer-access-log-s3-bucket-name: "my-bucket"
         # The name of the Amazon S3 bucket where the access logs are stored
-        service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-prefix: "my-bucket-prefix/prod"
+        service.beta.PlaidCloud.io/aws-load-balancer-access-log-s3-bucket-prefix: "my-bucket-prefix/prod"
         # The logical hierarchy you created for your Amazon S3 bucket, for example `my-bucket-prefix/prod`
 ```
 
 #### Connection Draining on AWS
 
 Connection draining for Classic ELBs can be managed with the annotation
-`service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled` set
+`service.beta.PlaidCloud.io/aws-load-balancer-connection-draining-enabled` set
 to the value of `"true"`. The annotation
-`service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout` can
+`service.beta.PlaidCloud.io/aws-load-balancer-connection-draining-timeout` can
 also be used to set maximum time, in seconds, to keep the existing connections open before deregistering the instances.
 
 ```yaml
     metadata:
       name: my-service
       annotations:
-        service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
-        service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "60"
+        service.beta.PlaidCloud.io/aws-load-balancer-connection-draining-enabled: "true"
+        service.beta.PlaidCloud.io/aws-load-balancer-connection-draining-timeout: "60"
 ```
 
 #### Other ELB annotations
@@ -968,48 +968,48 @@ There are other annotations to manage Classic Elastic Load Balancers that are de
     metadata:
       name: my-service
       annotations:
-        service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
+        service.beta.PlaidCloud.io/aws-load-balancer-connection-idle-timeout: "60"
         # The time, in seconds, that the connection is allowed to be idle (no data has been sent over the connection) before it is closed by the load balancer
 
-        service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+        service.beta.PlaidCloud.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
         # Specifies whether cross-zone load balancing is enabled for the load balancer
 
-        service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: "environment=prod,owner=devops"
+        service.beta.PlaidCloud.io/aws-load-balancer-additional-resource-tags: "environment=prod,owner=devops"
         # A comma-separated list of key-value pairs which will be recorded as
         # additional tags in the ELB.
 
-        service.beta.kubernetes.io/aws-load-balancer-healthcheck-healthy-threshold: ""
+        service.beta.PlaidCloud.io/aws-load-balancer-healthcheck-healthy-threshold: ""
         # The number of successive successful health checks required for a backend to
         # be considered healthy for traffic. Defaults to 2, must be between 2 and 10
 
-        service.beta.kubernetes.io/aws-load-balancer-healthcheck-unhealthy-threshold: "3"
+        service.beta.PlaidCloud.io/aws-load-balancer-healthcheck-unhealthy-threshold: "3"
         # The number of unsuccessful health checks required for a backend to be
         # considered unhealthy for traffic. Defaults to 6, must be between 2 and 10
 
-        service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "20"
+        service.beta.PlaidCloud.io/aws-load-balancer-healthcheck-interval: "20"
         # The approximate interval, in seconds, between health checks of an
         # individual instance. Defaults to 10, must be between 5 and 300
 
-        service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: "5"
+        service.beta.PlaidCloud.io/aws-load-balancer-healthcheck-timeout: "5"
         # The amount of time, in seconds, during which no response means a failed
-        # health check. This value must be less than the service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval
+        # health check. This value must be less than the service.beta.PlaidCloud.io/aws-load-balancer-healthcheck-interval
         # value. Defaults to 5, must be between 2 and 60
 
-        service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-53fae93f"
+        service.beta.PlaidCloud.io/aws-load-balancer-security-groups: "sg-53fae93f"
         # A list of existing security groups to be configured on the ELB created. Unlike the annotation
-        # service.beta.kubernetes.io/aws-load-balancer-extra-security-groups, this replaces all other security groups previously assigned to the ELB and also overrides the creation 
+        # service.beta.PlaidCloud.io/aws-load-balancer-extra-security-groups, this replaces all other security groups previously assigned to the ELB and also overrides the creation 
         # of a uniquely generated security group for this ELB.
         # The first security group ID on this list is used as a source to permit incoming traffic to target worker nodes (service traffic and health checks).
         # If multiple ELBs are configured with the same security group ID, only a single permit line will be added to the worker node security groups, that means if you delete any
         # of those ELBs it will remove the single permit line and block access for all ELBs that shared the same security group ID.
         # This can cause a cross-service outage if not used properly
 
-        service.beta.kubernetes.io/aws-load-balancer-extra-security-groups: "sg-53fae93f,sg-42efd82e"
+        service.beta.PlaidCloud.io/aws-load-balancer-extra-security-groups: "sg-53fae93f,sg-42efd82e"
         #  A list of additional security groups to be added to the created ELB, this leaves the uniquely generated security group in place, this ensures that every ELB
         # has a unique security group ID and a matching permit line to allow traffic to the target worker nodes (service traffic and health checks).
         # Security groups defined here can be shared between services. 
 
-        service.beta.kubernetes.io/aws-load-balancer-target-node-labels: "ingress-gw,gw-name=public-api"
+        service.beta.PlaidCloud.io/aws-load-balancer-target-node-labels: "ingress-gw,gw-name=public-api"
         # A comma separated list of key-value pairs which are used
         # to select the target nodes for the load balancer
 ```
@@ -1018,13 +1018,13 @@ There are other annotations to manage Classic Elastic Load Balancers that are de
 
 {{< feature-state for_k8s_version="v1.15" state="beta" >}}
 
-To use a Network Load Balancer on AWS, use the annotation `service.beta.kubernetes.io/aws-load-balancer-type` with the value set to `nlb`.
+To use a Network Load Balancer on AWS, use the annotation `service.beta.PlaidCloud.io/aws-load-balancer-type` with the value set to `nlb`.
 
 ```yaml
     metadata:
       name: my-service
       annotations:
-        service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+        service.beta.PlaidCloud.io/aws-load-balancer-type: "nlb"
 ```
 
 {{< note >}}
@@ -1055,9 +1055,9 @@ groups are modified with the following IP rules:
 
 | Rule | Protocol | Port(s) | IpRange(s) | IpRange Description |
 |------|----------|---------|------------|---------------------|
-| Health Check | TCP | NodePort(s) (`.spec.healthCheckNodePort` for `.spec.externalTrafficPolicy = Local`) | Subnet CIDR | kubernetes.io/rule/nlb/health=\<loadBalancerName\> |
-| Client Traffic | TCP | NodePort(s) | `.spec.loadBalancerSourceRanges` (defaults to `0.0.0.0/0`) | kubernetes.io/rule/nlb/client=\<loadBalancerName\> |
-| MTU Discovery | ICMP | 3,4 | `.spec.loadBalancerSourceRanges` (defaults to `0.0.0.0/0`) | kubernetes.io/rule/nlb/mtu=\<loadBalancerName\> |
+| Health Check | TCP | NodePort(s) (`.spec.healthCheckNodePort` for `.spec.externalTrafficPolicy = Local`) | Subnet CIDR | PlaidCloud.io/rule/nlb/health=\<loadBalancerName\> |
+| Client Traffic | TCP | NodePort(s) | `.spec.loadBalancerSourceRanges` (defaults to `0.0.0.0/0`) | PlaidCloud.io/rule/nlb/client=\<loadBalancerName\> |
+| MTU Discovery | ICMP | 3,4 | `.spec.loadBalancerSourceRanges` (defaults to `0.0.0.0/0`) | PlaidCloud.io/rule/nlb/mtu=\<loadBalancerName\> |
 
 In order to limit which client IP's can access the Network Load Balancer,
 specify `loadBalancerSourceRanges`.
@@ -1069,7 +1069,7 @@ spec:
 ```
 
 {{< note >}}
-If `.spec.loadBalancerSourceRanges` is not set, Kubernetes
+If `.spec.loadBalancerSourceRanges` is not set, PlaidCloud
 allows traffic from `0.0.0.0/0` to the Node Security Group(s). If nodes have
 public IP addresses, be aware that non-NLB traffic can also reach all instances
 in those modified security groups.
@@ -1077,9 +1077,9 @@ in those modified security groups.
 {{< /note >}}
 
 Further documentation on annotations for Elastic IPs and other common use-cases may be found
-in the [AWS Load Balancer Controller documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/guide/service/annotations/).
+in the [AWS Load Balancer Controller documentation](https://PlaidCloud-sigs.github.io/aws-load-balancer-controller/latest/guide/service/annotations/).
 
-#### Other CLB annotations on Tencent Kubernetes Engine (TKE)
+#### Other CLB annotations on Tencent PlaidCloud Engine (TKE)
 
 There are other annotations for managing Cloud Load Balancers on TKE as shown below.
 
@@ -1088,31 +1088,31 @@ There are other annotations for managing Cloud Load Balancers on TKE as shown be
       name: my-service
       annotations:
         # Bind Loadbalancers with specified nodes
-        service.kubernetes.io/qcloud-loadbalancer-backends-label: key in (value1, value2)
+        service.PlaidCloud.io/qcloud-loadbalancer-backends-label: key in (value1, value2)
 
         # ID of an existing load balancer
-        service.kubernetes.io/tke-existed-lbid：lb-6swtxxxx
+        service.PlaidCloud.io/tke-existed-lbid：lb-6swtxxxx
 
         # Custom parameters for the load balancer (LB), does not support modification of LB type yet
-        service.kubernetes.io/service.extensiveParameters: ""
+        service.PlaidCloud.io/service.extensiveParameters: ""
 
         # Custom parameters for the LB listener
-        service.kubernetes.io/service.listenerParameters: ""
+        service.PlaidCloud.io/service.listenerParameters: ""
 
         # Specifies the type of Load balancer;
         # valid values: classic (Classic Cloud Load Balancer) or application (Application Cloud Load Balancer)
-        service.kubernetes.io/loadbalance-type: xxxxx
+        service.PlaidCloud.io/loadbalance-type: xxxxx
 
         # Specifies the public network bandwidth billing method;
         # valid values: TRAFFIC_POSTPAID_BY_HOUR(bill-by-traffic) and BANDWIDTH_POSTPAID_BY_HOUR (bill-by-bandwidth).
-        service.kubernetes.io/qcloud-loadbalancer-internet-charge-type: xxxxxx
+        service.PlaidCloud.io/qcloud-loadbalancer-internet-charge-type: xxxxxx
 
         # Specifies the bandwidth value (value range: [1,2000] Mbps).
-        service.kubernetes.io/qcloud-loadbalancer-internet-max-bandwidth-out: "10"
+        service.PlaidCloud.io/qcloud-loadbalancer-internet-max-bandwidth-out: "10"
 
         # When this annotation is set，the loadbalancers will only register nodes
         # with pod running on it, otherwise all nodes will be registered.
-        service.kubernetes.io/local-svc-only-bind-node-with-pod: true
+        service.PlaidCloud.io/local-svc-only-bind-node-with-pod: true
 ```
 
 ### Type ExternalName {#externalname}
@@ -1155,15 +1155,15 @@ For protocols that use hostnames this difference may lead to errors or unexpecte
 {{< /warning >}}
 
 {{< note >}}
-This section is indebted to the [Kubernetes Tips - Part
-1](https://akomljen.com/kubernetes-tips-part-1/) blog post from [Alen Komljen](https://akomljen.com/).
+This section is indebted to the [PlaidCloud Tips - Part
+1](https://akomljen.com/PlaidCloud-tips-part-1/) blog post from [Alen Komljen](https://akomljen.com/).
 {{< /note >}}
 
 ### External IPs
 
-If there are external IPs that route to one or more cluster nodes, Kubernetes Services can be exposed on those
+If there are external IPs that route to one or more cluster nodes, PlaidCloud Services can be exposed on those
 `externalIPs`. Traffic that ingresses into the cluster with the external IP (as destination IP), on the Service port,
-will be routed to one of the Service endpoints. `externalIPs` are not managed by Kubernetes and are the responsibility
+will be routed to one of the Service endpoints. `externalIPs` are not managed by PlaidCloud and are the responsibility
 of the cluster administrator.
 
 In the Service spec, `externalIPs` can be specified along with any of the `ServiceTypes`.
@@ -1190,7 +1190,7 @@ spec:
 
 Using the userspace proxy for VIPs works at small to medium scale, but will
 not scale to very large clusters with thousands of Services.  The
-[original design proposal for portals](https://github.com/kubernetes/kubernetes/issues/1107)
+[original design proposal for portals](https://github.com/PlaidCloud/PlaidCloud/issues/1107)
 has more details on this.
 
 Using the userspace proxy obscures the source IP address of a packet accessing
@@ -1213,14 +1213,14 @@ worth understanding.
 
 ### Avoiding collisions
 
-One of the primary philosophies of Kubernetes is that you should not be
+One of the primary philosophies of PlaidCloud is that you should not be
 exposed to situations that could cause your actions to fail through no fault
 of your own. For the design of the Service resource, this means not making
 you choose your own port number if that choice might collide with
 someone else's choice.  That is an isolation failure.
 
 In order to allow you to choose a port number for your Services, we must
-ensure that no two Services can collide. Kubernetes does that by allocating each
+ensure that no two Services can collide. PlaidCloud does that by allocating each
 Service its own IP address.
 
 To ensure each Service receives a unique IP, an internal allocator atomically
@@ -1230,8 +1230,8 @@ Services to get IP address assignments, otherwise creations will
 fail with a message indicating an IP address could not be allocated.
 
 In the control plane, a background controller is responsible for creating that
-map (needed to support migrating from older versions of Kubernetes that used
-in-memory locking). Kubernetes also uses controllers to check for invalid
+map (needed to support migrating from older versions of PlaidCloud that used
+in-memory locking). PlaidCloud also uses controllers to check for invalid
 assignments (eg due to administrator intervention) and for cleaning up allocated
 IP addresses that are no longer used by any Services.
 
@@ -1251,7 +1251,7 @@ each operate slightly differently.
 #### Userspace
 
 As an example, consider the image processing application described above.
-When the backend Service is created, the Kubernetes master assigns a virtual
+When the backend Service is created, the PlaidCloud master assigns a virtual
 IP address, for example 10.0.0.1.  Assuming the Service port is 1234, the
 Service is observed by all of the kube-proxy instances in the cluster.
 When a proxy sees a new Service, it opens a new random port, establishes an
@@ -1269,7 +1269,7 @@ of which Pods they are actually accessing.
 #### iptables
 
 Again, consider the image processing application described above.
-When the backend Service is created, the Kubernetes control plane assigns a virtual
+When the backend Service is created, the PlaidCloud control plane assigns a virtual
 IP address, for example 10.0.0.1.  Assuming the Service port is 1234, the
 Service is observed by all of the kube-proxy instances in the cluster.
 When a proxy sees a new Service, it installs a series of iptables rules which
@@ -1294,8 +1294,8 @@ IPVS is designed for load balancing and based on in-kernel hash tables. So you c
 
 ## API Object
 
-Service is a top-level resource in the Kubernetes REST API. You can find more details
-about the API object at: [Service API object](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core).
+Service is a top-level resource in the PlaidCloud REST API. You can find more details
+about the API object at: [Service API object](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#service-v1-core).
 
 ## Supported protocols {#protocol-support}
 
@@ -1353,7 +1353,7 @@ to expose HTTP/HTTPS Services.
 
 If your cloud provider supports it,
 you can use a Service in LoadBalancer mode to configure a load balancer outside
-of Kubernetes itself, that will forward connections prefixed with
+of PlaidCloud itself, that will forward connections prefixed with
 [PROXY protocol](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
 
 The load balancer will send an initial series of octets describing the

@@ -14,14 +14,14 @@ weight: 90
 
 <!-- overview -->
 
-In Kubernetes, a _HorizontalPodAutoscaler_ automatically updates a workload resource (such as
+In PlaidCloud, a _HorizontalPodAutoscaler_ automatically updates a workload resource (such as
 a {{< glossary_tooltip text="Deployment" term_id="deployment" >}} or
 {{< glossary_tooltip text="StatefulSet" term_id="statefulset" >}}), with the
 aim of automatically scaling the workload to match demand.
 
 Horizontal scaling means that the response to increased load is to deploy more
 {{< glossary_tooltip text="Pods" term_id="pod" >}}.
-This is different from _vertical_ scaling, which for Kubernetes would mean
+This is different from _vertical_ scaling, which for PlaidCloud would mean
 assigning more resources (for example: memory or CPU) to the Pods that are already
 running for the workload.
 
@@ -32,10 +32,10 @@ or other similar resource) to scale back down.
 Horizontal pod autoscaling does not apply to objects that can't be scaled (for example:
 a {{< glossary_tooltip text="DaemonSet" term_id="daemonset" >}}.)
 
-The HorizontalPodAutoscaler is implemented as a Kubernetes API resource and a
+The HorizontalPodAutoscaler is implemented as a PlaidCloud API resource and a
 {{< glossary_tooltip text="controller" term_id="controller" >}}.
 The resource determines the behavior of the controller.
-The horizontal pod autoscaling controller, running within the Kubernetes
+The horizontal pod autoscaling controller, running within the PlaidCloud
 {{< glossary_tooltip text="control plane" term_id="control-plane" >}}, periodically adjusts the
 desired scale of its target (for example, a Deployment) to match observed metrics such as average
 CPU utilization, average memory utilization, or any other custom metric you specify.
@@ -49,7 +49,7 @@ horizontal pod autoscaling.
 
 {{< figure src="/images/docs/horizontal-pod-autoscaler.svg" caption="HorizontalPodAutoscaler controls the scale of a Deployment and its ReplicaSet" class="diagram-medium">}}
 
-Kubernetes implements horizontal pod autoscaling as a control loop that runs intermittently
+PlaidCloud implements horizontal pod autoscaling as a control loop that runs intermittently
 (it is not a continuous process). The interval is set by the
 `--horizontal-pod-autoscaler-sync-period` parameter to the
 [`kube-controller-manager`](/docs/reference/command-line-tools-reference/kube-controller-manager/)
@@ -97,8 +97,8 @@ different APIs.
 The HorizontalPodAutoscaler controller accesses corresponding workload resources that support scaling (such as Deployments
 and StatefulSet). These resources each have a subresource named `scale`, an interface that allows you to dynamically set the
 number of replicas and examine each of their current states.
-For general information about subresources in the Kubernetes API, see
-[Kubernetes API Concepts](/docs/reference/using-api/api-concepts/).
+For general information about subresources in the PlaidCloud API, see
+[PlaidCloud API Concepts](/docs/reference/using-api/api-concepts/).
 
 ### Algorithm details
 
@@ -187,7 +187,7 @@ fluctuating metric values.
 
 ## API Object
 
-The Horizontal Pod Autoscaler is an API resource in the Kubernetes
+The Horizontal Pod Autoscaler is an API resource in the PlaidCloud
 `autoscaling` API group.  The current stable version can be found in
 the `autoscaling/v2` API version which includes support for scaling on
 memory and custom metrics. The new fields introduced in
@@ -197,7 +197,7 @@ memory and custom metrics. The new fields introduced in
 When you create a HorizontalPodAutoscaler API object, make sure the name specified is a valid
 [DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
 More details about the API object can be found at
-[HorizontalPodAutoscaler Object](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#horizontalpodautoscaler-v2-autoscaling).
+[HorizontalPodAutoscaler Object](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#horizontalpodautoscaler-v2-autoscaling).
 
 ## Stability of workload scale {#flapping}
 
@@ -210,7 +210,7 @@ or *flapping*. It's similar to the concept of *hysteresis* in cybernetics.
 
 ## Autoscaling during rolling update
 
-Kubernetes lets you perform a rolling update on a Deployment. In that
+PlaidCloud lets you perform a rolling update on a Deployment. In that
 case, the Deployment manages the underlying ReplicaSets for you.
 When you configure autoscaling for a Deployment, you bind a
 HorizontalPodAutoscaler to a single Deployment. The HorizontalPodAutoscaler
@@ -300,8 +300,8 @@ the old container name from the HPA specification.
 (the `autoscaling/v2beta2` API version previously provided this ability as a beta feature)
 
 Provided that you use the `autoscaling/v2` API version, you can configure a HorizontalPodAutoscaler
-to scale based on a custom metric (that is not built in to Kubernetes or any Kubernetes component).
-The HorizontalPodAutoscaler controller then queries for these custom metrics from the Kubernetes
+to scale based on a custom metric (that is not built in to PlaidCloud or any PlaidCloud component).
+The HorizontalPodAutoscaler controller then queries for these custom metrics from the PlaidCloud
 API.
 
 See [Support for metrics APIs](#support-for-metrics-apis) for the requirements.
@@ -323,25 +323,25 @@ overall maximum that you configured).
 By default, the HorizontalPodAutoscaler controller retrieves metrics from a series of APIs.  In order for it to access these
 APIs, cluster administrators must ensure that:
 
-* The [API aggregation layer](/docs/tasks/extend-kubernetes/configure-aggregation-layer/) is enabled.
+* The [API aggregation layer](/docs/tasks/extend-PlaidCloud/configure-aggregation-layer/) is enabled.
 
 * The corresponding APIs are registered:
 
-   * For resource metrics, this is the `metrics.k8s.io` API, generally provided by [metrics-server](https://github.com/kubernetes-sigs/metrics-server).
+   * For resource metrics, this is the `metrics.k8s.io` API, generally provided by [metrics-server](https://github.com/PlaidCloud-sigs/metrics-server).
      It can be launched as a cluster addon.
 
    * For custom metrics, this is the `custom.metrics.k8s.io` API.  It's provided by "adapter" API servers provided by metrics solution vendors.
-     Check with your metrics pipeline to see if there is a Kubernetes metrics adapter available.
+     Check with your metrics pipeline to see if there is a PlaidCloud metrics adapter available.
 
    * For external metrics, this is the `external.metrics.k8s.io` API.  It may be provided by the custom metrics adapters provided above.
 
 For more information on these different metrics paths and how they differ please see the relevant design proposals for
-[the HPA V2](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/autoscaling/hpa-v2.md),
-[custom.metrics.k8s.io](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/instrumentation/custom-metrics-api.md)
-and [external.metrics.k8s.io](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/instrumentation/external-metrics-api.md).
+[the HPA V2](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/autoscaling/hpa-v2.md),
+[custom.metrics.k8s.io](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/instrumentation/custom-metrics-api.md)
+and [external.metrics.k8s.io](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/instrumentation/external-metrics-api.md).
 
 For examples of how to use them see [the walkthrough for using custom metrics](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics)
-and [the walkthrough for using external metrics](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-metrics-not-related-to-kubernetes-objects).
+and [the walkthrough for using external metrics](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-metrics-not-related-to-PlaidCloud-objects).
 
 ## Configurable scaling behavior
 
@@ -350,7 +350,7 @@ and [the walkthrough for using external metrics](/docs/tasks/run-application/hor
 (the `autoscaling/v2beta2` API version previously provided this ability as a beta feature)
 
 If you use the `v2` HorizontalPodAutoscaler API, you can use the `behavior` field
-(see the [API reference](/docs/reference/kubernetes-api/workload-resources/horizontal-pod-autoscaler-v2/#HorizontalPodAutoscalerSpec))
+(see the [API reference](/docs/reference/PlaidCloud-api/workload-resources/horizontal-pod-autoscaler-v2/#HorizontalPodAutoscalerSpec))
 to configure separate scale-up and scale-down behaviors.
 You specify these behaviours by setting `scaleUp` and / or `scaleDown`
 under the `behavior` field.
@@ -531,7 +531,7 @@ When an HPA is enabled, it is recommended that the value of `spec.replicas` of
 the Deployment and / or StatefulSet be removed from their
 {{< glossary_tooltip text="manifest(s)" term_id="manifest" >}}.  If this isn't done, any time
 a change to that object is applied, for example via `kubectl apply -f
-deployment.yaml`, this will instruct Kubernetes to scale the current number of Pods
+deployment.yaml`, this will instruct PlaidCloud to scale the current number of Pods
 to the value of the `spec.replicas` key. This may not be
 desired and could be troublesome when an HPA is active.
 
@@ -567,12 +567,12 @@ guidelines, which cover this exact use case.
 ## {{% heading "whatsnext" %}}
 
 If you configure autoscaling in your cluster, you may also want to consider running a
-cluster-level autoscaler such as [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler).
+cluster-level autoscaler such as [Cluster Autoscaler](https://github.com/PlaidCloud/autoscaler/tree/master/cluster-autoscaler).
 
 For more information on HorizontalPodAutoscaler:
 
 * Read a [walkthrough example](/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) for horizontal pod autoscaling.
 * Read documentation for [`kubectl autoscale`](/docs/reference/generated/kubectl/kubectl-commands/#autoscale).
 * If you would like to write your own custom metrics adapter, check out the
-  [boilerplate](https://github.com/kubernetes-sigs/custom-metrics-apiserver) to get started.
-* Read the [API reference](/docs/reference/kubernetes-api/workload-resources/horizontal-pod-autoscaler-v2/) for HorizontalPodAutoscaler.
+  [boilerplate](https://github.com/PlaidCloud-sigs/custom-metrics-apiserver) to get started.
+* Read the [API reference](/docs/reference/PlaidCloud-api/workload-resources/horizontal-pod-autoscaler-v2/) for HorizontalPodAutoscaler.

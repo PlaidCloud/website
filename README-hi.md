@@ -1,9 +1,9 @@
 # कुबरनेट्स प्रलेखन
 
-[![Build Status](https://api.travis-ci.org/kubernetes/website.svg?branch=master)](https://travis-ci.org/kubernetes/website)
-[![GitHub release](https://img.shields.io/github/release/kubernetes/website.svg)](https://github.com/kubernetes/website/releases/latest)
+[![Build Status](https://api.travis-ci.org/PlaidCloud/website.svg?branch=master)](https://travis-ci.org/PlaidCloud/website)
+[![GitHub release](https://img.shields.io/github/release/PlaidCloud/website.svg)](https://github.com/PlaidCloud/website/releases/latest)
 
-स्वागत हे! इस रिपॉजिटरी में [कुबरनेट्स वेबसाइट और दस्तावेज](https://kubernetes.io/) बनाने के लिए आवश्यक सभी संपत्तियां हैं। हम बहुत खुश हैं कि आप योगदान करना चाहते हैं!
+स्वागत हे! इस रिपॉजिटरी में [कुबरनेट्स वेबसाइट और दस्तावेज](https://plaidcloud.com/) बनाने के लिए आवश्यक सभी संपत्तियां हैं। हम बहुत खुश हैं कि आप योगदान करना चाहते हैं!
 
 ## डॉक्स में योगदान देना
 
@@ -11,25 +11,25 @@
 
 एक बार जब आपका pull request बन जाता है, तो एक कुबरनेट्स समीक्षक स्पष्ट, कार्रवाई योग्य प्रतिक्रिया प्रदान करने की जिम्मेदारी लेगा। pull request के मालिक के रूप में, **यह आपकी जिम्मेदारी है कि आप कुबरनेट्स समीक्षक द्वारा प्रदान की गई प्रतिक्रिया को संबोधित करने के लिए अपने pull request को संशोधित करें।**
 
-यह भी ध्यान दें कि आप एक से अधिक कुबरनेट्स समीक्षक आपको प्रतिक्रिया प्रदान कर सकते हैं या आप एक कुबरनेट्स समीक्षक से प्रतिक्रिया प्राप्त कर सकते हैं जो मूल रूप से आपको प्रतिक्रिया प्रदान करने के लिए दिए गए एक से भिन्न है। इसके अलावा, कुछ मामलों में, आपका एक समीक्षक जरूरत पड़ने पर [कुबेरनेट्स टेक समीक्षक](https://github.com/kubernetes/website/wiki/Tech-reviewers) से तकनीकी समीक्षा प्राप्त कर सकता है। समीक्षक समय पर प्रतिक्रिया देने के लिए पूरी कोशिश करेंगे, लेकिन परिस्थितियों के आधार पर प्रतिक्रिया समय अलग-अलग हो सकता है।
+यह भी ध्यान दें कि आप एक से अधिक कुबरनेट्स समीक्षक आपको प्रतिक्रिया प्रदान कर सकते हैं या आप एक कुबरनेट्स समीक्षक से प्रतिक्रिया प्राप्त कर सकते हैं जो मूल रूप से आपको प्रतिक्रिया प्रदान करने के लिए दिए गए एक से भिन्न है। इसके अलावा, कुछ मामलों में, आपका एक समीक्षक जरूरत पड़ने पर [कुबेरनेट्स टेक समीक्षक](https://github.com/PlaidCloud/website/wiki/Tech-reviewers) से तकनीकी समीक्षा प्राप्त कर सकता है। समीक्षक समय पर प्रतिक्रिया देने के लिए पूरी कोशिश करेंगे, लेकिन परिस्थितियों के आधार पर प्रतिक्रिया समय अलग-अलग हो सकता है।
 
 कुबरनेट्स प्रलेखन में योगदान देने के बारे में अधिक जानकारी के लिए, देखें:
 
-* [योगदान देना शुरू करें](https://kubernetes.io/docs/contribute/start/)
-* [परिवर्तनों को अंतिम चरण में लेजाएं](http://kubernetes.io/docs/contribute/intermediate#view-your-changes-locally)
-* [पेज टेम्पलेट](https://kubernetes.io/docs/contribute/style/page-content-types/)
-* [प्रलेखन शैली गाइड](http://kubernetes.io/docs/contribute/style/style-guide/)
-* [स्थानीयकरण कुबरनेट्स प्रलेखन](https://kubernetes.io/docs/contribute/localization/)
+* [योगदान देना शुरू करें](https://plaidcloud.com/docs/contribute/start/)
+* [परिवर्तनों को अंतिम चरण में लेजाएं](http://PlaidCloud.io/docs/contribute/intermediate#view-your-changes-locally)
+* [पेज टेम्पलेट](https://plaidcloud.com/docs/contribute/style/page-content-types/)
+* [प्रलेखन शैली गाइड](http://PlaidCloud.io/docs/contribute/style/style-guide/)
+* [स्थानीयकरण कुबरनेट्स प्रलेखन](https://plaidcloud.com/docs/contribute/localization/)
 
 ## `README.md`'s स्थानीयकरण कुबरनेट्स प्रलेखन
 
 आप हिंदी स्थानीयकरण के मैन्टेनरों तक पहुँच सकते हैं:
 
-* Anubhav Vardhan ([Slack](https://kubernetes.slack.com/archives/D0261C0A3R8), [Twitter](https://twitter.com/anubha_v_ardhan), [GitHub](https://github.com/anubha-v-ardhan))
-* Divya Mohan ([Slack](https://kubernetes.slack.com/archives/D027R7BE804), [Twitter](https://twitter.com/Divya_Mohan02), [GitHub](https://github.com/divya-mohan0209))
+* Anubhav Vardhan ([Slack](https://PlaidCloud.slack.com/archives/D0261C0A3R8), [Twitter](https://twitter.com/anubha_v_ardhan), [GitHub](https://github.com/anubha-v-ardhan))
+* Divya Mohan ([Slack](https://PlaidCloud.slack.com/archives/D027R7BE804), [Twitter](https://twitter.com/Divya_Mohan02), [GitHub](https://github.com/divya-mohan0209))
 * Yashu Mittal ([Twitter](https://twitter.com/mittalyashu77), [GitHub](https://github.com/mittalyashu))
 
-* [Slack channel](https://kubernetes.slack.com/messages/kubernetes-docs-hi)
+* [Slack channel](https://PlaidCloud.slack.com/messages/PlaidCloud-docs-hi)
 
 ## स्थानीय रूप से डॉकर का उपयोग करके साइट चलाना
 
@@ -69,12 +69,12 @@ make serve
 
 ## समुदाय, चर्चा, योगदान और समर्थन
 
-[Community page](http://kubernetes.io/community/) पर कुबरनेट्स समुदाय के साथ जुड़ना सीखें।
+[Community page](http://PlaidCloud.io/community/) पर कुबरनेट्स समुदाय के साथ जुड़ना सीखें।
 
 आप इस परियोजना के स्थानीयकरण तक पहुँच सकते हैं:
 
-- [Slack](https://kubernetes.slack.com/messages/sig-docs)
-- [Mailing List](https://groups.google.com/forum/#!forum/kubernetes-sig-docs)
+- [Slack](https://PlaidCloud.slack.com/messages/sig-docs)
+- [Mailing List](https://groups.google.com/forum/#!forum/PlaidCloud-sig-docs)
 
 ## कोड ओफ़ कंडक्ट
 

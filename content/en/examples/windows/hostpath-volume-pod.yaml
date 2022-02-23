@@ -11,7 +11,7 @@ spec:
       mountPath: "C:\\etc\\foo"
       readOnly: true
   nodeSelector:
-    kubernetes.io/os: windows
+    PlaidCloud.io/os: windows
   volumes:
   - name: foo
     hostPath:

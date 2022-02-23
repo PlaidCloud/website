@@ -11,7 +11,7 @@ weight: 30
 
 <!-- overview -->
 
-This document describes the concept of a StorageClass in Kubernetes. Familiarity
+This document describes the concept of a StorageClass in PlaidCloud. Familiarity
 with [volumes](/docs/concepts/storage/volumes/) and
 [persistent volumes](/docs/concepts/storage/persistent-volumes) is suggested.
 
@@ -22,7 +22,7 @@ with [volumes](/docs/concepts/storage/volumes/) and
 A StorageClass provides a way for administrators to describe the "classes" of
 storage they offer. Different classes might map to quality-of-service levels,
 or to backup policies, or to arbitrary policies determined by the cluster
-administrators. Kubernetes itself is unopinionated about what classes
+administrators. PlaidCloud itself is unopinionated about what classes
 represent. This concept is sometimes called "profiles" in other storage
 systems.
 
@@ -47,7 +47,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: standard
-provisioner: kubernetes.io/aws-ebs
+provisioner: PlaidCloud.io/aws-ebs
 parameters:
   type: gp2
 reclaimPolicy: Retain
@@ -85,16 +85,16 @@ for provisioning PVs. This field must be specified.
 | Local                | -                   | [Local](#local)              |
 
 You are not restricted to specifying the "internal" provisioners
-listed here (whose names are prefixed with "kubernetes.io" and shipped
-alongside Kubernetes). You can also run and specify external provisioners,
+listed here (whose names are prefixed with "PlaidCloud.io" and shipped
+alongside PlaidCloud). You can also run and specify external provisioners,
 which are independent programs that follow a [specification](https://git.k8s.io/community/contributors/design-proposals/storage/volume-provisioning.md)
-defined by Kubernetes. Authors of external provisioners have full discretion
+defined by PlaidCloud. Authors of external provisioners have full discretion
 over where their code lives, how the provisioner is shipped, how it needs to be
 run, what volume plugin it uses (including Flex), etc. The repository
-[kubernetes-sigs/sig-storage-lib-external-provisioner](https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner)
+[PlaidCloud-sigs/sig-storage-lib-external-provisioner](https://github.com/PlaidCloud-sigs/sig-storage-lib-external-provisioner)
 houses a library for writing external provisioners that implements the bulk of
 the specification. Some external provisioners are listed under the repository
-[kubernetes-sigs/sig-storage-lib-external-provisioner](https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner).
+[PlaidCloud-sigs/sig-storage-lib-external-provisioner](https://github.com/PlaidCloud-sigs/sig-storage-lib-external-provisioner).
 
 For example, NFS doesn't provide an internal provisioner, but an external
 provisioner can be used. There are also cases when 3rd party storage
@@ -120,9 +120,9 @@ allows the users to resize the volume by editing the corresponding PVC object.
 The following types of volumes support volume expansion, when the underlying
 StorageClass has the field `allowVolumeExpansion` set to true.
 
-{{< table caption = "Table of Volume types and the version of Kubernetes they require"  >}}
+{{< table caption = "Table of Volume types and the version of PlaidCloud they require"  >}}
 
-Volume type | Required Kubernetes version
+Volume type | Required PlaidCloud version
 :---------- | :--------------------------
 gcePersistentDisk | 1.11
 awsElasticBlockStore | 1.11
@@ -202,7 +202,7 @@ metadata:
   name: task-pv-pod
 spec:
   nodeSelector:
-    kubernetes.io/hostname: kube-01
+    PlaidCloud.io/hostname: kube-01
   volumes:
     - name: task-pv-storage
       persistentVolumeClaim:
@@ -233,13 +233,13 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: standard
-provisioner: kubernetes.io/gce-pd
+provisioner: PlaidCloud.io/gce-pd
 parameters:
   type: pd-standard
 volumeBindingMode: WaitForFirstConsumer
 allowedTopologies:
 - matchLabelExpressions:
-  - key: failure-domain.beta.kubernetes.io/zone
+  - key: failure-domain.beta.PlaidCloud.io/zone
     values:
     - us-central1-a
     - us-central1-b
@@ -264,7 +264,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: slow
-provisioner: kubernetes.io/aws-ebs
+provisioner: PlaidCloud.io/aws-ebs
 parameters:
   type: io1
   iopsPerGB: "10"
@@ -275,18 +275,18 @@ parameters:
   [AWS docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
   for details. Default: `gp2`.
 * `zone` (Deprecated): AWS zone. If neither `zone` nor `zones` is specified, volumes are
-  generally round-robin-ed across all active zones where Kubernetes cluster
+  generally round-robin-ed across all active zones where PlaidCloud cluster
   has a node. `zone` and `zones` parameters must not be used at the same time.
 * `zones` (Deprecated): A comma separated list of AWS zone(s). If neither `zone` nor `zones`
   is specified, volumes are generally round-robin-ed across all active zones
-  where Kubernetes cluster has a node. `zone` and `zones` parameters must not
+  where PlaidCloud cluster has a node. `zone` and `zones` parameters must not
   be used at the same time.
 * `iopsPerGB`: only for `io1` volumes. I/O operations per second per GiB. AWS
   volume plugin multiplies this with size of requested volume to compute IOPS
   of the volume and caps it at 20 000 IOPS (maximum supported by AWS, see
   [AWS docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
   A string is expected here, i.e. `"10"`, not `10`.
-* `fsType`: fsType that is supported by kubernetes. Default: `"ext4"`.
+* `fsType`: fsType that is supported by PlaidCloud. Default: `"ext4"`.
 * `encrypted`: denotes whether the EBS volume should be encrypted or not.
   Valid values are `"true"` or `"false"`. A string is expected here,
   i.e. `"true"`, not `true`.
@@ -306,7 +306,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: slow
-provisioner: kubernetes.io/gce-pd
+provisioner: PlaidCloud.io/gce-pd
 parameters:
   type: pd-standard
   fstype: ext4
@@ -315,11 +315,11 @@ parameters:
 
 * `type`: `pd-standard` or `pd-ssd`. Default: `pd-standard`
 * `zone` (Deprecated): GCE zone. If neither `zone` nor `zones` is specified, volumes are
-  generally round-robin-ed across all active zones where Kubernetes cluster has
+  generally round-robin-ed across all active zones where PlaidCloud cluster has
   a node. `zone` and `zones` parameters must not be used at the same time.
 * `zones` (Deprecated): A comma separated list of GCE zone(s). If neither `zone` nor `zones`
   is specified, volumes are generally round-robin-ed across all active zones
-  where Kubernetes cluster has a node. `zone` and `zones` parameters must not
+  where PlaidCloud cluster has a node. `zone` and `zones` parameters must not
   be used at the same time.
 * `fstype`: `ext4` or `xfs`. Default: `ext4`. The defined filesystem type must be supported by the host operating system.
 
@@ -349,7 +349,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: slow
-provisioner: kubernetes.io/glusterfs
+provisioner: PlaidCloud.io/glusterfs
 parameters:
   resturl: "http://127.0.0.1:8081"
   clusterid: "630372ccdc720a92c681fb928f27b53f"
@@ -365,7 +365,7 @@ parameters:
 * `resturl`: Gluster REST service/Heketi service url which provision gluster
   volumes on demand. The general format should be `IPaddress:Port` and this is
   a mandatory parameter for GlusterFS dynamic provisioner. If Heketi service is
-  exposed as a routable service in openshift/kubernetes setup, this can have a
+  exposed as a routable service in openshift/PlaidCloud setup, this can have a
   format similar to `http://heketi-storage-project.cloudapps.mystorage.com`
   where the fqdn is a resolvable Heketi service url.
 * `restauthenabled` : Gluster REST service authentication boolean that enables
@@ -382,16 +382,16 @@ parameters:
   contains user password to use when talking to Gluster REST service. These
   parameters are optional, empty password will be used when both
   `secretNamespace` and `secretName` are omitted. The provided secret must have
-  type `"kubernetes.io/glusterfs"`, for example created in this way:
+  type `"PlaidCloud.io/glusterfs"`, for example created in this way:
 
     ```
     kubectl create secret generic heketi-secret \
-      --type="kubernetes.io/glusterfs" --from-literal=key='opensesame' \
+      --type="PlaidCloud.io/glusterfs" --from-literal=key='opensesame' \
       --namespace=default
     ```
 
     Example of a secret can be found in
-    [glusterfs-provisioning-secret.yaml](https://github.com/kubernetes/examples/tree/master/staging/persistent-volume-provisioning/glusterfs/glusterfs-secret.yaml).
+    [glusterfs-provisioning-secret.yaml](https://github.com/PlaidCloud/examples/tree/master/staging/persistent-volume-provisioning/glusterfs/glusterfs-secret.yaml).
 
 * `clusterid`: `630372ccdc720a92c681fb928f27b53f` is the ID of the cluster
   which will be used by Heketi when provisioning the volume. It can also be a
@@ -441,10 +441,10 @@ parameters:
 * `path`: Path that is exported by the NFS server.
 * `readOnly`: A flag indicating whether the storage will be mounted as read only (default false).
 
-Kubernetes doesn't include an internal NFS provisioner. You need to use an external provisioner to create a StorageClass for NFS.
+PlaidCloud doesn't include an internal NFS provisioner. You need to use an external provisioner to create a StorageClass for NFS.
 Here are some examples:
-* [NFS Ganesha server and external provisioner](https://github.com/kubernetes-sigs/nfs-ganesha-server-and-external-provisioner)
-* [NFS subdir external provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner)
+* [NFS Ganesha server and external provisioner](https://github.com/PlaidCloud-sigs/nfs-ganesha-server-and-external-provisioner)
+* [NFS subdir external provisioner](https://github.com/PlaidCloud-sigs/nfs-subdir-external-provisioner)
 
 ### OpenStack Cinder
 
@@ -453,17 +453,17 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: gold
-provisioner: kubernetes.io/cinder
+provisioner: PlaidCloud.io/cinder
 parameters:
   availability: nova
 ```
 
 * `availability`: Availability Zone. If not specified, volumes are generally
-  round-robin-ed across all active zones where Kubernetes cluster has a node.
+  round-robin-ed across all active zones where PlaidCloud cluster has a node.
 
 {{< note >}}
 {{< feature-state state="deprecated" for_k8s_version="v1.11" >}}
-This internal provisioner of OpenStack is deprecated. Please use [the external cloud provider for OpenStack](https://github.com/kubernetes/cloud-provider-openstack).
+This internal provisioner of OpenStack is deprecated. Please use [the external cloud provider for OpenStack](https://github.com/PlaidCloud/cloud-provider-openstack).
 {{< /note >}}
 
 ### vSphere
@@ -471,13 +471,13 @@ This internal provisioner of OpenStack is deprecated. Please use [the external c
 There are two types of provisioners for vSphere storage classes: 
 
 - [CSI provisioner](#vsphere-provisioner-csi): `csi.vsphere.vmware.com`
-- [vCP provisioner](#vcp-provisioner): `kubernetes.io/vsphere-volume`
+- [vCP provisioner](#vcp-provisioner): `PlaidCloud.io/vsphere-volume`
 
-In-tree provisioners are [deprecated](/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta/#why-are-we-migrating-in-tree-plugins-to-csi). For more information on the CSI provisioner, see [Kubernetes vSphere CSI Driver](https://vsphere-csi-driver.sigs.k8s.io/) and [vSphereVolume CSI migration](/docs/concepts/storage/volumes/#csi-migration-5).
+In-tree provisioners are [deprecated](/blog/2019/12/09/PlaidCloud-1-17-feature-csi-migration-beta/#why-are-we-migrating-in-tree-plugins-to-csi). For more information on the CSI provisioner, see [PlaidCloud vSphere CSI Driver](https://vsphere-csi-driver.sigs.k8s.io/) and [vSphereVolume CSI migration](/docs/concepts/storage/volumes/#csi-migration-5).
 
 #### CSI Provisioner {#vsphere-provisioner-csi}
 
-The vSphere CSI StorageClass provisioner works with Tanzu Kubernetes clusters. For an example, refer to the [vSphere CSI repository](https://github.com/kubernetes-sigs/vsphere-csi-driver/blob/master/example/vanilla-k8s-RWM-filesystem-volumes/example-sc.yaml).
+The vSphere CSI StorageClass provisioner works with Tanzu PlaidCloud clusters. For an example, refer to the [vSphere CSI repository](https://github.com/PlaidCloud-sigs/vsphere-csi-driver/blob/master/example/vanilla-k8s-RWM-filesystem-volumes/example-sc.yaml).
 
 #### vCP Provisioner 
 
@@ -490,7 +490,7 @@ The following examples use the VMware Cloud Provider (vCP) StorageClass provisio
     kind: StorageClass
     metadata:
       name: fast
-    provisioner: kubernetes.io/vsphere-volume
+    provisioner: PlaidCloud.io/vsphere-volume
     parameters:
       diskformat: zeroedthick
     ```
@@ -504,7 +504,7 @@ The following examples use the VMware Cloud Provider (vCP) StorageClass provisio
     kind: StorageClass
     metadata:
       name: fast
-    provisioner: kubernetes.io/vsphere-volume
+    provisioner: PlaidCloud.io/vsphere-volume
     parameters:
         diskformat: zeroedthick
         datastore: VSANDatastore
@@ -517,7 +517,7 @@ The following examples use the VMware Cloud Provider (vCP) StorageClass provisio
     specified in the vSphere config file used to initialize the vSphere Cloud
     Provider.
 
-3. Storage Policy Management inside kubernetes
+3. Storage Policy Management inside PlaidCloud
 
     * Using existing vCenter SPBM policy
 
@@ -532,7 +532,7 @@ The following examples use the VMware Cloud Provider (vCP) StorageClass provisio
         The SPBM policies can be specified in the StorageClass using the
         `storagePolicyName` parameter.
 
-    * Virtual SAN policy support inside Kubernetes
+    * Virtual SAN policy support inside PlaidCloud
 
         Vsphere Infrastructure (VI) Admins will have the ability to specify custom
         Virtual SAN Storage Capabilities during dynamic volume provisioning. You
@@ -543,13 +543,13 @@ The following examples use the VMware Cloud Provider (vCP) StorageClass provisio
         persistent volume (virtual disk) is being created. The virtual disk is
         distributed across the Virtual SAN datastore to meet the requirements.
 
-        You can see [Storage Policy Based Management for dynamic provisioning of volumes](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/policy-based-mgmt.html)
+        You can see [Storage Policy Based Management for dynamic provisioning of volumes](https://vmware.github.io/vsphere-storage-for-PlaidCloud/documentation/policy-based-mgmt.html)
         for more details on how to use storage policies for persistent volumes
         management.
 
 There are few
-[vSphere examples](https://github.com/kubernetes/examples/tree/master/staging/volumes/vsphere)
-which you try out for persistent volume management inside Kubernetes for vSphere.
+[vSphere examples](https://github.com/PlaidCloud/examples/tree/master/staging/volumes/vsphere)
+which you try out for persistent volume management inside PlaidCloud for vSphere.
 
 ### Ceph RBD
 
@@ -558,7 +558,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: fast
-provisioner: kubernetes.io/rbd
+provisioner: PlaidCloud.io/rbd
 parameters:
   monitors: 10.16.153.105:6789
   adminId: kube
@@ -577,23 +577,23 @@ parameters:
 * `adminId`: Ceph client ID that is capable of creating images in the pool.
   Default is "admin".
 * `adminSecretName`: Secret Name for `adminId`. This parameter is required.
-  The provided secret must have type "kubernetes.io/rbd".
+  The provided secret must have type "PlaidCloud.io/rbd".
 * `adminSecretNamespace`: The namespace for `adminSecretName`. Default is "default".
 * `pool`: Ceph RBD pool. Default is "rbd".
 * `userId`: Ceph client ID that is used to map the RBD image. Default is the
   same as `adminId`.
 * `userSecretName`: The name of Ceph Secret for `userId` to map RBD image. It
   must exist in the same namespace as PVCs. This parameter is required.
-  The provided secret must have type "kubernetes.io/rbd", for example created in this
+  The provided secret must have type "PlaidCloud.io/rbd", for example created in this
   way:
 
     ```shell
-    kubectl create secret generic ceph-secret --type="kubernetes.io/rbd" \
+    kubectl create secret generic ceph-secret --type="PlaidCloud.io/rbd" \
       --from-literal=key='QVFEQ1pMdFhPUnQrSmhBQUFYaERWNHJsZ3BsMmNjcDR6RFZST0E9PQ==' \
       --namespace=kube-system
     ```
 * `userSecretNamespace`: The namespace for `userSecretName`.
-* `fsType`: fsType that is supported by kubernetes. Default: `"ext4"`.
+* `fsType`: fsType that is supported by PlaidCloud. Default: `"ext4"`.
 * `imageFormat`: Ceph RBD image format, "1" or "2". Default is "2".
 * `imageFeatures`: This parameter is optional and should only be used if you
   set `imageFormat` to "2". Currently supported features are `layering` only.
@@ -612,7 +612,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
    name: slow
-provisioner: kubernetes.io/quobyte
+provisioner: PlaidCloud.io/quobyte
 parameters:
     quobyteAPIServer: "http://138.68.74.142:7860"
     registry: "138.68.74.142:7861"
@@ -636,12 +636,12 @@ parameters:
   Default is "default".
 * `adminSecretName`: secret that holds information about the Quobyte user and
   the password to authenticate against the API server. The provided secret
-  must have type "kubernetes.io/quobyte" and the keys `user` and `password`,
+  must have type "PlaidCloud.io/quobyte" and the keys `user` and `password`,
   for example:
 
     ```shell
     kubectl create secret generic quobyte-admin-secret \
-      --type="kubernetes.io/quobyte" --from-literal=user='admin' --from-literal=password='opensesame' \
+      --type="PlaidCloud.io/quobyte" --from-literal=user='admin' --from-literal=password='opensesame' \
       --namespace=kube-system
     ```
 
@@ -663,7 +663,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: slow
-provisioner: kubernetes.io/azure-disk
+provisioner: PlaidCloud.io/azure-disk
 parameters:
   skuName: Standard_LRS
   location: eastus
@@ -684,7 +684,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: slow
-provisioner: kubernetes.io/azure-disk
+provisioner: PlaidCloud.io/azure-disk
 parameters:
   storageaccounttype: Standard_LRS
   kind: managed
@@ -700,7 +700,7 @@ parameters:
   the cluster.
 * `resourceGroup`: Specify the resource group in which the Azure disk will be created. 
    It must be an existing resource group name. If it is unspecified, the disk will be 
-   placed in the same resource group as the current Kubernetes cluster.
+   placed in the same resource group as the current PlaidCloud cluster.
 
 - Premium VM can attach both Standard_LRS and Premium_LRS disks, while Standard
   VM can only attach Standard_LRS disks.
@@ -714,7 +714,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: azurefile
-provisioner: kubernetes.io/azure-file
+provisioner: PlaidCloud.io/azure-file
 parameters:
   skuName: Standard_LRS
   location: eastus
@@ -754,7 +754,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: portworx-io-priority-high
-provisioner: kubernetes.io/portworx-volume
+provisioner: PlaidCloud.io/portworx-volume
 parameters:
   repl: "1"
   snap_interval:   "70"
@@ -789,7 +789,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: slow
-provisioner: kubernetes.io/scaleio
+provisioner: PlaidCloud.io/scaleio
 parameters:
   gateway: https://192.168.99.200:443/api
   system: scaleio
@@ -801,7 +801,7 @@ parameters:
   fsType: xfs
 ```
 
-* `provisioner`: attribute is set to `kubernetes.io/scaleio`
+* `provisioner`: attribute is set to `PlaidCloud.io/scaleio`
 * `gateway`: address to a ScaleIO API gateway (required)
 * `system`: the name of the ScaleIO system (required)
 * `protectionDomain`: the name of the ScaleIO protection domain (required)
@@ -812,13 +812,13 @@ parameters:
 * `readOnly`: specifies the access mode to the mounted volume (default false)
 * `fsType`: the file system to use for the volume (default ext4)
 
-The ScaleIO Kubernetes volume plugin requires a configured Secret object.
-The secret must be created with type `kubernetes.io/scaleio` and use the same
+The ScaleIO PlaidCloud volume plugin requires a configured Secret object.
+The secret must be created with type `PlaidCloud.io/scaleio` and use the same
 namespace value as that of the PVC where it is referenced
 as shown in the following command:
 
 ```shell
-kubectl create secret generic sio-secret --type="kubernetes.io/scaleio" \
+kubectl create secret generic sio-secret --type="PlaidCloud.io/scaleio" \
 --from-literal=username=sioadmin --from-literal=password=d2NABDNjMA== \
 --namespace=default
 ```
@@ -830,10 +830,10 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: fast
-provisioner: kubernetes.io/storageos
+provisioner: PlaidCloud.io/storageos
 parameters:
   pool: default
-  description: Kubernetes volume
+  description: PlaidCloud volume
   fsType: ext4
   adminSecretNamespace: default
   adminSecretName: storageos-secret
@@ -844,7 +844,7 @@ parameters:
 * `description`: The description to assign to volumes that were created dynamically.
   All volume descriptions will be the same for the storage class, but different
   storage classes can be used to allow descriptions for different use cases.
-  Defaults to `Kubernetes volume`.
+  Defaults to `PlaidCloud volume`.
 * `fsType`: The default filesystem type to request. Note that user-defined rules
   within StorageOS may override this value.  Defaults to `ext4`.
 * `adminSecretNamespace`: The namespace where the API configuration secret is
@@ -852,15 +852,15 @@ parameters:
 * `adminSecretName`: The name of the secret to use for obtaining the StorageOS
   API credentials. If not specified, default values will be attempted.
 
-The StorageOS Kubernetes volume plugin can use a Secret object to specify an
+The StorageOS PlaidCloud volume plugin can use a Secret object to specify an
 endpoint and credentials to access the StorageOS API. This is only required when
 the defaults have been changed.
-The secret must be created with type `kubernetes.io/storageos` as shown in the
+The secret must be created with type `PlaidCloud.io/storageos` as shown in the
 following command:
 
 ```shell
 kubectl create secret generic storageos-secret \
---type="kubernetes.io/storageos" \
+--type="PlaidCloud.io/storageos" \
 --from-literal=apiAddress=tcp://localhost:5705 \
 --from-literal=apiUsername=storageos \
 --from-literal=apiPassword=storageos \
@@ -881,7 +881,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: local-storage
-provisioner: kubernetes.io/no-provisioner
+provisioner: PlaidCloud.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ```
 

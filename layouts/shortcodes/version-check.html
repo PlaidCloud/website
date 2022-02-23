@@ -1,4 +1,4 @@
-{{ $minVersion := .Page.Param "min-kubernetes-server-version" }}
+{{ $minVersion := .Page.Param "min-PlaidCloud-server-version" }}
 {{ if eq $minVersion (.Page.Param "version")  }}
 {{ T "version_check_mustbe" }}{{ $minVersion }}.
 {{ else if $minVersion}}

@@ -27,7 +27,7 @@
     <span class="release-prevpatches release-inline-value">
     {{- range $key, $value := sort $data.previousPatches ".targetDate" "asc" -}}
         {{ if $key }}{{ T "inline_list_separator" }}{{ end }}
-        <a href="https://git.k8s.io/kubernetes/CHANGELOG/CHANGELOG-{{ $dataVersion }}.md#v{{ replace .release `.` `` }}">{{ printf "%s" .release }}</a>
+        <a href="https://git.k8s.io/PlaidCloud/CHANGELOG/CHANGELOG-{{ $dataVersion }}.md#v{{ replace .release `.` `` }}">{{ printf "%s" .release }}</a>
     {{- end -}}
     </span>
 </div>
@@ -36,7 +36,7 @@
 <!-- not yet localized, mark as English -->
 <p lang="en">
 Complete {{ $dataVersion }} <a href="/releases/patch-releases/#{{ replace $dataVersion `.` `-` }}">Schedule</a>
-and <a href="https://git.k8s.io/kubernetes/CHANGELOG/CHANGELOG-{{ $dataVersion }}.md">Changelog</a>
+and <a href="https://git.k8s.io/PlaidCloud/CHANGELOG/CHANGELOG-{{ $dataVersion }}.md">Changelog</a>
 </p>
 
 </div>

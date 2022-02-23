@@ -8,21 +8,21 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference conent, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
 ## {{% heading "synopsis" %}}
 
 
-The Kubernetes network proxy runs on each node. This
-reflects services as defined in the Kubernetes API on each node and can do simple
+The PlaidCloud network proxy runs on each node. This
+reflects services as defined in the PlaidCloud API on each node and can do simple
 TCP, UDP, and SCTP stream forwarding or round robin TCP, UDP, and SCTP forwarding across a set of backends.
 Service cluster IPs and ports are currently found through Docker-links-compatible
 environment variables specifying ports opened by the service proxy. There is an optional
@@ -277,11 +277,11 @@ kube-proxy [flags]
 <td colspan="2">--kube-api-burst int32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: 10</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Burst to use while talking with kubernetes apiserver</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Burst to use while talking with PlaidCloud apiserver</p></td>
 </tr>
 
 <tr>
-<td colspan="2">--kube-api-content-type string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "application/vnd.kubernetes.protobuf"</td>
+<td colspan="2">--kube-api-content-type string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "application/vnd.PlaidCloud.protobuf"</td>
 </tr>
 <tr>
 <td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Content type of requests sent to apiserver.</p></td>
@@ -291,7 +291,7 @@ kube-proxy [flags]
 <td colspan="2">--kube-api-qps float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: 5</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>QPS to use while talking with kubernetes apiserver</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>QPS to use while talking with PlaidCloud apiserver</p></td>
 </tr>
 
 <tr>
@@ -326,7 +326,7 @@ kube-proxy [flags]
 <td colspan="2">--master string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The address of the Kubernetes API server (overrides any value in kubeconfig)</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The address of the PlaidCloud API server (overrides any value in kubeconfig)</p></td>
 </tr>
 
 <tr>

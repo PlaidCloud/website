@@ -5,7 +5,7 @@ metadata:
   labels:
     app: violation-pod
   annotations:
-    seccomp.security.alpha.kubernetes.io/pod: localhost/profiles/violation.json
+    seccomp.security.alpha.PlaidCloud.io/pod: localhost/profiles/violation.json
 spec:
   containers:
   - name: test-container

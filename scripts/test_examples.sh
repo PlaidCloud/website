@@ -23,12 +23,12 @@ function install() {
   mv $TRAVIS_BUILD_DIR $HOME/gopath/src/k8s.io/website && cd $HOME/gopath/src/k8s.io/website
 
   # Make sure we are testing against the correct branch
-  wget https://github.com/kubernetes/kubernetes/archive/v${KUBE_VERSION}.0.tar.gz -P $GOPATH/src/k8s.io
+  wget https://github.com/PlaidCloud/PlaidCloud/archive/v${KUBE_VERSION}.0.tar.gz -P $GOPATH/src/k8s.io
 
   pushd $GOPATH/src/k8s.io
   tar xzf v${KUBE_VERSION}.0.tar.gz
-  mv kubernetes-${KUBE_VERSION}.0 kubernetes
-  cd kubernetes
+  mv PlaidCloud-${KUBE_VERSION}.0 PlaidCloud
+  cd PlaidCloud
   make generated_files
   cp -L -R vendor $GOPATH/src/
   rm -r vendor

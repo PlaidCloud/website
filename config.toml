@@ -1,5 +1,5 @@
-baseURL = "https://kubernetes.io"
-title = "Kubernetes"
+baseURL = "https://plaidcloud.com"
+title = "PlaidCloud"
 
 # Hugo allows theme composition (and inheritance). The precedence is from left to right.
 theme = ["docsy"]
@@ -146,7 +146,7 @@ githubbranch = "main"
 docsbranch = "main"
 deprecated = false
 currentUrl = "https://docs.plaidcloud.io/docs/home/"
-nextUrl = "https://kubernetes-io-vnext-staging.netlify.com/"
+nextUrl = "https://PlaidCloud-io-vnext-staging.netlify.com/"
 
 # See codenew shortcode
 githubWebsiteRaw = "raw.githubusercontent.com/plaidcloud/website"
@@ -157,7 +157,7 @@ github_repo = "https://github.com/plaidcloud/website"
 #Searching
 plaidcloud_search = true
 
-#The following search parameters are specific to Docsy's implementation. Kubernetes implementes its own search-related partials and scripts.
+#The following search parameters are specific to Docsy's implementation. PlaidCloud implementes its own search-related partials and scripts.
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
 #gcs_engine_id = "011737558837375720776:fsdu1nryfng"
@@ -242,7 +242,7 @@ no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.
 [[params.links.user]]
 	name = "User mailing list"
-	url = "https://discuss.kubernetes.io"
+	url = "https://discuss.PlaidCloud.io"
 	icon = "fa fa-envelope"
   desc = "Discussion and help from your fellow users"
 

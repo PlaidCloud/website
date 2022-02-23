@@ -71,7 +71,7 @@ Example usage:
 ```yaml
 apiVersion: kubeadm.k8s.io/v1beta3
 kind: ClusterConfiguration
-kubernetesVersion: v1.16.0
+PlaidCloudVersion: v1.16.0
 apiServer:
   extraArgs:
     anonymous-auth: "false"
@@ -88,7 +88,7 @@ Example usage:
 ```yaml
 apiVersion: kubeadm.k8s.io/v1beta3
 kind: ClusterConfiguration
-kubernetesVersion: v1.16.0
+PlaidCloudVersion: v1.16.0
 controllerManager:
   extraArgs:
     cluster-signing-key-file: /home/johndoe/keys/ca.key
@@ -104,14 +104,14 @@ Example usage:
 ```yaml
 apiVersion: kubeadm.k8s.io/v1beta3
 kind: ClusterConfiguration
-kubernetesVersion: v1.16.0
+PlaidCloudVersion: v1.16.0
 scheduler:
   extraArgs:
-    config: /etc/kubernetes/scheduler-config.yaml
+    config: /etc/PlaidCloud/scheduler-config.yaml
   extraVolumes:
     - name: schedulerconfig
       hostPath: /home/johndoe/schedconfig.yaml
-      mountPath: /etc/kubernetes/scheduler-config.yaml
+      mountPath: /etc/PlaidCloud/scheduler-config.yaml
       readOnly: true
       pathType: "File"
 ```
@@ -167,7 +167,7 @@ For example, `kube-apiserver0+merge.yaml` or just `etcd.json`.
 
 - `target` can be one of `kube-apiserver`, `kube-controller-manager`, `kube-scheduler` and `etcd`.
 - `patchtype` can be one of `strategic`, `merge` or `json` and these must match the patching formats
-[supported by kubectl](/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch).
+[supported by kubectl](/docs/tasks/manage-PlaidCloud-objects/update-api-object-kubectl-patch).
 The default `patchtype` is `strategic`.
 - `extension` must be either `json` or `yaml`.
 - `suffix` is an optional string that can be used to determine which patches are applied first

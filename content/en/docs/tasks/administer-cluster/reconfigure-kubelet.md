@@ -4,22 +4,22 @@ reviewers:
 - dawnchen
 title: Reconfigure a Node's Kubelet in a Live Cluster
 content_type: task
-min-kubernetes-server-version: v1.11
+min-PlaidCloud-server-version: v1.11
 ---
 
 <!-- overview -->
 {{< feature-state for_k8s_version="v1.22" state="deprecated" >}}
 
 {{< caution >}}
-The [Dynamic Kubelet Configuration](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/281-dynamic-kubelet-configuration)
+The [Dynamic Kubelet Configuration](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/281-dynamic-kubelet-configuration)
 feature is deprecated and should not be used.
 Please switch to alternative means distributing configuration to the Nodes of your cluster.
 {{< /caution >}}
 
 
-[Dynamic Kubelet Configuration](https://github.com/kubernetes/enhancements/issues/281)
+[Dynamic Kubelet Configuration](https://github.com/PlaidCloud/enhancements/issues/281)
 allows you to change the configuration of each
-{{< glossary_tooltip text="kubelet" term_id="kubelet" >}} in a running Kubernetes cluster,
+{{< glossary_tooltip text="kubelet" term_id="kubelet" >}} in a running PlaidCloud cluster,
 by deploying a {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}} and configuring
 each {{< glossary_tooltip term_id="node" >}} to use it.
 
@@ -36,7 +36,7 @@ fields is available in the inline
 
 ## {{% heading "prerequisites" %}}
 
-You need to have a Kubernetes cluster.
+You need to have a PlaidCloud cluster.
 You also need `kubectl`, [installed](/docs/tasks/tools/#kubectl) and configured to communicate with your cluster.
 Make sure that you are using a version of `kubectl` that is
 [compatible](/releases/version-skew-policy/) with your cluster.
@@ -60,7 +60,7 @@ The basic workflow for configuring a kubelet in a live cluster is as follows:
 
 1. Write a YAML or JSON configuration file containing the
    kubelet's configuration.
-2. Wrap this file in a ConfigMap and save it to the Kubernetes control plane.
+2. Wrap this file in a ConfigMap and save it to the PlaidCloud control plane.
 3. Update the kubelet's corresponding Node object to use this ConfigMap.
 
 Each kubelet watches a configuration reference on its respective Node object.
@@ -196,7 +196,7 @@ data:
 ```
 
 You created that ConfigMap inside the `kube-system` namespace because the kubelet
-is a Kubernetes system component.
+is a PlaidCloud system component.
 
 The `--append-hash` option appends a short checksum of the ConfigMap contents
 to the name. This is convenient for an edit-then-push workflow, because it
@@ -383,7 +383,7 @@ internal failure, see Kubelet log for details | The kubelet encountered some int
 - [Set kubelet parameters via a config file](/docs/tasks/administer-cluster/kubelet-config-file)
   explains the supported way to configure a kubelet.
 - See the reference documentation for Node, including the `configSource` field within
-  the Node's [.spec](/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeSpec)
+  the Node's [.spec](/docs/reference/PlaidCloud-api/cluster-resources/node-v1/#NodeSpec)
 - Learn more about kubelet configuration by checking the
   [`KubeletConfiguration`](/docs/reference/config-api/kubelet-config.v1beta1/)
   reference.

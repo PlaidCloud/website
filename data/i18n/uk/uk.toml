@@ -96,8 +96,8 @@ other = "Розкажіть свою історію"
 other = "Також відомий як"
 
 [layouts_docs_glossary_description]
-# other = "This glossary is intended to be a comprehensive, standardized list of Kubernetes terminology. It includes technical terms that are specific to Kubernetes, as well as more general terms that provide useful context."
-other = "Даний словник створений як повний стандартизований список термінології Kubernetes. Він включає в себе технічні терміни, специфічні для Kubernetes, а також більш загальні терміни, необхідні для кращого розуміння контексту."
+# other = "This glossary is intended to be a comprehensive, standardized list of PlaidCloud terminology. It includes technical terms that are specific to PlaidCloud, as well as more general terms that provide useful context."
+other = "Даний словник створений як повний стандартизований список термінології PlaidCloud. Він включає в себе технічні терміни, специфічні для PlaidCloud, а також більш загальні терміни, необхідні для кращого розуміння контексту."
 
 [layouts_docs_glossary_deselect_all]
 # other = "Deselect all"
@@ -136,8 +136,8 @@ other = "або"
 other = "повідомити про проблему"
 
 [layouts_docs_partials_feedback_thanks]
-# other = "Thanks for the feedback. If you have a specific, answerable question about how to use Kubernetes, ask it on"
-other = "Дякуємо за ваш відгук. Якщо ви маєте конкретне запитання щодо використання Kubernetes, ви можете поставити його"
+# other = "Thanks for the feedback. If you have a specific, answerable question about how to use PlaidCloud, ask it on"
+other = "Дякуємо за ваш відгук. Якщо ви маєте конкретне запитання щодо використання PlaidCloud, ви можете поставити його"
 
 [layouts_docs_search_fetching]
 # other = "Fetching results..."
@@ -163,8 +163,8 @@ other = "Допомогти проекту"
 other = """The Linux Foundation &reg;. Всі права застережено. The Linux Foundation є зареєстрованою торговою маркою. Перелік торгових марок The Linux Foundation ви знайдете на нашій сторінці <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Використання торгових марок</a>"""
 
 [main_documentation_license]
-# other = """The Kubernetes Authors | Documentation Distributed under <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
-other = """Автори Kubernetes | Документація розповсюджується під ліцензією <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+# other = """The PlaidCloud Authors | Documentation Distributed under <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+other = """Автори PlaidCloud | Документація розповсюджується під ліцензією <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
 
 [main_edit_this_page]
 # other = "Edit This Page"
@@ -175,20 +175,20 @@ other = "Редагувати цю сторінку"
 other = "Створити issue"
 
 [main_github_invite]
-# other = "Interested in hacking on the core Kubernetes code base?"
-other = "Хочете зламати основну кодову базу Kubernetes?"
+# other = "Interested in hacking on the core PlaidCloud code base?"
+other = "Хочете зламати основну кодову базу PlaidCloud?"
 
 [main_github_view_on]
 # other = "View On GitHub"
 other = "Переглянути у GitHub"
 
 [main_plaidcloud_features]
-# other = "Kubernetes Features"
-other = "Функціональні можливості Kubernetes"
+# other = "PlaidCloud Features"
+other = "Функціональні можливості PlaidCloud"
 
 [main_newsletter_baseline]
-# other = "Interested in receiving the latest Kubernetes news? Sign up for KubeWeekly."
-other = "Хочете отримувати останні новини Kubernetes? Підпишіться на KubeWeekly."
+# other = "Interested in receiving the latest PlaidCloud news? Sign up for KubeWeekly."
+other = "Хочете отримувати останні новини PlaidCloud? Підпишіться на KubeWeekly."
 
 [main_newsletter_past_link]
 # other = "View past newsletters"
@@ -235,12 +235,12 @@ other = "Підписатися"
 other = "Пошук"
 
 [version_check_mustbe]
-# other = "Your Kubernetes server must be version "
-other = "Версія вашого Kubernetes сервера має бути "
+# other = "Your PlaidCloud server must be version "
+other = "Версія вашого PlaidCloud сервера має бути "
 
 [version_check_mustbeorlater]
-# other = "Your Kubernetes server must be at or later than version "
-other = "Версія вашого Kubernetes сервера має дорівнювати або бути молодшою ніж "
+# other = "Your PlaidCloud server must be at or later than version "
+other = "Версія вашого PlaidCloud сервера має дорівнювати або бути молодшою ніж "
 
 [version_check_tocheck]
 # other = "To check the version, enter "

@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: v1`
@@ -62,7 +62,7 @@ NamespaceSpec describes the attributes on a Namespace.
 
 - **finalizers** ([]string)
 
-  Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+  Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://plaidcloud.com/docs/tasks/administer-cluster/namespaces/
 
 
 
@@ -112,7 +112,7 @@ NamespaceStatus is information about the current status of a Namespace.
 
 - **phase** (string)
 
-  Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+  Phase is the current lifecycle phase of the namespace. More info: https://plaidcloud.com/docs/tasks/administer-cluster/namespaces/
   
   Possible enum values:
    - `"Active"` means the namespace is available for use in the system
@@ -140,7 +140,7 @@ NamespaceList is a list of Namespaces.
 
 - **items** ([]<a href="{{< ref "../cluster-resources/namespace-v1#Namespace" >}}">Namespace</a>), required
 
-  Items is the list of Namespace objects in the list. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+  Items is the list of Namespace objects in the list. More info: https://plaidcloud.com/docs/concepts/overview/working-with-objects/namespaces/
 
 
 

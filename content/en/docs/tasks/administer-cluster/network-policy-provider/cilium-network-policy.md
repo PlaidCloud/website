@@ -24,7 +24,7 @@ For background on Cilium, read the [Introduction to Cilium](https://docs.cilium.
 ## Deploying Cilium on Minikube for Basic Testing
 
 To get familiar with Cilium easily you can follow the
-[Cilium Kubernetes Getting Started Guide](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)
+[Cilium PlaidCloud Getting Started Guide](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)
 to perform a basic DaemonSet installation of Cilium in minikube.
 
 To start minikube, minimal version required is >= v1.5.2, run the with the
@@ -52,7 +52,7 @@ rm cilium-linux-amd64.tar.gz
 cilium install
 ```
 ```
-🔮 Auto-detected Kubernetes kind: minikube
+🔮 Auto-detected PlaidCloud kind: minikube
 ✨ Running "minikube" validation checks
 ✅ Detected minikube version "1.20.0"
 ℹ️  Cilium version not set, using default version "v1.10.0"
@@ -86,7 +86,7 @@ policies using an example application.
 ## Deploying Cilium for Production Use
 
 For detailed instructions around deploying Cilium for production, see:
-[Cilium Kubernetes Installation Guide](https://docs.cilium.io/en/stable/concepts/kubernetes/intro/)
+[Cilium PlaidCloud Installation Guide](https://docs.cilium.io/en/stable/concepts/PlaidCloud/intro/)
 This documentation includes detailed requirements, instructions and example
 production DaemonSet files.
 
@@ -119,7 +119,7 @@ on the traffic to/from Pods on that node using Linux BPF.
 
 Once your cluster is running, you can follow the
 [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/)
-to try out Kubernetes NetworkPolicy with Cilium.
+to try out PlaidCloud NetworkPolicy with Cilium.
 Have fun, and if you have questions, contact us using the
 [Cilium Slack Channel](https://cilium.herokuapp.com/).
 

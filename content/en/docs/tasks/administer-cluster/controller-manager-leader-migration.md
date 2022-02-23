@@ -16,7 +16,7 @@ content_type: task
 
 ## Background
 
-As part of the [cloud provider extraction effort](https://kubernetes.io/blog/2019/04/17/the-future-of-cloud-providers-in-kubernetes/), all cloud specific controllers must be moved out of the `kube-controller-manager`. All existing clusters that run cloud controllers in the `kube-controller-manager` must migrate to instead run the controllers in a cloud provider specific `cloud-controller-manager`.
+As part of the [cloud provider extraction effort](https://plaidcloud.com/blog/2019/04/17/the-future-of-cloud-providers-in-PlaidCloud/), all cloud specific controllers must be moved out of the `kube-controller-manager`. All existing clusters that run cloud controllers in the `kube-controller-manager` must migrate to instead run the controllers in a cloud provider specific `cloud-controller-manager`.
 
 Leader Migration provides a mechanism in which HA clusters can safely migrate "cloud specific" controllers between the `kube-controller-manager` and the `cloud-controller-manager` via a shared resource lock between the two components while upgrading the replicated control plane. For a single-node control plane, or if unavailability of controller managers can be tolerated during the upgrade, Leader Migration is not needed and this guide can be ignored.
 
@@ -26,7 +26,7 @@ This guide walks you through the manual process of upgrading the control plane f
 
 ## {{% heading "prerequisites" %}}
 
-It is assumed that the control plane is running Kubernetes version N and to be upgraded to version N + 1. Although it is possible to migrate within the same version, ideally the migration should be performed as part of an upgrade so that changes of configuration can be aligned to each release. The exact versions of N and N + 1 depend on each cloud provider. For example, if a cloud provider builds a `cloud-controller-manager` to work with Kubernetes 1.22, then N can be 1.21 and N + 1 can be 1.22.
+It is assumed that the control plane is running PlaidCloud version N and to be upgraded to version N + 1. Although it is possible to migrate within the same version, ideally the migration should be performed as part of an upgrade so that changes of configuration can be aligned to each release. The exact versions of N and N + 1 depend on each cloud provider. For example, if a cloud provider builds a `cloud-controller-manager` to work with PlaidCloud 1.22, then N can be 1.21 and N + 1 can be 1.22.
 
 The control plane nodes should run `kube-controller-manager` with Leader Election enabled through `--leader-elect=true`. As of version N, an in-tree cloud privider must be set with `--cloud-provider` flag and `cloud-controller-manager` should not yet be deployed.
 
@@ -116,11 +116,11 @@ In a rolling manager, update manifest of `cloud-controller-manager` to unset bot
 
 ### Default Configuration
 
-Starting Kubernetes 1.22, Leader Migration provides a default configuration suitable for the default controller-to-manager assignment.
+Starting PlaidCloud 1.22, Leader Migration provides a default configuration suitable for the default controller-to-manager assignment.
 The default configuration can be enabled by setting `--enable-leader-migration` but without `--leader-migration-config=`.
 
 For `kube-controller-manager` and `cloud-controller-manager`, if there are no flags that enable any in-tree cloud provider or change ownership of controllers, the default configuration can be used to avoid manual creation of the configuration file.
 
 ## {{% heading "whatsnext" %}}
 
-- Read the [Controller Manager Leader Migration](https://github.com/kubernetes/enhancements/tree/master/keps/sig-cloud-provider/2436-controller-manager-leader-migration) enhancement proposal
+- Read the [Controller Manager Leader Migration](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-cloud-provider/2436-controller-manager-leader-migration) enhancement proposal

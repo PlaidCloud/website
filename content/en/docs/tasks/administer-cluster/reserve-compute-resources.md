@@ -5,27 +5,27 @@ reviewers:
 - dashpole
 title: Reserve Compute Resources for System Daemons
 content_type: task
-min-kubernetes-server-version: 1.8
+min-PlaidCloud-server-version: 1.8
 ---
 
 <!-- overview -->
 
-Kubernetes nodes can be scheduled to `Capacity`. Pods can consume all the
+PlaidCloud nodes can be scheduled to `Capacity`. Pods can consume all the
 available capacity on a node by default. This is an issue because nodes
-typically run quite a few system daemons that power the OS and Kubernetes
+typically run quite a few system daemons that power the OS and PlaidCloud
 itself. Unless resources are set aside for these system daemons, pods and system
 daemons compete for resources and lead to resource starvation issues on the
 node.
 
 The `kubelet` exposes a feature named 'Node Allocatable' that helps to reserve
-compute resources for system daemons. Kubernetes recommends cluster
+compute resources for system daemons. PlaidCloud recommends cluster
 administrators to configure 'Node Allocatable' based on their workload density
 on each node.
 
 ## {{% heading "prerequisites" %}}
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
-Your Kubernetes server must be at or later than version 1.17 to use
+Your PlaidCloud server must be at or later than version 1.17 to use
 the kubelet command line option `--reserved-cpus` to set an
 [explicitly reserved CPU list](#explicitly-reserved-cpu-list).
 
@@ -35,7 +35,7 @@ the kubelet command line option `--reserved-cpus` to set an
 
 ![node capacity](/images/docs/node-capacity.svg)
 
-'Allocatable' on a Kubernetes node is defined as the amount of compute resources
+'Allocatable' on a PlaidCloud node is defined as the amount of compute resources
 that are available for pods. The scheduler does not over-subscribe
 'Allocatable'. 'CPU', 'memory' and 'ephemeral-storage' are supported as of now.
 
@@ -75,20 +75,20 @@ be configured to use the `systemd` cgroup driver.
 - **Kubelet Flag**: `--kube-reserved=[cpu=100m][,][memory=100Mi][,][ephemeral-storage=1Gi][,][pid=1000]`
 - **Kubelet Flag**: `--kube-reserved-cgroup=`
 
-`kube-reserved` is meant to capture resource reservation for kubernetes system
+`kube-reserved` is meant to capture resource reservation for PlaidCloud system
 daemons like the `kubelet`, `container runtime`, `node problem detector`, etc.
 It is not meant to reserve resources for system daemons that are run as pods.
 `kube-reserved` is typically a function of `pod density` on the nodes.
 
 In addition to `cpu`, `memory`, and `ephemeral-storage`, `pid` may be
 specified to reserve the specified number of process IDs for
-kubernetes system daemons.
+PlaidCloud system daemons.
 
-To optionally enforce `kube-reserved` on kubernetes system daemons, specify the parent
+To optionally enforce `kube-reserved` on PlaidCloud system daemons, specify the parent
 control group for kube daemons as the value for `--kube-reserved-cgroup` kubelet
 flag.
 
-It is recommended that the kubernetes system daemons are placed under a top
+It is recommended that the PlaidCloud system daemons are placed under a top
 level control group (`runtime.slice` on systemd machines for example). Each
 system daemon should ideally run within its own child control group. Refer to
 [the design proposal](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md#recommended-cgroups-setup)
@@ -104,7 +104,7 @@ exist. Kubelet will fail if an invalid cgroup is specified.
 
 `system-reserved` is meant to capture resource reservation for OS system daemons
 like `sshd`, `udev`, etc. `system-reserved` should reserve `memory` for the
-`kernel` too since `kernel` memory is not accounted to pods in Kubernetes at this time.
+`kernel` too since `kernel` memory is not accounted to pods in PlaidCloud at this time.
 Reserving resources for user login sessions is also recommended (`user.slice` in
 systemd world).
 
@@ -129,8 +129,8 @@ exist. `kubelet` will fail if an invalid cgroup is specified.
 **Kubelet Flag**: `--reserved-cpus=0-3`
 
 `reserved-cpus` is meant to define an explicit CPU set for OS system daemons and
-kubernetes system daemons. `reserved-cpus` is for systems that do not intend to
-define separate top level cgroups for OS system daemons and kubernetes system daemons
+PlaidCloud system daemons. `reserved-cpus` is for systems that do not intend to
+define separate top level cgroups for OS system daemons and PlaidCloud system daemons
 with regard to cpuset resource.
 If the Kubelet **does not** have `--system-reserved-cgroup` and `--kube-reserved-cgroup`,
 the explicit cpuset provided by `reserved-cpus` will take precedence over the CPUs
@@ -138,11 +138,11 @@ defined by `--kube-reserved` and `--system-reserved` options.
 
 This option is specifically designed for Telco/NFV use cases where uncontrolled
 interrupts/timers may impact the workload performance. you can use this option
-to define the explicit cpuset for the system/kubernetes daemons as well as the
+to define the explicit cpuset for the system/PlaidCloud daemons as well as the
 interrupts/timers, so the rest CPUs on the system can be used exclusively for
 workloads, with less impact from uncontrolled interrupts/timers. To move the
-system daemon, kubernetes daemons and interrupts/timers to the explicit cpuset
-defined by this option, other mechanism outside Kubernetes should be used.
+system daemon, PlaidCloud daemons and interrupts/timers to the explicit cpuset
+defined by this option, other mechanism outside PlaidCloud should be used.
 For example: in Centos, you can do this using the tuned toolset.
 
 ### Eviction Thresholds
@@ -184,7 +184,7 @@ respectively.
 
 System daemons are expected to be treated similar to 'Guaranteed' pods. System
 daemons can burst within their bounding control groups and this behavior needs
-to be managed as part of kubernetes deployments. For example, `kubelet` should
+to be managed as part of PlaidCloud deployments. For example, `kubelet` should
 have its own control group and share `kube-reserved` resources with the
 container runtime. However, Kubelet cannot burst and use up all available Node
 resources if `kube-reserved` is enforced.
@@ -202,7 +202,7 @@ ability to recover if any process in that group is oom-killed.
 * If absolutely necessary, enforce `system-reserved` over time.
 
 The resource requirements of kube system daemons may grow over time as more and
-more features are added. Over time, kubernetes project will attempt to bring
+more features are added. Over time, PlaidCloud project will attempt to bring
 down utilization of node system daemons, but that is not a priority as of now.
 So expect a drop in `Allocatable` capacity in future releases.
 

@@ -67,7 +67,7 @@ few different ways:
 
 {{% thirdparty-content %}}
 
-Other alternatives for enforcing security profiles are being developed in the Kubernetes
+Other alternatives for enforcing security profiles are being developed in the PlaidCloud
 ecosystem:
 
 - [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper).

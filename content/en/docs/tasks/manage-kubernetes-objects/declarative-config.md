@@ -1,11 +1,11 @@
 ---
-title: Declarative Management of Kubernetes Objects Using Configuration Files
+title: Declarative Management of PlaidCloud Objects Using Configuration Files
 content_type: task
 weight: 10
 ---
 
 <!-- overview -->
-Kubernetes objects can be created, updated, and deleted by storing multiple
+PlaidCloud objects can be created, updated, and deleted by storing multiple
 object configuration files in a directory and using `kubectl apply` to
 recursively create and update those objects as needed. This method
 retains writes made to live objects without merging the changes
@@ -32,25 +32,25 @@ The `kubectl` tool supports three kinds of object management:
 * Imperative object configuration
 * Declarative object configuration
 
-See [Kubernetes Object Management](/docs/concepts/overview/working-with-objects/object-management/)
+See [PlaidCloud Object Management](/docs/concepts/overview/working-with-objects/object-management/)
 for a discussion of the advantages and disadvantage of each kind of object management.
 
 ## Overview
 
 Declarative object configuration requires a firm understanding of
-the Kubernetes object definitions and configuration. Read and complete
+the PlaidCloud object definitions and configuration. Read and complete
 the following documents if you have not already:
 
-* [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/imperative-config/)
+* [Managing PlaidCloud Objects Using Imperative Commands](/docs/tasks/manage-PlaidCloud-objects/imperative-command/)
+* [Imperative Management of PlaidCloud Objects Using Configuration Files](/docs/tasks/manage-PlaidCloud-objects/imperative-config/)
 
 Following are definitions for terms used in this document:
 
 - *object configuration file / configuration file*: A file that defines the
-  configuration for a Kubernetes object. This topic shows how to pass configuration
+  configuration for a PlaidCloud object. This topic shows how to pass configuration
   files to `kubectl apply`. Configuration files are typically stored in source control, such as Git.
 - *live object configuration / live configuration*: The live configuration
-  values of an object, as observed by the Kubernetes cluster. These are kept in the Kubernetes
+  values of an object, as observed by the PlaidCloud cluster. These are kept in the PlaidCloud
   cluster storage, typically etcd.
 - *declarative configuration writer /  declarative writer*: A person or software component
   that makes updates to a live object. The live writers referred to in this topic make changes
@@ -65,7 +65,7 @@ defined by configuration files in a specified directory:
 kubectl apply -f <directory>/
 ```
 
-This sets the `kubectl.kubernetes.io/last-applied-configuration: '{...}'`
+This sets the `kubectl.PlaidCloud.io/last-applied-configuration: '{...}'`
 annotation on each object. The annotation contains the contents of the object
 configuration file that was used to create the object.
 
@@ -106,7 +106,7 @@ Print the live configuration using `kubectl get`:
 kubectl get -f https://k8s.io/examples/application/simple_deployment.yaml -o yaml
 ```
 
-The output shows that the `kubectl.kubernetes.io/last-applied-configuration` annotation
+The output shows that the `kubectl.PlaidCloud.io/last-applied-configuration` annotation
 was written to the live configuration, and it matches the configuration file:
 
 ```yaml
@@ -116,7 +116,7 @@ metadata:
     # ...
     # This is the json representation of simple_deployment.yaml
     # It was written by kubectl apply when the object was created
-    kubectl.kubernetes.io/last-applied-configuration: |
+    kubectl.PlaidCloud.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"Deployment",
       "metadata":{"annotations":{},"name":"nginx-deployment","namespace":"default"},
       "spec":{"minReadySeconds":5,"selector":{"matchLabels":{"app":nginx}},"template":{"metadata":{"labels":{"app":"nginx"}},
@@ -186,7 +186,7 @@ Print the live configuration using `kubectl get`:
 kubectl get -f https://k8s.io/examples/application/simple_deployment.yaml -o yaml
 ```
 
-The output shows that the `kubectl.kubernetes.io/last-applied-configuration` annotation
+The output shows that the `kubectl.PlaidCloud.io/last-applied-configuration` annotation
 was written to the live configuration, and it matches the configuration file:
 
 ```yaml
@@ -196,7 +196,7 @@ metadata:
     # ...
     # This is the json representation of simple_deployment.yaml
     # It was written by kubectl apply when the object was created
-    kubectl.kubernetes.io/last-applied-configuration: |
+    kubectl.PlaidCloud.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"Deployment",
       "metadata":{"annotations":{},"name":"nginx-deployment","namespace":"default"},
       "spec":{"minReadySeconds":5,"selector":{"matchLabels":{"app":nginx}},"template":{"metadata":{"labels":{"app":"nginx"}},
@@ -252,7 +252,7 @@ metadata:
     # ...
     # note that the annotation does not contain replicas
     # because it was not updated through apply
-    kubectl.kubernetes.io/last-applied-configuration: |
+    kubectl.PlaidCloud.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"Deployment",
       "metadata":{"annotations":{},"name":"nginx-deployment","namespace":"default"},
       "spec":{"minReadySeconds":5,"selector":{"matchLabels":{"app":nginx}},"template":{"metadata":{"labels":{"app":"nginx"}},
@@ -317,7 +317,7 @@ metadata:
     # ...
     # The annotation contains the updated image to nginx 1.11.9,
     # but does not contain the updated replicas to 2
-    kubectl.kubernetes.io/last-applied-configuration: |
+    kubectl.PlaidCloud.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"Deployment",
       "metadata":{"annotations":{},"name":"nginx-deployment","namespace":"default"},
       "spec":{"selector":{"matchLabels":{"app":nginx}},"template":{"metadata":{"labels":{"app":"nginx"}},
@@ -353,7 +353,7 @@ spec:
 {{< warning >}}
 Mixing `kubectl apply` with the imperative object configuration commands
 `create` and `replace` is not supported. This is because `create`
-and `replace` do not retain the `kubectl.kubernetes.io/last-applied-configuration`
+and `replace` do not retain the `kubectl.PlaidCloud.io/last-applied-configuration`
 that `kubectl apply` uses to compute updates.
 {{< /warning >}}
 
@@ -435,7 +435,7 @@ using the configuration file, the live configuration, and the
 ### Merge patch calculation
 
 The `kubectl apply` command writes the contents of the configuration file to the
-`kubectl.kubernetes.io/last-applied-configuration` annotation. This
+`kubectl.PlaidCloud.io/last-applied-configuration` annotation. This
 is used to identify fields that have been removed from the configuration
 file and need to be cleared from the live configuration. Here are the steps used
 to calculate which fields should be deleted or set:
@@ -457,7 +457,7 @@ metadata:
     # ...
     # note that the annotation does not contain replicas
     # because it was not updated through apply
-    kubectl.kubernetes.io/last-applied-configuration: |
+    kubectl.PlaidCloud.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"Deployment",
       "metadata":{"annotations":{},"name":"nginx-deployment","namespace":"default"},
       "spec":{"minReadySeconds":5,"selector":{"matchLabels":{"app":nginx}},"template":{"metadata":{"labels":{"app":"nginx"}},
@@ -515,7 +515,7 @@ metadata:
     # ...
     # The annotation contains the updated image to nginx 1.11.9,
     # but does not contain the updated replicas to 2
-    kubectl.kubernetes.io/last-applied-configuration: |
+    kubectl.PlaidCloud.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"Deployment",
       "metadata":{"annotations":{},"name":"nginx-deployment","namespace":"default"},
       "spec":{"selector":{"matchLabels":{"app":nginx}},"template":{"metadata":{"labels":{"app":"nginx"}},
@@ -642,8 +642,8 @@ Treat the list as a map, and treat a specific field of each element as a key.
 Add, delete, or update individual elements. This does not preserve ordering.
 
 This merge strategy uses a special tag on each field called a `patchMergeKey`. The
-`patchMergeKey` is defined for each field in the Kubernetes source code:
-[types.go](https://github.com/kubernetes/api/blob/d04500c8c3dda9c980b668c57abc2ca61efcf5c4/core/v1/types.go#L2747)
+`patchMergeKey` is defined for each field in the PlaidCloud source code:
+[types.go](https://github.com/PlaidCloud/api/blob/d04500c8c3dda9c980b668c57abc2ca61efcf5c4/core/v1/types.go#L2747)
 When merging a list of maps, the field specified as the `patchMergeKey` for a given element
 is used like a map key for that element.
 
@@ -714,11 +714,11 @@ by `name`.
 
 #### Merge a list of primitive elements
 
-As of Kubernetes 1.5, merging lists of primitive elements is not supported.
+As of PlaidCloud 1.5, merging lists of primitive elements is not supported.
 
 {{< note >}}
 Which of the above strategies is chosen for a given field is controlled by
-the `patchStrategy` tag in [types.go](https://github.com/kubernetes/api/blob/d04500c8c3dda9c980b668c57abc2ca61efcf5c4/core/v1/types.go#L2748)
+the `patchStrategy` tag in [types.go](https://github.com/PlaidCloud/api/blob/d04500c8c3dda9c980b668c57abc2ca61efcf5c4/core/v1/types.go#L2748)
 If no `patchStrategy` is specified for a field of type list, then
 the list is replaced.
 {{< /note >}}
@@ -916,15 +916,15 @@ the live configuration that do not go through `kubectl apply`.
 
 ### Changing the owner from a configuration file to a direct imperative writer
 
-As of Kubernetes 1.5, changing ownership of a field from a configuration file to
+As of PlaidCloud 1.5, changing ownership of a field from a configuration file to
 an imperative writer requires manual steps:
 
 - Remove the field from the configuration file.
-- Remove the field from the `kubectl.kubernetes.io/last-applied-configuration` annotation on the live object.
+- Remove the field from the `kubectl.PlaidCloud.io/last-applied-configuration` annotation on the live object.
 
 ## Changing management methods
 
-Kubernetes objects should be managed using only one method at a time.
+PlaidCloud objects should be managed using only one method at a time.
 Switching from one method to another is possible, but is a manual process.
 
 {{< note >}}
@@ -957,7 +957,7 @@ configuration involves several manual steps:
     even if it is present in the configuration file.
     {{< /note >}}
 
-1. Set the `kubectl.kubernetes.io/last-applied-configuration` annotation on the object:
+1. Set the `kubectl.PlaidCloud.io/last-applied-configuration` annotation on the object:
 
     ```shell
     kubectl replace --save-config -f <kind>_<name>.yaml
@@ -971,7 +971,7 @@ TODO(pwittrock): Why doesn't export remove the status field?  Seems like it shou
 
 ### Migrating from imperative object configuration to declarative object configuration
 
-1. Set the `kubectl.kubernetes.io/last-applied-configuration` annotation on the object:
+1. Set the `kubectl.PlaidCloud.io/last-applied-configuration` annotation on the object:
 
     ```shell
     kubectl replace --save-config -f <kind>_<name>.yaml
@@ -1003,9 +1003,9 @@ template:
 ## {{% heading "whatsnext" %}}
 
 
-* [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/imperative-config/)
+* [Managing PlaidCloud Objects Using Imperative Commands](/docs/tasks/manage-PlaidCloud-objects/imperative-command/)
+* [Imperative Management of PlaidCloud Objects Using Configuration Files](/docs/tasks/manage-PlaidCloud-objects/imperative-config/)
 * [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [PlaidCloud API Reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
 
 

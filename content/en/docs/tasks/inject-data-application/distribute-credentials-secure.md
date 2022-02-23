@@ -2,7 +2,7 @@
 title: Distribute Credentials Securely Using Secrets
 content_type: task
 weight: 50
-min-kubernetes-server-version: v1.6
+min-PlaidCloud-server-version: v1.6
 ---
 
 <!-- overview -->
@@ -214,7 +214,7 @@ Here is a configuration file you can use to create a Pod:
 ## Configure all key-value pairs in a Secret as container environment variables
 
 {{< note >}}
-This functionality is available in Kubernetes v1.6 and later.
+This functionality is available in PlaidCloud v1.6 and later.
 {{< /note >}}
 
 *  Create a Secret containing multiple key-value pairs
@@ -247,9 +247,9 @@ This functionality is available in Kubernetes v1.6 and later.
 
 ### References
 
-* [Secret](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#secret-v1-core)
-* [Volume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core)
-* [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core)
+* [Secret](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#secret-v1-core)
+* [Volume](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#volume-v1-core)
+* [Pod](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#pod-v1-core)
 
 ## {{% heading "whatsnext" %}}
 

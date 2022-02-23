@@ -4,8 +4,8 @@ weight: 15
 no_list: true
 ---
 
-For an introduction to how Kubernetes implements and controls API access,
-read [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access/).
+For an introduction to how PlaidCloud implements and controls API access,
+read [Controlling Access to the PlaidCloud API](/docs/concepts/security/controlling-access/).
 
 Reference documentation:
 

@@ -58,7 +58,7 @@ fail validation.
 		<tr>
 			<td style="white-space: nowrap">HostProcess</td>
 			<td>
-				<p>Windows pods offer the ability to run <a href="/docs/tasks/configure-pod-container/create-hostprocess-pod">HostProcess containers</a> which enables privileged access to the Windows node. Privileged access to the host is disallowed in the baseline policy. HostProcess pods are an <strong>alpha</strong> feature as of Kubernetes <strong>v1.22</strong>.</p>
+				<p>Windows pods offer the ability to run <a href="/docs/tasks/configure-pod-container/create-hostprocess-pod">HostProcess containers</a> which enables privileged access to the Windows node. Privileged access to the host is disallowed in the baseline policy. HostProcess pods are an <strong>alpha</strong> feature as of PlaidCloud <strong>v1.22</strong>.</p>
 				<p><strong>Restricted Fields</strong></p>
 				<ul>
 					<li><code>spec.securityContext.windowsOptions.hostProcess</code></li>
@@ -174,7 +174,7 @@ fail validation.
 				<p>On supported hosts, the <code>runtime/default</code> AppArmor profile is applied by default. The baseline policy should prevent overriding or disabling the default AppArmor profile, or restrict overrides to an allowed set of profiles.</p>
 				<p><strong>Restricted Fields</strong></p>
 				<ul>
-					<li><code>metadata.annotations["container.apparmor.security.beta.kubernetes.io/*"]</code></li>
+					<li><code>metadata.annotations["container.apparmor.security.beta.PlaidCloud.io/*"]</code></li>
 				</ul>
 				<p><strong>Allowed Values</strong></p>
 				<ul>
@@ -483,7 +483,7 @@ built-in [Pod Security Admission Controller](/docs/concepts/security/pod-securit
 
 {{% thirdparty-content %}}
 
-Other alternatives for enforcing security profiles are being developed in the Kubernetes
+Other alternatives for enforcing security profiles are being developed in the PlaidCloud
 ecosystem, such as: 
 - [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper).
 - [Kubewarden](https://github.com/kubewarden).
@@ -491,9 +491,9 @@ ecosystem, such as:
 
 ### What profiles should I apply to my Windows Pods?
 
-Windows in Kubernetes has some limitations and differentiators from standard Linux-based
+Windows in PlaidCloud has some limitations and differentiators from standard Linux-based
 workloads. Specifically, many of the Pod SecurityContext fields [have no effect on
-Windows](/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#v1-podsecuritycontext). As
+Windows](/docs/setup/production-environment/windows/intro-windows-in-PlaidCloud/#v1-podsecuritycontext). As
 such, no standardized Pod Security profiles currently exist.
 
 If you apply the restricted profile for a Windows pod, this **may** have an impact on the pod

@@ -1,23 +1,23 @@
 ---
-title: Proxies in Kubernetes
+title: Proxies in PlaidCloud
 content_type: concept
 weight: 90
 ---
 
 <!-- overview -->
-This page explains proxies used with Kubernetes.
+This page explains proxies used with PlaidCloud.
 
 
 <!-- body -->
 
 ## Proxies
 
-There are several different proxies you may encounter when using Kubernetes:
+There are several different proxies you may encounter when using PlaidCloud:
 
 1.  The [kubectl proxy](/docs/tasks/access-application-cluster/access-cluster/#directly-accessing-the-rest-api):
 
     - runs on a user's desktop or in a pod
-    - proxies from a localhost address to the Kubernetes apiserver
+    - proxies from a localhost address to the PlaidCloud apiserver
     - client to proxy uses HTTP
     - proxy to apiserver uses HTTPS
     - locates apiserver
@@ -50,12 +50,12 @@ There are several different proxies you may encounter when using Kubernetes:
 1.  Cloud Load Balancers on external services:
 
     - are provided by some cloud providers (e.g. AWS ELB, Google Cloud Load Balancer)
-    - are created automatically when the Kubernetes service has type `LoadBalancer`
+    - are created automatically when the PlaidCloud service has type `LoadBalancer`
     - usually supports UDP/TCP only
     - SCTP support is up to the load balancer implementation of the cloud provider
     - implementation varies by cloud provider.
 
-Kubernetes users will typically not need to worry about anything other than the first two types.  The cluster admin
+PlaidCloud users will typically not need to worry about anything other than the first two types.  The cluster admin
 will typically ensure that the latter types are setup correctly.
 
 ## Requesting redirects

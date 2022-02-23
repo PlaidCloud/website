@@ -13,7 +13,7 @@ weight: 41 # just after volume snapshots
 
 <!-- overview -->
 
-This document describes the concept of VolumeSnapshotClass in Kubernetes. Familiarity
+This document describes the concept of VolumeSnapshotClass in PlaidCloud. Familiarity
 with [volume snapshots](/docs/concepts/storage/volume-snapshots/) and
 [storage classes](/docs/concepts/storage/storage-classes) is suggested.
 
@@ -40,7 +40,7 @@ of a class when first creating VolumeSnapshotClass objects, and the objects cann
 be updated once they are created.
 
 {{< note >}}
-Installation of the CRDs is the responsibility of the Kubernetes distribution. Without the required CRDs present, the creation of a VolumeSnapshotClass fails.  
+Installation of the CRDs is the responsibility of the PlaidCloud distribution. Without the required CRDs present, the creation of a VolumeSnapshotClass fails.  
 {{< /note >}}
 
 ```yaml
@@ -55,7 +55,7 @@ parameters:
 
 Administrators can specify a default VolumeSnapshotClass for VolumeSnapshots
 that don't request any particular class to bind to by adding the
-`snapshot.storage.kubernetes.io/is-default-class: "true"` annotation:
+`snapshot.storage.PlaidCloud.io/is-default-class: "true"` annotation:
 
 ```yaml
 apiVersion: snapshot.storage.k8s.io/v1
@@ -63,7 +63,7 @@ kind: VolumeSnapshotClass
 metadata:
   name: csi-hostpath-snapclass
   annotations:
-    snapshot.storage.kubernetes.io/is-default-class: "true"
+    snapshot.storage.PlaidCloud.io/is-default-class: "true"
 driver: hostpath.csi.k8s.io
 deletionPolicy: Delete
 parameters:

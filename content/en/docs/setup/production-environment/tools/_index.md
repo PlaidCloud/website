@@ -1,4 +1,4 @@
 ---
-title: Installing Kubernetes with deployment tools
+title: Installing PlaidCloud with deployment tools
 weight: 30
 ---

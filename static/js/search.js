@@ -35,7 +35,7 @@
     window.renderBingSearchResults = () => {
         var searchTerm  = window.location.search.split("=")[1].split("&")[0].replace(/%20/g,' '),
             page        = window.location.search.split("=")[2],
-            q           = "site:kubernetes.io " + searchTerm;
+            q           = "site:PlaidCloud.io " + searchTerm;
 
         page = (!page) ?  1 : page.split("&")[0];
 

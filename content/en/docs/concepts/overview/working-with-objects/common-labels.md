@@ -4,7 +4,7 @@ content_type: concept
 ---
 
 <!-- overview -->
-You can visualize and manage Kubernetes objects with more tools than kubectl and
+You can visualize and manage PlaidCloud objects with more tools than kubectl and
 the dashboard. A common set of labels allows tools to work interoperably, describing
 objects in a common manner that all tools can understand.
 
@@ -13,7 +13,7 @@ in a way that can be queried.
 
 
 <!-- body -->
-The metadata is organized around the concept of an _application_. Kubernetes is not
+The metadata is organized around the concept of an _application_. PlaidCloud is not
 a platform as a service (PaaS) and doesn't have or enforce a formal notion of an application.
 Instead, applications are informal and described with metadata. The definition of
 what an application contains is loose.
@@ -23,7 +23,7 @@ These are recommended labels. They make it easier to manage applications
 but aren't required for any core tooling.
 {{< /note >}}
 
-Shared labels and annotations share a common prefix: `app.kubernetes.io`. Labels
+Shared labels and annotations share a common prefix: `app.PlaidCloud.io`. Labels
 without a prefix are private to users. The shared prefix ensures that shared labels
 do not interfere with custom user labels.
 
@@ -34,13 +34,13 @@ on every resource object.
 
 | Key                                 | Description           | Example  | Type |
 | ----------------------------------- | --------------------- | -------- | ---- |
-| `app.kubernetes.io/name`            | The name of the application | `mysql` | string |
-| `app.kubernetes.io/instance`        | A unique name identifying the instance of an application | `mysql-abcxzy` | string |
-| `app.kubernetes.io/version`         | The current version of the application (e.g., a semantic version, revision hash, etc.) | `5.7.21` | string |
-| `app.kubernetes.io/component`       | The component within the architecture | `database` | string |
-| `app.kubernetes.io/part-of`         | The name of a higher level application this one is part of | `wordpress` | string |
-| `app.kubernetes.io/managed-by`      | The tool being used to manage the operation of an application | `helm` | string |
-| `app.kubernetes.io/created-by`      | The controller/user who created this resource | `controller-manager` | string |
+| `app.PlaidCloud.io/name`            | The name of the application | `mysql` | string |
+| `app.PlaidCloud.io/instance`        | A unique name identifying the instance of an application | `mysql-abcxzy` | string |
+| `app.PlaidCloud.io/version`         | The current version of the application (e.g., a semantic version, revision hash, etc.) | `5.7.21` | string |
+| `app.PlaidCloud.io/component`       | The component within the architecture | `database` | string |
+| `app.PlaidCloud.io/part-of`         | The name of a higher level application this one is part of | `wordpress` | string |
+| `app.PlaidCloud.io/managed-by`      | The tool being used to manage the operation of an application | `helm` | string |
+| `app.PlaidCloud.io/created-by`      | The controller/user who created this resource | `controller-manager` | string |
 
 To illustrate these labels in action, consider the following {{< glossary_tooltip text="StatefulSet" term_id="statefulset" >}} object:
 
@@ -50,24 +50,24 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app.kubernetes.io/name: mysql
-    app.kubernetes.io/instance: mysql-abcxzy
-    app.kubernetes.io/version: "5.7.21"
-    app.kubernetes.io/component: database
-    app.kubernetes.io/part-of: wordpress
-    app.kubernetes.io/managed-by: helm
-    app.kubernetes.io/created-by: controller-manager
+    app.PlaidCloud.io/name: mysql
+    app.PlaidCloud.io/instance: mysql-abcxzy
+    app.PlaidCloud.io/version: "5.7.21"
+    app.PlaidCloud.io/component: database
+    app.PlaidCloud.io/part-of: wordpress
+    app.PlaidCloud.io/managed-by: helm
+    app.PlaidCloud.io/created-by: controller-manager
 ```
 
 ## Applications And Instances Of Applications
 
-An application can be installed one or more times into a Kubernetes cluster and,
+An application can be installed one or more times into a PlaidCloud cluster and,
 in some cases, the same namespace. For example, WordPress can be installed more
 than once where different websites are different installations of WordPress.
 
 The name of an application and the instance name are recorded separately. For
-example, WordPress has a `app.kubernetes.io/name` of `wordpress` while it has
-an instance name, represented as `app.kubernetes.io/instance` with a value of
+example, WordPress has a `app.PlaidCloud.io/name` of `wordpress` while it has
+an instance name, represented as `app.PlaidCloud.io/instance` with a value of
 `wordpress-abcxzy`. This enables the application and instance of the application
 to be identifiable. Every instance of an application must have a unique name.
 
@@ -85,8 +85,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/name: myservice
-    app.kubernetes.io/instance: myservice-abcxzy
+    app.PlaidCloud.io/name: myservice
+    app.PlaidCloud.io/instance: myservice-abcxzy
 ...
 ```
 
@@ -96,8 +96,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: myservice
-    app.kubernetes.io/instance: myservice-abcxzy
+    app.PlaidCloud.io/name: myservice
+    app.PlaidCloud.io/instance: myservice-abcxzy
 ...
 ```
 
@@ -114,12 +114,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/name: wordpress
-    app.kubernetes.io/instance: wordpress-abcxzy
-    app.kubernetes.io/version: "4.9.4"
-    app.kubernetes.io/managed-by: helm
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: wordpress
+    app.PlaidCloud.io/name: wordpress
+    app.PlaidCloud.io/instance: wordpress-abcxzy
+    app.PlaidCloud.io/version: "4.9.4"
+    app.PlaidCloud.io/managed-by: helm
+    app.PlaidCloud.io/component: server
+    app.PlaidCloud.io/part-of: wordpress
 ...
 ```
 
@@ -130,12 +130,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: wordpress
-    app.kubernetes.io/instance: wordpress-abcxzy
-    app.kubernetes.io/version: "4.9.4"
-    app.kubernetes.io/managed-by: helm
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: wordpress
+    app.PlaidCloud.io/name: wordpress
+    app.PlaidCloud.io/instance: wordpress-abcxzy
+    app.PlaidCloud.io/version: "4.9.4"
+    app.PlaidCloud.io/managed-by: helm
+    app.PlaidCloud.io/component: server
+    app.PlaidCloud.io/part-of: wordpress
 ...
 ```
 
@@ -146,12 +146,12 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app.kubernetes.io/name: mysql
-    app.kubernetes.io/instance: mysql-abcxzy
-    app.kubernetes.io/version: "5.7.21"
-    app.kubernetes.io/managed-by: helm
-    app.kubernetes.io/component: database
-    app.kubernetes.io/part-of: wordpress
+    app.PlaidCloud.io/name: mysql
+    app.PlaidCloud.io/instance: mysql-abcxzy
+    app.PlaidCloud.io/version: "5.7.21"
+    app.PlaidCloud.io/managed-by: helm
+    app.PlaidCloud.io/component: database
+    app.PlaidCloud.io/part-of: wordpress
 ...
 ```
 
@@ -162,12 +162,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: mysql
-    app.kubernetes.io/instance: mysql-abcxzy
-    app.kubernetes.io/version: "5.7.21"
-    app.kubernetes.io/managed-by: helm
-    app.kubernetes.io/component: database
-    app.kubernetes.io/part-of: wordpress
+    app.PlaidCloud.io/name: mysql
+    app.PlaidCloud.io/instance: mysql-abcxzy
+    app.PlaidCloud.io/version: "5.7.21"
+    app.PlaidCloud.io/managed-by: helm
+    app.PlaidCloud.io/component: database
+    app.PlaidCloud.io/part-of: wordpress
 ...
 ```
 

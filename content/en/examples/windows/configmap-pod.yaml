@@ -28,4 +28,4 @@ spec:
             name: example-config
             key: example.property.2
   nodeSelector:
-    kubernetes.io/os: windows
+    PlaidCloud.io/os: windows

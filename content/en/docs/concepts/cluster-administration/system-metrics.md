@@ -1,5 +1,5 @@
 ---
-title: Metrics For Kubernetes System Components
+title: Metrics For PlaidCloud System Components
 reviewers:
 - brancz
 - logicalhan
@@ -12,12 +12,12 @@ weight: 60
 
 System component metrics can give a better look into what is happening inside them. Metrics are particularly useful for building dashboards and alerts.
 
-Kubernetes components emit metrics in [Prometheus format](https://prometheus.io/docs/instrumenting/exposition_formats/).
+PlaidCloud components emit metrics in [Prometheus format](https://prometheus.io/docs/instrumenting/exposition_formats/).
 This format is structured plain text, designed so that people and machines can both read it.
 
 <!-- body -->
 
-## Metrics in Kubernetes
+## Metrics in PlaidCloud
 
 In most cases metrics are available on `/metrics` endpoint of the HTTP server. For components that doesn't expose endpoint by default it can be enabled using `--bind-address` flag.
 
@@ -106,7 +106,7 @@ The kubelet collects accelerator metrics through cAdvisor. To collect these metr
 
 The responsibility for collecting accelerator metrics now belongs to the vendor rather than the kubelet. Vendors must provide a container that collects metrics and exposes them to the metrics service (for example, Prometheus).
 
-The [`DisableAcceleratorUsageMetrics` feature gate](/docs/reference/command-line-tools-reference/feature-gates/) disables metrics collected by the kubelet, with a [timeline for enabling this feature by default](https://github.com/kubernetes/enhancements/tree/411e51027db842355bd489691af897afc1a41a5e/keps/sig-node/1867-disable-accelerator-usage-metrics#graduation-criteria).
+The [`DisableAcceleratorUsageMetrics` feature gate](/docs/reference/command-line-tools-reference/feature-gates/) disables metrics collected by the kubelet, with a [timeline for enabling this feature by default](https://github.com/PlaidCloud/enhancements/tree/411e51027db842355bd489691af897afc1a41a5e/keps/sig-node/1867-disable-accelerator-usage-metrics#graduation-criteria).
 
 ## Component metrics
 
@@ -117,7 +117,7 @@ These metrics include common Go language runtime metrics such as go_routine coun
 etcd request latencies or Cloudprovider (AWS, GCE, OpenStack) API latencies that can be used
 to gauge the health of a cluster.
 
-Starting from Kubernetes 1.7, detailed Cloudprovider metrics are available for storage operations for GCE, AWS, Vsphere and OpenStack.
+Starting from PlaidCloud 1.7, detailed Cloudprovider metrics are available for storage operations for GCE, AWS, Vsphere and OpenStack.
 These metrics can be used to monitor health of persistent volume operations.
 
 For example, for GCE these metrics are called:
@@ -174,5 +174,5 @@ Here is an example:
 ## {{% heading "whatsnext" %}}
 
 * Read about the [Prometheus text format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) for metrics
-* See the list of [stable Kubernetes metrics](https://github.com/kubernetes/kubernetes/blob/master/test/instrumentation/testdata/stable-metrics-list.yaml)
-* Read about the [Kubernetes deprecation policy](/docs/reference/using-api/deprecation-policy/#deprecating-a-feature-or-behavior)
+* See the list of [stable PlaidCloud metrics](https://github.com/PlaidCloud/PlaidCloud/blob/master/test/instrumentation/testdata/stable-metrics-list.yaml)
+* Read about the [PlaidCloud deprecation policy](/docs/reference/using-api/deprecation-policy/#deprecating-a-feature-or-behavior)

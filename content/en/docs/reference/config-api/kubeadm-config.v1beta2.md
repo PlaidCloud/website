@@ -16,7 +16,7 @@ A list of changes since v1beta1:
 - The JSON "omitempty" tag is used in a more places where appropriate.
 - The JSON "omitempty" tag of the "taints" field (inside NodeRegistrationOptions) is removed.
 
-See the Kubernetes 1.15 changelog for further details.
+See the PlaidCloud 1.15 changelog for further details.
 
 Migration from old kubeadm config versions
 
@@ -137,7 +137,7 @@ including settings for:
 The KubeProxyConfiguration type should be used to change the configuration passed to kube-proxy instances deployed
 in the cluster. If this object is not provided or provided only partially, kubeadm applies defaults.
 
-See https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/ or
+See https://plaidcloud.com/docs/reference/command-line-tools-reference/kube-proxy/ or
 https://godoc.org/k8s.io/kube-proxy/config/v1alpha1#KubeProxyConfiguration
 for kube proxy official documentation.
 
@@ -150,7 +150,7 @@ kind: KubeletConfiguration
 The KubeletConfiguration type should be used to change the configurations that will be passed to all kubelet instances
 deployed in the cluster. If this object is not provided or provided only partially, kubeadm applies defaults.
 
-See https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/ or
+See https://plaidcloud.com/docs/reference/command-line-tools-reference/kubelet/ or
 https://godoc.org/k8s.io/kubelet/config/v1beta1#KubeletConfiguration
 for kubelet official documentation.
 
@@ -205,14 +205,14 @@ local:
 #   endpoints:
 #     - "10.100.0.1:2379"
 #     - "10.100.0.2:2379"
-#   caFile: "/etcd/kubernetes/pki/etcd/etcd-ca.crt"
-#   certFile: "/etcd/kubernetes/pki/etcd/etcd.crt"
-#   keyFile: "/etcd/kubernetes/pki/etcd/etcd.key"
+#   caFile: "/etcd/PlaidCloud/pki/etcd/etcd-ca.crt"
+#   certFile: "/etcd/PlaidCloud/pki/etcd/etcd.crt"
+#   keyFile: "/etcd/PlaidCloud/pki/etcd/etcd.key"
 networking:
   serviceSubnet: "10.96.0.0/16"
   podSubnet: "10.244.0.0/24"
   dnsDomain: "cluster.local"
-kubernetesVersion: "v1.12.0"
+PlaidCloudVersion: "v1.12.0"
 controlPlaneEndpoint: "10.100.0.1:6443"
 apiServer:
   extraArgs:
@@ -245,7 +245,7 @@ scheduler:
       mountPath: "/etc/some-pod-path"
       readOnly: false
       pathType: File
-certificatesDir: "/etc/kubernetes/pki"
+certificatesDir: "/etc/PlaidCloud/pki"
 imageRepository: "k8s.gcr.io"
 useHyperKubeImage: false
 clusterName: "example-cluster"
@@ -323,11 +323,11 @@ ClusterConfiguration contains cluster-wide configuration for a kubeadm cluster
 </tr>
     
   
-<tr><td><code>kubernetesVersion</code> <B>[Required]</B><br/>
+<tr><td><code>PlaidCloudVersion</code> <B>[Required]</B><br/>
 <code>string</code>
 </td>
 <td>
-   `kubernetesVersion` is the target version of the control plane.</td>
+   `PlaidCloudVersion` is the target version of the control plane.</td>
 </tr>
     
   
@@ -395,8 +395,8 @@ Possible usages are:
 </td>
 <td>
    `mageRepository` sets the container registry to pull images from.
-If empty, `k8s.gcr.io` will be used by default; in case of kubernetes version is
-a CI build (kubernetes version starts with `ci/`) `gcr.io/k8s-staging-ci-images`
+If empty, `k8s.gcr.io` will be used by default; in case of PlaidCloud version is
+a CI build (PlaidCloud version starts with `ci/`) `gcr.io/k8s-staging-ci-images`
 is used as a default for control plane components and for kube-proxy, while
 `k8s.gcr.io` will be used for all the other images.</td>
 </tr>
@@ -406,7 +406,7 @@ is used as a default for control plane components and for kube-proxy, while
 <code>bool</code>
 </td>
 <td>
-   `useHyperKubeImage` controls if hyperkube should be used for Kubernetes components
+   `useHyperKubeImage` controls if hyperkube should be used for PlaidCloud components
 instead of their respective separate images.
 DEPRECATED: As `hyperkube` is itself deprecated, this fields is too. It will be
 removed in future kubeadm config versions, kubeadm will print multiple warnings
@@ -560,7 +560,7 @@ control-plane node to the cluster</td>
 <td>
    `caCertPath` is the path to the SSL certificate authority used to
 secure comunications between a node and the control-plane.
-Defaults to "/etc/kubernetes/pki/ca.crt".</td>
+Defaults to "/etc/PlaidCloud/pki/ca.crt".</td>
 </tr>
     
   
@@ -716,7 +716,7 @@ for, so other administrators can know its purpose.</td>
     
   
 <tr><td><code>expires</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#time-v1-meta"><code>meta/v1.Time</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#time-v1-meta"><code>meta/v1.Time</code></a>
 </td>
 <td>
    `expires` specifies the timestamp when this token expires. Defaults to being set
@@ -1168,7 +1168,7 @@ HostPathMount contains elements describing volumes that are mounted from the hos
     
   
 <tr><td><code>pathType</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#hostpathtype-v1-core"><code>core/v1.HostPathType</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#hostpathtype-v1-core"><code>core/v1.HostPathType</code></a>
 </td>
 <td>
    `pathType` is the type of the HostPath.</td>
@@ -1189,7 +1189,7 @@ HostPathMount contains elements describing volumes that are mounted from the hos
 
 
 ImageMeta allows to customize the image used for components that are not
-originated from the Kubernetes/Kubernetes release process
+originated from the PlaidCloud/PlaidCloud release process
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1346,7 +1346,7 @@ Networking contains elements describing cluster's networking configuration
 <code>string</code>
 </td>
 <td>
-   `serviceSubnet` is the subnet used by kubernetes Services. Defaults to "10.96.0.0/12".</td>
+   `serviceSubnet` is the subnet used by PlaidCloud Services. Defaults to "10.96.0.0/12".</td>
 </tr>
     
   
@@ -1362,7 +1362,7 @@ Networking contains elements describing cluster's networking configuration
 <code>string</code>
 </td>
 <td>
-   `dnsDomain` is the DNS domain used by kubernetes Services. Defaults to "cluster.local".</td>
+   `dnsDomain` is the DNS domain used by PlaidCloud Services. Defaults to "cluster.local".</td>
 </tr>
     
   
@@ -1410,12 +1410,12 @@ be annotated to the Node API object, for later re-use.</td>
     
   
 <tr><td><code>taints</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#taint-v1-core"><code>[]core/v1.Taint</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#taint-v1-core"><code>[]core/v1.Taint</code></a>
 </td>
 <td>
    `taints` specifies the taints the Node API object should be registered with.
 If this field is unset, i.e. nil, in the `kubeadm init` process it will be defaulted to
-`'node-role.kubernetes.io/master=""'`. If you don't want to taint your control-plane node,
+`'node-role.PlaidCloud.io/master=""'`. If you don't want to taint your control-plane node,
 set this field to an empty list, i.e. `taints: []` in the YAML file. This field is
 solely used for Node registration.</td>
 </tr>

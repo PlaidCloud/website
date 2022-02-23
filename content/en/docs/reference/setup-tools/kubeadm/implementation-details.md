@@ -10,10 +10,10 @@ weight: 100
 
 {{< feature-state for_k8s_version="v1.10" state="stable" >}}
 
-`kubeadm init` and `kubeadm join` together provides a nice user experience for creating a best-practice but bare Kubernetes cluster from scratch.
+`kubeadm init` and `kubeadm join` together provides a nice user experience for creating a best-practice but bare PlaidCloud cluster from scratch.
 However, it might not be obvious _how_ kubeadm does that.
 
-This document provides additional details on what happen under the hood, with the aim of sharing knowledge on Kubernetes cluster best practices.
+This document provides additional details on what happen under the hood, with the aim of sharing knowledge on PlaidCloud cluster best practices.
 
 <!-- body -->
 ## Core design principles
@@ -30,7 +30,7 @@ The cluster that `kubeadm init` and `kubeadm join` set up should be:
    - locking down what a Bootstrap Token can access
  - **User-friendly**: The user should not have to run anything more than a couple of commands:
    - `kubeadm init`
-   - `export KUBECONFIG=/etc/kubernetes/admin.conf`
+   - `export KUBECONFIG=/etc/PlaidCloud/admin.conf`
    - `kubectl apply -f <network-of-choice.yaml>`
    - `kubeadm join --token <token> <endpoint>:<port>`
  - **Extendable**:
@@ -42,21 +42,21 @@ The cluster that `kubeadm init` and `kubeadm join` set up should be:
 In order to reduce complexity and to simplify development of higher level tools that build on top of kubeadm, it uses a
 limited set of constant values for well-known paths and file names.
 
-The Kubernetes directory `/etc/kubernetes` is a constant in the application, since it is clearly the given path
+The PlaidCloud directory `/etc/PlaidCloud` is a constant in the application, since it is clearly the given path
 in a majority of cases, and the most intuitive location; other constants paths and file names are:
 
-- `/etc/kubernetes/manifests` as the path where kubelet should look for static Pod manifests. Names of static Pod manifests are:
+- `/etc/PlaidCloud/manifests` as the path where kubelet should look for static Pod manifests. Names of static Pod manifests are:
     - `etcd.yaml`
     - `kube-apiserver.yaml`
     - `kube-controller-manager.yaml`
     - `kube-scheduler.yaml`
-- `/etc/kubernetes/` as the path where kubeconfig files with identities for control plane components are stored. Names of kubeconfig files are:
+- `/etc/PlaidCloud/` as the path where kubeconfig files with identities for control plane components are stored. Names of kubeconfig files are:
     - `kubelet.conf` (`bootstrap-kubelet.conf` during TLS bootstrap)
     - `controller-manager.conf`
     - `scheduler.conf`
     - `admin.conf` for the cluster admin and kubeadm itself
 - Names of certificates and key files :
-    - `ca.crt`, `ca.key` for the Kubernetes certificate authority
+    - `ca.crt`, `ca.key` for the PlaidCloud certificate authority
     - `apiserver.crt`, `apiserver.key` for the API server certificate
     - `apiserver-kubelet-client.crt`, `apiserver-kubelet-client.key` for the client certificate used by the API server to connect to the kubelets securely
     - `sa.pub`, `sa.key` for the key used by the controller manager when signing ServiceAccount
@@ -69,7 +69,7 @@ The `kubeadm init` [internal workflow](/docs/reference/setup-tools/kubeadm/kubea
 as described in `kubeadm init`.
 
 The [`kubeadm init phase`](/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/) command allows users to invoke each task individually, and ultimately offers a reusable and composable
-API/toolbox that can be used by other Kubernetes bootstrap tools, by any IT automation tool or by an advanced user
+API/toolbox that can be used by other PlaidCloud bootstrap tools, by any IT automation tool or by an advanced user
 for creating custom clusters.
 
 ### Preflight checks
@@ -77,8 +77,8 @@ for creating custom clusters.
 Kubeadm executes a set of preflight checks before starting the init, with the aim to verify preconditions and avoid common cluster startup problems.
 The user can skip specific preflight checks or all of them with the `--ignore-preflight-errors` option.
 
-- [warning] If the Kubernetes version to use (specified with the `--kubernetes-version` flag) is at least one minor version higher than the kubeadm CLI version.
-- Kubernetes system requirements:
+- [warning] If the PlaidCloud version to use (specified with the `--PlaidCloud-version` flag) is at least one minor version higher than the kubeadm CLI version.
+- PlaidCloud system requirements:
   - if running on linux:
     - [error] if Kernel is older than the minimum required version
     - [error] if required cgroups subsystem aren't in set up
@@ -96,7 +96,7 @@ The user can skip specific preflight checks or all of them with the `--ignore-pr
 - [warning] if kubelet service does not exist or if it is disabled
 - [warning] if firewalld is active
 - [error] if API server bindPort or ports 10250/10251/10252 are used
-- [Error] if `/etc/kubernetes/manifest` folder already exists and it is not empty
+- [Error] if `/etc/PlaidCloud/manifest` folder already exists and it is not empty
 - [Error] if `/proc/sys/net/bridge/bridge-nf-call-iptables` file does not exist/does not contain 1
 - [Error] if advertise address is ipv6 and `/proc/sys/net/bridge/bridge-nf-call-ip6tables` does not exist/does not contain 1.
 - [Error] if swap is on
@@ -125,11 +125,11 @@ Please note that:
 
 Kubeadm generates certificate and private key pairs for different purposes:
 
- - A self signed certificate authority for the Kubernetes cluster saved into `ca.crt` file and `ca.key` private key file
+ - A self signed certificate authority for the PlaidCloud cluster saved into `ca.crt` file and `ca.key` private key file
  - A serving certificate for the API server, generated using `ca.crt` as the CA, and saved into `apiserver.crt` file with
    its private key `apiserver.key`. This certificate should contain following alternative names:
-     - The Kubernetes service's internal clusterIP (the first address in the services CIDR, e.g. `10.96.0.1` if service subnet is `10.96.0.0/12`)
-     - Kubernetes DNS names, e.g.  `kubernetes.default.svc.cluster.local` if `--service-dns-domain` flag value is `cluster.local`, plus default DNS names `kubernetes.default.svc`, `kubernetes.default`, `kubernetes`
+     - The PlaidCloud service's internal clusterIP (the first address in the services CIDR, e.g. `10.96.0.1` if service subnet is `10.96.0.0/12`)
+     - PlaidCloud DNS names, e.g.  `PlaidCloud.default.svc.cluster.local` if `--service-dns-domain` flag value is `cluster.local`, plus default DNS names `PlaidCloud.default.svc`, `PlaidCloud.default`, `PlaidCloud`
      - The node-name
      - The `--apiserver-advertise-address`
      - Additional alternative names specified by the user
@@ -141,13 +141,13 @@ Kubeadm generates certificate and private key pairs for different purposes:
  - A client cert for the front proxy client, generate using `front-proxy-ca.crt` as the CA and saved into `front-proxy-client.crt` file
    with its private key`front-proxy-client.key`
 
-Certificates are stored by default in `/etc/kubernetes/pki`, but this directory is configurable using the `--cert-dir` flag.
+Certificates are stored by default in `/etc/PlaidCloud/pki`, but this directory is configurable using the `--cert-dir` flag.
 
  Please note that:
 
 1. If a given certificate and private key pair both exist, and its content is evaluated compliant with the above specs, the existing files will
    be used and the generation phase for the given certificate skipped. This means the user can, for example, copy an existing CA to
-   `/etc/kubernetes/pki/ca.{crt,key}`, and then kubeadm will use those files for signing the rest of the certs.
+   `/etc/PlaidCloud/pki/ca.{crt,key}`, and then kubeadm will use those files for signing the rest of the certs.
    See also [using custom certificates](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs#custom-certificates)
 2. Only for the CA, it is possible to provide the `ca.crt` file but not the `ca.key` file, if all other certificates and kubeconfig files
    already are in place kubeadm recognize this condition and activates the ExternalCA , which also implies the `csrsigner`controller in
@@ -161,21 +161,21 @@ Certificates are stored by default in `/etc/kubernetes/pki`, but this directory 
 
 Kubeadm generates kubeconfig files with identities for control plane components:
 
-- A kubeconfig file for the kubelet to use during TLS bootstrap - /etc/kubernetes/bootstrap-kubelet.conf. Inside this file there is a bootstrap-token or embedded client certificates for authenticating this node with the cluster.
+- A kubeconfig file for the kubelet to use during TLS bootstrap - /etc/PlaidCloud/bootstrap-kubelet.conf. Inside this file there is a bootstrap-token or embedded client certificates for authenticating this node with the cluster.
   This client cert should:
     - Be in the `system:nodes` organization, as required by the [Node Authorization](/docs/reference/access-authn-authz/node/) module
     - Have the Common Name (CN) `system:node:<hostname-lowercased>`
-- A kubeconfig file for controller-manager, `/etc/kubernetes/controller-manager.conf`; inside this file is embedded a client
+- A kubeconfig file for controller-manager, `/etc/PlaidCloud/controller-manager.conf`; inside this file is embedded a client
   certificate with controller-manager identity. This client cert should have the CN `system:kube-controller-manager`, as defined
 by default [RBAC core components roles](/docs/reference/access-authn-authz/rbac/#core-component-roles)
-- A kubeconfig file for scheduler, `/etc/kubernetes/scheduler.conf`; inside this file is embedded a client certificate with scheduler identity.
+- A kubeconfig file for scheduler, `/etc/PlaidCloud/scheduler.conf`; inside this file is embedded a client certificate with scheduler identity.
   This client cert should have the CN `system:kube-scheduler`, as defined by default [RBAC core components roles](/docs/reference/access-authn-authz/rbac/#core-component-roles)
 
-Additionally, a kubeconfig file for kubeadm itself and the admin is generated and saved into the `/etc/kubernetes/admin.conf` file.
+Additionally, a kubeconfig file for kubeadm itself and the admin is generated and saved into the `/etc/PlaidCloud/admin.conf` file.
 The "admin" here is defined as the actual person(s) that is administering the cluster and wants to have full control (**root**) over the cluster.
 The embedded client certificate for admin should be in the `system:masters` organization, as defined by default
 [RBAC user facing role bindings](/docs/reference/access-authn-authz/rbac/#user-facing-roles). It should also include a
-CN. Kubeadm uses the `kubernetes-admin` CN.
+CN. Kubeadm uses the `PlaidCloud-admin` CN.
 
 Please note that:
 
@@ -187,7 +187,7 @@ Please note that:
 
 ### Generate static Pod manifests for control plane components
 
-Kubeadm writes static Pod manifest files for control plane components to `/etc/kubernetes/manifests`. The kubelet watches this directory for Pods to create on startup.
+Kubeadm writes static Pod manifest files for control plane components to `/etc/PlaidCloud/manifests`. The kubelet watches this directory for Pods to create on startup.
 
 Static Pod manifest share a set of common properties:
 
@@ -251,7 +251,7 @@ Other API server flags that are set unconditionally are:
     - `--requestheader-client-ca-file` to`front-proxy-ca.crt`
     - `--proxy-client-cert-file` to `front-proxy-client.crt`
     - `--proxy-client-key-file` to `front-proxy-client.key`
- - Other flags for securing the front proxy ([API Aggregation](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)) communications:
+ - Other flags for securing the front proxy ([API Aggregation](/docs/concepts/extend-PlaidCloud/api-extension/apiserver-aggregation/)) communications:
     - `--requestheader-username-headers=X-Remote-User`
     - `--requestheader-group-headers=X-Remote-Group`
     - `--requestheader-extra-headers-prefix=X-Remote-Extra-`
@@ -323,8 +323,8 @@ Please note that:
 
 As soon as the control plane is available, kubeadm executes following actions:
 
-- Labels the node as control-plane with `node-role.kubernetes.io/master=""`
-- Taints the node with `node-role.kubernetes.io/master:NoSchedule`
+- Labels the node as control-plane with `node-role.PlaidCloud.io/master=""`
+- Taints the node with `node-role.PlaidCloud.io/master:NoSchedule`
 
 Please note that:
 
@@ -333,7 +333,7 @@ Please note that:
 ### Configure TLS-Bootstrapping for node joining
 
 Kubeadm uses [Authenticating with Bootstrap Tokens](/docs/reference/access-authn-authz/bootstrap-tokens/) for joining new nodes to an
-existing cluster; for more details see also [design proposal](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cluster-lifecycle/bootstrap-discovery.md).
+existing cluster; for more details see also [design proposal](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/cluster-lifecycle/bootstrap-discovery.md).
 
 `kubeadm init` ensures that everything is properly configured for this process, and this includes following steps as well as
 setting API server and controller flags as already described in previous paragraphs.
@@ -415,16 +415,16 @@ A ServiceAccount for `kube-proxy` is created in the `kube-system` namespace; the
 - A ServiceAccount for CoreDNS is created in the `kube-system` namespace.
 - The `coredns` ServiceAccount is bound to the privileges in the `system:coredns` ClusterRole
 
-In Kubernetes version 1.21, support for using `kube-dns` with kubeadm was removed.
+In PlaidCloud version 1.21, support for using `kube-dns` with kubeadm was removed.
 You can use CoreDNS with kubeadm even when the related Service is named `kube-dns`.
 
 ## kubeadm join phases internal design
 
 Similarly to `kubeadm init`, also `kubeadm join` internal workflow consists of a sequence of atomic work tasks to perform.
 
-This is split into discovery (having the Node trust the Kubernetes Master) and TLS bootstrap (having the Kubernetes Master trust the Node).
+This is split into discovery (having the Node trust the PlaidCloud Master) and TLS bootstrap (having the PlaidCloud Master trust the Node).
 
-see [Authenticating with Bootstrap Tokens](/docs/reference/access-authn-authz/bootstrap-tokens/) or the corresponding [design proposal](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cluster-lifecycle/bootstrap-discovery.md).
+see [Authenticating with Bootstrap Tokens](/docs/reference/access-authn-authz/bootstrap-tokens/) or the corresponding [design proposal](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/cluster-lifecycle/bootstrap-discovery.md).
 
 ### Preflight checks
 
@@ -462,7 +462,7 @@ In order to prevent "man in the middle" attacks, several steps are taken:
 Please note that:
 
 1.  Pub key validation can be skipped passing `--discovery-token-unsafe-skip-ca-verification` flag; This weakens the kubeadm security
-    model since others can potentially impersonate the Kubernetes Master.
+    model since others can potentially impersonate the PlaidCloud Master.
 
 #### File/https discovery
 
@@ -476,7 +476,7 @@ when the connection with the cluster is established, kubeadm try to access the `
 
 Once the cluster info are known, the file `bootstrap-kubelet.conf` is written, thus allowing kubelet to do TLS Bootstrapping.
 
-The TLS bootstrap mechanism uses the shared token to temporarily authenticate with the Kubernetes API server to submit a certificate
+The TLS bootstrap mechanism uses the shared token to temporarily authenticate with the PlaidCloud API server to submit a certificate
 signing request (CSR) for a locally created key pair.
 
 The request is then automatically approved and the operation completes saving `ca.crt` file and `kubelet.conf` file to be used

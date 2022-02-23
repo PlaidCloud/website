@@ -1,5 +1,5 @@
 /*
-Copyright 2016 The Kubernetes Authors.
+Copyright 2016 The PlaidCloud Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -32,44 +32,44 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 	"k8s.io/apimachinery/pkg/util/yaml"
-	"k8s.io/kubernetes/pkg/api/legacyscheme"
+	"k8s.io/PlaidCloud/pkg/api/legacyscheme"
 
-	"k8s.io/kubernetes/pkg/apis/apps"
-	apps_validation "k8s.io/kubernetes/pkg/apis/apps/validation"
+	"k8s.io/PlaidCloud/pkg/apis/apps"
+	apps_validation "k8s.io/PlaidCloud/pkg/apis/apps/validation"
 
-	"k8s.io/kubernetes/pkg/apis/autoscaling"
-	autoscaling_validation "k8s.io/kubernetes/pkg/apis/autoscaling/validation"
+	"k8s.io/PlaidCloud/pkg/apis/autoscaling"
+	autoscaling_validation "k8s.io/PlaidCloud/pkg/apis/autoscaling/validation"
 
-	"k8s.io/kubernetes/pkg/apis/batch"
-	batch_validation "k8s.io/kubernetes/pkg/apis/batch/validation"
+	"k8s.io/PlaidCloud/pkg/apis/batch"
+	batch_validation "k8s.io/PlaidCloud/pkg/apis/batch/validation"
 
-	api "k8s.io/kubernetes/pkg/apis/core"
-	"k8s.io/kubernetes/pkg/apis/core/validation"
+	api "k8s.io/PlaidCloud/pkg/apis/core"
+	"k8s.io/PlaidCloud/pkg/apis/core/validation"
 
-	"k8s.io/kubernetes/pkg/apis/networking"
-	networking_validation "k8s.io/kubernetes/pkg/apis/networking/validation"
+	"k8s.io/PlaidCloud/pkg/apis/networking"
+	networking_validation "k8s.io/PlaidCloud/pkg/apis/networking/validation"
 
-	"k8s.io/kubernetes/pkg/apis/policy"
-	policy_validation "k8s.io/kubernetes/pkg/apis/policy/validation"
+	"k8s.io/PlaidCloud/pkg/apis/policy"
+	policy_validation "k8s.io/PlaidCloud/pkg/apis/policy/validation"
 
-	"k8s.io/kubernetes/pkg/apis/rbac"
-	rbac_validation "k8s.io/kubernetes/pkg/apis/rbac/validation"
+	"k8s.io/PlaidCloud/pkg/apis/rbac"
+	rbac_validation "k8s.io/PlaidCloud/pkg/apis/rbac/validation"
 
-	"k8s.io/kubernetes/pkg/apis/storage"
-	storage_validation "k8s.io/kubernetes/pkg/apis/storage/validation"
+	"k8s.io/PlaidCloud/pkg/apis/storage"
+	storage_validation "k8s.io/PlaidCloud/pkg/apis/storage/validation"
 
-	"k8s.io/kubernetes/pkg/capabilities"
-	"k8s.io/kubernetes/pkg/registry/batch/job"
+	"k8s.io/PlaidCloud/pkg/capabilities"
+	"k8s.io/PlaidCloud/pkg/registry/batch/job"
 
 	// initialize install packages
-	_ "k8s.io/kubernetes/pkg/apis/apps/install"
-	_ "k8s.io/kubernetes/pkg/apis/autoscaling/install"
-	_ "k8s.io/kubernetes/pkg/apis/batch/install"
-	_ "k8s.io/kubernetes/pkg/apis/core/install"
-	_ "k8s.io/kubernetes/pkg/apis/networking/install"
-	_ "k8s.io/kubernetes/pkg/apis/policy/install"
-	_ "k8s.io/kubernetes/pkg/apis/rbac/install"
-	_ "k8s.io/kubernetes/pkg/apis/storage/install"
+	_ "k8s.io/PlaidCloud/pkg/apis/apps/install"
+	_ "k8s.io/PlaidCloud/pkg/apis/autoscaling/install"
+	_ "k8s.io/PlaidCloud/pkg/apis/batch/install"
+	_ "k8s.io/PlaidCloud/pkg/apis/core/install"
+	_ "k8s.io/PlaidCloud/pkg/apis/networking/install"
+	_ "k8s.io/PlaidCloud/pkg/apis/policy/install"
+	_ "k8s.io/PlaidCloud/pkg/apis/rbac/install"
+	_ "k8s.io/PlaidCloud/pkg/apis/storage/install"
 )
 
 var (
@@ -259,7 +259,7 @@ func validateObject(obj runtime.Object) (errors field.ErrorList) {
 			t.Namespace = api.NamespaceDefault
 		}
 		// Job needs generateSelector called before validation, and job.Validate does this.
-		// See: https://github.com/kubernetes/kubernetes/issues/20951#issuecomment-187787040
+		// See: https://github.com/PlaidCloud/PlaidCloud/issues/20951#issuecomment-187787040
 		t.ObjectMeta.UID = types.UID("fakeuid")
 		if strings.Index(t.ObjectMeta.Name, "$") > -1 {
 			t.ObjectMeta.Name = "skip-for-good"

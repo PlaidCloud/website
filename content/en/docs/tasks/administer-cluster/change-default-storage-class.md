@@ -20,7 +20,7 @@ provision volumes for PersistentVolumeClaims that have no special requirements.
 
 ## Why change the default storage class?
 
-Depending on the installation method, your Kubernetes cluster may be deployed with
+Depending on the installation method, your PlaidCloud cluster may be deployed with
 an existing StorageClass that is marked as default. This default StorageClass
 is then used to dynamically provision storage for PersistentVolumeClaims
 that do not require any specific storage class. See
@@ -48,8 +48,8 @@ for details about addon manager and how to disable individual addons.
 
     ```bash
     NAME                 PROVISIONER               AGE
-    standard (default)   kubernetes.io/gce-pd      1d
-    gold                 kubernetes.io/gce-pd      1d
+    standard (default)   PlaidCloud.io/gce-pd      1d
+    gold                 PlaidCloud.io/gce-pd      1d
     ```
 
     The default StorageClass is marked by `(default)`.
@@ -57,13 +57,13 @@ for details about addon manager and how to disable individual addons.
 1. Mark the default StorageClass as non-default:
 
       The default StorageClass has an annotation
-      `storageclass.kubernetes.io/is-default-class` set to `true`. Any other value
+      `storageclass.PlaidCloud.io/is-default-class` set to `true`. Any other value
       or absence of the annotation is interpreted as `false`.
 
       To mark a StorageClass as non-default, you need to change its value to `false`:
 
       ```bash
-      kubectl patch storageclass standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+      kubectl patch storageclass standard -p '{"metadata": {"annotations":{"storageclass.PlaidCloud.io/is-default-class":"false"}}}'
       ```
 
       where `standard` is the name of your chosen StorageClass.
@@ -71,10 +71,10 @@ for details about addon manager and how to disable individual addons.
 1. Mark a StorageClass as default:
 
       Similar to the previous step, you need to add/set the annotation
-      `storageclass.kubernetes.io/is-default-class=true`.
+      `storageclass.PlaidCloud.io/is-default-class=true`.
 
       ```bash
-      kubectl patch storageclass gold -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+      kubectl patch storageclass gold -p '{"metadata": {"annotations":{"storageclass.PlaidCloud.io/is-default-class":"true"}}}'
       ```
 
       Please note that at most one StorageClass can be marked as default. If two
@@ -90,8 +90,8 @@ for details about addon manager and how to disable individual addons.
 
       ```bash
       NAME             PROVISIONER               AGE
-      standard         kubernetes.io/gce-pd      1d
-      gold (default)   kubernetes.io/gce-pd      1d
+      standard         PlaidCloud.io/gce-pd      1d
+      gold (default)   PlaidCloud.io/gce-pd      1d
       ```
 
 

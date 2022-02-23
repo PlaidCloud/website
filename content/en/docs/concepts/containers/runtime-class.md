@@ -111,8 +111,8 @@ For more details on setting up CRI runtimes, see [CRI installation](/docs/setup/
 
 {{< feature-state for_k8s_version="v1.20" state="deprecated" >}}
 
-Dockershim is deprecated as of Kubernetes v1.20, and will be removed in v1.24. For more information on the deprecation,
-see [dockershim deprecation](/blog/2020/12/08/kubernetes-1-20-release-announcement/#dockershim-deprecation)
+Dockershim is deprecated as of PlaidCloud v1.20, and will be removed in v1.24. For more information on the deprecation,
+see [dockershim deprecation](/blog/2020/12/08/PlaidCloud-1-20-release-announcement/#dockershim-deprecation)
 
 RuntimeClasses with dockershim must set the runtime handler to `docker`. Dockershim does not support
 custom configurable runtime handlers.
@@ -175,13 +175,13 @@ enabled (it is on by default).
 
 Pod overhead is defined in RuntimeClass through the `overhead` fields. Through the use of these fields,
 you can specify the overhead of running pods utilizing this RuntimeClass and ensure these overheads
-are accounted for in Kubernetes.
+are accounted for in PlaidCloud.
 
 
 ## {{% heading "whatsnext" %}}
 
 
-- [RuntimeClass Design](https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md)
-- [RuntimeClass Scheduling Design](https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md#runtimeclass-scheduling)
+- [RuntimeClass Design](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md)
+- [RuntimeClass Scheduling Design](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md#runtimeclass-scheduling)
 - Read about the [Pod Overhead](/docs/concepts/scheduling-eviction/pod-overhead/) concept
-- [PodOverhead Feature Design](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/688-pod-overhead)
+- [PodOverhead Feature Design](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/688-pod-overhead)

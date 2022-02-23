@@ -12,7 +12,7 @@ weight: 70
 While kubeadm is being used as the management tool for external etcd nodes
 in this guide, please note that kubeadm does not plan to support certificate rotation
 or upgrades for such nodes. The long term plan is to empower the tool
-[etcdadm](https://github.com/kubernetes-sigs/etcdadm) to manage these
+[etcdadm](https://github.com/PlaidCloud-sigs/etcdadm) to manage these
 aspects.
 {{< /note >}}
 
@@ -31,7 +31,7 @@ etcd cluster of three members that can be used by kubeadm during cluster creatio
   the kubeadm config file.
 * Each host must have systemd and a bash compatible shell installed.
 * Each host must [have a container runtime, kubelet, and kubeadm installed](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/).
-* Each host should have access to the Kubernetes container image registry (`k8s.gcr.io`) or list/pull the required etcd image using
+* Each host should have access to the PlaidCloud container image registry (`k8s.gcr.io`) or list/pull the required etcd image using
 `kubeadm config images list/pull`. This guide will setup etcd instances as
 [static pods](/docs/tasks/configure-pod-container/static-pod/) managed by a kubelet.
 * Some infrastructure to copy files between hosts. For example `ssh` and `scp`
@@ -52,8 +52,8 @@ this example.
 
 {{< note >}}
 The examples below use IPv4 addresses but you can also configure kubeadm, the kubelet and etcd
-to use IPv6 addresses. Dual-stack is supported by some Kubernetes options, but not by etcd. For more details
-on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/setup/production-environment/tools/kubeadm/dual-stack-support/).
+to use IPv6 addresses. Dual-stack is supported by some PlaidCloud options, but not by etcd. For more details
+on PlaidCloud dual-stack support see [Dual-stack support with kubeadm](/docs/setup/production-environment/tools/kubeadm/dual-stack-support/).
 {{< /note >}}
 
 1. Configure the kubelet to be a service manager for etcd.
@@ -68,7 +68,7 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
     ExecStart=
     # Replace "systemd" with the cgroup driver of your container runtime. The default value in the kubelet is "cgroupfs".
     # Replace the value of "--container-runtime-endpoint" for a different container runtime if needed.
-    ExecStart=/usr/bin/kubelet --address=127.0.0.1 --pod-manifest-path=/etc/kubernetes/manifests --cgroup-driver=systemd --container-runtime=remote --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock
+    ExecStart=/usr/bin/kubelet --address=127.0.0.1 --pod-manifest-path=/etc/PlaidCloud/manifests --cgroup-driver=systemd --container-runtime=remote --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock
     Restart=always
     EOF
 
@@ -139,8 +139,8 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
 1. Generate the certificate authority
 
     If you already have a CA then the only action that is copying the CA's `crt` and
-    `key` file to `/etc/kubernetes/pki/etcd/ca.crt` and
-    `/etc/kubernetes/pki/etcd/ca.key`. After those files have been copied,
+    `key` file to `/etc/PlaidCloud/pki/etcd/ca.crt` and
+    `/etc/PlaidCloud/pki/etcd/ca.key`. After those files have been copied,
     proceed to the next step, "Create certificates for each member".
 
     If you do not already have a CA then run this command on `$HOST0` (where you
@@ -152,8 +152,8 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
 
     This creates two files
 
-    - `/etc/kubernetes/pki/etcd/ca.crt`
-    - `/etc/kubernetes/pki/etcd/ca.key`
+    - `/etc/PlaidCloud/pki/etcd/ca.crt`
+    - `/etc/PlaidCloud/pki/etcd/ca.key`
 
 1. Create certificates for each member
 
@@ -162,16 +162,16 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
     kubeadm init phase certs etcd-peer --config=/tmp/${HOST2}/kubeadmcfg.yaml
     kubeadm init phase certs etcd-healthcheck-client --config=/tmp/${HOST2}/kubeadmcfg.yaml
     kubeadm init phase certs apiserver-etcd-client --config=/tmp/${HOST2}/kubeadmcfg.yaml
-    cp -R /etc/kubernetes/pki /tmp/${HOST2}/
+    cp -R /etc/PlaidCloud/pki /tmp/${HOST2}/
     # cleanup non-reusable certificates
-    find /etc/kubernetes/pki -not -name ca.crt -not -name ca.key -type f -delete
+    find /etc/PlaidCloud/pki -not -name ca.crt -not -name ca.key -type f -delete
 
     kubeadm init phase certs etcd-server --config=/tmp/${HOST1}/kubeadmcfg.yaml
     kubeadm init phase certs etcd-peer --config=/tmp/${HOST1}/kubeadmcfg.yaml
     kubeadm init phase certs etcd-healthcheck-client --config=/tmp/${HOST1}/kubeadmcfg.yaml
     kubeadm init phase certs apiserver-etcd-client --config=/tmp/${HOST1}/kubeadmcfg.yaml
-    cp -R /etc/kubernetes/pki /tmp/${HOST1}/
-    find /etc/kubernetes/pki -not -name ca.crt -not -name ca.key -type f -delete
+    cp -R /etc/PlaidCloud/pki /tmp/${HOST1}/
+    find /etc/PlaidCloud/pki -not -name ca.crt -not -name ca.key -type f -delete
 
     kubeadm init phase certs etcd-server --config=/tmp/${HOST0}/kubeadmcfg.yaml
     kubeadm init phase certs etcd-peer --config=/tmp/${HOST0}/kubeadmcfg.yaml
@@ -196,7 +196,7 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
      ssh ${USER}@${HOST}
      USER@HOST $ sudo -Es
      root@HOST $ chown -R root:root pki
-     root@HOST $ mv pki /etc/kubernetes/
+     root@HOST $ mv pki /etc/PlaidCloud/
      ```
 
 1. Ensure all expected files exist
@@ -207,7 +207,7 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
     /tmp/${HOST0}
     └── kubeadmcfg.yaml
     ---
-    /etc/kubernetes/pki
+    /etc/PlaidCloud/pki
     ├── apiserver-etcd-client.crt
     ├── apiserver-etcd-client.key
     └── etcd
@@ -227,7 +227,7 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
     $HOME
     └── kubeadmcfg.yaml
     ---
-    /etc/kubernetes/pki
+    /etc/PlaidCloud/pki
     ├── apiserver-etcd-client.crt
     ├── apiserver-etcd-client.key
     └── etcd
@@ -246,7 +246,7 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
     $HOME
     └── kubeadmcfg.yaml
     ---
-    /etc/kubernetes/pki
+    /etc/PlaidCloud/pki
     ├── apiserver-etcd-client.crt
     ├── apiserver-etcd-client.key
     └── etcd
@@ -276,17 +276,17 @@ on Kubernetes dual-stack support see [Dual-stack support with kubeadm](/docs/set
     ```sh
     docker run --rm -it \
     --net host \
-    -v /etc/kubernetes:/etc/kubernetes k8s.gcr.io/etcd:${ETCD_TAG} etcdctl \
-    --cert /etc/kubernetes/pki/etcd/peer.crt \
-    --key /etc/kubernetes/pki/etcd/peer.key \
-    --cacert /etc/kubernetes/pki/etcd/ca.crt \
+    -v /etc/PlaidCloud:/etc/PlaidCloud k8s.gcr.io/etcd:${ETCD_TAG} etcdctl \
+    --cert /etc/PlaidCloud/pki/etcd/peer.crt \
+    --key /etc/PlaidCloud/pki/etcd/peer.key \
+    --cacert /etc/PlaidCloud/pki/etcd/ca.crt \
     --endpoints https://${HOST0}:2379 endpoint health --cluster
     ...
     https://[HOST0 IP]:2379 is healthy: successfully committed proposal: took = 16.283339ms
     https://[HOST1 IP]:2379 is healthy: successfully committed proposal: took = 19.44402ms
     https://[HOST2 IP]:2379 is healthy: successfully committed proposal: took = 35.926451ms
     ```
-    - Set `${ETCD_TAG}` to the version tag of your etcd image. For example `3.4.3-0`. To see the etcd image and tag that kubeadm uses execute `kubeadm config images list --kubernetes-version ${K8S_VERSION}`, where `${K8S_VERSION}` is for example `v1.17.0`
+    - Set `${ETCD_TAG}` to the version tag of your etcd image. For example `3.4.3-0`. To see the etcd image and tag that kubeadm uses execute `kubeadm config images list --PlaidCloud-version ${K8S_VERSION}`, where `${K8S_VERSION}` is for example `v1.17.0`
     - Set `${HOST0}`to the IP address of the host you are testing.
 
 

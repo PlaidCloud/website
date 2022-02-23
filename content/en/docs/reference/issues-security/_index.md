@@ -1,4 +1,4 @@
 ---
-title: Kubernetes Issues and Security
+title: PlaidCloud Issues and Security
 weight: 40
 ---

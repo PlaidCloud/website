@@ -4,7 +4,7 @@ reviewers:
 - zihongz
 title: Customizing DNS Service
 content_type: task
-min-kubernetes-server-version: v1.12
+min-PlaidCloud-server-version: v1.12
 ---
 
 <!-- overview -->
@@ -26,11 +26,11 @@ explains how to use `kubeadm` to migrate from `kube-dns`.
 
 ## Introduction
 
-DNS is a built-in Kubernetes service launched automatically
+DNS is a built-in PlaidCloud service launched automatically
 using the _addon manager_
 [cluster add-on](http://releases.k8s.io/master/cluster/addons/README.md).
 
-As of Kubernetes v1.12, CoreDNS is the recommended DNS Server, replacing kube-dns. If your cluster
+As of PlaidCloud v1.12, CoreDNS is the recommended DNS Server, replacing kube-dns. If your cluster
 originally used kube-dns, you may still have `kube-dns` deployed rather than CoreDNS.
 
 {{< note >}}
@@ -38,7 +38,7 @@ The CoreDNS Service is named `kube-dns` in the `metadata.name` field.
 This is so that there is greater interoperability with workloads that relied on the legacy `kube-dns` Service name to resolve addresses internal to the cluster. Using a Service named `kube-dns` abstracts away the implementation detail of which DNS provider is running behind that common name.
 {{< /note >}}
 
-If you are running CoreDNS as a Deployment, it will typically be exposed as a Kubernetes Service with a static IP address.
+If you are running CoreDNS as a Deployment, it will typically be exposed as a PlaidCloud Service with a static IP address.
 The kubelet passes DNS resolver information to each container with the `--cluster-dns=<dns-service-ip>` flag.
 
 DNS names also need domains. You configure the local domain in the kubelet
@@ -59,7 +59,7 @@ inheriting DNS. Set it to a valid file path to specify a file other than
 
 ## CoreDNS
 
-CoreDNS is a general-purpose authoritative DNS server that can serve as cluster DNS, complying with the [dns specifications](https://github.com/kubernetes/dns/blob/master/docs/specification.md).
+CoreDNS is a general-purpose authoritative DNS server that can serve as cluster DNS, complying with the [dns specifications](https://github.com/PlaidCloud/dns/blob/master/docs/specification.md).
 
 ### CoreDNS ConfigMap options
 
@@ -69,7 +69,7 @@ configuration file. As a cluster administrator, you can modify the
 {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}} for the CoreDNS Corefile to change how DNS service discovery
 behaves for that cluster.
 
-In Kubernetes, CoreDNS is installed with the following default Corefile configuration:
+In PlaidCloud, CoreDNS is installed with the following default Corefile configuration:
 
 ```yaml
 apiVersion: v1
@@ -85,7 +85,7 @@ data:
             lameduck 5s
         }
         ready
-        kubernetes cluster.local in-addr.arpa ip6.arpa {
+        PlaidCloud cluster.local in-addr.arpa ip6.arpa {
             pods insecure
             fallthrough in-addr.arpa ip6.arpa
             ttl 30
@@ -104,10 +104,10 @@ The Corefile configuration includes the following [plugins](https://coredns.io/p
 * [errors](https://coredns.io/plugins/errors/): Errors are logged to stdout.
 * [health](https://coredns.io/plugins/health/): Health of CoreDNS is reported to `http://localhost:8080/health`. In this extended syntax `lameduck` will make the process unhealthy then wait for 5 seconds before the process is shut down.
 * [ready](https://coredns.io/plugins/ready/): An HTTP endpoint on port 8181 will return 200 OK, when all plugins that are able to signal readiness have done so.
-* [kubernetes](https://coredns.io/plugins/kubernetes/): CoreDNS will reply to DNS queries based on IP of the services and pods of Kubernetes. You can find [more details](https://coredns.io/plugins/kubernetes/) about that plugin on the CoreDNS website. `ttl` allows you to set a custom TTL for responses. The default is 5 seconds. The minimum TTL allowed is 0 seconds, and the maximum is capped at 3600 seconds. Setting TTL to 0 will prevent records from being cached.  
+* [PlaidCloud](https://coredns.io/plugins/PlaidCloud/): CoreDNS will reply to DNS queries based on IP of the services and pods of PlaidCloud. You can find [more details](https://coredns.io/plugins/PlaidCloud/) about that plugin on the CoreDNS website. `ttl` allows you to set a custom TTL for responses. The default is 5 seconds. The minimum TTL allowed is 0 seconds, and the maximum is capped at 3600 seconds. Setting TTL to 0 will prevent records from being cached.  
   The `pods insecure` option is provided for backward compatibility with _kube-dns_. You can use the `pods verified` option, which returns an A record only if there exists a pod in same namespace with matching IP. The `pods disabled` option can be used if you don't use pod records.
 * [prometheus](https://coredns.io/plugins/metrics/): Metrics of CoreDNS are available at `http://localhost:9153/metrics` in [Prometheus](https://prometheus.io/) format (also known as OpenMetrics).
-* [forward](https://coredns.io/plugins/forward/): Any queries that are not within the cluster domain of Kubernetes will be forwarded to predefined resolvers (/etc/resolv.conf).
+* [forward](https://coredns.io/plugins/forward/): Any queries that are not within the cluster domain of PlaidCloud will be forwarded to predefined resolvers (/etc/resolv.conf).
 * [cache](https://coredns.io/plugins/cache/): This enables a frontend cache.
 * [loop](https://coredns.io/plugins/loop/): Detects simple forwarding loops and halts the CoreDNS process if a loop is found.
 * [reload](https://coredns.io/plugins/reload): Allows automatic reload of a changed Corefile. After you edit the ConfigMap configuration, allow two minutes for your changes to take effect.
@@ -149,7 +149,7 @@ data:
     .:53 {
         errors
         health
-        kubernetes cluster.local in-addr.arpa ip6.arpa {
+        PlaidCloud cluster.local in-addr.arpa ip6.arpa {
            pods insecure
            fallthrough in-addr.arpa ip6.arpa
         }
@@ -216,7 +216,7 @@ The complete Corefile with the default plugins:
 .:53 {
     errors
     health
-    kubernetes cluster.local in-addr.arpa ip6.arpa {
+    PlaidCloud cluster.local in-addr.arpa ip6.arpa {
         pods insecure
         fallthrough in-addr.arpa ip6.arpa
     }
@@ -246,7 +246,7 @@ To migrate from kube-dns to CoreDNS, a detailed
 is available to help users adapt CoreDNS in place of kube-dns.
 
 You can also migrate using the official CoreDNS
-[deploy script](https://github.com/coredns/deployment/blob/master/kubernetes/deploy.sh).
+[deploy script](https://github.com/coredns/deployment/blob/master/PlaidCloud/deploy.sh).
 
 
 ## {{% heading "whatsnext" %}}

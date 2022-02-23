@@ -7,7 +7,7 @@ content_type: concept
 feature:
   title: Batch execution
   description: >
-    In addition to services, Kubernetes can manage your batch and CI workloads, replacing containers that fail, if desired.
+    In addition to services, PlaidCloud can manage your batch and CI workloads, replacing containers that fail, if desired.
 weight: 50
 ---
 
@@ -40,7 +40,7 @@ It takes around 10s to complete.
 You can run the example with this command:
 
 ```shell
-kubectl apply -f https://kubernetes.io/examples/controllers/job.yaml
+kubectl apply -f https://plaidcloud.com/examples/controllers/job.yaml
 ```
 The output is similar to this:
 ```
@@ -59,7 +59,7 @@ Namespace:      default
 Selector:       controller-uid=c9948307-e56d-4b5d-8302-ae2d7b7da67c
 Labels:         controller-uid=c9948307-e56d-4b5d-8302-ae2d7b7da67c
                 job-name=pi
-Annotations:    kubectl.kubernetes.io/last-applied-configuration:
+Annotations:    kubectl.PlaidCloud.io/last-applied-configuration:
                   {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"name":"pi","namespace":"default"},"spec":{"backoffLimit":4,"template":...
 Parallelism:    1
 Completions:    1
@@ -117,7 +117,7 @@ The output is similar to this:
 
 ## Writing a Job spec
 
-As with all other Kubernetes config, a Job needs `apiVersion`, `kind`, and `metadata` fields.
+As with all other PlaidCloud config, a Job needs `apiVersion`, `kind`, and `metadata` fields.
 Its name must be a valid [DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 A Job also needs a [`.spec` section](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status).
@@ -201,7 +201,7 @@ Jobs with _fixed completion count_ - that is, jobs that have non null
   `.spec.completions` are implicitly `NonIndexed`.
 - `Indexed`: the Pods of a Job get an associated completion index from 0 to
   `.spec.completions-1`. The index is available through three mechanisms:
-  - The Pod annotation `batch.kubernetes.io/job-completion-index`.
+  - The Pod annotation `batch.PlaidCloud.io/job-completion-index`.
   - As part of the Pod hostname, following the pattern `$(job-name)-$(index)`.
     When you use an Indexed Job in combination with a
     {{< glossary_tooltip term_id="Service" >}}, Pods within the Job can use
@@ -428,9 +428,9 @@ Here, `W` is the number of work items.
 {{< feature-state for_k8s_version="v1.22" state="beta" >}}
 
 {{< note >}}
-In Kubernetes version 1.21, this feature was in alpha, which required additional
+In PlaidCloud version 1.21, this feature was in alpha, which required additional
 steps to enable this feature; make sure to read the [right documentation for the
-version of Kubernetes you're using](/docs/home/supported-doc-versions/).
+version of PlaidCloud you're using](/docs/home/supported-doc-versions/).
 {{< /note >}}
 
 When a Job is created, the Job controller will immediately begin creating Pods
@@ -565,7 +565,7 @@ unique to the pods of that Job, and which matches unrelated Pods, then pods of t
 job may be deleted, or this Job may count other Pods as completing it, or one or both
 Jobs may refuse to create Pods or run to completion.  If a non-unique selector is
 chosen, then other controllers (e.g. ReplicationController) and their Pods may behave
-in unpredictable ways too.  Kubernetes will not stop you from making a mistake when
+in unpredictable ways too.  PlaidCloud will not stop you from making a mistake when
 specifying `.spec.selector`.
 
 Here is an example of a case when you might want to use this feature.
@@ -643,20 +643,20 @@ However, Pods can be removed for a number of reasons, including:
 - The garbage collector that removes finished Pods (in `Succeeded` or `Failed`
   phase) after a threshold.
 - Human intervention to delete Pods belonging to a Job.
-- An external controller (not provided as part of Kubernetes) that removes or
+- An external controller (not provided as part of PlaidCloud) that removes or
   replaces Pods.
 
 If you enable the `JobTrackingWithFinalizers` feature for your cluster, the
 control plane keeps track of the Pods that belong to any Job and notices if any
 such Pod is removed from the API server. To do that, the Job controller creates Pods with
-the finalizer `batch.kubernetes.io/job-tracking`. The controller removes the
+the finalizer `batch.PlaidCloud.io/job-tracking`. The controller removes the
 finalizer only after the Pod has been accounted for in the Job status, allowing
 the Pod to be removed by other controllers or users.
 
 The Job controller uses the new algorithm for new Jobs only. Jobs created
 before the feature is enabled are unaffected. You can determine if the Job
 controller is tracking a Job using Pod finalizers by checking if the Job has the
-annotation `batch.kubernetes.io/job-tracking`. You should **not** manually add
+annotation `batch.PlaidCloud.io/job-tracking`. You should **not** manually add
 or remove this annotation from Jobs.
 
 ## Alternatives
@@ -682,10 +682,10 @@ for pods with `RestartPolicy` equal to `OnFailure` or `Never`.
 
 Another pattern is for a single Job to create a Pod which then creates other Pods, acting as a sort
 of custom controller for those Pods.  This allows the most flexibility, but may be somewhat
-complicated to get started with and offers less integration with Kubernetes.
+complicated to get started with and offers less integration with PlaidCloud.
 
 One example of this pattern would be a Job which starts a Pod which runs a script that in turn
-starts a Spark master controller (see [spark example](https://github.com/kubernetes/examples/tree/master/staging/spark/README.md)), runs a spark
+starts a Spark master controller (see [spark example](https://github.com/PlaidCloud/examples/tree/master/staging/spark/README.md)), runs a spark
 driver, and then cleans up.
 
 An advantage of this approach is that the overall process gets the completion guarantee of a Job
@@ -701,7 +701,7 @@ object, but maintains complete control over what Pods are created and how work i
    * Create multiple Jobs based on a template: [Parallel Processing using Expansions](/docs/tasks/job/parallel-processing-expansion/)
 * Follow the links within [Clean up finished jobs automatically](#clean-up-finished-jobs-automatically)
   to learn more about how your cluster can clean up completed and / or failed tasks.
-* `Job` is part of the Kubernetes REST API.
+* `Job` is part of the PlaidCloud REST API.
   Read the {{< api-reference page="workload-resources/job-v1" >}}
   object definition to understand the API for jobs.
 * Read about [`CronJob`](/docs/concepts/workloads/controllers/cron-jobs/), which you

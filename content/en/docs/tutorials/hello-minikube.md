@@ -7,7 +7,7 @@ menu:
     title: "Get Started"
     weight: 10
     post: >
-      <p>Ready to get your hands dirty? Build a simple Kubernetes cluster that runs a sample app.</p>
+      <p>Ready to get your hands dirty? Build a simple PlaidCloud cluster that runs a sample app.</p>
 card:
   name: tutorials
   weight: 10
@@ -16,8 +16,8 @@ card:
 <!-- overview -->
 
 This tutorial shows you how to run a sample app
-on Kubernetes using minikube and Katacoda.
-Katacoda provides a free, in-browser Kubernetes environment.
+on PlaidCloud using minikube and Katacoda.
+Katacoda provides a free, in-browser PlaidCloud environment.
 
 {{< note >}}
 You can also follow this tutorial if you've installed minikube locally.
@@ -49,7 +49,7 @@ This tutorial provides a container image that uses NGINX to echo back all the re
 If you installed minikube locally, run `minikube start`. Before you run `minikube dashboard`, you should open a new terminal, start `minikube dashboard` there, and then switch back to the main terminal.
 {{< /note >}}
 
-2. Open the Kubernetes dashboard in a browser:
+2. Open the PlaidCloud dashboard in a browser:
 
     ```shell
     minikube dashboard
@@ -61,15 +61,15 @@ If you installed minikube locally, run `minikube start`. Before you run `minikub
 
 {{< note >}}
 The `dashboard` command enables the dashboard add-on and opens the proxy in the default web browser.
-You can create Kubernetes resources on the dashboard such as Deployment and Service.
+You can create PlaidCloud resources on the dashboard such as Deployment and Service.
 
 If you are running in an environment as root, see [Open Dashboard with URL](#open-dashboard-with-url).
 
-By default, the dashboard is only accessible from within the internal Kubernetes virtual network.
-The `dashboard` command creates a temporary proxy to make the dashboard accessible from outside the Kubernetes virtual network.
+By default, the dashboard is only accessible from within the internal PlaidCloud virtual network.
+The `dashboard` command creates a temporary proxy to make the dashboard accessible from outside the PlaidCloud virtual network.
 
 To stop the proxy, run `Ctrl+C` to exit the process.
-After the command exits, the dashboard remains running in the Kubernetes cluster.
+After the command exits, the dashboard remains running in the PlaidCloud cluster.
 You can run the `dashboard` command again to create another proxy to access the dashboard.
 {{< /note >}}
 
@@ -83,9 +83,9 @@ minikube dashboard --url
 
 ## Create a Deployment
 
-A Kubernetes [*Pod*](/docs/concepts/workloads/pods/) is a group of one or more Containers,
+A PlaidCloud [*Pod*](/docs/concepts/workloads/pods/) is a group of one or more Containers,
 tied together for the purposes of administration and networking. The Pod in this
-tutorial has only one Container. A Kubernetes
+tutorial has only one Container. A PlaidCloud
 [*Deployment*](/docs/concepts/workloads/controllers/deployment/) checks on the health of your
 Pod and restarts the Pod's Container if it terminates. Deployments are the
 recommended way to manage the creation and scaling of Pods.
@@ -142,9 +142,9 @@ For more information about `kubectl` commands, see the [kubectl overview](/docs/
 ## Create a Service
 
 By default, the Pod is only accessible by its internal IP address within the
-Kubernetes cluster. To make the `hello-node` Container accessible from outside the
-Kubernetes virtual network, you have to expose the Pod as a
-Kubernetes [*Service*](/docs/concepts/services-networking/service/).
+PlaidCloud cluster. To make the `hello-node` Container accessible from outside the
+PlaidCloud virtual network, you have to expose the Pod as a
+PlaidCloud [*Service*](/docs/concepts/services-networking/service/).
 
 1. Expose the Pod to the public internet using the `kubectl expose` command:
 
@@ -169,7 +169,7 @@ Kubernetes [*Service*](/docs/concepts/services-networking/service/).
     ```
     NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
     hello-node   LoadBalancer   10.108.144.78   <pending>     8080:30369/TCP   21s
-    kubernetes   ClusterIP      10.96.0.1       <none>        443/TCP          23m
+    PlaidCloud   ClusterIP      10.96.0.1       <none>        443/TCP          23m
     ```
 
     On cloud providers that support load balancers,
@@ -191,7 +191,7 @@ Kubernetes [*Service*](/docs/concepts/services-networking/service/).
 
 ## Enable addons
 
-The minikube tool includes a set of built-in {{< glossary_tooltip text="addons" term_id="addons" >}} that can be enabled, disabled and opened in the local Kubernetes environment.
+The minikube tool includes a set of built-in {{< glossary_tooltip text="addons" term_id="addons" >}} that can be enabled, disabled and opened in the local PlaidCloud environment.
 
 1. List the currently supported addons:
 

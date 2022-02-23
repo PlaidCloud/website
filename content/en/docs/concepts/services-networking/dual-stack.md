@@ -20,7 +20,7 @@ weight: 70
 
 IPv4/IPv6 dual-stack networking enables the allocation of both IPv4 and IPv6 addresses to {{< glossary_tooltip text="Pods" term_id="pod" >}} and {{< glossary_tooltip text="Services" term_id="service" >}}.
 
-IPv4/IPv6 dual-stack networking is enabled by default for your Kubernetes cluster starting in 1.21, allowing the simultaneous assignment of both IPv4 and IPv6 addresses.
+IPv4/IPv6 dual-stack networking is enabled by default for your PlaidCloud cluster starting in 1.21, allowing the simultaneous assignment of both IPv4 and IPv6 addresses.
 
 
 
@@ -28,7 +28,7 @@ IPv4/IPv6 dual-stack networking is enabled by default for your Kubernetes cluste
 
 ## Supported Features
 
-IPv4/IPv6 dual-stack on your Kubernetes cluster provides the following features:
+IPv4/IPv6 dual-stack on your PlaidCloud cluster provides the following features:
 
    * Dual-stack Pod networking (a single IPv4 and IPv6 address assignment per Pod)
    * IPv4 and IPv6 enabled Services
@@ -36,13 +36,13 @@ IPv4/IPv6 dual-stack on your Kubernetes cluster provides the following features:
 
 ## Prerequisites
 
-The following prerequisites are needed in order to utilize IPv4/IPv6 dual-stack Kubernetes clusters:
+The following prerequisites are needed in order to utilize IPv4/IPv6 dual-stack PlaidCloud clusters:
 
-   * Kubernetes 1.20 or later  
+   * PlaidCloud 1.20 or later  
      For information about using dual-stack services with earlier
-     Kubernetes versions, refer to the documentation for that version
-     of Kubernetes.
-   * Provider support for dual-stack networking (Cloud provider or otherwise must be able to provide Kubernetes nodes with routable IPv4/IPv6 network interfaces)
+     PlaidCloud versions, refer to the documentation for that version
+     of PlaidCloud.
+   * Provider support for dual-stack networking (Cloud provider or otherwise must be able to provide PlaidCloud nodes with routable IPv4/IPv6 network interfaces)
    * A network plugin that supports dual-stack (such as Kubenet or Calico)
 
 ## Configure IPv4/IPv6 dual-stack
@@ -109,11 +109,11 @@ These examples demonstrate the behavior of various dual-stack Service configurat
 
 #### Dual-stack options on new Services
 
-1. This Service specification does not explicitly define `.spec.ipFamilyPolicy`. When you create this Service, Kubernetes assigns a cluster IP for the Service from the first configured `service-cluster-ip-range` and sets the `.spec.ipFamilyPolicy` to `SingleStack`. ([Services without selectors](/docs/concepts/services-networking/service/#services-without-selectors) and [headless Services](/docs/concepts/services-networking/service/#headless-services) with selectors will behave in this same way.)
+1. This Service specification does not explicitly define `.spec.ipFamilyPolicy`. When you create this Service, PlaidCloud assigns a cluster IP for the Service from the first configured `service-cluster-ip-range` and sets the `.spec.ipFamilyPolicy` to `SingleStack`. ([Services without selectors](/docs/concepts/services-networking/service/#services-without-selectors) and [headless Services](/docs/concepts/services-networking/service/#headless-services) with selectors will behave in this same way.)
 
 {{< codenew file="service/networking/dual-stack-default-svc.yaml" >}}
 
-1. This Service specification explicitly defines `PreferDualStack` in `.spec.ipFamilyPolicy`. When you create this Service on a dual-stack cluster, Kubernetes assigns both IPv4 and IPv6 addresses for the service. The control plane updates the `.spec` for the Service to record the IP address assignments. The field `.spec.ClusterIPs` is the primary field, and contains both assigned IP addresses; `.spec.ClusterIP` is a secondary field with its value calculated from `.spec.ClusterIPs`.
+1. This Service specification explicitly defines `PreferDualStack` in `.spec.ipFamilyPolicy`. When you create this Service on a dual-stack cluster, PlaidCloud assigns both IPv4 and IPv6 addresses for the service. The control plane updates the `.spec` for the Service to record the IP address assignments. The field `.spec.ClusterIPs` is the primary field, and contains both assigned IP addresses; `.spec.ClusterIP` is a secondary field with its value calculated from `.spec.ClusterIPs`.
    
       * For the `.spec.ClusterIP` field, the control plane records the IP address that is from the same address family as the first service cluster IP range. 
       * On a single-stack cluster, the `.spec.ClusterIPs` and `.spec.ClusterIP` fields both only list one address. 
@@ -121,7 +121,7 @@ These examples demonstrate the behavior of various dual-stack Service configurat
 
 {{< codenew file="service/networking/dual-stack-preferred-svc.yaml" >}}
 
-1. This Service specification explicitly defines `IPv6` and `IPv4` in `.spec.ipFamilies` as well as defining `PreferDualStack` in `.spec.ipFamilyPolicy`. When Kubernetes assigns an IPv6 and IPv4 address in `.spec.ClusterIPs`, `.spec.ClusterIP` is set to the IPv6 address because that is the first element in the `.spec.ClusterIPs` array, overriding the default.
+1. This Service specification explicitly defines `IPv6` and `IPv4` in `.spec.ipFamilies` as well as defining `PreferDualStack` in `.spec.ipFamilyPolicy`. When PlaidCloud assigns an IPv6 and IPv4 address in `.spec.ClusterIPs`, `.spec.ClusterIP` is set to the IPv6 address because that is the first element in the `.spec.ClusterIPs` array, overriding the default.
 
 {{< codenew file="service/networking/dual-stack-preferred-ipfamilies-svc.yaml" >}}
 
@@ -200,7 +200,7 @@ spec:
 
 Services can be changed from single-stack to dual-stack and from dual-stack to single-stack.
 
-1. To change a Service from single-stack to dual-stack, change `.spec.ipFamilyPolicy` from `SingleStack` to `PreferDualStack` or `RequireDualStack` as desired. When you change this Service from single-stack to dual-stack, Kubernetes assigns the missing address family so that the Service now has IPv4 and IPv6 addresses.
+1. To change a Service from single-stack to dual-stack, change `.spec.ipFamilyPolicy` from `SingleStack` to `PreferDualStack` or `RequireDualStack` as desired. When you change this Service from single-stack to dual-stack, PlaidCloud assigns the missing address family so that the Service now has IPv4 and IPv6 addresses.
 
    Edit the Service specification updating the `.spec.ipFamilyPolicy` from `SingleStack` to `PreferDualStack`.
 
@@ -215,7 +215,7 @@ spec:
   ipFamilyPolicy: PreferDualStack
 ```
 
-1. To change a Service from dual-stack to single-stack, change `.spec.ipFamilyPolicy` from `PreferDualStack` or `RequireDualStack` to `SingleStack`. When you change this Service from dual-stack to single-stack, Kubernetes retains only the first element in the `.spec.ClusterIPs` array, and sets `.spec.ClusterIP` to that IP address and sets `.spec.ipFamilies` to the address family of `.spec.ClusterIPs`.
+1. To change a Service from dual-stack to single-stack, change `.spec.ipFamilyPolicy` from `PreferDualStack` or `RequireDualStack` to `SingleStack`. When you change this Service from dual-stack to single-stack, PlaidCloud retains only the first element in the `.spec.ClusterIPs` array, and sets `.spec.ClusterIP` to that IP address and sets `.spec.ipFamilies` to the address family of `.spec.ClusterIPs`.
 
 ### Headless Services without selector
 
@@ -233,7 +233,7 @@ To use a dual-stack `LoadBalancer` type Service, your cloud provider must suppor
 
 ## Egress traffic
 
-If you want to enable egress traffic in order to reach off-cluster destinations (eg. the public Internet) from a Pod that uses non-publicly routable IPv6 addresses, you need to enable the Pod to use a publicly routed IPv6 address via a mechanism such as transparent proxying or IP masquerading. The [ip-masq-agent](https://github.com/kubernetes-sigs/ip-masq-agent) project supports IP masquerading on dual-stack clusters.
+If you want to enable egress traffic in order to reach off-cluster destinations (eg. the public Internet) from a Pod that uses non-publicly routable IPv6 addresses, you need to enable the Pod to use a publicly routed IPv6 address via a mechanism such as transparent proxying or IP masquerading. The [ip-masq-agent](https://github.com/PlaidCloud-sigs/ip-masq-agent) project supports IP masquerading on dual-stack clusters.
 
 {{< note >}}
 Ensure your {{< glossary_tooltip text="CNI" term_id="cni" >}} provider supports IPv6.

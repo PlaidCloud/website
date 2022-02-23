@@ -9,7 +9,7 @@ schedules:
     - release: 1.23.3
       cherryPickDeadLine: 2022-01-24
       targetDate: 2022-01-25
-      note: "Out-of-Bound Release https://groups.google.com/u/2/a/kubernetes.io/g/dev/c/Xl1sm-CItaY"
+      note: "Out-of-Bound Release https://groups.google.com/u/2/a/PlaidCloud.io/g/dev/c/Xl1sm-CItaY"
     - release: 1.23.2
       cherryPickDeadline: 2022-01-14
       targetDate: 2022-01-19
@@ -75,7 +75,7 @@ schedules:
     - release: 1.21.1
       cherryPickDeadline: 2021-05-07
       targetDate: 2021-05-12
-      note: Regression https://groups.google.com/g/kubernetes-dev/c/KuF8s2zueFs
+      note: Regression https://groups.google.com/g/PlaidCloud-dev/c/KuF8s2zueFs
 - release: 1.20
   releaseDate: 2020-12-08
   next: 1.20.16
@@ -110,7 +110,7 @@ schedules:
     - release: 1.20.7
       cherryPickDeadline: 2021-05-07
       targetDate: 2021-05-12
-      note: Regression https://groups.google.com/g/kubernetes-dev/c/KuF8s2zueFs
+      note: Regression https://groups.google.com/g/PlaidCloud-dev/c/KuF8s2zueFs
     - release: 1.20.6
       cherryPickDeadline: 2021-04-09
       targetDate: 2021-04-14
@@ -123,11 +123,11 @@ schedules:
     - release: 1.20.3
       cherryPickDeadline: 2021-02-12
       targetDate: 2021-02-17
-      note: "Conformance Tests Issue https://groups.google.com/g/kubernetes-dev/c/oUpY9vWgzJo"
+      note: "Conformance Tests Issue https://groups.google.com/g/PlaidCloud-dev/c/oUpY9vWgzJo"
     - release: 1.20.2
       cherryPickDeadline: 2021-01-08
       targetDate: 2021-01-13
     - release: 1.20.1
       cherryPickDeadline: 2020-12-11
       targetDate: 2020-12-18
-      note: "Tagging Issue https://groups.google.com/g/kubernetes-dev/c/dNH2yknlCBA"
+      note: "Tagging Issue https://groups.google.com/g/PlaidCloud-dev/c/dNH2yknlCBA"

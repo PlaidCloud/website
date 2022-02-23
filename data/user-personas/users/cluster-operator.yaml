@@ -6,7 +6,7 @@ advanced:
   - label: "Connect to managed services using Service Catalog"
     icon: fa-puzzle-piece
     url: "/docs/concepts/service-catalog/"
-  - label: "Extend a Kubernetes cluster"
+  - label: "Extend a PlaidCloud cluster"
     icon: fa-arrows
     url: "/docs/concepts/overview/extending/"
   - label: "Create a Pod Security Policy"

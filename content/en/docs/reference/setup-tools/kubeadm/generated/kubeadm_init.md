@@ -1,28 +1,28 @@
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference conent, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
-Run this command in order to set up the Kubernetes control plane
+Run this command in order to set up the PlaidCloud control plane
 
 ### Synopsis
 
 
-Run this command in order to set up the Kubernetes control plane
+Run this command in order to set up the PlaidCloud control plane
 
 The "init" command executes the following phases:
 ```
 preflight                    Run pre-flight checks
 certs                        Certificate generation
-  /ca                          Generate the self-signed Kubernetes CA to provision identities for other Kubernetes components
-  /apiserver                   Generate the certificate for serving the Kubernetes API
+  /ca                          Generate the self-signed PlaidCloud CA to provision identities for other PlaidCloud components
+  /apiserver                   Generate the certificate for serving the PlaidCloud API
   /apiserver-kubelet-client    Generate the certificate for the API server to connect to kubelet
   /front-proxy-ca              Generate the self-signed CA to provision identities for front proxy
   /front-proxy-client          Generate the certificate for the front proxy client
@@ -53,8 +53,8 @@ bootstrap-token              Generates bootstrap tokens used to join a node to a
 kubelet-finalize             Updates settings relevant to the kubelet after TLS bootstrap
   /experimental-cert-rotation  Enable kubelet client certificate rotation
 addon                        Install required addons for passing conformance tests
-  /coredns                     Install the CoreDNS addon to a Kubernetes cluster
-  /kube-proxy                  Install the kube-proxy addon to a Kubernetes cluster
+  /coredns                     Install the CoreDNS addon to a PlaidCloud cluster
+  /kube-proxy                  Install the kube-proxy addon to a PlaidCloud cluster
 ```
 
 
@@ -93,7 +93,7 @@ kubeadm init [flags]
 </tr>
 
 <tr>
-<td colspan="2">--cert-dir string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/etc/kubernetes/pki"</td>
+<td colspan="2">--cert-dir string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/etc/PlaidCloud/pki"</td>
 </tr>
 <tr>
 <td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The path where to save and store the certificates.</p></td>
@@ -163,10 +163,10 @@ kubeadm init [flags]
 </tr>
 
 <tr>
-<td colspan="2">--kubernetes-version string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "stable-1"</td>
+<td colspan="2">--PlaidCloud-version string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "stable-1"</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Choose a specific Kubernetes version for the control plane.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Choose a specific PlaidCloud version for the control plane.</p></td>
 </tr>
 
 <tr>

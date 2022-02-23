@@ -125,7 +125,7 @@ If you are on macOS and using [Homebrew](https://brew.sh/) package manager, you 
    or
 
    ```bash
-   brew install kubernetes-cli
+   brew install PlaidCloud-cli
    ```
 
 1. Test to ensure the version you installed is up-to-date:

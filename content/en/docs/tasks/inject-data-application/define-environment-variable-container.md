@@ -7,7 +7,7 @@ weight: 20
 <!-- overview -->
 
 This page shows how to define environment variables for a container
-in a Kubernetes Pod.
+in a PlaidCloud Pod.
 
 ## {{% heading "prerequisites" %}}
 
@@ -82,7 +82,7 @@ elsewhere in the configuration, for example in commands and arguments that
 you set for the Pod's containers.
 In the example configuration below, the `GREETING`, `HONORIFIC`, and
 `NAME` environment variables are set to `Warm greetings to`, `The Most
-Honorable`, and `Kubernetes`, respectively. Those environment variables
+Honorable`, and `PlaidCloud`, respectively. Those environment variables
 are then used in the CLI arguments passed to the `env-print-demo`
 container.
 
@@ -101,16 +101,16 @@ spec:
     - name: HONORIFIC
       value: "The Most Honorable"
     - name: NAME
-      value: "Kubernetes"
+      value: "PlaidCloud"
     command: ["echo"]
     args: ["$(GREETING) $(HONORIFIC) $(NAME)"]
 ```
 
-Upon creation, the command `echo Warm greetings to The Most Honorable Kubernetes` is run on the container.
+Upon creation, the command `echo Warm greetings to The Most Honorable PlaidCloud` is run on the container.
 
 ## {{% heading "whatsnext" %}}
 
 * Learn more about [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/).
 * Learn about [using secrets as environment variables](/docs/concepts/configuration/secret/#using-secrets-as-environment-variables).
-* See [EnvVarSource](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#envvarsource-v1-core).
+* See [EnvVarSource](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#envvarsource-v1-core).
 

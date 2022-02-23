@@ -11,7 +11,7 @@ content_type: reference
 
 <!-- overview -->
 
-As the Kubernetes API evolves, APIs are periodically reorganized or upgraded.
+As the PlaidCloud API evolves, APIs are periodically reorganized or upgraded.
 When APIs evolve, the old API is deprecated and eventually removed.
 This page contains information you need to know when migrating from
 deprecated API versions to newer and more stable API versions.
@@ -58,8 +58,8 @@ The **discovery.k8s.io/v1beta1** API version of EndpointSlice will no longer be 
 * Migrate manifests and API clients to use the **discovery.k8s.io/v1** API version, available since v1.21.
 * All existing persisted objects are accessible via the new API
 * Notable changes in **discovery.k8s.io/v1**:
-    * use per Endpoint `nodeName` field instead of deprecated `topology["kubernetes.io/hostname"]` field
-    * use per Endpoint `zone` field instead of deprecated `topology["topology.kubernetes.io/zone"]` field
+    * use per Endpoint `nodeName` field instead of deprecated `topology["PlaidCloud.io/hostname"]` field
+    * use per Endpoint `zone` field instead of deprecated `topology["topology.PlaidCloud.io/zone"]` field
     * `topology` is replaced with the `deprecatedTopology` field which is not writable in v1
 
 #### Event {#event-v125}
@@ -141,9 +141,9 @@ The **apiextensions.k8s.io/v1beta1** API version of CustomResourceDefinition is 
     * `spec.additionalPrinterColumns` is removed in v1; use `spec.versions[*].additionalPrinterColumns` instead
     * `spec.conversion.webhookClientConfig` is moved to `spec.conversion.webhook.clientConfig` in v1
     * `spec.conversion.conversionReviewVersions` is moved to `spec.conversion.webhook.conversionReviewVersions` in v1
-    * `spec.versions[*].schema.openAPIV3Schema` is now required when creating v1 CustomResourceDefinition objects, and must be a [structural schema](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema)
-    * `spec.preserveUnknownFields: true` is disallowed when creating v1 CustomResourceDefinition objects; it must be specified within schema definitions as `x-kubernetes-preserve-unknown-fields: true`
-    * In `additionalPrinterColumns` items, the `JSONPath` field was renamed to `jsonPath` in v1 (fixes [#66531](https://github.com/kubernetes/kubernetes/issues/66531))
+    * `spec.versions[*].schema.openAPIV3Schema` is now required when creating v1 CustomResourceDefinition objects, and must be a [structural schema](/docs/tasks/extend-PlaidCloud/custom-resources/custom-resource-definitions/#specifying-a-structural-schema)
+    * `spec.preserveUnknownFields: true` is disallowed when creating v1 CustomResourceDefinition objects; it must be specified within schema definitions as `x-PlaidCloud-preserve-unknown-fields: true`
+    * In `additionalPrinterColumns` items, the `JSONPath` field was renamed to `jsonPath` in v1 (fixes [#66531](https://github.com/PlaidCloud/PlaidCloud/issues/66531))
 
 #### APIService {#apiservice-v122}
 
@@ -166,7 +166,7 @@ The **authorization.k8s.io/v1beta1** API version of LocalSubjectAccessReview, Se
 
 * Migrate manifests and API clients to use the **authorization.k8s.io/v1** API version, available since v1.6.
 * Notable changes:
-    * `spec.group` was renamed to `spec.groups` in v1 (fixes [#32709](https://github.com/kubernetes/kubernetes/issues/32709))
+    * `spec.group` was renamed to `spec.groups` in v1 (fixes [#32709](https://github.com/PlaidCloud/PlaidCloud/issues/32709))
 
 #### CertificateSigningRequest {#certificatesigningrequest-v122}
 
@@ -176,7 +176,7 @@ The **certificates.k8s.io/v1beta1** API version of CertificateSigningRequest is 
 * All existing persisted objects are accessible via the new API
 * Notable changes in `certificates.k8s.io/v1`:
     * For API clients requesting certificates:
-        * `spec.signerName` is now required (see [known Kubernetes signers](/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers)), and requests for `kubernetes.io/legacy-unknown` are not allowed to be created via the `certificates.k8s.io/v1` API
+        * `spec.signerName` is now required (see [known PlaidCloud signers](/docs/reference/access-authn-authz/certificate-signing-requests/#PlaidCloud-signers)), and requests for `PlaidCloud.io/legacy-unknown` are not allowed to be created via the `certificates.k8s.io/v1` API
         * `spec.usages` is now required, may not contain duplicate values, and must only contain known usages
     * For API clients approving or signing certificates:
         * `status.conditions` may not contain duplicate types
@@ -316,7 +316,7 @@ For example:
 
 ### Locate use of deprecated APIs
 
-Use [client warnings, metrics, and audit information available in 1.19+](https://kubernetes.io/blog/2020/09/03/warnings/#deprecation-warnings)
+Use [client warnings, metrics, and audit information available in 1.19+](https://plaidcloud.com/blog/2020/09/03/warnings/#deprecation-warnings)
 to locate use of deprecated APIs.
 
 ### Migrate to non-deprecated APIs
@@ -334,4 +334,4 @@ to locate use of deprecated APIs.
     `kubectl-convert -f ./my-deployment.yaml --output-version apps/v1`
 
     Note that this may use non-ideal default values. To learn more about a specific
-    resource, check the Kubernetes [API reference](/docs/reference/kubernetes-api/).
+    resource, check the PlaidCloud [API reference](/docs/reference/PlaidCloud-api/).

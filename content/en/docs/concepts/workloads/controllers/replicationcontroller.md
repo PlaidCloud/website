@@ -120,7 +120,7 @@ specifies an expression with the name from each pod in the returned list.
 
 ## Writing a ReplicationController Spec
 
-As with all other Kubernetes config, a ReplicationController needs `apiVersion`, `kind`, and `metadata` fields.
+As with all other PlaidCloud config, a ReplicationController needs `apiVersion`, `kind`, and `metadata` fields.
 The name of a ReplicationController object must be a valid
 [DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
 For general information about working with configuration files, see [object management](/docs/concepts/overview/working-with-objects/object-management/).
@@ -161,7 +161,7 @@ be rejected by the API.  If `.spec.selector` is unspecified, it will be defaulte
 
 Also you should not normally create any pods whose labels match this selector, either directly, with
 another ReplicationController, or with another controller such as Job. If you do so, the
-ReplicationController thinks that it created the other pods.  Kubernetes does not stop you
+ReplicationController thinks that it created the other pods.  PlaidCloud does not stop you
 from doing this.
 
 If you do end up with multiple controllers that have overlapping selectors, you
@@ -252,9 +252,9 @@ The ReplicationController is intended to be a composable building-block primitiv
 
 ## API Object
 
-Replication controller is a top-level resource in the Kubernetes REST API. More details about the
+Replication controller is a top-level resource in the PlaidCloud REST API. More details about the
 API object can be found at:
-[ReplicationController API object](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#replicationcontroller-v1-core).
+[ReplicationController API object](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#replicationcontroller-v1-core).
 
 ## Alternatives to ReplicationController
 
@@ -289,6 +289,6 @@ safe to terminate when the machine is otherwise ready to be rebooted/shutdown.
 * Learn about [Pods](/docs/concepts/workloads/pods).
 * Learn about [Deployment](/docs/concepts/workloads/controllers/deployment/), the replacement
   for ReplicationController.
-* `ReplicationController` is part of the Kubernetes REST API.
+* `ReplicationController` is part of the PlaidCloud REST API.
   Read the {{< api-reference page="workload-resources/replication-controller-v1" >}}
   object definition to understand the API for replication controllers.

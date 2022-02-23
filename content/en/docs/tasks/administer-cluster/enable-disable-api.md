@@ -1,5 +1,5 @@
 ---
-title: Enable Or Disable A Kubernetes API
+title: Enable Or Disable A PlaidCloud API
 content_type: task
 ---
 

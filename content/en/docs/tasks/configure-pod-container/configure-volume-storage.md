@@ -105,7 +105,7 @@ you will see something like this:
 
 At this point, the Container has terminated and restarted. This is because the
 Redis Pod has a
-[restartPolicy](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
+[restartPolicy](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podspec-v1-core)
 of `Always`.
 
 1. Get a shell into the restarted Container:
@@ -132,11 +132,11 @@ of `Always`.
 ## {{% heading "whatsnext" %}}
 
 
-* See [Volume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core).
+* See [Volume](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#volume-v1-core).
 
-* See [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
+* See [Pod](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#pod-v1-core).
 
-* In addition to the local disk storage provided by `emptyDir`, Kubernetes
+* In addition to the local disk storage provided by `emptyDir`, PlaidCloud
 supports many different network-attached storage solutions, including PD on
 GCE and EBS on EC2, which are preferred for critical data and will handle
 details such as mounting and unmounting the devices on the nodes. See

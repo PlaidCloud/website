@@ -2,9 +2,9 @@
 reviewers:
 - bryk
 - mikedanese
-title: Deploy and Access the Kubernetes Dashboard
+title: Deploy and Access the PlaidCloud Dashboard
 description: >-
-  Deploy the web UI (Kubernetes Dashboard) and access it.
+  Deploy the web UI (PlaidCloud Dashboard) and access it.
 content_type: concept
 weight: 10
 card:
@@ -15,18 +15,18 @@ card:
 
 <!-- overview -->
 
-Dashboard is a web-based Kubernetes user interface.
-You can use Dashboard to deploy containerized applications to a Kubernetes cluster,
+Dashboard is a web-based PlaidCloud user interface.
+You can use Dashboard to deploy containerized applications to a PlaidCloud cluster,
 troubleshoot your containerized application, and manage the cluster resources.
 You can use Dashboard to get an overview of applications running on your cluster,
-as well as for creating or modifying individual Kubernetes resources
+as well as for creating or modifying individual PlaidCloud resources
 (such as Deployments, Jobs, DaemonSets, etc).
 For example, you can scale a Deployment, initiate a rolling update, restart a pod
 or deploy new applications using a deploy wizard.
 
-Dashboard also provides information on the state of Kubernetes resources in your cluster and on any errors that may have occurred.
+Dashboard also provides information on the state of PlaidCloud resources in your cluster and on any errors that may have occurred.
 
-![Kubernetes Dashboard UI](/images/docs/ui-dashboard.png)
+![PlaidCloud Dashboard UI](/images/docs/ui-dashboard.png)
 
 <!-- body -->
 
@@ -35,7 +35,7 @@ Dashboard also provides information on the state of Kubernetes resources in your
 The Dashboard UI is not deployed by default. To deploy it, run the following command:
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml
+kubectl apply -f https://raw.githubusercontent.com/PlaidCloud/dashboard/v2.4.0/aio/deploy/recommended.yaml
 ```
 
 ## Accessing the Dashboard UI
@@ -43,7 +43,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/a
 To protect your cluster data, Dashboard deploys with a minimal RBAC configuration by default.
 Currently, Dashboard only supports logging in with a Bearer Token.
 To create a token for this demo, you can follow our guide on
-[creating a sample user](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md).
+[creating a sample user](https://github.com/PlaidCloud/dashboard/blob/master/docs/user/access-control/creating-sample-user.md).
 
 {{< warning >}}
 The sample user created in the tutorial will have administrative privileges and is for educational purposes only.
@@ -58,7 +58,7 @@ by running the following command:
 kubectl proxy
 ```
 
-Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/).
+Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/PlaidCloud-dashboard/services/https:PlaidCloud-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/PlaidCloud-dashboard/services/https:PlaidCloud-dashboard:/proxy/).
 
 The UI can _only_ be accessed from the machine where the command is executed. See `kubectl proxy --help` for more options.
 
@@ -74,7 +74,7 @@ This page contains a link to this document as well as a button to deploy your fi
 In addition, you can view which system applications are running by default in the `kube-system`
 [namespace](/docs/tasks/administer-cluster/namespaces/) of your cluster, for example the Dashboard itself.
 
-![Kubernetes Dashboard welcome page](/images/docs/ui-dashboard-zerostate.png)
+![PlaidCloud Dashboard welcome page](/images/docs/ui-dashboard-zerostate.png)
 
 ## Deploying containerized applications
 
@@ -91,7 +91,7 @@ The deploy wizard expects that you provide the following information:
   A [label](/docs/concepts/overview/working-with-objects/labels/) with the name will be
   added to the Deployment and Service, if any, that will be deployed.
 
-  The application name must be unique within the selected Kubernetes [namespace](/docs/tasks/administer-cluster/namespaces/).
+  The application name must be unique within the selected PlaidCloud [namespace](/docs/tasks/administer-cluster/namespaces/).
   It must start with a lowercase character, and end with a lowercase character or a number,
   and contain only lowercase letters, numbers and dashes (-). It is limited to 24 characters.
   Leading and trailing spaces are ignored.
@@ -143,7 +143,7 @@ If needed, you can expand the **Advanced options** section where you can specify
   track=stable
   ```
 
-- **Namespace**: Kubernetes supports multiple virtual clusters backed by the same physical cluster.
+- **Namespace**: PlaidCloud supports multiple virtual clusters backed by the same physical cluster.
   These virtual clusters are called [namespaces](/docs/tasks/administer-cluster/namespaces/).
   They let you partition resources into logically named groups.
 
@@ -181,7 +181,7 @@ If needed, you can expand the **Advanced options** section where you can specify
   are equivalent to processes running as root on the host.
   Privileged containers can make use of capabilities like manipulating the network stack and accessing devices.
 
-- **Environment variables**: Kubernetes exposes Services through
+- **Environment variables**: PlaidCloud exposes Services through
   [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/).
   You can compose environment variable or pass arguments to your commands using the values of environment variables.
   They can be used in applications to find a Service.
@@ -189,24 +189,24 @@ If needed, you can expand the **Advanced options** section where you can specify
 
 ### Uploading a YAML or JSON file
 
-Kubernetes supports declarative configuration.
+PlaidCloud supports declarative configuration.
 In this style, all configuration is stored in manifests (YAML or JSON configuration files).
-The manifests use Kubernetes [API](/docs/concepts/overview/kubernetes-api/) resource schemas.
+The manifests use PlaidCloud [API](/docs/concepts/overview/PlaidCloud-api/) resource schemas.
 
 As an alternative to specifying application details in the deploy wizard,
 you can define your application in one or more manifests, and upload the files using Dashboard.
 
 ## Using Dashboard
 
-Following sections describe views of the Kubernetes Dashboard UI; what they provide and how can they be used.
+Following sections describe views of the PlaidCloud Dashboard UI; what they provide and how can they be used.
 
 ### Navigation
 
-When there are Kubernetes objects defined in the cluster, Dashboard shows them in the initial view.
+When there are PlaidCloud objects defined in the cluster, Dashboard shows them in the initial view.
 By default only objects from the _default_ namespace are shown and
 this can be changed using the namespace selector located in the navigation menu.
 
-Dashboard shows most Kubernetes object kinds and groups them in a few menu categories.
+Dashboard shows most PlaidCloud object kinds and groups them in a few menu categories.
 
 #### Admin overview
 
@@ -229,7 +229,7 @@ For example, Pods that ReplicaSet is controlling or new ReplicaSets and Horizont
 
 #### Services
 
-Shows Kubernetes resources that allow for exposing services to external world and
+Shows PlaidCloud resources that allow for exposing services to external world and
 discovering them within a cluster.
 For that reason, Service and Ingress views show Pods targeted by them,
 internal endpoints for cluster connections and external endpoints for external users.
@@ -240,7 +240,7 @@ Storage view shows PersistentVolumeClaim resources which are used by application
 
 #### ConfigMaps and Secrets {#config-maps-and-secrets}
 
-Shows all Kubernetes resources that are used for live configuration of applications running in clusters.
+Shows all PlaidCloud resources that are used for live configuration of applications running in clusters.
 The view allows for editing and managing config objects and displays secrets hidden by default.
 
 #### Logs viewer
@@ -254,6 +254,6 @@ The viewer allows for drilling down logs from containers belonging to a single P
 
 
 For more information, see the
-[Kubernetes Dashboard project page](https://github.com/kubernetes/dashboard).
+[PlaidCloud Dashboard project page](https://github.com/PlaidCloud/dashboard).
 
 

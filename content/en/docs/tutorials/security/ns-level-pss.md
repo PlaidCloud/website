@@ -22,7 +22,7 @@ level. For instructions, refer to [Apply Pod Security Standards at the cluster l
 Install the following on your workstation:
 
 - [KinD](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [kubectl](https://plaidcloud.com/docs/tasks/tools/)
 
 ## Create cluster
 
@@ -54,7 +54,7 @@ Install the following on your workstation:
     ```
    The output is similar to this:
     ```
-    Kubernetes control plane is running at https://127.0.0.1:50996
+    PlaidCloud control plane is running at https://127.0.0.1:50996
     CoreDNS is running at https://127.0.0.1:50996/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
     
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
@@ -80,8 +80,8 @@ namespace/example created
 
     ```shell
     kubectl label --overwrite ns example \
-      pod-security.kubernetes.io/warn=baseline \
-      pod-security.kubernetes.io/warn-version=latest
+      pod-security.PlaidCloud.io/warn=baseline \
+      pod-security.PlaidCloud.io/warn-version=latest
     ```
 
 2. Multiple pod security standards can be enabled on any namespace, using labels.
@@ -91,12 +91,12 @@ namespace/example created
 
     ```
     kubectl label --overwrite ns example \
-      pod-security.kubernetes.io/enforce=baseline \
-      pod-security.kubernetes.io/enforce-version=latest \
-      pod-security.kubernetes.io/warn=restricted \
-      pod-security.kubernetes.io/warn-version=latest \
-      pod-security.kubernetes.io/audit=restricted \
-      pod-security.kubernetes.io/audit-version=latest
+      pod-security.PlaidCloud.io/enforce=baseline \
+      pod-security.PlaidCloud.io/enforce-version=latest \
+      pod-security.PlaidCloud.io/warn=restricted \
+      pod-security.PlaidCloud.io/warn-version=latest \
+      pod-security.PlaidCloud.io/audit=restricted \
+      pod-security.PlaidCloud.io/audit-version=latest
     ```
 
 ## Verify the Pod Security Standards

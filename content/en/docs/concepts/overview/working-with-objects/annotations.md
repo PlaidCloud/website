@@ -5,14 +5,14 @@ weight: 50
 ---
 
 <!-- overview -->
-You can use Kubernetes annotations to attach arbitrary non-identifying metadata
+You can use PlaidCloud annotations to attach arbitrary non-identifying metadata
 to objects. Clients such as tools and libraries can retrieve this metadata.
 
 
 <!-- body -->
 ## Attaching metadata to objects
 
-You can use either labels or annotations to attach metadata to Kubernetes
+You can use either labels or annotations to attach metadata to PlaidCloud
 objects. Labels can be used to select objects and to find
 collections of objects that satisfy certain conditions. In contrast, annotations
 are not used to identify and select objects. The metadata
@@ -72,7 +72,7 @@ _Annotations_ are key/value pairs. Valid annotation keys have two segments: an o
 
 If the prefix is omitted, the annotation Key is presumed to be private to the user. Automated system components (e.g. `kube-scheduler`, `kube-controller-manager`, `kube-apiserver`, `kubectl`, or other third-party automation) which add annotations to end-user objects must specify a prefix.
 
-The `kubernetes.io/` and `k8s.io/` prefixes are reserved for Kubernetes core components.
+The `PlaidCloud.io/` and `k8s.io/` prefixes are reserved for PlaidCloud core components.
 
 For example, here's the configuration file for a Pod that has the annotation `imageregistry: https://hub.docker.com/` :
 

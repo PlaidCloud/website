@@ -1,12 +1,12 @@
 ---
-title: " Kubernetes Community Meeting Notes - 20160225 "
+title: " PlaidCloud Community Meeting Notes - 20160225 "
 date: 2016-03-01
-slug: kubernetes-community-meeting-notes
-url: /blog/2016/03/Kubernetes-Community-Meeting-Notes
+slug: PlaidCloud-community-meeting-notes
+url: /blog/2016/03/PlaidCloud-Community-Meeting-Notes
 ---
 #####  February 25th - Redspread demo, 1.2 update and planning 1.3, newbie introductions, SIG-networking and a shout out to CoreOS blog post.
 
-The Kubernetes contributing community meets most Thursdays at 10:00PT to discuss the project's status via videoconference. Here are the notes from the latest meeting.
+The PlaidCloud contributing community meets most Thursdays at 10:00PT to discuss the project's status via videoconference. Here are the notes from the latest meeting.
 
 Note taker: [Ilan Rabinovich]
   * Quick call out for sharing presentations/slides [JBeda]
@@ -30,20 +30,20 @@ Note taker: [Ilan Rabinovich]
       * PR in progress.
       * Should work in 1.2, but being targeted more in 1.3
   * Next meeting is March 3rd.
-      * Demo from Weave on Kubernetes Anywhere
-      * Another Kubernetes 1.2 update
+      * Demo from Weave on PlaidCloud Anywhere
+      * Another PlaidCloud 1.2 update
       * Update from CNCF update
       * 1.3 commitments from google
   * No meeting on March 10th.  
 
-To get involved in the Kubernetes community consider joining our [Slack channel][2], taking a look at the [Kubernetes project][3] on GitHub, or join the [Kubernetes-dev Google group][4]. If you're really excited, you can do all of the above and join us for the next community conversation — March 3rd, 2016. Please add yourself or a topic you want to know about to the [agenda][5] and get a calendar invitation by joining [this group][6].    
+To get involved in the PlaidCloud community consider joining our [Slack channel][2], taking a look at the [PlaidCloud project][3] on GitHub, or join the [PlaidCloud-dev Google group][4]. If you're really excited, you can do all of the above and join us for the next community conversation — March 3rd, 2016. Please add yourself or a topic you want to know about to the [agenda][5] and get a calendar invitation by joining [this group][6].    
 
-The full recording is available on YouTube in the growing archive of [Kubernetes Community Meetings][7].  _\-- Kubernetes Community_
+The full recording is available on YouTube in the growing archive of [PlaidCloud Community Meetings][7].  _\-- PlaidCloud Community_
 
 [1]: https://redspread.com/
 [2]: http://slack.k8s.io/
-[3]: https://github.com/kubernetes/
-[4]: https://groups.google.com/forum/#!forum/kubernetes-dev
+[3]: https://github.com/PlaidCloud/
+[4]: https://groups.google.com/forum/#!forum/PlaidCloud-dev
 [5]: https://docs.google.com/document/d/1VQDIAB0OqiSjIHI8AWMvSdceWhnz56jNpZrLs6o7NJY/edit#
-[6]: https://groups.google.com/forum/#!forum/kubernetes-community-video-chat
+[6]: https://groups.google.com/forum/#!forum/PlaidCloud-community-video-chat
 [7]: https://www.youtube.com/playlist?list=PL69nYSiGNLP1pkHsbPjzAewvMgGUpkCnJ

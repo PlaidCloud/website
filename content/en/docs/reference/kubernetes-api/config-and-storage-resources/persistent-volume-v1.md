@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: v1`
@@ -28,7 +28,7 @@ guide. You can file document formatting bugs against the
 
 ## PersistentVolume {#PersistentVolume}
 
-PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes
+PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes
 
 <hr>
 
@@ -44,11 +44,11 @@ PersistentVolume (PV) is a storage resource provisioned by an administrator. It 
 
 - **spec** (<a href="{{< ref "../config-and-storage-resources/persistent-volume-v1#PersistentVolumeSpec" >}}">PersistentVolumeSpec</a>)
 
-  Spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
+  Spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#persistent-volumes
 
 - **status** (<a href="{{< ref "../config-and-storage-resources/persistent-volume-v1#PersistentVolumeStatus" >}}">PersistentVolumeStatus</a>)
 
-  Status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
+  Status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#persistent-volumes
 
 
 
@@ -62,19 +62,19 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **accessModes** ([]string)
 
-  AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes
+  AccessModes contains all ways the volume can be mounted. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#access-modes
 
 - **capacity** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-  A description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
+  A description of the persistent volume's resources and capacity. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#capacity
 
 - **claimRef** (<a href="{{< ref "../common-definitions/object-reference#ObjectReference" >}}">ObjectReference</a>)
 
-  ClaimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding
+  ClaimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#binding
 
 - **mountOptions** ([]string)
 
-  A list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+  A list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes/#mount-options
 
 - **nodeAffinity** (VolumeNodeAffinity)
 
@@ -107,10 +107,10 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **persistentVolumeReclaimPolicy** (string)
 
-  What happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
+  What happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#reclaiming
   
   Possible enum values:
-   - `"Delete"` means the volume will be deleted from Kubernetes on release from its claim. The volume plugin must support Deletion.
+   - `"Delete"` means the volume will be deleted from PlaidCloud on release from its claim. The volume plugin must support Deletion.
    - `"Recycle"` means the volume will be recycled back into the pool of unbound persistent volumes on release from its claim. The volume plugin must support Recycling.
    - `"Retain"` means the volume will be left in its current phase (Released) for manual reclamation by the administrator. The default policy is Retain.
 
@@ -129,18 +129,18 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **hostPath** (HostPathVolumeSource)
 
-  HostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+  HostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://plaidcloud.com/docs/concepts/storage/volumes#hostpath
 
   <a name="HostPathVolumeSource"></a>
   *Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.*
 
   - **hostPath.path** (string), required
 
-    Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://plaidcloud.com/docs/concepts/storage/volumes#hostpath
 
   - **hostPath.type** (string)
 
-    Type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    Type for HostPath Volume Defaults to "" More info: https://plaidcloud.com/docs/concepts/storage/volumes#hostpath
 
 - **local** (LocalVolumeSource)
 
@@ -162,7 +162,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **awsElasticBlockStore** (AWSElasticBlockStoreVolumeSource)
 
-  AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+  AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://plaidcloud.com/docs/concepts/storage/volumes#awselasticblockstore
 
   <a name="AWSElasticBlockStoreVolumeSource"></a>
   *Represents a Persistent Disk resource in AWS.
@@ -171,11 +171,11 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **awsElasticBlockStore.volumeID** (string), required
 
-    Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://plaidcloud.com/docs/concepts/storage/volumes#awselasticblockstore
 
   - **awsElasticBlockStore.fsType** (string)
 
-    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://plaidcloud.com/docs/concepts/storage/volumes#awselasticblockstore
 
   - **awsElasticBlockStore.partition** (int32)
 
@@ -183,7 +183,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **awsElasticBlockStore.readOnly** (boolean)
 
-    Specify "true" to force and set the ReadOnly property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    Specify "true" to force and set the ReadOnly property in VolumeMounts to "true". If omitted, the default is "false". More info: https://plaidcloud.com/docs/concepts/storage/volumes#awselasticblockstore
 
 - **azureDisk** (AzureDiskVolumeSource)
 
@@ -484,7 +484,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **gcePersistentDisk** (GCEPersistentDiskVolumeSource)
 
-  GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+  GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
   <a name="GCEPersistentDiskVolumeSource"></a>
   *Represents a Persistent Disk resource in Google Compute Engine.
@@ -493,19 +493,19 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **gcePersistentDisk.pdName** (string), required
 
-    Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.fsType** (string)
 
-    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.partition** (int32)
 
-    The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.readOnly** (boolean)
 
-    ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
 - **glusterfs** (GlusterfsPersistentVolumeSource)
 
@@ -559,7 +559,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **iscsi.fsType** (string)
 
-    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://plaidcloud.com/docs/concepts/storage/volumes#iscsi
 
   - **iscsi.initiatorName** (string)
 
@@ -594,22 +594,22 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **nfs** (NFSVolumeSource)
 
-  NFS represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+  NFS represents an NFS mount on the host. Provisioned by an admin. More info: https://plaidcloud.com/docs/concepts/storage/volumes#nfs
 
   <a name="NFSVolumeSource"></a>
   *Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.*
 
   - **nfs.path** (string), required
 
-    Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    Path that is exported by the NFS server. More info: https://plaidcloud.com/docs/concepts/storage/volumes#nfs
 
   - **nfs.server** (string), required
 
-    Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    Server is the hostname or IP address of the NFS server. More info: https://plaidcloud.com/docs/concepts/storage/volumes#nfs
 
   - **nfs.readOnly** (boolean)
 
-    ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://plaidcloud.com/docs/concepts/storage/volumes#nfs
 
 - **photonPersistentDisk** (PhotonPersistentDiskVolumeSource)
 
@@ -693,7 +693,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **rbd.fsType** (string)
 
-    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://plaidcloud.com/docs/concepts/storage/volumes#rbd
 
   - **rbd.keyring** (string)
 
@@ -728,7 +728,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
 - **scaleIO** (ScaleIOPersistentVolumeSource)
 
-  ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+  ScaleIO represents a ScaleIO persistent volume attached and mounted on PlaidCloud nodes.
 
   <a name="ScaleIOPersistentVolumeSource"></a>
   *ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume*
@@ -809,7 +809,7 @@ PersistentVolumeSpec is the specification of a persistent volume.
 
   - **storageos.volumeNamespace** (string)
 
-    VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.
+    VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the PlaidCloud name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.
 
 - **vsphereVolume** (VsphereVirtualDiskVolumeSource)
 
@@ -848,7 +848,7 @@ PersistentVolumeStatus is the current status of a persistent volume.
 
 - **phase** (string)
 
-  Phase indicates if a volume is available, bound to a claim, or released by a claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase
+  Phase indicates if a volume is available, bound to a claim, or released by a claim. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#phase
   
   Possible enum values:
    - `"Available"` used for PersistentVolumes that are not yet bound Available volumes are held by the binder and matched to PersistentVolumeClaims
@@ -883,7 +883,7 @@ PersistentVolumeList is a list of PersistentVolume items.
 
 - **items** ([]<a href="{{< ref "../config-and-storage-resources/persistent-volume-v1#PersistentVolume" >}}">PersistentVolume</a>), required
 
-  List of persistent volumes. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes
+  List of persistent volumes. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes
 
 
 

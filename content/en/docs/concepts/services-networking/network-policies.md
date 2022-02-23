@@ -10,7 +10,7 @@ weight: 50
 
 <!-- overview -->
 
-If you want to control traffic flow at the IP address or port level (OSI layer 3 or 4), then you might consider using Kubernetes NetworkPolicies for particular applications in your cluster.  NetworkPolicies are an application-centric construct which allow you to specify how a {{< glossary_tooltip text="pod" term_id="pod">}} is allowed to communicate with various network "entities" (we use the word "entity" here to avoid overloading the more common terms such as "endpoints" and "services", which have specific Kubernetes connotations) over the network. NetworkPolicies apply to a connection with a pod on one or both ends, and are not relevant to other connections.
+If you want to control traffic flow at the IP address or port level (OSI layer 3 or 4), then you might consider using PlaidCloud NetworkPolicies for particular applications in your cluster.  NetworkPolicies are an application-centric construct which allow you to specify how a {{< glossary_tooltip text="pod" term_id="pod">}} is allowed to communicate with various network "entities" (we use the word "entity" here to avoid overloading the more common terms such as "endpoints" and "services", which have specific PlaidCloud connotations) over the network. NetworkPolicies apply to a connection with a pod on one or both ends, and are not relevant to other connections.
 
 The entities that a Pod can communicate with are identified through a combination of the following 3 identifiers:
 
@@ -25,7 +25,7 @@ Meanwhile, when IP based NetworkPolicies are created, we define policies based o
 <!-- body -->
 ## Prerequisites
 
-Network policies are implemented by the [network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/). To use network policies, you must be using a networking solution which supports NetworkPolicy. Creating a NetworkPolicy resource without a controller that implements it will have no effect.
+Network policies are implemented by the [network plugin](/docs/concepts/extend-PlaidCloud/compute-storage-net/network-plugins/). To use network policies, you must be using a networking solution which supports NetworkPolicy. Creating a NetworkPolicy resource without a controller that implements it will have no effect.
 
 ## The Two Sorts of Pod Isolation
 
@@ -41,7 +41,7 @@ For a connection from a source pod to a destination pod to be allowed, both the 
 
 ## The NetworkPolicy resource {#networkpolicy-resource}
 
-See the [NetworkPolicy](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#networkpolicy-v1-networking-k8s-io) reference for a full definition of the resource.
+See the [NetworkPolicy](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#networkpolicy-v1-networking-k8s-io) reference for a full definition of the resource.
 
 An example NetworkPolicy might look like this:
 
@@ -86,13 +86,13 @@ spec:
 POSTing this to the API server for your cluster will have no effect unless your chosen networking solution supports network policy.
 {{< /note >}}
 
-__Mandatory Fields__: As with all other Kubernetes config, a NetworkPolicy
+__Mandatory Fields__: As with all other PlaidCloud config, a NetworkPolicy
 needs `apiVersion`, `kind`, and `metadata` fields.  For general information
 about working with config files, see
 [Configure Containers Using a ConfigMap](/docs/tasks/configure-pod-container/configure-pod-configmap/),
 and [Object Management](/docs/concepts/overview/working-with-objects/object-management).
 
-__spec__: NetworkPolicy [spec](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status) has all the information needed to define a particular network policy in the given namespace.
+__spec__: NetworkPolicy [spec](https://github.com/PlaidCloud/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status) has all the information needed to define a particular network policy in the given namespace.
 
 __podSelector__: Each NetworkPolicy includes a `podSelector` which selects the grouping of pods to which the policy applies. The example policy selects pods with the label "role=db". An empty `podSelector` selects all pods in the namespace.
 
@@ -154,7 +154,7 @@ contains a single `from` element allowing connections from Pods with the label `
 
 contains two elements in the `from` array, and allows connections from Pods in the local Namespace with the label `role=client`, *or* from any Pod in any namespace with the label `user=alice`.
 
-When in doubt, use `kubectl describe` to see how Kubernetes has interpreted the policy.
+When in doubt, use `kubectl describe` to see how PlaidCloud has interpreted the policy.
 
 <a name="behavior-of-ipblock-selectors"></a>
 __ipBlock__: This selects particular IP CIDR ranges to allow as ingress sources or egress destinations. These should be cluster-external IPs, since Pod IPs are ephemeral and unpredictable.
@@ -274,7 +274,7 @@ for the API server with `--feature-gates=NetworkPolicyEndPort=false,…`.
 {{< note >}}
 Your cluster must be using a {{< glossary_tooltip text="CNI" term_id="cni" >}} plugin that
 supports the `endPort` field in NetworkPolicy specifications.
-If your [network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) 
+If your [network plugin](/docs/concepts/extend-PlaidCloud/compute-storage-net/network-plugins/) 
 does not support the `endPort` field and you specify a NetworkPolicy with that,
 the policy will be applied only for the single `port` field.
 {{< /note >}}
@@ -283,7 +283,7 @@ the policy will be applied only for the single `port` field.
 
 {{< feature-state state="beta" for_k8s_version="1.21" >}}
 
-The Kubernetes control plane sets an immutable label `kubernetes.io/metadata.name` on all
+The PlaidCloud control plane sets an immutable label `PlaidCloud.io/metadata.name` on all
 namespaces, provided that the `NamespaceDefaultLabelName`
 [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) is enabled.
 The value of the label is the namespace name.
@@ -293,14 +293,14 @@ standardized label to target a specific namespace.
 
 ## What you can't do with network policies (at least, not yet)
 
-As of Kubernetes {{< skew latestVersion >}}, the following functionality does not exist in the NetworkPolicy API, but you might be able to implement workarounds using Operating System components (such as SELinux, OpenVSwitch, IPTables, and so on) or Layer 7 technologies (Ingress controllers, Service Mesh implementations) or admission controllers.  In case you are new to network security in Kubernetes, its worth noting that the following User Stories cannot (yet) be implemented using the NetworkPolicy API.
+As of PlaidCloud {{< skew latestVersion >}}, the following functionality does not exist in the NetworkPolicy API, but you might be able to implement workarounds using Operating System components (such as SELinux, OpenVSwitch, IPTables, and so on) or Layer 7 technologies (Ingress controllers, Service Mesh implementations) or admission controllers.  In case you are new to network security in PlaidCloud, its worth noting that the following User Stories cannot (yet) be implemented using the NetworkPolicy API.
 
 - Forcing internal cluster traffic to go through a common gateway (this might be best served with a service mesh or other proxy).
 - Anything TLS related (use a service mesh or ingress controller for this).
-- Node specific policies (you can use CIDR notation for these, but you cannot target nodes by their Kubernetes identities specifically).
+- Node specific policies (you can use CIDR notation for these, but you cannot target nodes by their PlaidCloud identities specifically).
 - Targeting of services by name (you can, however, target pods or namespaces by their {{< glossary_tooltip text="labels" term_id="label" >}}, which is often a viable workaround).
 - Creation or management of "Policy requests" that are fulfilled by a third party.
-- Default policies which are applied to all namespaces or pods (there are some third party Kubernetes distributions and projects which can do this).
+- Default policies which are applied to all namespaces or pods (there are some third party PlaidCloud distributions and projects which can do this).
 - Advanced policy querying and reachability tooling.
 - The ability to log network security events (for example connections that are blocked or accepted).
 - The ability to explicitly deny policies (currently the model for NetworkPolicies are deny by default, with only the ability to add allow rules).
@@ -311,4 +311,4 @@ As of Kubernetes {{< skew latestVersion >}}, the following functionality does no
 
 - See the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/)
   walkthrough for further examples.
-- See more [recipes](https://github.com/ahmetb/kubernetes-network-policy-recipes) for common scenarios enabled by the NetworkPolicy resource.
+- See more [recipes](https://github.com/ahmetb/PlaidCloud-network-policy-recipes) for common scenarios enabled by the NetworkPolicy resource.

@@ -4,7 +4,7 @@ reviewers:
 - jsturtevant
 - marosset
 - perithompson
-title: Guide for scheduling Windows containers in Kubernetes
+title: Guide for scheduling Windows containers in PlaidCloud
 content_type: concept
 weight: 75
 ---
@@ -12,7 +12,7 @@ weight: 75
 <!-- overview -->
 
 Windows applications constitute a large portion of the services and applications that run in many organizations. 
-This guide walks you through the steps to configure and deploy a Windows container in Kubernetes.
+This guide walks you through the steps to configure and deploy a Windows container in PlaidCloud.
 
 
 
@@ -25,16 +25,16 @@ This guide walks you through the steps to configure and deploy a Windows contain
 
 ## Before you begin
 
-* Create a Kubernetes cluster that includes a 
+* Create a PlaidCloud cluster that includes a 
 control plane and a [worker node running Windows Server](/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)
-* It is important to note that creating and deploying services and workloads on Kubernetes 
+* It is important to note that creating and deploying services and workloads on PlaidCloud 
 behaves in much the same way for Linux and Windows containers. 
 [Kubectl commands](/docs/reference/kubectl/overview/) to interface with the cluster are identical. 
 The example in the section below is provided to jumpstart your experience with Windows containers.
 
 ## Getting Started: Deploying a Windows container
 
-To deploy a Windows container on Kubernetes, you must first create an example application. 
+To deploy a Windows container on PlaidCloud, you must first create an example application. 
 The example YAML file below creates a simple webserver application. 
 Create a service spec named `win-webserver.yaml` with the contents below:
 
@@ -79,7 +79,7 @@ spec:
         - -command
         - "<#code used from https://gist.github.com/19WAS85/5424431#> ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add('http://*:80/') ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at http://*:80/') ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$ip=(Get-NetAdapter | Get-NetIpAddress); $$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$ip[1].IPAddress,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
      nodeSelector:
-      kubernetes.io/os: windows
+      PlaidCloud.io/os: windows
 ```
 
 {{< note >}}
@@ -112,7 +112,7 @@ the container port 80 is exposed directly to the service.
       using docker exec or kubectl exec
     * Service-to-pod communication, `curl` the virtual service IP (seen under `kubectl get services`) 
       from the Linux control plane node and from individual pods
-    * Service discovery, `curl` the service name with the Kubernetes [default DNS suffix](/docs/concepts/services-networking/dns-pod-service/#services)
+    * Service discovery, `curl` the service name with the PlaidCloud [default DNS suffix](/docs/concepts/services-networking/dns-pod-service/#services)
     * Inbound connectivity, `curl` the NodePort from the Linux control plane node or machines outside of the cluster
     * Outbound connectivity, `curl` external IPs from inside the pod using kubectl exec
 
@@ -141,14 +141,14 @@ to all your containers and add the necessary entrypoints for LogMonitor to push 
 
 ## Using configurable Container usernames
 
-Starting with Kubernetes v1.16, Windows containers can be configured to run their entrypoints and processes 
+Starting with PlaidCloud v1.16, Windows containers can be configured to run their entrypoints and processes 
 with different usernames than the image defaults. 
 The way this is achieved is a bit different from the way it is done for Linux containers. 
 Learn more about it [here](/docs/tasks/configure-pod-container/configure-runasusername/).
 
 ## Managing Workload Identity with Group Managed Service Accounts
 
-Starting with Kubernetes v1.14, Windows container workloads can be configured to use Group Managed Service Accounts (GMSA). 
+Starting with PlaidCloud v1.14, Windows container workloads can be configured to use Group Managed Service Accounts (GMSA). 
 Group Managed Service Accounts are a specific type of Active Directory account that provides automatic password management, 
 simplified service principal name (SPN) management, and the ability to delegate the management to other administrators across multiple servers. 
 Containers configured with a GMSA can access external Active Directory Domain resources while carrying the identity configured with the GMSA. 
@@ -168,7 +168,7 @@ that the containers in that Pod are designed for. For Pods that run Linux contai
 to Windows.
 
 The scheduler does not use the value of `.spec.os.name` when assigning Pods to nodes. You should
-use normal Kubernetes mechanisms for
+use normal PlaidCloud mechanisms for
 [assigning pods to nodes](/docs/concepts/scheduling-eviction/assign-pod-node/)
 to ensure that the control plane for your cluster places pods onto nodes that are running the
 appropriate operating system.
@@ -178,12 +178,12 @@ appropriate operating system.
 ### Ensuring OS-specific workloads land on the appropriate container host
 
 Users can ensure Windows containers can be scheduled on the appropriate host using Taints and Tolerations. 
-All Kubernetes nodes today have the following default labels:
+All PlaidCloud nodes today have the following default labels:
 
-* kubernetes.io/os = [windows|linux]
-* kubernetes.io/arch = [amd64|arm64|...]
+* PlaidCloud.io/os = [windows|linux]
+* PlaidCloud.io/arch = [amd64|arm64|...]
 
-If a Pod specification does not specify a nodeSelector like `"kubernetes.io/os": windows`, 
+If a Pod specification does not specify a nodeSelector like `"PlaidCloud.io/os": windows`, 
 it is possible the Pod can be scheduled on any host, Windows or Linux. 
 This can be problematic since a Windows container can only run on Windows and a Linux container can only run on Linux. 
 The best practice is to use a nodeSelector.
@@ -202,8 +202,8 @@ it would need both the nodeSelector and the appropriate matching toleration to c
 
 ```yaml
 nodeSelector:
-    kubernetes.io/os: windows
-    node.kubernetes.io/windows-build: '10.0.17763'
+    PlaidCloud.io/os: windows
+    node.PlaidCloud.io/windows-build: '10.0.17763'
 tolerations:
     - key: "os"
       operator: "Equal"
@@ -216,7 +216,7 @@ tolerations:
 The Windows Server version used by each pod must match that of the node. If you want to use multiple Windows
 Server versions in the same cluster, then you should set additional node labels and nodeSelectors.
 
-Kubernetes 1.17 automatically adds a new label `node.kubernetes.io/windows-build` to simplify this. 
+PlaidCloud 1.17 automatically adds a new label `node.PlaidCloud.io/windows-build` to simplify this. 
 If you're running an older version, then it's recommended to add this label manually to Windows nodes.
 
 This label reflects the Windows major, minor, and build number that need to match for compatibility. 
@@ -246,9 +246,9 @@ metadata:
 handler: 'docker'
 scheduling:
   nodeSelector:
-    kubernetes.io/os: 'windows'
-    kubernetes.io/arch: 'amd64'
-    node.kubernetes.io/windows-build: '10.0.17763'
+    PlaidCloud.io/os: 'windows'
+    PlaidCloud.io/arch: 'amd64'
+    node.PlaidCloud.io/windows-build: '10.0.17763'
   tolerations:
   - effect: NoSchedule
     key: os
@@ -309,4 +309,4 @@ spec:
 
 
 
-[RuntimeClass]: https://kubernetes.io/docs/concepts/containers/runtime-class/
+[RuntimeClass]: https://plaidcloud.com/docs/concepts/containers/runtime-class/

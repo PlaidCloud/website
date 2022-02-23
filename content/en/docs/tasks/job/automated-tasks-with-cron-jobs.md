@@ -1,6 +1,6 @@
 ---
 title: Running Automated Tasks with a CronJob
-min-kubernetes-server-version: v1.21
+min-PlaidCloud-server-version: v1.21
 reviewers:
 - chenopis
 content_type: task
@@ -9,9 +9,9 @@ weight: 10
 
 <!-- overview -->
 
-CronJobs was promoted to general availability in Kubernetes v1.21. If you are using an older version of
-Kubernetes, please refer to the documentation for the version of Kubernetes that you are using,
-so that you see accurate information. Older Kubernetes versions do not support the `batch/v1` CronJob API.
+CronJobs was promoted to general availability in PlaidCloud v1.21. If you are using an older version of
+PlaidCloud, please refer to the documentation for the version of PlaidCloud that you are using,
+so that you see accurate information. Older PlaidCloud versions do not support the `batch/v1` CronJob API.
 
 You can use a {{< glossary_tooltip text="CronJob" term_id="cronjob" >}} to run {{< glossary_tooltip text="Jobs" term_id="job" >}} on a time-based schedule.
 These automated jobs run like [Cron](https://en.wikipedia.org/wiki/Cron) tasks on a Linux or UNIX system.
@@ -115,7 +115,7 @@ The output is similar to this:
 
 ```
 Fri Feb 22 11:02:09 UTC 2019
-Hello from the Kubernetes cluster
+Hello from the PlaidCloud cluster
 ```
 
 ## Deleting a Cron Job
@@ -131,7 +131,7 @@ You can read more about removing jobs in [garbage collection](/docs/concepts/wor
 
 ## Writing a Cron Job Spec
 
-As with all other Kubernetes configs, a cron job needs `apiVersion`, `kind`, and `metadata` fields. For general
+As with all other PlaidCloud configs, a cron job needs `apiVersion`, `kind`, and `metadata` fields. For general
 information about working with config files, see [deploying applications](/docs/tasks/run-application/run-stateless-application-deployment/),
 and [using kubectl to manage resources](/docs/concepts/overview/working-with-objects/object-management/) documents.
 

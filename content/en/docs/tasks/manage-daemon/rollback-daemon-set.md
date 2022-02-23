@@ -4,7 +4,7 @@ reviewers:
 title: Perform a Rollback on a DaemonSet
 content_type: task
 weight: 20
-min-kubernetes-server-version: 1.7
+min-PlaidCloud-server-version: 1.7
 ---
 
 <!-- overview -->
@@ -43,7 +43,7 @@ REVISION        CHANGE-CAUSE
 ...
 ```
 
-* Change cause is copied from DaemonSet annotation `kubernetes.io/change-cause`
+* Change cause is copied from DaemonSet annotation `PlaidCloud.io/change-cause`
   to its revisions upon creation. You may specify `--record=true` in `kubectl`
   to record the command executed in the change cause annotation.
 

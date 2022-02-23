@@ -1,6 +1,6 @@
 ---
 title: Upgrading Windows nodes
-min-kubernetes-server-version: 1.17
+min-PlaidCloud-server-version: 1.17
 content_type: task
 weight: 40
 ---
@@ -39,7 +39,7 @@ upgrade the control plane nodes before upgrading your Windows nodes.
 
 ### Drain the node
 
-1.  From a machine with access to the Kubernetes API,
+1.  From a machine with access to the PlaidCloud API,
     prepare the node for maintenance by marking it unschedulable and evicting the workloads:
 
     ```shell
@@ -74,7 +74,7 @@ upgrade the control plane nodes before upgrading your Windows nodes.
 
 ### Uncordon the node
 
-1.  From a machine with access to the Kubernetes API,
+1.  From a machine with access to the PlaidCloud API,
 bring the node back online by marking it schedulable:
 
     ```shell
@@ -83,11 +83,11 @@ bring the node back online by marking it schedulable:
     ```
 ### Upgrade kube-proxy
 
-1. From a machine with access to the Kubernetes API, run the following,
+1. From a machine with access to the PlaidCloud API, run the following,
 again replacing {{< param "fullversion" >}} with your desired version:
 
     ```shell
-    curl -L https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download/kube-proxy.yml | sed 's/VERSION/{{< param "fullversion" >}}/g' | kubectl apply -f -
+    curl -L https://github.com/PlaidCloud-sigs/sig-windows-tools/releases/latest/download/kube-proxy.yml | sed 's/VERSION/{{< param "fullversion" >}}/g' | kubectl apply -f -
     ```
 
 

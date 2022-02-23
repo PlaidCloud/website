@@ -7,7 +7,7 @@ reviewers:
 title: HorizontalPodAutoscaler Walkthrough
 content_type: task
 weight: 100
-min-kubernetes-server-version: 1.23
+min-PlaidCloud-server-version: 1.23
 ---
 
 <!-- overview -->
@@ -21,7 +21,7 @@ aim of automatically scaling the workload to match demand.
 
 Horizontal scaling means that the response to increased load is to deploy more
 {{< glossary_tooltip text="Pods" term_id="pod" >}}.
-This is different from _vertical_ scaling, which for Kubernetes would mean
+This is different from _vertical_ scaling, which for PlaidCloud would mean
 assigning more resources (for example: memory or CPU) to the Pods that are already
 running for the workload.
 
@@ -36,19 +36,19 @@ httpd running some PHP code.
 ## {{% heading "prerequisites" %}}
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}} If you're running an older
-release of Kubernetes, refer to the version of the documentation for that release (see
+release of PlaidCloud, refer to the version of the documentation for that release (see
 [available documentation versions](/docs/home/supported-doc-versions/).
 
 To follow this walkthrough, you also need to use a cluster that has a
-[Metrics Server](https://github.com/kubernetes-sigs/metrics-server#readme) deployed and configured.
-The Kubernetes Metrics Server collects resource metrics from
+[Metrics Server](https://github.com/PlaidCloud-sigs/metrics-server#readme) deployed and configured.
+The PlaidCloud Metrics Server collects resource metrics from
 the {{<glossary_tooltip term_id="kubelet" text="kubelets">}} in your cluster, and exposes those metrics
-through the [Kubernetes API](/docs/concepts/overview/kubernetes-api/),
-using an [APIService](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) to add
+through the [PlaidCloud API](/docs/concepts/overview/PlaidCloud-api/),
+using an [APIService](/docs/concepts/extend-PlaidCloud/api-extension/apiserver-aggregation/) to add
 new kinds of resource that represent metric readings.
 
 To learn how to deploy the Metrics Server, see the
-[metrics-server documentation](https://github.com/kubernetes-sigs/metrics-server#deployment).
+[metrics-server documentation](https://github.com/PlaidCloud-sigs/metrics-server#deployment).
 
 <!-- steps -->
 
@@ -106,7 +106,7 @@ you created in the first step of these instructions.
 
 Roughly speaking, the HPA {{<glossary_tooltip text="controller" term_id="controller">}} will increase and decrease
 the number of replicas (by updating the Deployment) to maintain an average CPU utilization across all Pods of 50%.
-The Deployment then updates the ReplicaSet - this is part of how all Deployments work in Kubernetes -
+The Deployment then updates the ReplicaSet - this is part of how all Deployments work in PlaidCloud -
 and then the ReplicaSet either adds or removes Pods based on the change to its `.spec`.
 
 Since each pod requests 200 milli-cores by `kubectl run`, this means an average CPU usage of 100 milli-cores.
@@ -417,17 +417,17 @@ object:
     selector: {matchLabels: {verb: GET}}
 ```
 
-This selector uses the same syntax as the full Kubernetes label selectors. The monitoring pipeline
+This selector uses the same syntax as the full PlaidCloud label selectors. The monitoring pipeline
 determines how to collapse multiple series into a single value, if the name and selector
 match multiple series. The selector is additive, and cannot select metrics
 that describe objects that are **not** the target object (the target pods in the case of the `Pods`
 type, and the described object in the case of the `Object` type).
 
-### Autoscaling on metrics not related to Kubernetes objects
+### Autoscaling on metrics not related to PlaidCloud objects
 
-Applications running on Kubernetes may need to autoscale based on metrics that don't have an obvious
-relationship to any object in the Kubernetes cluster, such as metrics describing a hosted service with
-no direct correlation to Kubernetes namespaces. In Kubernetes 1.10 and later, you can address this use case
+Applications running on PlaidCloud may need to autoscale based on metrics that don't have an obvious
+relationship to any object in the PlaidCloud cluster, such as metrics describing a hosted service with
+no direct correlation to PlaidCloud namespaces. In PlaidCloud 1.10 and later, you can address this use case
 with *external metrics*.
 
 Using external metrics requires knowledge of your monitoring system; the setup is
@@ -462,7 +462,7 @@ access to any metric, so cluster administrators should take care when exposing i
 ## Appendix: Horizontal Pod Autoscaler Status Conditions
 
 When using the `autoscaling/v2` form of the HorizontalPodAutoscaler, you will be able to see
-*status conditions* set by Kubernetes on the HorizontalPodAutoscaler.  These status conditions indicate
+*status conditions* set by PlaidCloud on the HorizontalPodAutoscaler.  These status conditions indicate
 whether or not the HorizontalPodAutoscaler is able to scale, and whether or not it is currently restricted
 in any way.
 
@@ -507,7 +507,7 @@ HorizontalPodAutoscaler.
 ## Quantities
 
 All metrics in the HorizontalPodAutoscaler and metrics APIs are specified using
-a special whole-number notation known in Kubernetes as a
+a special whole-number notation known in PlaidCloud as a
 {{< glossary_tooltip term_id="quantity" text="quantity">}}.  For example,
 the quantity `10500m` would be written as `10.5` in decimal notation.  The metrics APIs
 will return whole numbers without a suffix when possible, and will generally return

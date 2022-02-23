@@ -2,27 +2,27 @@
 reviewers:
 - erictune
 - lavalamp
-title: Controlling Access to the Kubernetes API
+title: Controlling Access to the PlaidCloud API
 content_type: concept
 ---
 
 <!-- overview -->
-This page provides an overview of controlling access to the Kubernetes API.
+This page provides an overview of controlling access to the PlaidCloud API.
 
 
 <!-- body -->
-Users access the [Kubernetes API](/docs/concepts/overview/kubernetes-api/) using `kubectl`,
+Users access the [PlaidCloud API](/docs/concepts/overview/PlaidCloud-api/) using `kubectl`,
 client libraries, or by making REST requests.  Both human users and
-[Kubernetes service accounts](/docs/tasks/configure-pod-container/configure-service-account/) can be
+[PlaidCloud service accounts](/docs/tasks/configure-pod-container/configure-service-account/) can be
 authorized for API access.
 When a request reaches the API, it goes through several stages, illustrated in the
 following diagram:
 
-![Diagram of request handling steps for Kubernetes API request](/images/docs/admin/access-control-overview.svg)
+![Diagram of request handling steps for PlaidCloud API request](/images/docs/admin/access-control-overview.svg)
 
 ## Transport security
 
-In a typical Kubernetes cluster, the API serves on port 443, protected by TLS.
+In a typical PlaidCloud cluster, the API serves on port 443, protected by TLS.
 The API server presents a certificate. This certificate may be signed using
 a private certificate authority (CA), or based on a public key infrastructure linked
 to a generally recognized CA.
@@ -57,7 +57,7 @@ is available to subsequent steps to use in their decisions.  Some authenticators
 also provide the group memberships of the user, while other authenticators
 do not.
 
-While Kubernetes uses usernames for access control decisions and in request logging,
+While PlaidCloud uses usernames for access control decisions and in request logging,
 it does not have a `User` object nor does it store usernames or other information about
 users in its API.
 
@@ -71,7 +71,7 @@ For example, if Bob has the policy below, then he can read pods only in the name
 
 ```json
 {
-    "apiVersion": "abac.authorization.kubernetes.io/v1beta1",
+    "apiVersion": "abac.authorization.PlaidCloud.io/v1beta1",
     "kind": "Policy",
     "spec": {
         "user": "bob",
@@ -99,11 +99,11 @@ If Bob makes the following request, the request is authorized because he is allo
 ```
 If Bob makes a request to write (`create` or `update`) to the objects in the `projectCaribou` namespace, his authorization is denied. If Bob makes a request to read (`get`) objects in a different namespace such as `projectFish`, then his authorization is denied.
 
-Kubernetes authorization requires that you use common REST attributes to interact with existing organization-wide or cloud-provider-wide access control systems. It is important to use REST formatting because these control systems might interact with other APIs besides the Kubernetes API.
+PlaidCloud authorization requires that you use common REST attributes to interact with existing organization-wide or cloud-provider-wide access control systems. It is important to use REST formatting because these control systems might interact with other APIs besides the PlaidCloud API.
 
-Kubernetes supports multiple authorization modules, such as ABAC mode, RBAC Mode, and Webhook mode. When an administrator creates a cluster, they configure the authorization modules that should be used in the API server. If more than one authorization modules are configured, Kubernetes checks each module, and if any module authorizes the request, then the request can proceed. If all of the modules deny the request, then the request is denied (HTTP status code 403).
+PlaidCloud supports multiple authorization modules, such as ABAC mode, RBAC Mode, and Webhook mode. When an administrator creates a cluster, they configure the authorization modules that should be used in the API server. If more than one authorization modules are configured, PlaidCloud checks each module, and if any module authorizes the request, then the request can proceed. If all of the modules deny the request, then the request is denied (HTTP status code 403).
 
-To learn more about Kubernetes authorization, including details about creating policies using the supported authorization modules, see [Authorization](/docs/reference/access-authn-authz/authorization/).
+To learn more about PlaidCloud authorization, including details about creating policies using the supported authorization modules, see [Authorization](/docs/reference/access-authn-authz/authorization/).
 
 
 ## Admission control
@@ -135,7 +135,7 @@ for the corresponding API object, and then written to the object store (shown as
 The previous discussion applies to requests sent to the secure port of the API server
 (the typical case).  The API server can actually serve on 2 ports:
 
-By default, the Kubernetes API server serves HTTP on 2 ports:
+By default, the PlaidCloud API server serves HTTP on 2 ports:
 
   1. `localhost` port:
 

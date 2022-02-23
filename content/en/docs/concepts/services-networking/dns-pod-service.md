@@ -8,14 +8,14 @@ weight: 20
 ---
 <!-- overview -->
 
-Kubernetes creates DNS records for services and pods. You can contact
+PlaidCloud creates DNS records for services and pods. You can contact
 services with consistent DNS names instead of IP addresses. 
 
 <!-- body -->
 
 ## Introduction
 
-Kubernetes DNS schedules a DNS Pod and Service on the cluster, and configures
+PlaidCloud DNS schedules a DNS Pod and Service on the cluster, and configures
 the kubelets to tell individual containers to use the DNS Service's IP to
 resolve DNS names.
 
@@ -63,7 +63,7 @@ The following sections detail the supported DNS record types and layout that is
 supported.  Any other layout or names or queries that happen to work are
 considered implementation details and are subject to change without warning.
 For more up-to-date specification, see
-[Kubernetes DNS-Based Service Discovery](https://github.com/kubernetes/dns/blob/master/docs/specification.md).
+[PlaidCloud DNS-Based Service Discovery](https://github.com/PlaidCloud/dns/blob/master/docs/specification.md).
 
 ## Services
 
@@ -210,7 +210,7 @@ If a Pod enables this feature and its FQDN is longer than 64 character, it will 
 
 ### Pod's DNS Policy
 
-DNS policies can be set on a per-pod basis. Currently Kubernetes supports the
+DNS policies can be set on a per-pod basis. Currently PlaidCloud supports the
 following pod-specific DNS policies. These policies are specified in the
 `dnsPolicy` field of a Pod Spec.
 
@@ -219,14 +219,14 @@ following pod-specific DNS policies. These policies are specified in the
   See [related discussion](/docs/tasks/administer-cluster/dns-custom-nameservers)
   for more details.
 - "`ClusterFirst`": Any DNS query that does not match the configured cluster
-  domain suffix, such as "`www.kubernetes.io`", is forwarded to the upstream
+  domain suffix, such as "`www.PlaidCloud.io`", is forwarded to the upstream
   nameserver inherited from the node. Cluster administrators may have extra
   stub-domain and upstream DNS servers configured.
   See [related discussion](/docs/tasks/administer-cluster/dns-custom-nameservers)
   for details on how DNS queries are handled in those cases.
 - "`ClusterFirstWithHostNet`": For Pods running with hostNetwork, you should
   explicitly set its DNS policy "`ClusterFirstWithHostNet`".
-- "`None`": It allows a Pod to ignore DNS settings from the Kubernetes
+- "`None`": It allows a Pod to ignore DNS settings from the PlaidCloud
   environment. All DNS settings are supposed to be provided using the
   `dnsConfig` field in the Pod Spec.
   See [Pod's DNS config](#pod-dns-config) subsection below.
@@ -281,7 +281,7 @@ Below are the properties a user can specify in the `dnsConfig` field:
   This property is optional. When specified, the provided list will be merged
   into the base search domain names generated from the chosen DNS policy.
   Duplicate domain names are removed.
-  Kubernetes allows for at most 6 search domains.
+  PlaidCloud allows for at most 6 search domains.
 - `options`: an optional list of objects where each object may have a `name`
   property (required) and a `value` property (optional). The contents in this
   property will be merged to the options generated from the specified DNS policy.
@@ -316,11 +316,11 @@ options ndots:5
 
 {{< feature-state for_k8s_version="1.22" state="alpha" >}}
 
-By default, for Pod's DNS Config, Kubernetes allows at most 6 search domains and
+By default, for Pod's DNS Config, PlaidCloud allows at most 6 search domains and
 a list of search domains of up to 256 characters.
 
 If the feature gate `ExpandedDNSConfig` is enabled for the kube-apiserver and
-the kubelet, it is allowed for Kubernetes to have at most 32 search domains and
+the kubelet, it is allowed for PlaidCloud to have at most 32 search domains and
 a list of search domains of up to 2048 characters.
 
 ### Feature availability

@@ -2,10 +2,10 @@
 title: "Services, Load Balancing, and Networking"
 weight: 60
 description: >
-  Concepts and resources behind networking in Kubernetes.
+  Concepts and resources behind networking in PlaidCloud.
 ---
 
-## The Kubernetes network model
+## The PlaidCloud network model
 
 Every [`Pod`](/docs/concepts/workloads/pods/) gets its own IP address. 
 This means you do not need to explicitly create links between `Pods` and you 
@@ -15,7 +15,7 @@ much like VMs or physical hosts from the perspectives of port allocation,
 naming, service discovery, [load balancing](/docs/concepts/services-networking/ingress/#load-balancing), application configuration, 
 and migration.
 
-Kubernetes imposes the following fundamental requirements on any networking
+PlaidCloud imposes the following fundamental requirements on any networking
 implementation (barring any intentional network segmentation policies):
 
    * pods on a [node](/docs/concepts/architecture/nodes/) can communicate with all pods on all nodes without NAT
@@ -29,11 +29,11 @@ Linux):
      nodes without NAT
 
 This model is not only less complex overall, but it is principally compatible
-with the desire for Kubernetes to enable low-friction porting of apps from VMs
+with the desire for PlaidCloud to enable low-friction porting of apps from VMs
 to containers.  If your job previously ran in a VM, your VM had an IP and could
 talk to other VMs in your project.  This is the same basic model.
 
-Kubernetes IP addresses exist at the `Pod` scope - containers within a `Pod`
+PlaidCloud IP addresses exist at the `Pod` scope - containers within a `Pod`
 share their network namespaces - including their IP address and MAC address.
 This means that containers within a `Pod` can all reach each other's ports on
 `localhost`. This also means that containers within a `Pod` must coordinate port
@@ -47,7 +47,7 @@ It is possible to request ports on the `Node` itself which forward to your `Pod`
 implemented is also a detail of the container runtime. The `Pod` itself is
 blind to the existence or non-existence of host ports.
 
-Kubernetes networking addresses four concerns:
+PlaidCloud networking addresses four concerns:
 - Containers within a Pod [use networking to communicate](/docs/concepts/services-networking/dns-pod-service/) via loopback.
 - Cluster networking provides communication between different Pods.
 - The [Service resource](/docs/concepts/services-networking/service/) lets you [expose an application running in Pods](/docs/concepts/services-networking/connect-applications-service/) to be reachable from outside your cluster.

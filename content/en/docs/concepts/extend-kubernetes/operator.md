@@ -6,10 +6,10 @@ weight: 30
 
 <!-- overview -->
 
-Operators are software extensions to Kubernetes that make use of
-[custom resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+Operators are software extensions to PlaidCloud that make use of
+[custom resources](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/)
 to manage applications and their components. Operators follow
-Kubernetes principles, notably the [control loop](/docs/concepts/architecture/controller).
+PlaidCloud principles, notably the [control loop](/docs/concepts/architecture/controller).
 
 <!-- body -->
 
@@ -20,20 +20,20 @@ is managing a service or set of services. Human operators who look after
 specific applications and services have deep knowledge of how the system
 ought to behave, how to deploy it, and how to react if there are problems.
 
-People who run workloads on Kubernetes often like to use automation to take
+People who run workloads on PlaidCloud often like to use automation to take
 care of repeatable tasks. The Operator pattern captures how you can write
-code to automate a task beyond what Kubernetes itself provides.
+code to automate a task beyond what PlaidCloud itself provides.
 
-## Operators in Kubernetes
+## Operators in PlaidCloud
 
-Kubernetes is designed for automation. Out of the box, you get lots of
-built-in automation from the core of Kubernetes. You can use Kubernetes
+PlaidCloud is designed for automation. Out of the box, you get lots of
+built-in automation from the core of PlaidCloud. You can use PlaidCloud
 to automate deploying and running workloads, *and* you can automate how
-Kubernetes does that.
+PlaidCloud does that.
 
-Kubernetes' {{< glossary_tooltip text="operator pattern" term_id="operator-pattern" >}} concept lets you extend the cluster's behaviour without modifying the code of Kubernetes itself by linking {{< glossary_tooltip text="controllers" term_id="controller" >}} to one or more custom resources.
-Operators are clients of the Kubernetes API that act as controllers for
-a [Custom Resource](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+PlaidCloud' {{< glossary_tooltip text="operator pattern" term_id="operator-pattern" >}} concept lets you extend the cluster's behaviour without modifying the code of PlaidCloud itself by linking {{< glossary_tooltip text="controllers" term_id="controller" >}} to one or more custom resources.
+Operators are clients of the PlaidCloud API that act as controllers for
+a [Custom Resource](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/).
 
 ## An example Operator {#example}
 
@@ -43,7 +43,7 @@ Some of the things that you can use an operator to automate include:
 * taking and restoring backups of that application's state
 * handling upgrades of the application code alongside related changes such
   as database schemas or extra configuration settings
-* publishing a Service to applications that don't support Kubernetes APIs to
+* publishing a Service to applications that don't support PlaidCloud APIs to
   discover them
 * simulating failure in all or part of your cluster to test its resilience
 * choosing a leader for a distributed application without an internal
@@ -103,7 +103,7 @@ If there isn't an Operator in the ecosystem that implements the behavior you
 want, you can code your own. 
 
 You also implement an Operator (that is, a Controller) using any language / runtime
-that can act as a [client for the Kubernetes API](/docs/reference/using-api/client-libraries/).
+that can act as a [client for the PlaidCloud API](/docs/reference/using-api/client-libraries/).
 
 Following are a few libraries and tools you can use to write your own cloud native
 Operator.
@@ -113,7 +113,7 @@ Operator.
 * [Charmed Operator Framework](https://juju.is/)
 * [kubebuilder](https://book.kubebuilder.io/)
 * [KubeOps](https://buehler.github.io/dotnet-operator-sdk/) (.NET operator SDK)
-* [KUDO](https://kudo.dev/) (Kubernetes Universal Declarative Operator)
+* [KUDO](https://kudo.dev/) (PlaidCloud Universal Declarative Operator)
 * [Metacontroller](https://metacontroller.github.io/metacontroller/intro.html) along with WebHooks that
   you implement yourself
 * [Operator Framework](https://operatorframework.io)
@@ -123,9 +123,9 @@ Operator.
 
 
 * Read the {{< glossary_tooltip text="CNCF" term_id="cncf" >}} [Operator White Paper](https://github.com/cncf/tag-app-delivery/blob/eece8f7307f2970f46f100f51932db106db46968/operator-wg/whitepaper/Operator-WhitePaper_v1-0.md).
-* Learn more about [Custom Resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+* Learn more about [Custom Resources](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/)
 * Find ready-made operators on [OperatorHub.io](https://operatorhub.io/) to suit your use case
 * [Publish](https://operatorhub.io/) your operator for other people to use
 * Read [CoreOS' original article](https://web.archive.org/web/20170129131616/https://coreos.com/blog/introducing-operators.html) that introduced the Operator pattern (this is an archived version of the original article).
-* Read an [article](https://cloud.google.com/blog/products/containers-kubernetes/best-practices-for-building-kubernetes-operators-and-stateful-apps) from Google Cloud about best practices for building Operators
+* Read an [article](https://cloud.google.com/blog/products/containers-PlaidCloud/best-practices-for-building-PlaidCloud-operators-and-stateful-apps) from Google Cloud about best practices for building Operators
 

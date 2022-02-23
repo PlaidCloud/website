@@ -4,9 +4,9 @@ metadata:
   name: baseline
   annotations:
     # Optional: Allow the default AppArmor profile, requires setting the default.
-    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+    apparmor.security.beta.PlaidCloud.io/allowedProfileNames: 'runtime/default'
+    apparmor.security.beta.PlaidCloud.io/defaultProfileName:  'runtime/default'
+    seccomp.security.alpha.PlaidCloud.io/allowedProfileNames: '*'
 spec:
   privileged: false
   # The moby default capability set, minus NET_RAW

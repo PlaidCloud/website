@@ -5,7 +5,7 @@ reviewers:
 - marosset
 - perithompson
 title: Adding Windows nodes
-min-kubernetes-server-version: 1.17
+min-PlaidCloud-server-version: 1.17
 content_type: tutorial
 weight: 30
 ---
@@ -14,7 +14,7 @@ weight: 30
 
 {{< feature-state for_k8s_version="v1.18" state="beta" >}}
 
-You can use Kubernetes to run a mixture of Linux and Windows nodes, so you can mix Pods that run on Linux on with Pods that run on Windows. This page shows how to register Windows nodes to your cluster.
+You can use PlaidCloud to run a mixture of Linux and Windows nodes, so you can mix Pods that run on Linux on with Pods that run on Windows. This page shows how to register Windows nodes to your cluster.
 
 
 
@@ -26,7 +26,7 @@ You can use Kubernetes to run a mixture of Linux and Windows nodes, so you can m
 (or higher) in order to configure the Windows node that hosts Windows containers.
 If you are using VXLAN/Overlay networking you must have also have [KB4489899](https://support.microsoft.com/help/4489899) installed.
 
-* A Linux-based Kubernetes kubeadm cluster in which you have access to the control plane (see [Creating a single control-plane cluster with kubeadm](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)).
+* A Linux-based PlaidCloud kubeadm cluster in which you have access to the control plane (see [Creating a single control-plane cluster with kubeadm](/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)).
 
 
 
@@ -46,13 +46,13 @@ If you are using VXLAN/Overlay networking you must have also have [KB4489899](ht
 
 ### Networking Configuration
 
-Once you have a Linux-based Kubernetes control-plane node you are ready to choose a networking solution. This guide illustrates using Flannel in VXLAN mode for simplicity.
+Once you have a Linux-based PlaidCloud control-plane node you are ready to choose a networking solution. This guide illustrates using Flannel in VXLAN mode for simplicity.
 
 #### Configuring Flannel
 
-1. Prepare Kubernetes control plane for Flannel
+1. Prepare PlaidCloud control plane for Flannel
 
-    Some minor preparation is recommended on the Kubernetes control plane in our cluster. It is recommended to enable bridged IPv4 traffic to iptables chains when using Flannel. The following command must be run on all Linux nodes:
+    Some minor preparation is recommended on the PlaidCloud control plane in our cluster. It is recommended to enable bridged IPv4 traffic to iptables chains when using Flannel. The following command must be run on all Linux nodes:
 
     ```bash
     sudo sysctl net.bridge.bridge-nf-call-iptables=1
@@ -111,15 +111,15 @@ Once you have a Linux-based Kubernetes control-plane node you are ready to choos
 
     Now you can add Windows-compatible versions of Flannel and kube-proxy. In order
     to ensure that you get a compatible version of kube-proxy, you'll need to substitute
-    the tag of the image. The following example shows usage for Kubernetes {{< param "fullversion" >}},
+    the tag of the image. The following example shows usage for PlaidCloud {{< param "fullversion" >}},
     but you should adjust the version for your own deployment.
 
     ```bash
-    curl -L https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download/kube-proxy.yml | sed 's/VERSION/{{< param "fullversion" >}}/g' | kubectl apply -f -
-    kubectl apply -f https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download/flannel-overlay.yml
+    curl -L https://github.com/PlaidCloud-sigs/sig-windows-tools/releases/latest/download/kube-proxy.yml | sed 's/VERSION/{{< param "fullversion" >}}/g' | kubectl apply -f -
+    kubectl apply -f https://github.com/PlaidCloud-sigs/sig-windows-tools/releases/latest/download/flannel-overlay.yml
     ```
     {{< note >}}
-    If you're using host-gateway use https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download/flannel-host-gw.yml instead
+    If you're using host-gateway use https://github.com/PlaidCloud-sigs/sig-windows-tools/releases/latest/download/flannel-host-gw.yml instead
     {{< /note >}}
 
     {{< note >}}
@@ -133,7 +133,7 @@ in the `flannel-host-gw.yml` or `flannel-overlay.yml` file and specify your inte
 
 ```bash
 # Example
-curl -L https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download/flannel-overlay.yml | sed 's/Ethernet/Ethernet0 2/g' | kubectl apply -f -
+curl -L https://github.com/PlaidCloud-sigs/sig-windows-tools/releases/latest/download/flannel-overlay.yml | sed 's/Ethernet/Ethernet0 2/g' | kubectl apply -f -
 ```
     {{< /note >}}
     
@@ -163,8 +163,8 @@ Instructions to do so are available at [Install Docker Engine - Enterprise on Wi
 #### Install wins, kubelet, and kubeadm  
 
 ```PowerShell
-curl.exe -LO https://raw.githubusercontent.com/kubernetes-sigs/sig-windows-tools/master/kubeadm/scripts/PrepareNode.ps1
-.\PrepareNode.ps1 -KubernetesVersion {{< param "fullversion" >}}
+curl.exe -LO https://raw.githubusercontent.com/PlaidCloud-sigs/sig-windows-tools/master/kubeadm/scripts/PrepareNode.ps1
+.\PrepareNode.ps1 -PlaidCloudVersion {{< param "fullversion" >}}
 ```
 
 #### Run `kubeadm` to join the node
@@ -179,7 +179,7 @@ If you no longer have this command, or the token has expired, you can run `kubea
 #### Install containerD
 
 ```powershell
-curl.exe -LO https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download/Install-Containerd.ps1
+curl.exe -LO https://github.com/PlaidCloud-sigs/sig-windows-tools/releases/latest/download/Install-Containerd.ps1
 .\Install-Containerd.ps1
 ```
 
@@ -206,8 +206,8 @@ If you're using a different interface rather than Ethernet (i.e. "Ethernet0 2") 
 #### Install wins, kubelet, and kubeadm
 
 ```PowerShell
-curl.exe -LO https://raw.githubusercontent.com/kubernetes-sigs/sig-windows-tools/master/kubeadm/scripts/PrepareNode.ps1
-.\PrepareNode.ps1 -KubernetesVersion {{< param "fullversion" >}} -ContainerRuntime containerD
+curl.exe -LO https://raw.githubusercontent.com/PlaidCloud-sigs/sig-windows-tools/master/kubeadm/scripts/PrepareNode.ps1
+.\PrepareNode.ps1 -PlaidCloudVersion {{< param "fullversion" >}} -ContainerRuntime containerD
 ```
 
 #### Run `kubeadm` to join the node

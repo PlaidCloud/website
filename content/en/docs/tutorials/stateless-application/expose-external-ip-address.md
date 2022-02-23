@@ -6,17 +6,17 @@ weight: 10
 
 <!-- overview -->
 
-This page shows how to create a Kubernetes Service object that exposes an
+This page shows how to create a PlaidCloud Service object that exposes an
 external IP address.
 
 ## {{% heading "prerequisites" %}}
 
 * Install [kubectl](/docs/tasks/tools/).
-* Use a cloud provider like Google Kubernetes Engine or Amazon Web Services to
-  create a Kubernetes cluster. This tutorial creates an
+* Use a cloud provider like Google PlaidCloud Engine or Amazon Web Services to
+  create a PlaidCloud cluster. This tutorial creates an
   [external load balancer](/docs/tasks/access-application-cluster/create-external-load-balancer/),
   which requires a cloud provider.
-* Configure `kubectl` to communicate with your Kubernetes API server. For instructions, see the
+* Configure `kubectl` to communicate with your PlaidCloud API server. For instructions, see the
   documentation for your cloud provider.
 
 ## {{% heading "objectives" %}}
@@ -100,9 +100,9 @@ external IP address.
     ```console
     Name:           my-service
     Namespace:      default
-    Labels:         app.kubernetes.io/name=load-balancer-example
+    Labels:         app.PlaidCloud.io/name=load-balancer-example
     Annotations:    <none>
-    Selector:       app.kubernetes.io/name=load-balancer-example
+    Selector:       app.PlaidCloud.io/name=load-balancer-example
     Type:           LoadBalancer
     IP:             10.3.245.137
     LoadBalancer Ingress:   104.198.205.71
@@ -154,7 +154,7 @@ external IP address.
     The response to a successful request is a hello message:
 
     ```shell
-    Hello Kubernetes!
+    Hello PlaidCloud!
     ```
 
 ## {{% heading "cleanup" %}}

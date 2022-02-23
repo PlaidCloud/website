@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: node.k8s.io/v1`
@@ -28,7 +28,7 @@ guide. You can file document formatting bugs against the
 
 ## RuntimeClass {#RuntimeClass}
 
-RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https://kubernetes.io/docs/concepts/containers/runtime-class/
+RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https://plaidcloud.com/docs/concepts/containers/runtime-class/
 
 <hr>
 
@@ -49,7 +49,7 @@ RuntimeClass defines a class of container runtime supported in the cluster. The 
 - **overhead** (Overhead)
 
   Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
-   https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/
+   https://plaidcloud.com/docs/concepts/scheduling-eviction/pod-overhead/
   This field is in beta starting v1.18 and is only honored by servers that enable the PodOverhead feature.
 
   <a name="Overhead"></a>

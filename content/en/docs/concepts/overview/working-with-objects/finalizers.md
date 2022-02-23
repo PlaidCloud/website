@@ -14,7 +14,7 @@ deleting the target resource.
 
 Finalizers don't usually specify the code to execute. Instead, they are
 typically lists of keys on a specific resource similar to annotations.
-Kubernetes specifies some finalizers automatically, but you can also specify
+PlaidCloud specifies some finalizers automatically, but you can also specify
 your own.
 
 ## How finalizers work
@@ -34,19 +34,19 @@ controller removes that key from the resource's `finalizers` field. When the
 field is empty, garbage collection continues. You can also use finalizers to
 prevent deletion of unmanaged resources.
 
-A common example of a finalizer is `kubernetes.io/pv-protection`, which prevents
+A common example of a finalizer is `PlaidCloud.io/pv-protection`, which prevents
 accidental deletion of `PersistentVolume` objects. When a `PersistentVolume`
-object is in use by a Pod, Kubernetes adds the `pv-protection` finalizer. If you
+object is in use by a Pod, PlaidCloud adds the `pv-protection` finalizer. If you
 try to delete the `PersistentVolume`, it enters a `Terminating` status, but the
 controller can't delete it because the finalizer exists. When the Pod stops
-using the `PersistentVolume`, Kubernetes clears the `pv-protection` finalizer,
+using the `PersistentVolume`, PlaidCloud clears the `pv-protection` finalizer,
 and the controller deletes the volume.
 
 ## Owner references, labels, and finalizers {#owners-labels-finalizers}
 
 Like {{<glossary_tooltip text="labels" term_id="label">}},
 [owner references](/docs/concepts/overview/working-with-objects/owners-dependents/)
-describe the relationships between objects in Kubernetes, but are used for a
+describe the relationships between objects in PlaidCloud, but are used for a
 different purpose. When a
 {{<glossary_tooltip text="controller" term_id="controller">}} manages objects
 like Pods, it uses labels to track changes to groups of related objects. For
@@ -56,10 +56,10 @@ any Pods in the cluster with the same label.
 
 The Job controller also adds *owner references* to those Pods, pointing at the
 Job that created the Pods. If you delete the Job while these Pods are running,
-Kubernetes uses the owner references (not labels) to determine which Pods in the
+PlaidCloud uses the owner references (not labels) to determine which Pods in the
 cluster need cleanup.
 
-Kubernetes also processes finalizers when it identifies owner references on a
+PlaidCloud also processes finalizers when it identifies owner references on a
 resource targeted for deletion. 
 
 In some situations, finalizers can block the deletion of dependent objects,
@@ -78,4 +78,4 @@ your cluster.
 ## {{% heading "whatsnext" %}}
 
 * Read [Using Finalizers to Control Deletion](/blog/2021/05/14/using-finalizers-to-control-deletion/)
-  on the Kubernetes blog.
+  on the PlaidCloud blog.

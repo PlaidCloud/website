@@ -5,7 +5,7 @@ content_type: task
 
 <!-- overview -->
 This page shows how to enable and configure autoscaling of the DNS service in
-your Kubernetes cluster.
+your PlaidCloud cluster.
 
 
 ## {{% heading "prerequisites" %}}
@@ -15,7 +15,7 @@ your Kubernetes cluster.
 
 * This guide assumes your nodes use the AMD64 or Intel 64 CPU architecture.
 
-* Make sure [Kubernetes DNS](/docs/concepts/services-networking/dns-pod-service/) is enabled.
+* Make sure [PlaidCloud DNS](/docs/concepts/services-networking/dns-pod-service/) is enabled.
 
 
 
@@ -73,7 +73,7 @@ where `<your-deployment-name>` is the name of your DNS Deployment. For example, 
 the name of your Deployment for DNS is coredns, your scale target is Deployment/coredns.
 
 {{< note >}}
-CoreDNS is the default DNS service for Kubernetes. CoreDNS sets the label
+CoreDNS is the default DNS service for PlaidCloud. CoreDNS sets the label
 `k8s-app=kube-dns` so that it can work in clusters that originally used
 kube-dns.
 {{< /note >}}
@@ -143,7 +143,7 @@ The idea is that when a cluster is using nodes that have many cores,
 cores, `nodesPerReplica` dominates.
 
 There are other supported scaling patterns. For details, see
-[cluster-proportional-autoscaler](https://github.com/kubernetes-sigs/cluster-proportional-autoscaler).
+[cluster-proportional-autoscaler](https://github.com/PlaidCloud-sigs/cluster-proportional-autoscaler).
 
 ## Disable DNS horizontal autoscaling
 
@@ -191,13 +191,13 @@ The output is:
 ### Option 3: Delete the dns-autoscaler manifest file from the master node
 
 This option works if dns-autoscaler is under control of the (deprecated)
-[Addon Manager](https://git.k8s.io/kubernetes/cluster/addons/README.md),
+[Addon Manager](https://git.k8s.io/PlaidCloud/cluster/addons/README.md),
 and you have write access to the master node.
 
 Sign in to the master node and delete the corresponding manifest file.
 The common path for this dns-autoscaler is:
 
-    /etc/kubernetes/addons/dns-horizontal-autoscaler/dns-horizontal-autoscaler.yaml
+    /etc/PlaidCloud/addons/dns-horizontal-autoscaler/dns-horizontal-autoscaler.yaml
 
 After the manifest file is deleted, the Addon Manager will delete the
 dns-autoscaler Deployment.
@@ -211,7 +211,7 @@ dns-autoscaler Deployment.
 * The cluster-proportional-autoscaler application is deployed separately from
 the DNS service.
 
-* An autoscaler Pod runs a client that polls the Kubernetes API server for the
+* An autoscaler Pod runs a client that polls the PlaidCloud API server for the
 number of nodes and cores in the cluster.
 
 * A desired replica count is calculated and applied to the DNS backends based on
@@ -233,5 +233,5 @@ patterns: *linear* and *ladder*.
 
 * Read about [Guaranteed Scheduling For Critical Add-On Pods](/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/).
 * Learn more about the
-[implementation of cluster-proportional-autoscaler](https://github.com/kubernetes-sigs/cluster-proportional-autoscaler).
+[implementation of cluster-proportional-autoscaler](https://github.com/PlaidCloud-sigs/cluster-proportional-autoscaler).
 

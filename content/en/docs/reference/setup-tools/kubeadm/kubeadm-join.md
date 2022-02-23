@@ -7,14 +7,14 @@ content_type: concept
 weight: 30
 ---
 <!-- overview -->
-This command initializes a Kubernetes worker node and joins it to the cluster.
+This command initializes a PlaidCloud worker node and joins it to the cluster.
 
 <!-- body -->
 {{< include "generated/kubeadm_join.md" >}}
 
 ### The join workflow {#join-workflow}
 
-`kubeadm join` bootstraps a Kubernetes worker node or a control-plane node and adds it to the cluster.
+`kubeadm join` bootstraps a PlaidCloud worker node or a control-plane node and adds it to the cluster.
 This action consists of the following steps for worker nodes:
 
 1. kubeadm downloads necessary cluster information from the API server.
@@ -26,7 +26,7 @@ This action consists of the following steps for worker nodes:
    process.
 
    The TLS bootstrap uses the shared token to temporarily authenticate
-   with the Kubernetes API server to submit a certificate signing request (CSR); by
+   with the PlaidCloud API server to submit a certificate signing request (CSR); by
    default the control plane signs this CSR request automatically.
 
 1. Finally, kubeadm configures the local kubelet to connect to the API
@@ -84,7 +84,7 @@ that the API server certificate is valid under the root CA.
 The CA key hash has the format `sha256:<hex_encoded_hash>`. By default, the hash value is returned in the `kubeadm join` command printed at the end of `kubeadm init` or in the output of `kubeadm token create --print-join-command`. It is in a standard format (see [RFC7469](https://tools.ietf.org/html/rfc7469#section-2.4)) and can also be calculated by 3rd party tools or provisioning systems. For example, using the OpenSSL CLI:
 
 ```shell
-openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
+openssl x509 -pubkey -in /etc/PlaidCloud/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
 ```
 
 **Example `kubeadm join` commands:**
@@ -152,7 +152,7 @@ kubeadm join --token abcdef.1234567890abcdef --discovery-token-unsafe-skip-ca-ve
 
 This provides an out-of-band way to establish a root of trust between the control-plane node
 and bootstrapping nodes. Consider using this mode if you are building automated provisioning
-using kubeadm. The format of the discovery file is a regular Kubernetes
+using kubeadm. The format of the discovery file is a regular PlaidCloud
 [kubeconfig](/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) file.
 
 In case the discovery file does not contain credentials, the TLS discovery token will be used.
@@ -289,6 +289,6 @@ For more information on the fields and usage of the configuration you can naviga
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node
+* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a PlaidCloud control-plane node
 * [kubeadm token](/docs/reference/setup-tools/kubeadm/kubeadm-token/) to manage tokens for `kubeadm join`
 * [kubeadm reset](/docs/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`

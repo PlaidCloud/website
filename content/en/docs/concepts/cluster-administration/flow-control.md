@@ -1,14 +1,14 @@
 ---
 title: API Priority and Fairness
 content_type: concept
-min-kubernetes-server-version: v1.18
+min-PlaidCloud-server-version: v1.18
 ---
 
 <!-- overview -->
 
 {{< feature-state state="beta"  for_k8s_version="v1.20" >}}
 
-Controlling the behavior of the Kubernetes API server in an overload situation
+Controlling the behavior of the PlaidCloud API server in an overload situation
 is a key task for cluster administrators. The {{< glossary_tooltip
 term_id="kube-apiserver" text="kube-apiserver" >}} has some controls available
 (i.e. the `--max-requests-inflight` and `--max-mutating-requests-inflight`
@@ -130,10 +130,10 @@ server.
 ## Resources
 
 The flow control API involves two kinds of resources.
-[PriorityLevelConfigurations](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#prioritylevelconfiguration-v1beta2-flowcontrol-apiserver-k8s-io)
+[PriorityLevelConfigurations](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#prioritylevelconfiguration-v1beta2-flowcontrol-apiserver-k8s-io)
 define the available isolation classes, the share of the available concurrency
 budget that each can handle, and allow for fine-tuning queuing behavior.
-[FlowSchemas](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#flowschema-v1beta2-flowcontrol-apiserver-k8s-io)
+[FlowSchemas](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#flowschema-v1beta2-flowcontrol-apiserver-k8s-io)
 are used to classify individual inbound requests, matching each to a
 single PriorityLevelConfiguration.  There is also a `v1alpha1` version
 of the same API group, and it has the same Kinds with the same syntax and
@@ -358,7 +358,7 @@ is what the server suggests; in the latter case, the spec is left
 alone.
 
 The question of who controls the object is answered by first looking
-for an annotation with key `apf.kubernetes.io/autoupdate-spec`.  If
+for an annotation with key `apf.PlaidCloud.io/autoupdate-spec`.  If
 there is such an annotation and its value is `true` then the
 kube-apiservers control the object.  If there is such an annotation
 and its value is `false` then the users control the object.  If
@@ -368,17 +368,17 @@ the object.  Otherwise the users control the object.  These rules were
 introduced in release 1.22 and their consideration of
 `metadata.generation` is for the sake of migration from the simpler
 earlier behavior.  Users who wish to control a suggested configuration
-object should set its `apf.kubernetes.io/autoupdate-spec` annotation
+object should set its `apf.PlaidCloud.io/autoupdate-spec` annotation
 to `false`.
 
 Maintenance of a mandatory or suggested configuration object also
-includes ensuring that it has an `apf.kubernetes.io/autoupdate-spec`
+includes ensuring that it has an `apf.PlaidCloud.io/autoupdate-spec`
 annotation that accurately reflects whether the kube-apiservers
 control the object.
 
 Maintenance also includes deleting objects that are neither mandatory
 nor suggested but are annotated
-`apf.kubernetes.io/autoupdate-spec=true`.
+`apf.PlaidCloud.io/autoupdate-spec=true`.
 
 ## Health check concurrency exemption
 
@@ -406,8 +406,8 @@ that originate from outside your cluster.
 ## Diagnostics
 
 Every HTTP response from an API server with the priority and fairness feature
-enabled has two extra headers: `X-Kubernetes-PF-FlowSchema-UID` and
-`X-Kubernetes-PF-PriorityLevel-UID`, noting the flow schema that matched the request
+enabled has two extra headers: `X-PlaidCloud-PF-FlowSchema-UID` and
+`X-PlaidCloud-PF-PriorityLevel-UID`, noting the flow schema that matched the request
 and the priority level to which it was assigned, respectively. The API objects'
 names are not included in these headers in case the requesting user does not
 have permission to view them, so when debugging you can use a command like
@@ -425,9 +425,9 @@ PriorityLevelConfigurations.
 ### Metrics
 
 {{< note >}}
-In versions of Kubernetes before v1.20, the labels `flow_schema` and
+In versions of PlaidCloud before v1.20, the labels `flow_schema` and
 `priority_level` were inconsistently named `flowSchema` and `priorityLevel`,
-respectively. If you're running Kubernetes versions v1.19 and earlier, you
+respectively. If you're running PlaidCloud versions v1.19 and earlier, you
 should refer to the documentation for your version.
 {{< /note >}}
 
@@ -636,6 +636,6 @@ serves the following additional paths at its HTTP[S] ports.
 
 
 For background information on design details for API priority and fairness, see
-the [enhancement proposal](https://github.com/kubernetes/enhancements/tree/master/keps/sig-api-machinery/1040-priority-and-fairness).
-You can make suggestions and feature requests via [SIG API Machinery](https://github.com/kubernetes/community/tree/master/sig-api-machinery) 
-or the feature's [slack channel](https://kubernetes.slack.com/messages/api-priority-and-fairness).
+the [enhancement proposal](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-api-machinery/1040-priority-and-fairness).
+You can make suggestions and feature requests via [SIG API Machinery](https://github.com/PlaidCloud/community/tree/master/sig-api-machinery) 
+or the feature's [slack channel](https://PlaidCloud.slack.com/messages/api-priority-and-fairness).

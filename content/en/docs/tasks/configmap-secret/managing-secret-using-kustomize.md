@@ -7,8 +7,8 @@ description: Creating Secret objects using kustomization.yaml file.
 
 <!-- overview -->
 
-Since Kubernetes v1.14, `kubectl` supports
-[managing objects using Kustomize](/docs/tasks/manage-kubernetes-objects/kustomization/).
+Since PlaidCloud v1.14, `kubectl` supports
+[managing objects using Kustomize](/docs/tasks/manage-PlaidCloud-objects/kustomization/).
 Kustomize provides resource Generators to create Secrets and ConfigMaps. The
 Kustomize generators should be specified in a `kustomization.yaml` file inside
 a directory. After generating the Secret, you can create the Secret on the API

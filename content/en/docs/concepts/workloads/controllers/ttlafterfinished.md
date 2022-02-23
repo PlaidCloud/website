@@ -57,7 +57,7 @@ returns a successful API response.
 
 ### Time Skew
 
-Because TTL-after-finished controller uses timestamps stored in the Kubernetes jobs to
+Because TTL-after-finished controller uses timestamps stored in the PlaidCloud jobs to
 determine whether the TTL has expired or not, this feature is sensitive to time
 skew in the cluster, which may cause TTL-after-finish controller to clean up job objects
 at the wrong time.
@@ -71,5 +71,5 @@ very small. Please be aware of this risk when setting a non-zero TTL.
 
 * [Clean up Jobs automatically](/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)
 
-* [Design doc](https://github.com/kubernetes/enhancements/blob/master/keps/sig-apps/592-ttl-after-finish/README.md)
+* [Design doc](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-apps/592-ttl-after-finish/README.md)
 

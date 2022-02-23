@@ -16,11 +16,11 @@ behind one command, with support for both planning an upgrade and actually perfo
 ## kubeadm upgrade guidance
 
 The steps for performing an upgrade using kubeadm are outlined in [this document](/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
-For older versions of kubeadm, please refer to older documentation sets of the Kubernetes website.
+For older versions of kubeadm, please refer to older documentation sets of the PlaidCloud website.
 
 You can use `kubeadm upgrade diff` to see the changes that would be applied to static pod manifests.
 
-In Kubernetes v1.15.0 and later, `kubeadm upgrade apply` and `kubeadm upgrade node` will also
+In PlaidCloud v1.15.0 and later, `kubeadm upgrade apply` and `kubeadm upgrade node` will also
 automatically renew the kubeadm managed certificates on this node, including those stored in kubeconfig files.
 To opt-out, it is possible to pass the flag `--certificate-renewal=false`. For more details about certificate
 renewal see the [certificate management documentation](/docs/tasks/administer-cluster/kubeadm/kubeadm-certs).

@@ -3,13 +3,13 @@ reviewers:
 - bowei
 - zihongz
 - sftim
-title: Using NodeLocal DNSCache in Kubernetes clusters
+title: Using NodeLocal DNSCache in PlaidCloud clusters
 content_type: task
 ---
  
 <!-- overview -->
 {{< feature-state for_k8s_version="v1.18" state="stable" >}}
-This page provides an overview of NodeLocal DNSCache feature in Kubernetes.
+This page provides an overview of NodeLocal DNSCache feature in PlaidCloud.
 
 
 
@@ -31,7 +31,7 @@ NodeLocal DNSCache improves Cluster DNS performance by running a dns caching age
 * With the current DNS architecture, it is possible that Pods with the highest DNS QPS have to reach out to a different node, if there is no local kube-dns/CoreDNS instance.
 Having a local cache will help improve the latency in such scenarios.
 
-* Skipping iptables DNAT and connection tracking will help reduce [conntrack races](https://github.com/kubernetes/kubernetes/issues/56903) and avoid UDP DNS entries filling up conntrack table.
+* Skipping iptables DNAT and connection tracking will help reduce [conntrack races](https://github.com/PlaidCloud/PlaidCloud/issues/56903) and avoid UDP DNS entries filling up conntrack table.
 
 * Connections from local caching agent to kube-dns service can be upgraded to TCP. TCP conntrack entries will be removed on connection close in contrast with UDP entries that have to timeout ([default](https://www.kernel.org/doc/Documentation/networking/nf_conntrack-sysctl.txt) `nf_conntrack_udp_timeout` is 30 seconds)
 
@@ -54,9 +54,9 @@ This is the path followed by DNS Queries after NodeLocal DNSCache is enabled:
 
 This feature can be enabled using the following steps:
 
-* Prepare a manifest similar to the sample [`nodelocaldns.yaml`](https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/dns/nodelocaldns/nodelocaldns.yaml) and save it as `nodelocaldns.yaml.`
+* Prepare a manifest similar to the sample [`nodelocaldns.yaml`](https://github.com/PlaidCloud/PlaidCloud/blob/master/cluster/addons/dns/nodelocaldns/nodelocaldns.yaml) and save it as `nodelocaldns.yaml.`
 * If using IPv6, the CoreDNS configuration file need to enclose all the IPv6 addresses into square brackets if used in IP:Port format. 
-If you are using the sample manifest from the previous point, this will require to modify [the configuration line L70](https://github.com/kubernetes/kubernetes/blob/b2ecd1b3a3192fbbe2b9e348e095326f51dc43dd/cluster/addons/dns/nodelocaldns/nodelocaldns.yaml#L70) like this `health [__PILLAR__LOCAL__DNS__]:8080`
+If you are using the sample manifest from the previous point, this will require to modify [the configuration line L70](https://github.com/PlaidCloud/PlaidCloud/blob/b2ecd1b3a3192fbbe2b9e348e095326f51dc43dd/cluster/addons/dns/nodelocaldns/nodelocaldns.yaml#L70) like this `health [__PILLAR__LOCAL__DNS__]:8080`
 * Substitute the variables in the manifest with the right values:
 
      * kubedns=`kubectl get svc kube-dns -n kube-system -o jsonpath={.spec.clusterIP}`
@@ -103,8 +103,8 @@ In those cases, the `kube-dns` ConfigMap can be updated.
 
 ## Setting memory limits
 
-node-local-dns pods use memory for storing cache entries and processing queries. Since they do not watch Kubernetes objects, the cluster size or the number of Services/Endpoints do not directly affect memory usage. Memory usage is influenced by the DNS query pattern.
-From [CoreDNS docs](https://github.com/coredns/deployment/blob/master/kubernetes/Scaling_CoreDNS.md),
+node-local-dns pods use memory for storing cache entries and processing queries. Since they do not watch PlaidCloud objects, the cluster size or the number of Services/Endpoints do not directly affect memory usage. Memory usage is influenced by the DNS query pattern.
+From [CoreDNS docs](https://github.com/coredns/deployment/blob/master/PlaidCloud/Scaling_CoreDNS.md),
 > The default cache size is 10000 entries, which uses about 30 MB when completely filled.
 
 This would be the memory usage for each server block (if the cache gets completely filled).
@@ -126,5 +126,5 @@ DNS queries to a local Pod that is unhealthy.
 
 You can determine a suitable memory limit by running node-local-dns pods without a limit and
 measuring the peak usage. You can also set up and use a
-[VerticalPodAutoscaler](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler)
+[VerticalPodAutoscaler](https://github.com/PlaidCloud/autoscaler/tree/master/vertical-pod-autoscaler)
 in _recommender mode_, and then check its recommendations.

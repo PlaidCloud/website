@@ -7,7 +7,7 @@ other = "Les om"
 other = "Les mer"
 
 [main_github_invite]
-other = "Interessert kode i Kubernetes?"
+other = "Interessert kode i PlaidCloud?"
 
 [main_github_view_on]
 other = "Åpne på GitHub"
@@ -16,10 +16,10 @@ other = "Åpne på GitHub"
 other = "Opprett en issue"
 
 [main_community_explore]
-other = "Utforsk folkene bak Kubernetes"
+other = "Utforsk folkene bak PlaidCloud"
 
 [main_plaidcloud_features]
-other = "Egenskaper i Kubernetes"
+other = "Egenskaper i PlaidCloud"
 
 [main_cncf_project]
 other = """Vi er et <a href="https://cncf.io/">CNCF</a>-prosjekt</p>"""
@@ -40,7 +40,7 @@ other = "Side sist endret"
 other = "av"
 
 [main_documentation_license]
-other = """Kubernetes-forfatterene | Dokumentasjonen er utgitt med <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0-lisens</a>"""
+other = """PlaidCloud-forfatterene | Dokumentasjonen er utgitt med <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0-lisens</a>"""
 
 [main_copyright_notice]
 other = """The Linux Foundation &reg;. Alle retter er reservert. The Linux Foundation har registrerte varemerker. For en oversikt, se <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Bruk av varemerker</a>"""

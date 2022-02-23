@@ -1,6 +1,6 @@
 ---
 title: Update API Objects in Place Using kubectl patch
-description: Use kubectl patch to update Kubernetes API objects in place. Do a strategic merge patch or a JSON merge patch.
+description: Use kubectl patch to update PlaidCloud API objects in place. Do a strategic merge patch or a JSON merge patch.
 content_type: task
 weight: 50
 ---
@@ -137,7 +137,7 @@ In some cases, the list is replaced, not merged.
 
 With a strategic merge patch, a list is either replaced or merged depending on its
 patch strategy. The patch strategy is specified by the value of the `patchStrategy` key
-in a field tag in the Kubernetes source code. For example, the `Containers` field of `PodSpec`
+in a field tag in the PlaidCloud source code. For example, the `Containers` field of `PodSpec`
 struct has a `patchStrategy` of `merge`:
 
 ```go
@@ -147,7 +147,7 @@ type PodSpec struct {
 ```
 
 You can also see the patch strategy in the
-[OpenApi spec](https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json):
+[OpenApi spec](https://raw.githubusercontent.com/PlaidCloud/PlaidCloud/master/api/openapi-spec/swagger.json):
 
 ```json
 "io.k8s.api.core.v1.PodSpec": {
@@ -155,13 +155,13 @@ You can also see the patch strategy in the
      "containers": {
       "description": "List of containers belonging to the pod. ...
       },
-      "x-kubernetes-patch-merge-key": "name",
-      "x-kubernetes-patch-strategy": "merge"
+      "x-PlaidCloud-patch-merge-key": "name",
+      "x-PlaidCloud-patch-strategy": "merge"
      },
 ```
 
 And you can see the patch strategy in the
-[Kubernetes API documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+[PlaidCloud API documentation](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podspec-v1-core).
 
 Create a file named `patch-file-tolerations.yaml` that has this content:
 
@@ -358,7 +358,7 @@ The patch you did in the preceding exercise is called a *strategic merge patch w
 - All of the missing fields will be cleared when patching.
 - All fields in the `$retainKeys` list must be a superset or the same as the fields present in the patch.
 
-The `retainKeys` strategy does not work for all objects. It only works when the value of the `patchStrategy` key in a field tag in the Kubernetes source code contains `retainKeys`. For example, the `Strategy` field of the `DeploymentSpec` struct has a `patchStrategy` of `retainKeys`:
+The `retainKeys` strategy does not work for all objects. It only works when the value of the `patchStrategy` key in a field tag in the PlaidCloud source code contains `retainKeys`. For example, the `Strategy` field of the `DeploymentSpec` struct has a `patchStrategy` of `retainKeys`:
 
 ```go
 type DeploymentSpec struct {
@@ -367,7 +367,7 @@ type DeploymentSpec struct {
   Strategy DeploymentStrategy `json:"strategy,omitempty" patchStrategy:"retainKeys" ...`
 ```
 
-You can also see the `retainKeys` strategy in the [OpenApi spec](https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json):
+You can also see the `retainKeys` strategy in the [OpenApi spec](https://raw.githubusercontent.com/PlaidCloud/PlaidCloud/master/api/openapi-spec/swagger.json):
 
 ```json
 "io.k8s.api.apps.v1.DeploymentSpec": {
@@ -375,12 +375,12 @@ You can also see the `retainKeys` strategy in the [OpenApi spec](https://raw.git
   "strategy": {
     "$ref": "#/definitions/io.k8s.api.apps.v1.DeploymentStrategy",
     "description": "The deployment strategy to use to replace existing pods with new ones.",
-    "x-kubernetes-patch-strategy": "retainKeys"
+    "x-PlaidCloud-patch-strategy": "retainKeys"
   },
 ```
 
 And you can see the `retainKeys` strategy in the
-[Kubernetes API documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#deploymentspec-v1-apps).
+[PlaidCloud API documentation](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#deploymentspec-v1-apps).
 
 ## Alternate forms of the kubectl patch command
 
@@ -438,9 +438,9 @@ Strategic merge patch is not supported for custom resources.
 ## {{% heading "whatsnext" %}}
 
 
-* [Kubernetes Object Management](/docs/concepts/overview/working-with-objects/object-management/)
-* [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-* [Imperative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/imperative-config/)
-* [Declarative Management of Kubernetes Objects Using Configuration Files](/docs/tasks/manage-kubernetes-objects/declarative-config/)
+* [PlaidCloud Object Management](/docs/concepts/overview/working-with-objects/object-management/)
+* [Managing PlaidCloud Objects Using Imperative Commands](/docs/tasks/manage-PlaidCloud-objects/imperative-command/)
+* [Imperative Management of PlaidCloud Objects Using Configuration Files](/docs/tasks/manage-PlaidCloud-objects/imperative-config/)
+* [Declarative Management of PlaidCloud Objects Using Configuration Files](/docs/tasks/manage-PlaidCloud-objects/declarative-config/)
 
 

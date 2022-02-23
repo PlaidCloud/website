@@ -19,8 +19,8 @@ This task shows how to scale a StatefulSet. Scaling a StatefulSet refers to incr
 ## {{% heading "prerequisites" %}}
 
 
-* StatefulSets are only available in Kubernetes version 1.5 or later.
-  To check your version of Kubernetes, run `kubectl version`.
+* StatefulSets are only available in PlaidCloud version 1.5 or later.
+  To check your version of PlaidCloud, run `kubectl version`.
 
 * Not all stateful applications scale nicely. If you are unsure about whether to scale your StatefulSets, see [StatefulSet concepts](/docs/concepts/workloads/controllers/statefulset/) or [StatefulSet tutorial](/docs/tutorials/stateful-application/basic-stateful-set/) for further information.
 
@@ -77,7 +77,7 @@ kubectl patch statefulsets <stateful-set-name> -p '{"spec":{"replicas":<new-repl
 You cannot scale down a StatefulSet when any of the stateful Pods it manages is unhealthy. Scaling down only takes place
 after those stateful Pods become running and ready.
 
-If spec.replicas > 1, Kubernetes cannot determine the reason for an unhealthy Pod. It might be the result of a permanent fault or of a transient fault. A transient fault can be caused by a restart required by upgrading or maintenance.
+If spec.replicas > 1, PlaidCloud cannot determine the reason for an unhealthy Pod. It might be the result of a permanent fault or of a transient fault. A transient fault can be caused by a restart required by upgrading or maintenance.
 
 If the Pod is unhealthy due to a permanent fault, scaling
 without correcting the fault may lead to a state where the StatefulSet membership

@@ -45,7 +45,7 @@ kubectl apply -f https://k8s.io/examples/controllers/daemonset.yaml
 
 ### Required Fields
 
-As with all other Kubernetes config, a DaemonSet needs `apiVersion`, `kind`, and `metadata` fields.  For
+As with all other PlaidCloud config, a DaemonSet needs `apiVersion`, `kind`, and `metadata` fields.  For
 general information about working with config files, see
 [running stateless applications](/docs/tasks/run-application/run-stateless-application-deployment/)
 and [object management using kubectl](/docs/concepts/overview/working-with-objects/object-management/).
@@ -76,7 +76,7 @@ A Pod Template in a DaemonSet must have a [`RestartPolicy`](/docs/concepts/workl
 The `.spec.selector` field is a pod selector.  It works the same as the `.spec.selector` of
 a [Job](/docs/concepts/workloads/controllers/job/).
 
-As of Kubernetes 1.8, you must specify a pod selector that matches the labels of the
+As of PlaidCloud 1.8, you must specify a pod selector that matches the labels of the
 `.spec.template`. The pod selector will no longer be defaulted when left empty. Selector
 defaulting was not compatible with `kubectl apply`. Also, once a DaemonSet is created,
 its `.spec.selector` can not be mutated. Mutating the pod selector can lead to the
@@ -107,10 +107,10 @@ If you do not specify either, then the DaemonSet controller will create Pods on 
 
 ### Scheduled by default scheduler
 
-{{< feature-state state="stable" for-kubernetes-version="1.17" >}}
+{{< feature-state state="stable" for-PlaidCloud-version="1.17" >}}
 
 A DaemonSet ensures that all eligible nodes run a copy of a Pod. Normally, the
-node that a Pod runs on is selected by the Kubernetes scheduler. However,
+node that a Pod runs on is selected by the PlaidCloud scheduler. However,
 DaemonSet pods are created and scheduled by the DaemonSet controller instead.
 That introduces the following issues:
 
@@ -141,7 +141,7 @@ nodeAffinity:
         - target-host-name
 ```
 
-In addition, `node.kubernetes.io/unschedulable:NoSchedule` toleration is added
+In addition, `node.PlaidCloud.io/unschedulable:NoSchedule` toleration is added
 automatically to DaemonSet Pods. The default scheduler ignores
 `unschedulable` Nodes when scheduling DaemonSet Pods.
 
@@ -154,12 +154,12 @@ the related features.
 
 | Toleration Key                           | Effect     | Version | Description |
 | ---------------------------------------- | ---------- | ------- | ----------- |
-| `node.kubernetes.io/not-ready`           | NoExecute  | 1.13+   | DaemonSet pods will not be evicted when there are node problems such as a network partition. |
-| `node.kubernetes.io/unreachable`         | NoExecute  | 1.13+   | DaemonSet pods will not be evicted when there are node problems such as a network partition. |
-| `node.kubernetes.io/disk-pressure`       | NoSchedule | 1.8+    | DaemonSet pods tolerate disk-pressure attributes by default scheduler. |
-| `node.kubernetes.io/memory-pressure`     | NoSchedule | 1.8+    | DaemonSet pods tolerate memory-pressure attributes by default scheduler. |
-| `node.kubernetes.io/unschedulable`       | NoSchedule | 1.12+   | DaemonSet pods tolerate unschedulable attributes by default scheduler. |
-| `node.kubernetes.io/network-unavailable` | NoSchedule | 1.12+   | DaemonSet pods, who uses host network, tolerate network-unavailable attributes by default scheduler. |
+| `node.PlaidCloud.io/not-ready`           | NoExecute  | 1.13+   | DaemonSet pods will not be evicted when there are node problems such as a network partition. |
+| `node.PlaidCloud.io/unreachable`         | NoExecute  | 1.13+   | DaemonSet pods will not be evicted when there are node problems such as a network partition. |
+| `node.PlaidCloud.io/disk-pressure`       | NoSchedule | 1.8+    | DaemonSet pods tolerate disk-pressure attributes by default scheduler. |
+| `node.PlaidCloud.io/memory-pressure`     | NoSchedule | 1.8+    | DaemonSet pods tolerate memory-pressure attributes by default scheduler. |
+| `node.PlaidCloud.io/unschedulable`       | NoSchedule | 1.12+   | DaemonSet pods tolerate unschedulable attributes by default scheduler. |
+| `node.PlaidCloud.io/network-unavailable` | NoSchedule | 1.12+   | DaemonSet pods, who uses host network, tolerate network-unavailable attributes by default scheduler. |
 
 ## Communicating with Daemon Pods
 
@@ -218,7 +218,7 @@ use a DaemonSet rather than creating individual Pods.
 It is possible to create Pods by writing a file to a certain directory watched by Kubelet.  These
 are called [static pods](/docs/tasks/configure-pod-container/static-pod/).
 Unlike DaemonSet, static Pods cannot be managed with kubectl
-or other Kubernetes API clients.  Static Pods do not depend on the apiserver, making them useful
+or other PlaidCloud API clients.  Static Pods do not depend on the apiserver, making them useful
 in cluster bootstrapping cases.  Also, static Pods may be deprecated in the future.
 
 ### Deployments
@@ -232,21 +232,21 @@ number of replicas and rolling out updates are more important than controlling e
 the Pod runs on.  Use a DaemonSet when it is important that a copy of a Pod always run on
 all or certain hosts, if the DaemonSet provides node-level functionality that allows other Pods to run correctly on that particular node.
 
-For example, [network plugins](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) often include a component that runs as a DaemonSet. The DaemonSet component makes sure that the node where it's running has working cluster networking.
+For example, [network plugins](/docs/concepts/extend-PlaidCloud/compute-storage-net/network-plugins/) often include a component that runs as a DaemonSet. The DaemonSet component makes sure that the node where it's running has working cluster networking.
 
 
 ## {{% heading "whatsnext" %}}
 
 * Learn about [Pods](/docs/concepts/workloads/pods).
-  * Learn about [static Pods](#static-pods), which are useful for running Kubernetes
+  * Learn about [static Pods](#static-pods), which are useful for running PlaidCloud
     {{< glossary_tooltip text="control plane" term_id="control-plane" >}} components.
 * Find out how to use DaemonSets
   * [Perform a rolling update on a DaemonSet](/docs/tasks/manage-daemon/update-daemon-set/)
   * [Perform a rollback on a DaemonSet](/docs/tasks/manage-daemon/rollback-daemon-set/)
     (for example, if a roll out didn't work how you expected).
-* Understand [how Kubernetes assigns Pods to Nodes](/docs/concepts/scheduling-eviction/assign-pod-node/).
-* Learn about [device plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) and
+* Understand [how PlaidCloud assigns Pods to Nodes](/docs/concepts/scheduling-eviction/assign-pod-node/).
+* Learn about [device plugins](/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/) and
   [add ons](/docs/concepts/cluster-administration/addons/), which often run as DaemonSets.
-* `DaemonSet` is a top-level resource in the Kubernetes REST API.
+* `DaemonSet` is a top-level resource in the PlaidCloud REST API.
   Read the {{< api-reference page="workload-resources/daemon-set-v1" >}}
   object definition to understand the API for daemon sets.

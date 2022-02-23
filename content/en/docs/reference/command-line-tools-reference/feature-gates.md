@@ -9,7 +9,7 @@ card:
 
 <!-- overview -->
 This page contains an overview of the various feature gates an administrator
-can specify on different Kubernetes components.
+can specify on different PlaidCloud components.
 
 See [feature stages](#feature-stages) for an explanation of the stages for a feature.
 
@@ -17,12 +17,12 @@ See [feature stages](#feature-stages) for an explanation of the stages for a fea
 <!-- body -->
 ## Overview
 
-Feature gates are a set of key=value pairs that describe Kubernetes features.
+Feature gates are a set of key=value pairs that describe PlaidCloud features.
 You can turn these features on or off using the `--feature-gates` command line flag
-on each Kubernetes component.
+on each PlaidCloud component.
 
 
-Each Kubernetes component lets you enable or disable a set of feature gates that
+Each PlaidCloud component lets you enable or disable a set of feature gates that
 are relevant to that component.
 Use `-h` flag to see a full set of feature gates for all components.
 To set feature gates for a component, such as kubelet, use the `--feature-gates` flag assigned to a list of feature pairs:
@@ -32,11 +32,11 @@ To set feature gates for a component, such as kubelet, use the `--feature-gates`
 ```
 
 The following tables are a summary of the feature gates that you can set on
-different Kubernetes components.
+different PlaidCloud components.
 
-- The "Since" column contains the Kubernetes release when a feature is introduced
+- The "Since" column contains the PlaidCloud release when a feature is introduced
   or its release stage is changed.
-- The "Until" column, if not empty, contains the last Kubernetes release in which
+- The "Until" column, if not empty, contains the last PlaidCloud release in which
   you can still use a feature gate.
 - If a feature is in the Alpha or Beta state, you can find the feature listed
   in the [Alpha/Beta feature gate table](#feature-gates-for-alpha-or-beta-features).
@@ -564,7 +564,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `APIServerTracing`: Add support for distributed tracing in the API server.
 - `Accelerators`: Provided an early form of plugin to enable Nvidia GPU support when using
   Docker Engine; no longer available. See
-  [Device Plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) for
+  [Device Plugins](/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/) for
   an alternative.
 - `AdvancedAuditing`: Enable [advanced auditing](/docs/tasks/debug-application-cluster/audit/#advanced-audit)
 - `AffinityInAnnotations`: Enable setting
@@ -589,7 +589,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   ServiceAccountTokenVolumeProjection. Cluster admins can use metric `serviceaccount_stale_tokens_total` to
   monitor workloads that are depending on the extended tokens. If there are no such workloads, turn off
   extended tokens by starting `kube-apiserver` with flag `--service-account-extend-token-expiration=false`.
-  Check [Bound Service Account Tokens](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/1205-bound-service-account-tokens/README.md)
+  Check [Bound Service Account Tokens](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-auth/1205-bound-service-account-tokens/README.md)
    for more details.
 - `ControllerManagerLeaderMigration`: Enables Leader Migration for
   [kube-controller-manager](/docs/tasks/administer-cluster/controller-manager-leader-migration/#initial-leader-migration-configuration) and
@@ -694,13 +694,13 @@ Each feature gate is designed for enabling/disabling a specific feature:
   Requires Portworx CSI driver to be installed and configured in the cluster, and feature gate set `CSIMigrationPortworx=true` in kube-controller-manager and kubelet configs.
 - `CSINodeInfo`: Enable all logic related to the CSINodeInfo API object in csi.storage.k8s.io.
 - `CSIPersistentVolume`: Enable discovering and mounting volumes provisioned through a
-  [CSI (Container Storage Interface)](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md)
+  [CSI (Container Storage Interface)](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md)
   compatible volume plugin.
 - `CSIServiceAccountToken`: Enable CSI drivers to receive the pods' service account token
   that they mount volumes for. See
-  [Token Requests](https://kubernetes-csi.github.io/docs/token-requests.html).
+  [Token Requests](https://PlaidCloud-csi.github.io/docs/token-requests.html).
 - `CSIStorageCapacity`: Enables CSI drivers to publish storage capacity information
-  and the Kubernetes scheduler to use that information when scheduling pods. See
+  and the PlaidCloud scheduler to use that information when scheduling pods. See
   [Storage Capacity](/docs/concepts/storage/storage-capacity/).
   Check the [`csi` volume type](/docs/concepts/storage/volumes/#csi) documentation for more details.
 - `CSIVolumeFSGroupPolicy`: Allows CSIDrivers to use the `fsGroupPolicy` field.
@@ -708,7 +708,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   and permission modifications when these volumes are mounted.
 - `CSIVolumeHealth`: Enable support for CSI volume health monitoring on node.
 - `CSRDuration`: Allows clients to request a duration for certificates issued
-  via the Kubernetes CSR API.
+  via the PlaidCloud CSR API.
 - `ConfigurableFSGroupPolicy`: Allows user to configure volume permission change policy
   for fsGroups when mounting a volume in a Pod. See
   [Configure volume permission and ownership change policy for Pods](/docs/tasks/configure-pod-container/security-context/#configure-volume-permission-and-ownership-change-policy-for-pods)
@@ -720,18 +720,18 @@ Each feature gate is designed for enabling/disabling a specific feature:
   version 1 of the same controller is selected.
 - `CustomCPUCFSQuotaPeriod`: Enable nodes to change `cpuCFSQuotaPeriod` in
   [kubelet config](/docs/tasks/administer-cluster/kubelet-config-file/).
-- `CustomResourceValidationExpressions`: Enable expression language validation in CRD which will validate customer resource based on validation rules written in `x-kubernetes-validations` extension.
+- `CustomResourceValidationExpressions`: Enable expression language validation in CRD which will validate customer resource based on validation rules written in `x-PlaidCloud-validations` extension.
 - `CustomPodDNS`: Enable customizing the DNS settings for a Pod using its `dnsConfig` property.
   Check [Pod's DNS Config](/docs/concepts/services-networking/dns-pod-service/#pods-dns-config)
   for more details.
 - `CustomResourceDefaulting`: Enable CRD support for default values in OpenAPI v3 validation schemas.
 - `CustomResourcePublishOpenAPI`: Enables publishing of CRD OpenAPI specs.
 - `CustomResourceSubresources`: Enable `/status` and `/scale` subresources
-  on resources created from [CustomResourceDefinition](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+  on resources created from [CustomResourceDefinition](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/).
 - `CustomResourceValidation`: Enable schema based validation on resources created from
-  [CustomResourceDefinition](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+  [CustomResourceDefinition](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/).
 - `CustomResourceWebhookConversion`: Enable webhook-based conversion
-  on resources created from [CustomResourceDefinition](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+  on resources created from [CustomResourceDefinition](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/).
 - `DaemonSetUpdateSurge`: Enables the DaemonSet workloads to maintain
   availability during update per node.
   See [Perform a Rolling Update on a DaemonSet](/docs/tasks/manage-daemon/update-daemon-set/).
@@ -740,7 +740,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `DelegateFSGroupToCSIDriver`: If supported by the CSI driver, delegates the
   role of applying `fsGroup` from a Pod's `securityContext` to the driver by
   passing `fsGroup` through the NodeStageVolume and NodePublishVolume CSI calls.
-- `DevicePlugins`: Enable the [device-plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
+- `DevicePlugins`: Enable the [device-plugins](/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/)
   based resource provisioning on nodes.
 - `DisableAcceleratorUsageMetrics`:
   [Disable accelerator metrics collected by the kubelet](/docs/concepts/cluster-administration/system-metrics/#disable-accelerator-metrics).
@@ -784,7 +784,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   [Pod Topology Spread Constraints](/docs/concepts/workloads/pods/pod-topology-spread-constraints/).
 - `ExecProbeTimeout`: Ensure kubelet respects exec probe timeouts.
   This feature gate exists in case any of your existing workloads depend on a
-  now-corrected fault where Kubernetes ignored exec probe timeouts. See
+  now-corrected fault where PlaidCloud ignored exec probe timeouts. See
   [readiness probes](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes).
 - `ExpandCSIVolumes`: Enable the expanding of CSI volumes.
 - `ExpandedDNSConfig`: Enable kubelet and kube-apiserver to allow more DNS
@@ -830,7 +830,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   [Hyper-V isolation](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container)
   for Windows containers.
 - `IdentifyPodOS`: Allows the Pod OS field to be specified. This helps in identifying the OS of the pod
-  authoritatively during the API server admission time. In Kubernetes {{< skew currentVersion >}}, the allowed values for the `pod.spec.os.name` are `windows` and `linux`.
+  authoritatively during the API server admission time. In PlaidCloud {{< skew currentVersion >}}, the allowed values for the `pod.spec.os.name` are `windows` and `linux`.
 - `ImmutableEphemeralVolumes`: Allows for marking individual Secrets and ConfigMaps as
   immutable for better safety and performance.
 - `InTreePluginAWSUnregister`: Stops registering the aws-ebs in-tree plugin in kubelet
@@ -863,7 +863,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `JobReadyPods`: Enables tracking the number of Pods that have a `Ready`
   [condition](/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions).
   The count of `Ready` pods is recorded in the
-  [status](/docs/reference/kubernetes-api/workload-resources/job-v1/#JobStatus)
+  [status](/docs/reference/PlaidCloud-api/workload-resources/job-v1/#JobStatus)
   of a [Job](/docs/concepts/workloads/controllers/job) status.
 - `JobTrackingWithFinalizers`: Enables tracking [Job](/docs/concepts/workloads/controllers/job)
   completions without relying on Pods remaining in the cluster indefinitely.
@@ -875,17 +875,17 @@ Each feature gate is designed for enabling/disabling a specific feature:
   for more details.
 - `KubeletCredentialProviders`: Enable kubelet exec credential providers for image pull credentials.
 - `KubeletInUserNamespace`: Enables support for running kubelet in a {{<glossary_tooltip text="user namespace" term_id="userns">}}.
-   See [Running Kubernetes Node Components as a Non-root User](/docs/tasks/administer-cluster/kubelet-in-userns/).
+   See [Running PlaidCloud Node Components as a Non-root User](/docs/tasks/administer-cluster/kubelet-in-userns/).
 - `KubeletPluginsWatcher`: Enable probe-based plugin watcher utility to enable kubelet
   to discover plugins such as [CSI volume drivers](/docs/concepts/storage/volumes/#csi).
 - `KubeletPodResources`: Enable the kubelet's pod resources gRPC endpoint. See
-  [Support Device Monitoring](https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/606-compute-device-assignment/README.md)
+  [Support Device Monitoring](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-node/606-compute-device-assignment/README.md)
   for more details.
 - `KubeletPodResourcesGetAllocatable`: Enable the kubelet's pod resources `GetAllocatableResources` functionality.
-  This API augments the [resource allocation reporting](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/#monitoring-device-plugin-resources)
+  This API augments the [resource allocation reporting](/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/#monitoring-device-plugin-resources)
   with informations about the allocatable resources, enabling clients to properly track the free compute resources on a node.
 - `LegacyNodeRoleBehavior`: When disabled, legacy behavior in service load balancers and
-  node disruption will ignore the `node-role.kubernetes.io/master` label in favor of the
+  node disruption will ignore the `node-role.PlaidCloud.io/master` label in favor of the
   feature-specific labels provided by `NodeDisruptionExclusion` and `ServiceNodeExclusion`.
 - `LocalStorageCapacityIsolation`: Enable the consumption of
   [local ephemeral storage](/docs/concepts/configuration/manage-resources-containers/)
@@ -909,12 +909,12 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `MountPropagation`: Enable sharing volume mounted by one container to other containers or pods.
   For more details, please see [mount propagation](/docs/concepts/storage/volumes/#mount-propagation).
 - `NamespaceDefaultLabelName`: Configure the API Server to set an immutable {{< glossary_tooltip text="label" term_id="label" >}}
-  `kubernetes.io/metadata.name` on all namespaces, containing the namespace name.
+  `PlaidCloud.io/metadata.name` on all namespaces, containing the namespace name.
 - `NetworkPolicyEndPort`: Enable use of the field `endPort` in NetworkPolicy objects, allowing the selection of a port range instead of a single port.
-- `NodeDisruptionExclusion`: Enable use of the Node label `node.kubernetes.io/exclude-disruption`
+- `NodeDisruptionExclusion`: Enable use of the Node label `node.PlaidCloud.io/exclude-disruption`
   which prevents nodes from being evacuated during zone failures.
 - `NodeLease`: Enable the new Lease API to report node heartbeats, which could be used as a node health signal.
-- `NodeSwap`: Enable the kubelet to allocate swap memory for Kubernetes workloads on a node.
+- `NodeSwap`: Enable the kubelet to allocate swap memory for PlaidCloud workloads on a node.
   Must be used with `KubeletConfiguration.failSwapOn` set to false.
   For more details, please see [swap memory](/docs/concepts/architecture/nodes/#swap-memory)
 - `NonPreemptingPriority`: Enable `preemptionPolicy` field for PriorityClass and Pod.
@@ -948,7 +948,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   the cluster.
 - `ProbeTerminationGracePeriod`: Enable [setting probe-level
   `terminationGracePeriodSeconds`](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#probe-level-terminationgraceperiodseconds)
-   on pods.  See the [enhancement proposal](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/2238-liveness-probe-grace-period) for more details.
+   on pods.  See the [enhancement proposal](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/2238-liveness-probe-grace-period) for more details.
 - `ProcMountType`: Enables control over the type proc mounts for containers
   by setting the `procMount` field of a SecurityContext.
 - `ProxyTerminatingEndpoints`: Enable the kube-proxy to handle terminating
@@ -978,7 +978,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}} named `kube-root-ca.crt`
   to every namespace. This ConfigMap contains a CA bundle used for verifying connections
   to the kube-apiserver. See
-  [Bound Service Account Tokens](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/1205-bound-service-account-tokens/README.md)
+  [Bound Service Account Tokens](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-auth/1205-bound-service-account-tokens/README.md)
   for more details.
 - `RotateKubeletClientCertificate`: Enable the rotation of the client TLS certificate on the kubelet.
   See [kubelet configuration](/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/#kubelet-configuration) for more details.
@@ -1011,7 +1011,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `ServiceLoadBalancerFinalizer`: Enable finalizer protection for Service load balancers.
 - `ServiceNodeExclusion`: Enable the exclusion of nodes from load balancers
   created by a cloud provider. A node is eligible for exclusion if labelled with
-  "`node.kubernetes.io/exclude-from-external-load-balancers`".
+  "`node.PlaidCloud.io/exclude-from-external-load-balancers`".
 - `ServiceTopology`: Enable service to route traffic based upon the Node
   topology of the cluster. See
   [ServiceTopology](/docs/concepts/services-networking/service-topology/)
@@ -1029,7 +1029,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `StorageObjectInUseProtection`: Postpone the deletion of PersistentVolume or
   PersistentVolumeClaim objects if they are still being used.
 - `StorageVersionAPI`: Enable the
-  [storage version API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#storageversion-v1alpha1-internal-apiserver-k8s-io).
+  [storage version API](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#storageversion-v1alpha1-internal-apiserver-k8s-io).
 - `StorageVersionHash`: Allow API servers to expose the storage version hash in the
   discovery.
 - `StreamingProxyRedirects`: Instructs the API server to intercept (and follow)
@@ -1040,7 +1040,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
 - `SupportNodePidsLimit`: Enable the support to limiting PIDs on the Node.
   The parameter `pid=<number>` in the `--system-reserved` and `--kube-reserved`
   options can be specified to ensure that the specified number of process IDs
-  will be reserved for the system as a whole and for Kubernetes system daemons
+  will be reserved for the system as a whole and for PlaidCloud system daemons
   respectively.
 - `SupportPodPidsLimit`: Enable the support to limiting PIDs in Pods.
 - `SuspendJob`: Enable support to suspend and resume Jobs. See
@@ -1066,7 +1066,7 @@ Each feature gate is designed for enabling/disabling a specific feature:
   Hints](/docs/concepts/services-networking/topology-aware-hints/) for more
   details.
 - `TopologyManager`: Enable a mechanism to coordinate fine-grained hardware resource
-  assignments for different components in Kubernetes. See
+  assignments for different components in PlaidCloud. See
   [Control Topology Management Policies on a node](/docs/tasks/administer-cluster/topology-manager/).
 - `ValidateProxyRedirects`: This flag controls whether the API server should
   validate that redirects are only followed to the same host. Only used if the
@@ -1100,5 +1100,5 @@ Each feature gate is designed for enabling/disabling a specific feature:
 
 ## {{% heading "whatsnext" %}}
 
-* The [deprecation policy](/docs/reference/using-api/deprecation-policy/) for Kubernetes explains
+* The [deprecation policy](/docs/reference/using-api/deprecation-policy/) for PlaidCloud explains
   the project's approach to removing features and components.

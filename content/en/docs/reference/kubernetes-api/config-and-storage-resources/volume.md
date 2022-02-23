@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
@@ -34,7 +34,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **name** (string), required
 
-  Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+  Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://plaidcloud.com/docs/concepts/overview/working-with-objects/names/#names
 
 
 
@@ -43,14 +43,14 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **persistentVolumeClaim** (PersistentVolumeClaimVolumeSource)
 
-  PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+  PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
   <a name="PersistentVolumeClaimVolumeSource"></a>
   *PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume finds the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is, essentially, a wrapper around another type of volume that is owned by someone else (the system).*
 
   - **persistentVolumeClaim.claimName** (string), required
 
-    ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
   - **persistentVolumeClaim.readOnly** (boolean)
 
@@ -70,7 +70,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **configMap.name** (string)
 
-    Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    Name of the referent. More info: https://plaidcloud.com/docs/concepts/overview/working-with-objects/names/#names
 
   - **configMap.optional** (boolean)
 
@@ -86,7 +86,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **secret** (SecretVolumeSource)
 
-  Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+  Secret represents a secret that should populate this volume. More info: https://plaidcloud.com/docs/concepts/storage/volumes#secret
 
   <a name="SecretVolumeSource"></a>
   *Adapts a Secret into a volume.
@@ -95,7 +95,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **secret.secretName** (string)
 
-    Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+    Name of the secret in the pod's namespace to use. More info: https://plaidcloud.com/docs/concepts/storage/volumes#secret
 
   - **secret.optional** (boolean)
 
@@ -153,7 +153,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
       - **projected.sources.configMap.name** (string)
 
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://plaidcloud.com/docs/concepts/overview/working-with-objects/names/#names
 
       - **projected.sources.configMap.optional** (boolean)
 
@@ -185,7 +185,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
       - **projected.sources.secret.name** (string)
 
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://plaidcloud.com/docs/concepts/overview/working-with-objects/names/#names
 
       - **projected.sources.secret.optional** (boolean)
 
@@ -200,7 +200,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
       information about the serviceAccountToken data to project
 
       <a name="ServiceAccountTokenProjection"></a>
-      *ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise).*
+      *ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (PlaidCloud API Server or otherwise).*
 
       - **projected.sources.serviceAccountToken.path** (string), required
 
@@ -219,40 +219,40 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **emptyDir** (EmptyDirVolumeSource)
 
-  EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+  EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://plaidcloud.com/docs/concepts/storage/volumes#emptydir
 
   <a name="EmptyDirVolumeSource"></a>
   *Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.*
 
   - **emptyDir.medium** (string)
 
-    What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+    What type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://plaidcloud.com/docs/concepts/storage/volumes#emptydir
 
   - **emptyDir.sizeLimit** (<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-    Total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir
+    Total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://PlaidCloud.io/docs/user-guide/volumes#emptydir
 
 - **hostPath** (HostPathVolumeSource)
 
-  HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+  HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://plaidcloud.com/docs/concepts/storage/volumes#hostpath
 
   <a name="HostPathVolumeSource"></a>
   *Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.*
 
   - **hostPath.path** (string), required
 
-    Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://plaidcloud.com/docs/concepts/storage/volumes#hostpath
 
   - **hostPath.type** (string)
 
-    Type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    Type for HostPath Volume Defaults to "" More info: https://plaidcloud.com/docs/concepts/storage/volumes#hostpath
 
 ### Persistent volumes
 
 
 - **awsElasticBlockStore** (AWSElasticBlockStoreVolumeSource)
 
-  AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+  AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://plaidcloud.com/docs/concepts/storage/volumes#awselasticblockstore
 
   <a name="AWSElasticBlockStoreVolumeSource"></a>
   *Represents a Persistent Disk resource in AWS.
@@ -261,11 +261,11 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **awsElasticBlockStore.volumeID** (string), required
 
-    Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://plaidcloud.com/docs/concepts/storage/volumes#awselasticblockstore
 
   - **awsElasticBlockStore.fsType** (string)
 
-    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://plaidcloud.com/docs/concepts/storage/volumes#awselasticblockstore
 
   - **awsElasticBlockStore.partition** (int32)
 
@@ -273,7 +273,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **awsElasticBlockStore.readOnly** (boolean)
 
-    Specify "true" to force and set the ReadOnly property in VolumeMounts to "true". If omitted, the default is "false". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    Specify "true" to force and set the ReadOnly property in VolumeMounts to "true". If omitted, the default is "false". More info: https://plaidcloud.com/docs/concepts/storage/volumes#awselasticblockstore
 
 - **azureDisk** (AzureDiskVolumeSource)
 
@@ -477,7 +477,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **gcePersistentDisk** (GCEPersistentDiskVolumeSource)
 
-  GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+  GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
   <a name="GCEPersistentDiskVolumeSource"></a>
   *Represents a Persistent Disk resource in Google Compute Engine.
@@ -486,19 +486,19 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **gcePersistentDisk.pdName** (string), required
 
-    Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.fsType** (string)
 
-    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.partition** (int32)
 
-    The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
   - **gcePersistentDisk.readOnly** (boolean)
 
-    ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://plaidcloud.com/docs/concepts/storage/volumes#gcepersistentdisk
 
 - **glusterfs** (GlusterfsVolumeSource)
 
@@ -548,7 +548,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **iscsi.fsType** (string)
 
-    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://plaidcloud.com/docs/concepts/storage/volumes#iscsi
 
   - **iscsi.initiatorName** (string)
 
@@ -572,22 +572,22 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **nfs** (NFSVolumeSource)
 
-  NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+  NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://plaidcloud.com/docs/concepts/storage/volumes#nfs
 
   <a name="NFSVolumeSource"></a>
   *Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.*
 
   - **nfs.path** (string), required
 
-    Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    Path that is exported by the NFS server. More info: https://plaidcloud.com/docs/concepts/storage/volumes#nfs
 
   - **nfs.server** (string), required
 
-    Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    Server is the hostname or IP address of the NFS server. More info: https://plaidcloud.com/docs/concepts/storage/volumes#nfs
 
   - **nfs.readOnly** (boolean)
 
-    ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://plaidcloud.com/docs/concepts/storage/volumes#nfs
 
 - **photonPersistentDisk** (PhotonPersistentDiskVolumeSource)
 
@@ -671,7 +671,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **rbd.fsType** (string)
 
-    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+    Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://plaidcloud.com/docs/concepts/storage/volumes#rbd
 
   - **rbd.keyring** (string)
 
@@ -695,7 +695,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **scaleIO** (ScaleIOVolumeSource)
 
-  ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+  ScaleIO represents a ScaleIO persistent volume attached and mounted on PlaidCloud nodes.
 
   <a name="ScaleIOVolumeSource"></a>
   *ScaleIOVolumeSource represents a persistent ScaleIO volume*
@@ -742,7 +742,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
 - **storageos** (StorageOSVolumeSource)
 
-  StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+  StorageOS represents a StorageOS volume attached and mounted on PlaidCloud nodes.
 
   <a name="StorageOSVolumeSource"></a>
   *Represents a StorageOS persistent volume resource.*
@@ -765,7 +765,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
 
   - **storageos.volumeNamespace** (string)
 
-    VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.
+    VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the PlaidCloud name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.
 
 - **vsphereVolume** (VsphereVirtualDiskVolumeSource)
 
@@ -819,7 +819,7 @@ Volume represents a named volume in a pod that may be accessed by any container 
     
     An existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be useful when manually reconstructing a broken cluster.
     
-    This field is read-only and no changes will be made by Kubernetes to the PVC after it has been created.
+    This field is read-only and no changes will be made by PlaidCloud to the PVC after it has been created.
     
     Required, must not be nil.
 

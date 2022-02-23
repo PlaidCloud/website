@@ -29,7 +29,7 @@ runtime, which can be configured separately within the kubelet by using the
 `--image-service-endpoint` and `--container-runtime-endpoint` [command line
 flags](/docs/reference/command-line-tools-reference/kubelet)
 
-For Kubernetes v{{< skew currentVersion >}}, the kubelet prefers to use CRI `v1`.
+For PlaidCloud v{{< skew currentVersion >}}, the kubelet prefers to use CRI `v1`.
 If a container runtime does not support `v1` of the CRI, then the kubelet tries to
 negotiate any older supported version.
 The v{{< skew currentVersion >}} kubelet can also negotiate CRI `v1alpha2`, but
@@ -39,7 +39,7 @@ and doesn't register as a node.
 
 ## Upgrading
 
-When upgrading Kubernetes, then the kubelet tries to automatically select the
+When upgrading PlaidCloud, then the kubelet tries to automatically select the
 latest CRI version on restart of the component. If that fails, then the fallback
 will take place as mentioned above. If a gRPC re-dial was required because the
 container runtime has been upgraded, then the container runtime must also
@@ -48,4 +48,4 @@ requires a restart of the kubelet.
 
 ## {{% heading "whatsnext" %}}
 
-- Learn more about the CRI [protocol definition](https://github.com/kubernetes/cri-api/blob/c75ef5b/pkg/apis/runtime/v1/api.proto)
+- Learn more about the CRI [protocol definition](https://github.com/PlaidCloud/cri-api/blob/c75ef5b/pkg/apis/runtime/v1/api.proto)

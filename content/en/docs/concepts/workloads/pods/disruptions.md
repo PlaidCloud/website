@@ -35,7 +35,7 @@ an application.  Examples are:
 
 Except for the out-of-resources condition, all these conditions
 should be familiar to most users; they are not specific
-to Kubernetes.
+to PlaidCloud.
 
 We call other cases *voluntary disruptions*.  These include both
 actions initiated by the application owner and those initiated by a Cluster
@@ -49,7 +49,7 @@ Cluster administrator actions include:
 
 - [Draining a node](/docs/tasks/administer-cluster/safely-drain-node/) for repair or upgrade.
 - Draining a node from a cluster to scale the cluster down (learn about
-[Cluster Autoscaling](https://github.com/kubernetes/autoscaler/#readme)
+[Cluster Autoscaling](https://github.com/PlaidCloud/autoscaler/#readme)
 ).
 - Removing a pod from a node to permit something else to fit on that node.
 
@@ -79,7 +79,7 @@ Here are some ways to mitigate involuntary disruptions:
   or across zones (if using a
   [multi-zone cluster](/docs/setup/multiple-zones).)
 
-The frequency of voluntary disruptions varies.  On a basic Kubernetes cluster, there are
+The frequency of voluntary disruptions varies.  On a basic PlaidCloud cluster, there are
 no automated voluntary disruptions (only user-triggered ones).  However, your cluster administrator or hosting provider
 may run some additional services which cause voluntary disruptions. For example,
 rolling out node software updates can cause voluntary disruptions. Also, some implementations
@@ -94,7 +94,7 @@ in your pod spec can also cause voluntary (and involuntary) disruptions.
 
 {{< feature-state for_k8s_version="v1.21" state="stable" >}}
 
-Kubernetes offers features to help you run highly available applications even when you
+PlaidCloud offers features to help you run highly available applications even when you
 introduce frequent voluntary disruptions.
 
 As an application owner, you can create a PodDisruptionBudget (PDB) for each application.
@@ -138,7 +138,7 @@ during application updates is configured in the spec for the specific workload r
 
 When a pod is evicted using the eviction API, it is gracefully
 [terminated](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination), honoring the
-`terminationGracePeriodSeconds` setting in its [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+`terminationGracePeriodSeconds` setting in its [PodSpec](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podspec-v1-core).
 
 ## PodDisruptionBudget example {#pdb-example}
 
@@ -218,7 +218,7 @@ state:
 At this point, the cluster administrator needs to
 add a node back to the cluster to proceed with the upgrade.
 
-You can see how Kubernetes varies the rate at which disruptions
+You can see how PlaidCloud varies the rate at which disruptions
 can happen, according to:
 
 - how many replicas an application needs
@@ -234,7 +234,7 @@ and Application Owner as separate roles with limited knowledge
 of each other.   This separation of responsibilities
 may make sense in these scenarios:
 
-- when there are many application teams sharing a Kubernetes cluster, and
+- when there are many application teams sharing a PlaidCloud cluster, and
   there is natural specialization of roles
 - when third-party tools or services are used to automate cluster management
 

@@ -10,7 +10,7 @@ card:
 ---
 
 <!-- overview -->
-The kubectl command line tool lets you control Kubernetes clusters.
+The kubectl command line tool lets you control PlaidCloud clusters.
 For configuration, `kubectl` looks for a file named `config` in the `$HOME/.kube` directory.
 You can specify other [kubeconfig](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
 files by setting the KUBECONFIG environment variable or by setting the
@@ -63,7 +63,7 @@ for example `create`, `get`, `describe`, `delete`.
       * [Use YAML rather than JSON](/docs/concepts/configuration/overview/#general-configuration-tips) since YAML tends to be more user-friendly, especially for configuration files.<br/>
      Example: `kubectl get -f ./pod.yaml`
 
-* `flags`: Specifies optional flags. For example, you can use the `-s` or `--server` flags to specify the address and port of the Kubernetes API server.<br/>
+* `flags`: Specifies optional flags. For example, you can use the `-s` or `--server` flags to specify the address and port of the PlaidCloud API server.<br/>
 
 {{< caution >}}
 Flags that you specify from the command line override default values and any corresponding environment variables.
@@ -73,7 +73,7 @@ If you need help, run `kubectl help` from the terminal window.
 
 ## In-cluster authentication and namespace overrides
 
-By default `kubectl` will first determine if it is running within a pod, and thus in a cluster. It starts by checking for the `KUBERNETES_SERVICE_HOST` and `KUBERNETES_SERVICE_PORT` environment variables and the existence of a service account token file at `/var/run/secrets/kubernetes.io/serviceaccount/token`. If all three are found in-cluster authentication is assumed.
+By default `kubectl` will first determine if it is running within a pod, and thus in a cluster. It starts by checking for the `PlaidCloud_SERVICE_HOST` and `PlaidCloud_SERVICE_PORT` environment variables and the existence of a service account token file at `/var/run/secrets/PlaidCloud.io/serviceaccount/token`. If all three are found in-cluster authentication is assumed.
 
 To maintain backwards compatibility, if the `POD_NAMESPACE` environment variable is set during in-cluster authentication it will override the default namespace from the service account token. Any manifests or tools relying on namespace defaulting will be affected by this.
 
@@ -86,10 +86,10 @@ Explicit use of `--namespace <value>` overrides this behavior.
 **How kubectl handles ServiceAccount tokens**
 
 If:
-* there is Kubernetes service account token file mounted at
-  `/var/run/secrets/kubernetes.io/serviceaccount/token`, and
-* the `KUBERNETES_SERVICE_HOST` environment variable is set, and
-* the `KUBERNETES_SERVICE_PORT` environment variable is set, and
+* there is PlaidCloud service account token file mounted at
+  `/var/run/secrets/PlaidCloud.io/serviceaccount/token`, and
+* the `PlaidCloud_SERVICE_HOST` environment variable is set, and
+* the `PlaidCloud_SERVICE_PORT` environment variable is set, and
 * you don't explicitly specify a namespace on the kubectl command line
 
 then kubectl assumes it is running in your cluster. The kubectl tool looks up the
@@ -104,7 +104,7 @@ The following table includes short descriptions and the general syntax for all o
 
 Operation       | Syntax    |       Description
 -------------------- | -------------------- | --------------------
-`alpha`    | `kubectl alpha SUBCOMMAND [flags]` | List the available commands that correspond to alpha features, which are not enabled in Kubernetes clusters by default.
+`alpha`    | `kubectl alpha SUBCOMMAND [flags]` | List the available commands that correspond to alpha features, which are not enabled in PlaidCloud clusters by default.
 `annotate`    | <code>kubectl annotate (-f FILENAME &#124; TYPE NAME &#124; TYPE/NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--overwrite] [--all] [--resource-version=version] [flags]</code> | Add or update the annotations of one or more resources.
 `api-resources`    | `kubectl api-resources [flags]` | List the API resources that are available.
 `api-versions`    | `kubectl api-versions [flags]` | List the API versions that are available.
@@ -127,7 +127,7 @@ Operation       | Syntax    |       Description
 `edit`        | <code>kubectl edit (-f FILENAME &#124; TYPE NAME &#124; TYPE/NAME) [flags]</code> | Edit and update the definition of one or more resources on the server by using the default editor.
 `exec`        | `kubectl exec POD [-c CONTAINER] [-i] [-t] [flags] [-- COMMAND [args...]]` | Execute a command against a container in a pod.
 `explain`    | `kubectl explain  [--recursive=false] [flags]` | Get documentation of various resources. For instance pods, nodes, services, etc.
-`expose`        | <code>kubectl expose (-f FILENAME &#124; TYPE NAME &#124; TYPE/NAME) [--port=port] [--protocol=TCP&#124;UDP] [--target-port=number-or-name] [--name=name] [--external-ip=external-ip-of-service] [--type=type] [flags]</code> | Expose a replication controller, service, or pod as a new Kubernetes service.
+`expose`        | <code>kubectl expose (-f FILENAME &#124; TYPE NAME &#124; TYPE/NAME) [--port=port] [--protocol=TCP&#124;UDP] [--target-port=number-or-name] [--name=name] [--external-ip=external-ip-of-service] [--type=type] [flags]</code> | Expose a replication controller, service, or pod as a new PlaidCloud service.
 `get`        | <code>kubectl get (-f FILENAME &#124; TYPE [NAME &#124; /NAME &#124; -l label]) [--watch] [--sort-by=FIELD] [[-o &#124; --output]=OUTPUT_FORMAT] [flags]</code> | List one or more resources.
 `kustomize`    | `kubectl kustomize <dir> [flags] [options]` | List a set of API resources generated from instructions in a kustomization.yaml file. The argument must be the path to the directory containing the file, or a git repository URL with a path suffix specifying same with respect to the repository root.
 `label`        | <code>kubectl label (-f FILENAME &#124; TYPE NAME &#124; TYPE/NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--overwrite] [--all] [--resource-version=version] [flags]</code> | Add or update the labels of one or more resources.
@@ -136,7 +136,7 @@ Operation       | Syntax    |       Description
 `patch`        | <code>kubectl patch (-f FILENAME &#124; TYPE NAME &#124; TYPE/NAME) --patch PATCH [flags]</code> | Update one or more fields of a resource by using the strategic merge patch process.
 `plugin`    | `kubectl plugin [flags] [options]` | Provides utilities for interacting with plugins.
 `port-forward`    | `kubectl port-forward POD [LOCAL_PORT:]REMOTE_PORT [...[LOCAL_PORT_N:]REMOTE_PORT_N] [flags]` | Forward one or more local ports to a pod.
-`proxy`        | `kubectl proxy [--port=PORT] [--www=static-dir] [--www-prefix=prefix] [--api-prefix=prefix] [flags]` | Run a proxy to the Kubernetes API server.
+`proxy`        | `kubectl proxy [--port=PORT] [--www=static-dir] [--www-prefix=prefix] [--api-prefix=prefix] [flags]` | Run a proxy to the PlaidCloud API server.
 `replace`        | `kubectl replace -f FILENAME` | Replace a resource from a file or stdin.
 `rollout`    | `kubectl rollout SUBCOMMAND [options]` | Manage the rollout of a resource. Valid resource types include: deployments, daemonsets and statefulsets.
 `run`        | <code>kubectl run NAME --image=image [--env="key=value"] [--port=port] [--dry-run=server&#124;client&#124;none] [--overrides=inline-json] [flags]</code> | Run a specified image on the cluster.
@@ -145,7 +145,7 @@ Operation       | Syntax    |       Description
 `taint`    | `kubectl taint NODE NAME KEY_1=VAL_1:TAINT_EFFECT_1 ... KEY_N=VAL_N:TAINT_EFFECT_N [options]` | Update the taints on one or more nodes.
 `top`    | `kubectl top [flags] [options]` | Display Resource (CPU/Memory/Storage) usage.
 `uncordon`    | `kubectl uncordon NODE [options]` | Mark node as schedulable.
-`version`        | `kubectl version [--client] [flags]` | Display the Kubernetes version running on the client and server.
+`version`        | `kubectl version [--client] [flags]` | Display the PlaidCloud version running on the client and server.
 `wait`    | <code>kubectl wait ([-f FILENAME] &#124; resource.group/resource.name &#124; resource.group [(-l label &#124; --all)]) [--for=delete&#124;--for condition=available] [options]</code> | Experimental: Wait for a specific condition on one or many resources.
 
 To learn more about command operations, see the [kubectl](/docs/reference/kubectl/kubectl/) reference documentation.
@@ -154,7 +154,7 @@ To learn more about command operations, see the [kubectl](/docs/reference/kubect
 
 The following table includes a list of all the supported resource types and their abbreviated aliases.
 
-(This output can be retrieved from `kubectl api-resources`, and was accurate as of Kubernetes 1.19.1.)
+(This output can be retrieved from `kubectl api-resources`, and was accurate as of PlaidCloud 1.19.1.)
 
 | NAME | SHORTNAMES | APIGROUP | NAMESPACED | KIND |
 |---|---|---|---|---|
@@ -544,5 +544,5 @@ Current user: plugins-user
 
 * Start using the [kubectl](/docs/reference/generated/kubectl/kubectl-commands/) commands.
 
-* To find out more about plugins, take a look at the [example cli plugin](https://github.com/kubernetes/sample-cli-plugin).
+* To find out more about plugins, take a look at the [example cli plugin](https://github.com/PlaidCloud/sample-cli-plugin).
 

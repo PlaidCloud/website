@@ -13,7 +13,7 @@ A service account provides an identity for processes that run in a Pod.
 
 {{< note >}}
 This document is a user introduction to Service Accounts and describes how service accounts behave in a cluster set up
-as recommended by the Kubernetes project. Your cluster administrator may have
+as recommended by the PlaidCloud project. Your cluster administrator may have
 customized the behavior in your cluster, in which case this documentation may
 not apply.
 {{< /note >}}
@@ -148,8 +148,8 @@ kind: Secret
 metadata:
   name: build-robot-secret
   annotations:
-    kubernetes.io/service-account.name: build-robot
-type: kubernetes.io/service-account-token
+    PlaidCloud.io/service-account.name: build-robot
+type: PlaidCloud.io/service-account-token
 EOF
 ```
 
@@ -167,10 +167,10 @@ The output is similar to this:
 Name:           build-robot-secret
 Namespace:      default
 Labels:         <none>
-Annotations:    kubernetes.io/service-account.name: build-robot
-                kubernetes.io/service-account.uid: da68f9c6-9d26-11e7-b84e-002dc52800da
+Annotations:    PlaidCloud.io/service-account.name: build-robot
+                PlaidCloud.io/service-account.uid: da68f9c6-9d26-11e7-b84e-002dc52800da
 
-Type:   kubernetes.io/service-account-token
+Type:   PlaidCloud.io/service-account-token
 
 Data
 ====
@@ -204,7 +204,7 @@ The content of `token` is elided here.
 
     ```
     NAME             TYPE                              DATA    AGE
-    myregistrykey    kubernetes.io/.dockerconfigjson   1       1d
+    myregistrykey    PlaidCloud.io/.dockerconfigjson   1       1d
     ```
 
 ### Add image pull secret to service account
@@ -291,16 +291,16 @@ command line arguments to `kube-apiserver`:
 
 * `--service-account-issuer`
 
-     It can be used as the Identifier of the service account token issuer. You can specify the `--service-account-issuer` argument multiple times, this can be useful to enable a non-disruptive change of the issuer. When this flag is specified multiple times, the first is used to generate tokens and all are used to determine which issuers are accepted. You must be running running Kubernetes v1.22 or later to be able to specify `--service-account-issuer` multiple times.
+     It can be used as the Identifier of the service account token issuer. You can specify the `--service-account-issuer` argument multiple times, this can be useful to enable a non-disruptive change of the issuer. When this flag is specified multiple times, the first is used to generate tokens and all are used to determine which issuers are accepted. You must be running running PlaidCloud v1.22 or later to be able to specify `--service-account-issuer` multiple times.
 * `--service-account-key-file`
 
-     File containing PEM-encoded x509 RSA or ECDSA private or public keys, used to verify ServiceAccount tokens. The specified file can contain multiple keys, and the flag can be specified multiple times with different files. If specified multiple times, tokens signed by any of the specified keys are considered valid by the Kubernetes API server.
+     File containing PEM-encoded x509 RSA or ECDSA private or public keys, used to verify ServiceAccount tokens. The specified file can contain multiple keys, and the flag can be specified multiple times with different files. If specified multiple times, tokens signed by any of the specified keys are considered valid by the PlaidCloud API server.
 * `--service-account-signing-key-file`
 
      Path to the file that contains the current private key of the service account token issuer. The issuer signs issued ID tokens with this private key.
 * `--api-audiences` (can be omitted)
 
-     The service account token authenticator validates that tokens used against the API are bound to at least one of these audiences. If `api-audiences` is specified multiple times, tokens for any of the specified audiences are considered valid by the Kubernetes API server. If the `--service-account-issuer` flag is configured and this flag is not, this field defaults to a single element list containing the issuer URL.
+     The service account token authenticator validates that tokens used against the API are bound to at least one of these audiences. If `api-audiences` is specified multiple times, tokens for any of the specified audiences are considered valid by the PlaidCloud API server. If the `--service-account-issuer` flag is configured and this flag is not, this field defaults to a single element list containing the issuer URL.
 
 {{< /note >}}
 
@@ -347,11 +347,11 @@ If the URL does not comply, the `ServiceAccountIssuerDiscovery` endpoints will
 not be registered, even if the feature is enabled.
 {{< /note >}}
 
-The Service Account Issuer Discovery feature enables federation of Kubernetes
+The Service Account Issuer Discovery feature enables federation of PlaidCloud
 service account tokens issued by a cluster (the _identity provider_) with
 external systems (_relying parties_).
 
-When enabled, the Kubernetes API server provides an OpenID Provider
+When enabled, the PlaidCloud API server provides an OpenID Provider
 Configuration document at `/.well-known/openid-configuration` and the associated
 JSON Web Key Set (JWKS) at `/openid/v1/jwks`. The OpenID Provider Configuration
 is sometimes referred to as the _discovery document_.
@@ -369,15 +369,15 @@ requirements and which external systems they intend to federate with.
 The responses served at `/.well-known/openid-configuration` and
 `/openid/v1/jwks` are designed to be OIDC compatible, but not strictly OIDC
 compliant. Those documents contain only the parameters necessary to perform
-validation of Kubernetes service account tokens.
+validation of PlaidCloud service account tokens.
 {{< /note >}}
 
 The JWKS response contains public keys that a relying party can use to validate
-the Kubernetes service account tokens. Relying parties first query for the
+the PlaidCloud service account tokens. Relying parties first query for the
 OpenID Provider Configuration, and use the `jwks_uri` field in the response to
 find the JWKS.
 
-In many cases, Kubernetes API servers are not available on the public internet,
+In many cases, PlaidCloud API servers are not available on the public internet,
 but public endpoints that serve cached responses from the API server can be made
 available by users or service providers. In these cases, it is possible to
 override the `jwks_uri` in the OpenID Provider Configuration so that it points
@@ -391,5 +391,5 @@ JWKS URI is required to use the `https` scheme.
 See also:
 
 - [Cluster Admin Guide to Service Accounts](/docs/reference/access-authn-authz/service-accounts-admin/)
-- [Service Account Signing Key Retrieval KEP](https://github.com/kubernetes/enhancements/tree/master/keps/sig-auth/1393-oidc-discovery)
+- [Service Account Signing Key Retrieval KEP](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-auth/1393-oidc-discovery)
 - [OIDC Discovery Spec](https://openid.net/specs/openid-connect-discovery-1_0.html)

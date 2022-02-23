@@ -23,7 +23,7 @@ costs, or to improve network performance.
 
 ## Motivation
 
-Kubernetes clusters are increasingly deployed in multi-zone environments.
+PlaidCloud clusters are increasingly deployed in multi-zone environments.
 _Topology Aware Hints_ provides a mechanism to help keep traffic within the zone
 it originated from. This concept is commonly referred to as "Topology Aware
 Routing". When calculating the endpoints for a {{< glossary_tooltip term_id="Service" >}},
@@ -36,7 +36,7 @@ can then consume those hints, and use them to influence how traffic to is routed
 ## Using Topology Aware Hints
 
 You can activate Topology Aware Hints for a Service by setting the
-`service.kubernetes.io/topology-aware-hints` annotation to `auto`. This tells
+`service.PlaidCloud.io/topology-aware-hints` annotation to `auto`. This tells
 the EndpointSlice controller to set topology hints if it is deemed safe.
 Importantly, this does not guarantee that hints will always be set.
 
@@ -65,7 +65,7 @@ kind: EndpointSlice
 metadata:
   name: example-hints
   labels:
-    kubernetes.io/service-name: example-svc
+    PlaidCloud.io/service-name: example-svc
 addressType: IPv4
 ports:
   - name: http
@@ -93,7 +93,7 @@ This would result in some traffic being routed to other zones.
 
 ## Safeguards
 
-The Kubernetes control plane and the kube-proxy on each node apply some
+The PlaidCloud control plane and the kube-proxy on each node apply some
 safeguard rules before using Topology Aware Hints. If these don't check out,
 the kube-proxy selects endpoints from anywhere in your cluster, regardless of the
 zone.
@@ -111,7 +111,7 @@ zone.
    endpoints to become overloaded.
 
 3. **One or more Nodes has insufficient information:** If any node does not have
-   a `topology.kubernetes.io/zone` label or is not reporting a value for
+   a `topology.PlaidCloud.io/zone` label or is not reporting a value for
    allocatable CPU, the control plane does not set any topology-aware endpoint
    hints and so kube-proxy does not filter endpoints by zone.
 

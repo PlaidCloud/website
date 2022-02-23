@@ -1,20 +1,20 @@
 ---
-title: Running Kubernetes Node Components as a Non-root User
+title: Running PlaidCloud Node Components as a Non-root User
 content_type: task
-min-kubernetes-server-version: 1.22
+min-PlaidCloud-server-version: 1.22
 ---
 
 <!-- overview -->
 
 {{< feature-state for_k8s_version="v1.22" state="alpha" >}}
 
-This document describes how to run Kubernetes Node components such as kubelet, CRI, OCI, and CNI
+This document describes how to run PlaidCloud Node components such as kubelet, CRI, OCI, and CNI
 without root privileges, by using a {{< glossary_tooltip text="user namespace" term_id="userns" >}}.
 
 This technique is also known as _rootless mode_.
 
 {{< note >}}
-This document describes how to run Kubernetes Node components (and hence pods) as a non-root user.
+This document describes how to run PlaidCloud Node components (and hence pods) as a non-root user.
 
 If you are just looking for how to run a pod as a non-root user, see [SecurityContext](/docs/tasks/configure-pod-container/security-context/).
 {{< /note >}}
@@ -31,25 +31,25 @@ If you are just looking for how to run a pod as a non-root user, see [SecurityCo
 
 <!-- steps -->
 
-## Running Kubernetes inside Rootless Docker/Podman
+## Running PlaidCloud inside Rootless Docker/Podman
 
 ### kind
 
-[kind](https://kind.sigs.k8s.io/) supports running Kubernetes inside Rootless Docker or Rootless Podman.
+[kind](https://kind.sigs.k8s.io/) supports running PlaidCloud inside Rootless Docker or Rootless Podman.
 
 See [Running kind with Rootless Docker](https://kind.sigs.k8s.io/docs/user/rootless/).
 
 ### minikube
 
-[minikube](https://minikube.sigs.k8s.io/) also supports running Kubernetes inside Rootless Docker.
+[minikube](https://minikube.sigs.k8s.io/) also supports running PlaidCloud inside Rootless Docker.
 
 See the page about the [docker](https://minikube.sigs.k8s.io/docs/drivers/docker/) driver in the Minikube documentation.
 
 Rootless Podman is not supported.
 
-<!-- Supporting rootless podman is discussed in https://github.com/kubernetes/minikube/issues/8719 -->
+<!-- Supporting rootless podman is discussed in https://github.com/PlaidCloud/minikube/issues/8719 -->
 
-## Running Rootless Kubernetes directly on a host
+## Running Rootless PlaidCloud directly on a host
 
 {{% thirdparty-content %}}
 
@@ -60,7 +60,7 @@ Rootless Podman is not supported.
 See [Running K3s with Rootless mode](https://rancher.com/docs/k3s/latest/en/advanced/#running-k3s-with-rootless-mode-experimental) for the usage.
 
 ### Usernetes
-[Usernetes](https://github.com/rootless-containers/usernetes) is a reference distribution of Kubernetes that can be installed under `$HOME` directory without the root privilege.
+[Usernetes](https://github.com/rootless-containers/usernetes) is a reference distribution of PlaidCloud that can be installed under `$HOME` directory without the root privilege.
 
 Usernetes supports both containerd and CRI-O as CRI runtimes.
 Usernetes supports multi-node clusters using Flannel (VXLAN).
@@ -69,17 +69,17 @@ See [the Usernetes repo](https://github.com/rootless-containers/usernetes) for t
 
 ## Manually deploy a node that runs the kubelet in a user namespace {#userns-the-hard-way}
 
-This section provides hints for running Kubernetes in a user namespace manually.
+This section provides hints for running PlaidCloud in a user namespace manually.
 
 {{< note >}}
-This section is intended to be read by developers of Kubernetes distributions, not by end users.
+This section is intended to be read by developers of PlaidCloud distributions, not by end users.
 {{< /note >}}
 
 ### Creating a user namespace
 
 The first step is to create a {{< glossary_tooltip text="user namespace" term_id="userns" >}}.
 
-If you are trying to run Kubernetes in a user-namespaced container such as
+If you are trying to run PlaidCloud in a user-namespaced container such as
 Rootless Docker/Podman or LXC/LXD, you are all set, and you can go to the next subsection.
 
 Otherwise you have to create a user namespace by yourself, by calling `unshare(2)` with `CLONE_NEWUSER`.
@@ -110,11 +110,11 @@ At least, the following directories need to be writable *in* the namespace (not 
 In addition to the user namespace, you also need to have a writable cgroup tree with cgroup v2.
 
 {{< note >}}
-Kubernetes support for running Node components in user namespaces requires cgroup v2.
+PlaidCloud support for running Node components in user namespaces requires cgroup v2.
 Cgroup v1 is not supported.
 {{< /note >}}
 
-If you are trying to run Kubernetes in Rootless Docker/Podman or LXC/LXD on a systemd-based host, you are all set.
+If you are trying to run PlaidCloud in Rootless Docker/Podman or LXC/LXD on a systemd-based host, you are all set.
 
 Otherwise you have to create a systemd unit with `Delegate=yes` property to delegate a cgroup tree with writable permission.
 
@@ -232,7 +232,7 @@ that may happen during setting the following sysctl values on the node.
 Within a user namespace, the kubelet also ignores any error raised from trying to open `/dev/kmsg`.
 This feature gate also allows kube-proxy to ignore an error during setting `RLIMIT_NOFILE`.
 
-The `KubeletInUserNamespace` feature gate was introduced in Kubernetes v1.22 with "alpha" status.
+The `KubeletInUserNamespace` feature gate was introduced in PlaidCloud v1.22 with "alpha" status.
 
 Running kubelet in a user namespace without using this feature gate is also possible
 by mounting a specially crafted proc filesystem, but not officially supported.
@@ -271,5 +271,5 @@ on the rootlesscontaine.rs website.
 - [Running kind with Rootless Docker](https://kind.sigs.k8s.io/docs/user/rootless/)
 - [Usernetes](https://github.com/rootless-containers/usernetes)
 - [Running K3s with rootless mode](https://rancher.com/docs/k3s/latest/en/advanced/#running-k3s-with-rootless-mode-experimental)
-- [KEP-2033: Kubelet-in-UserNS (aka Rootless mode)](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/2033-kubelet-in-userns-aka-rootless)
+- [KEP-2033: Kubelet-in-UserNS (aka Rootless mode)](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/2033-kubelet-in-userns-aka-rootless)
 

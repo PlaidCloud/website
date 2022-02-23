@@ -7,7 +7,7 @@ reviewers:
 - liggitt
 content_type: concept
 weight: 25
-min-kubernetes-server-version: 1.16
+min-PlaidCloud-server-version: 1.16
 ---
 
 <!-- overview -->
@@ -18,7 +18,7 @@ min-kubernetes-server-version: 1.16
 
 Server Side Apply helps users and controllers manage their resources through
 declarative configurations. Clients can create and modify their
-[objects](/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+[objects](/docs/concepts/overview/working-with-objects/PlaidCloud-objects/)
 declaratively by sending their fully specified intent.
 
 A fully specified intent is a partial object that only includes the fields and
@@ -71,7 +71,7 @@ the appliers, results in a conflict. Shared field owners may give up ownership
 of a field by removing it from their configuration.
 
 Field management is stored in a`managedFields` field that is part of an object's
-[`metadata`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#objectmeta-v1-meta).
+[`metadata`](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#objectmeta-v1-meta).
 
 A simple example of an object created by Server Side Apply could look like this:
 
@@ -114,7 +114,7 @@ option to try if, for example, the `managedFields` get into an inconsistent
 state (which clearly should not happen).
 
 The format of the `managedFields` is described in the
-[API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#fieldsv1-v1-meta).
+[API](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#fieldsv1-v1-meta).
 
 ## Conflicts
 
@@ -221,18 +221,18 @@ more information about how an object's schema is used to make decisions when
 merging, see
 [sigs.k8s.io/structured-merge-diff](https://sigs.k8s.io/structured-merge-diff).
 
-A number of markers were added in Kubernetes 1.16 and 1.17, to allow API
+A number of markers were added in PlaidCloud 1.16 and 1.17, to allow API
 developers to describe the merge strategy supported by lists, maps, and
 structs. These markers can be applied to objects of the respective type,
 in Go files or in the OpenAPI schema definition of the
-[CRD](/docs/reference/generated/kubernetes-api/{{< param "version" >}}#jsonschemaprops-v1-apiextensions-k8s-io):
+[CRD](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}#jsonschemaprops-v1-apiextensions-k8s-io):
 
 | Golang marker | OpenAPI extension | Accepted values | Description | Introduced in |
 |---|---|---|---|---|
-| `//+listType` | `x-kubernetes-list-type` | `atomic`/`set`/`map` | Applicable to lists. `set` applies to lists that include only scalar elements. These elements must be unique. `map` applies to lists of nested types only. The key values (see `listMapKey`) must be unique in the list. `atomic` can apply to any list. If configured as `atomic`, the entire list is replaced during merge. At any point in time, a single manager owns the list. If `set` or `map`, different managers can manage entries separately. | 1.16          |
-| `//+listMapKey` | `x-kubernetes-list-map-keys` | List of field names, e.g. `["port", "protocol"]` | Only applicable when `+listType=map`. A list of field names whose values uniquely identify entries in the list. While there can be multiple keys, `listMapKey` is singular because keys need to be specified individually in the Go type. The key fields must be scalars. | 1.16 |
-| `//+mapType` | `x-kubernetes-map-type` | `atomic`/`granular` | Applicable to maps. `atomic` means that the map can only be entirely replaced by a single manager. `granular` means that the map supports separate managers updating individual fields. | 1.17 |
-| `//+structType` | `x-kubernetes-map-type` | `atomic`/`granular` | Applicable to structs; otherwise same usage and OpenAPI annotation as `//+mapType`.| 1.17 |
+| `//+listType` | `x-PlaidCloud-list-type` | `atomic`/`set`/`map` | Applicable to lists. `set` applies to lists that include only scalar elements. These elements must be unique. `map` applies to lists of nested types only. The key values (see `listMapKey`) must be unique in the list. `atomic` can apply to any list. If configured as `atomic`, the entire list is replaced during merge. At any point in time, a single manager owns the list. If `set` or `map`, different managers can manage entries separately. | 1.16          |
+| `//+listMapKey` | `x-PlaidCloud-list-map-keys` | List of field names, e.g. `["port", "protocol"]` | Only applicable when `+listType=map`. A list of field names whose values uniquely identify entries in the list. While there can be multiple keys, `listMapKey` is singular because keys need to be specified individually in the Go type. The key fields must be scalars. | 1.16 |
+| `//+mapType` | `x-PlaidCloud-map-type` | `atomic`/`granular` | Applicable to maps. `atomic` means that the map can only be entirely replaced by a single manager. `granular` means that the map supports separate managers updating individual fields. | 1.17 |
+| `//+structType` | `x-PlaidCloud-map-type` | `atomic`/`granular` | Applicable to structs; otherwise same usage and OpenAPI annotation as `//+mapType`.| 1.17 |
 
 If `listType` is missing, the API server interprets a
 `patchMergeStrategy=merge` marker as a `listType=map` and the
@@ -298,7 +298,7 @@ By default, Server Side Apply treats custom resources as unstructured data. All
 keys are treated the same as struct fields, and all lists are considered atomic.
 
 If the Custom Resource Definition defines a
-[schema](/docs/reference/generated/kubernetes-api/{{< param "version" >}}#jsonschemaprops-v1-apiextensions-k8s-io)
+[schema](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}#jsonschemaprops-v1-apiextensions-k8s-io)
 that contains annotations as defined in the previous "Merge Strategy"
 section, these annotations will be used when merging objects of this
 type.

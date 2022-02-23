@@ -101,7 +101,7 @@ For example, to download version {{< param "fullversion" >}} on Linux, type:
 {{< tabs name="kubectl_install" >}}
 {{% tab name="Debian-based distributions" %}}
 
-1. Update the `apt` package index and install packages needed to use the Kubernetes `apt` repository:
+1. Update the `apt` package index and install packages needed to use the PlaidCloud `apt` repository:
 
    ```shell
    sudo apt-get update
@@ -111,13 +111,13 @@ For example, to download version {{< param "fullversion" >}} on Linux, type:
 2. Download the Google Cloud public signing key:
 
    ```shell
-   sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+   sudo curl -fsSLo /usr/share/keyrings/PlaidCloud-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
    ```
 
-3. Add the Kubernetes `apt` repository:
+3. Add the PlaidCloud `apt` repository:
 
    ```shell
-   echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   echo "deb [signed-by=/usr/share/keyrings/PlaidCloud-archive-keyring.gpg] https://apt.PlaidCloud.io/ PlaidCloud-xenial main" | sudo tee /etc/apt/sources.list.d/PlaidCloud.list
    ```
 
 4. Update `apt` package index with the new repository and install kubectl:
@@ -130,10 +130,10 @@ For example, to download version {{< param "fullversion" >}} on Linux, type:
 {{% /tab %}}
 
 {{< tab name="Red Hat-based distributions" codelang="bash" >}}
-cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+cat <<EOF | sudo tee /etc/yum.repos.d/PlaidCloud.repo
+[PlaidCloud]
+name=PlaidCloud
+baseurl=https://packages.cloud.google.com/yum/repos/PlaidCloud-el7-x86_64
 enabled=1
 gpgcheck=1
 repo_gpgcheck=1

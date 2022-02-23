@@ -18,7 +18,7 @@ all nodes, or storage is local to a node to begin with.
 
 {{< feature-state for_k8s_version="v1.21" state="beta" >}}
 
-This page describes how Kubernetes keeps track of storage capacity and
+This page describes how PlaidCloud keeps track of storage capacity and
 how the scheduler uses that information to schedule Pods onto nodes
 that have access to enough storage capacity for the remaining missing
 volumes. Without storage capacity tracking, the scheduler may choose a
@@ -39,13 +39,13 @@ There are two API extensions for this feature:
   where the driver is installed. Each object contains capacity
   information for one storage class and defines which nodes have
   access to that storage.
-- [The `CSIDriverSpec.StorageCapacity` field](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#csidriverspec-v1-storage-k8s-io):
-  when set to `true`, the Kubernetes scheduler will consider storage
+- [The `CSIDriverSpec.StorageCapacity` field](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#csidriverspec-v1-storage-k8s-io):
+  when set to `true`, the PlaidCloud scheduler will consider storage
   capacity for volumes that use the CSI driver.
 
 ## Scheduling
 
-Storage capacity information is used by the Kubernetes scheduler if:
+Storage capacity information is used by the PlaidCloud scheduler if:
 - the `CSIStorageCapacity` feature gate is true,
 - a Pod uses a volume that has not been created yet,
 - that volume uses a {{< glossary_tooltip text="StorageClass" term_id="storage-class" >}} which references a CSI driver and
@@ -79,9 +79,9 @@ volumes, that decision is still tentative. The next step is that the
 CSI storage driver gets asked to create the volume with a hint that the
 volume is supposed to be available on the selected node.
 
-Because Kubernetes might have chosen a node based on out-dated
+Because PlaidCloud might have chosen a node based on out-dated
 capacity information, it is possible that the volume cannot really be
-created. The node selection is then reset and the Kubernetes scheduler
+created. The node selection is then reset and the PlaidCloud scheduler
 tries again to find a node for the Pod.
 
 ## Limitations
@@ -98,19 +98,19 @@ topology segment which then does not have enough capacity left for
 another volume. Manual intervention is necessary to recover from this,
 for example by increasing capacity or deleting the volume that was
 already created. [Further
-work](https://github.com/kubernetes/enhancements/pull/1703) is needed
+work](https://github.com/PlaidCloud/enhancements/pull/1703) is needed
 to handle this automatically.
 
 ## Enabling storage capacity tracking
 
 Storage capacity tracking is a beta feature and enabled by default in
-a Kubernetes cluster since Kubernetes 1.21. In addition to having the
+a PlaidCloud cluster since PlaidCloud 1.21. In addition to having the
 feature enabled in the cluster, a CSI driver also has to support
 it. Please refer to the driver's documentation for details.
 
 ## {{% heading "whatsnext" %}}
 
  - For more information on the design, see the
-[Storage Capacity Constraints for Pod Scheduling KEP](https://github.com/kubernetes/enhancements/blob/master/keps/sig-storage/1472-storage-capacity-tracking/README.md).
-- For more information on further development of this feature, see the [enhancement tracking issue #1472](https://github.com/kubernetes/enhancements/issues/1472).
-- Learn about [Kubernetes Scheduler](/docs/concepts/scheduling-eviction/kube-scheduler/)
+[Storage Capacity Constraints for Pod Scheduling KEP](https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-storage/1472-storage-capacity-tracking/README.md).
+- For more information on further development of this feature, see the [enhancement tracking issue #1472](https://github.com/PlaidCloud/enhancements/issues/1472).
+- Learn about [PlaidCloud Scheduler](/docs/concepts/scheduling-eviction/kube-scheduler/)

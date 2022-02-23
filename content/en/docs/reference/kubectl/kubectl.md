@@ -7,9 +7,9 @@ weight: 30
 ## {{% heading "synopsis" %}}
 
 
-kubectl controls the Kubernetes cluster manager.
+kubectl controls the PlaidCloud cluster manager.
 
- Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
+ Find more information at: https://plaidcloud.com/docs/reference/kubectl/overview/
 
 ```
 kubectl [flags]
@@ -245,7 +245,7 @@ kubectl [flags]
 <td colspan="2">-s, --server string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;">The address and port of the Kubernetes API server</td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;">The address and port of the PlaidCloud API server</td>
 </tr>
 
 <tr>
@@ -348,7 +348,7 @@ kubectl [flags]
 <td colspan="2">KUBECTL_COMMAND_HEADERS</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;">When set to false, turns off extra HTTP headers detailing invoked kubectl command (Kubernetes version v1.22 or later)</td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;">When set to false, turns off extra HTTP headers detailing invoked kubectl command (PlaidCloud version v1.22 or later)</td>
 </tr>
 
 </tbody>
@@ -378,7 +378,7 @@ kubectl [flags]
 * [kubectl edit](/docs/reference/generated/kubectl/kubectl-commands#edit)	 - Edit a resource on the server
 * [kubectl exec](/docs/reference/generated/kubectl/kubectl-commands#exec)	 - Execute a command in a container
 * [kubectl explain](/docs/reference/generated/kubectl/kubectl-commands#explain)	 - Documentation of resources
-* [kubectl expose](/docs/reference/generated/kubectl/kubectl-commands#expose)	 - Take a replication controller, service, deployment or pod and expose it as a new Kubernetes Service
+* [kubectl expose](/docs/reference/generated/kubectl/kubectl-commands#expose)	 - Take a replication controller, service, deployment or pod and expose it as a new PlaidCloud Service
 * [kubectl get](/docs/reference/generated/kubectl/kubectl-commands#get)	 - Display one or many resources
 * [kubectl kustomize](/docs/reference/generated/kubectl/kubectl-commands#kustomize)	 - Build a kustomization target from a directory or a remote url.
 * [kubectl label](/docs/reference/generated/kubectl/kubectl-commands#label)	 - Update the labels on a resource
@@ -387,7 +387,7 @@ kubectl [flags]
 * [kubectl patch](/docs/reference/generated/kubectl/kubectl-commands#patch)	 - Update field(s) of a resource
 * [kubectl plugin](/docs/reference/generated/kubectl/kubectl-commands#plugin)	 - Provides utilities for interacting with plugins.
 * [kubectl port-forward](/docs/reference/generated/kubectl/kubectl-commands#port-forward)	 - Forward one or more local ports to a pod
-* [kubectl proxy](/docs/reference/generated/kubectl/kubectl-commands#proxy)	 - Run a proxy to the Kubernetes API server
+* [kubectl proxy](/docs/reference/generated/kubectl/kubectl-commands#proxy)	 - Run a proxy to the PlaidCloud API server
 * [kubectl replace](/docs/reference/generated/kubectl/kubectl-commands#replace)	 - Replace a resource by filename or stdin
 * [kubectl rollout](/docs/reference/generated/kubectl/kubectl-commands#rollout)	 - Manage the rollout of a resource
 * [kubectl run](/docs/reference/generated/kubectl/kubectl-commands#run)	 - Run a particular image on the cluster

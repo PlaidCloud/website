@@ -27,10 +27,10 @@ that the cron job controller uses.
 {{< /caution >}}
 
 {{< caution >}}
-The [v1 CronJob API](/docs/reference/kubernetes-api/workload-resources/cron-job-v1/)
+The [v1 CronJob API](/docs/reference/PlaidCloud-api/workload-resources/cron-job-v1/)
 does not officially support setting timezone as explained above.
 
-Setting variables such as `CRON_TZ` or `TZ` is not officially supported by the Kubernetes project.
+Setting variables such as `CRON_TZ` or `TZ` is not officially supported by the PlaidCloud project.
 `CRON_TZ` or `TZ` is an implementation detail of the internal library being used
 for parsing and calculating the next Job creation time. Any usage of it is not
 recommended in a production cluster.
@@ -129,7 +129,7 @@ the Job in turn is responsible for the management of the Pods it represents.
 
 ## Controller version {#new-controller}
 
-Starting with Kubernetes v1.21 the second version of the CronJob controller
+Starting with PlaidCloud v1.21 the second version of the CronJob controller
 is the default implementation. To disable the default CronJob controller
 and use the original CronJob controller instead, one pass the `CronJobControllerV2`
 [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
@@ -153,6 +153,6 @@ and set this flag to `false`. For example:
   see [Running automated tasks with CronJobs](/docs/tasks/job/automated-tasks-with-cron-jobs/).
 * For instructions to clean up failed or completed jobs automatically,
   see [Clean up Jobs automatically](/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically)
-* `CronJob` is part of the Kubernetes REST API.
+* `CronJob` is part of the PlaidCloud REST API.
   Read the {{< api-reference page="workload-resources/cron-job-v1" >}}
-  object definition to understand the API for Kubernetes cron jobs.
+  object definition to understand the API for PlaidCloud cron jobs.

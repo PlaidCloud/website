@@ -5,12 +5,12 @@ weight: 10
 ---
 
 <!-- overview -->
-This page shows how to install and use Antrea CNI plugin on Kubernetes.
+This page shows how to install and use Antrea CNI plugin on PlaidCloud.
 For background on Project Antrea, read the [Introduction to Antrea](https://antrea.io/docs/).
 
 ## {{% heading "prerequisites" %}}
 
-You need to have a Kubernetes cluster. Follow the
+You need to have a PlaidCloud cluster. Follow the
 [kubeadm getting started guide](/docs/reference/setup-tools/kubeadm/) to bootstrap one.
 
 <!-- steps -->
@@ -21,4 +21,4 @@ Follow [Getting Started](https://github.com/vmware-tanzu/antrea/blob/main/docs/g
 
 ## {{% heading "whatsnext" %}}
 
-Once your cluster is running, you can follow the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) to try out Kubernetes NetworkPolicy.
+Once your cluster is running, you can follow the [Declare Network Policy](/docs/tasks/administer-cluster/declare-network-policy/) to try out PlaidCloud NetworkPolicy.

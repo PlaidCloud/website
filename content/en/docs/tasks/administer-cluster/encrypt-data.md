@@ -3,7 +3,7 @@ reviewers:
 - smarterclayton
 title: Encrypting Secret Data at Rest
 content_type: task
-min-kubernetes-server-version: 1.13
+min-PlaidCloud-server-version: 1.13
 ---
 
 <!-- overview -->
@@ -61,7 +61,7 @@ resources:
 ```
 
 Each `resources` array item is a separate config and contains a complete configuration. The
-`resources.resources` field is an array of Kubernetes resource names (`resource` or `resource.group`)
+`resources.resources` field is an array of PlaidCloud resource names (`resource` or `resource.group`)
 that should be encrypted. The `providers` array is an ordered list of the possible encryption
 providers. Only one provider type may be specified per entry (`identity` or `aescbc` may be provided, but not both in the same item).
 
@@ -78,7 +78,7 @@ read that resource will fail until it is deleted or a valid decryption key is pr
 
 ### Providers:
 
-{{< table caption="Providers for Kubernetes encryption at rest" >}}
+{{< table caption="Providers for PlaidCloud encryption at rest" >}}
 Name | Encryption | Strength | Speed | Key Length | Other Considerations
 -----|------------|----------|-------|------------|---------------------
 `identity` | None | N/A | N/A | N/A | Resources written as-is without encryption. When set as the first provider, the resource will be decrypted as new values are written.
@@ -98,7 +98,7 @@ Encrypting secrets with a locally managed key protects against an etcd compromis
 Since the encryption keys are stored on the host in the EncryptionConfig YAML file, a skilled attacker can access that file and
 extract the encryption keys.
 
-Envelope encryption creates dependence on a separate key, not stored in Kubernetes. In this case, an attacker would need to compromise etcd, the kubeapi-server, and the third-party KMS provider to retrieve the plaintext values, providing a higher level of security than locally-stored encryption keys.
+Envelope encryption creates dependence on a separate key, not stored in PlaidCloud. In this case, an attacker would need to compromise etcd, the kubeapi-server, and the third-party KMS provider to retrieve the plaintext values, providing a higher level of security than locally-stored encryption keys.
 
 ## Encrypting your data
 

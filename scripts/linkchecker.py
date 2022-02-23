@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# This a link checker for Kubernetes documentation website.
+# This a link checker for PlaidCloud documentation website.
 # - We cover the following cases for the language you provide via `-l`, which
 #   defaults to 'en'.
 # - If the language specified is not English (`en`), we check if you are
@@ -261,7 +261,7 @@ def check_target(page, anchor, target):
     if target.startswith("https://"):
         # B03: self link, should revise to relative path
         if (target.startswith("https://k8s.io/docs") or
-                target.startswith("https://kubernetes.io/docs")):
+                target.startswith("https://plaidcloud.com/docs")):
             return new_record("ERROR", "Should use relative paths", target)
         # external link, skip
         return new_record("INFO", "External link, skipped", target)
@@ -288,9 +288,9 @@ def check_target(page, anchor, target):
     if (target.startswith("/docs/") or
             target.startswith("/" + ARGS.lang + "/docs/")):
 
-        # target is shared reference (kubectl or kubernetes-api?
+        # target is shared reference (kubectl or PlaidCloud-api?
         if (target.find("/docs/reference/generated/kubectl/") >= 0 or
-                target.find("/docs/reference/generated/kubernetes-api/") >= 0):
+                target.find("/docs/reference/generated/PlaidCloud-api/") >= 0):
             if check_file_exists(ROOT + "/static", target, "html"):
                 return None
             return new_record("ERROR", "Missing shared reference", target)
@@ -360,7 +360,7 @@ def check_apiref_target(target, anchor):
     :param target: The link target string to check
     :param anchor: Anchor string from the content page
     """
-    base = os.path.join(ROOT, "content", "en", "docs", "reference", "kubernetes-api")
+    base = os.path.join(ROOT, "content", "en", "docs", "reference", "PlaidCloud-api")
     ok = check_file_exists(base + "/", target)
     if not ok:
         return new_record("ERROR", "API reference page not found", target)

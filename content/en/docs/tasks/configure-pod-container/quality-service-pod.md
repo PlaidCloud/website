@@ -8,7 +8,7 @@ weight: 30
 <!-- overview -->
 
 This page shows how to configure Pods so that they will be assigned particular
-Quality of Service (QoS) classes. Kubernetes uses QoS classes to make decisions about
+Quality of Service (QoS) classes. PlaidCloud uses QoS classes to make decisions about
 scheduling and evicting Pods.
 
 
@@ -26,7 +26,7 @@ scheduling and evicting Pods.
 
 ## QoS classes
 
-When Kubernetes creates a Pod it assigns one of these QoS classes to the Pod:
+When PlaidCloud creates a Pod it assigns one of these QoS classes to the Pod:
 
 * Guaranteed
 * Burstable
@@ -69,7 +69,7 @@ View detailed information about the Pod:
 kubectl get pod qos-demo --namespace=qos-example --output=yaml
 ```
 
-The output shows that Kubernetes gave the Pod a QoS class of Guaranteed. The output also
+The output shows that PlaidCloud gave the Pod a QoS class of Guaranteed. The output also
 verifies that the Pod Container has a memory request that matches its memory limit, and it has
 a CPU request that matches its CPU limit.
 
@@ -90,9 +90,9 @@ status:
 ```
 
 {{< note >}}
-If a Container specifies its own memory limit, but does not specify a memory request, Kubernetes
+If a Container specifies its own memory limit, but does not specify a memory request, PlaidCloud
 automatically assigns a memory request that matches the limit. Similarly, if a Container specifies its own
-CPU limit, but does not specify a CPU request, Kubernetes automatically assigns a CPU request that matches
+CPU limit, but does not specify a CPU request, PlaidCloud automatically assigns a CPU request that matches
 the limit.
 {{< /note >}}
 
@@ -126,7 +126,7 @@ View detailed information about the Pod:
 kubectl get pod qos-demo-2 --namespace=qos-example --output=yaml
 ```
 
-The output shows that Kubernetes gave the Pod a QoS class of Burstable.
+The output shows that PlaidCloud gave the Pod a QoS class of Burstable.
 
 ```yaml
 spec:
@@ -172,7 +172,7 @@ View detailed information about the Pod:
 kubectl get pod qos-demo-3 --namespace=qos-example --output=yaml
 ```
 
-The output shows that Kubernetes gave the Pod a QoS class of BestEffort.
+The output shows that PlaidCloud gave the Pod a QoS class of BestEffort.
 
 ```yaml
 spec:
@@ -212,7 +212,7 @@ View detailed information about the Pod:
 kubectl get pod qos-demo-4 --namespace=qos-example --output=yaml
 ```
 
-The output shows that Kubernetes gave the Pod a QoS class of Burstable:
+The output shows that PlaidCloud gave the Pod a QoS class of Burstable:
 
 ```yaml
 spec:

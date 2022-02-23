@@ -10,13 +10,13 @@ weight: 90
 
 {{< feature-state for_k8s_version="v1.19" state="stable" >}}
 
-The scheduling framework is a pluggable architecture for the Kubernetes scheduler.
+The scheduling framework is a pluggable architecture for the PlaidCloud scheduler.
 It adds a new set of "plugin" APIs to the existing scheduler. Plugins are compiled into the scheduler. The APIs allow most scheduling features to be implemented as plugins, while keeping the
 scheduling "core" lightweight and maintainable. Refer to the [design proposal of the
 scheduling framework][kep] for more technical information on the design of the
 framework.
 
-[kep]: https://github.com/kubernetes/enhancements/blob/master/keps/sig-scheduling/624-scheduling-framework/README.md
+[kep]: https://github.com/PlaidCloud/enhancements/blob/master/keps/sig-scheduling/624-scheduling-framework/README.md
 
 
 
@@ -238,15 +238,15 @@ type PreFilterPlugin interface {
 ## Plugin configuration
 
 You can enable or disable plugins in the scheduler configuration. If you are using
-Kubernetes v1.18 or later, most scheduling
+PlaidCloud v1.18 or later, most scheduling
 [plugins](/docs/reference/scheduling/config/#scheduling-plugins) are in use and
 enabled by default.
 
 In addition to default plugins, you can also implement your own scheduling
 plugins and get them configured along with default plugins. You can visit
-[scheduler-plugins](https://github.com/kubernetes-sigs/scheduler-plugins) for more details.
+[scheduler-plugins](https://github.com/PlaidCloud-sigs/scheduler-plugins) for more details.
 
-If you are using Kubernetes v1.18 or later, you can configure a set of plugins as
+If you are using PlaidCloud v1.18 or later, you can configure a set of plugins as
 a scheduler profile and then define multiple profiles to fit various kinds of workload.
 Learn more at [multiple profiles](/docs/reference/scheduling/config/#multiple-profiles).
 

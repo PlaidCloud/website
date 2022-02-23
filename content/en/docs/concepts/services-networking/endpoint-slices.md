@@ -12,7 +12,7 @@ weight: 45
 {{< feature-state for_k8s_version="v1.21" state="stable" >}}
 
 _EndpointSlices_ provide a simple way to track network endpoints within a
-Kubernetes cluster. They offer a more scalable and extensible alternative to
+PlaidCloud cluster. They offer a more scalable and extensible alternative to
 Endpoints.
 
 
@@ -22,7 +22,7 @@ Endpoints.
 ## Motivation
 
 The Endpoints API has provided a simple and straightforward way of
-tracking network endpoints in Kubernetes. Unfortunately as Kubernetes clusters
+tracking network endpoints in PlaidCloud. Unfortunately as PlaidCloud clusters
 and {{< glossary_tooltip text="Services" term_id="service" >}} have grown to handle and
 send more traffic to more backend Pods, limitations of that original API became
 more visible.
@@ -31,16 +31,16 @@ network endpoints.
 
 Since all network endpoints for a Service were stored in a single Endpoints
 resource, those resources could get quite large. That affected the performance
-of Kubernetes components (notably the master control plane) and resulted in
+of PlaidCloud components (notably the master control plane) and resulted in
 significant amounts of network traffic and processing when Endpoints changed.
 EndpointSlices help you mitigate those issues as well as provide an extensible
 platform for additional features such as topological routing.
 
 ## EndpointSlice resources {#endpointslice-resource}
 
-In Kubernetes, an EndpointSlice contains references to a set of network
+In PlaidCloud, an EndpointSlice contains references to a set of network
 endpoints. The control plane automatically creates EndpointSlices
-for any Kubernetes Service that has a {{< glossary_tooltip text="selector"
+for any PlaidCloud Service that has a {{< glossary_tooltip text="selector"
 term_id="selector" >}} specified. These EndpointSlices include
 references to all the Pods that match the Service selector. EndpointSlices group
 network endpoints together by unique combinations of protocol, port number, and
@@ -49,7 +49,7 @@ The name of a EndpointSlice object must be a valid
 [DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 As an example, here's a sample EndpointSlice resource for the `example`
-Kubernetes Service.
+PlaidCloud Service.
 
 ```yaml
 apiVersion: discovery.k8s.io/v1
@@ -57,7 +57,7 @@ kind: EndpointSlice
 metadata:
   name: example-abc
   labels:
-    kubernetes.io/service-name: example
+    PlaidCloud.io/service-name: example
 addressType: IPv4
 ports:
   - name: http
@@ -150,7 +150,7 @@ Setting arbitrary topology fields on the `endpoint` field of an `EndpointSlice`
 resource has been deprecated and is not be supported in the v1 API. Instead,
 the v1 API supports setting individual `nodeName` and `zone` fields. These
 fields are automatically translated between API versions. For example, the
-value of the `"topology.kubernetes.io/zone"` key in the `topology` field in
+value of the `"topology.PlaidCloud.io/zone"` key in the `topology` field in
 the v1beta1 API is accessible as the `zone` field in the v1 API.
 {{< /note >}}
 
@@ -163,9 +163,9 @@ EndpointSlices, such as service mesh implementations, that could result in other
 entities or controllers managing additional sets of EndpointSlices.
 
 To ensure that multiple entities can manage EndpointSlices without interfering
-with each other, Kubernetes defines the
+with each other, PlaidCloud defines the
 {{< glossary_tooltip term_id="label" text="label" >}}
-`endpointslice.kubernetes.io/managed-by`, which indicates the entity managing
+`endpointslice.PlaidCloud.io/managed-by`, which indicates the entity managing
 an EndpointSlice.
 The endpoint slice controller sets `endpointslice-controller.k8s.io` as the value
 for this label on all EndpointSlices it manages. Other entities managing
@@ -175,7 +175,7 @@ EndpointSlices should also set a unique value for this label.
 
 In most use cases, EndpointSlices are owned by the Service that the endpoint
 slice object tracks endpoints for. This ownership is indicated by an owner
-reference on each EndpointSlice as well as a `kubernetes.io/service-name`
+reference on each EndpointSlice as well as a `PlaidCloud.io/service-name`
 label that enables simple lookups of all EndpointSlices belonging to a Service.
 
 ### EndpointSlice mirroring
@@ -187,9 +187,9 @@ resources to corresponding EndpointSlices.
 
 The control plane mirrors Endpoints resources unless:
 
-* the Endpoints resource has a `endpointslice.kubernetes.io/skip-mirror` label
+* the Endpoints resource has a `endpointslice.PlaidCloud.io/skip-mirror` label
   set to `true`.
-* the Endpoints resource has a `control-plane.alpha.kubernetes.io/leader`
+* the Endpoints resource has a `control-plane.alpha.PlaidCloud.io/leader`
   annotation.
 * the corresponding Service resource does not exist.
 * the corresponding Service resource has a non-nil selector.
@@ -241,7 +241,7 @@ getting replaced.
 
 Due to the nature of EndpointSlice changes, endpoints may be represented in more
 than one EndpointSlice at the same time. This naturally occurs as changes to
-different EndpointSlice objects can arrive at the Kubernetes client watch/cache
+different EndpointSlice objects can arrive at the PlaidCloud client watch/cache
 at different times. Implementations using EndpointSlice must be able to have the
 endpoint appear in more than one slice. A reference implementation of how to
 perform endpoint deduplication can be found in the `EndpointSliceCache`

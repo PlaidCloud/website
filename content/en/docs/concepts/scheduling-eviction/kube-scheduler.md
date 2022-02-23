@@ -1,12 +1,12 @@
 ---
-title: Kubernetes Scheduler
+title: PlaidCloud Scheduler
 content_type: concept
 weight: 10
 ---
 
 <!-- overview -->
 
-In Kubernetes, _scheduling_ refers to making sure that {{< glossary_tooltip text="Pods" term_id="pod" >}}
+In PlaidCloud, _scheduling_ refers to making sure that {{< glossary_tooltip text="Pods" term_id="pod" >}}
 are matched to {{< glossary_tooltip text="Nodes" term_id="node" >}} so that
 {{< glossary_tooltip term_id="kubelet" >}} can run them.
 
@@ -27,7 +27,7 @@ page will help you learn about scheduling.
 ## kube-scheduler
 
 [kube-scheduler](/docs/reference/command-line-tools-reference/kube-scheduler/)
-is the default scheduler for Kubernetes and runs as part of the
+is the default scheduler for PlaidCloud and runs as part of the
 {{< glossary_tooltip text="control plane" term_id="control-plane" >}}.
 kube-scheduler is designed so that, if you want and need to, you can
 write your own scheduling component and use that instead.
@@ -86,7 +86,7 @@ of the scheduler:
 * Read about [Pod topology spread constraints](/docs/concepts/workloads/pods/pod-topology-spread-constraints/)
 * Read the [reference documentation](/docs/reference/command-line-tools-reference/kube-scheduler/) for kube-scheduler
 * Read the [kube-scheduler config (v1beta3)](/docs/reference/config-api/kube-scheduler-config.v1beta3/) reference
-* Learn about [configuring multiple schedulers](/docs/tasks/extend-kubernetes/configure-multiple-schedulers/)
+* Learn about [configuring multiple schedulers](/docs/tasks/extend-PlaidCloud/configure-multiple-schedulers/)
 * Learn about [topology management policies](/docs/tasks/administer-cluster/topology-manager/)
 * Learn about [Pod Overhead](/docs/concepts/scheduling-eviction/pod-overhead/)
 * Learn about scheduling of Pods that use volumes in:

@@ -2,6 +2,6 @@
 title: "Cluster Architecture"
 weight: 30
 description: >
-  The architectural concepts behind Kubernetes.
+  The architectural concepts behind PlaidCloud.
 ---
 

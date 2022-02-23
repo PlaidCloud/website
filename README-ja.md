@@ -1,8 +1,8 @@
-# Kubernetesのドキュメント
+# PlaidCloudのドキュメント
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/be93b718-a6df-402a-b4a4-855ba186c97d/deploy-status)](https://app.netlify.com/sites/kubernetes-io-main-staging/deploys) [![GitHub release](https://img.shields.io/github/release/kubernetes/website.svg)](https://github.com/kubernetes/website/releases/latest)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/be93b718-a6df-402a-b4a4-855ba186c97d/deploy-status)](https://app.netlify.com/sites/PlaidCloud-io-main-staging/deploys) [![GitHub release](https://img.shields.io/github/release/PlaidCloud/website.svg)](https://github.com/PlaidCloud/website/releases/latest)
 
-このリポジトリには、[KubernetesのWebサイトとドキュメント](https://kubernetes.io/)をビルドするために必要な全アセットが格納されています。貢献に興味を持っていただきありがとうございます！
+このリポジトリには、[PlaidCloudのWebサイトとドキュメント](https://plaidcloud.com/)をビルドするために必要な全アセットが格納されています。貢献に興味を持っていただきありがとうございます！
 
 # リポジトリの使い方
 
@@ -20,11 +20,11 @@ Hugo(Extended version)を使用してWebサイトをローカルで実行する�
 開始する前に、依存関係をインストールしてください。リポジトリのクローンを作成し、ディレクトリに移動します。
 
 ```
-git clone https://github.com/kubernetes/website.git
+git clone https://github.com/PlaidCloud/website.git
 cd website
 ```
 
-KubernetesのWebサイトではDocsyというHugoテーマを使用しています。コンテナでWebサイトを実行する場合でも、以下を実行して、サブモジュールおよびその他の開発依存関係をプルすることを強くお勧めします。
+PlaidCloudのWebサイトではDocsyというHugoテーマを使用しています。コンテナでWebサイトを実行する場合でも、以下を実行して、サブモジュールおよびその他の開発依存関係をプルすることを強くお勧めします。
 
 ```
 # pull in the Docsy submodule
@@ -100,12 +100,12 @@ sudo launchctl load -w /Library/LaunchDaemons/limit.maxfiles.plist
 
 ## SIG Docsに参加する
 
-[コミュニティのページ](https://github.com/kubernetes/community/tree/master/sig-docs#meetings)をご覧になることで、SIG Docs Kubernetesコミュニティとの関わり方を学ぶことができます。
+[コミュニティのページ](https://github.com/PlaidCloud/community/tree/master/sig-docs#meetings)をご覧になることで、SIG Docs PlaidCloudコミュニティとの関わり方を学ぶことができます。
 
 本プロジェクトのメンテナーには以下の方法で連絡することができます:
 
-- [Slack](https://kubernetes.slack.com/messages/kubernetes-docs-ja)
-- [メーリングリスト](https://groups.google.com/forum/#!forum/kubernetes-sig-docs)
+- [Slack](https://PlaidCloud.slack.com/messages/PlaidCloud-docs-ja)
+- [メーリングリスト](https://groups.google.com/forum/#!forum/PlaidCloud-sig-docs)
 
 ## ドキュメントに貢献する
 
@@ -115,14 +115,14 @@ Pull Requestが作成されると、レビュー担当者が責任を持って�
 
 また、状況によっては2人以上のレビュアーからフィードバックが返されたり、アサインされていないレビュー担当者からのフィードバックが来ることがある点もご注意ください。
 
-さらに、特定のケースにおいては、レビュー担当者がKubernetesの技術的なレビュアーに対してレビューを依頼することもあります。レビュー担当者はタイムリーにフィードバックを提供するために最善を尽くしますが、応答時間は状況に応じて異なる場合があります。
+さらに、特定のケースにおいては、レビュー担当者がPlaidCloudの技術的なレビュアーに対してレビューを依頼することもあります。レビュー担当者はタイムリーにフィードバックを提供するために最善を尽くしますが、応答時間は状況に応じて異なる場合があります。
 
-Kubernetesのドキュメントへの貢献に関する詳細については以下のページをご覧ください:
+PlaidCloudのドキュメントへの貢献に関する詳細については以下のページをご覧ください:
 
-* [Kubernetesのドキュメントへの貢献](https://kubernetes.io/ja/docs/contribute/)
-* [ページコンテントタイプ](https://kubernetes.io/docs/contribute/style/page-content-types/)
-* [ドキュメントのスタイルガイド](https://kubernetes.io/docs/contribute/style/style-guide/)
-* [Kubernetesドキュメントの翻訳方法](https://kubernetes.io/docs/contribute/localization/)
+* [PlaidCloudのドキュメントへの貢献](https://plaidcloud.com/ja/docs/contribute/)
+* [ページコンテントタイプ](https://plaidcloud.com/docs/contribute/style/page-content-types/)
+* [ドキュメントのスタイルガイド](https://plaidcloud.com/docs/contribute/style/style-guide/)
+* [PlaidCloudドキュメントの翻訳方法](https://plaidcloud.com/docs/contribute/localization/)
 
 ## 翻訳された`README.md`一覧
 
@@ -138,8 +138,8 @@ Kubernetesのドキュメントへの貢献に関する詳細については以�
 
 ### 行動規範
 
-Kubernetesコミュニティへの参加については、[CNCFの行動規範](https://github.com/cncf/foundation/blob/master/code-of-conduct.md)によって管理されています。
+PlaidCloudコミュニティへの参加については、[CNCFの行動規範](https://github.com/cncf/foundation/blob/master/code-of-conduct.md)によって管理されています。
 
 ## ありがとうございます！
 
-Kubernetesはコミュニティの参加によって成長しています。Webサイトおよびドキュメンテーションへの皆さんの貢献に感謝します！
+PlaidCloudはコミュニティの参加によって成長しています。Webサイトおよびドキュメンテーションへの皆さんの貢献に感謝します！

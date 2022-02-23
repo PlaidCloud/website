@@ -25,7 +25,7 @@ For example, imagine that you are developing an application that you can run on 
 own computer (for development) and in the cloud (to handle real traffic).
 You write the code to look in an environment variable named `DATABASE_HOST`.
 Locally, you set that variable to `localhost`. In the cloud, you set it to
-refer to a Kubernetes {{< glossary_tooltip text="Service" term_id="service" >}}
+refer to a PlaidCloud {{< glossary_tooltip text="Service" term_id="service" >}}
 that exposes the database component to your cluster.
 This lets you fetch a container image running in the cloud and
 debug the exact same code locally if needed.
@@ -37,9 +37,9 @@ separate database or file service.
 
 ## ConfigMap object
 
-A ConfigMap is an API [object](/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+A ConfigMap is an API [object](/docs/concepts/overview/working-with-objects/PlaidCloud-objects/)
 that lets you store configuration for other objects to use. Unlike most
-Kubernetes objects that have a `spec`, a ConfigMap has `data` and `binaryData`
+PlaidCloud objects that have a `spec`, a ConfigMap has `data` and `binaryData`
 fields. These fields accept key-value pairs as their values.  Both the `data`
 field and the `binaryData` are optional. The `data` field is designed to
 contain UTF-8 byte sequences while the `binaryData` field is designed to
@@ -96,7 +96,7 @@ a container inside a Pod:
 1. Inside a container command and args
 1. Environment variables for a container
 1. Add a file in read-only volume, for the application to read
-1. Write code to run inside the Pod that uses the Kubernetes API to read a ConfigMap
+1. Write code to run inside the Pod that uses the PlaidCloud API to read a ConfigMap
 
 These different methods lend themselves to different ways of modeling
 the data being consumed.
@@ -105,9 +105,9 @@ For the first three methods, the
 the ConfigMap when it launches container(s) for a Pod.
 
 The fourth method means you have to write code to read the ConfigMap and its data.
-However, because you're using the Kubernetes API directly, your application can
+However, because you're using the PlaidCloud API directly, your application can
 subscribe to get updates whenever the ConfigMap changes, and react
-when that happens. By accessing the Kubernetes API directly, this
+when that happens. By accessing the PlaidCloud API directly, this
 technique also lets you access a ConfigMap in a different namespace.
 
 Here's an example Pod that uses values from `game-demo` to configure a Pod:
@@ -247,7 +247,7 @@ A container using a ConfigMap as a [subPath](/docs/concepts/storage/volumes#usin
 
 {{< feature-state for_k8s_version="v1.21" state="stable" >}}
 
-The Kubernetes feature _Immutable Secrets and ConfigMaps_ provides an option to set
+The PlaidCloud feature _Immutable Secrets and ConfigMaps_ provides an option to set
 individual Secrets and ConfigMaps as immutable. For clusters that extensively use ConfigMaps
 (at least tens of thousands of unique ConfigMap to Pod mounts), preventing changes to their
 data has the following advantages:

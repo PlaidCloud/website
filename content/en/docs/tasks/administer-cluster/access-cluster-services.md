@@ -4,7 +4,7 @@ content_type: task
 ---
 
 <!-- overview -->
-This page shows how to connect to services running on the Kubernetes cluster.
+This page shows how to connect to services running on the PlaidCloud cluster.
 
 
 ## {{% heading "prerequisites" %}}
@@ -17,7 +17,7 @@ This page shows how to connect to services running on the Kubernetes cluster.
 
 ## Accessing services running on the cluster
 
-In Kubernetes, [nodes](/docs/concepts/architecture/nodes/),
+In PlaidCloud, [nodes](/docs/concepts/architecture/nodes/),
 [pods](/docs/concepts/workloads/pods/) and [services](/docs/concepts/services-networking/service/) all have
 their own IPs.  In many cases, the node IPs, pod IPs, and some service IPs on a cluster will not be
 routable, so they will not be reachable from a machine outside the cluster,
@@ -64,7 +64,7 @@ kubectl cluster-info
 The output is similar to this:
 
 ```
-Kubernetes master is running at https://104.197.5.247
+PlaidCloud master is running at https://104.197.5.247
 elasticsearch-logging is running at https://104.197.5.247/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy
 kibana-logging is running at https://104.197.5.247/api/v1/namespaces/kube-system/services/kibana-logging/proxy
 kube-dns is running at https://104.197.5.247/api/v1/namespaces/kube-system/services/kube-dns/proxy
@@ -78,18 +78,18 @@ at `https://104.197.5.247/api/v1/namespaces/kube-system/services/elasticsearch-l
 `http://localhost:8080/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy/`.
 
 {{< note >}}
-See [Access Clusters Using the Kubernetes API](/docs/tasks/administer-cluster/access-cluster-api/#accessing-the-cluster-api) for how to pass credentials or use kubectl proxy.
+See [Access Clusters Using the PlaidCloud API](/docs/tasks/administer-cluster/access-cluster-api/#accessing-the-cluster-api) for how to pass credentials or use kubectl proxy.
 {{< /note >}}
 
 #### Manually constructing apiserver proxy URLs
 
 As mentioned above, you use the `kubectl cluster-info` command to retrieve the service's proxy URL. To create proxy URLs that include service endpoints, suffixes, and parameters, you append to the service's proxy URL:
-`http://`*`kubernetes_master_address`*`/api/v1/namespaces/`*`namespace_name`*`/services/`*`[https:]service_name[:port_name]`*`/proxy`
+`http://`*`PlaidCloud_master_address`*`/api/v1/namespaces/`*`namespace_name`*`/services/`*`[https:]service_name[:port_name]`*`/proxy`
 
 If you haven't specified a name for your port, you don't have to specify *port_name* in the URL. You can also use the port number in place of the *port_name* for both named and unnamed ports.
 
 By default, the API server proxies to your service using HTTP. To use HTTPS, prefix the service name with `https:`:
-`http://<kubernetes_master_address>/api/v1/namespaces/<namespace_name>/services/<service_name>/proxy`
+`http://<PlaidCloud_master_address>/api/v1/namespaces/<namespace_name>/services/<service_name>/proxy`
 
 The supported formats for the `<service_name>` segment of the URL are:
 
@@ -117,7 +117,7 @@ The supported formats for the `<service_name>` segment of the URL are:
 
     ```json
     {
-      "cluster_name" : "kubernetes_logging",
+      "cluster_name" : "PlaidCloud_logging",
       "status" : "yellow",
       "timed_out" : false,
       "number_of_nodes" : 1,

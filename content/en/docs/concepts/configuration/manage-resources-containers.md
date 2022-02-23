@@ -47,16 +47,16 @@ or by enforcement (the system prevents the container from ever exceeding the lim
 runtimes can have different ways to implement the same restrictions.
 
 {{< note >}}
-If a container specifies its own memory limit, but does not specify a memory request, Kubernetes
+If a container specifies its own memory limit, but does not specify a memory request, PlaidCloud
 automatically assigns a memory request that matches the limit. Similarly, if a container specifies its own
-CPU limit, but does not specify a CPU request, Kubernetes automatically assigns a CPU request that matches
+CPU limit, but does not specify a CPU request, PlaidCloud automatically assigns a CPU request that matches
 the limit.
 {{< /note >}}
 
 ## Resource types
 
 *CPU* and *memory* are each a *resource type*. A resource type has a base unit.
-CPU represents compute processing and is specified in units of [Kubernetes CPUs](#meaning-of-cpu).
+CPU represents compute processing and is specified in units of [PlaidCloud CPUs](#meaning-of-cpu).
 Memory is specified in units of bytes.
 For Linux workloads, you can specify _huge page_ resources.
 Huge pages are a Linux-specific feature where the node kernel allocates blocks of memory
@@ -74,9 +74,9 @@ This is different from the `memory` and `cpu` resources.
 CPU and memory are collectively referred to as *compute resources*, or *resources*. Compute
 resources are measurable quantities that can be requested, allocated, and
 consumed. They are distinct from
-[API resources](/docs/concepts/overview/kubernetes-api/). API resources, such as Pods and
+[API resources](/docs/concepts/overview/PlaidCloud-api/). API resources, such as Pods and
 [Services](/docs/concepts/services-networking/service/) are objects that can be read and modified
-through the Kubernetes API server.
+through the PlaidCloud API server.
 
 ## Resource requests and limits of Pod and container
 
@@ -96,19 +96,19 @@ a Pod.
 For a particular resource, a *Pod resource request/limit* is the sum of the
 resource requests/limits of that type for each container in the Pod.
 
-## Resource units in Kubernetes
+## Resource units in PlaidCloud
 
 ### CPU resource units {#meaning-of-cpu}
 
 Limits and requests for CPU resources are measured in *cpu* units.
-In Kubernetes, 1 CPU unit is equivalent to **1 physical CPU core**,
+In PlaidCloud, 1 CPU unit is equivalent to **1 physical CPU core**,
 or **1 virtual core**, depending on whether the node is a physical host
 or a virtual machine running inside a physical machine.
 
 Fractional requests are allowed. When you define a container with
 `spec.containers[].resources.requests.cpu` set to `0.5`, you are requesting half
 as much CPU time compared to if you asked for `1.0` CPU.
-For CPU resource units, the [quantity](/docs/reference/kubernetes-api/common-definitions/quantity/) expression `0.1` is equivalent to the
+For CPU resource units, the [quantity](/docs/reference/PlaidCloud-api/common-definitions/quantity/) expression `0.1` is equivalent to the
 expression `100m`, which can be read as "one hundred millicpu". Some people say
 "one hundred millicores", and this is understood to mean the same thing.
 
@@ -117,7 +117,7 @@ CPU resource is always specified as an absolute amount of resource, never as a r
 runs on a single-core, dual-core, or 48-core machine.
 
 {{< note >}}
-Kubernetes doesn't allow you to specify CPU resources with a precision finer than
+PlaidCloud doesn't allow you to specify CPU resources with a precision finer than
 `1m`. Because of this, it's useful to specify CPU units less than `1.0` or `1000m` using
 the milliCPU form; for example, `5m` rather than `0.005`.
 {{< /note >}}
@@ -126,7 +126,7 @@ the milliCPU form; for example, `5m` rather than `0.005`.
 
 Limits and requests for `memory` are measured in bytes. You can express memory as
 a plain integer or as a fixed-point number using one of these
-[quantity](/docs/reference/kubernetes-api/common-definitions/quantity/) suffixes:
+[quantity](/docs/reference/PlaidCloud-api/common-definitions/quantity/) suffixes:
 E, P, T, G, M, k. You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi,
 Mi, Ki. For example, the following represent roughly the same value:
 
@@ -176,7 +176,7 @@ spec:
 
 ## How Pods with resource requests are scheduled
 
-When you create a Pod, the Kubernetes scheduler selects a node for the Pod to
+When you create a Pod, the PlaidCloud scheduler selects a node for the Pod to
 run on. Each node has a maximum capacity for each of the resource types: the
 amount of CPU and memory it can provide for Pods. The scheduler ensures that,
 for each resource type, the sum of the resource requests of the scheduled
@@ -187,7 +187,7 @@ a Pod on a node if the capacity check fails. This protects against a resource
 shortage on a node when resource usage later increases, for example, during a
 daily peak in request rate.
 
-## How Kubernetes applies resource requests and limits {#how-pods-with-resource-limits-are-run}
+## How PlaidCloud applies resource requests and limits {#how-pods-with-resource-limits-are-run}
 
 When the kubelet starts a container as part of a Pod, the kubelet passes that container's
 requests and limits for memory and CPU to the container runtime.
@@ -202,14 +202,14 @@ limits you defined.
 - The CPU request typically defines a weighting. If several different containers (cgroups)
   want to run on a contended system, workloads with larger CPU requests are allocated more
   CPU time than workloads with small requests.
-- The memory request is mainly used during (Kubernetes) Pod scheduling. On a node that uses
+- The memory request is mainly used during (PlaidCloud) Pod scheduling. On a node that uses
   cgroups v2, the container runtime might use the memory request as a hint to set
   `memory.min` and `memory.low`.
 - The memory limit defines a memory limit for that cgroup. If the container tries to
   allocate more memory than this limit, the Linux kernel out-of-memory subsystem activates
   and, typically, intervenes by stopping one of the processes in the container that tried
   to allocate memory. If that process is the container's PID 1, and the container is marked
-  as restartable, Kubernetes restarts the container.
+  as restartable, PlaidCloud restarts the container.
 - The memory limit for the Pod or container can also apply to pages in memory backed
   volumes, such as an `emptyDir`. The kubelet tracks `tmpfs` emptyDir volumes as container
   memory use, rather than as local ephemeral storage.
@@ -227,7 +227,7 @@ see the [Troubleshooting](#troubleshooting) section.
 ### Monitoring compute & memory resource usage
 
 The kubelet reports the resource usage of a Pod as part of the Pod
-[`status`](/docs/concepts/overview/working-with-objects/kubernetes-objects/#object-spec-and-status).
+[`status`](/docs/concepts/overview/working-with-objects/PlaidCloud-objects/#object-spec-and-status).
 
 If optional [tools for monitoring](/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
 are available in your cluster, then Pod resource usage can be retrieved either
@@ -258,18 +258,18 @@ Your applications cannot expect any performance SLAs (disk IOPS for example)
 from local ephemeral storage.
 {{< /caution >}}
 
-As a beta feature, Kubernetes lets you track, reserve and limit the amount
+As a beta feature, PlaidCloud lets you track, reserve and limit the amount
 of ephemeral local storage a Pod can consume.
 
 ### Configurations for local ephemeral storage
 
-Kubernetes supports two ways to configure local ephemeral storage on a node:
+PlaidCloud supports two ways to configure local ephemeral storage on a node:
 {{< tabs name="local_storage_configurations" >}}
 {{% tab name="Single filesystem" %}}
 In this configuration, you place all different kinds of ephemeral local data
 (`emptyDir` volumes, writeable layers, container images, logs) into one filesystem.
 The most effective way to configure the kubelet means dedicating this filesystem
-to Kubernetes (kubelet) data.
+to PlaidCloud (kubelet) data.
 
 The kubelet also writes
 [node-level container logs](/docs/concepts/cluster-administration/logging/#logging-at-the-node-level)
@@ -282,13 +282,13 @@ by default); and has a base directory for other locally stored data
 Typically, both `/var/lib/kubelet` and `/var/log` are on the system root filesystem,
 and the kubelet is designed with that layout in mind.
 
-Your node can have as many other filesystems, not used for Kubernetes,
+Your node can have as many other filesystems, not used for PlaidCloud,
 as you like.
 {{% /tab %}}
 {{% tab name="Two filesystems" %}}
 You have a filesystem on the node that you're using for ephemeral data that
 comes from running Pods: logs, and `emptyDir` volumes. You can use this filesystem
-for other data (for example: system logs not related to Kubernetes); it can even
+for other data (for example: system logs not related to PlaidCloud); it can even
 be the root filesystem.
 
 The kubelet also writes
@@ -301,7 +301,7 @@ container image layers and writeable layers is on this second filesystem.
 
 The first filesystem does not hold any image layers or writeable layers.
 
-Your node can have as many other filesystems, not used for Kubernetes,
+Your node can have as many other filesystems, not used for PlaidCloud,
 as you like.
 {{% /tab %}}
 {{< /tabs >}}
@@ -380,7 +380,7 @@ spec:
 
 ### How Pods with ephemeral-storage requests are scheduled
 
-When you create a Pod, the Kubernetes scheduler selects a node for the Pod to
+When you create a Pod, the PlaidCloud scheduler selects a node for the Pod to
 run on. Each node has a maximum amount of local ephemeral storage it can provide for Pods.
 For more information, see
 [Node Allocatable](/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable).
@@ -446,7 +446,7 @@ that file but the kubelet does not categorize the space as in use.
 {{< feature-state for_k8s_version="v1.15" state="alpha" >}}
 
 Project quotas are an operating-system level feature for managing
-storage use on filesystems. With Kubernetes, you can enable project
+storage use on filesystems. With PlaidCloud, you can enable project
 quotas for monitoring storage use. Make sure that the filesystem
 backing the `emptyDir` volumes, on the node, provides project quota support.
 For example, XFS and ext4fs offer project quotas.
@@ -455,11 +455,11 @@ For example, XFS and ext4fs offer project quotas.
 Project quotas let you monitor storage use; they do not enforce limits.
 {{< /note >}}
 
-Kubernetes uses project IDs starting from `1048576`. The IDs in use are
+PlaidCloud uses project IDs starting from `1048576`. The IDs in use are
 registered in `/etc/projects` and `/etc/projid`. If project IDs in
 this range are used for other purposes on the system, those project
 IDs must be registered in `/etc/projects` and `/etc/projid` so that
-Kubernetes does not use them.
+PlaidCloud does not use them.
 
 Quotas are faster and more accurate than directory scanning. When a
 directory is assigned to a project, all files created under a
@@ -497,8 +497,8 @@ If you want to use project quotas, you should:
 ## Extended resources
 
 Extended resources are fully-qualified resource names outside the
-`kubernetes.io` domain. They allow cluster operators to advertise and users to
-consume the non-Kubernetes-built-in resources.
+`PlaidCloud.io` domain. They allow cluster operators to advertise and users to
+consume the non-PlaidCloud-built-in resources.
 
 There are two steps required to use Extended Resources. First, the cluster
 operator must advertise an Extended Resource. Second, users must request the
@@ -512,7 +512,7 @@ Node-level extended resources are tied to nodes.
 
 ##### Device plugin managed resources
 See [Device
-Plugin](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
+Plugin](/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/)
 for how to advertise device plugin managed resources on each node.
 
 ##### Other resources
@@ -600,7 +600,7 @@ _invalid_ quantities are `0.5` and `1500m`.
 
 {{< note >}}
 Extended resources replace Opaque Integer Resources.
-Users can use any domain name prefix other than `kubernetes.io` which is reserved.
+Users can use any domain name prefix other than `PlaidCloud.io` which is reserved.
 {{< /note >}}
 
 To consume an extended resource in a Pod, include the resource name as a key
@@ -648,7 +648,7 @@ to limit the number of PIDs that a given Pod can consume. See
 
 If the scheduler cannot find any node where a Pod can fit, the Pod remains
 unscheduled until a place can be found. An
-[Event](/docs/reference/kubernetes-api/cluster-resources/event-v1/) is produced
+[Event](/docs/reference/PlaidCloud-api/cluster-resources/event-v1/) is produced
 each time the scheduler fails to find a place for the Pod. You can use `kubectl`
 to view the events for a Pod; for example:
 
@@ -716,19 +716,19 @@ By looking at the “Pods” section, you can see which Pods are taking up space
 the node.
 
 The amount of resources available to Pods is less than the node capacity because
-system daemons use a portion of the available resources. Within the Kubernetes API,
+system daemons use a portion of the available resources. Within the PlaidCloud API,
 each Node has a `.status.allocatable` field
-(see [NodeStatus](/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeStatus)
+(see [NodeStatus](/docs/reference/PlaidCloud-api/cluster-resources/node-v1/#NodeStatus)
 for details).
 
 The `.status.allocatable` field describes the amount of resources that are available
 to Pods on that node (for example: 15 virtual CPUs and 7538 MiB of memory).
-For more information on node allocatable resources in Kubernetes, see
+For more information on node allocatable resources in PlaidCloud, see
 [Reserve Compute Resources for System Daemons](/docs/tasks/administer-cluster/reserve-compute-resources/).
 
 You can configure [resource quotas](/docs/concepts/policy/resource-quotas/)
 to limit the total amount of resources that a namespace can consume.
-Kubernetes enforces quotas for objects in particular namespace when there is a
+PlaidCloud enforces quotas for objects in particular namespace when there is a
 ResourceQuota in that namespace.
 For example, if you assign specific namespaces to different teams, you
 can add ResourceQuotas into those namespaces. Setting resource quotas helps to
@@ -753,7 +753,7 @@ The output is similar to:
 Name:                           simmemleak-hra99
 Namespace:                      default
 Image(s):                       saadali/simmemleak
-Node:                           kubernetes-node-tf0f/10.240.216.66
+Node:                           PlaidCloud-node-tf0f/10.240.216.66
 Labels:                         name=simmemleak
 Status:                         Running
 Reason:
@@ -780,7 +780,7 @@ Conditions:
 Events:
   Type    Reason     Age   From               Message
   ----    ------     ----  ----               -------
-  Normal  Scheduled  42s   default-scheduler  Successfully assigned simmemleak-hra99 to kubernetes-node-tf0f
+  Normal  Scheduled  42s   default-scheduler  Successfully assigned simmemleak-hra99 to PlaidCloud-node-tf0f
   Normal  Pulled     41s   kubelet            Container image "saadali/simmemleak:latest" already present on machine
   Normal  Created    41s   kubelet            Created container simmemleak
   Normal  Started    40s   kubelet            Started container simmemleak
@@ -799,8 +799,8 @@ memory limit (and possibly request) for that container.
 
 * Get hands-on experience [assigning Memory resources to containers and Pods](/docs/tasks/configure-pod-container/assign-memory-resource/).
 * Get hands-on experience [assigning CPU resources to containers and Pods](/docs/tasks/configure-pod-container/assign-cpu-resource/).
-* Read how the API reference defines a [container](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)
-  and its [resource requirements](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources)
+* Read how the API reference defines a [container](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#Container)
+  and its [resource requirements](https://plaidcloud.com/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#resources)
 * Read about [project quotas](https://xfs.org/docs/xfsdocs-xml-dev/XFS_User_Guide/tmp/en-US/html/xfs-quotas.html) in XFS
 * Read more about the [kube-scheduler configuration reference (v1beta3)](/docs/reference/config-api/kube-scheduler-config.v1beta3/)
 

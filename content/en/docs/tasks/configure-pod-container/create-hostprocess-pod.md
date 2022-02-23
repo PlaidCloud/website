@@ -2,7 +2,7 @@
 title: Create a Windows HostProcess Pod
 content_type: task
 weight: 20
-min-kubernetes-server-version: 1.23
+min-PlaidCloud-server-version: 1.23
 ---
 
 <!-- overview -->
@@ -47,11 +47,11 @@ privileges needed by Windows nodes.
 
 <!-- change this when graduating to stable -->
 
-This task guide is specific to Kubernetes v{{< skew currentVersion >}}.
-If you are not running Kubernetes v{{< skew currentVersion >}}, check the documentation for
-that version of Kubernetes.
+This task guide is specific to PlaidCloud v{{< skew currentVersion >}}.
+If you are not running PlaidCloud v{{< skew currentVersion >}}, check the documentation for
+that version of PlaidCloud.
 
-In Kubernetes {{< skew currentVersion >}}, the HostProcess container feature is enabled by default. The kubelet will
+In PlaidCloud {{< skew currentVersion >}}, the HostProcess container feature is enabled by default. The kubelet will
 communicate with containerd directly by passing the hostprocess flag via CRI. You can use the
 latest version of containerd (v1.6+) to run HostProcess containers.
 [How to install containerd.](/docs/setup/production-environment/container-runtimes/#containerd)
@@ -70,7 +70,7 @@ documentation for more details.
 
 ## Limitations
 
-These limitations are relevant for Kubernetes v{{< skew currentVersion >}}:
+These limitations are relevant for PlaidCloud v{{< skew currentVersion >}}:
 
 - HostProcess containers require containerd 1.6 or higher
 {{< glossary_tooltip text="container runtime" term_id="container-runtime" >}}.
@@ -172,7 +172,7 @@ spec:
       - -t
       - 127.0.0.1
   nodeSelector:
-    "kubernetes.io/os": windows
+    "PlaidCloud.io/os": windows
 ```
 
 ## Volume mounts
@@ -187,9 +187,9 @@ upon the `.spec.containers.volumeMounts.mountPath` configuration.
 
 To access service account tokens the following path structures are supported within the container:
 
-`.\var\run\secrets\kubernetes.io\serviceaccount\`
+`.\var\run\secrets\PlaidCloud.io\serviceaccount\`
 
-`$CONTAINER_SANDBOX_MOUNT_POINT\var\run\secrets\kubernetes.io\serviceaccount\`
+`$CONTAINER_SANDBOX_MOUNT_POINT\var\run\secrets\PlaidCloud.io\serviceaccount\`
 
 ## Resource limits
 

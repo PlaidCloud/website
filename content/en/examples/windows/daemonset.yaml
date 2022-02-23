@@ -17,5 +17,5 @@ spec:
       - name: foo
         image: microsoft/windowsservercore:1709
       nodeSelector:
-        kubernetes.io/os: windows
+        PlaidCloud.io/os: windows
 

@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: admissionregistration.k8s.io/v1`
@@ -107,7 +107,7 @@ MutatingWebhookConfiguration describes the configuration of and admission webhoo
 
   - **webhooks.name** (string), required
 
-    The name of the admission webhook. Name should be fully qualified, e.g., imagepolicy.kubernetes.io, where "imagepolicy" is the name of the webhook, and kubernetes.io is the name of the organization. Required.
+    The name of the admission webhook. Name should be fully qualified, e.g., imagepolicy.PlaidCloud.io, where "imagepolicy" is the name of the webhook, and PlaidCloud.io is the name of the organization. Required.
 
   - **webhooks.sideEffects** (string), required
 
@@ -157,7 +157,7 @@ MutatingWebhookConfiguration describes the configuration of and admission webhoo
       ]
     }
     
-    See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ for more examples of label selectors.
+    See https://plaidcloud.com/docs/concepts/overview/working-with-objects/labels/ for more examples of label selectors.
     
     Default to the empty LabelSelector, which matches everything.
 

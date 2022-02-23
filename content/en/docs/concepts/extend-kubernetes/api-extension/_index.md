@@ -1,4 +1,4 @@
 ---
-title: Extending the Kubernetes API
+title: Extending the PlaidCloud API
 weight: 20
 ---

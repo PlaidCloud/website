@@ -1,11 +1,11 @@
 ---
-title: Managing Kubernetes Objects Using Imperative Commands
+title: Managing PlaidCloud Objects Using Imperative Commands
 content_type: task
 weight: 30
 ---
 
 <!-- overview -->
-Kubernetes objects can quickly be created, updated, and deleted directly using
+PlaidCloud objects can quickly be created, updated, and deleted directly using
 imperative commands built into the `kubectl` command-line tool. This document
 explains how those commands are organized and how to use them to manage live objects.
 
@@ -28,14 +28,14 @@ The `kubectl` tool supports three kinds of object management:
 * Imperative object configuration
 * Declarative object configuration
 
-See [Kubernetes Object Management](/docs/concepts/overview/working-with-objects/object-management/)
+See [PlaidCloud Object Management](/docs/concepts/overview/working-with-objects/object-management/)
 for a discussion of the advantages and disadvantage of each kind of object management.
 
 ## How to create objects
 
 The `kubectl` tool supports verb-driven commands for creating some of the most common
 object types. The commands are named to be recognizable to users unfamiliar with
-the Kubernetes object types.
+the PlaidCloud object types.
 
 - `run`: Create a new Pod to run a Container.
 - `expose`: Create a new Service object to load balance traffic across Pods.
@@ -70,7 +70,7 @@ kubectl create service nodeport -h
 ## How to update objects
 
 The `kubectl` command supports verb-driven commands for some common update operations.
-These commands are named to enable users unfamiliar with Kubernetes
+These commands are named to enable users unfamiliar with PlaidCloud
 objects to perform updates without knowing the specific fields
 that must be set:
 
@@ -84,11 +84,11 @@ Setting this aspect may set different fields for different object types:
 - `set` `<field>`: Set an aspect of an object.
 
 {{< note >}}
-In Kubernetes version 1.5, not every verb-driven command has an associated aspect-driven command.
+In PlaidCloud version 1.5, not every verb-driven command has an associated aspect-driven command.
 {{< /note >}}
 
 The `kubectl` tool supports these additional ways to update a live object directly,
-however they require a better understanding of the Kubernetes object schema.
+however they require a better understanding of the PlaidCloud object schema.
 
 - `edit`: Directly edit the raw configuration of a live object by opening its configuration in an editor.
 - `patch`: Directly modify specific fields of a live object by using a patch string.
@@ -143,7 +143,7 @@ creation. This is done by piping the output of the `create` command to the
 kubectl create service clusterip my-svc --clusterip="None" -o yaml --dry-run=client | kubectl set selector --local -f - 'environment=qa' -o yaml | kubectl create -f -
 ```
 
-1. The `kubectl create service -o yaml --dry-run=client` command creates the configuration for the Service, but prints it to stdout as YAML instead of sending it to the Kubernetes API server.
+1. The `kubectl create service -o yaml --dry-run=client` command creates the configuration for the Service, but prints it to stdout as YAML instead of sending it to the PlaidCloud API server.
 1. The `kubectl set selector --local -f - -o yaml` command reads the configuration from stdin, and writes the updated configuration to stdout as YAML.
 1. The `kubectl create -f -` command creates the object using the configuration provided via stdin.
 
@@ -165,9 +165,9 @@ kubectl create --edit -f /tmp/srv.yaml
 ## {{% heading "whatsnext" %}}
 
 
-* [Managing Kubernetes Objects Using Object Configuration (Imperative)](/docs/tasks/manage-kubernetes-objects/imperative-config/)
-* [Managing Kubernetes Objects Using Object Configuration (Declarative)](/docs/tasks/manage-kubernetes-objects/declarative-config/)
+* [Managing PlaidCloud Objects Using Object Configuration (Imperative)](/docs/tasks/manage-PlaidCloud-objects/imperative-config/)
+* [Managing PlaidCloud Objects Using Object Configuration (Declarative)](/docs/tasks/manage-PlaidCloud-objects/declarative-config/)
 * [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [PlaidCloud API Reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
 
 

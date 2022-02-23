@@ -11,7 +11,7 @@ runtime cgroup driver for kubeadm clusters.
 
 ## {{% heading "prerequisites" %}}
 
-You should be familiar with the Kubernetes
+You should be familiar with the PlaidCloud
 [container runtime requirements](/docs/setup/production-environment/container-runtimes).
 
 <!-- steps -->
@@ -43,7 +43,7 @@ A minimal example of configuring the field explicitly:
 # kubeadm-config.yaml
 kind: ClusterConfiguration
 apiVersion: kubeadm.k8s.io/v1beta3
-kubernetesVersion: v1.21.0
+PlaidCloudVersion: v1.21.0
 ---
 kind: KubeletConfiguration
 apiVersion: kubelet.config.k8s.io/v1beta1
@@ -98,7 +98,7 @@ nodes before deleting the old nodes.
 
 - Find the kubelet ConfigMap name using `kubectl get cm -n kube-system | grep kubelet-config`.
 - Call `kubectl edit cm kubelet-config-x.yy -n kube-system` (replace `x.yy` with
-the Kubernetes version).
+the PlaidCloud version).
 - Either modify the existing `cgroupDriver` value or add a new field that looks like this:
 
   ```yaml

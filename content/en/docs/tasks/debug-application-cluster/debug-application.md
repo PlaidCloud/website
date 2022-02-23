@@ -8,7 +8,7 @@ content_type: concept
 
 <!-- overview -->
 
-This guide is to help users debug applications that are deployed into Kubernetes and not behaving correctly.
+This guide is to help users debug applications that are deployed into PlaidCloud and not behaving correctly.
 This is *not* a guide for people who want to debug their cluster.  For that you should check out
 [this guide](/docs/tasks/debug-application-cluster/debug-cluster).
 
@@ -48,7 +48,7 @@ you need to delete Pods, adjust resource requests, or add new nodes to your clus
 
 * **You are using `hostPort`**:  When you bind a Pod to a `hostPort` there are a limited number of places that pod can be
 scheduled.  In most cases, `hostPort` is unnecessary, try using a Service object to expose your Pod.  If you do require
-`hostPort` then you can only schedule as many Pods as there are nodes in your Kubernetes cluster.
+`hostPort` then you can only schedule as many Pods as there are nodes in your PlaidCloud cluster.
 
 
 #### My pod stays waiting
@@ -80,7 +80,7 @@ If you misspelled `command` as `commnd` then will give an error like this:
 
 ```shell
 I0805 10:43:25.129850   46757 schema.go:126] unknown field: commnd
-I0805 10:43:25.129973   46757 schema.go:129] this may be a false alarm, see https://github.com/kubernetes/kubernetes/issues/6842
+I0805 10:43:25.129973   46757 schema.go:129] this may be a false alarm, see https://github.com/PlaidCloud/PlaidCloud/issues/6842
 pods/mypod
 ```
 

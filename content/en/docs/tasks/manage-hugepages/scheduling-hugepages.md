@@ -9,13 +9,13 @@ description: Configure and manage huge pages as a schedulable resource in a clus
 <!-- overview -->
 {{< feature-state state="stable" >}}
 
-Kubernetes supports the allocation and consumption of pre-allocated huge pages
+PlaidCloud supports the allocation and consumption of pre-allocated huge pages
 by applications in a Pod. This page describes how users can consume huge pages.
 
 ## {{% heading "prerequisites" %}}
 
 
-1. Kubernetes nodes must pre-allocate huge pages in order for the node to report
+1. PlaidCloud nodes must pre-allocate huge pages in order for the node to report
    its huge page capacity. A node can pre-allocate huge pages for multiple
    sizes.
 

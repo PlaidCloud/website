@@ -16,7 +16,7 @@ weight: 20
 
 <!-- overview -->
 
-This document describes _persistent volumes_ in Kubernetes. Familiarity with [volumes](/docs/concepts/storage/volumes/) is suggested.
+This document describes _persistent volumes_ in PlaidCloud. Familiarity with [volumes](/docs/concepts/storage/volumes/) is suggested.
 
 <!-- body -->
 
@@ -42,7 +42,7 @@ There are two ways PVs may be provisioned: statically or dynamically.
 
 #### Static
 
-A cluster administrator creates a number of PVs. They carry the details of the real storage, which is available for use by cluster users. They exist in the Kubernetes API and are available for consumption.
+A cluster administrator creates a number of PVs. They carry the details of the real storage, which is available for use by cluster users. They exist in the PlaidCloud API and are available for consumption.
 
 #### Dynamic
 
@@ -82,7 +82,7 @@ PVC is in active use by a Pod when a Pod object exists that is using the PVC.
 
 If a user deletes a PVC in active use by a Pod, the PVC is not removed immediately. PVC removal is postponed until the PVC is no longer actively used by any Pods. Also, if an admin deletes a PV that is bound to a PVC, the PV is not removed immediately. PV removal is postponed until the PV is no longer bound to a PVC.
 
-You can see that a PVC is protected when the PVC's status is `Terminating` and the `Finalizers` list includes `kubernetes.io/pvc-protection`:
+You can see that a PVC is protected when the PVC's status is `Terminating` and the `Finalizers` list includes `PlaidCloud.io/pvc-protection`:
 
 ```shell
 kubectl describe pvc hostpath
@@ -92,20 +92,20 @@ StorageClass:  example-hostpath
 Status:        Terminating
 Volume:
 Labels:        <none>
-Annotations:   volume.beta.kubernetes.io/storage-class=example-hostpath
-               volume.beta.kubernetes.io/storage-provisioner=example.com/hostpath
-Finalizers:    [kubernetes.io/pvc-protection]
+Annotations:   volume.beta.PlaidCloud.io/storage-class=example-hostpath
+               volume.beta.PlaidCloud.io/storage-provisioner=example.com/hostpath
+Finalizers:    [PlaidCloud.io/pvc-protection]
 ...
 ```
 
-You can see that a PV is protected when the PV's status is `Terminating` and the `Finalizers` list includes `kubernetes.io/pv-protection` too:
+You can see that a PV is protected when the PV's status is `Terminating` and the `Finalizers` list includes `PlaidCloud.io/pv-protection` too:
 
 ```shell
 kubectl describe pv task-pv-volume
 Name:            task-pv-volume
 Labels:          type=local
 Annotations:     <none>
-Finalizers:      [kubernetes.io/pv-protection]
+Finalizers:      [PlaidCloud.io/pv-protection]
 StorageClass:    standard
 Status:          Terminating
 Claim:
@@ -136,7 +136,7 @@ If you want to reuse the same storage asset, create a new PersistentVolume with 
 
 #### Delete
 
-For volume plugins that support the `Delete` reclaim policy, deletion removes both the PersistentVolume object from Kubernetes, as well as the associated storage asset in the external infrastructure, such as an AWS EBS, GCE PD, Azure Disk, or Cinder volume. Volumes that were dynamically provisioned inherit the [reclaim policy of their StorageClass](#reclaim-policy), which defaults to `Delete`. The administrator should configure the StorageClass according to users' expectations; otherwise, the PV must be edited or patched after it is created. See [Change the Reclaim Policy of a PersistentVolume](/docs/tasks/administer-cluster/change-pv-reclaim-policy/).
+For volume plugins that support the `Delete` reclaim policy, deletion removes both the PersistentVolume object from PlaidCloud, as well as the associated storage asset in the external infrastructure, such as an AWS EBS, GCE PD, Azure Disk, or Cinder volume. Volumes that were dynamically provisioned inherit the [reclaim policy of their StorageClass](#reclaim-policy), which defaults to `Delete`. The administrator should configure the StorageClass according to users' expectations; otherwise, the PV must be edited or patched after it is created. See [Change the Reclaim Policy of a PersistentVolume](/docs/tasks/administer-cluster/change-pv-reclaim-policy/).
 
 #### Recycle
 
@@ -147,7 +147,7 @@ The `Recycle` reclaim policy is deprecated. Instead, the recommended approach is
 If supported by the underlying volume plugin, the `Recycle` reclaim policy performs a basic scrub (`rm -rf /thevolume/*`) on the volume and makes it available again for a new claim.
 
 However, an administrator can configure a custom recycler Pod template using
-the Kubernetes controller manager command line arguments as described in the
+the PlaidCloud controller manager command line arguments as described in the
 [reference](/docs/reference/command-line-tools-reference/kube-controller-manager/).
 The custom recycler Pod template must contain a `volumes` specification, as
 shown in the example below:
@@ -241,7 +241,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: gluster-vol-default
-provisioner: kubernetes.io/glusterfs
+provisioner: PlaidCloud.io/glusterfs
 parameters:
   resturl: "http://192.168.10.100:8080"
   restuser: ""
@@ -259,7 +259,7 @@ Directly editing the size of a PersistentVolume can prevent an automatic resize 
 If you edit the capacity of a PersistentVolume, and then edit the `.spec` of a matching
 PersistentVolumeClaim to make the size of the PersistentVolumeClaim match the PersistentVolume,
 then no storage resize happens.
-The Kubernetes control plane will see that the desired state of both resources matches,
+The PlaidCloud control plane will see that the desired state of both resources matches,
 conclude that the backing volume size has been manually
 increased and that no resize is necessary.
 {{< /warning >}}
@@ -279,7 +279,7 @@ When a volume contains a file system, the file system is only resized when a new
 the PersistentVolumeClaim in `ReadWrite` mode. File system expansion is either done when a Pod is starting up
 or when a Pod is running and the underlying file system supports online expansion.
 
-FlexVolumes (deprecated since Kubernetes v1.23) allow resize if the driver is configured with the
+FlexVolumes (deprecated since PlaidCloud v1.23) allow resize if the driver is configured with the
 `RequiresFSResize` capability to `true`. The FlexVolume can be resized on Pod restart.
 
 #### Resizing an in-use PersistentVolumeClaim
@@ -287,7 +287,7 @@ FlexVolumes (deprecated since Kubernetes v1.23) allow resize if the driver is co
 {{< feature-state for_k8s_version="v1.15" state="beta" >}}
 
 {{< note >}}
-Expanding in-use PVCs is available as beta since Kubernetes 1.15, and as alpha since 1.11. The `ExpandInUsePersistentVolumes` feature must be enabled, which is the case automatically for many clusters for beta features. Refer to the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) documentation for more information.
+Expanding in-use PVCs is available as beta since PlaidCloud 1.15, and as alpha since 1.11. The `ExpandInUsePersistentVolumes` feature must be enabled, which is the case automatically for many clusters for beta features. Refer to the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) documentation for more information.
 {{< /note >}}
 
 In this case, you don't need to delete and recreate a Pod or deployment that is using an existing PVC.
@@ -308,7 +308,7 @@ Expanding EBS volumes is a time-consuming operation. Also, there is a per-volume
 
 #### Recovering from Failure when Expanding Volumes
 
-If a user specifies a new size that is too big to be satisfied by underlying storage system, expansion of PVC will be continuously retried until user or cluster administrator takes some action. This can be undesirable and hence Kubernetes provides following methods of recovering from such failures.
+If a user specifies a new size that is too big to be satisfied by underlying storage system, expansion of PVC will be continuously retried until user or cluster administrator takes some action. This can be undesirable and hence PlaidCloud provides following methods of recovering from such failures.
 
 {{< tabs name="recovery_methods" >}}
 {{% tab name="Manually with Cluster Administrator access" %}}
@@ -326,7 +326,7 @@ If expanding underlying storage fails, the cluster administrator can manually re
 {{% feature-state for_k8s_version="v1.23" state="alpha" %}}
 
 {{< note >}}
-Recovery from failing PVC expansion by users is available as an alpha feature since Kubernetes 1.23. The `RecoverVolumeExpansionFailure` feature must be enabled for this feature to work. Refer to the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) documentation for more information.
+Recovery from failing PVC expansion by users is available as an alpha feature since PlaidCloud 1.23. The `RecoverVolumeExpansionFailure` feature must be enabled for this feature to work. Refer to the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) documentation for more information.
 {{< /note >}}
 
 If the feature gates `ExpandPersistentVolumes` and `RecoverVolumeExpansionFailure` are both
@@ -341,14 +341,14 @@ size that is within the capacity limits of underlying storage provider. You can 
 Note that,
 although you can a specify a lower amount of storage than what was requested previously,
 the new value must still be higher than `.status.capacity`.
-Kubernetes does not support shrinking a PVC to less than its current size.
+PlaidCloud does not support shrinking a PVC to less than its current size.
 {{% /tab %}}
 {{% /tabs %}}
 
 
 ## Types of Persistent Volumes
 
-PersistentVolume types are implemented as plugins. Kubernetes currently supports the following plugins:
+PersistentVolume types are implemented as plugins. PlaidCloud currently supports the following plugins:
 
 * [`awsElasticBlockStore`](/docs/concepts/storage/volumes/#awselasticblockstore) - AWS Elastic Block Store (EBS)
 * [`azureDisk`](/docs/concepts/storage/volumes/#azuredisk) - Azure Disk
@@ -369,7 +369,7 @@ PersistentVolume types are implemented as plugins. Kubernetes currently supports
 * [`rbd`](/docs/concepts/storage/volumes/#rbd) - Rados Block Device (RBD) volume
 * [`vsphereVolume`](/docs/concepts/storage/volumes/#vspherevolume) - vSphere VMDK volume
 
-The following types of PersistentVolume are deprecated. This means that support is still available but will be removed in a future Kubernetes release.
+The following types of PersistentVolume are deprecated. This means that support is still available but will be removed in a future PlaidCloud release.
 
 * [`cinder`](/docs/concepts/storage/volumes/#cinder) - Cinder (OpenStack block storage)
   (**deprecated** in v1.18)
@@ -382,7 +382,7 @@ The following types of PersistentVolume are deprecated. This means that support 
 * [`storageos`](/docs/concepts/storage/volumes/#storageos) - StorageOS volume
   (**deprecated** in v1.22)
 
-Older versions of Kubernetes also supported the following in-tree PersistentVolume types:
+Older versions of PlaidCloud also supported the following in-tree PersistentVolume types:
 
 * `photonPersistentDisk` - Photon controller persistent disk.
   (**not available** after v1.15)
@@ -430,13 +430,13 @@ Currently, storage size is the only resource that can be set or requested.  Futu
 
 {{< feature-state for_k8s_version="v1.18" state="stable" >}}
 
-Kubernetes supports two `volumeModes` of PersistentVolumes: `Filesystem` and `Block`.
+PlaidCloud supports two `volumeModes` of PersistentVolumes: `Filesystem` and `Block`.
 
 `volumeMode` is an optional API parameter.
 `Filesystem` is the default mode used when `volumeMode` parameter is omitted.
 
 A volume with `volumeMode: Filesystem` is *mounted* into Pods into a directory. If the volume
-is backed by a block device and the device is empty, Kubernetes creates a filesystem
+is backed by a block device and the device is empty, PlaidCloud creates a filesystem
 on the device before mounting it for the first time.
 
 You can set the value of `volumeMode` to `Block` to use a volume as a raw block device.
@@ -463,7 +463,7 @@ The access modes are:
 : the volume can be mounted as read-write by many nodes.
 
  `ReadWriteOncePod`
-: the volume can be mounted as read-write by a single Pod. Use ReadWriteOncePod access mode if you want to ensure that only one pod across whole cluster can read that PVC or write to it. This is only supported for CSI volumes and Kubernetes version 1.22+.
+: the volume can be mounted as read-write by a single Pod. Use ReadWriteOncePod access mode if you want to ensure that only one pod across whole cluster can read that PVC or write to it. This is only supported for CSI volumes and PlaidCloud version 1.22+.
 
 
 
@@ -511,9 +511,9 @@ A PV of a particular class can only be bound to PVCs requesting
 that class. A PV with no `storageClassName` has no class and can only be bound
 to PVCs that request no particular class.
 
-In the past, the annotation `volume.beta.kubernetes.io/storage-class` was used instead
+In the past, the annotation `volume.beta.PlaidCloud.io/storage-class` was used instead
 of the `storageClassName` attribute. This annotation is still working; however,
-it will become fully deprecated in a future Kubernetes release.
+it will become fully deprecated in a future PlaidCloud release.
 
 ### Reclaim Policy
 
@@ -527,7 +527,7 @@ Currently, only NFS and HostPath support recycling. AWS EBS, GCE PD, Azure Disk,
 
 ### Mount Options
 
-A Kubernetes administrator can specify additional mount options for when a Persistent Volume is mounted on a node.
+A PlaidCloud administrator can specify additional mount options for when a Persistent Volume is mounted on a node.
 
 {{< note >}}
 Not all Persistent Volume types support mount options.
@@ -551,9 +551,9 @@ The following volume types support mount options:
 
 Mount options are not validated. If a mount option is invalid, the mount fails.
 
-In the past, the annotation `volume.beta.kubernetes.io/mount-options` was used instead
+In the past, the annotation `volume.beta.PlaidCloud.io/mount-options` was used instead
 of the `mountOptions` attribute. This annotation is still working; however,
-it will become fully deprecated in a future Kubernetes release.
+it will become fully deprecated in a future PlaidCloud release.
 
 ### Node Affinity
 
@@ -561,7 +561,7 @@ it will become fully deprecated in a future Kubernetes release.
 For most volume types, you do not need to set this field. It is automatically populated for [AWS EBS](/docs/concepts/storage/volumes/#awselasticblockstore), [GCE PD](/docs/concepts/storage/volumes/#gcepersistentdisk) and [Azure Disk](/docs/concepts/storage/volumes/#azuredisk) volume block types. You need to explicitly set this for [local](/docs/concepts/storage/volumes/#local) volumes.
 {{< /note >}}
 
-A PV can specify node affinity to define constraints that limit what nodes this volume can be accessed from. Pods that use a PV will only be scheduled to nodes that are selected by the node affinity. To specify node affinity, set `nodeAffinity` in the `.spec` of a PV. The [PersistentVolume](/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeSpec) API reference has more details on this field.
+A PV can specify node affinity to define constraints that limit what nodes this volume can be accessed from. Pods that use a PV will only be scheduled to nodes that are selected by the node affinity. To specify node affinity, set `nodeAffinity` in the `.spec` of a PV. The [PersistentVolume](/docs/reference/PlaidCloud-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeSpec) API reference has more details on this field.
 
 ### Phase
 
@@ -640,7 +640,7 @@ is turned on.
 * If the admission plugin is turned on, the administrator may specify a
   default StorageClass. All PVCs that have no `storageClassName` can be bound only to
   PVs of that default. Specifying a default StorageClass is done by setting the
-  annotation `storageclass.kubernetes.io/is-default-class` equal to `true` in
+  annotation `storageclass.PlaidCloud.io/is-default-class` equal to `true` in
   a StorageClass object. If the administrator does not specify a default, the
   cluster responds to PVC creation as if the admission plugin were turned off. If
   more than one default is specified, the admission plugin forbids the creation of
@@ -651,7 +651,7 @@ is turned on.
   same way as PVCs that have their `storageClassName` set to `""`.
 
 Depending on installation method, a default StorageClass may be deployed
-to a Kubernetes cluster by addon manager during installation.
+to a PlaidCloud cluster by addon manager during installation.
 
 When a PVC specifies a `selector` in addition to requesting a StorageClass,
 the requirements are ANDed together: only a PV of the requested class and with
@@ -661,9 +661,9 @@ the requested labels may be bound to the PVC.
 Currently, a PVC with a non-empty `selector` can't have a PV dynamically provisioned for it.
 {{< /note >}}
 
-In the past, the annotation `volume.beta.kubernetes.io/storage-class` was used instead
+In the past, the annotation `volume.beta.PlaidCloud.io/storage-class` was used instead
 of `storageClassName` attribute. This annotation is still working; however,
-it won't be supported in a future Kubernetes release.
+it won't be supported in a future PlaidCloud release.
 
 ## Claims As Volumes
 
@@ -802,7 +802,7 @@ Only statically provisioned volumes are supported for alpha release. Administrat
 {{< feature-state for_k8s_version="v1.20" state="stable" >}}
 
 Volume snapshots only support the out-of-tree CSI volume plugins. For details, see [Volume Snapshots](/docs/concepts/storage/volume-snapshots/).
-In-tree volume plugins are deprecated. You can read about the deprecated volume plugins in the [Volume Plugin FAQ](https://github.com/kubernetes/community/blob/master/sig-storage/volume-plugin-faq.md).
+In-tree volume plugins are deprecated. You can read about the deprecated volume plugins in the [Volume Plugin FAQ](https://github.com/PlaidCloud/community/blob/master/sig-storage/volume-plugin-faq.md).
 
 ### Create a PersistentVolumeClaim from a Volume Snapshot {#create-persistent-volume-claim-from-volume-snapshot}
 
@@ -852,9 +852,9 @@ spec:
 {{< feature-state for_k8s_version="v1.22" state="alpha" >}}
 
 {{< note >}}
-Kubernetes supports custom volume populators; this alpha feature was introduced
-in Kubernetes 1.18. Kubernetes 1.22 reimplemented the mechanism with a redesigned API.
-Check that you are reading the version of the Kubernetes documentation that matches your
+PlaidCloud supports custom volume populators; this alpha feature was introduced
+in PlaidCloud 1.18. PlaidCloud 1.22 reimplemented the mechanism with a redesigned API.
+Check that you are reading the version of the PlaidCloud documentation that matches your
 cluster. {{% version-check %}}
 To use custom volume populators, you must enable the `AnyVolumeDataSource`
 [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) for
@@ -917,7 +917,7 @@ can fail if not all the correct components are installed. External controllers s
 events on the PVC to provide feedback on the status of the creation, including warnings if
 the PVC cannot be created due to some missing component.
 
-You can install the alpha [volume data source validator](https://github.com/kubernetes-csi/volume-data-source-validator)
+You can install the alpha [volume data source validator](https://github.com/PlaidCloud-csi/volume-data-source-validator)
 controller into your cluster. That controller generates warning Events on a PVC in the case that no populator
 is registered to handle that kind of data source. When a suitable populator is installed for a PVC, it's the
 responsibility of that populator controller to report Events that relate to volume creation and issues during
@@ -959,5 +959,5 @@ and need persistent storage, it is recommended that you use the following patter
 
 Read about the APIs described in this page:
 
-* [`PersistentVolume`](/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/)
-* [`PersistentVolumeClaim`](/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/)
+* [`PersistentVolume`](/docs/reference/PlaidCloud-api/config-and-storage-resources/persistent-volume-v1/)
+* [`PersistentVolumeClaim`](/docs/reference/PlaidCloud-api/config-and-storage-resources/persistent-volume-claim-v1/)

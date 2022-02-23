@@ -1,5 +1,5 @@
 ---
-title: Extend the Kubernetes API with CustomResourceDefinitions
+title: Extend the PlaidCloud API with CustomResourceDefinitions
 reviewers:
 - deads2k
 - jpbetz
@@ -7,27 +7,27 @@ reviewers:
 - roycaihw
 - sttts
 content_type: task
-min-kubernetes-server-version: 1.16
+min-PlaidCloud-server-version: 1.16
 weight: 20
 ---
 
 <!-- overview -->
 This page shows how to install a
-[custom resource](/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
-into the Kubernetes API by creating a
-[CustomResourceDefinition](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1-apiextensions-k8s-io).
+[custom resource](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/)
+into the PlaidCloud API by creating a
+[CustomResourceDefinition](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#customresourcedefinition-v1-apiextensions-k8s-io).
 
 ## {{% heading "prerequisites" %}}
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
-If you are using an older version of Kubernetes that is still supported, switch to
+If you are using an older version of PlaidCloud that is still supported, switch to
 the documentation for that version to see advice that is relevant for your cluster.
 
 <!-- steps -->
 
 ## Create a CustomResourceDefinition
 
-When you create a new CustomResourceDefinition (CRD), the Kubernetes API Server
+When you create a new CustomResourceDefinition (CRD), the PlaidCloud API Server
 creates a new RESTful resource path for each version you specify. The CRD can be
 either namespaced or cluster-scoped, as specified in the CRD's `scope` field. As
 with existing built-in objects, deleting a namespace deletes all custom objects
@@ -159,7 +159,7 @@ items:
   kind: CronTab
   metadata:
     annotations:
-      kubectl.kubernetes.io/last-applied-configuration: |
+      kubectl.PlaidCloud.io/last-applied-configuration: |
         {"apiVersion":"stable.example.com/v1","kind":"CronTab","metadata":{"annotations":{},"name":"my-new-cron-object","namespace":"default"},"spec":{"cronSpec":"* * * * */5","image":"my-awesome-cron-image"}}
     creationTimestamp: "2021-06-20T07:35:27Z"
     generation: 1
@@ -207,10 +207,10 @@ CustomResourceDefinition, the structural schema was optional.
 A structural schema is an [OpenAPI v3.0 validation schema](#validation) which:
 
 1. specifies a non-empty type (via `type` in OpenAPI) for the root, for each specified field of an object node (via `properties` or `additionalProperties` in OpenAPI) and for each item in an array node (via `items` in OpenAPI), with the exception of:
-   * a node with `x-kubernetes-int-or-string: true`
-   * a node with `x-kubernetes-preserve-unknown-fields: true`
+   * a node with `x-PlaidCloud-int-or-string: true`
+   * a node with `x-PlaidCloud-preserve-unknown-fields: true`
 2. for each field in an object and each item in an array which is specified within any of `allOf`, `anyOf`, `oneOf` or `not`, the schema also specifies the field/item outside of those logical junctors (compare example 1 and 2).
-3. does not set `description`, `type`, `default`, `additionalProperties`, `nullable` within an `allOf`, `anyOf`, `oneOf` or `not`, with the exception of the two pattern for `x-kubernetes-int-or-string: true` (see below).
+3. does not set `description`, `type`, `default`, `additionalProperties`, `nullable` within an `allOf`, `anyOf`, `oneOf` or `not`, with the exception of the two pattern for `x-PlaidCloud-int-or-string: true` (see below).
 4. if `metadata` is specified, then only restrictions on `metadata.name` and `metadata.generateName` are allowed.
 
 
@@ -313,7 +313,7 @@ Violations of the structural schema rules are reported in the `NonStructural` co
 
 ### Field pruning
 
-CustomResourceDefinitions store validated resource data in the cluster's persistence store, {{< glossary_tooltip term_id="etcd" text="etcd">}}. As with native Kubernetes resources such as {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}}, if you specify a field that the API server does not recognize, the unknown field  is _pruned_ (removed) before being persisted.
+CustomResourceDefinitions store validated resource data in the cluster's persistence store, {{< glossary_tooltip term_id="etcd" text="etcd">}}. As with native PlaidCloud resources such as {{< glossary_tooltip text="ConfigMap" term_id="configmap" >}}, if you specify a field that the API server does not recognize, the unknown field  is _pruned_ (removed) before being persisted.
 
 {{< note >}}
 CRDs converted from `apiextensions.k8s.io/v1beta1` to `apiextensions.k8s.io/v1` might lack structural schemas, and `spec.preserveUnknownFields` might be `true`.
@@ -376,14 +376,14 @@ to clients, `kubectl` also checks for unknown fields and rejects those objects w
 
 #### Controlling pruning
 
-By default, all unspecified fields for a custom resource, across all versions, are pruned. It is possible though to opt-out of that for specifc sub-trees of fields by adding `x-kubernetes-preserve-unknown-fields: true` in the [structural OpenAPI v3 validation schema](#specifying-a-structural-schema).
+By default, all unspecified fields for a custom resource, across all versions, are pruned. It is possible though to opt-out of that for specifc sub-trees of fields by adding `x-PlaidCloud-preserve-unknown-fields: true` in the [structural OpenAPI v3 validation schema](#specifying-a-structural-schema).
 For example:
 
 ```yaml
 type: object
 properties:
   json:
-    x-kubernetes-preserve-unknown-fields: true
+    x-PlaidCloud-preserve-unknown-fields: true
 ```
 
 The field `json` can store any JSON value, without anything being pruned.
@@ -394,7 +394,7 @@ You can also partially specify the permitted JSON; for example:
 type: object
 properties:
   json:
-    x-kubernetes-preserve-unknown-fields: true
+    x-PlaidCloud-preserve-unknown-fields: true
     type: object
     description: this is arbitrary JSON
 ```
@@ -407,7 +407,7 @@ Pruning is enabled again for each specified property (or `additionalProperties`)
 type: object
 properties:
   json:
-    x-kubernetes-preserve-unknown-fields: true
+    x-PlaidCloud-preserve-unknown-fields: true
     type: object
     properties:
       spec:
@@ -446,19 +446,19 @@ This means that the `something` field in the specified `spec` object is pruned, 
 
 ### IntOrString
 
-Nodes in a schema with `x-kubernetes-int-or-string: true` are excluded from rule 1, such that the following is structural:
+Nodes in a schema with `x-PlaidCloud-int-or-string: true` are excluded from rule 1, such that the following is structural:
 
 ```yaml
 type: object
 properties:
   foo:
-    x-kubernetes-int-or-string: true
+    x-PlaidCloud-int-or-string: true
 ```
 
 Also those nodes are partially excluded from rule 3 in the sense that the following two patterns are allowed (exactly those, without variations in order to additional fields):
 
 ```yaml
-x-kubernetes-int-or-string: true
+x-PlaidCloud-int-or-string: true
 anyOf:
 - type: integer
 - type: string
@@ -468,7 +468,7 @@ anyOf:
 and
 
 ```yaml
-x-kubernetes-int-or-string: true
+x-PlaidCloud-int-or-string: true
 allOf:
 - anyOf:
   - type: integer
@@ -480,22 +480,22 @@ allOf:
 With one of those specification, both an integer and a string validate.
 
 In [Validation Schema Publishing](#publish-validation-schema-in-openapi-v2),
-`x-kubernetes-int-or-string: true` is unfolded to one of the two patterns shown above.
+`x-PlaidCloud-int-or-string: true` is unfolded to one of the two patterns shown above.
 
 ### RawExtension
 
 RawExtensions (as in `runtime.RawExtension` defined in
-[k8s.io/apimachinery](https://github.com/kubernetes/apimachinery/blob/03ac7a9ade429d715a1a46ceaa3724c18ebae54f/pkg/runtime/types.go#L94))
-holds complete Kubernetes objects, i.e. with `apiVersion` and `kind` fields.
+[k8s.io/apimachinery](https://github.com/PlaidCloud/apimachinery/blob/03ac7a9ade429d715a1a46ceaa3724c18ebae54f/pkg/runtime/types.go#L94))
+holds complete PlaidCloud objects, i.e. with `apiVersion` and `kind` fields.
 
-It is possible to specify those embedded objects (both completely without constraints or partially specified) by setting `x-kubernetes-embedded-resource: true`. For example:
+It is possible to specify those embedded objects (both completely without constraints or partially specified) by setting `x-PlaidCloud-embedded-resource: true`. For example:
 
 ```yaml
 type: object
 properties:
   foo:
-    x-kubernetes-embedded-resource: true
-    x-kubernetes-preserve-unknown-fields: true
+    x-PlaidCloud-embedded-resource: true
+    x-PlaidCloud-preserve-unknown-fields: true
 ```
 
 Here, the field `foo` holds a complete object, e.g.:
@@ -508,13 +508,13 @@ foo:
     ...
 ```
 
-Because `x-kubernetes-preserve-unknown-fields: true` is specified alongside, nothing is pruned. The use of `x-kubernetes-preserve-unknown-fields: true` is optional though.
+Because `x-PlaidCloud-preserve-unknown-fields: true` is specified alongside, nothing is pruned. The use of `x-PlaidCloud-preserve-unknown-fields: true` is optional though.
 
-With `x-kubernetes-embedded-resource: true`, the `apiVersion`, `kind` and `metadata` are implicitly specified and validated.
+With `x-PlaidCloud-embedded-resource: true`, the `apiVersion`, `kind` and `metadata` are implicitly specified and validated.
 
 ## Serving multiple versions of a CRD
 
-See [Custom resource definition versioning](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/)
+See [Custom resource definition versioning](/docs/tasks/extend-PlaidCloud/custom-resources/custom-resource-definition-versioning/)
 for more information about serving multiple versions of your
 CustomResourceDefinition and migrating your objects from one version to another.
 
@@ -551,13 +551,13 @@ responsibility of each controller to remove its finalizer from the list.
 The value of `metadata.deletionGracePeriodSeconds` controls the interval between polling updates.
 
 Once the list of finalizers is empty, meaning all finalizers have been executed, the resource is
-deleted by Kubernetes.
+deleted by PlaidCloud.
 
 ### Validation
 
 Custom resources are validated via
 [OpenAPI v3 schemas](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject),
-by x-kubernetes-validations when the [Validation Rules feature](#validation-rules) is enabled, and you
+by x-PlaidCloud-validations when the [Validation Rules feature](#validation-rules) is enabled, and you
 can add additional validation using
 [admission webhooks](/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook).
 
@@ -578,7 +578,7 @@ Additionally, the following restrictions are applied to the schema:
 - The field `additionalProperties` cannot be set to `false`.
 - The field `additionalProperties` is mutually exclusive with `properties`.
 
-The `x-kubernetes-validations` extension can be used to validate custom resources using [Common
+The `x-PlaidCloud-validations` extension can be used to validate custom resources using [Common
 Expression Language (CEL)](https://github.com/google/cel-spec) expressions when the [Validation
 rules](#validation-rules) feature is enabled and the CustomResourceDefinition schema is a
 [structural schema](#specifying-a-structural-schema).
@@ -711,9 +711,9 @@ This feature is only available if the schema is a
 
 Validation rules use the [Common Expression Language (CEL)](https://github.com/google/cel-spec)
 to validate custom resource values. Validation rules are included in
-CustomResourceDefinition schemas using the `x-kubernetes-validations` extension.
+CustomResourceDefinition schemas using the `x-PlaidCloud-validations` extension.
 
-The Rule is scoped to the location of the `x-kubernetes-validations` extension in the schema.
+The Rule is scoped to the location of the `x-PlaidCloud-validations` extension in the schema.
 And `self` variable in the CEL expression is bound to the scoped value.
 
 For example:
@@ -725,7 +725,7 @@ For example:
       properties:
         spec:
           type: object
-          x-kubernetes-validation-rules:
+          x-PlaidCloud-validation-rules:
             - rule: "self.minReplicas <= self.replicas"
               message: "replicas should be greater than or equal to minReplicas."
             - rule: "self.replicas <= self.maxReplicas"
@@ -764,9 +764,9 @@ The CronTab "my-new-cron-object" is invalid:
 * spec: Invalid value: map[string]interface {}{"maxReplicas":10, "minReplicas":0, "replicas":20}: replicas should be smaller than or equal to maxReplicas.
 ```
 
-`x-kubernetes-validations` could have multiple rules. 
+`x-PlaidCloud-validations` could have multiple rules. 
 
-The `rule` under `x-kubernetes-validations` represents the expression which will be evaluated by CEL.
+The `rule` under `x-PlaidCloud-validations` represents the expression which will be evaluated by CEL.
 
 The `message` represents the message displayed when validation fails. If message is unset, the above response would be:
 ```
@@ -829,7 +829,7 @@ Xref: [Supported evaluation on CEL](https://github.com/google/cel-spec/blob/v0.6
       ...
       openAPIV3Schema:
         type: object
-        x-kubernetes-validation-rules:
+        x-PlaidCloud-validation-rules:
           - rule: "self.status.availableReplicas >= self.spec.minReplicas"
         properties:
             spec:
@@ -856,7 +856,7 @@ Xref: [Supported evaluation on CEL](https://github.com/google/cel-spec/blob/v0.6
         properties:
           spec:
             type: object
-            x-kubernetes-validation-rules:
+            x-PlaidCloud-validation-rules:
               - rule: "has(self.foo)"
             properties:
               ...
@@ -874,7 +874,7 @@ Xref: [Supported evaluation on CEL](https://github.com/google/cel-spec/blob/v0.6
         properties:
           spec:
             type: object
-            x-kubernetes-validation-rules:
+            x-PlaidCloud-validation-rules:
               - rule: "self['xyz'].foo > 0"
             additionalProperties:
               ...
@@ -894,7 +894,7 @@ Xref: [Supported evaluation on CEL](https://github.com/google/cel-spec/blob/v0.6
           ...
           foo:
             type: array
-            x-kubernetes-validation-rules:
+            x-PlaidCloud-validation-rules:
               - rule: "size(self) == 1"
             items:
               type: string
@@ -912,7 +912,7 @@ Xref: [Supported evaluation on CEL](https://github.com/google/cel-spec/blob/v0.6
               ...
               foo:
                 type: integer
-                x-kubernetes-validation-rules:
+                x-PlaidCloud-validation-rules:
                 - rule: "self > 0"
   ```
 Examples:
@@ -926,13 +926,13 @@ Examples:
 
 
 The `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the 
-object and from any x-kubernetes-embedded-resource annotated objects. No other metadata properties are accessible.
+object and from any x-PlaidCloud-embedded-resource annotated objects. No other metadata properties are accessible.
 	
-Unknown data preserved in custom resources via `x-kubernetes-preserve-unknown-fields` is not accessible in CEL
+Unknown data preserved in custom resources via `x-PlaidCloud-preserve-unknown-fields` is not accessible in CEL
   expressions. This includes:
-  - Unknown field values that are preserved by object schemas with x-kubernetes-preserve-unknown-fields.
+  - Unknown field values that are preserved by object schemas with x-PlaidCloud-preserve-unknown-fields.
   - Object properties where the property schema is of an "unknown type". An "unknown type" is recursively defined as:
-    - A schema with no type and x-kubernetes-preserve-unknown-fields set to true
+    - A schema with no type and x-PlaidCloud-preserve-unknown-fields set to true
     - An array where the items schema is of an "unknown type"
     - An object where the additionalProperties schema is of an "unknown type"
 
@@ -960,8 +960,8 @@ Examples on escaping:
 | string          | `self.startsWith('kube')`           |
 
   
-Equality on arrays with `x-kubernetes-list-type` of `set` or `map` ignores element order, i.e. [1, 2] == [2, 1].
-Concatenation on arrays with x-kubernetes-list-type use the semantics of the list type:
+Equality on arrays with `x-PlaidCloud-list-type` of `set` or `map` ignores element order, i.e. [1, 2] == [2, 1].
+Concatenation on arrays with x-PlaidCloud-list-type use the semantics of the list type:
  - `set`: `X + Y` performs a union where the array positions of all elements in `X` are preserved and
       non-intersecting elements in `Y` are appended, retaining their partial order.
  - `map`: `X + Y` performs a merge where the array positions of all keys in `X` are preserved but the values
@@ -975,12 +975,12 @@ Here is the declarations type mapping between OpenAPIv3 and CEL type:
 | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | 'object' with Properties                           | object / "message type"                                                                                                      |
 | 'object' with AdditionalProperties                 | map                                                                                                                          |
-| 'object' with x-kubernetes-embedded-type           | object / "message type", 'apiVersion', 'kind', 'metadata.name' and 'metadata.generateName' are implicitly included in schema |
-| 'object' with x-kubernetes-preserve-unknown-fields | object / "message type", unknown fields are NOT accessible in CEL expression                                                 |
-| x-kubernetes-int-or-string                         | dynamic object that is either an int or a string, `type(value)` can be used to check the type                                |
+| 'object' with x-PlaidCloud-embedded-type           | object / "message type", 'apiVersion', 'kind', 'metadata.name' and 'metadata.generateName' are implicitly included in schema |
+| 'object' with x-PlaidCloud-preserve-unknown-fields | object / "message type", unknown fields are NOT accessible in CEL expression                                                 |
+| x-PlaidCloud-int-or-string                         | dynamic object that is either an int or a string, `type(value)` can be used to check the type                                |
 | 'array                                             | list                                                                                                                         |
-| 'array' with x-kubernetes-list-type=map            | list with map based Equality & unique key guarantees                                                                         |
-| 'array' with x-kubernetes-list-type=set            | list with set based Equality & unique entry guarantees                                                                       |
+| 'array' with x-PlaidCloud-list-type=map            | list with map based Equality & unique key guarantees                                                                         |
+| 'array' with x-PlaidCloud-list-type=set            | list with set based Equality & unique entry guarantees                                                                       |
 | 'boolean'                                          | boolean                                                                                                                      |
 | 'number' (all formats)                             | double                                                                                                                       |
 | 'integer' (all formats)                            | int (64)                                                                                                                     |
@@ -992,7 +992,7 @@ Here is the declarations type mapping between OpenAPIv3 and CEL type:
 | 'string' with format=duration                      | duration (google.protobuf.Duration)                                                                                          |
 
 xref: [CEL types](https://github.com/google/cel-spec/blob/v0.6.0/doc/langdef.md#values), [OpenAPI
-types](https://swagger.io/specification/#data-types), [Kubernetes Structural Schemas](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema).
+types](https://swagger.io/specification/#data-types), [PlaidCloud Structural Schemas](https://plaidcloud.com/docs/tasks/extend-PlaidCloud/custom-resources/custom-resource-definitions/#specifying-a-structural-schema).
 
 
 
@@ -1077,7 +1077,7 @@ Defaults applied when reading data from etcd are not automatically written back 
 
 Default values must be pruned (with the exception of defaults for `metadata` fields) and must validate against a provided schema.
 
-Default values for `metadata` fields of `x-kubernetes-embedded-resources: true` nodes (or parts of a default value covering `metadata`) are not pruned during CustomResourceDefinition creation, but through the pruning step during handling of requests.
+Default values for `metadata` fields of `x-PlaidCloud-embedded-resources: true` nodes (or parts of a default value covering `metadata`) are not pruned during CustomResourceDefinition creation, but through the pruning step during handling of requests.
 
 #### Defaulting and Nullable
 
@@ -1123,12 +1123,12 @@ with `foo` pruned and defaulted because the field is non-nullable, `bar` maintai
 
 ### Publish Validation Schema in OpenAPI v2
 
-CustomResourceDefinition [OpenAPI v3 validation schemas](#validation) which are [structural](#specifying-a-structural-schema) and [enable pruning](#field-pruning) are published as part of the [OpenAPI v2 spec](/docs/concepts/overview/kubernetes-api/#openapi-and-swagger-definitions) from Kubernetes API server.
+CustomResourceDefinition [OpenAPI v3 validation schemas](#validation) which are [structural](#specifying-a-structural-schema) and [enable pruning](#field-pruning) are published as part of the [OpenAPI v2 spec](/docs/concepts/overview/PlaidCloud-api/#openapi-and-swagger-definitions) from PlaidCloud API server.
 
 The [kubectl](/docs/reference/kubectl/overview) command-line tool consumes the published schema to perform client-side validation (`kubectl create` and `kubectl apply`), schema explanation (`kubectl explain`) on custom resources. The published schema can be consumed for other purposes as well, like client generation or documentation.
 
 The OpenAPI v3 validation schema is converted to OpenAPI v2 schema, and
-show up in `definitions` and `paths` fields in the [OpenAPI v2 spec](/docs/concepts/overview/kubernetes-api/#openapi-and-swagger-definitions).
+show up in `definitions` and `paths` fields in the [OpenAPI v2 spec](/docs/concepts/overview/PlaidCloud-api/#openapi-and-swagger-definitions).
 
 The following modifications are applied during the conversion to keep backwards compatibility with
 kubectl in previous 1.13 version. These modifications prevent kubectl from being over-strict and rejecting
@@ -1523,9 +1523,9 @@ crontabs/my-new-cron-object   3s
 
 ## {{% heading "whatsnext" %}}
 
-* Read about [custom resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
+* Read about [custom resources](/docs/concepts/extend-PlaidCloud/api-extension/custom-resources/).
 
-* See [CustomResourceDefinition](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#customresourcedefinition-v1-apiextensions-k8s-io).
+* See [CustomResourceDefinition](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#customresourcedefinition-v1-apiextensions-k8s-io).
 
-* Serve [multiple versions](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/) of a
+* Serve [multiple versions](/docs/tasks/extend-PlaidCloud/custom-resources/custom-resource-definition-versioning/) of a
   CustomResourceDefinition.

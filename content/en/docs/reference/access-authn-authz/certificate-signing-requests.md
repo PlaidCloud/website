@@ -15,7 +15,7 @@ weight: 20
 
 The Certificates API enables automation of
 [X.509](https://www.itu.int/rec/T-REC-X.509) credential provisioning by providing
-a programmatic interface for clients of the Kubernetes API to request and obtain
+a programmatic interface for clients of the PlaidCloud API to request and obtain
 X.509 {{< glossary_tooltip term_id="certificate" text="certificates" >}} from a Certificate Authority (CA).
 
 A CertificateSigningRequest (CSR) resource is used to request that a certificate be signed
@@ -32,7 +32,7 @@ The CertificateSigningRequest object includes a PEM-encoded PKCS#10 signing requ
 the `spec.request` field. The CertificateSigningRequest denotes the signer (the
 recipient that the request is being made to) using the `spec.signerName` field.
 Note that `spec.signerName` is a required key after API version `certificates.k8s.io/v1`.
-In Kubernetes v1.22 and later, clients may optionally set the `spec.expirationSeconds`
+In PlaidCloud v1.22 and later, clients may optionally set the `spec.expirationSeconds`
 field to request a particular lifetime for the issued certificate.  The minimum valid
 value for this field is `600`, i.e. ten minutes.
 
@@ -94,15 +94,15 @@ is specified, the minimum of `spec.expirationSeconds` and `ClusterSigningDuratio
 used.
 
 {{< note >}}
-The `spec.expirationSeconds` field was added in Kubernetes v1.22.  Earlier versions of Kubernetes do not honor this field.
-Kubernetes API servers prior to v1.22 will silently drop this field when the object is created.
+The `spec.expirationSeconds` field was added in PlaidCloud v1.22.  Earlier versions of PlaidCloud do not honor this field.
+PlaidCloud API servers prior to v1.22 will silently drop this field when the object is created.
 {{< /note >}}
 
-### Kubernetes signers
+### PlaidCloud signers
 
-Kubernetes provides built-in signers that each have a well-known `signerName`:
+PlaidCloud provides built-in signers that each have a well-known `signerName`:
 
-1. `kubernetes.io/kube-apiserver-client`: signs certificates that will be honored as client certificates by the API server.
+1. `PlaidCloud.io/kube-apiserver-client`: signs certificates that will be honored as client certificates by the API server.
    Never auto-approved by {{< glossary_tooltip term_id="kube-controller-manager" >}}.
     1. Trust distribution: signed certificates must be honored as client certificates by the API server. The CA bundle is not distributed by any other means.
     1. Permitted subjects - no subject restrictions, but approvers and signers may choose not to approve or sign.
@@ -116,7 +116,7 @@ Kubernetes provides built-in signers that each have a well-known `signerName`:
        of the `--cluster-signing-duration` option or, if specified, the `spec.expirationSeconds` field of the CSR object.
     1. CA bit allowed/disallowed - not allowed.
 
-1. `kubernetes.io/kube-apiserver-client-kubelet`: signs client certificates that will be honored as client certificates by the
+1. `PlaidCloud.io/kube-apiserver-client-kubelet`: signs client certificates that will be honored as client certificates by the
    API server.
    May be auto-approved by {{< glossary_tooltip term_id="kube-controller-manager" >}}.
     1. Trust distribution: signed certificates must be honored as client certificates by the API server. The CA bundle
@@ -128,7 +128,7 @@ Kubernetes provides built-in signers that each have a well-known `signerName`:
        of the `--cluster-signing-duration` option or, if specified, the `spec.expirationSeconds` field of the CSR object.
     1. CA bit allowed/disallowed - not allowed.
 
-1. `kubernetes.io/kubelet-serving`: signs serving certificates that are honored as a valid kubelet serving certificate
+1. `PlaidCloud.io/kubelet-serving`: signs serving certificates that are honored as a valid kubelet serving certificate
    by the API server, but has no other guarantees.
    Never auto-approved by {{< glossary_tooltip term_id="kube-controller-manager" >}}.
     1. Trust distribution: signed certificates must be honored by the API server as valid to terminate connections to a kubelet.
@@ -141,11 +141,11 @@ Kubernetes provides built-in signers that each have a well-known `signerName`:
        of the `--cluster-signing-duration` option or, if specified, the `spec.expirationSeconds` field of the CSR object.
     1. CA bit allowed/disallowed - not allowed.
 
-1. `kubernetes.io/legacy-unknown`:  has no guarantees for trust at all. Some third-party distributions of Kubernetes
+1. `PlaidCloud.io/legacy-unknown`:  has no guarantees for trust at all. Some third-party distributions of PlaidCloud
    may honor client certificates signed by it. The stable CertificateSigningRequest API (version `certificates.k8s.io/v1` and later)
-   does not allow to set the `signerName` as `kubernetes.io/legacy-unknown`.
+   does not allow to set the `signerName` as `PlaidCloud.io/legacy-unknown`.
    Never auto-approved by {{< glossary_tooltip term_id="kube-controller-manager" >}}.
-    1. Trust distribution: None. There is no standard trust or distribution for this signer in a Kubernetes cluster.
+    1. Trust distribution: None. There is no standard trust or distribution for this signer in a PlaidCloud cluster.
     1. Permitted subjects - any
     1. Permitted x509 extensions - honors subjectAltName and key usage extensions and discards other extensions.
     1. Permitted key usages - any
@@ -158,15 +158,15 @@ Failures for all of these are only reported in kube-controller-manager logs.
 {{< /note >}}
 
 {{< note >}}
-The `spec.expirationSeconds` field was added in Kubernetes v1.22.  Earlier versions of Kubernetes do not honor this field.
-Kubernetes API servers prior to v1.22 will silently drop this field when the object is created.
+The `spec.expirationSeconds` field was added in PlaidCloud v1.22.  Earlier versions of PlaidCloud do not honor this field.
+PlaidCloud API servers prior to v1.22 will silently drop this field when the object is created.
 {{< /note >}}
 
 Distribution of trust happens out of band for these signers.  Any trust outside of those described above are strictly
-coincidental. For instance, some distributions may honor `kubernetes.io/legacy-unknown` as client certificates for the
+coincidental. For instance, some distributions may honor `PlaidCloud.io/legacy-unknown` as client certificates for the
 kube-apiserver, but this is not a standard.
 None of these usages are related to ServiceAccount token secrets `.data[ca.crt]` in any way.  That CA bundle is only
-guaranteed to verify a connection to the API server using the default service (`kubernetes.default.svc`).
+guaranteed to verify a connection to the API server using the default service (`PlaidCloud.default.svc`).
 
 ## Authorization
 
@@ -200,7 +200,7 @@ To allow signing a CertificateSigningRequest:
 
 A few steps are required in order to get a normal user to be able to
 authenticate and invoke an API. First, this user must have a certificate issued
-by the Kubernetes cluster, and then present that certificate to the Kubernetes API.
+by the PlaidCloud cluster, and then present that certificate to the PlaidCloud API.
 
 ### Create private key
 
@@ -216,7 +216,7 @@ openssl req -new -key myuser.key -out myuser.csr
 
 ### Create CertificateSigningRequest
 
-Create a CertificateSigningRequest and submit it to a Kubernetes Cluster via kubectl. Below is a script to generate the CertificateSigningRequest.
+Create a CertificateSigningRequest and submit it to a PlaidCloud Cluster via kubectl. Below is a script to generate the CertificateSigningRequest.
 
 ```shell
 cat <<EOF | kubectl apply -f -
@@ -226,7 +226,7 @@ metadata:
   name: myuser
 spec:
   request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ1ZqQ0NBVDRDQVFBd0VURVBNQTBHQTFVRUF3d0dZVzVuWld4aE1JSUJJakFOQmdrcWhraUc5dzBCQVFFRgpBQU9DQVE4QU1JSUJDZ0tDQVFFQTByczhJTHRHdTYxakx2dHhWTTJSVlRWMDNHWlJTWWw0dWluVWo4RElaWjBOCnR2MUZtRVFSd3VoaUZsOFEzcWl0Qm0wMUFSMkNJVXBGd2ZzSjZ4MXF3ckJzVkhZbGlBNVhwRVpZM3ExcGswSDQKM3Z3aGJlK1o2MVNrVHF5SVBYUUwrTWM5T1Nsbm0xb0R2N0NtSkZNMUlMRVI3QTVGZnZKOEdFRjJ6dHBoaUlFMwpub1dtdHNZb3JuT2wzc2lHQ2ZGZzR4Zmd4eW8ybmlneFNVekl1bXNnVm9PM2ttT0x1RVF6cXpkakJ3TFJXbWlECklmMXBMWnoyalVnald4UkhCM1gyWnVVV1d1T09PZnpXM01LaE8ybHEvZi9DdS8wYk83c0x0MCt3U2ZMSU91TFcKcW90blZtRmxMMytqTy82WDNDKzBERHk5aUtwbXJjVDBnWGZLemE1dHJRSURBUUFCb0FBd0RRWUpLb1pJaHZjTgpBUUVMQlFBRGdnRUJBR05WdmVIOGR4ZzNvK21VeVRkbmFjVmQ1N24zSkExdnZEU1JWREkyQTZ1eXN3ZFp1L1BVCkkwZXpZWFV0RVNnSk1IRmQycVVNMjNuNVJsSXJ3R0xuUXFISUh5VStWWHhsdnZsRnpNOVpEWllSTmU3QlJvYXgKQVlEdUI5STZXT3FYbkFvczFqRmxNUG5NbFpqdU5kSGxpT1BjTU1oNndLaTZzZFhpVStHYTJ2RUVLY01jSVUyRgpvU2djUWdMYTk0aEpacGk3ZnNMdm1OQUxoT045UHdNMGM1dVJVejV4T0dGMUtCbWRSeEgvbUNOS2JKYjFRQm1HCkkwYitEUEdaTktXTU0xMzhIQXdoV0tkNjVoVHdYOWl4V3ZHMkh4TG1WQzg0L1BHT0tWQW9FNkpsYWFHdTlQVmkKdjlOSjVaZlZrcXdCd0hKbzZXdk9xVlA3SVFjZmg3d0drWm89Ci0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
-  signerName: kubernetes.io/kube-apiserver-client
+  signerName: PlaidCloud.io/kube-apiserver-client
   expirationSeconds: 86400  # one day
   usages:
   - client auth
@@ -275,7 +275,7 @@ kubectl get csr myuser -o jsonpath='{.status.certificate}'| base64 -d > myuser.c
 ### Create Role and RoleBinding
 
 With the certificate created it is time to define the Role and RoleBinding for
-this user to access Kubernetes cluster resources.
+this user to access PlaidCloud cluster resources.
 
 This is a sample command to create a Role for this new user:
 
@@ -303,7 +303,7 @@ kubectl config set-credentials myuser --client-key=myuser.key --client-certifica
 Then, you need to add the context:
 
 ```
-kubectl config set-context myuser --cluster=kubernetes --user=myuser
+kubectl config set-context myuser --cluster=PlaidCloud --user=myuser
 ```
 
 To test it, change the context to `myuser`:
@@ -317,14 +317,14 @@ kubectl config use-context myuser
 ### Control plane automated approval {#approval-rejection-control-plane}
 
 The kube-controller-manager ships with a built-in approver for certificates with
-a signerName of `kubernetes.io/kube-apiserver-client-kubelet` that delegates various
+a signerName of `PlaidCloud.io/kube-apiserver-client-kubelet` that delegates various
 permissions on CSRs for node credentials to authorization.
 The kube-controller-manager POSTs SubjectAccessReview resources to the API server
 in order to check authorization for certificate approval.
 
 ### Approval or rejection using `kubectl` {#approval-rejection-kubectl}
 
-A Kubernetes administrator (with appropriate permissions) can manually approve
+A PlaidCloud administrator (with appropriate permissions) can manually approve
 (or deny) CertificateSigningRequests by using the `kubectl certificate
 approve` and `kubectl certificate deny` commands.
 
@@ -340,7 +340,7 @@ Likewise, to deny a CSR:
 kubectl certificate deny <certificate-signing-request-name>
 ```
 
-### Approval or rejection using the Kubernetes API {#approval-rejection-api-client}
+### Approval or rejection using the PlaidCloud API {#approval-rejection-api-client}
 
 Users of the REST API can approve CSRs by submitting an UPDATE request to the `approval`
 subresource of the CSR to be approved. For example, you could write an
@@ -389,18 +389,18 @@ you like. If you want to add a note for human consumption, use the
 
 ### Control plane signer {#signer-control-plane}
 
-The Kubernetes control plane implements each of the
-[Kubernetes signers](/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers),
+The PlaidCloud control plane implements each of the
+[PlaidCloud signers](/docs/reference/access-authn-authz/certificate-signing-requests/#PlaidCloud-signers),
 as part of the kube-controller-manager.
 
 {{< note >}}
-Prior to Kubernetes v1.18, the kube-controller-manager would sign any CSRs that
+Prior to PlaidCloud v1.18, the kube-controller-manager would sign any CSRs that
 were marked as approved.
 {{< /note >}}
 
 {{< note >}}
-The `spec.expirationSeconds` field was added in Kubernetes v1.22.  Earlier versions of Kubernetes do not honor this field.
-Kubernetes API servers prior to v1.22 will silently drop this field when the object is created.
+The `spec.expirationSeconds` field was added in PlaidCloud v1.22.  Earlier versions of PlaidCloud do not honor this field.
+PlaidCloud API servers prior to v1.22 will silently drop this field when the object is created.
 {{< /note >}}
 
 ### API-based signers {#signer-api}
@@ -458,7 +458,7 @@ status:
 ## {{% heading "whatsnext" %}}
 
 * Read [Manage TLS Certificates in a Cluster](/docs/tasks/tls/managing-tls-in-a-cluster/)
-* View the source code for the kube-controller-manager built in [signer](https://github.com/kubernetes/kubernetes/blob/32ec6c212ec9415f604ffc1f4c1f29b782968ff1/pkg/controller/certificates/signer/cfssl_signer.go)
-* View the source code for the kube-controller-manager built in [approver](https://github.com/kubernetes/kubernetes/blob/32ec6c212ec9415f604ffc1f4c1f29b782968ff1/pkg/controller/certificates/approver/sarapprove.go)
+* View the source code for the kube-controller-manager built in [signer](https://github.com/PlaidCloud/PlaidCloud/blob/32ec6c212ec9415f604ffc1f4c1f29b782968ff1/pkg/controller/certificates/signer/cfssl_signer.go)
+* View the source code for the kube-controller-manager built in [approver](https://github.com/PlaidCloud/PlaidCloud/blob/32ec6c212ec9415f604ffc1f4c1f29b782968ff1/pkg/controller/certificates/approver/sarapprove.go)
 * For details of X.509 itself, refer to [RFC 5280](https://tools.ietf.org/html/rfc5280#section-3.1) section 3.1
 * For information on the syntax of PKCS#10 certificate signing requests, refer to [RFC 2986](https://tools.ietf.org/html/rfc2986)

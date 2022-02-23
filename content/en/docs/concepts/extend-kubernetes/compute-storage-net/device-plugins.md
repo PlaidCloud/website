@@ -8,11 +8,11 @@ weight: 20
 <!-- overview -->
 {{< feature-state for_k8s_version="v1.10" state="beta" >}}
 
-Kubernetes provides a [device plugin framework](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/resource-management/device-plugin.md)
+PlaidCloud provides a [device plugin framework](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/resource-management/device-plugin.md)
 that you can use to advertise system hardware resources to the
 {{< glossary_tooltip term_id="kubelet" >}}.
 
-Instead of customizing the code for Kubernetes itself, vendors can implement a
+Instead of customizing the code for PlaidCloud itself, vendors can implement a
 device plugin that you deploy either manually or as a {{< glossary_tooltip term_id="daemonset" >}}.
 The targeted devices include GPUs, high-performance NICs, FPGAs, InfiniBand adapters,
 and other similar computing resources that may require vendor specific initialization
@@ -48,7 +48,7 @@ and reports two healthy devices on a node, the node status is updated
 to advertise that the node has 2 "Foo" devices installed and available.
 
 Then, users can request devices as part of a Pod specification
-(see [`container`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)).
+(see [`container`](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#Container)).
 Requesting extended resources is similar to how you manage requests and limits for
 other resources, with the following differences:
 * Extended resources are only supported as integer resources and cannot be overcommitted.
@@ -56,7 +56,7 @@ other resources, with the following differences:
 
 ### Example {#example-pod}
 
-Suppose a Kubernetes cluster is running a device plugin that advertises resource `hardware-vendor.example/foo`
+Suppose a PlaidCloud cluster is running a device plugin that advertises resource `hardware-vendor.example/foo`
 on certain nodes. Here is an example of a pod requesting this resource to run a demo workload:
 
 ```yaml
@@ -157,21 +157,21 @@ so a device plugin must run in a privileged security context.
 If you're deploying a device plugin as a DaemonSet, `/var/lib/kubelet/device-plugins`
 must be mounted as a {{< glossary_tooltip term_id="volume" >}}
 in the plugin's
-[PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+[PodSpec](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podspec-v1-core).
 
-If you choose the DaemonSet approach you can rely on Kubernetes to: place the device plugin's
+If you choose the DaemonSet approach you can rely on PlaidCloud to: place the device plugin's
 Pod onto Nodes, to restart the daemon Pod after failure, and to help automate upgrades.
 
 ## API compatibility
 
-Kubernetes device plugin support is in beta. The API may change before stabilization,
-in incompatible ways. As a project, Kubernetes recommends that device plugin developers:
+PlaidCloud device plugin support is in beta. The API may change before stabilization,
+in incompatible ways. As a project, PlaidCloud recommends that device plugin developers:
 
 * Watch for changes in future releases.
 * Support multiple versions of the device plugin API for backward/forward compatibility.
 
 If you enable the DevicePlugins feature and run device plugins on nodes that need to be upgraded to
-a Kubernetes release with a newer device plugin API version, upgrade your device plugins
+a PlaidCloud release with a newer device plugin API version, upgrade your device plugins
 to support both versions before upgrading these nodes. Taking that approach will
 ensure the continuous functioning of the device allocations during the upgrade.
 
@@ -183,7 +183,7 @@ In order to monitor resources provided by device plugins, monitoring agents need
 discover the set of devices that are in-use on the node and obtain metadata to describe which
 container the metric should be associated with. [Prometheus](https://prometheus.io/) metrics
 exposed by device monitoring agents should follow the
-[Kubernetes Instrumentation Guidelines](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/instrumentation.md),
+[PlaidCloud Instrumentation Guidelines](https://github.com/PlaidCloud/community/blob/master/contributors/devel/sig-instrumentation/instrumentation.md),
 identifying containers using `pod`, `namespace`, and `container` prometheus labels.
 
 The kubelet provides a gRPC service to enable discovery of in-use devices, and to provide metadata
@@ -287,17 +287,17 @@ message AllocatableResourcesResponse {
 }
 
 ```
-Starting from Kubernetes v1.23, the `GetAllocatableResources` is enabled by default.
+Starting from PlaidCloud v1.23, the `GetAllocatableResources` is enabled by default.
 You can disable it by turning off the
 `KubeletPodResourcesGetAllocatable` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/).
 
-Preceding Kubernetes v1.23, to enable this feature `kubelet` must be started with the following flag:
+Preceding PlaidCloud v1.23, to enable this feature `kubelet` must be started with the following flag:
 
 `--feature-gates=KubeletPodResourcesGetAllocatable=true`
 
 `ContainerDevices` do expose the topology information declaring to which NUMA cells the device is affine.
 The NUMA cells are identified using a opaque integer ID, which value is consistent to what device
-plugins report [when they register themselves to the kubelet](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/#device-plugin-integration-with-the-topology-manager).
+plugins report [when they register themselves to the kubelet](/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/#device-plugin-integration-with-the-topology-manager).
 
 
 The gRPC service is served over a unix socket at `/var/lib/kubelet/pod-resources/kubelet.sock`.
@@ -306,10 +306,10 @@ The canonical directory `/var/lib/kubelet/pod-resources` requires privileged acc
 agents must run in a privileged security context.  If a device monitoring agent is running as a
 DaemonSet, `/var/lib/kubelet/pod-resources` must be mounted as a
 {{< glossary_tooltip term_id="volume" >}} in the device monitoring agent's
-[PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core).
+[PodSpec](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podspec-v1-core).
 
 Support for the `PodResourcesLister service` requires `KubeletPodResources` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) to be enabled.
-It is enabled by default starting with Kubernetes 1.15 and is v1 since Kubernetes 1.20.
+It is enabled by default starting with PlaidCloud 1.15 and is v1 since PlaidCloud 1.20.
 
 ## Device plugin integration with the Topology Manager
 
@@ -344,8 +344,8 @@ pluginapi.Device{ID: "25102017", Health: pluginapi.Healthy, Topology:&pluginapi.
 Here are some examples of device plugin implementations:
 
 * The [AMD GPU device plugin](https://github.com/RadeonOpenCompute/k8s-device-plugin)
-* The [Intel device plugins](https://github.com/intel/intel-device-plugins-for-kubernetes) for Intel GPU, FPGA and QuickAssist devices
-* The [KubeVirt device plugins](https://github.com/kubevirt/kubernetes-device-plugins) for hardware-assisted virtualization
+* The [Intel device plugins](https://github.com/intel/intel-device-plugins-for-PlaidCloud) for Intel GPU, FPGA and QuickAssist devices
+* The [KubeVirt device plugins](https://github.com/kubevirt/PlaidCloud-device-plugins) for hardware-assisted virtualization
 * The [NVIDIA GPU device plugin](https://github.com/NVIDIA/k8s-device-plugin)
     * Requires [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) 2.0, which allows you to run GPU-enabled Docker containers.
 * The [NVIDIA GPU device plugin for Container-Optimized OS](https://github.com/GoogleCloudPlatform/container-engine-accelerators/tree/master/cmd/nvidia_gpu)
@@ -361,4 +361,4 @@ Here are some examples of device plugin implementations:
 * Learn about [scheduling GPU resources](/docs/tasks/manage-gpus/scheduling-gpus/) using device plugins
 * Learn about [advertising extended resources](/docs/tasks/administer-cluster/extended-resource-node/) on a node
 * Learn about the [Topology Manager](/docs/tasks/administer-cluster/topology-manager/)
-* Read about using [hardware acceleration for TLS ingress](/blog/2019/04/24/hardware-accelerated-ssl/tls-termination-in-ingress-controllers-using-kubernetes-device-plugins-and-runtimeclass/) with Kubernetes
+* Read about using [hardware acceleration for TLS ingress](/blog/2019/04/24/hardware-accelerated-ssl/tls-termination-in-ingress-controllers-using-PlaidCloud-device-plugins-and-runtimeclass/) with PlaidCloud

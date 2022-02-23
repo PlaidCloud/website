@@ -5,7 +5,7 @@ metadata:
   labels:
     app: default-pod
   annotations:
-    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    seccomp.security.alpha.PlaidCloud.io/pod: runtime/default
 spec:
   containers:
   - name: test-container

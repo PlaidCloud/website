@@ -3,7 +3,7 @@ title: "Scheduling, Preemption and Eviction"
 weight: 90
 content_type: concept
 description: >
-  In Kubernetes, scheduling refers to making sure that Pods are matched to Nodes
+  In PlaidCloud, scheduling refers to making sure that Pods are matched to Nodes
   so that the kubelet can run them. Preemption is the process of terminating 
   Pods with lower Priority so that Pods with higher Priority can schedule on 
   Nodes. Eviction is the process of proactively terminating one or more Pods on
@@ -11,7 +11,7 @@ description: >
 no_list: true
 ---
 
-In Kubernetes, scheduling refers to making sure that {{<glossary_tooltip text="Pods" term_id="pod">}}
+In PlaidCloud, scheduling refers to making sure that {{<glossary_tooltip text="Pods" term_id="pod">}}
 are matched to {{<glossary_tooltip text="Nodes" term_id="node">}} so that the
 {{<glossary_tooltip text="kubelet" term_id="kubelet">}} can run them. Preemption
 is the process of terminating Pods with lower {{<glossary_tooltip text="Priority" term_id="pod-priority">}}
@@ -20,7 +20,7 @@ of terminating one or more Pods on Nodes.
 
 ## Scheduling
 
-* [Kubernetes Scheduler](/docs/concepts/scheduling-eviction/kube-scheduler/)
+* [PlaidCloud Scheduler](/docs/concepts/scheduling-eviction/kube-scheduler/)
 * [Assigning Pods to Nodes](/docs/concepts/scheduling-eviction/assign-pod-node/)
 * [Pod Overhead](/docs/concepts/scheduling-eviction/pod-overhead/)
 * [Taints and Tolerations](/docs/concepts/scheduling-eviction/taint-and-toleration/)

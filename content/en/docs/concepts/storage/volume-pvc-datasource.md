@@ -11,7 +11,7 @@ weight: 60
 
 <!-- overview -->
 
-This document describes the concept of cloning existing CSI Volumes in Kubernetes.  Familiarity with [Volumes](/docs/concepts/storage/volumes) is suggested.
+This document describes the concept of cloning existing CSI Volumes in PlaidCloud.  Familiarity with [Volumes](/docs/concepts/storage/volumes) is suggested.
 
 
 
@@ -22,9 +22,9 @@ This document describes the concept of cloning existing CSI Volumes in Kubernete
 
 The {{< glossary_tooltip text="CSI" term_id="csi" >}} Volume Cloning feature adds support for specifying existing {{< glossary_tooltip text="PVC" term_id="persistent-volume-claim" >}}s in the `dataSource` field to indicate a user would like to clone a {{< glossary_tooltip term_id="volume" >}}.
 
-A Clone is defined as a duplicate of an existing Kubernetes Volume that can be consumed as any standard Volume would be.  The only difference is that upon provisioning, rather than creating a "new" empty Volume, the back end device creates an exact duplicate of the specified Volume.
+A Clone is defined as a duplicate of an existing PlaidCloud Volume that can be consumed as any standard Volume would be.  The only difference is that upon provisioning, rather than creating a "new" empty Volume, the back end device creates an exact duplicate of the specified Volume.
 
-The implementation of cloning, from the perspective of the Kubernetes API, adds the ability to specify an existing PVC as a dataSource during new PVC creation. The source PVC must be bound and available (not in use).
+The implementation of cloning, from the perspective of the PlaidCloud API, adds the ability to specify an existing PVC as a dataSource during new PVC creation. The source PVC must be bound and available (not in use).
 
 Users need to be aware of the following when using this feature:
 

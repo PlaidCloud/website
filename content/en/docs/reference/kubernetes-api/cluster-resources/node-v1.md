@@ -4,7 +4,7 @@ api_metadata:
   import: "k8s.io/api/core/v1"
   kind: "Node"
 content_type: "api_reference"
-description: "Node is a worker node in Kubernetes."
+description: "Node is a worker node in PlaidCloud."
 title: "Node"
 weight: 1
 auto_generated: true
@@ -12,13 +12,13 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference content, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 `apiVersion: v1`
@@ -28,7 +28,7 @@ guide. You can file document formatting bugs against the
 
 ## Node {#Node}
 
-Node is a worker node in Kubernetes. Each node will have a unique identifier in the cache (i.e. in etcd).
+Node is a worker node in PlaidCloud. Each node will have a unique identifier in the cache (i.e. in etcd).
 
 <hr>
 
@@ -143,7 +143,7 @@ NodeSpec describes the attributes that a node is created with.
 
 - **unschedulable** (boolean)
 
-  Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration
+  Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://plaidcloud.com/docs/concepts/nodes/node/#manual-node-administration
 
 
 
@@ -159,7 +159,7 @@ NodeStatus is information about the current status of a node.
 
   *Patch strategy: merge on key `type`*
   
-  List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See http://pr.k8s.io/79391 for an example.
+  List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://plaidcloud.com/docs/concepts/nodes/node/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See http://pr.k8s.io/79391 for an example.
 
   <a name="NodeAddress"></a>
   *NodeAddress contains information for the node's address.*
@@ -185,13 +185,13 @@ NodeStatus is information about the current status of a node.
 
 - **capacity** (map[string]<a href="{{< ref "../common-definitions/quantity#Quantity" >}}">Quantity</a>)
 
-  Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
+  Capacity represents the total resources of a node. More info: https://plaidcloud.com/docs/concepts/storage/persistent-volumes#capacity
 
 - **conditions** ([]NodeCondition)
 
   *Patch strategy: merge on key `type`*
   
-  Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition
+  Conditions is an array of current observed node conditions. More info: https://plaidcloud.com/docs/concepts/nodes/node/#condition
 
   <a name="NodeCondition"></a>
   *NodeCondition contains condition information for a node.*
@@ -381,7 +381,7 @@ NodeStatus is information about the current status of a node.
 
 - **nodeInfo** (NodeSystemInfo)
 
-  Set of ids/uuids to uniquely identify the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#info
+  Set of ids/uuids to uniquely identify the node. More info: https://plaidcloud.com/docs/concepts/nodes/node/#info
 
   <a name="NodeSystemInfo"></a>
   *NodeSystemInfo is a set of ids/uuids to uniquely identify the node.*
@@ -428,11 +428,11 @@ NodeStatus is information about the current status of a node.
 
 - **phase** (string)
 
-  NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.
+  NodePhase is the recently observed lifecycle phase of the node. More info: https://plaidcloud.com/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.
   
   Possible enum values:
    - `"Pending"` means the node has been created/added by the system, but not configured.
-   - `"Running"` means the node has been configured and has Kubernetes components running.
+   - `"Running"` means the node has been configured and has PlaidCloud components running.
    - `"Terminated"` means the node has been removed from the cluster.
 
 - **volumesAttached** ([]AttachedVolume)

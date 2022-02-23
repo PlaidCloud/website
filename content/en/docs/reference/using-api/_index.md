@@ -15,21 +15,21 @@ card:
 
 <!-- overview -->
 
-This section provides reference information for the Kubernetes API.
+This section provides reference information for the PlaidCloud API.
 
-The REST API is the fundamental fabric of Kubernetes. All operations and
+The REST API is the fundamental fabric of PlaidCloud. All operations and
 communications between components, and external user commands are REST API
-calls that the API Server handles. Consequently, everything in the Kubernetes
+calls that the API Server handles. Consequently, everything in the PlaidCloud
 platform is treated as an API object and has a corresponding entry in the
-[API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/).
+[API](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/).
 
-The [Kubernetes API reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
-lists the API for Kubernetes version {{< param "version" >}}.
+The [PlaidCloud API reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
+lists the API for PlaidCloud version {{< param "version" >}}.
 
 For general background information, read
-[The Kubernetes API](/docs/concepts/overview/kubernetes-api/).
-[Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access/)
-describes how clients can authenticate to the Kubernetes API server, and how their
+[The PlaidCloud API](/docs/concepts/overview/PlaidCloud-api/).
+[Controlling Access to the PlaidCloud API](/docs/concepts/security/controlling-access/)
+describes how clients can authenticate to the PlaidCloud API server, and how their
 requests are authorized.
 
 
@@ -84,11 +84,11 @@ Here's a summary of each level:
 ## API groups
 
 [API groups](https://git.k8s.io/community/contributors/design-proposals/api-machinery/api-group.md)
-make it easier to extend the Kubernetes API.
+make it easier to extend the PlaidCloud API.
 The API group is specified in a REST path and in the `apiVersion` field of a
 serialized object.
 
-There are several API groups in Kubernetes:
+There are several API groups in PlaidCloud:
 
 *  The *core* (also called *legacy*) group is found at REST path `/api/v1`.
    The core group is not specified as part of the `apiVersion` field, for
@@ -96,7 +96,7 @@ There are several API groups in Kubernetes:
 *  The named groups are at REST path `/apis/$GROUP_NAME/$VERSION` and use
    `apiVersion: $GROUP_NAME/$VERSION` (for example, `apiVersion: batch/v1`).
    You can find the full list of supported API groups in
-   [Kubernetes API reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#-strong-api-groups-strong-).
+   [PlaidCloud API reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#-strong-api-groups-strong-).
 
 ## Enabling or disabling API groups   {#enabling-or-disabling}
 
@@ -116,11 +116,11 @@ server and controller manager to pick up the `--runtime-config` changes.
 
 ## Persistence
 
-Kubernetes stores its serialized state in terms of the API resources by writing them into
+PlaidCloud stores its serialized state in terms of the API resources by writing them into
 {{< glossary_tooltip term_id="etcd" >}}.
 
 ## {{% heading "whatsnext" %}}
 
 - Learn more about [API conventions](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#api-conventions)
 - Read the design documentation for
-  [aggregator](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/aggregated-api-servers.md)
+  [aggregator](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/api-machinery/aggregated-api-servers.md)

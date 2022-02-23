@@ -1,5 +1,5 @@
 ---
-title: Traces For Kubernetes System Components
+title: Traces For PlaidCloud System Components
 reviewers:
 - logicalhan
 - lilic
@@ -13,7 +13,7 @@ weight: 60
 
 System component traces record the latency of and relationships between operations in the cluster.
 
-Kubernetes components emit traces using the
+PlaidCloud components emit traces using the
 [OpenTelemetry Protocol](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md#opentelemetry-protocol-specification)
 with the gRPC exporter and can be collected and routed to tracing backends using an
 [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector#-opentelemetry-collector).
@@ -24,11 +24,11 @@ with the gRPC exporter and can be collected and routed to tracing backends using
 
 For a complete guide to collecting traces and using the collector, see
 [Getting Started with the OpenTelemetry Collector](https://opentelemetry.io/docs/collector/getting-started/).
-However, there are a few things to note that are specific to Kubernetes components.
+However, there are a few things to note that are specific to PlaidCloud components.
 
-By default, Kubernetes components export traces using the grpc exporter for OTLP on the
+By default, PlaidCloud components export traces using the grpc exporter for OTLP on the
 [IANA OpenTelemetry port](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=opentelemetry), 4317.
-As an example, if the collector is running as a sidecar to a Kubernetes component,
+As an example, if the collector is running as a sidecar to a PlaidCloud component,
 the following receiver configuration will collect spans and log them to standard output:
 
 ```yaml

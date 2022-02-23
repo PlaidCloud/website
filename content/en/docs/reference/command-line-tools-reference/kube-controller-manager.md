@@ -8,26 +8,26 @@ auto_generated: true
 
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference conent, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
 ## {{% heading "synopsis" %}}
 
 
-The Kubernetes controller manager is a daemon that embeds
-the core control loops shipped with Kubernetes. In applications of robotics and
+The PlaidCloud controller manager is a daemon that embeds
+the core control loops shipped with PlaidCloud. In applications of robotics and
 automation, a control loop is a non-terminating loop that regulates the state of
-the system. In Kubernetes, a controller is a control loop that watches the shared
+the system. In PlaidCloud, a controller is a control loop that watches the shared
 state of the cluster through the apiserver and makes changes attempting to move the
 current state towards the desired state. Examples of controllers that ship with
-Kubernetes today are the replication controller, endpoints controller, namespace
+PlaidCloud today are the replication controller, endpoints controller, namespace
 controller, and serviceaccounts controller.
 
 ```
@@ -68,7 +68,7 @@ kube-controller-manager [flags]
 <td colspan="2">--authentication-kubeconfig string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>kubeconfig file pointing at the 'core' kubernetes server with enough rights to create tokenreviews.authentication.k8s.io. This is optional. If empty, all token requests are considered to be anonymous and no client CA is looked up in the cluster.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>kubeconfig file pointing at the 'core' PlaidCloud server with enough rights to create tokenreviews.authentication.k8s.io. This is optional. If empty, all token requests are considered to be anonymous and no client CA is looked up in the cluster.</p></td>
 </tr>
 
 <tr>
@@ -96,14 +96,14 @@ kube-controller-manager [flags]
 <td colspan="2">--authorization-always-allow-paths strings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/healthz,/readyz,/livez"</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>A list of HTTP paths to skip during authorization, i.e. these are authorized without contacting the 'core' kubernetes server.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>A list of HTTP paths to skip during authorization, i.e. these are authorized without contacting the 'core' PlaidCloud server.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--authorization-kubeconfig string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>kubeconfig file pointing at the 'core' kubernetes server with enough rights to create subjectaccessreviews.authorization.k8s.io. This is optional. If empty, all requests not skipped by authorization are forbidden.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>kubeconfig file pointing at the 'core' PlaidCloud server with enough rights to create subjectaccessreviews.authorization.k8s.io. This is optional. If empty, all requests not skipped by authorization are forbidden.</p></td>
 </tr>
 
 <tr>
@@ -177,7 +177,7 @@ kube-controller-manager [flags]
 </tr>
 
 <tr>
-<td colspan="2">--cluster-name string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "kubernetes"</td>
+<td colspan="2">--cluster-name string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "PlaidCloud"</td>
 </tr>
 <tr>
 <td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The instance prefix for the cluster.</p></td>
@@ -208,56 +208,56 @@ kube-controller-manager [flags]
 <td colspan="2">--cluster-signing-kube-apiserver-client-cert-file string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the kubernetes.io/kube-apiserver-client signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the PlaidCloud.io/kube-apiserver-client signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--cluster-signing-kube-apiserver-client-key-file string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the kubernetes.io/kube-apiserver-client signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the PlaidCloud.io/kube-apiserver-client signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--cluster-signing-kubelet-client-cert-file string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the kubernetes.io/kube-apiserver-client-kubelet signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the PlaidCloud.io/kube-apiserver-client-kubelet signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--cluster-signing-kubelet-client-key-file string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the kubernetes.io/kube-apiserver-client-kubelet signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the PlaidCloud.io/kube-apiserver-client-kubelet signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--cluster-signing-kubelet-serving-cert-file string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the kubernetes.io/kubelet-serving signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the PlaidCloud.io/kubelet-serving signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--cluster-signing-kubelet-serving-key-file string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the kubernetes.io/kubelet-serving signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the PlaidCloud.io/kubelet-serving signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--cluster-signing-legacy-unknown-cert-file string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the kubernetes.io/legacy-unknown signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the PlaidCloud.io/legacy-unknown signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
 </tr>
 
 <tr>
 <td colspan="2">--cluster-signing-legacy-unknown-key-file string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the kubernetes.io/legacy-unknown signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the PlaidCloud.io/legacy-unknown signer.  If specified, --cluster-signing-{cert,key}-file must not be set.</p></td>
 </tr>
 
 <tr>
@@ -464,7 +464,7 @@ kube-controller-manager [flags]
 </tr>
 
 <tr>
-<td colspan="2">--flex-volume-plugin-dir string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/usr/libexec/kubernetes/kubelet-plugins/volume/exec/"</td>
+<td colspan="2">--flex-volume-plugin-dir string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "/usr/libexec/PlaidCloud/kubelet-plugins/volume/exec/"</td>
 </tr>
 <tr>
 <td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Full path of the directory in which the flex volume plugin should search for additional third party volume plugins.</p></td>
@@ -523,11 +523,11 @@ kube-controller-manager [flags]
 <td colspan="2">--kube-api-burst int32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: 30</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Burst to use while talking with kubernetes apiserver.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Burst to use while talking with PlaidCloud apiserver.</p></td>
 </tr>
 
 <tr>
-<td colspan="2">--kube-api-content-type string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "application/vnd.kubernetes.protobuf"</td>
+<td colspan="2">--kube-api-content-type string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: "application/vnd.PlaidCloud.protobuf"</td>
 </tr>
 <tr>
 <td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Content type of requests sent to apiserver.</p></td>
@@ -537,7 +537,7 @@ kube-controller-manager [flags]
 <td colspan="2">--kube-api-qps float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: 20</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>QPS to use while talking with kubernetes apiserver.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>QPS to use while talking with PlaidCloud apiserver.</p></td>
 </tr>
 
 <tr>
@@ -628,7 +628,7 @@ kube-controller-manager [flags]
 <td colspan="2">--master string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The address of the Kubernetes API server (overrides any value in kubeconfig).</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>The address of the PlaidCloud API server (overrides any value in kubeconfig).</p></td>
 </tr>
 
 <tr>

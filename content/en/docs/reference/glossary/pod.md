@@ -11,7 +11,7 @@ tags:
 - core-object
 - fundamental
 ---
- The smallest and simplest Kubernetes object. A Pod represents a set of running {{< glossary_tooltip text="containers" term_id="container" >}} on your cluster.
+ The smallest and simplest PlaidCloud object. A Pod represents a set of running {{< glossary_tooltip text="containers" term_id="container" >}} on your cluster.
 
 <!--more--> 
 

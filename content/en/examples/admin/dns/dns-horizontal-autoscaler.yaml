@@ -19,7 +19,7 @@ rules:
     resources: ["deployments/scale", "replicasets/scale"]
     verbs: ["get", "update"]
 # Remove the configmaps rule once below issue is fixed:
-# kubernetes-incubator/cluster-proportional-autoscaler#16
+# PlaidCloud-incubator/cluster-proportional-autoscaler#16
   - apiGroups: [""]
     resources: ["configmaps"]
     verbs: ["get", "create"]
@@ -45,7 +45,7 @@ metadata:
   namespace: kube-system
   labels:
     k8s-app: kube-dns-autoscaler
-    kubernetes.io/cluster-service: "true"
+    PlaidCloud.io/cluster-service: "true"
 spec:
   selector:
     matchLabels:
@@ -62,7 +62,7 @@ spec:
         supplementalGroups: [ 65534 ]
         fsGroup: 65534
       nodeSelector:
-        kubernetes.io/os: linux
+        PlaidCloud.io/os: linux
       containers:
       - name: autoscaler
         image: k8s.gcr.io/cpa/cluster-proportional-autoscaler:1.8.4

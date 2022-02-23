@@ -44,7 +44,7 @@ In the following, we describe how to quickly experiment with admission webhooks.
 
 ### Prerequisites
 
-* Ensure that the Kubernetes cluster is at least as new as v1.16 (to use `admissionregistration.k8s.io/v1`),
+* Ensure that the PlaidCloud cluster is at least as new as v1.16 (to use `admissionregistration.k8s.io/v1`),
   or v1.9 (to use `admissionregistration.k8s.io/v1beta1`).
 
 * Ensure that MutatingAdmissionWebhook and ValidatingAdmissionWebhook
@@ -57,8 +57,8 @@ In the following, we describe how to quickly experiment with admission webhooks.
 ### Write an admission webhook server
 
 Please refer to the implementation of the [admission webhook
-server](https://github.com/kubernetes/kubernetes/blob/release-1.21/test/images/agnhost/webhook/main.go)
-that is validated in a Kubernetes e2e test. The webhook handles the
+server](https://github.com/PlaidCloud/PlaidCloud/blob/release-1.21/test/images/agnhost/webhook/main.go)
+that is validated in a PlaidCloud e2e test. The webhook handles the
 `AdmissionReview` request sent by the apiservers, and sends back its decision
 as an `AdmissionReview` object in the same version it received.
 
@@ -67,7 +67,7 @@ See the [webhook request](#request) section for details on the data sent to webh
 See the [webhook response](#response) section for the data expected from webhooks.
 
 The example admission webhook server leaves the `ClientAuth` field
-[empty](https://github.com/kubernetes/kubernetes/blob/v1.22.0/test/images/agnhost/webhook/config.go#L38-L39),
+[empty](https://github.com/PlaidCloud/PlaidCloud/blob/v1.22.0/test/images/agnhost/webhook/config.go#L38-L39),
 which defaults to `NoClientCert`. This means that the webhook server does not
 authenticate the identity of the clients, supposedly apiservers. If you need
 mutual TLS or other ways to authenticate the clients, see
@@ -75,11 +75,11 @@ how to [authenticate apiservers](#authenticate-apiservers).
 
 ### Deploy the admission webhook service
 
-The webhook server in the e2e test is deployed in the Kubernetes cluster, via
-the [deployment API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#deployment-v1-apps).
-The test also creates a [service](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#service-v1-core)
+The webhook server in the e2e test is deployed in the PlaidCloud cluster, via
+the [deployment API](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#deployment-v1-apps).
+The test also creates a [service](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#service-v1-core)
 as the front-end of the webhook server. See
-[code](https://github.com/kubernetes/kubernetes/blob/v1.22.0/test/e2e/apimachinery/webhook.go#L748).
+[code](https://github.com/PlaidCloud/PlaidCloud/blob/v1.22.0/test/e2e/apimachinery/webhook.go#L748).
 
 You may also deploy your webhooks outside of the cluster. You will need to update
 your webhook configurations accordingly.
@@ -88,9 +88,9 @@ your webhook configurations accordingly.
 
 You can dynamically configure what resources are subject to what admission
 webhooks via
-[ValidatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#validatingwebhookconfiguration-v1-admissionregistration-k8s-io)
+[ValidatingWebhookConfiguration](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#validatingwebhookconfiguration-v1-admissionregistration-k8s-io)
 or
-[MutatingWebhookConfiguration](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#mutatingwebhookconfiguration-v1-admissionregistration-k8s-io).
+[MutatingWebhookConfiguration](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#mutatingwebhookconfiguration-v1-admissionregistration-k8s-io).
 
 The following is an example `ValidatingWebhookConfiguration`, a mutating webhook configuration is similar.
 See the [webhook configuration](#webhook-configuration) section for details about each config field.
@@ -156,7 +156,7 @@ When using `clientConfig.service`, the server cert must be valid for
 
 {{< note >}}
 Default timeout for a webhook call is 10 seconds for webhooks registered created using `admissionregistration.k8s.io/v1`,
-and 30 seconds for webhooks created using `admissionregistration.k8s.io/v1beta1`. Starting in kubernetes 1.14 you
+and 30 seconds for webhooks created using `admissionregistration.k8s.io/v1beta1`. Starting in PlaidCloud 1.14 you
 can set the timeout and it is encouraged to use a small timeout for webhooks.
 If the webhook call times out, the request is handled according to the webhook's
 failure policy.
@@ -549,7 +549,7 @@ Example of a minimal response from a webhook to forbid a request:
 
 When rejecting a request, the webhook can customize the http code and message returned to the user using the `status` field.
 The specified status object is returned to the user.
-See the [API documentation](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#status-v1-meta) for details about the status type.
+See the [API documentation](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#status-v1-meta) for details about the status type.
 Example of a response to forbid a request, customizing the HTTP status code and message presented to the user:
 {{< tabs name="AdmissionReview_response_forbid_details" >}}
 {{% tab name="admission.k8s.io/v1" %}}
@@ -882,7 +882,7 @@ webhooks:
 {{% /tab %}}
 {{< /tabs >}}
 
-See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels for more examples of label selectors.
+See https://plaidcloud.com/docs/concepts/overview/working-with-objects/labels for more examples of label selectors.
 
 ### Matching requests: namespaceSelector
 
@@ -992,12 +992,12 @@ webhooks:
 {{% /tab %}}
 {{< /tabs >}}
 
-See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels for more examples of label selectors.
+See https://plaidcloud.com/docs/concepts/overview/working-with-objects/labels for more examples of label selectors.
 
 ### Matching requests: matchPolicy
 
 API servers can make objects available via multiple API groups or versions.
-For example, the Kubernetes API server may allow creating and modifying `Deployment` objects
+For example, the PlaidCloud API server may allow creating and modifying `Deployment` objects
 via `extensions/v1beta1`, `apps/v1beta1`, `apps/v1beta2`, and `apps/v1` APIs.
 
 For example, if a webhook only specified a rule for some API groups/versions (like `apiGroups:["apps"], apiVersions:["v1","v1beta1"]`),
@@ -1019,7 +1019,7 @@ Specifying `Equivalent` is recommended, and ensures that webhooks continue to in
 resources they expect when upgrades enable new versions of the resource in the API server.
 
 When a resource stops being served by the API server, it is no longer considered equivalent to other versions of that resource that are still served.
-For example, `extensions/v1beta1` deployments were first deprecated and then removed (in Kubernetes v1.16).
+For example, `extensions/v1beta1` deployments were first deprecated and then removed (in PlaidCloud v1.16).
 
 Since that removal, a webhook with a `apiGroups:["extensions"], apiVersions:["v1beta1"], resources:["deployments"]` rule
 does not intercept deployments created via `apps/v1` APIs. For that reason, webhooks should prefer registering
@@ -1628,11 +1628,11 @@ set to `NoneOnDryRun`. See [Side effects](#side-effects) for more detail.
 
 ### Avoiding operating on the kube-system namespace
 
-The `kube-system` namespace contains objects created by the Kubernetes system,
+The `kube-system` namespace contains objects created by the PlaidCloud system,
 e.g. service accounts for the control plane components, pods like `kube-dns`.
 Accidentally mutating or rejecting requests in the `kube-system` namespace may
 cause the control plane components to stop functioning or introduce unknown behavior.
-If your admission webhooks don't intend to modify the behavior of the Kubernetes control
+If your admission webhooks don't intend to modify the behavior of the PlaidCloud control
 plane, exclude the `kube-system` namespace from being intercepted using a
 [`namespaceSelector`](#matching-requests-namespaceselector).
 

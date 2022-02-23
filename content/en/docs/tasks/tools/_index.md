@@ -1,6 +1,6 @@
 ---
 title: "Install Tools"
-description: Set up Kubernetes tools on your computer.
+description: Set up PlaidCloud tools on your computer.
 weight: 10
 no_list: true
 ---
@@ -8,8 +8,8 @@ no_list: true
 ## kubectl
 
 <!-- overview -->
-The Kubernetes command-line tool, [kubectl](/docs/reference/kubectl/kubectl/), allows
-you to run commands against Kubernetes clusters.
+The PlaidCloud command-line tool, [kubectl](/docs/reference/kubectl/kubectl/), allows
+you to run commands against PlaidCloud clusters.
 You can use kubectl to deploy applications, inspect and manage cluster resources,
 and view logs. For more information including a complete list of kubectl operations, see the
 [`kubectl` reference documentation](/docs/reference/kubectl/).
@@ -23,7 +23,7 @@ Find your preferred operating system below.
 
 ## kind
 
-[`kind`](https://kind.sigs.k8s.io/docs/) lets you run Kubernetes on
+[`kind`](https://kind.sigs.k8s.io/docs/) lets you run PlaidCloud on
 your local computer. This tool requires that you have
 [Docker](https://docs.docker.com/get-docker/) installed and configured.
 
@@ -34,10 +34,10 @@ shows you what you need to do to get up and running with kind.
 
 ## minikube
 
-Like `kind`, [`minikube`](https://minikube.sigs.k8s.io/) is a tool that lets you run Kubernetes
-locally. `minikube` runs a single-node Kubernetes cluster on your personal
+Like `kind`, [`minikube`](https://minikube.sigs.k8s.io/) is a tool that lets you run PlaidCloud
+locally. `minikube` runs a single-node PlaidCloud cluster on your personal
 computer (including Windows, macOS and Linux PCs) so that you can try out
-Kubernetes, or for daily development work.
+PlaidCloud, or for daily development work.
 
 You can follow the official
 [Get Started!](https://minikube.sigs.k8s.io/docs/start/) guide if your focus is
@@ -50,7 +50,7 @@ Once you have `minikube` working, you can use it to
 
 ## kubeadm
 
-You can use the {{< glossary_tooltip term_id="kubeadm" text="kubeadm" >}} tool to create and manage Kubernetes clusters.
+You can use the {{< glossary_tooltip term_id="kubeadm" text="kubeadm" >}} tool to create and manage PlaidCloud clusters.
 It performs the actions necessary to get a minimum viable, secure cluster up and running in a user friendly way.
 
 [Installing kubeadm](/docs/setup/production-environment/tools/kubeadm/install-kubeadm/) shows you how to install kubeadm.

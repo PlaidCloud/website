@@ -35,11 +35,11 @@ Let's walk through an example of how to use `nodeSelector`.
 
 ### Step Zero: Prerequisites
 
-This example assumes that you have a basic understanding of Kubernetes pods and that you have [set up a Kubernetes cluster](/docs/setup/).
+This example assumes that you have a basic understanding of PlaidCloud pods and that you have [set up a PlaidCloud cluster](/docs/setup/).
 
 ### Step One: Attach label to the node
 
-Run `kubectl get nodes` to get the names of your cluster's nodes. Pick out the one that you want to add a label to, and then run `kubectl label nodes <node-name> <label-key>=<label-value>` to add a label to the node you've chosen. For example, if my node name is 'kubernetes-foo-node-1.c.a-robinson.internal' and my desired label is 'disktype=ssd', then I can run `kubectl label nodes kubernetes-foo-node-1.c.a-robinson.internal disktype=ssd`.
+Run `kubectl get nodes` to get the names of your cluster's nodes. Pick out the one that you want to add a label to, and then run `kubectl label nodes <node-name> <label-key>=<label-value>` to add a label to the node you've chosen. For example, if my node name is 'PlaidCloud-foo-node-1.c.a-robinson.internal' and my desired label is 'disktype=ssd', then I can run `kubectl label nodes PlaidCloud-foo-node-1.c.a-robinson.internal disktype=ssd`.
 
 You can verify that it worked by re-running `kubectl get nodes --show-labels` and checking that the node now has a label. You can also use `kubectl describe node "nodename"` to see the full list of labels of the given node.
 
@@ -76,7 +76,7 @@ with a standard set of labels. See [Well-Known Labels, Annotations and Taints](/
 
 {{< note >}}
 The value of these labels is cloud provider specific and is not guaranteed to be reliable.
-For example, the value of `kubernetes.io/hostname` may be the same as the Node name in some environments
+For example, the value of `PlaidCloud.io/hostname` may be the same as the Node name in some environments
 and a different value in other environments.
 {{< /note >}}
 
@@ -88,12 +88,12 @@ When using labels for this purpose, choosing label keys that cannot be modified 
 This prevents a compromised node from using its kubelet credential to set those labels on its own Node object,
 and influencing the scheduler to schedule workloads to the compromised node.
 
-The `NodeRestriction` admission plugin prevents kubelets from setting or modifying labels with a `node-restriction.kubernetes.io/` prefix.
+The `NodeRestriction` admission plugin prevents kubelets from setting or modifying labels with a `node-restriction.PlaidCloud.io/` prefix.
 To make use of that label prefix for node isolation:
 
 1. Ensure you are using the [Node authorizer](/docs/reference/access-authn-authz/node/) and have _enabled_ the [NodeRestriction admission plugin](/docs/reference/access-authn-authz/admission-controllers/#noderestriction).
-2. Add labels under the `node-restriction.kubernetes.io/` prefix to your Node objects, and use those labels in your node selectors.
-For example, `example.com.node-restriction.kubernetes.io/fips=true` or `example.com.node-restriction.kubernetes.io/pci-dss=true`.
+2. Add labels under the `node-restriction.PlaidCloud.io/` prefix to your Node objects, and use those labels in your node selectors.
+For example, `example.com.node-restriction.PlaidCloud.io/fips=true` or `example.com.node-restriction.PlaidCloud.io/pci-dss=true`.
 
 ## Affinity and anti-affinity
 
@@ -138,7 +138,7 @@ Here's an example of a pod that uses node affinity:
 {{< codenew file="pods/pod-with-node-affinity.yaml" >}}
 
 This node affinity rule says the pod can only be placed on a node with a label whose key is
-`kubernetes.io/e2e-az-name` and whose value is either `e2e-az1` or `e2e-az2`. In addition,
+`PlaidCloud.io/e2e-az-name` and whose value is either `e2e-az1` or `e2e-az2`. In addition,
 among nodes that meet that criteria, nodes with a label whose key is `another-node-label-key` and whose
 value is `another-node-label-value` should be preferred.
 
@@ -242,8 +242,8 @@ The affinity on this pod defines one pod affinity rule and one pod anti-affinity
 while the `podAntiAffinity` is `preferredDuringSchedulingIgnoredDuringExecution`. The
 pod affinity rule says that the pod can be scheduled onto a node only if that node is in the same zone
 as at least one already-running pod that has a label with key "security" and value "S1". (More precisely, the pod is eligible to run
-on node N if node N has a label with key `topology.kubernetes.io/zone` and some value V
-such that there is at least one node in the cluster with key `topology.kubernetes.io/zone` and
+on node N if node N has a label with key `topology.PlaidCloud.io/zone` and some value V
+such that there is at least one node in the cluster with key `topology.PlaidCloud.io/zone` and
 value V that is running a pod that has a label with key "security" and value "S1".) The pod anti-affinity
 rule says that the pod should not be scheduled onto a node if that node is in the same zone as a pod with
 label having key "security" and value "S2". See the
@@ -260,7 +260,7 @@ for performance and security reasons, there are some constraints on topologyKey:
 and `preferredDuringSchedulingIgnoredDuringExecution`.
 2. For pod anti-affinity, empty `topologyKey` is also not allowed in both `requiredDuringSchedulingIgnoredDuringExecution`
 and `preferredDuringSchedulingIgnoredDuringExecution`.
-3. For `requiredDuringSchedulingIgnoredDuringExecution` pod anti-affinity, the admission controller `LimitPodHardAntiAffinityTopology` was introduced to limit `topologyKey` to `kubernetes.io/hostname`. If you want to make it available for custom topologies, you may modify the admission controller, or disable it.
+3. For `requiredDuringSchedulingIgnoredDuringExecution` pod anti-affinity, the admission controller `LimitPodHardAntiAffinityTopology` was introduced to limit `topologyKey` to `PlaidCloud.io/hostname`. If you want to make it available for custom topologies, you may modify the admission controller, or disable it.
 4. Except for the above cases, the `topologyKey` can be any legal label-key.
 
 In addition to `labelSelector` and `topologyKey`, you can optionally specify a list `namespaces`
@@ -318,7 +318,7 @@ spec:
                 operator: In
                 values:
                 - store
-            topologyKey: "kubernetes.io/hostname"
+            topologyKey: "PlaidCloud.io/hostname"
       containers:
       - name: redis-server
         image: redis:3.2-alpine
@@ -350,7 +350,7 @@ spec:
                 operator: In
                 values:
                 - web-store
-            topologyKey: "kubernetes.io/hostname"
+            topologyKey: "PlaidCloud.io/hostname"
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
@@ -359,7 +359,7 @@ spec:
                 operator: In
                 values:
                 - store
-            topologyKey: "kubernetes.io/hostname"
+            topologyKey: "PlaidCloud.io/hostname"
       containers:
       - name: web-app
         image: nginx:1.16-alpine
@@ -390,7 +390,7 @@ web-server-1287567482-s330j    1/1       Running   0          7m        10.192.3
 
 ##### Never co-located in the same node
 
-The above example uses `PodAntiAffinity` rule with `topologyKey: "kubernetes.io/hostname"` to deploy the redis cluster so that
+The above example uses `PodAntiAffinity` rule with `topologyKey: "PlaidCloud.io/hostname"` to deploy the redis cluster so that
 no two instances are located on the same host.
 See [ZooKeeper tutorial](/docs/tutorials/stateful-application/zookeeper/#tolerating-node-failure)
 for an example of a StatefulSet configured with anti-affinity for high availability, using the same technique.

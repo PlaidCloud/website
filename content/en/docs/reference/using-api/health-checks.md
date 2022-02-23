@@ -1,5 +1,5 @@
 ---
-title: Kubernetes API health endpoints
+title: PlaidCloud API health endpoints
 reviewers:
 - logicalhan
 content_type: concept
@@ -7,15 +7,15 @@ weight: 50
 ---
 
 <!-- overview -->
-The Kubernetes {{< glossary_tooltip term_id="kube-apiserver" text="API server" >}} provides API endpoints to indicate the current status of the API server.
+The PlaidCloud {{< glossary_tooltip term_id="kube-apiserver" text="API server" >}} provides API endpoints to indicate the current status of the API server.
 This page describes these API endpoints and explains how you can use them.
 
 <!-- body -->
 
 ## API endpoints for health
 
-The Kubernetes API server provides 3 API endpoints (`healthz`, `livez` and `readyz`) to indicate the current status of the API server.
-The `healthz` endpoint is deprecated (since Kubernetes v1.16), and you should use the more specific `livez` and `readyz` endpoints instead.
+The PlaidCloud API server provides 3 API endpoints (`healthz`, `livez` and `readyz`) to indicate the current status of the API server.
+The `healthz` endpoint is deprecated (since PlaidCloud v1.16), and you should use the more specific `livez` and `readyz` endpoints instead.
 The `livez` endpoint can be used with the `--livez-grace-period` [flag](/docs/reference/command-line-tools-reference/kube-apiserver) to specify the startup duration.
 For a graceful shutdown you can specify the `--shutdown-delay-duration` [flag](/docs/reference/command-line-tools-reference/kube-apiserver) with the `/readyz` endpoint.
 Machines that check the `healthz`/`livez`/`readyz` of the API server should rely on the HTTP status code.
@@ -59,7 +59,7 @@ The output will look like this:
     [+]poststarthook/apiservice-openapi-controller ok
     healthz check passed
 
-The Kubernetes API server also supports to exclude specific checks.
+The PlaidCloud API server also supports to exclude specific checks.
 The query parameters can also be combined like in this example:
 
 ```shell

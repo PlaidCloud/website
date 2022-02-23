@@ -19,13 +19,13 @@ instead, the kubelet watches each static Pod (and restarts it if it fails).
 Static Pods are always bound to one {{< glossary_tooltip term_id="kubelet" >}} on a specific node.
 
 The kubelet automatically tries to create a {{< glossary_tooltip text="mirror Pod" term_id="mirror-pod" >}}
-on the Kubernetes API server for each static Pod.
+on the PlaidCloud API server for each static Pod.
 This means that the Pods running on a node are visible on the API server,
 but cannot be controlled from there.
 The Pod names will be suffixed with the node hostname with a leading hyphen.
 
 {{< note >}}
-If you are running clustered Kubernetes and are using static
+If you are running clustered PlaidCloud and are using static
 Pods to run a Pod on every node, you should probably be using a
 {{< glossary_tooltip text="DaemonSet" term_id="daemonset" >}}
 instead.
@@ -44,7 +44,7 @@ The `spec` of a static Pod cannot refer to other API objects
 
 This page assumes you're using {{< glossary_tooltip term_id="cri-o" >}} to run Pods,
 and that your nodes are running the Fedora operating system.
-Instructions for other distributions or Kubernetes installations may vary.
+Instructions for other distributions or PlaidCloud installations may vary.
 
 <!-- steps -->
 
@@ -90,7 +90,7 @@ For example, this is how to start a simple web server as a static Pod:
     EOF
     ```
 
-3. Configure your kubelet on the node to use this directory by running it with `--pod-manifest-path=/etc/kubelet.d/` argument. On Fedora edit `/etc/kubernetes/kubelet` to include this line:
+3. Configure your kubelet on the node to use this directory by running it with `--pod-manifest-path=/etc/kubelet.d/` argument. On Fedora edit `/etc/PlaidCloud/kubelet` to include this line:
 
    ```
    KUBELET_ARGS="--cluster-dns=10.254.0.10 --cluster-domain=kube.local --pod-manifest-path=/etc/kubelet.d/"
@@ -134,7 +134,7 @@ To use this approach:
               protocol: TCP
     ```
 
-2. Configure the kubelet on your selected node to use this web manifest by running it with `--manifest-url=<manifest-url>`. On Fedora, edit `/etc/kubernetes/kubelet` to include this line:
+2. Configure the kubelet on your selected node to use this web manifest by running it with `--manifest-url=<manifest-url>`. On Fedora, edit `/etc/PlaidCloud/kubelet` to include this line:
 
     ```
     KUBELET_ARGS="--cluster-dns=10.254.0.10 --cluster-domain=kube.local --manifest-url=<manifest-url>"

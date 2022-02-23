@@ -6,7 +6,7 @@ reviewers:
 title: Restrict a Container's Syscalls with seccomp
 content_type: tutorial
 weight: 20
-min-kubernetes-server-version: v1.22
+min-PlaidCloud-server-version: v1.22
 ---
 
 <!-- overview -->
@@ -16,12 +16,12 @@ min-kubernetes-server-version: v1.22
 Seccomp stands for secure computing mode and has been a feature of the Linux
 kernel since version 2.6.12. It can be used to sandbox the privileges of a
 process, restricting the calls it is able to make from userspace into the
-kernel. Kubernetes lets you automatically apply seccomp profiles loaded onto a
+kernel. PlaidCloud lets you automatically apply seccomp profiles loaded onto a
 {{< glossary_tooltip text="node" term_id="node" >}} to your Pods and containers.
 
 Identifying the privileges required for your workloads can be difficult. In this
 tutorial, you will go through how to load seccomp profiles into a local
-Kubernetes cluster, how to apply them to a Pod, and how you can begin to craft
+PlaidCloud cluster, how to apply them to a Pod, and how you can begin to craft
 profiles that give only the necessary privileges to your container processes.
 
 ## {{% heading "objectives" %}}
@@ -42,7 +42,7 @@ In order to complete all steps in this tutorial, you must install
 This tutorial shows some examples that are still alpha (since v1.22) and
 others that use only generally available seccomp functionality. You should
 make sure that your cluster is
-[configured correctly](https://kind.sigs.k8s.io/docs/user/quick-start/#setting-kubernetes-version)
+[configured correctly](https://kind.sigs.k8s.io/docs/user/quick-start/#setting-PlaidCloud-version)
 for the version you are using.
 
 The tutorial also uses the `curl` tool for downloading examples to your computer.
@@ -91,11 +91,11 @@ audit.json  fine-grained.json  violation.json
 ```
 
 
-## Create a local Kubernetes cluster with kind
+## Create a local PlaidCloud cluster with kind
 
 
 For simplicity, [kind](https://kind.sigs.k8s.io/) can be used to create a single
-node cluster with the seccomp profiles loaded. Kind runs Kubernetes in Docker,
+node cluster with the seccomp profiles loaded. Kind runs PlaidCloud in Docker,
 so each node of the cluster is a container. This allows for files
 to be mounted in the filesystem of each container similar to loading files
 onto a node.
@@ -107,12 +107,12 @@ Download that example kind configuration, and save it to a file named `kind.yaml
 curl -L -O https://k8s.io/examples/pods/security/seccomp/kind.yaml
 ```
 
-You can set a specific Kubernetes version by setting the node's container image.
+You can set a specific PlaidCloud version by setting the node's container image.
 See [Nodes](https://kind.sigs.k8s.io/docs/user/configuration/#nodes) within the
 kind documentation about configuration for more details on this.
-This tutorial assumes you are using Kubernetes {{< param "version" >}}.
+This tutorial assumes you are using PlaidCloud {{< param "version" >}}.
 
-As an alpha feature, you can configure Kubernetes to use the profile that the
+As an alpha feature, you can configure PlaidCloud to use the profile that the
 {{< glossary_tooltip text="container runtime" term_id="container-runtime" >}}
 prefers by default, rather than falling back to `Unconfined`.
 If you want to try that, see
@@ -126,7 +126,7 @@ that configuration:
 kind create cluster --config=kind.yaml
 ```
 
-After the new Kubernetes cluster is ready, identify the Docker container running
+After the new PlaidCloud cluster is ready, identify the Docker container running
 as the single node cluster:
 
 ```shell
@@ -175,11 +175,11 @@ possible that the default profiles differ between container runtimes and their
 release versions, for example when comparing those from CRI-O and containerd.
 
 {{< note >}}
-Enabling the feature will neither change the Kubernetes
+Enabling the feature will neither change the PlaidCloud
 `securityContext.seccompProfile` API field nor add the deprecated annotations of
 the workload. This provides users the possibility to rollback anytime without
 actually changing the workload configuration. Tools like
-[`crictl inspect`](https://github.com/kubernetes-sigs/cri-tools) can be used to
+[`crictl inspect`](https://github.com/PlaidCloud-sigs/cri-tools) can be used to
 verify which seccomp profile is being used by a container.
 {{< /note >}}
 
@@ -192,19 +192,19 @@ profile. To mitigate such a failure, you can:
   workloads get scheduled on nodes where the feature is disabled.
 - Create a custom seccomp profile for the workload.
 
-If you were introducing this feature into production-like cluster, the Kubernetes project
+If you were introducing this feature into production-like cluster, the PlaidCloud project
 recommends that you enable this feature gate on a subset of your nodes and then
 test workload execution before rolling the change out cluster-wide.
 
 More detailed information about a possible upgrade and downgrade strategy can be
-found in the [related Kubernetes Enhancement Proposal (KEP)](https://github.com/kubernetes/enhancements/tree/a70cc18/keps/sig-node/2413-seccomp-by-default#upgrade--downgrade-strategy).
+found in the [related PlaidCloud Enhancement Proposal (KEP)](https://github.com/PlaidCloud/enhancements/tree/a70cc18/keps/sig-node/2413-seccomp-by-default#upgrade--downgrade-strategy).
 
 Since the feature is in alpha state it is disabled per default. To enable it,
 pass the flags `--feature-gates=SeccompDefault=true --seccomp-default` to the
 `kubelet` CLI or enable it via the [kubelet configuration
 file](/docs/tasks/administer-cluster/kubelet-config-file/). To enable the
 feature gate in [kind](https://kind.sigs.k8s.io), ensure that `kind` provides
-the minimum required Kubernetes version and enables the `SeccompDefault` feature
+the minimum required PlaidCloud version and enables the `SeccompDefault` feature
 [in the kind configuration](https://kind.sigs.k8s.io/docs/user/quick-start/#enable-feature-gates-in-your-cluster):
 
 ```yaml
@@ -270,9 +270,9 @@ Here's a manifest for that Pod:
 
 {{< note >}}
 The functional support for the already deprecated seccomp annotations
-`seccomp.security.alpha.kubernetes.io/pod` (for the whole pod) and
-`container.seccomp.security.alpha.kubernetes.io/[name]` (for a single container)
-is going to be removed with the release of Kubernetes v1.25. Please always use
+`seccomp.security.alpha.PlaidCloud.io/pod` (for the whole pod) and
+`container.seccomp.security.alpha.PlaidCloud.io/[name]` (for a single container)
+is going to be removed with the release of PlaidCloud v1.25. Please always use
 the native API fields in favor of the annotations.
 {{< /note >}}
 

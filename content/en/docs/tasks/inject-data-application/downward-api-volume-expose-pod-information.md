@@ -43,7 +43,7 @@ In the configuration file, you can see that the Pod has a `downwardAPI` Volume,
 and the Container mounts the Volume at `/etc/podinfo`.
 
 Look at the `items` array under `downwardAPI`. Each element of the array is a
-[DownwardAPIVolumeFile](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#downwardapivolumefile-v1-core).
+[DownwardAPIVolumeFile](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#downwardapivolumefile-v1-core).
 The first element specifies that the value of the Pod's
 `metadata.labels` field should be stored in a file named `labels`.
 The second element specifies that the value of the Pod's `annotations`
@@ -69,7 +69,7 @@ kubectl get pods
 View the Container's logs:
 
 ```shell
-kubectl logs kubernetes-downwardapi-volume-example
+kubectl logs PlaidCloud-downwardapi-volume-example
 ```
 
 The output shows the contents of the `labels` file and the `annotations` file:
@@ -86,7 +86,7 @@ builder="john-doe"
 Get a shell into the Container that is running in your Pod:
 
 ```shell
-kubectl exec -it kubernetes-downwardapi-volume-example -- sh
+kubectl exec -it PlaidCloud-downwardapi-volume-example -- sh
 ```
 
 In your shell, view the `labels` file:
@@ -179,7 +179,7 @@ kubectl apply -f https://k8s.io/examples/pods/inject/dapi-volume-resources.yaml
 Get a shell into the Container that is running in your Pod:
 
 ```shell
-kubectl exec -it kubernetes-downwardapi-volume-example-2 -- sh
+kubectl exec -it PlaidCloud-downwardapi-volume-example-2 -- sh
 ```
 
 In your shell, view the `cpu_limit` file:
@@ -242,8 +242,8 @@ basis. For more information, see
 ## Motivation for the Downward API
 
 It is sometimes useful for a Container to have information about itself, without
-being overly coupled to Kubernetes. The Downward API allows containers to consume
-information about themselves or the cluster without using the Kubernetes client
+being overly coupled to PlaidCloud. The Downward API allows containers to consume
+information about themselves or the cluster without using the PlaidCloud client
 or API server.
 
 An example is an existing application that assumes a particular well-known
@@ -258,11 +258,11 @@ inject the Pod's name into the well-known environment variable.
 ## {{% heading "whatsnext" %}}
 
 
-* [PodSpec](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podspec-v1-core)
-* [Volume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core)
-* [DownwardAPIVolumeSource](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#downwardapivolumesource-v1-core)
-* [DownwardAPIVolumeFile](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#downwardapivolumefile-v1-core)
-* [ResourceFieldSelector](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#resourcefieldselector-v1-core)
+* [PodSpec](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podspec-v1-core)
+* [Volume](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#volume-v1-core)
+* [DownwardAPIVolumeSource](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#downwardapivolumesource-v1-core)
+* [DownwardAPIVolumeFile](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#downwardapivolumefile-v1-core)
+* [ResourceFieldSelector](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#resourcefieldselector-v1-core)
 
 
 

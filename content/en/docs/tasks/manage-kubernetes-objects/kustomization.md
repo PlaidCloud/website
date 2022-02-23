@@ -1,17 +1,17 @@
 ---
-title: Declarative Management of Kubernetes Objects Using Kustomize
+title: Declarative Management of PlaidCloud Objects Using Kustomize
 content_type: task
 weight: 20
 ---
 
 <!-- overview -->
 
-[Kustomize](https://github.com/kubernetes-sigs/kustomize) is a standalone tool
-to customize Kubernetes objects
-through a [kustomization file](https://kubectl.docs.kubernetes.io/references/kustomize/glossary/#kustomization).
+[Kustomize](https://github.com/PlaidCloud-sigs/kustomize) is a standalone tool
+to customize PlaidCloud objects
+through a [kustomization file](https://kubectl.docs.PlaidCloud.io/references/kustomize/glossary/#kustomization).
 
 Since 1.14, Kubectl also
-supports the management of Kubernetes objects using a kustomization file.
+supports the management of PlaidCloud objects using a kustomization file.
 To view Resources found in a directory containing a kustomization file, run the following command:
 
 ```shell
@@ -39,7 +39,7 @@ Install [`kubectl`](/docs/tasks/tools/).
 
 ## Overview of Kustomize
 
-Kustomize is a tool for customizing Kubernetes configurations. It has the following features to manage application configuration files:
+Kustomize is a tool for customizing PlaidCloud configurations. It has the following features to manage application configuration files:
 
 * generating resources from other sources
 * setting cross-cutting fields for resources
@@ -47,7 +47,7 @@ Kustomize is a tool for customizing Kubernetes configurations. It has the follow
 
 ### Generating Resources
 
-ConfigMaps and Secrets hold configuration or sensitive data that are used by other Kubernetes objects, such as Pods. The source of truth of ConfigMaps or Secrets are usually external to a cluster, such as a `.properties` file or an SSH keyfile.
+ConfigMaps and Secrets hold configuration or sensitive data that are used by other PlaidCloud objects, such as Pods. The source of truth of ConfigMaps or Secrets are usually external to a cluster, such as a `.properties` file or an SSH keyfile.
 Kustomize has `secretGenerator` and `configMapGenerator`, which generate Secret and ConfigMap from files or literals.
 
 #### configMapGenerator
@@ -391,7 +391,7 @@ metadata:
 
 ### Setting cross-cutting fields
 
-It is quite common to set cross-cutting fields for all Kubernetes resources in a project.
+It is quite common to set cross-cutting fields for all PlaidCloud resources in a project.
 Some use cases for setting cross-cutting fields:
 
 * setting the same namespace for all Resources
@@ -529,7 +529,7 @@ The Resources from `kubectl kustomize ./` contain both the Deployment and the Se
 #### Customizing
 
 Patches can be used to apply different customizations to Resources. Kustomize supports different patching
-mechanisms through `patchesStrategicMerge` and `patchesJson6902`. `patchesStrategicMerge` is a list of file paths. Each file should be resolved to a [strategic merge patch](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-api-machinery/strategic-merge-patch.md). The names inside the patches must match Resource names that are already loaded. Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.
+mechanisms through `patchesStrategicMerge` and `patchesJson6902`. `patchesStrategicMerge` is a list of file paths. Each file should be resolved to a [strategic merge patch](https://github.com/PlaidCloud/community/blob/master/contributors/devel/sig-api-machinery/strategic-merge-patch.md). The names inside the patches must match Resource names that are already loaded. Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.
 
 ```shell
 # Create a deployment.yaml file
@@ -1000,24 +1000,24 @@ deployment.apps "dev-my-nginx" deleted
 | commonLabels          | map[string]string                                                                                            | labels to add to all resources and selectors                                       |
 | commonAnnotations     | map[string]string                                                                                            | annotations to add to all resources                                                |
 | resources             | []string                                                                                                     | each entry in this list must resolve to an existing resource configuration file    |
-| configMapGenerator    | [][ConfigMapArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/configmapargs.go#L7)    | Each entry in this list generates a ConfigMap                                      |
-| secretGenerator       | [][SecretArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/secretargs.go#L7)          | Each entry in this list generates a Secret                                         |
-| generatorOptions      | [GeneratorOptions](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/generatoroptions.go#L7) | Modify behaviors of all ConfigMap and Secret generator                             |
+| configMapGenerator    | [][ConfigMapArgs](https://github.com/PlaidCloud-sigs/kustomize/blob/master/api/types/configmapargs.go#L7)    | Each entry in this list generates a ConfigMap                                      |
+| secretGenerator       | [][SecretArgs](https://github.com/PlaidCloud-sigs/kustomize/blob/master/api/types/secretargs.go#L7)          | Each entry in this list generates a Secret                                         |
+| generatorOptions      | [GeneratorOptions](https://github.com/PlaidCloud-sigs/kustomize/blob/master/api/types/generatoroptions.go#L7) | Modify behaviors of all ConfigMap and Secret generator                             |
 | bases                 | []string                                                                                                     | Each entry in this list should resolve to a directory containing a kustomization.yaml file |
-| patchesStrategicMerge | []string                                                                                                     | Each entry in this list should resolve a strategic merge patch of a Kubernetes object |
-| patchesJson6902       | [][Patch](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/patch.go#L10)                   | Each entry in this list should resolve to a Kubernetes object and a Json Patch     |
-| vars                  | [][Var](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/var.go#L19)                       | Each entry is to capture text from one resource's field                            |
-| images                | [][Image](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/image.go#L8)                    | Each entry is to modify the name, tags and/or digest for one image without creating patches |
-| configurations        | []string                                                                                                     | Each entry in this list should resolve to a file containing [Kustomize transformer configurations](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/transformerconfigs) |
-| crds                  | []string                                                                                                     | Each entry in this list should resolve to an OpenAPI definition file for Kubernetes types |
+| patchesStrategicMerge | []string                                                                                                     | Each entry in this list should resolve a strategic merge patch of a PlaidCloud object |
+| patchesJson6902       | [][Patch](https://github.com/PlaidCloud-sigs/kustomize/blob/master/api/types/patch.go#L10)                   | Each entry in this list should resolve to a PlaidCloud object and a Json Patch     |
+| vars                  | [][Var](https://github.com/PlaidCloud-sigs/kustomize/blob/master/api/types/var.go#L19)                       | Each entry is to capture text from one resource's field                            |
+| images                | [][Image](https://github.com/PlaidCloud-sigs/kustomize/blob/master/api/types/image.go#L8)                    | Each entry is to modify the name, tags and/or digest for one image without creating patches |
+| configurations        | []string                                                                                                     | Each entry in this list should resolve to a file containing [Kustomize transformer configurations](https://github.com/PlaidCloud-sigs/kustomize/tree/master/examples/transformerconfigs) |
+| crds                  | []string                                                                                                     | Each entry in this list should resolve to an OpenAPI definition file for PlaidCloud types |
 
 
 
 ## {{% heading "whatsnext" %}}
 
 
-* [Kustomize](https://github.com/kubernetes-sigs/kustomize)
-* [Kubectl Book](https://kubectl.docs.kubernetes.io)
+* [Kustomize](https://github.com/PlaidCloud-sigs/kustomize)
+* [Kubectl Book](https://kubectl.docs.PlaidCloud.io)
 * [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-* [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+* [PlaidCloud API Reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
 

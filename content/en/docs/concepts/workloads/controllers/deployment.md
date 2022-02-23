@@ -5,7 +5,7 @@ title: Deployments
 feature:
   title: Automated rollouts and rollbacks
   description: >
-    Kubernetes progressively rolls out changes to your application or its configuration, while monitoring application health to ensure it doesn't kill all your instances at the same time. If something goes wrong, Kubernetes will rollback the change for you. Take advantage of a growing ecosystem of deployment solutions.
+    PlaidCloud progressively rolls out changes to your application or its configuration, while monitoring application health to ensure it doesn't kill all your instances at the same time. If something goes wrong, PlaidCloud will rollback the change for you. Take advantage of a growing ecosystem of deployment solutions.
 
 content_type: concept
 weight: 10
@@ -19,7 +19,7 @@ A _Deployment_ provides declarative updates for {{< glossary_tooltip text="Pods"
 You describe a _desired state_ in a Deployment, and the Deployment {{< glossary_tooltip term_id="controller" >}} changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
 
 {{< note >}}
-Do not manage ReplicaSets owned by a Deployment. Consider opening an issue in the main Kubernetes repository if your use case is not covered below.
+Do not manage ReplicaSets owned by a Deployment. Consider opening an issue in the main PlaidCloud repository if your use case is not covered below.
 {{< /note >}}
 
 <!-- body -->
@@ -65,7 +65,7 @@ In this example:
   [Docker Hub](https://hub.docker.com/) image at version 1.14.2.
   * Create one container and name it `nginx` using the `.spec.template.spec.containers[0].name` field.
 
-Before you begin, make sure your Kubernetes cluster is up and running.
+Before you begin, make sure your PlaidCloud cluster is up and running.
 Follow the steps given below to create the above Deployment:
 
 
@@ -138,7 +138,7 @@ Follow the steps given below to create the above Deployment:
 You must specify an appropriate selector and Pod template labels in a Deployment
 (in this case, `app: nginx`).
 
-Do not overlap labels or selectors with other controllers (including other Deployments and StatefulSets). Kubernetes doesn't stop you from overlapping, and if multiple controllers have overlapping selectors those controllers might conflict and behave unexpectedly.
+Do not overlap labels or selectors with other controllers (including other Deployments and StatefulSets). PlaidCloud doesn't stop you from overlapping, and if multiple controllers have overlapping selectors those controllers might conflict and behave unexpectedly.
 {{< /note >}}
 
 ### Pod-template-hash label
@@ -270,7 +270,7 @@ up to 3 replicas, as well as scaling down the old ReplicaSet to 0 replicas.
   Namespace:              default
   CreationTimestamp:      Thu, 30 Nov 2017 10:56:25 +0000
   Labels:                 app=nginx
-  Annotations:            deployment.kubernetes.io/revision=2
+  Annotations:            deployment.PlaidCloud.io/revision=2
   Selector:               app=nginx
   Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
   StrategyType:           RollingUpdate
@@ -417,7 +417,7 @@ rolled back.
     ```
 
     {{< note >}}
-    The Deployment controller stops the bad rollout automatically, and stops scaling up the new ReplicaSet. This depends on the rollingUpdate parameters (`maxUnavailable` specifically) that you have specified. Kubernetes by default sets the value to 25%.
+    The Deployment controller stops the bad rollout automatically, and stops scaling up the new ReplicaSet. This depends on the rollingUpdate parameters (`maxUnavailable` specifically) that you have specified. PlaidCloud by default sets the value to 25%.
     {{< /note >}}
 
 * Get the description of the Deployment:
@@ -485,9 +485,9 @@ Follow the steps given below to check the rollout history:
     3           kubectl set image deployment/nginx-deployment nginx=nginx:1.161
     ```
 
-    `CHANGE-CAUSE` is copied from the Deployment annotation `kubernetes.io/change-cause` to its revisions upon creation. You can specify the`CHANGE-CAUSE` message by:
+    `CHANGE-CAUSE` is copied from the Deployment annotation `PlaidCloud.io/change-cause` to its revisions upon creation. You can specify the`CHANGE-CAUSE` message by:
 
-    * Annotating the Deployment with `kubectl annotate deployment/nginx-deployment kubernetes.io/change-cause="image updated to 1.16.1"`
+    * Annotating the Deployment with `kubectl annotate deployment/nginx-deployment PlaidCloud.io/change-cause="image updated to 1.16.1"`
     * Manually editing the manifest of the resource.
 
 2. To see the details of each revision, run:
@@ -500,7 +500,7 @@ Follow the steps given below to check the rollout history:
     deployments "nginx-deployment" revision 2
       Labels:       app=nginx
               pod-template-hash=1159050644
-      Annotations:  kubernetes.io/change-cause=kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
+      Annotations:  PlaidCloud.io/change-cause=kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
       Containers:
        nginx:
         Image:      nginx:1.16.1
@@ -560,8 +560,8 @@ Follow the steps given below to rollback the Deployment from the current version
     Namespace:              default
     CreationTimestamp:      Sun, 02 Sep 2018 18:17:55 -0500
     Labels:                 app=nginx
-    Annotations:            deployment.kubernetes.io/revision=4
-                            kubernetes.io/change-cause=kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
+    Annotations:            deployment.PlaidCloud.io/revision=4
+                            PlaidCloud.io/change-cause=kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
     Selector:               app=nginx
     Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
     StrategyType:           RollingUpdate
@@ -835,7 +835,7 @@ rolling out a new ReplicaSet, it can be [complete](#complete-deployment), or it 
 
 ### Progressing Deployment
 
-Kubernetes marks a Deployment as _progressing_ when one of the following tasks is performed:
+PlaidCloud marks a Deployment as _progressing_ when one of the following tasks is performed:
 
 * The Deployment creates a new ReplicaSet.
 * The Deployment is scaling up its newest ReplicaSet.
@@ -853,7 +853,7 @@ You can monitor the progress for a Deployment by using `kubectl rollout status`.
 
 ### Complete Deployment
 
-Kubernetes marks a Deployment as _complete_ when it has the following characteristics:
+PlaidCloud marks a Deployment as _complete_ when it has the following characteristics:
 
 * All of the replicas associated with the Deployment have been updated to the latest version you've specified, meaning any
 updates you've requested have been completed.
@@ -927,16 +927,16 @@ attributes to the Deployment's `.status.conditions`:
 This condition can also fail early and is then set to status value of `"False"` due to reasons as `ReplicaSetCreateError`.
 Also, the deadline is not taken into account anymore once the Deployment rollout completes.
 
-See the [Kubernetes API conventions](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties) for more information on status conditions.
+See the [PlaidCloud API conventions](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties) for more information on status conditions.
 
 {{< note >}}
-Kubernetes takes no action on a stalled Deployment other than to report a status condition with
+PlaidCloud takes no action on a stalled Deployment other than to report a status condition with
 `reason: ProgressDeadlineExceeded`. Higher level orchestrators can take advantage of it and act accordingly, for
 example, rollback the Deployment to its previous version.
 {{< /note >}}
 
 {{< note >}}
-If you pause a Deployment rollout, Kubernetes does not check progress against your specified deadline.
+If you pause a Deployment rollout, PlaidCloud does not check progress against your specified deadline.
 You can safely pause a Deployment rollout in the middle of a rollout and resume without triggering
 the condition for exceeding the deadline.
 {{< /note >}}
@@ -990,7 +990,7 @@ status:
   unavailableReplicas: 2
 ```
 
-Eventually, once the Deployment progress deadline is exceeded, Kubernetes updates the status and the
+Eventually, once the Deployment progress deadline is exceeded, PlaidCloud updates the status and the
 reason for the Progressing condition:
 
 ```
@@ -1064,7 +1064,7 @@ can create multiple Deployments, one for each release, following the canary patt
 
 ## Writing a Deployment Spec
 
-As with all other Kubernetes configs, a Deployment needs `.apiVersion`, `.kind`, and `.metadata` fields.
+As with all other PlaidCloud configs, a Deployment needs `.apiVersion`, `.kind`, and `.metadata` fields.
 For general information about working with config files, see
 [deploying applications](/docs/tasks/run-application/run-stateless-application-deployment/),
 configuring containers, and [using kubectl to manage resources](/docs/concepts/overview/working-with-objects/object-management/) documents.
@@ -1097,7 +1097,7 @@ then applying that manifest overwrites the manual scaling that you previously di
 If a [HorizontalPodAutoscaler](/docs/tasks/run-application/horizontal-pod-autoscale/) (or any
 similar API for horizontal scaling) is managing scaling for a Deployment, don't set `.spec.replicas`.
 
-Instead, allow the Kubernetes
+Instead, allow the PlaidCloud
 {{< glossary_tooltip text="control plane" term_id="control-plane" >}} to manage the
 `.spec.replicas` field automatically.
 
@@ -1117,7 +1117,7 @@ Pods with `.spec.template` if the number of Pods is less than the desired number
 {{< note >}}
 You should not create other Pods whose labels match this selector, either directly, by creating
 another Deployment, or by creating another controller such as a ReplicaSet or a ReplicationController. If you
-do so, the first Deployment thinks that it created these other Pods. Kubernetes does not stop you from doing this.
+do so, the first Deployment thinks that it created these other Pods. PlaidCloud does not stop you from doing this.
 {{< /note >}}
 
 If you have multiple controllers that have overlapping selectors, the controllers will fight with each
@@ -1211,7 +1211,7 @@ it is created.
 
 * Learn about [Pods](/docs/concepts/workloads/pods).
 * [Run a Stateless Application Using a Deployment](/docs/tasks/run-application/run-stateless-application-deployment/).
-* `Deployment` is a top-level resource in the Kubernetes REST API.
+* `Deployment` is a top-level resource in the PlaidCloud REST API.
   Read the {{< api-reference page="workload-resources/deployment-v1" >}}
   object definition to understand the API for deployments.
 * Read about [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) and how

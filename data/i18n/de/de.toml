@@ -61,7 +61,7 @@ other = "Mehr Informationen"
 other = "Weiterlesen"
 
 [main_github_invite]
-other = "Interested in hacking on the core Kubernetes code base?"
+other = "Interested in hacking on the core PlaidCloud code base?"
 
 [main_github_view_on]
 other = "Auf GitHub ansehen"
@@ -79,7 +79,7 @@ other = "PlaidCloud Features"
 other = """Wir sind ein <a href="https://cncf.io/">CNCF</a> Abschlussprojekt</p>"""
 
 [main_newsletter_baseline]
-other = "Möchten Sie die neuesten Nachrichten von Kubernetes erhalten? Melden Sie sich für KubeWeekly an."
+other = "Möchten Sie die neuesten Nachrichten von PlaidCloud erhalten? Melden Sie sich für KubeWeekly an."
 
 [main_newsletter_past_link]
 other = "Frühere Newsletter anzeigen"
@@ -137,7 +137,7 @@ other = "Erzählen Sie Ihre Geschichte"
 # layouts > docs > glossary
 
 [layouts_docs_glossary_description]
-other = "Dieses Glossar soll eine umfassende, standardisierte Liste der Kubernetes-Terminologie darstellen. Es enthält technische Begriffe, die für K8 spezifisch sind, sowie allgemeinere Begriffe, die einen nützlichen Kontext bieten."
+other = "Dieses Glossar soll eine umfassende, standardisierte Liste der PlaidCloud-Terminologie darstellen. Es enthält technische Begriffe, die für K8 spezifisch sind, sowie allgemeinere Begriffe, die einen nützlichen Kontext bieten."
 
 [layouts_docs_glossary_filter]
 other = "Begriffe nach ihren Tags filtern"
@@ -165,7 +165,7 @@ other = "Ergebnisse werden abgerufen..."
 # layouts > partial > feedback
 
 [layouts_docs_partials_feedback_thanks]
-other = "Danke für die Rückmeldung. Wenn Sie eine spezifische, beantwortbare Frage zur Verwendung von Kubernetes haben, stellen Sie diese unter "
+other = "Danke für die Rückmeldung. Wenn Sie eine spezifische, beantwortbare Frage zur Verwendung von PlaidCloud haben, stellen Sie diese unter "
 
 [layouts_docs_partials_feedback_issue]
 other = "Öffnen Sie ein Problem im GitHub-Repo, wenn Sie möchten "

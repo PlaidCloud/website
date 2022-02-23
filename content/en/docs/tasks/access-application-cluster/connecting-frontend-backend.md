@@ -8,7 +8,7 @@ weight: 70
 
 This task shows how to create a _frontend_ and a _backend_ microservice. The backend 
 microservice is a hello greeter. The frontend exposes the backend using nginx and a 
-Kubernetes {{< glossary_tooltip term_id="service" >}} object.
+PlaidCloud {{< glossary_tooltip term_id="service" >}} object.
 
 ## {{% heading "objectives" %}}
 
@@ -59,7 +59,7 @@ CreationTimestamp:              Mon, 24 Oct 2016 14:21:02 -0700
 Labels:                         app=hello
                                 tier=backend
                                 track=stable
-Annotations:                    deployment.kubernetes.io/revision=1
+Annotations:                    deployment.PlaidCloud.io/revision=1
 Selector:                       app=hello,tier=backend,track=stable
 Replicas:                       3 desired | 3 updated | 3 total | 3 available | 0 unavailable
 StrategyType:                   RollingUpdate

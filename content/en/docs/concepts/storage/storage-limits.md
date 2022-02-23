@@ -14,7 +14,7 @@ This page describes the maximum number of volumes that can be attached
 to a Node for various cloud providers.
 
 Cloud providers like Google, Amazon, and Microsoft typically have a limit on
-how many volumes can be attached to a Node. It is important for Kubernetes to
+how many volumes can be attached to a Node. It is important for PlaidCloud to
 respect those limits. Otherwise, Pods scheduled on a Node could get stuck
 waiting for volumes to attach.
 
@@ -22,9 +22,9 @@ waiting for volumes to attach.
 
 <!-- body -->
 
-## Kubernetes default limits
+## PlaidCloud default limits
 
-The Kubernetes scheduler has default limits on the number of volumes
+The PlaidCloud scheduler has default limits on the number of volumes
 that can be attached to a Node:
 
 <table>
@@ -58,7 +58,7 @@ Dynamic volume limits are supported for following volume types.
 - Azure Disk
 - CSI
 
-For volumes managed by in-tree volume plugins, Kubernetes automatically determines the Node
+For volumes managed by in-tree volume plugins, PlaidCloud automatically determines the Node
 type and enforces the appropriate maximum number of volumes for the node. For example:
 
 * On
@@ -66,10 +66,10 @@ type and enforces the appropriate maximum number of volumes for the node. For ex
 up to 127 volumes can be attached to a node, [depending on the node
 type](https://cloud.google.com/compute/docs/disks/#pdnumberlimits).
 
-* For Amazon EBS disks on M5,C5,R5,T3 and Z1D instance types, Kubernetes allows only 25
+* For Amazon EBS disks on M5,C5,R5,T3 and Z1D instance types, PlaidCloud allows only 25
 volumes to be attached to a Node. For other instance types on
 <a href="https://aws.amazon.com/ec2/">Amazon Elastic Compute Cloud (EC2)</a>,
-Kubernetes allows 39 volumes to be attached to a Node.
+PlaidCloud allows 39 volumes to be attached to a Node.
 
 * On Azure, up to 64 disks can be attached to a node, depending on the node type. For more details, refer to [Sizes for virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).
 

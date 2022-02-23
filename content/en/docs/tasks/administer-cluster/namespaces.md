@@ -7,13 +7,13 @@ content_type: task
 ---
 
 <!-- overview -->
-This page shows how to view, work in, and delete {{< glossary_tooltip text="namespaces" term_id="namespace" >}}. The page also shows how to use Kubernetes namespaces to subdivide your cluster.
+This page shows how to view, work in, and delete {{< glossary_tooltip text="namespaces" term_id="namespace" >}}. The page also shows how to use PlaidCloud namespaces to subdivide your cluster.
 
 
 ## {{% heading "prerequisites" %}}
 
-* Have an [existing Kubernetes cluster](/docs/setup/).
-* You have a basic understanding of Kubernetes {{< glossary_tooltip text="Pods" term_id="pod" >}}, {{< glossary_tooltip term_id="service" text="Services" >}}, and {{< glossary_tooltip text="Deployments" term_id="deployment" >}}.
+* Have an [existing PlaidCloud cluster](/docs/setup/).
+* You have a basic understanding of PlaidCloud {{< glossary_tooltip text="Pods" term_id="pod" >}}, {{< glossary_tooltip term_id="service" text="Services" >}}, and {{< glossary_tooltip text="Deployments" term_id="deployment" >}}.
 
 
 <!-- steps -->
@@ -32,10 +32,10 @@ kube-system   Active    11d
 kube-public   Active    11d
 ```
 
-Kubernetes starts with three initial namespaces:
+PlaidCloud starts with three initial namespaces:
 
    * `default` The default namespace for objects with no other namespace
-   * `kube-system` The namespace for objects created by the Kubernetes system
+   * `kube-system` The namespace for objects created by the PlaidCloud system
    * `kube-public` This namespace is created automatically and is readable by all users (including those not authenticated). This namespace is mostly reserved for cluster usage, in case that some resources should be visible and readable publicly throughout the whole cluster. The public aspect of this namespace is only a convention, not a requirement.
 
 You can also get the summary of a specific namespace using:
@@ -78,13 +78,13 @@ A namespace can be in one of two phases:
    * `Active` the namespace is in use
    * `Terminating` the namespace is being deleted, and can not be used for new objects
 
-For more details, see [Namespace](/docs/reference/kubernetes-api/cluster-resources/namespace-v1/)
+For more details, see [Namespace](/docs/reference/PlaidCloud-api/cluster-resources/namespace-v1/)
 in the API reference.
 
 ## Creating a new namespace
 
 {{< note >}}
-    Avoid creating namespace with prefix `kube-`, since it is reserved for Kubernetes system namespaces.
+    Avoid creating namespace with prefix `kube-`, since it is reserved for PlaidCloud system namespaces.
 {{< /note >}}
 
 1. Create a new YAML file called `my-namespace.yaml` with the contents:
@@ -128,11 +128,11 @@ This deletes _everything_ under the namespace!
 
 This delete is asynchronous, so for a time you will see the namespace in the `Terminating` state.
 
-## Subdividing your cluster using Kubernetes namespaces
+## Subdividing your cluster using PlaidCloud namespaces
 
 1. Understand the default namespace
 
-    By default, a Kubernetes cluster will instantiate a default namespace when provisioning the cluster to hold the default set of Pods,
+    By default, a PlaidCloud cluster will instantiate a default namespace when provisioning the cluster to hold the default set of Pods,
     Services, and Deployments used by the cluster.
 
     Assuming you have a fresh cluster, you can introspect the available namespaces by doing the following:
@@ -147,18 +147,18 @@ This delete is asynchronous, so for a time you will see the namespace in the `Te
 
 2. Create new namespaces
 
-    For this exercise, we will create two additional Kubernetes namespaces to hold our content.
+    For this exercise, we will create two additional PlaidCloud namespaces to hold our content.
 
-    In a scenario where an organization is using a shared Kubernetes cluster for development and production use cases:
+    In a scenario where an organization is using a shared PlaidCloud cluster for development and production use cases:
 
     The development team would like to maintain a space in the cluster where they can get a view on the list of Pods, Services, and Deployments
-    they use to build and run their application.  In this space, Kubernetes resources come and go, and the restrictions on who can or cannot modify resources
+    they use to build and run their application.  In this space, PlaidCloud resources come and go, and the restrictions on who can or cannot modify resources
     are relaxed to enable agile development.
 
     The operations team would like to maintain a space in the cluster where they can enforce strict procedures on who can or cannot manipulate the set of
     Pods, Services, and Deployments that run the production site.
 
-    One pattern this organization could follow is to partition the Kubernetes cluster into two namespaces: `development` and `production`.
+    One pattern this organization could follow is to partition the PlaidCloud cluster into two namespaces: `development` and `production`.
 
     Let's create two new namespaces to hold our work.
 
@@ -188,7 +188,7 @@ This delete is asynchronous, so for a time you will see the namespace in the `Te
 
 3. Create pods in each namespace
 
-    A Kubernetes namespace provides the scope for Pods, Services, and Deployments in the cluster.
+    A PlaidCloud namespace provides the scope for Pods, Services, and Deployments in the cluster.
 
     Users interacting with one namespace do not see the content in another namespace.
 
@@ -253,7 +253,7 @@ This delete is asynchronous, so for a time you will see the namespace in the `Te
 
 At this point, it should be clear that the resources users create in one namespace are hidden from the other namespace.
 
-As the policy support in Kubernetes evolves, we will extend this scenario to show how you can provide different
+As the policy support in PlaidCloud evolves, we will extend this scenario to show how you can provide different
 authorization rules for each namespace.
 
 
@@ -264,7 +264,7 @@ authorization rules for each namespace.
 
 A single cluster should be able to satisfy the needs of multiple users or groups of users (henceforth a 'user community').
 
-Kubernetes _namespaces_ help different projects, teams, or customers to share a Kubernetes cluster.
+PlaidCloud _namespaces_ help different projects, teams, or customers to share a PlaidCloud cluster.
 
 It does this by providing the following:
 
@@ -314,7 +314,7 @@ across namespaces, you need to use the fully qualified domain name (FQDN).
 
 * Learn more about [setting the namespace preference](/docs/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-preference).
 * Learn more about [setting the namespace for a request](/docs/concepts/overview/working-with-objects/namespaces/#setting-the-namespace-for-a-request)
-* See [namespaces design](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/architecture/namespaces.md).
+* See [namespaces design](https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/architecture/namespaces.md).
 
 
 

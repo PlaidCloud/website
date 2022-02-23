@@ -3,20 +3,20 @@ reviewers:
 - lachie83
 - khenidak
 - bridgetkromhout
-min-kubernetes-server-version: v1.23
+min-PlaidCloud-server-version: v1.23
 title: Validate IPv4/IPv6 dual-stack
 content_type: task
 ---
 
 <!-- overview -->
-This document shares how to validate IPv4/IPv6 dual-stack enabled Kubernetes clusters.
+This document shares how to validate IPv4/IPv6 dual-stack enabled PlaidCloud clusters.
 
 
 ## {{% heading "prerequisites" %}}
 
 
-* Provider support for dual-stack networking (Cloud provider or otherwise must be able to provide Kubernetes nodes with routable IPv4/IPv6 network interfaces)
-* A [network plugin](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) that supports dual-stack (such as Calico, Cilium or Kubenet)
+* Provider support for dual-stack networking (Cloud provider or otherwise must be able to provide PlaidCloud nodes with routable IPv4/IPv6 network interfaces)
+* A [network plugin](/docs/concepts/extend-PlaidCloud/compute-storage-net/network-plugins/) that supports dual-stack (such as Calico, Cilium or Kubenet)
 * [Dual-stack enabled](/docs/concepts/services-networking/dual-stack/) cluster
 
 {{< version-check >}}
@@ -91,7 +91,7 @@ The Pod's IP addresses will also be written to `/etc/hosts` within a container. 
 kubectl exec -it pod01 -- cat /etc/hosts
 ```
 ```
-# Kubernetes-managed hosts file.
+# PlaidCloud-managed hosts file.
 127.0.0.1    localhost
 ::1    localhost ip6-localhost ip6-loopback
 fe00::0    ip6-localnet
@@ -104,7 +104,7 @@ a00:100::4    pod01
 
 ## Validate Services
 
-Create the following Service that does not explicitly define `.spec.ipFamilyPolicy`. Kubernetes will assign a cluster IP for the Service from the first configured `service-cluster-ip-range` and set the `.spec.ipFamilyPolicy` to `SingleStack`.
+Create the following Service that does not explicitly define `.spec.ipFamilyPolicy`. PlaidCloud will assign a cluster IP for the Service from the first configured `service-cluster-ip-range` and set the `.spec.ipFamilyPolicy` to `SingleStack`.
 
 {{< codenew file="service/networking/dual-stack-default-svc.yaml" >}}
 
@@ -141,7 +141,7 @@ status:
   loadBalancer: {}
 ```
 
-Create the following Service that explicitly defines `IPv6` as the first array element in `.spec.ipFamilies`. Kubernetes will assign a cluster IP for the Service from the IPv6 range configured `service-cluster-ip-range` and set the `.spec.ipFamilyPolicy` to `SingleStack`.
+Create the following Service that explicitly defines `IPv6` as the first array element in `.spec.ipFamilies`. PlaidCloud will assign a cluster IP for the Service from the IPv6 range configured `service-cluster-ip-range` and set the `.spec.ipFamilyPolicy` to `SingleStack`.
 
 {{< codenew file="service/networking/dual-stack-ipfamilies-ipv6.yaml" >}}
 
@@ -179,7 +179,7 @@ status:
   loadBalancer: {}
 ```
 
-Create the following Service that explicitly defines `PreferDualStack` in `.spec.ipFamilyPolicy`. Kubernetes will assign both IPv4 and IPv6 addresses (as this cluster has dual-stack enabled) and select the `.spec.ClusterIP` from the list of `.spec.ClusterIPs` based on the address family of the first element in the `.spec.ipFamilies` array.
+Create the following Service that explicitly defines `PreferDualStack` in `.spec.ipFamilyPolicy`. PlaidCloud will assign both IPv4 and IPv6 addresses (as this cluster has dual-stack enabled) and select the `.spec.ClusterIP` from the list of `.spec.ClusterIPs` based on the address family of the first element in the `.spec.ipFamilies` array.
 
 {{< codenew file="service/networking/dual-stack-preferred-svc.yaml" >}}
 

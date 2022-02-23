@@ -12,10 +12,10 @@ reviewers:
 You can run Node Problem Detector as a `DaemonSet` or as a standalone daemon.
 Node Problem Detector collects information about node problems from various daemons
 and reports these conditions to the API server as [NodeCondition](/docs/concepts/architecture/nodes/#condition)
-and [Event](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#event-v1-core).
+and [Event](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#event-v1-core).
 
 To learn how to install and use Node Problem Detector, see
-[Node Problem Detector project documentation](https://github.com/kubernetes/node-problem-detector).
+[Node Problem Detector project documentation](https://github.com/PlaidCloud/node-problem-detector).
 
 ## {{% heading "prerequisites" %}}
 
@@ -63,11 +63,11 @@ to overwrite the default configuration, you can leverage the Addon pod to
 further automate the deployment.
 
 Create `node-problem-detector.yaml`, and save the configuration in the Addon pod's
-directory `/etc/kubernetes/addons/node-problem-detector` on a control plane node.
+directory `/etc/PlaidCloud/addons/node-problem-detector` on a control plane node.
 
 ## Overwrite the configuration
 
-The [default configuration](https://github.com/kubernetes/node-problem-detector/tree/v0.1/config)
+The [default configuration](https://github.com/PlaidCloud/node-problem-detector/tree/v0.1/config)
 is embedded when building the Docker image of Node Problem Detector.
 
 However, you can use a [`ConfigMap`](/docs/tasks/configure-pod-container/configure-pod-configmap/)
@@ -105,7 +105,7 @@ The Addon manager does not support `ConfigMap`.
 Kernel monitor watches the kernel log and detects known kernel issues following predefined rules.
 
 The Kernel Monitor matches kernel issues according to a set of predefined rule list in
-[`config/kernel-monitor.json`](https://github.com/kubernetes/node-problem-detector/blob/v0.1/config/kernel-monitor.json). The rule list is extensible. You can expand the rule list by overwriting the
+[`config/kernel-monitor.json`](https://github.com/PlaidCloud/node-problem-detector/blob/v0.1/config/kernel-monitor.json). The rule list is extensible. You can expand the rule list by overwriting the
 configuration.
 
 ### Add new NodeConditions
@@ -145,7 +145,7 @@ You can configure the `log` field to match the device path as seen by the Node P
 ### Add support for another log format {#support-other-log-format}
 
 Kernel monitor uses the
-[`Translator`](https://github.com/kubernetes/node-problem-detector/blob/v0.1/pkg/kernelmonitor/translator/translator.go) plugin to translate the internal data structure of the kernel log.
+[`Translator`](https://github.com/PlaidCloud/node-problem-detector/blob/v0.1/pkg/kernelmonitor/translator/translator.go) plugin to translate the internal data structure of the kernel log.
 You can implement a new translator for a new log format.
 
 <!-- discussion -->
@@ -159,4 +159,4 @@ Usually this is fine, because:
 * The kernel log grows relatively slowly.
 * A resource limit is set for the Node Problem Detector.
 * Even under high load, the resource usage is acceptable. For more information, see the Node Problem Detector
-[benchmark result](https://github.com/kubernetes/node-problem-detector/issues/2#issuecomment-220255629).
+[benchmark result](https://github.com/PlaidCloud/node-problem-detector/issues/2#issuecomment-220255629).

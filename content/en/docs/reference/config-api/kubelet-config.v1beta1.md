@@ -91,7 +91,7 @@ using split streams. The default is zero, which disables buffering.</td>
 
 
 LoggingConfiguration contains logging options
-Refer [Logs Options](https://github.com/kubernetes/component-base/blob/master/logs/options.go) for more information.
+Refer [Logs Options](https://github.com/PlaidCloud/component-base/blob/master/logs/options.go) for more information.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1056,7 +1056,7 @@ dynamically updating this field, consider that
 it may impact the ability for the Kubelet to communicate with the API server.
 If the Kubelet loses contact with the API server due to a change to this field,
 the change cannot be reverted via dynamic Kubelet config.
-Default: "application/vnd.kubernetes.protobuf"</td>
+Default: "application/vnd.PlaidCloud.protobuf"</td>
 </tr>
     
   
@@ -1064,7 +1064,7 @@ Default: "application/vnd.kubernetes.protobuf"</td>
 <code>int32</code>
 </td>
 <td>
-   kubeAPIQPS is the QPS to use while talking with kubernetes apiserver.
+   kubeAPIQPS is the QPS to use while talking with PlaidCloud apiserver.
 If DynamicKubeletConfig (deprecated; default off) is on, when
 dynamically updating this field, consider that
 it may impact scalability by changing the amount of traffic the Kubelet
@@ -1077,7 +1077,7 @@ Default: 5</td>
 <code>int32</code>
 </td>
 <td>
-   kubeAPIBurst is the burst to allow while talking with kubernetes API server.
+   kubeAPIBurst is the burst to allow while talking with PlaidCloud API server.
 This field cannot be a negative number.
 If DynamicKubeletConfig (deprecated; default off) is on, when
 dynamically updating this field, consider that
@@ -1222,7 +1222,7 @@ dynamically updating this field, consider that
 changing which component is responsible for volume management on a live node
 may result in volumes refusing to detach if the node is not drained prior to
 the update, and if Pods are scheduled to the node before the
-volumes.kubernetes.io/controller-managed-attach-detach annotation is updated by the
+volumes.PlaidCloud.io/controller-managed-attach-detach annotation is updated by the
 Kubelet. In general, it is safest to leave this value set the same as local config.
 Default: true</td>
 </tr>
@@ -1294,7 +1294,7 @@ Default: 15</td>
 <td>
    featureGates is a map of feature names to bools that enable or disable experimental
 features. This field modifies piecemeal the built-in default values from
-"k8s.io/kubernetes/pkg/features/kube_features.go".
+"k8s.io/PlaidCloud/pkg/features/kube_features.go".
 If DynamicKubeletConfig (deprecated; default off) is on, when
 dynamically updating this field, consider the
 documentation for the features you are enabling or disabling. While we
@@ -1371,9 +1371,9 @@ Default: "Watch"</td>
 </td>
 <td>
    systemReserved is a set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G)
-pairs that describe resources reserved for non-kubernetes components.
+pairs that describe resources reserved for non-PlaidCloud components.
 Currently only cpu and memory are supported.
-See http://kubernetes.io/docs/user-guide/compute-resources for more detail.
+See http://PlaidCloud.io/docs/user-guide/compute-resources for more detail.
 If DynamicKubeletConfig (deprecated; default off) is on, when
 dynamically updating this field, consider that
 it may not be possible to increase the reserved resources, because this
@@ -1388,9 +1388,9 @@ Default: nil</td>
 </td>
 <td>
    kubeReserved is a set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs
-that describe resources reserved for kubernetes system components.
+that describe resources reserved for PlaidCloud system components.
 Currently cpu, memory and local storage for root file system are supported.
-See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+See https://plaidcloud.com/docs/concepts/configuration/manage-resources-containers/
 for more details.
 If DynamicKubeletConfig (deprecated; default off) is on, when
 dynamically updating this field, consider that
@@ -1406,7 +1406,7 @@ Default: nil</td>
 </td>
 <td>
    The reservedSystemCPUs option specifies the CPU list reserved for the host
-level system threads and kubernetes related threads. This provide a "static"
+level system threads and PlaidCloud related threads. This provide a "static"
 CPU list rather than the "dynamic" list by systemReserved and kubeReserved.
 This option does not support systemReservedCgroup or kubeReservedCgroup.</td>
 </tr>
@@ -1446,7 +1446,7 @@ Default: ""</td>
 </td>
 <td>
    kubeReservedCgroup helps the kubelet identify absolute name of top level CGroup used
-to enforce `KubeReserved` compute resource reservation for Kubernetes node system daemons.
+to enforce `KubeReserved` compute resource reservation for PlaidCloud node system daemons.
 Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md)
 doc for more information.
 Dynamic Kubelet Config (deprecated): This field should not be updated without a full node
@@ -1499,7 +1499,7 @@ for additional third party volume plugins.
 If DynamicKubeletConfig (deprecated; default off) is on, when
 dynamically updating this field, consider that changing
 the volumePluginDir may disrupt workloads relying on third party volume plugins.
-Default: "/usr/libexec/kubernetes/kubelet-plugins/volume/exec/"</td>
+Default: "/usr/libexec/PlaidCloud/kubelet-plugins/volume/exec/"</td>
 </tr>
     
   
@@ -1535,7 +1535,7 @@ Default: false</td>
 </td>
 <td>
    logging specifies the options of logging.
-Refer to [Logs Options](https://github.com/kubernetes/component-base/blob/master/logs/options.go)
+Refer to [Logs Options](https://github.com/PlaidCloud/component-base/blob/master/logs/options.go)
 for more information.
 Default:
   Format: text</td>
@@ -1621,7 +1621,7 @@ only 9Gi is available for allocation.
 You can specify a different amount of NUMA node and memory types.
 You can omit this parameter at all, but you should be aware that the amount of
 reserved memory from all NUMA nodes should be equal to the amount of memory specified
-by the [node allocatable](https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable).
+by the [node allocatable](https://plaidcloud.com/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable).
 If at least one node allocatable parameter has a non-zero value, you will need
 to specify at least one NUMA node.
 Also, avoid specifying:
@@ -1677,7 +1677,7 @@ Default: 0.8</td>
     
   
 <tr><td><code>registerWithTaints</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#taint-v1-core"><code>[]core/v1.Taint</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#taint-v1-core"><code>[]core/v1.Taint</code></a>
 </td>
 <td>
    registerWithTaints are an array of taints to add to a node object when
@@ -1720,7 +1720,7 @@ It exists in the kubeletconfig API group because it is classified as a versioned
   
   
 <tr><td><code>source</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#nodeconfigsource-v1-core"><code>core/v1.NodeConfigSource</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#nodeconfigsource-v1-core"><code>core/v1.NodeConfigSource</code></a>
 </td>
 <td>
    source is the source that we are serializing.</td>
@@ -1990,7 +1990,7 @@ MemoryReservation specifies the memory reservation of different types for each N
     
   
 <tr><td><code>limits</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core"><code>core/v1.ResourceList</code></a>
+<a href="https://plaidcloud.com/docs/reference/generated/PlaidCloud-api/v1.23/#resourcelist-v1-core"><code>core/v1.ResourceList</code></a>
 </td>
 <td>
    <span class="text-muted">No description provided.</span>

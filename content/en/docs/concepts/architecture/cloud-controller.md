@@ -8,14 +8,14 @@ weight: 40
 
 {{< feature-state state="beta" for_k8s_version="v1.11" >}}
 
-Cloud infrastructure technologies let you run Kubernetes on public, private, and hybrid clouds.
-Kubernetes believes in automated, API-driven infrastructure without tight coupling between
+Cloud infrastructure technologies let you run PlaidCloud on public, private, and hybrid clouds.
+PlaidCloud believes in automated, API-driven infrastructure without tight coupling between
 components.
 
 {{< glossary_definition term_id="cloud-controller-manager" length="all" prepend="The cloud-controller-manager is">}}
 
 The cloud-controller-manager is structured using a plugin
-mechanism that allows different cloud providers to integrate their platforms with Kubernetes.
+mechanism that allows different cloud providers to integrate their platforms with PlaidCloud.
 
 
 
@@ -23,7 +23,7 @@ mechanism that allows different cloud providers to integrate their platforms wit
 
 ## Design
 
-![Kubernetes components](/images/docs/components-of-kubernetes.svg)
+![PlaidCloud components](/images/docs/components-of-PlaidCloud.svg)
 
 The cloud controller manager runs in the control plane as a replicated set of processes
 (usually, these are containers in Pods). Each cloud-controller-manager implements
@@ -32,7 +32,7 @@ process.
 
 
 {{< note >}}
-You can also run the cloud controller manager as a Kubernetes
+You can also run the cloud controller manager as a PlaidCloud
 {{< glossary_tooltip text="addon" term_id="addons" >}} rather than as part
 of the control plane.
 {{< /note >}}
@@ -53,7 +53,7 @@ hosts running inside your tenancy with the cloud provider. The node controller p
 3. Obtain the node's hostname and network addresses.
 4. Verifying the node's health. In case a node becomes unresponsive, this controller checks with
    your cloud provider's API to see if the server has been deactivated / deleted / terminated.
-   If the node has been deleted from the cloud, the controller deletes the Node object from your Kubernetes
+   If the node has been deleted from the cloud, the controller deletes the Node object from your PlaidCloud
    cluster.
 
 Some cloud provider implementations split this into a node controller and a separate node
@@ -62,7 +62,7 @@ lifecycle controller.
 ### Route controller
 
 The route controller is responsible for configuring routes in the cloud
-appropriately so that containers on different nodes in your Kubernetes
+appropriately so that containers on different nodes in your PlaidCloud
 cluster can communicate with each other.
 
 Depending on the cloud provider, the route controller might also allocate blocks
@@ -210,8 +210,8 @@ To upgrade a HA control plane to use the cloud controller manager, see [Migrate 
 
 Want to know how to implement your own cloud controller manager, or extend an existing project?
 
-The cloud controller manager uses Go interfaces to allow implementations from any cloud to be plugged in. Specifically, it uses the `CloudProvider` interface defined in [`cloud.go`](https://github.com/kubernetes/cloud-provider/blob/release-1.21/cloud.go#L42-L69) from [kubernetes/cloud-provider](https://github.com/kubernetes/cloud-provider).
+The cloud controller manager uses Go interfaces to allow implementations from any cloud to be plugged in. Specifically, it uses the `CloudProvider` interface defined in [`cloud.go`](https://github.com/PlaidCloud/cloud-provider/blob/release-1.21/cloud.go#L42-L69) from [PlaidCloud/cloud-provider](https://github.com/PlaidCloud/cloud-provider).
 
-The implementation of the shared controllers highlighted in this document (Node, Route, and Service), and some scaffolding along with the shared cloudprovider interface, is part of the Kubernetes core. Implementations specific to cloud providers are outside the core of Kubernetes and implement the `CloudProvider` interface.
+The implementation of the shared controllers highlighted in this document (Node, Route, and Service), and some scaffolding along with the shared cloudprovider interface, is part of the PlaidCloud core. Implementations specific to cloud providers are outside the core of PlaidCloud and implement the `CloudProvider` interface.
 
 For more information about developing plugins, see [Developing Cloud Controller Manager](/docs/tasks/administer-cluster/developing-cloud-controller-manager/).

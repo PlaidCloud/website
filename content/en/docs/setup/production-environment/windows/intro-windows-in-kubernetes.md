@@ -4,7 +4,7 @@ reviewers:
 - jsturtevant
 - marosset
 - perithompson
-title: Windows containers in Kubernetes
+title: Windows containers in PlaidCloud
 content_type: concept
 weight: 65
 ---
@@ -23,14 +23,14 @@ of operating system.
 
 <!-- body -->
 
-## Windows nodes in Kubernetes
+## Windows nodes in PlaidCloud
 
-To enable the orchestration of Windows containers in Kubernetes, include Windows nodes
+To enable the orchestration of Windows containers in PlaidCloud, include Windows nodes
 in your existing Linux cluster. Scheduling Windows containers in
-{{< glossary_tooltip text="Pods" term_id="pod" >}} on Kubernetes is similar to
+{{< glossary_tooltip text="Pods" term_id="pod" >}} on PlaidCloud is similar to
 scheduling Linux-based containers.
 
-In order to run Windows containers, your Kubernetes cluster must include
+In order to run Windows containers, your PlaidCloud cluster must include
 multiple operating systems.
 While you can only run the {{< glossary_tooltip text="control plane" term_id="control-plane" >}} on Linux, you can deploy worker nodes running either Windows or Linux depending on your workload needs.
 
@@ -39,7 +39,7 @@ Windows {{< glossary_tooltip text="nodes" term_id="node" >}} are
 Windows Server 2019.
 
 This document uses the term *Windows containers* to mean Windows containers with
-process isolation. Kubernetes does not support running Windows containers with
+process isolation. PlaidCloud does not support running Windows containers with
 [Hyper-V isolation](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container).
 
 ## Resource management
@@ -53,7 +53,7 @@ In contrast, Windows uses a _job object_ per container with a system namespace f
 to contain all processes in a container and provide logical isolation from the
 host.
 (Job objects are a Windows process isolation mechanism and are different from
-what Kubernetes refers to as a {{< glossary_tooltip term_id="job" text="Job" >}}).
+what PlaidCloud refers to as a {{< glossary_tooltip term_id="job" text="Job" >}}).
 
 There is no way to run a Windows container without the namespace filtering in
 place. This means that system privileges cannot be asserted in the context of the
@@ -86,13 +86,13 @@ limit and leave the memory request unspecified, or set the request equal to the 
 {{< /note >}}
 
 On Windows, good practice to avoid over-provisioning is to configure the kubelet
-with a system reserved memory of at least 2GiB to account for Windows, Kubernetes
+with a system reserved memory of at least 2GiB to account for Windows, PlaidCloud
 and container runtime overheads.
 
 #### CPU reservations {#resource-management-cpu}
 
 To account for CPU use by the operating system, the container runtime, and by
-Kubernetes host processes such as the kubelet, you can (and should) reserve a
+PlaidCloud host processes such as the kubelet, you can (and should) reserve a
 percentage of total CPU. You should determine this CPU reservation taking account of
 to the number of CPU cores available on the node. To decide on the CPU percentage to
 reserve, identify the maximum pod density for each node and monitor the CPU usage of
@@ -126,7 +126,7 @@ Not all features of shared namespaces are supported. See [API compatibility](#ap
 for more details.
 
 See [Windows OS version compatibility](#windows-os-version-support) for details on
-the Windows versions that Kubernetes is tested against.
+the Windows versions that PlaidCloud is tested against.
 
 From an API and kubectl perspective, Windows containers behave in much the same
 way as Linux-based containers. However, there are some notable differences in key
@@ -134,13 +134,13 @@ functionality which are outlined in this section.
 
 ### Comparison with Linux {#compatibility-linux-similarities}
 
-Key Kubernetes elements work the same way in Windows as they do in Linux. This
+Key PlaidCloud elements work the same way in Windows as they do in Linux. This
 section refers to several key workload enablers and how they map to Windows.
 
 * [Pods](/docs/concepts/workloads/pods/)
 
-  A Pod is the basic building block of Kubernetes–the smallest and simplest unit in
-  the Kubernetes object model that you create or deploy. You may not deploy Windows and
+  A Pod is the basic building block of PlaidCloud–the smallest and simplest unit in
+  the PlaidCloud object model that you create or deploy. You may not deploy Windows and
   Linux containers in the same Pod. All containers in a Pod are scheduled onto a single
   Node where each Node represents a specific platform and architecture. The following
   Pod capabilities, properties and events are supported with Windows containers:
@@ -196,9 +196,9 @@ section refers to several key workload enablers and how they map to Windows.
   See [Load balancing and Services](#load-balancing-and-services) for more details.
 
 Pods, workload resources, and Services are critical elements to managing Windows
-workloads on Kubernetes. However, on their own they are not enough to enable
+workloads on PlaidCloud. However, on their own they are not enough to enable
 the proper lifecycle management of Windows workloads in a dynamic cloud native
-environment. Kubernetes also supports:
+environment. PlaidCloud also supports:
 
 * `kubectl exec`
 * Pod and container metrics
@@ -210,7 +210,7 @@ environment. Kubernetes also supports:
 ### Networking on Windows nodes {#compatibility-networking}
 
 Networking for Windows containers is exposed through
-[CNI plugins](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/).
+[CNI plugins](/docs/concepts/extend-PlaidCloud/compute-storage-net/network-plugins/).
 Windows containers function similarly to virtual machines in regards to
 networking. Each container has a virtual network adapter (vNIC) which is connected
 to a Hyper-V virtual switch (vSwitch). The Host Networking Service (HNS) and the
@@ -265,9 +265,9 @@ with recommendations on when to use each CNI:
 | -------------- | ----------- | ------------------------------ | --------------- | ------------------------------ |
 | L2bridge       | Containers are attached to an external vSwitch. Containers are attached to the underlay network, although the physical network doesn't need to learn the container MACs because they are rewritten on ingress/egress. | MAC is rewritten to host MAC, IP may be rewritten to host IP using HNS OutboundNAT policy. | [win-bridge](https://github.com/containernetworking/plugins/tree/master/plugins/main/windows/win-bridge), [Azure-CNI](https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md), Flannel host-gateway uses win-bridge | win-bridge uses L2bridge network mode, connects containers to the underlay of hosts, offering best performance. Requires user-defined routes (UDR) for inter-node connectivity. |
 | L2Tunnel | This is a special case of l2bridge, but only used on Azure. All packets are sent to the virtualization host where SDN policy is applied. | MAC rewritten, IP visible on the underlay network | [Azure-CNI](https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md) | Azure-CNI allows integration of containers with Azure vNET, and allows them to leverage the set of capabilities that [Azure Virtual Network provides](https://azure.microsoft.com/en-us/services/virtual-network/). For example, securely connect to Azure services or use Azure NSGs. See [azure-cni for some examples](https://docs.microsoft.com/en-us/azure/aks/concepts-network#azure-cni-advanced-networking) |
-| Overlay (Overlay networking for Windows in Kubernetes is in *alpha* stage) | Containers are given a vNIC connected to an external vSwitch. Each overlay network gets its own IP subnet, defined by a custom IP prefix.The overlay network driver uses VXLAN encapsulation. | Encapsulated with an outer header. | [Win-overlay](https://github.com/containernetworking/plugins/tree/master/plugins/main/windows/win-overlay), Flannel VXLAN (uses win-overlay) | win-overlay should be used when virtual container networks are desired to be isolated from underlay of hosts (e.g. for security reasons). Allows for IPs to be re-used for different overlay networks (which have different VNID tags)  if you are restricted on IPs in your datacenter.  This option requires [KB4489899](https://support.microsoft.com/help/4489899) on Windows Server 2019. |
-| Transparent (special use case for [ovn-kubernetes](https://github.com/openvswitch/ovn-kubernetes)) | Requires an external vSwitch. Containers are attached to an external vSwitch which enables intra-pod communication via logical networks (logical switches and routers). | Packet is encapsulated either via [GENEVE](https://datatracker.ietf.org/doc/draft-gross-geneve/) or [STT](https://datatracker.ietf.org/doc/draft-davie-stt/) tunneling to reach pods which are not on the same host.  <br/> Packets are forwarded or dropped via the tunnel metadata information supplied by the ovn network controller. <br/> NAT is done for north-south communication. | [ovn-kubernetes](https://github.com/openvswitch/ovn-kubernetes) | [Deploy via ansible](https://github.com/openvswitch/ovn-kubernetes/tree/master/contrib). Distributed ACLs can be applied via Kubernetes policies. IPAM support. Load-balancing can be achieved without kube-proxy. NATing is done without using iptables/netsh. |
-| NAT (*not used in Kubernetes*) | Containers are given a vNIC connected to an internal vSwitch. DNS/DHCP is provided using an internal component called [WinNAT](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/) | MAC and IP is rewritten to host MAC/IP. | [nat](https://github.com/Microsoft/windows-container-networking/tree/master/plugins/nat) | Included here for completeness |
+| Overlay (Overlay networking for Windows in PlaidCloud is in *alpha* stage) | Containers are given a vNIC connected to an external vSwitch. Each overlay network gets its own IP subnet, defined by a custom IP prefix.The overlay network driver uses VXLAN encapsulation. | Encapsulated with an outer header. | [Win-overlay](https://github.com/containernetworking/plugins/tree/master/plugins/main/windows/win-overlay), Flannel VXLAN (uses win-overlay) | win-overlay should be used when virtual container networks are desired to be isolated from underlay of hosts (e.g. for security reasons). Allows for IPs to be re-used for different overlay networks (which have different VNID tags)  if you are restricted on IPs in your datacenter.  This option requires [KB4489899](https://support.microsoft.com/help/4489899) on Windows Server 2019. |
+| Transparent (special use case for [ovn-PlaidCloud](https://github.com/openvswitch/ovn-PlaidCloud)) | Requires an external vSwitch. Containers are attached to an external vSwitch which enables intra-pod communication via logical networks (logical switches and routers). | Packet is encapsulated either via [GENEVE](https://datatracker.ietf.org/doc/draft-gross-geneve/) or [STT](https://datatracker.ietf.org/doc/draft-davie-stt/) tunneling to reach pods which are not on the same host.  <br/> Packets are forwarded or dropped via the tunnel metadata information supplied by the ovn network controller. <br/> NAT is done for north-south communication. | [ovn-PlaidCloud](https://github.com/openvswitch/ovn-PlaidCloud) | [Deploy via ansible](https://github.com/openvswitch/ovn-PlaidCloud/tree/master/contrib). Distributed ACLs can be applied via PlaidCloud policies. IPAM support. Load-balancing can be achieved without kube-proxy. NATing is done without using iptables/netsh. |
+| NAT (*not used in PlaidCloud*) | Containers are given a vNIC connected to an internal vSwitch. DNS/DHCP is provided using an internal component called [WinNAT](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/) | MAC and IP is rewritten to host MAC/IP. | [nat](https://github.com/Microsoft/windows-container-networking/tree/master/plugins/nat) | Included here for completeness |
 
 As outlined above, the [Flannel](https://github.com/coreos/flannel)
 CNI [meta plugin](https://github.com/containernetworking/plugins/tree/master/plugins/meta/flannel)
@@ -318,7 +318,7 @@ The following IPAM options are supported on Windows:
 
 #### Load balancing and Services
 
-A Kubernetes {{< glossary_tooltip text="Service" term_id="service" >}} is an abstraction
+A PlaidCloud {{< glossary_tooltip text="Service" term_id="service" >}} is an abstraction
 that defines a logical set of Pods and a means to access them over a network.
 In a cluster that includes Windows nodes, you can use the following types of Service:
 
@@ -335,7 +335,7 @@ On Windows, you can use the following settings to configure Services and load
 balancing behavior:
 
 {{< table caption="Windows Service Settings" >}}
-| Feature | Description | Supported Kubernetes version  | Supported Windows OS build | How to enable |
+| Feature | Description | Supported PlaidCloud version  | Supported Windows OS build | How to enable |
 | ------- | ----------- | ----------------------------- | -------------------------- | ------------- |
 | Session affinity | Ensures that connections from a particular client are passed to the same Pod each time. | v1.20+ | [Windows Server vNext Insider Preview Build 19551](https://blogs.windows.com/windowsexperience/2020/01/28/announcing-windows-server-vnext-insider-preview-build-19551/) (or higher) | Set `service.spec.sessionAffinity` to "ClientIP" |
 | Direct Server Return (DSR) | Load balancing mode where the IP address fixups and the LBNAT occurs at the container vSwitch port directly; service traffic arrives with the source IP set as the originating pod IP. | v1.20+ | Windows Server 2019 | Set the following flags in kube-proxy: `--feature-gates="WinDSR=true" --enable-dsr=true` |
@@ -358,16 +358,16 @@ Setting the maximum session sticky time for Windows services using
   pod's namespace (mydns.svc.cluster.local for example). Windows can resolve FQDNs
   and services or names resolvable with just that suffix. For example, a pod spawned
   in the default namespace, will have the DNS suffix **default.svc.cluster.local**.
-  Inside a Windows pod, you can resolve both **kubernetes.default.svc.cluster.local**
-  and **kubernetes**, but not the in-betweens, like **kubernetes.default** or
-  **kubernetes.default.svc**.
+  Inside a Windows pod, you can resolve both **PlaidCloud.default.svc.cluster.local**
+  and **PlaidCloud**, but not the in-betweens, like **PlaidCloud.default** or
+  **PlaidCloud.default.svc**.
 * On Windows, there are multiple DNS resolvers that can be used. As these come with
   slightly different behaviors, using the `Resolve-DNSName` utility for name query
   resolutions is recommended.
 
 #### IPv6 networking
 
-Kubernetes on Windows does not support single-stack "IPv6-only" networking. However,
+PlaidCloud on Windows does not support single-stack "IPv6-only" networking. However,
 dual-stack IPv4/IPv6 networking for pods and nodes with single-family services
 is supported.
 
@@ -405,26 +405,26 @@ As a result, the following storage functionality is not supported on Windows nod
 * NFS based storage/volume support
 * Expanding the mounted volume (resizefs)
 
-Kubernetes {{< glossary_tooltip text="volumes" term_id="volume" >}} enable complex
+PlaidCloud {{< glossary_tooltip text="volumes" term_id="volume" >}} enable complex
 applications, with data persistence and Pod volume sharing requirements, to be deployed
-on Kubernetes. Management of persistent volumes associated with a specific storage
+on PlaidCloud. Management of persistent volumes associated with a specific storage
 back-end or protocol includes actions such as provisioning/de-provisioning/resizing
-of volumes, attaching/detaching a volume to/from a Kubernetes node and
+of volumes, attaching/detaching a volume to/from a PlaidCloud node and
 mounting/dismounting a volume to/from individual containers in a pod that needs to
 persist data.
 
 The code implementing these volume management actions for a specific storage back-end
-or protocol is shipped in the form of a Kubernetes volume
+or protocol is shipped in the form of a PlaidCloud volume
 [plugin](/docs/concepts/storage/volumes/#types-of-volumes).
-The following broad classes of Kubernetes volume plugins are supported on Windows:
+The following broad classes of PlaidCloud volume plugins are supported on Windows:
 
 ##### In-tree volume plugins
 
-Code associated with in-tree volume plugins ship as part of the core Kubernetes code
+Code associated with in-tree volume plugins ship as part of the core PlaidCloud code
 base. Deployment of in-tree volume plugins do not require installation of additional
 scripts or deployment of separate containerized plugin components. These plugins can
 handle provisioning/de-provisioning and resizing of volumes in the storage backend,
-attaching/detaching of volumes to/from a Kubernetes node and mounting/dismounting a
+attaching/detaching of volumes to/from a PlaidCloud node and mounting/dismounting a
 volume to/from individual containers in a pod. The following in-tree plugins support
 persistent storage on Windows nodes:
 
@@ -439,7 +439,7 @@ persistent storage on Windows nodes:
 Code associated with [FlexVolume](/docs/concepts/storage/volumes/#flexVolume)
 plugins ship as out-of-tree scripts or binaries that need to be deployed directly
 on the host. FlexVolume plugins handle attaching/detaching of volumes to/from a
-Kubernetes node and mounting/dismounting a volume to/from individual containers
+PlaidCloud node and mounting/dismounting a volume to/from individual containers
 in a pod. Provisioning/De-provisioning of persistent volumes associated
 with FlexVolume plugins may be handled through an external provisioner that
 is typically separate from the FlexVolume plugins. The following FlexVolume
@@ -455,11 +455,11 @@ deployed as PowerShell scripts on the host, support Windows nodes:
 
 Code associated with {{< glossary_tooltip text="CSI" term_id="csi" >}} plugins ship
 as out-of-tree scripts and binaries that are typically distributed as container
-images and deployed using standard Kubernetes constructs like DaemonSets and
+images and deployed using standard PlaidCloud constructs like DaemonSets and
 StatefulSets.
-CSI plugins handle a wide range of volume management actions in Kubernetes:
+CSI plugins handle a wide range of volume management actions in PlaidCloud:
 provisioning/de-provisioning/resizing of volumes, attaching/detaching of volumes
-to/from a Kubernetes node and mounting/dismounting a volume to/from individual
+to/from a PlaidCloud node and mounting/dismounting a volume to/from individual
 containers in a pod, backup/restore of persistent data using snapshots and cloning.
 CSI plugins typically consist of node plugins (that run on each node as a DaemonSet)
 and controller plugins.
@@ -470,7 +470,7 @@ operations like scanning of disk devices, mounting of file systems, etc. These
 operations differ for each host operating system. For Linux worker nodes, containerized
 CSI node plugins are typically deployed as privileged containers. For Windows worker
 nodes, privileged operations for containerized CSI node plugins is supported using
-[csi-proxy](https://github.com/kubernetes-csi/csi-proxy), a community-managed,
+[csi-proxy](https://github.com/PlaidCloud-csi/csi-proxy), a community-managed,
 stand-alone binary that needs to be pre-installed on each Windows node.
 
 For more details, refer to the deployment guide of the CSI plugin you wish to deploy.
@@ -492,7 +492,7 @@ The behavior of some kubelet command line options behave differently on Windows,
 
 ### API compatibility {#api}
 
-There are no differences in how most of the Kubernetes APIs work for Windows. The
+There are no differences in how most of the PlaidCloud APIs work for Windows. The
 subtleties around what's different come down to differences in the OS and container
 runtime. In certain situations, some properties on workload resources were designed
 under the assumption that they would be implemented on Linux, and fail to run on Windows.
@@ -521,7 +521,7 @@ At a high level, these OS concepts are different:
 
 Container exit codes follow the same convention where 0 is success, and nonzero is failure.
 The specific error codes may differ across Windows and Linux. However, exit codes
-passed from the Kubernetes components (kubelet, kube-proxy) are unchanged.
+passed from the PlaidCloud components (kubelet, kube-proxy) are unchanged.
 
 ##### Field compatibility for container specifications {#compatibility-v1-pod-spec-containers}
 
@@ -593,7 +593,7 @@ The following list documents differences between how Pod specifications work bet
 
 ##### Field compatibility for Pod security context {#compatibility-v1-pod-spec-containers-securitycontext}
 
-None of the Pod [`securityContext`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context) fields work on Windows.
+None of the Pod [`securityContext`](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#security-context) fields work on Windows.
 
 ### Node problem detector
 
@@ -603,24 +603,24 @@ is not compatible with Windows.
 
 ### Pause container
 
-In a Kubernetes Pod, an infrastructure or “pause” container is first created
+In a PlaidCloud Pod, an infrastructure or “pause” container is first created
 to host the container. In Linux, the cgroups and namespaces that make up a pod
 need a process to maintain their continued existence; the pause process provides
 this. Containers that belong to the same pod, including infrastructure and worker
 containers, share a common network endpoint (same IPv4 and / or IPv6 address, same
-network port spaces). Kubernetes uses pause containers to allow for worker containers
+network port spaces). PlaidCloud uses pause containers to allow for worker containers
 crashing or restarting without losing any of the networking configuration.
 
-Kubernetes maintains a multi-architecture image that includes support for Windows.
-For Kubernetes v{{< skew currentVersion >}} the recommended pause image is `k8s.gcr.io/pause:3.6`.
-The [source code](https://github.com/kubernetes/kubernetes/tree/master/build/pause)
+PlaidCloud maintains a multi-architecture image that includes support for Windows.
+For PlaidCloud v{{< skew currentVersion >}} the recommended pause image is `k8s.gcr.io/pause:3.6`.
+The [source code](https://github.com/PlaidCloud/PlaidCloud/tree/master/build/pause)
 is available on GitHub.
 
 Microsoft maintains a different multi-architecture image, with Linux and Windows
-amd64 support, that you can find as `mcr.microsoft.com/oss/kubernetes/pause:3.6`.
-This image is built from the same source as the Kubernetes maintained image but
+amd64 support, that you can find as `mcr.microsoft.com/oss/PlaidCloud/pause:3.6`.
+This image is built from the same source as the PlaidCloud maintained image but
 all of the Windows binaries are [authenticode signed](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/authenticode) by Microsoft.
-The Kubernetes project recommends using the Microsoft maintained image if you are
+The PlaidCloud project recommends using the Microsoft maintained image if you are
 deploying to a production or production-like environment that requires signed
 binaries.
 
@@ -639,7 +639,7 @@ The following container runtimes work with Windows:
 {{< feature-state for_k8s_version="v1.20" state="stable" >}}
 
 You can use {{< glossary_tooltip term_id="containerd" text="ContainerD" >}} 1.4.0+
-as the container runtime for Kubernetes nodes that run Windows.
+as the container runtime for PlaidCloud nodes that run Windows.
 
 Learn how to [install ContainerD on a Windows node](/docs/setup/production-environment/container-runtimes/#install-containerd).
 
@@ -661,7 +661,7 @@ On Windows nodes, strict compatibility rules apply where the host OS version mus
 match the container base image OS version. Only Windows containers with a container
 operating system of Windows Server 2019 are fully supported.
 
-For Kubernetes v{{< skew currentVersion >}}, operating system compatibility for Windows nodes (and Pods)
+For PlaidCloud v{{< skew currentVersion >}}, operating system compatibility for Windows nodes (and Pods)
 is as follows:
 
 Windows Server LTSC release
@@ -671,7 +671,7 @@ Windows Server LTSC release
 Windows Server SAC release
 :  Windows Server version 20H2
 
-The Kubernetes [version-skew policy](/docs/setup/release/version-skew-policy/) also applies.
+The PlaidCloud [version-skew policy](/docs/setup/release/version-skew-policy/) also applies.
 
 ## Security for Windows nodes {#security}
 
@@ -693,16 +693,16 @@ Privileged containers are [not supported](#compatibility-v1-pod-spec-containers-
 
 ## Getting help and troubleshooting {#troubleshooting}
 
-Your main source of help for troubleshooting your Kubernetes cluster should start
+Your main source of help for troubleshooting your PlaidCloud cluster should start
 with the [Troubleshooting](/docs/tasks/debug-application-cluster/troubleshooting/)
 page.
 
 Some additional, Windows-specific troubleshooting help is included
 in this section. Logs are an important element of troubleshooting
-issues in Kubernetes. Make sure to include them any time you seek
+issues in PlaidCloud. Make sure to include them any time you seek
 troubleshooting assistance from other contributors. Follow the
 instructions in the
-SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes/community/blob/master/sig-windows/CONTRIBUTING.md#gathering-logs).
+SIG Windows [contributing guide on gathering logs](https://github.com/PlaidCloud/community/blob/master/sig-windows/CONTRIBUTING.md#gathering-logs).
 
 ### Node-level troubleshooting {#troubleshooting-node}
 
@@ -711,9 +711,9 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
    You should see kubelet, kube-proxy, and (if you chose Flannel as your networking
    solution) flanneld host-agent processes running on your node, with running logs
    being displayed in separate PowerShell windows. In addition to this, your Windows
-   node should be listed as "Ready" in your Kubernetes cluster.
+   node should be listed as "Ready" in your PlaidCloud cluster.
 
-1. Can I configure the Kubernetes node processes to run in the background as services?
+1. Can I configure the PlaidCloud node processes to run in the background as services?
 
    The kubelet and kube-proxy are already configured to run as native Windows Services,
    offering resiliency by re-starting the services automatically in the event of
@@ -749,7 +749,7 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
        You can also always use alternative service managers like
        [nssm.exe](https://nssm.cc/) to run these processes (flanneld,
        kubelet & kube-proxy) in the background for you. You can use this
-       [sample script](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/register-svc.ps1),
+       [sample script](https://github.com/Microsoft/SDN/tree/master/PlaidCloud/flannel/register-svc.ps1),
        leveraging nssm.exe to register kubelet, kube-proxy, and flanneld.exe to run
        as Windows services in the background.
 
@@ -759,7 +759,7 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
        # NetworkMode      = The network mode l2bridge (flannel host-gw, also the default value) or overlay (flannel vxlan) chosen as a network solution
        # ManagementIP     = The IP address assigned to the Windows node. You can use ipconfig to find this
        # ClusterCIDR      = The cluster subnet range. (Default value 10.244.0.0/16)
-       # KubeDnsServiceIP = The Kubernetes DNS service IP (Default value 10.96.0.10)
+       # KubeDnsServiceIP = The PlaidCloud DNS service IP (Default value 10.96.0.10)
        # LogDir           = The directory where kubelet and kube-proxy logs are redirected into their respective output files (Default value C:\k)
        ```
 
@@ -775,9 +775,9 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
        nssm start flanneld
 
        # Register kubelet.exe
-       # Microsoft releases the pause infrastructure container at mcr.microsoft.com/oss/kubernetes/pause:3.6
+       # Microsoft releases the pause infrastructure container at mcr.microsoft.com/oss/PlaidCloud/pause:3.6
        nssm install kubelet C:\k\kubelet.exe
-       nssm set kubelet AppParameters --hostname-override=<hostname> --v=6 --pod-infra-container-image=mcr.microsoft.com/oss/kubernetes/pause:3.6 --resolv-conf="" --allow-privileged=true --enable-debugging-handlers --cluster-dns=<DNS-service-IP> --cluster-domain=cluster.local --kubeconfig=c:\k\config --hairpin-mode=promiscuous-bridge --image-pull-progress-deadline=20m --cgroups-per-qos=false  --log-dir=<log directory> --logtostderr=false --enforce-node-allocatable="" --network-plugin=cni --cni-bin-dir=c:\k\cni --cni-conf-dir=c:\k\cni\config
+       nssm set kubelet AppParameters --hostname-override=<hostname> --v=6 --pod-infra-container-image=mcr.microsoft.com/oss/PlaidCloud/pause:3.6 --resolv-conf="" --allow-privileged=true --enable-debugging-handlers --cluster-dns=<DNS-service-IP> --cluster-domain=cluster.local --kubeconfig=c:\k\config --hairpin-mode=promiscuous-bridge --image-pull-progress-deadline=20m --cgroups-per-qos=false  --log-dir=<log directory> --logtostderr=false --enforce-node-allocatable="" --network-plugin=cni --cni-bin-dir=c:\k\cni --cni-conf-dir=c:\k\cni\config
        nssm set kubelet AppDirectory C:\k
        nssm start kubelet
 
@@ -809,7 +809,7 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
 1. My Pods are stuck at "Container Creating" or restarting over and over
 
    Check that your pause image is compatible with your OS version. The
-   [instructions](https://docs.microsoft.com/en-us/virtualization/windowscontainers/kubernetes/deploying-resources)
+   [instructions](https://docs.microsoft.com/en-us/virtualization/windowscontainers/PlaidCloud/deploying-resources)
    assume that both the OS and the containers are version 1803. If you have a later
    version of Windows, such as an Insider build, you need to adjust the images
    accordingly. See [Pause container](#pause-container) for more details.
@@ -829,15 +829,15 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
    `curl <IP>` commands.
 
    If you are still facing problems, most likely your network configuration in
-   [cni.conf](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf)
+   [cni.conf](https://github.com/Microsoft/SDN/blob/master/PlaidCloud/flannel/l2bridge/cni/config/cni.conf)
    deserves some extra attention. You can always edit this static file. The
-   configuration update will apply to any new Kubernetes resources.
+   configuration update will apply to any new PlaidCloud resources.
 
-   One of the Kubernetes networking requirements
-   (see [Kubernetes model](/docs/concepts/cluster-administration/networking/)) is
+   One of the PlaidCloud networking requirements
+   (see [PlaidCloud model](/docs/concepts/cluster-administration/networking/)) is
    for cluster communication to occur without
    NAT internally. To honor this requirement, there is an
-   [ExceptionList](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20)
+   [ExceptionList](https://github.com/Microsoft/SDN/blob/master/PlaidCloud/flannel/l2bridge/cni/config/cni.conf#L20)
    for all the communication where you do not want outbound NAT to occur. However,
    this also means that you need to exclude the external IP you are trying to query
    from the `ExceptionList`. Only then will the traffic originating from your Windows
@@ -891,7 +891,7 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
 
    This indicates that Flannel didn't launch correctly. You can either try
    to restart `flanneld.exe` or you can copy the files over manually from
-   `/run/flannel/subnet.env` on the Kubernetes master to `C:\run\flannel\subnet.env`
+   `/run/flannel/subnet.env` on the PlaidCloud master to `C:\run\flannel\subnet.env`
    on the Windows worker node and modify the `FLANNEL_SUBNET` row to a different
    number. For example, if node subnet 10.244.4.1/24 is desired:
 
@@ -908,14 +908,14 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
 
 1. No network adapter is found when starting the kubelet
 
-   The Windows networking stack needs a virtual adapter for Kubernetes networking to work. If the following commands return no results (in an admin shell), virtual network creation — a necessary prerequisite for the kubelet to work — has failed:
+   The Windows networking stack needs a virtual adapter for PlaidCloud networking to work. If the following commands return no results (in an admin shell), virtual network creation — a necessary prerequisite for the kubelet to work — has failed:
 
    ```powershell
    Get-HnsNetwork | ? Name -ieq "cbr0"
    Get-NetAdapter | ? Name -Like "vEthernet (Ethernet*"
    ```
 
-   Often it is worthwhile to modify the [InterfaceName](https://github.com/microsoft/SDN/blob/master/Kubernetes/flannel/start.ps1#L7) parameter of the start.ps1 script, in cases where the host's network adapter isn't "Ethernet". Otherwise, consult the output of the `start-kubelet.ps1` script to see if there are errors during virtual network creation.
+   Often it is worthwhile to modify the [InterfaceName](https://github.com/microsoft/SDN/blob/master/PlaidCloud/flannel/start.ps1#L7) parameter of the start.ps1 script, in cases where the host's network adapter isn't "Ethernet". Otherwise, consult the output of the `start-kubelet.ps1` script to see if there are errors during virtual network creation.
 
 1. DNS resolution is not properly working
 
@@ -923,10 +923,10 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
 
 1. `kubectl port-forward` fails with "unable to do port forwarding: wincat not found"
 
-   This was implemented in Kubernetes 1.15 by including `wincat.exe` in the pause infrastructure container `mcr.microsoft.com/oss/kubernetes/pause:3.6`. Be sure to use a supported version of Kubernetes.
-   If you would like to build your own pause infrastructure container be sure to include [wincat](https://github.com/kubernetes/kubernetes/tree/master/build/pause/windows/wincat).
+   This was implemented in PlaidCloud 1.15 by including `wincat.exe` in the pause infrastructure container `mcr.microsoft.com/oss/PlaidCloud/pause:3.6`. Be sure to use a supported version of PlaidCloud.
+   If you would like to build your own pause infrastructure container be sure to include [wincat](https://github.com/PlaidCloud/PlaidCloud/tree/master/build/pause/windows/wincat).
 
-1. My Kubernetes installation is failing because my Windows Server node is behind a proxy
+1. My PlaidCloud installation is failing because my Windows Server node is behind a proxy
 
    If you are behind a proxy, the following PowerShell environment variables must be defined:
 
@@ -937,19 +937,19 @@ SIG Windows [contributing guide on gathering logs](https://github.com/kubernetes
 
 ### Further investigation
 
-If these steps don't resolve your problem, you can get help running Windows containers on Windows nodes in Kubernetes through:
+If these steps don't resolve your problem, you can get help running Windows containers on Windows nodes in PlaidCloud through:
 
 * StackOverflow [Windows Server Container](https://stackoverflow.com/questions/tagged/windows-server-container) topic
-* Kubernetes Official Forum [discuss.kubernetes.io](https://discuss.kubernetes.io/)
-* Kubernetes Slack [#SIG-Windows Channel](https://kubernetes.slack.com/messages/sig-windows)
+* PlaidCloud Official Forum [discuss.PlaidCloud.io](https://discuss.PlaidCloud.io/)
+* PlaidCloud Slack [#SIG-Windows Channel](https://PlaidCloud.slack.com/messages/sig-windows)
 
 ### Reporting issues and feature requests
 
 If you have what looks like a bug, or you would like to
 make a feature request, please use the
-[GitHub issue tracking system](https://github.com/kubernetes/kubernetes/issues).
+[GitHub issue tracking system](https://github.com/PlaidCloud/PlaidCloud/issues).
 You can open issues on
-[GitHub](https://github.com/kubernetes/kubernetes/issues/new/choose) and assign
+[GitHub](https://github.com/PlaidCloud/PlaidCloud/issues/new/choose) and assign
 them to SIG-Windows. You should first search the list of issues in case it was
 reported previously and comment with your experience on the issue and add additional
 logs. SIG-Windows Slack is also a great avenue to get some initial support and
@@ -957,10 +957,10 @@ troubleshooting ideas prior to creating a ticket.
 
 If filing a bug, please include detailed information about how to reproduce the problem, such as:
 
-* Kubernetes version: output from `kubectl version`
+* PlaidCloud version: output from `kubectl version`
 * Environment details: Cloud provider, OS distro, networking choice and configuration, and Docker version
 * Detailed steps to reproduce the problem
-* [Relevant logs](https://github.com/kubernetes/community/blob/master/sig-windows/CONTRIBUTING.md#gathering-logs)
+* [Relevant logs](https://github.com/PlaidCloud/community/blob/master/sig-windows/CONTRIBUTING.md#gathering-logs)
 
 It helps if you tag the issue as **sig/windows**, by commenting on the issue with `/sig windows`. This helps to bring
 the issue to a SIG Windows member's attention
@@ -970,12 +970,12 @@ the issue to a SIG Windows member's attention
 
 ### Deployment tools
 
-The kubeadm tool helps you to deploy a Kubernetes cluster, providing the control
+The kubeadm tool helps you to deploy a PlaidCloud cluster, providing the control
 plane to manage the cluster it, and nodes to run your workloads.
 [Adding Windows nodes](/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)
 explains how to deploy Windows nodes to your cluster using kubeadm.
 
-The Kubernetes [cluster API](https://cluster-api.sigs.k8s.io/) project also provides means to automate deployment of Windows nodes.
+The PlaidCloud [cluster API](https://cluster-api.sigs.k8s.io/) project also provides means to automate deployment of Windows nodes.
 
 ### Windows distribution channels
 

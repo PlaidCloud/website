@@ -17,7 +17,7 @@ network resources based on the roles of individual users within your organizatio
 <!-- body -->
 RBAC authorization uses the `rbac.authorization.k8s.io`
 {{< glossary_tooltip text="API group" term_id="api-group" >}} to drive authorization
-decisions, allowing you to dynamically configure policies through the Kubernetes API.
+decisions, allowing you to dynamically configure policies through the PlaidCloud API.
 
 To enable RBAC, start the {{< glossary_tooltip text="API server" term_id="kube-apiserver" >}}
 with the `--authorization-mode` flag set to a comma-separated list that includes `RBAC`;
@@ -28,10 +28,10 @@ kube-apiserver --authorization-mode=Example,RBAC --other-options --more-options
 
 ## API objects {#api-overview}
 
-The RBAC API declares four kinds of Kubernetes object: _Role_, _ClusterRole_,
+The RBAC API declares four kinds of PlaidCloud object: _Role_, _ClusterRole_,
 _RoleBinding_ and _ClusterRoleBinding_. You can
-[describe objects](/docs/concepts/overview/working-with-objects/kubernetes-objects/#understanding-kubernetes-objects),
-or amend them, using tools such as `kubectl,` just like any other Kubernetes object.
+[describe objects](/docs/concepts/overview/working-with-objects/PlaidCloud-objects/#understanding-PlaidCloud-objects),
+or amend them, using tools such as `kubectl,` just like any other PlaidCloud object.
 
 {{< caution >}}
 These objects, by design, impose access restrictions. If you are making changes
@@ -49,7 +49,7 @@ A Role always sets permissions within a particular {{< glossary_tooltip text="na
 when you create a Role, you have to specify the namespace it belongs in.
 
 ClusterRole, by contrast, is a non-namespaced resource. The resources have different names (Role
-and ClusterRole) because a Kubernetes object always has to be either namespaced or not namespaced;
+and ClusterRole) because a PlaidCloud object always has to be either namespaced or not namespaced;
 it can't be both.
 
 ClusterRoles have several uses. You can use a ClusterRole to:
@@ -229,10 +229,10 @@ See [command usage and examples](#kubectl-auth-reconcile) for more information.
 
 ### Referring to resources
 
-In the Kubernetes API, most resources are represented and accessed using a string representation of
+In the PlaidCloud API, most resources are represented and accessed using a string representation of
 their object name, such as `pods` for a Pod. RBAC refers to resources using exactly the same
 name that appears in the URL for the relevant API endpoint.
-Some Kubernetes APIs involve a
+Some PlaidCloud APIs involve a
 _subresource_, such as the logs for a Pod. A request for a Pod's logs looks like:
 
 ```http
@@ -459,21 +459,21 @@ A RoleBinding or ClusterRoleBinding binds a role to subjects.
 Subjects can be groups, users or
 {{< glossary_tooltip text="ServiceAccounts" term_id="service-account" >}}.
 
-Kubernetes represents usernames as strings.
+PlaidCloud represents usernames as strings.
 These can be: plain names, such as "alice"; email-style names, like "bob@example.com";
 or numeric user IDs represented as a string.  It is up to you as a cluster administrator
 to configure the [authentication modules](/docs/reference/access-authn-authz/authentication/)
 so that authentication produces usernames in the format you want.
 
 {{< caution >}}
-The prefix `system:` is reserved for Kubernetes system use, so you should ensure
+The prefix `system:` is reserved for PlaidCloud system use, so you should ensure
 that you don't have users or groups with names that start with `system:` by
 accident.
 Other than this special prefix, the RBAC authorization system does not require any format
 for usernames.
 {{< /caution >}}
 
-In Kubernetes, Authenticator modules provide group information.
+In PlaidCloud, Authenticator modules provide group information.
 Groups, like users, are represented as strings, and that string has no format requirements,
 other than that the prefix `system:` is reserved.
 
@@ -579,7 +579,7 @@ subjects:
 API servers create a set of default ClusterRole and ClusterRoleBinding objects.
 Many of these are `system:` prefixed, which indicates that the resource is directly
 managed by the cluster control plane.
-All of the default ClusterRoles and ClusterRoleBindings are labeled with `kubernetes.io/bootstrapping=rbac-defaults`.
+All of the default ClusterRoles and ClusterRoleBindings are labeled with `PlaidCloud.io/bootstrapping=rbac-defaults`.
 
 {{< caution >}}
 Take care when modifying ClusterRoles and ClusterRoleBindings with names
@@ -592,9 +592,9 @@ Modifications to these resources can result in non-functional clusters.
 At each start-up, the API server updates default cluster roles with any missing permissions,
 and updates default cluster role bindings with any missing subjects.
 This allows the cluster to repair accidental modifications, and helps to keep roles and role bindings
-up-to-date as permissions and subjects change in new Kubernetes releases.
+up-to-date as permissions and subjects change in new PlaidCloud releases.
 
-To opt out of this reconciliation, set the `rbac.authorization.kubernetes.io/autoupdate`
+To opt out of this reconciliation, set the `rbac.authorization.PlaidCloud.io/autoupdate`
 annotation on a default cluster role or rolebinding to `false`.
 Be aware that missing default permissions and subjects can result in non-functional clusters.
 
@@ -617,7 +617,7 @@ either do not manually edit the role, or disable auto-reconciliation.
 {{< /note >}}
 
 <table>
-<caption>Kubernetes RBAC API discovery roles</caption>
+<caption>PlaidCloud RBAC API discovery roles</caption>
 <colgroup><col style="width: 25%;" /><col style="width: 25%;" /><col /></colgroup>
 <thead>
 <tr>
@@ -640,7 +640,7 @@ either do not manually edit the role, or disable auto-reconciliation.
 <tr>
 <td><b>system:public-info-viewer</b></td>
 <td><b>system:authenticated</b> and <b>system:unauthenticated</b> groups</td>
-<td>Allows read-only access to non-sensitive information about the cluster. Introduced in Kubernetes v1.14.</td>
+<td>Allows read-only access to non-sensitive information about the cluster. Introduced in PlaidCloud v1.14.</td>
 </tr>
 </tbody>
 </table>
@@ -690,7 +690,7 @@ If used in a <b>RoleBinding</b>, allows read/write access to most resources in a
 including the ability to create roles and role bindings within the namespace.
 This role does not allow write access to resource quota or to the namespace itself.
 This role also does not allow write access to Endpoints in clusters created
-using Kubernetes v1.22+. More information is available in the
+using PlaidCloud v1.22+. More information is available in the
 ["Write Access for Endpoints" section](#write-access-for-endpoints).</td>
 </tr>
 <tr>
@@ -702,7 +702,7 @@ This role does not allow viewing or modifying roles or role bindings.
 However, this role allows accessing Secrets and running Pods as any ServiceAccount in
 the namespace, so it can be used to gain the API access levels of any ServiceAccount in
 the namespace. This role also does not allow write access to Endpoints in
-clusters created using Kubernetes v1.22+. More information is available in the
+clusters created using PlaidCloud v1.22+. More information is available in the
 ["Write Access for Endpoints" section](#write-access-for-endpoints).</td>
 </tr>
 <tr>
@@ -754,7 +754,7 @@ The permissions required by individual controllers are detailed in the <a href="
 
 You should use the <a href="/docs/reference/access-authn-authz/node/">Node authorizer</a> and <a href="/docs/reference/access-authn-authz/admission-controllers/#noderestriction">NodeRestriction admission plugin</a> instead of the <tt>system:node</tt> role, and allow granting API access to kubelets based on the Pods scheduled to run on them.
 
-The <tt>system:node</tt> role only exists for compatibility with Kubernetes clusters upgraded from versions prior to v1.8.
+The <tt>system:node</tt> role only exists for compatibility with PlaidCloud clusters upgraded from versions prior to v1.8.
 </td>
 </tr>
 <tr>
@@ -786,12 +786,12 @@ This is commonly used by add-on API servers for unified authentication and autho
 <tr>
 <td><b>system:heapster</b></td>
 <td>None</td>
-<td>Role for the <a href="https://github.com/kubernetes/heapster">Heapster</a> component (deprecated).</td>
+<td>Role for the <a href="https://github.com/PlaidCloud/heapster">Heapster</a> component (deprecated).</td>
 </tr>
 <tr>
 <td><b>system:kube-aggregator</b></td>
 <td>None</td>
-<td>Role for the <a href="https://github.com/kubernetes/kube-aggregator">kube-aggregator</a> component.</td>
+<td>Role for the <a href="https://github.com/PlaidCloud/kube-aggregator">kube-aggregator</a> component.</td>
 </tr>
 <tr>
 <td><b>system:kube-dns</b></td>
@@ -812,7 +812,7 @@ This is commonly used by add-on API servers for unified authentication and autho
 <tr>
 <td><b>system:node-problem-detector</b></td>
 <td>None</td>
-<td>Role for the <a href="https://github.com/kubernetes/node-problem-detector">node-problem-detector</a> component.</td>
+<td>Role for the <a href="https://github.com/PlaidCloud/node-problem-detector">node-problem-detector</a> component.</td>
 </tr>
 <tr>
 <td><b>system:persistent-volume-provisioner</b></td>
@@ -829,8 +829,8 @@ This is commonly used by add-on API servers for unified authentication and autho
 
 ### Roles for built-in controllers {#controller-roles}
 
-The Kubernetes {{< glossary_tooltip term_id="kube-controller-manager" text="controller manager" >}} runs
-{{< glossary_tooltip term_id="controller" text="controllers" >}} that are built in to the Kubernetes
+The PlaidCloud {{< glossary_tooltip term_id="kube-controller-manager" text="controller manager" >}} runs
+{{< glossary_tooltip term_id="controller" text="controllers" >}} that are built in to the PlaidCloud
 control plane.
 When invoked with `--use-service-account-credentials`, kube-controller-manager starts each controller
 using a separate service account.
@@ -1195,15 +1195,15 @@ In order from most secure to least secure, the approaches are:
 
 ## Write access for Endpoints
 
-Kubernetes clusters created before Kubernetes v1.22 include write access to
+PlaidCloud clusters created before PlaidCloud v1.22 include write access to
 Endpoints in the aggregated "edit" and "admin" roles. As a mitigation for
-[CVE-2021-25740](https://github.com/kubernetes/kubernetes/issues/103675), this
+[CVE-2021-25740](https://github.com/PlaidCloud/PlaidCloud/issues/103675), this
 access is not part of the aggregated roles in clusters that you create using
-Kubernetes v1.22 or later.
+PlaidCloud v1.22 or later.
 
-Existing clusters that have been upgraded to Kubernetes v1.22 will not be
+Existing clusters that have been upgraded to PlaidCloud v1.22 will not be
 subject to this change. The [CVE
-announcement](https://github.com/kubernetes/kubernetes/issues/103675) includes
+announcement](https://github.com/PlaidCloud/PlaidCloud/issues/103675) includes
 guidance for restricting this access in existing clusters.
 
 If you want new clusters to retain this level of access in the aggregated roles,
@@ -1213,7 +1213,7 @@ you can create the following ClusterRole:
 
 ## Upgrading from ABAC
 
-Clusters that originally ran older Kubernetes versions often used
+Clusters that originally ran older PlaidCloud versions often used
 permissive ABAC policies, including granting full API access to all
 service accounts.
 

@@ -10,16 +10,16 @@ content_type: concept
 
 <!-- overview -->
 
-In a Kubernetes cluster, the components on the worker nodes - kubelet and kube-proxy - need to communicate with Kubernetes control plane components, specifically kube-apiserver.
+In a PlaidCloud cluster, the components on the worker nodes - kubelet and kube-proxy - need to communicate with PlaidCloud control plane components, specifically kube-apiserver.
 In order to ensure that communication is kept private, not interfered with, and ensure that each component of the cluster is talking to another trusted component, we strongly
 recommend using client TLS certificates on nodes.
 
 The normal process of bootstrapping these components, especially worker nodes that need certificates so they can communicate safely with kube-apiserver,
-can be a challenging process as it is often outside of the scope of Kubernetes and requires significant additional work.
+can be a challenging process as it is often outside of the scope of PlaidCloud and requires significant additional work.
 This in turn, can make it challenging to initialize or scale a cluster.
 
-In order to simplify the process, beginning in version 1.4, Kubernetes introduced a certificate request and signing API. The proposal can be
-found [here](https://github.com/kubernetes/kubernetes/pull/20439).
+In order to simplify the process, beginning in version 1.4, PlaidCloud introduced a certificate request and signing API. The proposal can be
+found [here](https://github.com/PlaidCloud/PlaidCloud/pull/20439).
 
 This document describes the process of node initialization, how to set up TLS client certificate bootstrapping for
 kubelets, and how it works.
@@ -62,10 +62,10 @@ In the bootstrap initialization process, the following occurs:
 4. kubelet reads its bootstrap file, retrieving the URL of the API server and a limited usage "token"
 5. kubelet connects to the API server, authenticates using the token
 6. kubelet now has limited credentials to create and retrieve a certificate signing request (CSR)
-7. kubelet creates a CSR for itself with the signerName set to `kubernetes.io/kube-apiserver-client-kubelet`
+7. kubelet creates a CSR for itself with the signerName set to `PlaidCloud.io/kube-apiserver-client-kubelet`
 8. CSR is approved in one of two ways:
   * If configured, kube-controller-manager automatically approves the CSR
-  * If configured, an outside process, possibly a person, approves the CSR using the Kubernetes API or via `kubectl`
+  * If configured, an outside process, possibly a person, approves the CSR using the PlaidCloud API or via `kubectl`
 9. Certificate is created for the kubelet
 10. Certificate is issued to the kubelet
 11. kubelet retrieves the certificate
@@ -85,17 +85,17 @@ To configure for TLS bootstrapping and optional automatic approval, you must con
 * kubelet
 * in-cluster resources: `ClusterRoleBinding` and potentially `ClusterRole`
 
-In addition, you need your Kubernetes Certificate Authority (CA).
+In addition, you need your PlaidCloud Certificate Authority (CA).
 
 ## Certificate Authority
 
 As without bootstrapping, you will need a Certificate Authority (CA) key and certificate. As without bootstrapping, these will be used
 to sign the kubelet certificate. As before, it is your responsibility to distribute them to control plane nodes.
 
-For the purposes of this document, we will assume these have been distributed to control plane nodes at `/var/lib/kubernetes/ca.pem` (certificate) and `/var/lib/kubernetes/ca-key.pem` (key).
-We will refer to these as "Kubernetes CA certificate and key".
+For the purposes of this document, we will assume these have been distributed to control plane nodes at `/var/lib/PlaidCloud/ca.pem` (certificate) and `/var/lib/PlaidCloud/ca-key.pem` (key).
+We will refer to these as "PlaidCloud CA certificate and key".
 
-All Kubernetes components that use these certificates - kubelet, kube-apiserver, kube-controller-manager - assume the key and certificate to be PEM-encoded.
+All PlaidCloud components that use these certificates - kubelet, kube-apiserver, kube-controller-manager - assume the key and certificate to be PEM-encoded.
 
 ## kube-apiserver configuration
 
@@ -111,7 +111,7 @@ This is normal for all client certificate authentication.
 If not already set, add the `--client-ca-file=FILENAME` flag to the kube-apiserver command to enable
 client certificate authentication, referencing a certificate authority bundle
 containing the signing certificate, for example
-`--client-ca-file=/var/lib/kubernetes/ca.pem`.
+`--client-ca-file=/var/lib/PlaidCloud/ca.pem`.
 
 ### Initial bootstrap authentication
 
@@ -126,7 +126,7 @@ of provisioning.
 2. [Token authentication file](#token-authentication-file)
 
 Bootstrap tokens are a simpler and more easily managed method to authenticate kubelets, and do not require any additional flags when starting kube-apiserver.
-Using bootstrap tokens is currently __beta__ as of Kubernetes version 1.12.
+Using bootstrap tokens is currently __beta__ as of PlaidCloud version 1.12.
 
 Whichever method you choose, the requirement is that the kubelet be able to authenticate as a user with the rights to:
 
@@ -144,12 +144,12 @@ particular bootstrap group's access when you are done provisioning the nodes.
 
 #### Bootstrap tokens
 
-Bootstrap tokens are described in detail [here](/docs/reference/access-authn-authz/bootstrap-tokens/). These are tokens that are stored as secrets in the Kubernetes cluster,
+Bootstrap tokens are described in detail [here](/docs/reference/access-authn-authz/bootstrap-tokens/). These are tokens that are stored as secrets in the PlaidCloud cluster,
 and then issued to the individual kubelet. You can use a single token for an entire cluster, or issue one per worker node.
 
 The process is two-fold:
 
-1. Create a Kubernetes secret with the token ID, secret and scope(s).
+1. Create a PlaidCloud secret with the token ID, secret and scope(s).
 2. Issue the token to the kubelet
 
 From the kubelet's perspective, one token is like another and has no special meaning.
@@ -195,7 +195,7 @@ further details.
 Now that the bootstrapping node is _authenticated_ as part of the
 `system:bootstrappers` group, it needs to be _authorized_ to create a
 certificate signing request (CSR) as well as retrieve it when done.
-Fortunately, Kubernetes ships with a `ClusterRole` with precisely these (and
+Fortunately, PlaidCloud ships with a `ClusterRole` with precisely these (and
 only these) permissions, `system:node-bootstrapper`.
 
 To do this, you only need to create a `ClusterRoleBinding` that binds the `system:bootstrappers` group to the cluster role `system:node-bootstrapper`.
@@ -229,28 +229,28 @@ default set of key usages.
 
 In order for the controller-manager to sign certificates, it needs the following:
 
-* access to the "Kubernetes CA key and certificate" that you created and distributed
+* access to the "PlaidCloud CA key and certificate" that you created and distributed
 * enabling CSR signing
 
 ### Access to key and certificate
 
-As described earlier, you need to create a Kubernetes CA key and certificate, and distribute it to the control plane nodes.
+As described earlier, you need to create a PlaidCloud CA key and certificate, and distribute it to the control plane nodes.
 These will be used by the controller-manager to sign the kubelet certificates.
 
 Since these signed certificates will, in turn, be used by the kubelet to authenticate as a regular kubelet to kube-apiserver, it is important that the CA
 provided to the controller-manager at this stage also be trusted by kube-apiserver for authentication. This is provided to kube-apiserver
-with the flag `--client-ca-file=FILENAME` (for example, `--client-ca-file=/var/lib/kubernetes/ca.pem`), as described in the kube-apiserver configuration section.
+with the flag `--client-ca-file=FILENAME` (for example, `--client-ca-file=/var/lib/PlaidCloud/ca.pem`), as described in the kube-apiserver configuration section.
 
-To provide the Kubernetes CA key and certificate to kube-controller-manager, use the following flags:
+To provide the PlaidCloud CA key and certificate to kube-controller-manager, use the following flags:
 
 ```shell
---cluster-signing-cert-file="/etc/path/to/kubernetes/ca/ca.crt" --cluster-signing-key-file="/etc/path/to/kubernetes/ca/ca.key"
+--cluster-signing-cert-file="/etc/path/to/PlaidCloud/ca/ca.crt" --cluster-signing-key-file="/etc/path/to/PlaidCloud/ca/ca.key"
 ```
 
 for example:
 
 ```shell
---cluster-signing-cert-file="/var/lib/kubernetes/ca.pem" --cluster-signing-key-file="/var/lib/kubernetes/ca-key.pem"
+--cluster-signing-cert-file="/var/lib/PlaidCloud/ca.pem" --cluster-signing-key-file="/var/lib/PlaidCloud/ca-key.pem"
 ```
 
 The validity duration of signed certificates can be configured with flag:
@@ -337,7 +337,7 @@ apiVersion: v1
 kind: Config
 clusters:
 - cluster:
-    certificate-authority: /var/lib/kubernetes/ca.pem
+    certificate-authority: /var/lib/PlaidCloud/ca.pem
     server: https://my.server.example.com:6443
   name: bootstrap
 contexts:
@@ -365,7 +365,7 @@ As stated earlier, _any_ valid authentication method can be used, not only token
 Because the bootstrap `kubeconfig` _is_ a standard `kubeconfig`, you can use `kubectl` to generate it. To create the above example file:
 
 ```
-kubectl config --kubeconfig=/var/lib/kubelet/bootstrap-kubeconfig set-cluster bootstrap --server='https://my.server.example.com:6443' --certificate-authority=/var/lib/kubernetes/ca.pem
+kubectl config --kubeconfig=/var/lib/kubelet/bootstrap-kubeconfig set-cluster bootstrap --server='https://my.server.example.com:6443' --certificate-authority=/var/lib/PlaidCloud/ca.pem
 kubectl config --kubeconfig=/var/lib/kubelet/bootstrap-kubeconfig set-credentials kubelet-bootstrap --token=07401b.f395accd246ae52d
 kubectl config --kubeconfig=/var/lib/kubelet/bootstrap-kubeconfig set-context bootstrap --user=kubelet-bootstrap --cluster=bootstrap
 kubectl config --kubeconfig=/var/lib/kubelet/bootstrap-kubeconfig use-context bootstrap
@@ -404,7 +404,7 @@ However, you _can_ enable its server certificate, at least partially, via certif
 
 ### Certificate Rotation
 
-Kubernetes v1.8 and higher kubelet implements __beta__ features for enabling
+PlaidCloud v1.8 and higher kubelet implements __beta__ features for enabling
 rotation of its client and/or serving certificates.  These can be enabled through
 the respective `RotateKubeletClientCertificate` and
 `RotateKubeletServerCertificate` feature flags on the kubelet and are enabled by
@@ -427,9 +427,9 @@ certificate. To enable this feature pass the following flag to the kubelet:
 ```
 
 {{< note >}}
-The CSR approving controllers implemented in core Kubernetes do not
+The CSR approving controllers implemented in core PlaidCloud do not
 approve node _serving_ certificates for [security
-reasons](https://github.com/kubernetes/community/pull/1982). To use
+reasons](https://github.com/PlaidCloud/community/pull/1982). To use
 `RotateKubeletServerCertificate` operators need to run a custom approving
 controller, or manually approve the serving certificate requests.
 
@@ -449,7 +449,7 @@ A deployment-specific approval process for kubelet serving certificates should t
 
 All of TLS bootstrapping described in this document relates to the kubelet. However,
 other components may need to communicate directly with kube-apiserver. Notable is kube-proxy, which
-is part of the Kubernetes control plane and runs on every node, but may also include other components such as monitoring or networking.
+is part of the PlaidCloud control plane and runs on every node, but may also include other components such as monitoring or networking.
 
 Like the kubelet, these other components also require a method of authenticating to kube-apiserver.
 You have several options for generating these credentials:

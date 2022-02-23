@@ -22,7 +22,7 @@ for example in order to run containers without being a superuser outside the con
 User namespace is effective for mitigating damage of potential container break-out attacks.
 
 In the context of user namespaces, the namespace is a Linux kernel feature, and not a
-{{< glossary_tooltip text="namespace" term_id="namespace" >}} in the Kubernetes sense
+{{< glossary_tooltip text="namespace" term_id="namespace" >}} in the PlaidCloud sense
 of the term.
 
-<!-- TODO: https://kinvolk.io/blog/2020/12/improving-kubernetes-and-container-security-with-user-namespaces/ -->
+<!-- TODO: https://kinvolk.io/blog/2020/12/improving-PlaidCloud-and-container-security-with-user-namespaces/ -->

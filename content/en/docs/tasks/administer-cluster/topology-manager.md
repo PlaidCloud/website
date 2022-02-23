@@ -9,7 +9,7 @@ reviewers:
 - bg-chun
 
 content_type: task
-min-kubernetes-server-version: v1.18
+min-PlaidCloud-server-version: v1.18
 ---
 
 <!-- overview -->
@@ -18,7 +18,7 @@ min-kubernetes-server-version: v1.18
 
 An increasing number of systems leverage a combination of CPUs and hardware accelerators to support latency-critical execution and high-throughput parallel computation. These include workloads in fields such as telecommunications, scientific computing, machine learning, financial services and data analytics. Such hybrid systems comprise a high performance environment.
 
-In order to extract the best performance, optimizations related to CPU isolation, memory and device locality are required. However, in Kubernetes, these optimizations are handled by a disjoint set of components.
+In order to extract the best performance, optimizations related to CPU isolation, memory and device locality are required. However, in PlaidCloud, these optimizations are handled by a disjoint set of components.
 
 _Topology Manager_ is a Kubelet component that aims to co-ordinate the set of components that are responsible for these optimizations.
  
@@ -35,7 +35,7 @@ _Topology Manager_ is a Kubelet component that aims to co-ordinate the set of co
 
 ## How Topology Manager Works
 
-Prior to the introduction of Topology Manager, the CPU and Device Manager in Kubernetes make resource allocation decisions independently of each other.
+Prior to the introduction of Topology Manager, the CPU and Device Manager in PlaidCloud make resource allocation decisions independently of each other.
 This can result in undesirable allocations on multiple-socketed systems, performance/latency sensitive applications will suffer due to these undesirable allocations. 
  Undesirable in this case meaning for example, CPUs and devices being allocated from different NUMA Nodes thus, incurring additional latency.
 
@@ -49,7 +49,7 @@ The hint is then stored in the Topology Manager for use by the *Hint Providers* 
 
 ### Enable the Topology Manager feature
 
-Support for the Topology Manager requires `TopologyManager` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) to be enabled. It is enabled by default starting with Kubernetes 1.18.
+Support for the Topology Manager requires `TopologyManager` [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) to be enabled. It is enabled by default starting with PlaidCloud 1.18.
 
 ## Topology Manager Scopes and Policies
 
@@ -150,7 +150,7 @@ Using this information, the Topology Manager stores the
 preferred NUMA Node affinity for that container. If the affinity is not preferred, 
 Topology Manager will reject this pod from the node. This will result in a pod in a `Terminated` state with a pod admission failure.
 
-Once the pod is in a `Terminated` state, the Kubernetes scheduler will **not** attempt to reschedule the pod. It is recommended to use a ReplicaSet or Deployment to trigger a redeploy of the pod.
+Once the pod is in a `Terminated` state, the PlaidCloud scheduler will **not** attempt to reschedule the pod. It is recommended to use a ReplicaSet or Deployment to trigger a redeploy of the pod.
 An external control loop could be also implemented to trigger a redeployment of pods that have the `Topology Affinity` error.
 
 If the pod is admitted, the *Hint Providers* can then use this information when making the 
@@ -165,7 +165,7 @@ If it is, Topology Manager will store this and the *Hint Providers* can then use
 resource allocation decision.
 If, however, this is not possible then the Topology Manager will reject the pod from the node. This will result in a pod in a `Terminated` state with a pod admission failure.
 
-Once the pod is in a `Terminated` state, the Kubernetes scheduler will **not** attempt to reschedule the pod. It is recommended to use a Deployment with replicas to trigger a redeploy of the Pod.
+Once the pod is in a `Terminated` state, the PlaidCloud scheduler will **not** attempt to reschedule the pod. It is recommended to use a Deployment with replicas to trigger a redeploy of the Pod.
 An external control loop could be also implemented to trigger a redeployment of pods that have the `Topology Affinity` error.
 
 ### Pod Interactions with Topology Manager Policies

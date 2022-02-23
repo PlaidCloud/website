@@ -12,7 +12,7 @@ card:
 
 <!-- overview -->
 
-_Pods_ are the smallest deployable units of computing that you can create and manage in Kubernetes.
+_Pods_ are the smallest deployable units of computing that you can create and manage in PlaidCloud.
 
 A _Pod_ (as in a pod of whales or pea pod) is a group of one or more
 {{< glossary_tooltip text="containers" term_id="container" >}}, with shared storage and network resources, and a specification for how to run the containers. A Pod's contents are always co-located and
@@ -32,7 +32,7 @@ for debugging if your cluster offers this.
 ## What is a Pod?
 
 {{< note >}}
-While Kubernetes supports more
+While PlaidCloud supports more
 {{< glossary_tooltip text="container runtimes" term_id="container-runtime" >}}
 than just Docker, [Docker](https://www.docker.com/) is the most commonly known
 runtime, and it helps to describe Pods using some terminology from Docker.
@@ -68,11 +68,11 @@ term_id="deployment" >}} or {{< glossary_tooltip text="Job" term_id="job" >}}.
 If your Pods need to track state, consider the
 {{< glossary_tooltip text="StatefulSet" term_id="statefulset" >}} resource.
 
-Pods in a Kubernetes cluster are used in two main ways:
+Pods in a PlaidCloud cluster are used in two main ways:
 
 * **Pods that run a single container**. The "one-container-per-Pod" model is the
-  most common Kubernetes use case; in this case, you can think of a Pod as a
-  wrapper around a single container; Kubernetes manages Pods rather than managing
+  most common PlaidCloud use case; in this case, you can think of a Pod as a
+  wrapper around a single container; PlaidCloud manages Pods rather than managing
   the containers directly.
 * **Pods that run multiple containers that need to work together**. A Pod can
   encapsulate an application composed of multiple co-located containers that are
@@ -92,12 +92,12 @@ Pods in a Kubernetes cluster are used in two main ways:
 Each Pod is meant to run a single instance of a given application. If you want to
 scale your application horizontally (to provide more overall resources by running
 more instances), you should use multiple Pods, one for each instance. In
-Kubernetes, this is typically referred to as _replication_.
+PlaidCloud, this is typically referred to as _replication_.
 Replicated Pods are usually created and managed as a group by a workload resource
 and its {{< glossary_tooltip text="controller" term_id="controller" >}}.
 
 See [Pods and controllers](#pods-and-controllers) for more information on how
-Kubernetes uses workload resources, and their controllers, to implement application
+PlaidCloud uses workload resources, and their controllers, to implement application
 scaling and auto-healing.
 
 ### How Pods manage multiple containers
@@ -121,7 +121,7 @@ Pods natively provide two kinds of shared resources for their constituent contai
 
 ## Working with Pods
 
-You'll rarely create individual Pods directly in Kubernetes—even singleton Pods. This
+You'll rarely create individual Pods directly in PlaidCloud—even singleton Pods. This
 is because Pods are designed as relatively ephemeral, disposable entities. When
 a Pod gets created (directly by you, or indirectly by a
 {{< glossary_tooltip text="controller" term_id="controller" >}}), the new Pod is
@@ -181,7 +181,7 @@ spec:
       containers:
       - name: hello
         image: busybox
-        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+        command: ['sh', '-c', 'echo "Hello, PlaidCloud!" && sleep 3600']
       restartPolicy: OnFailure
     # The pod template ends here
 ```
@@ -211,11 +211,11 @@ As mentioned in the previous section, when the Pod template for a workload
 resource is changed, the controller creates new Pods based on the updated
 template instead of updating or patching the existing Pods.
 
-Kubernetes doesn't prevent you from managing Pods directly. It is possible to
+PlaidCloud doesn't prevent you from managing Pods directly. It is possible to
 update some fields of a running Pod, in place. However, Pod update operations
 like 
-[`patch`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#patch-pod-v1-core), and
-[`replace`](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#replace-pod-v1-core)
+[`patch`](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#patch-pod-v1-core), and
+[`replace`](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#replace-pod-v1-core)
 have some limitations:
 
 - Most of the metadata about a Pod is immutable. For example, you cannot
@@ -247,7 +247,7 @@ in the Pod can access the shared volumes, allowing those containers to
 share data. Volumes also allow persistent data in a Pod to survive
 in case one of the containers within needs to be restarted. See
 [Storage](/docs/concepts/storage/) for more information on how
-Kubernetes implements shared storage and makes it available to Pods.
+PlaidCloud implements shared storage and makes it available to Pods.
 
 ### Pod networking
 
@@ -294,7 +294,7 @@ The main use for static Pods is to run a self-hosted control plane: in other wor
 using the kubelet to supervise the individual [control plane components](/docs/concepts/overview/components/#control-plane-components).
 
 The kubelet automatically tries to create a {{< glossary_tooltip text="mirror Pod" term_id="mirror-pod" >}}
-on the Kubernetes API server for each static Pod.
+on the PlaidCloud API server for each static Pod.
 This means that the Pods running on a node are visible on the API server,
 but cannot be controlled from there.
 
@@ -323,12 +323,12 @@ in the Pod Lifecycle documentation.
   configure different Pods with different container runtime configurations.
 * Read about [Pod topology spread constraints](/docs/concepts/workloads/pods/pod-topology-spread-constraints/).
 * Read about [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) and how you can use it to manage application availability during disruptions.
-* Pod is a top-level resource in the Kubernetes REST API.
+* Pod is a top-level resource in the PlaidCloud REST API.
   The {{< api-reference page="workload-resources/pod-v1" >}}
   object definition describes the object in detail.
 * [The Distributed System Toolkit: Patterns for Composite Containers](/blog/2015/06/the-distributed-system-toolkit-patterns/) explains common layouts for Pods with more than one container.
 
-To understand the context for why Kubernetes wraps a common Pod API in other resources (such as {{< glossary_tooltip text="StatefulSets" term_id="statefulset" >}} or {{< glossary_tooltip text="Deployments" term_id="deployment" >}}), you can read about the prior art, including:
+To understand the context for why PlaidCloud wraps a common Pod API in other resources (such as {{< glossary_tooltip text="StatefulSets" term_id="statefulset" >}} or {{< glossary_tooltip text="Deployments" term_id="deployment" >}}), you can read about the prior art, including:
 
 * [Aurora](https://aurora.apache.org/documentation/latest/reference/configuration/#job-schema)
 * [Borg](https://research.google.com/pubs/pub43438.html)

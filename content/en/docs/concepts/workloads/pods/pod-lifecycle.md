@@ -12,11 +12,11 @@ of its primary containers starts OK, and then through either the `Succeeded` or
 `Failed` phases depending on whether any container in the Pod terminated in failure.
 
 Whilst a Pod is running, the kubelet is able to restart containers to handle some
-kind of faults. Within a Pod, Kubernetes tracks different container
+kind of faults. Within a Pod, PlaidCloud tracks different container
 [states](#container-states) and determines what action to take to make the Pod
 healthy again.
 
-In the Kubernetes API, Pods have both a specification and an actual status. The
+In the PlaidCloud API, Pods have both a specification and an actual status. The
 status for a Pod object consists of a set of [Pod conditions](#pod-conditions).
 You can also inject [custom readiness information](#pod-readiness-gate) into the
 condition data for a Pod, if that is useful to your application.
@@ -39,7 +39,7 @@ are [scheduled for deletion](#pod-garbage-collection) after a timeout period.
 
 Pods do not, by themselves, self-heal. If a Pod is scheduled to a
 {{< glossary_tooltip text="node" term_id="node" >}} that then fails, the Pod is deleted; likewise, a Pod won't
-survive an eviction due to a lack of resources or Node maintenance. Kubernetes uses a
+survive an eviction due to a lack of resources or Node maintenance. PlaidCloud uses a
 higher-level abstraction, called a
 {{< glossary_tooltip term_id="controller" text="controller" >}}, that handles the work of
 managing the relatively disposable Pod instances.
@@ -63,7 +63,7 @@ web server that uses a persistent volume for shared storage between the containe
 ## Pod phase
 
 A Pod's `status` field is a
-[PodStatus](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podstatus-v1-core)
+[PodStatus](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podstatus-v1-core)
 object, which has a `phase` field.
 
 The phase of a Pod is a simple, high-level summary of where the Pod is in its
@@ -78,7 +78,7 @@ Here are the possible values for `phase`:
 
 Value       | Description
 :-----------|:-----------
-`Pending`   | The Pod has been accepted by the Kubernetes cluster, but one or more of the containers has not been set up and made ready to run. This includes time a Pod spends waiting to be scheduled as well as the time spent downloading container images over the network.
+`Pending`   | The Pod has been accepted by the PlaidCloud cluster, but one or more of the containers has not been set up and made ready to run. This includes time a Pod spends waiting to be scheduled as well as the time spent downloading container images over the network.
 `Running`   | The Pod has been bound to a node, and all of the containers have been created. At least one container is still running, or is in the process of starting or restarting.
 `Succeeded` | All containers in the Pod have terminated in success, and will not be restarted.
 `Failed`    | All containers in the Pod have terminated, and at least one container has terminated in failure. That is, the container either exited with non-zero status or was terminated by the system.
@@ -91,12 +91,12 @@ A Pod is granted a term to terminate gracefully, which defaults to 30 seconds.
 You can use the flag `--force` to [terminate a Pod by force](/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination-forced).
 {{< /note >}}
 
-If a node dies or is disconnected from the rest of the cluster, Kubernetes
+If a node dies or is disconnected from the rest of the cluster, PlaidCloud
 applies a policy for setting the `phase` of all Pods on the lost node to Failed.
 
 ## Container states
 
-As well as the [phase](#pod-phase) of the Pod overall, Kubernetes tracks the state of
+As well as the [phase](#pod-phase) of the Pod overall, PlaidCloud tracks the state of
 each container inside a Pod. You can use
 [container lifecycle hooks](/docs/concepts/containers/container-lifecycle-hooks/) to
 trigger events to run at certain points in a container's lifecycle.
@@ -153,7 +153,7 @@ without any problems, the kubelet resets the restart backoff timer for that cont
 ## Pod conditions
 
 A Pod has a PodStatus, which has an array of
-[PodConditions](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#podcondition-v1-core)
+[PodConditions](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#podcondition-v1-core)
 through which the Pod has or has not passed:
 
 * `PodScheduled`: the Pod has been scheduled to a node.
@@ -182,7 +182,7 @@ _Pod readiness_. To use this, set `readinessGates` in the Pod's `spec` to
 specify a list of additional conditions that the kubelet evaluates for Pod readiness.
 
 Readiness gates are determined by the current state of `status.condition`
-fields for the Pod. If Kubernetes cannot find such a condition in the
+fields for the Pod. If PlaidCloud cannot find such a condition in the
 `status.conditions` field of a Pod, the status of the condition
 is defaulted to "`False`".
 
@@ -210,7 +210,7 @@ status:
 ...
 ```
 
-The Pod conditions you add must have names that meet the Kubernetes [label key format](/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+The Pod conditions you add must have names that meet the PlaidCloud [label key format](/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
 
 
 ### Status for Pod readiness {#pod-readiness-status}
@@ -219,7 +219,7 @@ The `kubectl patch` command does not support patching object status.
 To set these `status.conditions` for the pod, applications and
 {{< glossary_tooltip term_id="operator-pattern" text="operators">}} should use
 the `PATCH` action.
-You can use a [Kubernetes client library](/docs/reference/using-api/client-libraries/) to
+You can use a [PlaidCloud client library](/docs/reference/using-api/client-libraries/) to
 write code that sets custom Pod conditions for Pod readiness.
 
 For a Pod that uses custom conditions, that Pod is evaluated to be ready **only**
@@ -490,4 +490,4 @@ This avoids a resource leak as Pods are created and terminated over time.
 
 * For detailed information about Pod and container status in the API, see
   the API reference documentation covering
-  [`.status`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodStatus) for Pod.
+  [`.status`](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#PodStatus) for Pod.

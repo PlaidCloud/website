@@ -21,7 +21,7 @@ manually through `easyrsa`, `openssl` or `cfssl`.
 
 1.  Download, unpack, and initialize the patched version of easyrsa3.
 
-        curl -LO https://storage.googleapis.com/kubernetes-release/easy-rsa/easy-rsa.tar.gz
+        curl -LO https://storage.googleapis.com/PlaidCloud-release/easy-rsa/easy-rsa.tar.gz
         tar xzf easy-rsa.tar.gz
         cd easy-rsa-master/easyrsa3
         ./easyrsa init-pki
@@ -40,11 +40,11 @@ manually through `easyrsa`, `openssl` or `cfssl`.
 
         ./easyrsa --subject-alt-name="IP:${MASTER_IP},"\
         "IP:${MASTER_CLUSTER_IP},"\
-        "DNS:kubernetes,"\
-        "DNS:kubernetes.default,"\
-        "DNS:kubernetes.default.svc,"\
-        "DNS:kubernetes.default.svc.cluster,"\
-        "DNS:kubernetes.default.svc.cluster.local" \
+        "DNS:PlaidCloud,"\
+        "DNS:PlaidCloud.default,"\
+        "DNS:PlaidCloud.default.svc,"\
+        "DNS:PlaidCloud.default.svc.cluster,"\
+        "DNS:PlaidCloud.default.svc.cluster.local" \
         --days=10000 \
         build-server-full server nopass
 1.  Copy `pki/ca.crt`, `pki/issued/server.crt`, and `pki/private/server.key` to your directory.
@@ -94,11 +94,11 @@ manually through `easyrsa`, `openssl` or `cfssl`.
         subjectAltName = @alt_names
 
         [ alt_names ]
-        DNS.1 = kubernetes
-        DNS.2 = kubernetes.default
-        DNS.3 = kubernetes.default.svc
-        DNS.4 = kubernetes.default.svc.cluster
-        DNS.5 = kubernetes.default.svc.cluster.local
+        DNS.1 = PlaidCloud
+        DNS.2 = PlaidCloud.default
+        DNS.3 = PlaidCloud.default.svc
+        DNS.4 = PlaidCloud.default.svc.cluster
+        DNS.5 = PlaidCloud.default.svc.cluster.local
         IP.1 = <MASTER_IP>
         IP.2 = <MASTER_CLUSTER_IP>
 
@@ -153,7 +153,7 @@ Finally, add the same parameters into the API server start parameters.
               "expiry": "8760h"
             },
             "profiles": {
-              "kubernetes": {
+              "PlaidCloud": {
                 "usages": [
                   "signing",
                   "key encipherment",
@@ -170,7 +170,7 @@ Finally, add the same parameters into the API server start parameters.
     real values you want to use.
 
         {
-          "CN": "kubernetes",
+          "CN": "PlaidCloud",
           "key": {
             "algo": "rsa",
             "size": 2048
@@ -194,16 +194,16 @@ Finally, add the same parameters into the API server start parameters.
     DNS domain name.
 
         {
-          "CN": "kubernetes",
+          "CN": "PlaidCloud",
           "hosts": [
             "127.0.0.1",
             "<MASTER_IP>",
             "<MASTER_CLUSTER_IP>",
-            "kubernetes",
-            "kubernetes.default",
-            "kubernetes.default.svc",
-            "kubernetes.default.svc.cluster",
-            "kubernetes.default.svc.cluster.local"
+            "PlaidCloud",
+            "PlaidCloud.default",
+            "PlaidCloud.default.svc",
+            "PlaidCloud.default.svc.cluster",
+            "PlaidCloud.default.svc.cluster.local"
           ],
           "key": {
             "algo": "rsa",
@@ -221,7 +221,7 @@ Finally, add the same parameters into the API server start parameters.
     saved into file `server-key.pem` and `server.pem` respectively:
 
         ../cfssl gencert -ca=ca.pem -ca-key=ca-key.pem \
-        --config=ca-config.json -profile=kubernetes \
+        --config=ca-config.json -profile=PlaidCloud \
         server-csr.json | ../cfssljson -bare server
 
 
@@ -235,7 +235,7 @@ refresh the local list for valid certificates.
 On each client, perform the following operations:
 
 ```bash
-sudo cp ca.crt /usr/local/share/ca-certificates/kubernetes.crt
+sudo cp ca.crt /usr/local/share/ca-certificates/PlaidCloud.crt
 sudo update-ca-certificates
 ```
 

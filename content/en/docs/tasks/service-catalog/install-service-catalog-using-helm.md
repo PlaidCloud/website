@@ -8,18 +8,18 @@ content_type: task
 <!-- overview -->
 {{< glossary_definition term_id="service-catalog" length="all" prepend="Service Catalog is" >}}  
 
-Use [Helm](https://helm.sh/) to install Service Catalog on your Kubernetes cluster.
+Use [Helm](https://helm.sh/) to install Service Catalog on your PlaidCloud cluster.
 Up to date information on this process can be found at the
-[kubernetes-sigs/service-catalog](https://github.com/kubernetes-sigs/service-catalog/blob/master/docs/install.md) repo.
+[PlaidCloud-sigs/service-catalog](https://github.com/PlaidCloud-sigs/service-catalog/blob/master/docs/install.md) repo.
 
 ## {{% heading "prerequisites" %}}
 
-* Understand the key concepts of [Service Catalog](/docs/concepts/extend-kubernetes/service-catalog/).
-* Service Catalog requires a Kubernetes cluster running version 1.7 or higher.
-* You must have a Kubernetes cluster with cluster DNS enabled.
-    * If you are using a cloud-based Kubernetes cluster or {{< glossary_tooltip text="Minikube" term_id="minikube" >}}, you may already have cluster DNS enabled.
+* Understand the key concepts of [Service Catalog](/docs/concepts/extend-PlaidCloud/service-catalog/).
+* Service Catalog requires a PlaidCloud cluster running version 1.7 or higher.
+* You must have a PlaidCloud cluster with cluster DNS enabled.
+    * If you are using a cloud-based PlaidCloud cluster or {{< glossary_tooltip text="Minikube" term_id="minikube" >}}, you may already have cluster DNS enabled.
     * If you are using `hack/local-up-cluster.sh`, ensure that the `KUBE_ENABLE_CLUSTER_DNS` environment variable is set, then run the install script.
-* [Install and setup kubectl](/docs/tasks/tools/) v1.7 or higher. Make sure it is configured to connect to the Kubernetes cluster.
+* [Install and setup kubectl](/docs/tasks/tools/) v1.7 or higher. Make sure it is configured to connect to the PlaidCloud cluster.
 * Install [Helm](https://helm.sh/) v2.7.0 or newer.
     * Follow the [Helm install instructions](https://helm.sh/docs/intro/install/).
     * If you already have an appropriate version of Helm installed, execute `helm init` to install Tiller, the server-side component of Helm.
@@ -33,7 +33,7 @@ Up to date information on this process can be found at the
 Once Helm is installed, add the *service-catalog* Helm repository to your local machine by executing the following command:
 
 ```shell
-helm repo add svc-cat https://kubernetes-sigs.github.io/service-catalog
+helm repo add svc-cat https://PlaidCloud-sigs.github.io/service-catalog
 ```
 
 Check to make sure that it installed successfully by executing the following command:
@@ -52,7 +52,7 @@ svc-cat/catalog-v0.2	0.2.2        	           	service-catalog API server and co
 
 ## Enable RBAC
 
-Your Kubernetes cluster must have RBAC enabled, which requires your Tiller Pod(s) to have `cluster-admin` access.
+Your PlaidCloud cluster must have RBAC enabled, which requires your Tiller Pod(s) to have `cluster-admin` access.
 
 When using Minikube v0.25 or older, you must run Minikube with RBAC explicitly enabled:
 
@@ -89,7 +89,7 @@ kubectl create clusterrolebinding tiller-cluster-admin \
 ```
 
 
-## Install Service Catalog in your Kubernetes cluster
+## Install Service Catalog in your PlaidCloud cluster
 
 Install Service Catalog from the root of the Helm repository using the following command:
 
@@ -111,6 +111,6 @@ helm install svc-cat/catalog --name catalog --namespace catalog
 ## {{% heading "whatsnext" %}}
 
 * View [sample service brokers](https://github.com/openservicebrokerapi/servicebroker/blob/master/gettingStarted.md#sample-service-brokers).
-* Explore the [kubernetes-sigs/service-catalog](https://github.com/kubernetes-sigs/service-catalog) project.
+* Explore the [PlaidCloud-sigs/service-catalog](https://github.com/PlaidCloud-sigs/service-catalog) project.
 
 

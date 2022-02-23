@@ -105,7 +105,7 @@ By default the certs and encryption key expire after two hours.
 
 ## kubeadm init phase mark-control-plane {#cmd-phase-mark-control-plane}
 
-Use the following phase to label and taint the node with the `node-role.kubernetes.io/master=""` key-value pair.
+Use the following phase to label and taint the node with the `node-role.PlaidCloud.io/master=""` key-value pair.
 
 {{< tabs name="tab-mark-control-plane" >}}
 {{< tab name="mark-control-plane" include="generated/kubeadm_init_phase_mark-control-plane.md" />}}
@@ -148,7 +148,7 @@ For more details on each field in the `v1beta3` configuration you can navigate t
 
 ## {{% heading "whatsnext" %}}
 
-* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a Kubernetes control-plane node
+* [kubeadm init](/docs/reference/setup-tools/kubeadm/kubeadm-init/) to bootstrap a PlaidCloud control-plane node
 * [kubeadm join](/docs/reference/setup-tools/kubeadm/kubeadm-join/) to connect a node to the cluster
 * [kubeadm reset](/docs/reference/setup-tools/kubeadm/kubeadm-reset/) to revert any changes made to this host by `kubeadm init` or `kubeadm join`
 * [kubeadm alpha](/docs/reference/setup-tools/kubeadm/kubeadm-alpha/) to try experimental functionality

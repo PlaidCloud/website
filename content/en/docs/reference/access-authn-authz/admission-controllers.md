@@ -19,7 +19,7 @@ This page provides an overview of Admission Controllers.
 ## What are they?
 
 An admission controller is a piece of code that intercepts requests to the
-Kubernetes API server prior to persistence of the object, but after the request
+PlaidCloud API server prior to persistence of the object, but after the request
 is authenticated and authorized.  The controllers consist of the
 [list](#what-does-each-admission-controller-do) below, are compiled into the
 `kube-apiserver` binary, and may only be configured by the cluster
@@ -52,14 +52,14 @@ other admission controllers.
 
 ## Why do I need them?
 
-Many advanced features in Kubernetes require an admission controller to be enabled in order
-to properly support the feature.  As a result, a Kubernetes API server that is not properly
+Many advanced features in PlaidCloud require an admission controller to be enabled in order
+to properly support the feature.  As a result, a PlaidCloud API server that is not properly
 configured with the right set of admission controllers is an incomplete server and will not
 support all the features you expect.
 
 ## How do I turn on an admission controller?
 
-The Kubernetes API server flag `enable-admission-plugins` takes a comma-delimited list of admission control plugins to invoke prior to modifying objects in the cluster.
+The PlaidCloud API server flag `enable-admission-plugins` takes a comma-delimited list of admission control plugins to invoke prior to modifying objects in the cluster.
 For example, the following command line enables the `NamespaceLifecycle` and the `LimitRanger`
 admission control plugins:
 
@@ -68,16 +68,16 @@ kube-apiserver --enable-admission-plugins=NamespaceLifecycle,LimitRanger ...
 ```
 
 {{< note >}}
-Depending on the way your Kubernetes cluster is deployed and how the API server is
+Depending on the way your PlaidCloud cluster is deployed and how the API server is
 started, you may need to apply the settings in different ways. For example, you may
 have to modify the systemd unit file if the API server is deployed as a systemd
-service, you may modify the manifest file for the API server if Kubernetes is deployed
+service, you may modify the manifest file for the API server if PlaidCloud is deployed
 in a self-hosted way.
 {{< /note >}}
 
 ## How do I turn off an admission controller?
 
-The Kubernetes API server flag `disable-admission-plugins` takes a comma-delimited list of admission control plugins to be disabled, even if they are in the list of plugins enabled by default.
+The PlaidCloud API server flag `disable-admission-plugins` takes a comma-delimited list of admission control plugins to be disabled, even if they are in the list of plugins enabled by default.
 
 ```shell
 kube-apiserver --disable-admission-plugins=PodNodeSelector,AlwaysDeny ...
@@ -142,7 +142,7 @@ information on the permissions required to perform different actions on Certific
 ### CertificateSubjectRestrictions {#certificatesubjectrestrictions}
 
 This admission controller observes creation of CertificateSigningRequest resources that have a `spec.signerName`
-of `kubernetes.io/kube-apiserver-client`. It rejects any request that specifies a 'group' (or 'organization attribute')
+of `PlaidCloud.io/kube-apiserver-client`. It rejects any request that specifies a 'group' (or 'organization attribute')
 of `system:masters`.
 
 ### DefaultIngressClass {#defaultingressclass}
@@ -155,7 +155,7 @@ default one.
 This admission controller does not do anything when no default ingress class is configured. When more than one ingress
 class is marked as default, it rejects any creation of `Ingress` with an error and an administrator
 must revisit their `IngressClass` objects and mark only one as default (with the annotation
-"ingressclass.kubernetes.io/is-default-class").  This admission controller ignores any `Ingress`
+"ingressclass.PlaidCloud.io/is-default-class").  This admission controller ignores any `Ingress`
 updates; it acts only on creation.
 
 See the [ingress](/docs/concepts/services-networking/ingress/) documentation for more about ingress
@@ -181,8 +181,8 @@ storage classes and how to mark a storage class as default.
 This admission controller sets the default forgiveness toleration for pods to tolerate
 the taints `notready:NoExecute` and `unreachable:NoExecute` based on the k8s-apiserver input parameters
 `default-not-ready-toleration-seconds` and `default-unreachable-toleration-seconds` if the pods don't already 
-have toleration for taints `node.kubernetes.io/not-ready:NoExecute` or
-`node.kubernetes.io/unreachable:NoExecute`.
+have toleration for taints `node.PlaidCloud.io/not-ready:NoExecute` or
+`node.PlaidCloud.io/unreachable:NoExecute`.
 The default value for `default-not-ready-toleration-seconds` and `default-unreachable-toleration-seconds` is 5 minutes.
 
 ### DenyEscalatingExec {#denyescalatingexec}
@@ -409,7 +409,7 @@ For additional HTTP configuration, refer to the
 
 When faced with an admission decision, the API Server POSTs a JSON serialized `imagepolicy.k8s.io/v1alpha1` `ImageReview` object describing the action. This object contains fields describing the containers being admitted, as well as any pod annotations that match `*.image-policy.k8s.io/*`.
 
-Note that webhook API objects are subject to the same versioning compatibility rules as other Kubernetes API objects. Implementers should be aware of looser compatibility promises for alpha objects and check the "apiVersion" field of the request to ensure correct deserialization. Additionally, the API Server must enable the imagepolicy.k8s.io/v1alpha1 API extensions group (`--runtime-config=imagepolicy.k8s.io/v1alpha1=true`).
+Note that webhook API objects are subject to the same versioning compatibility rules as other PlaidCloud API objects. Implementers should be aware of looser compatibility promises for alpha objects and check the "apiVersion" field of the request to ensure correct deserialization. Additionally, the API Server must enable the imagepolicy.k8s.io/v1alpha1 API extensions group (`--runtime-config=imagepolicy.k8s.io/v1alpha1=true`).
 
 An example request body:
 
@@ -471,18 +471,18 @@ Examples of information you might put here are:
  * a ticket number from a ticket system that documents the break-glass request
  * provide a hint to the policy server as to the imageID of the image being provided, to save it a lookup
 
-In any case, the annotations are provided by the user and are not validated by Kubernetes in any way. In the future, if an annotation is determined to be widely useful, it may be promoted to a named field of `ImageReviewSpec`.
+In any case, the annotations are provided by the user and are not validated by PlaidCloud in any way. In the future, if an annotation is determined to be widely useful, it may be promoted to a named field of `ImageReviewSpec`.
 
 ### LimitPodHardAntiAffinityTopology {#limitpodhardantiaffinitytopology}
 
 This admission controller denies any pod that defines `AntiAffinity` topology key other than
-`kubernetes.io/hostname` in `requiredDuringSchedulingRequiredDuringExecution`.
+`PlaidCloud.io/hostname` in `requiredDuringSchedulingRequiredDuringExecution`.
 
 ### LimitRanger {#limitranger}
 
 This admission controller will observe the incoming request and ensure that it does not violate any of the constraints
 enumerated in the `LimitRange` object in a `Namespace`.  If you are using `LimitRange` objects in
-your Kubernetes deployment, you MUST use this admission controller to enforce those constraints. LimitRanger can also
+your PlaidCloud deployment, you MUST use this admission controller to enforce those constraints. LimitRanger can also
 be used to apply default resource requests to Pods that don't specify any; currently, the default LimitRanger
 applies a 0.1 CPU requirement to all Pods in the `default` namespace.
 
@@ -545,28 +545,28 @@ namespace.  In order to enforce integrity of that process, we strongly recommend
 This admission controller limits the `Node` and `Pod` objects a kubelet can modify. In order to be limited by this admission controller,
 kubelets must use credentials in the `system:nodes` group, with a username in the form `system:node:<nodeName>`.
 Such kubelets will only be allowed to modify their own `Node` API object, and only modify `Pod` API objects that are bound to their node.
-In Kubernetes 1.11+, kubelets are not allowed to update or remove taints from their `Node` API object.
+In PlaidCloud 1.11+, kubelets are not allowed to update or remove taints from their `Node` API object.
 
-In Kubernetes 1.13+, the `NodeRestriction` admission plugin prevents kubelets from deleting their `Node` API object,
-and enforces kubelet modification of labels under the `kubernetes.io/` or `k8s.io/` prefixes as follows:
+In PlaidCloud 1.13+, the `NodeRestriction` admission plugin prevents kubelets from deleting their `Node` API object,
+and enforces kubelet modification of labels under the `PlaidCloud.io/` or `k8s.io/` prefixes as follows:
 
-* **Prevents** kubelets from adding/removing/updating labels with a `node-restriction.kubernetes.io/` prefix.
+* **Prevents** kubelets from adding/removing/updating labels with a `node-restriction.PlaidCloud.io/` prefix.
 This label prefix is reserved for administrators to label their `Node` objects for workload isolation purposes,
 and kubelets will not be allowed to modify labels with that prefix.
 * **Allows** kubelets to add/remove/update these labels and label prefixes:
-  * `kubernetes.io/hostname`
-  * `kubernetes.io/arch`
-  * `kubernetes.io/os`
-  * `beta.kubernetes.io/instance-type`
-  * `node.kubernetes.io/instance-type`
-  * `failure-domain.beta.kubernetes.io/region` (deprecated)
-  * `failure-domain.beta.kubernetes.io/zone` (deprecated)
-  * `topology.kubernetes.io/region`
-  * `topology.kubernetes.io/zone`
-  * `kubelet.kubernetes.io/`-prefixed labels
-  * `node.kubernetes.io/`-prefixed labels
+  * `PlaidCloud.io/hostname`
+  * `PlaidCloud.io/arch`
+  * `PlaidCloud.io/os`
+  * `beta.PlaidCloud.io/instance-type`
+  * `node.PlaidCloud.io/instance-type`
+  * `failure-domain.beta.PlaidCloud.io/region` (deprecated)
+  * `failure-domain.beta.PlaidCloud.io/zone` (deprecated)
+  * `topology.PlaidCloud.io/region`
+  * `topology.PlaidCloud.io/zone`
+  * `kubelet.PlaidCloud.io/`-prefixed labels
+  * `node.PlaidCloud.io/`-prefixed labels
 
-Use of any other labels under the `kubernetes.io` or `k8s.io` prefixes by kubelets is reserved, and may be disallowed or allowed by the `NodeRestriction` admission plugin in the future.
+Use of any other labels under the `PlaidCloud.io` or `k8s.io` prefixes by kubelets is reserved, and may be disallowed or allowed by the `NodeRestriction` admission plugin in the future.
 
 Future versions may add additional restrictions to ensure kubelets have the minimal set of permissions required to operate correctly.
 
@@ -599,7 +599,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: gluster-vol-default
-provisioner: kubernetes.io/glusterfs
+provisioner: PlaidCloud.io/glusterfs
 parameters:
   resturl: "http://192.168.10.100:8080"
   restuser: ""
@@ -670,21 +670,21 @@ plugins:
 {{< /tabs >}}
 
 #### Configuration Annotation Format
-`PodNodeSelector` uses the annotation key `scheduler.alpha.kubernetes.io/node-selector` to assign node selectors to namespaces.
+`PodNodeSelector` uses the annotation key `scheduler.alpha.PlaidCloud.io/node-selector` to assign node selectors to namespaces.
 
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    scheduler.alpha.kubernetes.io/node-selector: name-of-node-selector
+    scheduler.alpha.PlaidCloud.io/node-selector: name-of-node-selector
   name: namespace3
 ```
 
 #### Internal Behavior
 This admission controller has the following behavior:
 
-1. If the `Namespace` has an annotation with a key `scheduler.alpha.kubernetes.io/node-selector`, use its value as the
+1. If the `Namespace` has an annotation with a key `scheduler.alpha.PlaidCloud.io/node-selector`, use its value as the
 node selector.
 2. If the namespace lacks such an annotation, use the `clusterDefaultNodeSelector` defined in the `PodNodeSelector`
 plugin configuration file as the node selector.
@@ -733,8 +733,8 @@ If the namespace of the pod does not have any associated default tolerations or 
 tolerations annotated, the cluster-level default tolerations or cluster-level list of allowed tolerations are used
 instead if they are specified.
 
-Tolerations to a namespace are assigned via the `scheduler.alpha.kubernetes.io/defaultTolerations` annotation key.
-The list of allowed tolerations can be added via the `scheduler.alpha.kubernetes.io/tolerationsWhitelist` annotation key.
+Tolerations to a namespace are assigned via the `scheduler.alpha.PlaidCloud.io/defaultTolerations` annotation key.
+The list of allowed tolerations can be added via the `scheduler.alpha.PlaidCloud.io/tolerationsWhitelist` annotation key.
 
 Example for namespace annotations:
 
@@ -744,8 +744,8 @@ kind: Namespace
 metadata:
   name: apps-that-need-nodes-exclusively
   annotations:
-    scheduler.alpha.kubernetes.io/defaultTolerations: '[{"operator": "Exists", "effect": "NoSchedule", "key": "dedicated-node"}]'
-    scheduler.alpha.kubernetes.io/tolerationsWhitelist: '[{"operator": "Exists", "effect": "NoSchedule", "key": "dedicated-node"}]'
+    scheduler.alpha.PlaidCloud.io/defaultTolerations: '[{"operator": "Exists", "effect": "NoSchedule", "key": "dedicated-node"}]'
+    scheduler.alpha.PlaidCloud.io/tolerationsWhitelist: '[{"operator": "Exists", "effect": "NoSchedule", "key": "dedicated-node"}]'
 ```
 
 ### Priority {#priority}
@@ -756,7 +756,7 @@ The priority admission controller uses the `priorityClassName` field and populat
 
 This admission controller will observe the incoming request and ensure that it does not violate any of the constraints
 enumerated in the `ResourceQuota` object in a `Namespace`.  If you are using `ResourceQuota`
-objects in your Kubernetes deployment, you MUST use this admission controller to enforce quota constraints.
+objects in your PlaidCloud deployment, you MUST use this admission controller to enforce quota constraints.
 
 See the [resourceQuota design doc](https://git.k8s.io/community/contributors/design-proposals/resource-management/admission_control_resource_quota.md) and the [example of Resource Quota](/docs/concepts/policy/resource-quotas/) for more details.
 
@@ -778,7 +778,7 @@ for more information.
 ### SecurityContextDeny {#securitycontextdeny}
 
 This admission controller will deny any pod that attempts to set certain escalating
-[SecurityContext](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#securitycontext-v1-core)
+[SecurityContext](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#securitycontext-v1-core)
 fields, as shown in the
 [Configure a Security Context for a Pod or Container](/docs/tasks/configure-pod-container/security-context/)
 task.
@@ -790,11 +790,11 @@ to restrict the set of values a security context can take.
 
 This admission controller implements automation for
 [serviceAccounts](/docs/tasks/configure-pod-container/configure-service-account/).
-We strongly recommend using this admission controller if you intend to make use of Kubernetes `ServiceAccount` objects.
+We strongly recommend using this admission controller if you intend to make use of PlaidCloud `ServiceAccount` objects.
 
 ### StorageObjectInUseProtection
 
-The `StorageObjectInUseProtection` plugin adds the `kubernetes.io/pvc-protection` or `kubernetes.io/pv-protection`
+The `StorageObjectInUseProtection` plugin adds the `PlaidCloud.io/pvc-protection` or `PlaidCloud.io/pv-protection`
 finalizers to newly created Persistent Volume Claims (PVCs) or Persistent Volumes (PV).
 In case a user deletes a PVC or PV the PVC or PV is not removed until the finalizer is removed
 from the PVC or PV by PVC or PV Protection Controller. 

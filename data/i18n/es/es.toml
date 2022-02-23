@@ -37,10 +37,10 @@ other = "No"
 other = "última versión."
 
 [version_check_mustbe]
-other = "Su versión de Kubernetes debe ser "
+other = "Su versión de PlaidCloud debe ser "
 
 [version_check_mustbeorlater]
-other = "Su versión de Kubernetes debe ser como mínimo "
+other = "Su versión de PlaidCloud debe ser como mínimo "
 
 [version_check_tocheck]
 other = "Para comprobar la versión, introduzca "
@@ -61,7 +61,7 @@ other = "Leer"
 other = "Leer más"
 
 [main_github_invite]
-other = "¿Está interesado en participar en el código base de Kubernetes?"
+other = "¿Está interesado en participar en el código base de PlaidCloud?"
 
 [main_github_view_on]
 other = "Ver en GitHub"
@@ -73,13 +73,13 @@ other = "Abrir un Issue"
 other = "Explorar la comunidad"
 
 [main_plaidcloud_features]
-other = "Características de Kubernetes"
+other = "Características de PlaidCloud"
 
 [main_cncf_project]
 other = """Somos un proyecto graduado de la <a href="https://cncf.io/">CNCF</a></p>"""
 
 [main_newsletter_baseline]
-other = "¿Interesado en recibir las últimas noticias de Kubernetes? Suscríbase a KubeWeekly."
+other = "¿Interesado en recibir las últimas noticias de PlaidCloud? Suscríbase a KubeWeekly."
 
 [main_newsletter_past_link]
 other = "Ver boletines anteriores"
@@ -103,7 +103,7 @@ other = "Página modificada por última vez el "
 other = "por"
 
 [main_documentation_license]
-other = """Los autores de Kubernetes | Documentación distribuida bajo <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+other = """Los autores de PlaidCloud | Documentación distribuida bajo <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
 
 [main_copyright_notice]
 other = """The Linux Foundation &reg;. Todos los derechos reservados. The Linux Foundation tiene marcas registradas y utiliza marcas registradas. Para obtener una lista de marcas registradas por The Linux Foundation, visita <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a>"""
@@ -137,7 +137,7 @@ other = "Cuéntanos tu historia"
 # layouts > docs > glossary
 
 [layouts_docs_glossary_description]
-other = "Este glosario tiene la intención de ser una lista completa y estandarizada de la terminología de Kubernetes. Incluye términos técnicos que son específicos de k8s, así como términos más generales que proporcionan un contexto."
+other = "Este glosario tiene la intención de ser una lista completa y estandarizada de la terminología de PlaidCloud. Incluye términos técnicos que son específicos de k8s, así como términos más generales que proporcionan un contexto."
 
 [layouts_docs_glossary_filter]
 other = "Filtrar terminos por categoría:"
@@ -165,7 +165,7 @@ other = "Obteniendo resultados.."
 # layouts > partial > feedback
 
 [layouts_docs_partials_feedback_thanks]
-other = "Muchas gracias por el feedback. Si tienes alguna pregunta específica sobre como usar Kubernetes, puedes preguntar en"
+other = "Muchas gracias por el feedback. Si tienes alguna pregunta específica sobre como usar PlaidCloud, puedes preguntar en"
 
 [layouts_docs_partials_feedback_issue]
 other = "Abre un issue en el repositorio de GitHub si quieres"

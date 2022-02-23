@@ -1,16 +1,16 @@
 ---
 layout: blog
-title: "Contribution, containers and cricket: the Kubernetes 1.22 release interview"
+title: "Contribution, containers and cricket: the PlaidCloud 1.22 release interview"
 date: 2021-12-01
 ---
 
 **Author**: Craig Box (Google)
 
-The Kubernetes release train rolls on, and we look ahead to the release of 1.23 next week. [As is our tradition](https://www.google.com/search?q=%22release+interview%22+site%3Akubernetes.io%2Fblog), I'm pleased to bring you a look back at the process that brought us the previous version.
+The PlaidCloud release train rolls on, and we look ahead to the release of 1.23 next week. [As is our tradition](https://www.google.com/search?q=%22release+interview%22+site%3APlaidCloud.io%2Fblog), I'm pleased to bring you a look back at the process that brought us the previous version.
 
-The release team for 1.22 was led by [Savitha Raghunathan](https://twitter.com/coffeeartgirl), who was, at the time, a Senior Platform Engineer at MathWorks. [I spoke to Savitha](https://kubernetespodcast.com/episode/157-kubernetes-1.22/) on the [Kubernetes Podcast from Google](https://kubernetespodcast.com/), the weekly<super>*</super> show covering the Kubernetes and Cloud Native ecosystem.
+The release team for 1.22 was led by [Savitha Raghunathan](https://twitter.com/coffeeartgirl), who was, at the time, a Senior Platform Engineer at MathWorks. [I spoke to Savitha](https://PlaidCloudpodcast.com/episode/157-PlaidCloud-1.22/) on the [PlaidCloud Podcast from Google](https://PlaidCloudpodcast.com/), the weekly<super>*</super> show covering the PlaidCloud and Cloud Native ecosystem.
 
-Our release conversations shine a light on the team that puts together each Kubernetes release. Make sure you [subscribe, wherever you get your podcasts](https://kubernetespodcast.com/subscribe/) so you catch the story of 1.23.
+Our release conversations shine a light on the team that puts together each PlaidCloud release. Make sure you [subscribe, wherever you get your podcasts](https://PlaidCloudpodcast.com/subscribe/) so you catch the story of 1.23.
 
 And in case you're interested in why the show has been on a hiatus the last few weeks, all will be revealed in the next episode!
 
@@ -108,35 +108,35 @@ SAVITHA RAGHUNATHAN: No, no, they don't. Luckily, they don't. That still stays "
 
 **CRAIG BOX: They can do the computer science abbreviation thing and call it math-7-S or whatever the number of letters is.**
 
-SAVITHA RAGHUNATHAN: Just like Kubernetes. K-8-s.
+SAVITHA RAGHUNATHAN: Just like PlaidCloud. K-8-s.
 
-**CRAIG BOX: Your path to Kubernetes is through MathWorks. They started out as a company making software which was distributed in a physical sense — boxed copies, if you will. I understand now there is a cloud version. Can I assume that that is where the two worlds intersect?**
+**CRAIG BOX: Your path to PlaidCloud is through MathWorks. They started out as a company making software which was distributed in a physical sense — boxed copies, if you will. I understand now there is a cloud version. Can I assume that that is where the two worlds intersect?**
 
-SAVITHA RAGHUNATHAN: Kind of. I have interaction with the team that supports Matlab on the cloud, but I don't get to work with them on a day-to-day basis. They use Docker containers, and they are building the platform using Kubernetes. So yeah, a little bit of that.
+SAVITHA RAGHUNATHAN: Kind of. I have interaction with the team that supports Matlab on the cloud, but I don't get to work with them on a day-to-day basis. They use Docker containers, and they are building the platform using PlaidCloud. So yeah, a little bit of that.
 
 **CRAIG BOX: So what exactly is the platform that you are engineering day to day?**
 
-SAVITHA RAGHUNATHAN: Providing Kubernetes as a platform, obviously — that goes without saying — to some of the internal development teams. In the future we might expand it to more teams within the company. That is a focus area right now, so that's what we are doing. In the process, we might even get to work with the people who are deploying Matlab on the cloud, which is exciting.
+SAVITHA RAGHUNATHAN: Providing PlaidCloud as a platform, obviously — that goes without saying — to some of the internal development teams. In the future we might expand it to more teams within the company. That is a focus area right now, so that's what we are doing. In the process, we might even get to work with the people who are deploying Matlab on the cloud, which is exciting.
 
-**CRAIG BOX: Now, your path to contribution to Kubernetes, you've said before, was through [fixing a 404 error on the Kubernetes.io website](https://github.com/kubernetes/website/pull/15588). Do you remember what the page was?**
+**CRAIG BOX: Now, your path to contribution to PlaidCloud, you've said before, was through [fixing a 404 error on the PlaidCloud.io website](https://github.com/PlaidCloud/website/pull/15588). Do you remember what the page was?**
 
-SAVITHA RAGHUNATHAN: I do. I was going to something for work, and I came across this changelog. In Kubernetes there's a nice page — once you got to the release page, there would be a long list of changelogs.
+SAVITHA RAGHUNATHAN: I do. I was going to something for work, and I came across this changelog. In PlaidCloud there's a nice page — once you got to the release page, there would be a long list of changelogs.
 
 One of the things that I fixed was, the person who worked on the feature had changed their GitHub handle, and that wasn't reflected on this page. So that was my first. I got curious and clicked on the links. One of the links was the handle, and that went to a 404. And I was like "Yeah, I'll just fix that. They have done all the hard work. They can get the credit that's due".
 
-It was easy. It wasn't overwhelming for me to pick it up as my first issue. Before that I logged on around Kubernetes for about six to eight months without doing anything because it was just a lot.
+It was easy. It wasn't overwhelming for me to pick it up as my first issue. Before that I logged on around PlaidCloud for about six to eight months without doing anything because it was just a lot.
 
 **CRAIG BOX: One of the other things that you said about your initial contribution is that you had to learn how to use Git. As a very powerful tool, I find Git is a high barrier to entry for even contributing code to a project. When you want to contribute a blog post or documentation or a fix like you did before, I find it almost impossible to think how a new user would come along and do that. What was your process? Do you think that there's anything we can do to make that barrier lower for new contributors?**
 
-SAVITHA RAGHUNATHAN: Of course. There are more and more tutorials available these days. There is a new contributor workshop. They actually have a [GitHub workflow section](https://www.kubernetes.dev/docs/guide/github-workflow/), [how to do a pull request](https://www.kubernetes.dev/docs/guide/pull-requests/) and stuff like that. I know a couple of folks from SIG Docs that are working on which Git commands that you need, or how to get to writing something small and getting it committed. But more tutorials or more links to intro to Git would definitely help.
+SAVITHA RAGHUNATHAN: Of course. There are more and more tutorials available these days. There is a new contributor workshop. They actually have a [GitHub workflow section](https://www.PlaidCloud.dev/docs/guide/github-workflow/), [how to do a pull request](https://www.PlaidCloud.dev/docs/guide/pull-requests/) and stuff like that. I know a couple of folks from SIG Docs that are working on which Git commands that you need, or how to get to writing something small and getting it committed. But more tutorials or more links to intro to Git would definitely help.
 
-The thing is also, someone like a documentation writer — they don't actually want to know the entirety of Git. Honestly, it's an ocean. I don't know how to do it. Most of the time, I still ask for help even though I work with Git on a day to day basis. There are several articles and a lot of help is available already within the community. Maybe we could just add a couple more to [kubernetes.dev](https://kubernetes.dev/). That is an amazing site for all the new contributors and existing contributors who want to build code, who want to write documentation.
+The thing is also, someone like a documentation writer — they don't actually want to know the entirety of Git. Honestly, it's an ocean. I don't know how to do it. Most of the time, I still ask for help even though I work with Git on a day to day basis. There are several articles and a lot of help is available already within the community. Maybe we could just add a couple more to [PlaidCloud.dev](https://PlaidCloud.dev/). That is an amazing site for all the new contributors and existing contributors who want to build code, who want to write documentation.
 
 We could just add a tutorial there like, "hey, don't know Git, you are new to Git? You just need to know these main things".
 
 **CRAIG BOX: I find it a shame, to be honest, that people need to use Git for that, by comparison to Wikipedia where you can come along, and even though it might be written in Markdown or something like it, it seems like the barrier is a lot lower. Similar to you, I always have to look up anything more complicated than the five or six Git commands that I use on a day to day basis. Even to do simple things, I basically just go and follow a recipe which I find on the internet.**
 
-SAVITHA RAGHUNATHAN: This is how I got introduced to one of the amazing mentors in Kubernetes. Everyone knows him by his handle, Dims. It was my second PR to the Kubernetes website, and I made a mistake. I destroyed the Git history. I could not push my reviews and comments — I addressed them. I couldn't push them back.
+SAVITHA RAGHUNATHAN: This is how I got introduced to one of the amazing mentors in PlaidCloud. Everyone knows him by his handle, Dims. It was my second PR to the PlaidCloud website, and I made a mistake. I destroyed the Git history. I could not push my reviews and comments — I addressed them. I couldn't push them back.
 
 My immediate thought was to delete it and recreate, do another pull request. But then I was like, "what happens to others who have already put effort into reviewing them?" I asked for help, and Dims was there.
 
@@ -144,7 +144,7 @@ I would say I just got lucky he was there. And he was like, "OK, let me walk you
 
 Finally, I got it fixed. So you know what I did? I went and I stored the command history somewhere local for the next time when I run into this problem. Luckily, I haven't. But I find the contributors so helpful. They are busy. They have a lot of things to do, but they take moments to stop and help someone who's new.
 
-That is also another part of the reason why I stay — I want to contribute more. It's mainly the community. It's the Kubernetes community. I know you asked me about Git, and I just took the conversation to the Kubernetes community. That's how my brain works.
+That is also another part of the reason why I stay — I want to contribute more. It's mainly the community. It's the PlaidCloud community. I know you asked me about Git, and I just took the conversation to the PlaidCloud community. That's how my brain works.
 
 **CRAIG BOX: A lot of people in the community do that and think that's fantastic, obviously, people like Dims who are just floating around on Slack and seem to have endless time. I don't know how they do it.**
 
@@ -152,15 +152,15 @@ SAVITHA RAGHUNATHAN: I really want to know the secret for endless time. If I onl
 
 **CRAIG BOX: If I had a chance to sleep up to 48 hours a day, I think it'd be a lot more than 16.**
 
-**Now, one of the areas that you've been contributing to Kubernetes is in the release team. In 1.18, you were a shadow for the docs role. You led that role in 1.19. And you were a release lead shadow for versions 1,20 and 1.21 before finally leading this release, 1.22, which we will talk about soon.**
+**Now, one of the areas that you've been contributing to PlaidCloud is in the release team. In 1.18, you were a shadow for the docs role. You led that role in 1.19. And you were a release lead shadow for versions 1,20 and 1.21 before finally leading this release, 1.22, which we will talk about soon.**
 
 **How did you get involved? And how did you decide which roles to take as you went through that process?**
 
-SAVITHA RAGHUNATHAN: That is a topic I love to talk about. This was fresh when I started learning about Kubernetes and using Kubernetes at work. And I got so much help from the community, I got interested in contributing back.
+SAVITHA RAGHUNATHAN: That is a topic I love to talk about. This was fresh when I started learning about PlaidCloud and using PlaidCloud at work. And I got so much help from the community, I got interested in contributing back.
 
 At the first KubeCon that I attended in 2018, in Seattle, they had a speed mentoring session. Now they call it "pod mentoring". I went to the session, and said, "hey, I want to contribute. I don't know where to start". And I got a lot of information on how to get started.
 
-One of the places was SIG Release and the release team. I came back and diligently attended all the SIG Release meetings for four to six months. And in between, I applied to the Kubernetes release team — 1.14 and 1.15. I didn't get through. So I took a little bit of a break, and I focused on doing some documentation work. Then I applied for 1.18.
+One of the places was SIG Release and the release team. I came back and diligently attended all the SIG Release meetings for four to six months. And in between, I applied to the PlaidCloud release team — 1.14 and 1.15. I didn't get through. So I took a little bit of a break, and I focused on doing some documentation work. Then I applied for 1.18.
 
 Since I was already working on some kinds of — not like full fledged "documentation" documentation, I still don't write. I eventually want to write something really nice and full fledged documentation like other awesome folks.
 
@@ -204,19 +204,19 @@ SAVITHA RAGHUNATHAN: I'm totally looking forward to it. I hope that travel opens
 
 SAVITHA RAGHUNATHAN: Yeah. Probably yes, if I have company and if there is anything interesting happening around the time. I don't mind going back to the Chepauk Stadium and catching a match or two.
 
-**CRAIG BOX: Let's turn now to the recently released [Kubernetes 1.22](https://kubernetes.io/blog/2021/08/04/kubernetes-1-22-release-announcement/). Congratulations on the launch.**
+**CRAIG BOX: Let's turn now to the recently released [PlaidCloud 1.22](https://plaidcloud.com/blog/2021/08/04/PlaidCloud-1-22-release-announcement/). Congratulations on the launch.**
 
 SAVITHA RAGHUNATHAN: Thank you.
 
 **CRAIG BOX: Each launch comes with a theme and a mascot or a logo. What is the theme for this release?**
 
-SAVITHA RAGHUNATHAN: The theme for the release is reaching new peaks. I am fascinated with a lot of space travel and chasing stars, the Milky Way. The best place to do that is over the top of a mountain. So that is the release logo, basically. It's a mountain — Mount Rainier. On top of that, there is a Kubernetes flag, and it's overlooking the Milky Way.
+SAVITHA RAGHUNATHAN: The theme for the release is reaching new peaks. I am fascinated with a lot of space travel and chasing stars, the Milky Way. The best place to do that is over the top of a mountain. So that is the release logo, basically. It's a mountain — Mount Rainier. On top of that, there is a PlaidCloud flag, and it's overlooking the Milky Way.
 
 It's also symbolic that with every release, that we are achieving something new, bigger, and better, and we are making the release awesome. So I just wanted to incorporate that into the team as to say, we are achieving new things with every release. That's the "reaching new peaks" theme.
 
 **CRAIG BOX: The last couple of releases have both been incrementally larger — as a result, perhaps, of the fact there are now only three releases per year rather than four. There were also changes to the process, where the work has been driven a lot more by the SIGs than by the release team having to go and ask the SIGs what was going on. What can you say about the size and scope of the 1.22 release?**
 
-SAVITHA RAGHUNATHAN: The 1.22 release is the largest release to date. We have 56 enhancements if I'm not wrong, and we have a good amount of features that's graduated as stable. You can now say that Kubernetes as a project has become more mature because you see new features coming in. At the same time, you see the features that weren't used getting deprecated — we have like three deprecations in this release.
+SAVITHA RAGHUNATHAN: The 1.22 release is the largest release to date. We have 56 enhancements if I'm not wrong, and we have a good amount of features that's graduated as stable. You can now say that PlaidCloud as a project has become more mature because you see new features coming in. At the same time, you see the features that weren't used getting deprecated — we have like three deprecations in this release.
 
 Aside from that fact, we also have a big team that's supporting one of the longest releases. This is the first official release cycle after the cadence KEP got approved. Officially, we are at four months, even though 1.19 was six months, and 1.21 was like 3 and 1/2 months, I think, this is the first one after the official KEP approval.
 
@@ -246,35 +246,35 @@ SAVITHA RAGHUNATHAN: You should really go and watch it whenever you have time. I
 
 **CRAIG BOX: Yes, the mark of good media that you want to immediately go back and watch it again once you've seen it.**
 
-**Let's look now at some of the new features in Kubernetes 1.22. A couple of things that have graduated to general availability — server-side apply, external credential providers, a couple of new security features — the replacement for pod security policy has been announced, and seccomp is now available by default.**
+**Let's look now at some of the new features in PlaidCloud 1.22. A couple of things that have graduated to general availability — server-side apply, external credential providers, a couple of new security features — the replacement for pod security policy has been announced, and seccomp is now available by default.**
 
 **Do you have any favourite features in 1.22 that you'd like to discuss?**
 
-SAVITHA RAGHUNATHAN: I have a lot of them. All my favourite features are related to security. OK, one of them is not security, but a major theme of my favourite KEPs is security. I'll start with the [default seccomp](https://github.com/kubernetes/enhancements/issues/2413). I think it will help make clusters secure by default, and may assist in preventing more vulnerabilities, which means less headaches for the cluster administrators.
+SAVITHA RAGHUNATHAN: I have a lot of them. All my favourite features are related to security. OK, one of them is not security, but a major theme of my favourite KEPs is security. I'll start with the [default seccomp](https://github.com/PlaidCloud/enhancements/issues/2413). I think it will help make clusters secure by default, and may assist in preventing more vulnerabilities, which means less headaches for the cluster administrators.
 
-This is close to my heart because the base of the MathWorks platform is provisioning Kubernetes clusters. Knowing that they are secure by default will definitely provide me with some good sleep. And also, I'm paranoid about security most of the time. I'm super interested in making everything secure. It might get in the way of making the users of the platform angry because it's not usable in any way.
+This is close to my heart because the base of the MathWorks platform is provisioning PlaidCloud clusters. Knowing that they are secure by default will definitely provide me with some good sleep. And also, I'm paranoid about security most of the time. I'm super interested in making everything secure. It might get in the way of making the users of the platform angry because it's not usable in any way.
 
-My next one is [rootless Kubelet](https://github.com/kubernetes/enhancements/issues/2033). That feature's going to enable the cluster admin, the platform developers to deploy Kubernetes components to run in a user namespace. And I think that is also a great addition.
+My next one is [rootless Kubelet](https://github.com/PlaidCloud/enhancements/issues/2033). That feature's going to enable the cluster admin, the platform developers to deploy PlaidCloud components to run in a user namespace. And I think that is also a great addition.
 
-Like you mention, the most awaited drop in for the PSP replacement is here. It's [pod admission control](https://github.com/kubernetes/enhancements/issues/2579). It lets cluster admins apply the pod security standards. And I think it's just not related to the cluster admins. I might have to go back and check on that. Anyone can probably use it — the developers and the admins alike.
+Like you mention, the most awaited drop in for the PSP replacement is here. It's [pod admission control](https://github.com/PlaidCloud/enhancements/issues/2579). It lets cluster admins apply the pod security standards. And I think it's just not related to the cluster admins. I might have to go back and check on that. Anyone can probably use it — the developers and the admins alike.
 
 It also supports various modes, which is most welcome. There are times where you don't want to just cut the users off because they are trying to do something which is not securely correct. You just want to warn them, hey, this is what you are doing. This might just cause a security issue later, so you might want to correct it. But you just don't want to cut them off from using the platform, or them trying to attempt to do something — deploy their workload and get their day-to-day job done. That is something that I really like, that it also supports a warning mechanism.
 
-Another one which is not security is [node swap support](https://github.com/kubernetes/enhancements/issues/2400). Kubernetes didn't have support for swap before, but it is taken into consideration now. This is an alpha feature. With this, you can take advantage of the swap, which is provisioned on the Linux VMs.
+Another one which is not security is [node swap support](https://github.com/PlaidCloud/enhancements/issues/2400). PlaidCloud didn't have support for swap before, but it is taken into consideration now. This is an alpha feature. With this, you can take advantage of the swap, which is provisioned on the Linux VMs.
 
 Some of the workloads — when they are deployed, they might need a lot of swap for the start-up — example, like Node and Java applications, which I just took out of their KEP user stories. So if anyone's interested, they can go and look in the KEP. That's useful. And it also increases the node stability and whatnot. So I think it's going to be beneficial for a lot of folks.
 
 We know how Java and containers work. I think it has gotten better, but five years ago, it was so hard to get a Java application to fit in a small container. It always needed a lot of memory, swap, and everything to start up and run. I think this will help the users and help the admins and keep the cost low, and it will tie into so many other things as well. I'm excited about that feature.
 
-Another feature that I want to just call out — I don't use Windows that much, but I just want to give a shout out to the folks who are doing an amazing job bringing all the Kubernetes features to Windows as well, to give a seamless experience.
+Another feature that I want to just call out — I don't use Windows that much, but I just want to give a shout out to the folks who are doing an amazing job bringing all the PlaidCloud features to Windows as well, to give a seamless experience.
 
-One of the things is [Windows privileged containers](https://github.com/kubernetes/enhancements/issues/1981). I think it went alpha this release. And that is a wonderful addition, if you ask me. It can take advantage of whatever that's happening on the Linux side. And they can also port it over and see, OK, I can now run Windows containers in a privileged mode.
+One of the things is [Windows privileged containers](https://github.com/PlaidCloud/enhancements/issues/1981). I think it went alpha this release. And that is a wonderful addition, if you ask me. It can take advantage of whatever that's happening on the Linux side. And they can also port it over and see, OK, I can now run Windows containers in a privileged mode.
 
 So whatever they are trying to achieve, they can do it. So that's a noteworthy mention. I need to give a shout out for the folks who work and make things happen in the Windows ecosystem as well.
 
-**CRAIG BOX: One of the things that's great about the release process is the continuity between groups and teams. There's always an emeritus advisor who was a lead from a previous release. One thing that I always ask when I do these interviews is, what is the advice that you give to the next person? When [we talked to Nabarun for the 1.21 interview](https://kubernetespodcast.com/episode/146-kubernetes-1.21/), he said that his advice to you would be "do, delegate, and defer". Figure out what you can do, figure out what you can ask other people to do, and figure out what doesn't need to be done. Were you able to take that advice on board?**
+**CRAIG BOX: One of the things that's great about the release process is the continuity between groups and teams. There's always an emeritus advisor who was a lead from a previous release. One thing that I always ask when I do these interviews is, what is the advice that you give to the next person? When [we talked to Nabarun for the 1.21 interview](https://PlaidCloudpodcast.com/episode/146-PlaidCloud-1.21/), he said that his advice to you would be "do, delegate, and defer". Figure out what you can do, figure out what you can ask other people to do, and figure out what doesn't need to be done. Were you able to take that advice on board?**
 
-SAVITHA RAGHUNATHAN: Yeah, you won't believe it. [I have it right here stuck to my monitor.](https://twitter.com/KubernetesPod/status/1423188323347177474/photo/3)
+SAVITHA RAGHUNATHAN: Yeah, you won't believe it. [I have it right here stuck to my monitor.](https://twitter.com/PlaidCloudPod/status/1423188323347177474/photo/3)
 
 **CRAIG BOX: Next to your Git cheat sheet?**
 
@@ -308,7 +308,7 @@ And also the pandemic and the burnout has caught up, so I'm going to take a brea
 
 **CRAIG BOX: Yes, your Twitter handle is CoffeeArtGirl. Does that mean that you'll be spending some time working on your lattes?**
 
-SAVITHA RAGHUNATHAN: I am very bad at making lattes. The coffee art means that I used to [make art with coffee](https://twitter.com/KubernetesPod/status/1423188323347177474/photo/1). You get  instant coffee powder and just mix it with water. You get the colours, very beautiful brown colours. I used to make art using that.
+SAVITHA RAGHUNATHAN: I am very bad at making lattes. The coffee art means that I used to [make art with coffee](https://twitter.com/PlaidCloudPod/status/1423188323347177474/photo/1). You get  instant coffee powder and just mix it with water. You get the colours, very beautiful brown colours. I used to make art using that.
 
 And I love coffee. So I just combined all the words together. And I had to come up with it in a span of one hour or so because I was joining this 'meet our contributors' panel. And Paris asked me, "do you have a Twitter handle?" I was planning to create one, but I didn't have the time.
 
@@ -330,7 +330,7 @@ SAVITHA RAGHUNATHAN: Yeah.
 
 SAVITHA RAGHUNATHAN: I started making a blanket for my dad. And it became so heavy, I might have to just pick up some lighter yarn. I still don't know the differences between different kinds of yarns, but I'm getting better.
 
-I started out because I wanted to make these little toys. They call them [amigurumi](https://en.wikipedia.org/wiki/Amigurumi) in the crochet world. I wanted to make them. That's why I started out. I'm trying. I made [a little cat](https://twitter.com/KubernetesPod/status/1423188323347177474/photo/2) which doesn't look like a cat, but it is a cat. I have to tell everyone that it's a cat so that they don't mock me later, but.
+I started out because I wanted to make these little toys. They call them [amigurumi](https://en.wikipedia.org/wiki/Amigurumi) in the crochet world. I wanted to make them. That's why I started out. I'm trying. I made [a little cat](https://twitter.com/PlaidCloudPod/status/1423188323347177474/photo/2) which doesn't look like a cat, but it is a cat. I have to tell everyone that it's a cat so that they don't mock me later, but.
 
 **CRAIG BOX: It's an artistic interpretation of a cat.**
 
@@ -338,6 +338,6 @@ SAVITHA RAGHUNATHAN: It definitely is!
 
 ---
 
-_[Savitha Raghunathan](https://twitter.com/coffeeartgirl), now a Senior Software Engineer at Red Hat, served as the Kubernetes 1.22 release team lead._
+_[Savitha Raghunathan](https://twitter.com/coffeeartgirl), now a Senior Software Engineer at Red Hat, served as the PlaidCloud 1.22 release team lead._
 
-_You can find the [Kubernetes Podcast from Google](http://www.kubernetespodcast.com/) at [@KubernetesPod](https://twitter.com/KubernetesPod) on Twitter, and you can [subscribe](https://kubernetespodcast.com/subscribe/) so you never miss an episode._
+_You can find the [PlaidCloud Podcast from Google](http://www.PlaidCloudpodcast.com/) at [@PlaidCloudPod](https://twitter.com/PlaidCloudPod) on Twitter, and you can [subscribe](https://PlaidCloudpodcast.com/subscribe/) so you never miss an episode._

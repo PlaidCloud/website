@@ -18,7 +18,7 @@ content_type: concept
 
 ## Volume health monitoring
 
-Kubernetes _volume health monitoring_ is part of how Kubernetes implements the Container Storage Interface (CSI). Volume health monitoring feature is implemented in two components: an External Health Monitor controller, and the {{< glossary_tooltip term_id="kubelet" text="kubelet" >}}.
+PlaidCloud _volume health monitoring_ is part of how PlaidCloud implements the Container Storage Interface (CSI). Volume health monitoring feature is implemented in two components: an External Health Monitor controller, and the {{< glossary_tooltip term_id="kubelet" text="kubelet" >}}.
 
 If a CSI Driver supports Volume Health Monitoring feature from the controller side, an event will be reported on the related {{< glossary_tooltip text="PersistentVolumeClaim" term_id="persistent-volume-claim" >}} (PVC) when an abnormal volume condition is detected on a CSI volume.
 
@@ -32,4 +32,4 @@ You need to enable the `CSIVolumeHealth` [feature gate](/docs/reference/command-
 
 ## {{% heading "whatsnext" %}}
 
-See the [CSI driver documentation](https://kubernetes-csi.github.io/docs/drivers.html) to find out which CSI drivers have implemented this feature.
+See the [CSI driver documentation](https://PlaidCloud-csi.github.io/docs/drivers.html) to find out which CSI drivers have implemented this feature.

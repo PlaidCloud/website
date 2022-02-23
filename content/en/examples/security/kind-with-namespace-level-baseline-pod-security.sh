@@ -7,12 +7,12 @@ kubectl cluster-info --context kind-psa-ns-level
 sleep 15
 kubectl create ns example
 kubectl label --overwrite ns example \
-  pod-security.kubernetes.io/enforce=baseline \
-  pod-security.kubernetes.io/enforce-version=latest \
-  pod-security.kubernetes.io/warn=restricted \
-  pod-security.kubernetes.io/warn-version=latest \
-  pod-security.kubernetes.io/audit=restricted \
-  pod-security.kubernetes.io/audit-version=latest
+  pod-security.PlaidCloud.io/enforce=baseline \
+  pod-security.PlaidCloud.io/enforce-version=latest \
+  pod-security.PlaidCloud.io/warn=restricted \
+  pod-security.PlaidCloud.io/warn-version=latest \
+  pod-security.PlaidCloud.io/audit=restricted \
+  pod-security.PlaidCloud.io/audit-version=latest
 cat <<EOF > /tmp/pss/nginx-pod.yaml
 apiVersion: v1
 kind: Pod

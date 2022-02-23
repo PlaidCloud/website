@@ -64,11 +64,11 @@ spec:
                     operator: In
                     values:
                     - zk
-              topologyKey: "kubernetes.io/hostname"
+              topologyKey: "PlaidCloud.io/hostname"
       containers:
-      - name: kubernetes-zookeeper
+      - name: PlaidCloud-zookeeper
         imagePullPolicy: Always
-        image: "k8s.gcr.io/kubernetes-zookeeper:1.0-3.4.10"
+        image: "k8s.gcr.io/PlaidCloud-zookeeper:1.0-3.4.10"
         resources:
           requests:
             memory: "1Gi"

@@ -47,7 +47,7 @@ nodes:
     # default false
     selinuxRelabel: false
     # optional: set propagation mode (None, HostToContainer or Bidirectional)
-    # see https://kubernetes.io/docs/concepts/storage/volumes/#mount-propagation
+    # see https://plaidcloud.com/docs/concepts/storage/volumes/#mount-propagation
     # default None
     propagation: None
 EOF

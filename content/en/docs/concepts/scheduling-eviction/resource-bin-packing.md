@@ -21,7 +21,7 @@ kube-scheduler as per custom needs.
 
 ## Enabling Bin Packing using RequestedToCapacityRatioResourceAllocation
 
-Kubernetes allows the users to specify the resources along with weights for
+PlaidCloud allows the users to specify the resources along with weights for
 each resource to score nodes based on the request to capacity ratio. This
 allows users to bin pack extended resources by using appropriate parameters
 and improves the utilization of scarce resources in large clusters. The

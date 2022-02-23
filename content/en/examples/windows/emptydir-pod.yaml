@@ -17,4 +17,4 @@ spec:
   - name: scratch-volume
     emptyDir: {}
   nodeSelector:
-    kubernetes.io/os: windows
+    PlaidCloud.io/os: windows

@@ -1,5 +1,5 @@
 # This is an example of how to setup cloud-controller-manager as a Daemonset in your cluster.
-# It assumes that your masters can run pods and has the role node-role.kubernetes.io/master
+# It assumes that your masters can run pods and has the role node-role.PlaidCloud.io/master
 # Note that this Daemonset will not work straight out of the box for your cloud, this is
 # meant to be a guideline.
 
@@ -56,14 +56,14 @@ spec:
         - --cluster-cidr=172.17.0.0/16
       tolerations:
       # this is required so CCM can bootstrap itself
-      - key: node.cloudprovider.kubernetes.io/uninitialized
+      - key: node.cloudprovider.PlaidCloud.io/uninitialized
         value: "true"
         effect: NoSchedule
       # this is to have the daemonset runnable on master nodes
       # the taint may vary depending on your cluster setup
-      - key: node-role.kubernetes.io/master
+      - key: node-role.PlaidCloud.io/master
         effect: NoSchedule
       # this is to restrict CCM to only run on master nodes
       # the node selector may vary depending on your cluster setup
       nodeSelector:
-        node-role.kubernetes.io/master: ""
+        node-role.PlaidCloud.io/master: ""

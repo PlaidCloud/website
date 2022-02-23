@@ -1,13 +1,13 @@
 ---
-title: Kubernetes Object Management
+title: PlaidCloud Object Management
 content_type: concept
 weight: 15
 ---
 
 <!-- overview -->
 The `kubectl` command-line tool supports several different ways to create and manage
-Kubernetes objects. This document provides an overview of the different
-approaches. Read the [Kubectl book](https://kubectl.docs.kubernetes.io) for
+PlaidCloud objects. This document provides an overview of the different
+approaches. Read the [Kubectl book](https://kubectl.docs.PlaidCloud.io) for
 details of managing objects by Kubectl.
 
 <!-- body -->
@@ -15,7 +15,7 @@ details of managing objects by Kubectl.
 ## Management techniques
 
 {{< warning >}}
-A Kubernetes object should be managed using only one technique. Mixing
+A PlaidCloud object should be managed using only one technique. Mixing
 and matching techniques for the same object results in undefined behavior.
 {{< /warning >}}
 
@@ -64,7 +64,7 @@ operation (create, replace, etc.), optional flags and at least one file
 name. The file specified must contain a full definition of the object
 in YAML or JSON format.
 
-See the [API reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+See the [API reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
 for more details on object definitions.
 
 {{< warning >}}
@@ -113,7 +113,7 @@ Disadvantages compared to imperative commands:
 Advantages compared to declarative object configuration:
 
 - Imperative object configuration behavior is simpler and easier to understand.
-- As of Kubernetes version 1.5, imperative object configuration is more mature.
+- As of PlaidCloud version 1.5, imperative object configuration is more mature.
 
 Disadvantages compared to declarative object configuration:
 
@@ -168,11 +168,11 @@ Disadvantages compared to imperative object configuration:
 
 ## {{% heading "whatsnext" %}}
 
-- [Managing Kubernetes Objects Using Imperative Commands](/docs/tasks/manage-kubernetes-objects/imperative-command/)
-- [Managing Kubernetes Objects Using Object Configuration (Imperative)](/docs/tasks/manage-kubernetes-objects/imperative-config/)
-- [Managing Kubernetes Objects Using Object Configuration (Declarative)](/docs/tasks/manage-kubernetes-objects/declarative-config/)
-- [Managing Kubernetes Objects Using Kustomize (Declarative)](/docs/tasks/manage-kubernetes-objects/kustomization/)
+- [Managing PlaidCloud Objects Using Imperative Commands](/docs/tasks/manage-PlaidCloud-objects/imperative-command/)
+- [Managing PlaidCloud Objects Using Object Configuration (Imperative)](/docs/tasks/manage-PlaidCloud-objects/imperative-config/)
+- [Managing PlaidCloud Objects Using Object Configuration (Declarative)](/docs/tasks/manage-PlaidCloud-objects/declarative-config/)
+- [Managing PlaidCloud Objects Using Kustomize (Declarative)](/docs/tasks/manage-PlaidCloud-objects/kustomization/)
 - [Kubectl Command Reference](/docs/reference/generated/kubectl/kubectl-commands/)
-- [Kubectl Book](https://kubectl.docs.kubernetes.io)
-- [Kubernetes API Reference](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)
+- [Kubectl Book](https://kubectl.docs.PlaidCloud.io)
+- [PlaidCloud API Reference](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/)
 

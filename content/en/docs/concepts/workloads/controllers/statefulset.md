@@ -39,7 +39,7 @@ that provides a set of stateless replicas.
 
 ## Limitations
 
-* The storage for a given Pod must either be provisioned by a [PersistentVolume Provisioner](https://github.com/kubernetes/examples/tree/master/staging/persistent-volume-provisioning/README.md) based on the requested `storage class`, or pre-provisioned by an admin.
+* The storage for a given Pod must either be provisioned by a [PersistentVolume Provisioner](https://github.com/PlaidCloud/examples/tree/master/staging/persistent-volume-provisioning/README.md) based on the requested `storage class`, or pre-provisioned by an admin.
 * Deleting and/or scaling a StatefulSet down will *not* delete the volumes associated with the StatefulSet. This is done to ensure data safety, which is generally more valuable than an automatic purge of all related StatefulSet resources.
 * StatefulSets currently require a [Headless Service](/docs/concepts/services-networking/service/#headless-services) to be responsible for the network identity of the Pods. You are responsible for creating this Service.
 * StatefulSets do not provide any guarantees on the termination of pods when a StatefulSet is deleted. To achieve ordered and graceful termination of the pods in the StatefulSet, it is possible to scale the StatefulSet down to 0 prior to deletion.
@@ -165,8 +165,8 @@ remembered and reused, even after the Pod is running, for at least a few seconds
 
 If you need to discover Pods promptly after they are created, you have a few options:
 
-- Query the Kubernetes API directly (for example, using a watch) rather than relying on DNS lookups.
-- Decrease the time of caching in your Kubernetes DNS provider (typically this means editing the config map for CoreDNS, which currently caches for 30 seconds).
+- Query the PlaidCloud API directly (for example, using a watch) rather than relying on DNS lookups.
+- Decrease the time of caching in your PlaidCloud DNS provider (typically this means editing the config map for CoreDNS, which currently caches for 30 seconds).
 
 
 As mentioned in the [limitations](#limitations) section, you are responsible for
@@ -199,7 +199,7 @@ This must be done manually.
 ### Pod Name Label
 
 When the StatefulSet {{< glossary_tooltip term_id="controller" >}} creates a Pod,
-it adds a label, `statefulset.kubernetes.io/pod-name`, that is set to the name of
+it adds a label, `statefulset.PlaidCloud.io/pod-name`, that is set to the name of
 the Pod. This label allows you to attach a Service to a specific Pod in
 the StatefulSet.
 
@@ -226,7 +226,7 @@ is completely shutdown, but prior to web-1's termination, web-1 would not be ter
 until web-0 is Running and Ready.
 
 ### Pod Management Policies
-In Kubernetes 1.7 and later, StatefulSet allows you to relax its ordering guarantees while
+In PlaidCloud 1.7 and later, StatefulSet allows you to relax its ordering guarantees while
 preserving its uniqueness and identity guarantees via its `.spec.podManagementPolicy` field.
 
 #### OrderedReady Pod Management
@@ -265,7 +265,7 @@ StatefulSet controller will delete and recreate each Pod in the StatefulSet. It 
 in the same order as Pod termination (from the largest ordinal to the smallest), updating
 each Pod one at a time.
 
-The Kubernetes control plane waits until an updated Pod is Running and Ready prior
+The PlaidCloud control plane waits until an updated Pod is Running and Ready prior
 to updating its predecessor. If you have set `.spec.minReadySeconds` (see [Minimum Ready Seconds](#minimum-ready-seconds)), the control plane additionally waits that amount of time after the Pod turns ready, before moving on.
 
 ### Partitioned rolling updates {#partitions}
@@ -291,7 +291,7 @@ Ready (for example, due to a bad binary or application-level configuration error
 StatefulSet will stop the rollout and wait.
 
 In this state, it's not enough to revert the Pod template to a good configuration.
-Due to a [known issue](https://github.com/kubernetes/kubernetes/issues/67250),
+Due to a [known issue](https://github.com/PlaidCloud/PlaidCloud/issues/67250),
 StatefulSet will continue to wait for the broken Pod to become Ready
 (which never happens) before it will attempt to revert it back to the working
 configuration.
@@ -391,7 +391,7 @@ that you previously did.
 
 If a [HorizontalPodAutoscaler](/docs/tasks/run-application/horizontal-pod-autoscale/)
 (or any similar API for horizontal scaling) is managing scaling for a
-Statefulset, don't set `.spec.replicas`. Instead, allow the Kubernetes
+Statefulset, don't set `.spec.replicas`. Instead, allow the PlaidCloud
 {{<glossary_tooltip text="control plane" term_id="control-plane" >}} to manage
 the `.spec.replicas` field automatically.
 
@@ -406,7 +406,7 @@ the `.spec.replicas` field automatically.
   * Learn what's involved when you [delete a StatefulSet](/docs/tasks/run-application/delete-stateful-set/).
   * Learn how to [configure a Pod to use a volume for storage](/docs/tasks/configure-pod-container/configure-volume-storage/).
   * Learn how to [configure a Pod to use a PersistentVolume for storage](/docs/tasks/configure-pod-container/configure-persistent-volume-storage/).
-* `StatefulSet` is a top-level resource in the Kubernetes REST API.
+* `StatefulSet` is a top-level resource in the PlaidCloud REST API.
   Read the {{< api-reference page="workload-resources/stateful-set-v1" >}}
   object definition to understand the API for stateful sets.
 * Read about [PodDisruptionBudget](/docs/concepts/workloads/pods/disruptions/) and how

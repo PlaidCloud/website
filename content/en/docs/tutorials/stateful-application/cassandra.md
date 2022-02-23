@@ -7,25 +7,25 @@ weight: 30
 ---
 
 <!-- overview -->
-This tutorial shows you how to run [Apache Cassandra](https://cassandra.apache.org/) on Kubernetes.
+This tutorial shows you how to run [Apache Cassandra](https://cassandra.apache.org/) on PlaidCloud.
 Cassandra, a database, needs persistent storage to provide data durability (application _state_).
 In this example, a custom Cassandra seed provider lets the database discover new Cassandra instances as they join the Cassandra cluster.
 
-*StatefulSets* make it easier to deploy stateful applications into your Kubernetes cluster.
+*StatefulSets* make it easier to deploy stateful applications into your PlaidCloud cluster.
 For more information on the features used in this tutorial, see
 [StatefulSet](/docs/concepts/workloads/controllers/statefulset/).
 
 {{< note >}}
-Cassandra and Kubernetes both use the term _node_ to mean a member of a cluster. In this
+Cassandra and PlaidCloud both use the term _node_ to mean a member of a cluster. In this
 tutorial, the Pods that belong to the StatefulSet are Cassandra nodes and are members
-of the Cassandra cluster (called a _ring_). When those Pods run in your Kubernetes cluster,
-the Kubernetes control plane schedules those Pods onto Kubernetes
+of the Cassandra cluster (called a _ring_). When those Pods run in your PlaidCloud cluster,
+the PlaidCloud control plane schedules those Pods onto PlaidCloud
 {{< glossary_tooltip text="Nodes" term_id="node" >}}.
 
 When a Cassandra node starts, it uses a _seed list_ to bootstrap discovery of other
 nodes in the ring.
 This tutorial deploys a custom Cassandra seed provider that lets the database discover
-new Cassandra Pods as they appear inside your Kubernetes cluster.
+new Cassandra Pods as they appear inside your PlaidCloud cluster.
 {{< /note >}}
 
 
@@ -63,7 +63,7 @@ minikube start --memory 5120 --cpus=4
 <!-- lessoncontent -->
 ## Creating a headless Service for Cassandra {#creating-a-cassandra-headless-service}
 
-In Kubernetes, a {{< glossary_tooltip text="Service" term_id="service" >}} describes a set of
+In PlaidCloud, a {{< glossary_tooltip text="Service" term_id="service" >}} describes a set of
 {{< glossary_tooltip text="Pods" term_id="pod" >}} that perform the same task.
 
 The following Service is used for DNS lookups between Cassandra Pods and clients within your cluster:
@@ -264,9 +264,9 @@ to also be deleted. Never assume you'll be able to access data if its volume cla
 
 ## Cassandra container environment variables
 
-The Pods in this tutorial use the [`gcr.io/google-samples/cassandra:v13`](https://github.com/kubernetes/examples/blob/master/cassandra/image/Dockerfile)
+The Pods in this tutorial use the [`gcr.io/google-samples/cassandra:v13`](https://github.com/PlaidCloud/examples/blob/master/cassandra/image/Dockerfile)
 image from Google's [container registry](https://cloud.google.com/container-registry/docs/).
-The Docker image above is based on [debian-base](https://github.com/kubernetes/release/tree/master/images/build/debian-base)
+The Docker image above is based on [debian-base](https://github.com/PlaidCloud/release/tree/master/images/build/debian-base)
 and includes OpenJDK 8.
 
 This image includes a standard Cassandra installation from the Apache Debian repo.
@@ -284,7 +284,7 @@ By using environment variables you can change values that are inserted into `cas
 
 
 * Learn how to [Scale a StatefulSet](/docs/tasks/run-application/scale-stateful-set/).
-* Learn more about the [*KubernetesSeedProvider*](https://github.com/kubernetes/examples/blob/master/cassandra/java/src/main/java/io/k8s/cassandra/KubernetesSeedProvider.java)
+* Learn more about the [*PlaidCloudSeedProvider*](https://github.com/PlaidCloud/examples/blob/master/cassandra/java/src/main/java/io/k8s/cassandra/PlaidCloudSeedProvider.java)
 * See more custom [Seed Provider Configurations](https://git.k8s.io/examples/cassandra/java/README.md)
 
 

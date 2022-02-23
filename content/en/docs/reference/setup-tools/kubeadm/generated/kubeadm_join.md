@@ -1,12 +1,12 @@
 <!--
 The file is auto-generated from the Go source code of the component using a generic
-[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how
+[generator](https://github.com/PlaidCloud-sigs/reference-docs/). To learn how
 to generate the reference documentation, please read
 [Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).
 To update the reference conent, please follow the 
 [Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)
 guide. You can file document formatting bugs against the
-[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.
+[reference-docs](https://github.com/PlaidCloud-sigs/reference-docs/) project.
 -->
 
 
@@ -18,8 +18,8 @@ Run this on any machine you wish to join an existing cluster
 
 When joining a kubeadm initialized cluster, we need to establish
 bidirectional trust. This is split into discovery (having the Node
-trust the Kubernetes Control Plane) and TLS bootstrap (having the
-Kubernetes Control Plane trust the Node).
+trust the PlaidCloud Control Plane) and TLS bootstrap (having the
+PlaidCloud Control Plane trust the Node).
 
 There are 2 main schemes for discovery. The first is to use a shared
 token along with the IP address of the API server. The second is to
@@ -34,7 +34,7 @@ the connection.
 
 If you use a shared token for discovery, you should also pass the
 --discovery-token-ca-cert-hash flag to validate the public key of the
-root certificate authority (CA) presented by the Kubernetes Control Plane.
+root certificate authority (CA) presented by the PlaidCloud Control Plane.
 The value of this flag is specified as "&lt;hash-type&gt;:&lt;hex-encoded-value&gt;",
 where the supported hash type is "sha256". The hash is calculated over
 the bytes of the Subject Public Key Info (SPKI) object (as in RFC7469).
@@ -45,12 +45,12 @@ may be repeated multiple times to allow more than one public key.
 If you cannot know the CA public key hash ahead of time, you can pass
 the --discovery-token-unsafe-skip-ca-verification flag to disable this
 verification. This weakens the kubeadm security model since other nodes
-can potentially impersonate the Kubernetes Control Plane.
+can potentially impersonate the PlaidCloud Control Plane.
 
 The TLS bootstrap mechanism is also driven via a shared token. This is
-used to temporarily authenticate with the Kubernetes Control Plane to submit a
+used to temporarily authenticate with the PlaidCloud Control Plane to submit a
 certificate signing request (CSR) for a locally created key pair. By
-default, kubeadm will set up the Kubernetes Control Plane to automatically
+default, kubeadm will set up the PlaidCloud Control Plane to automatically
 approve these signing requests. This token is passed in with the
 --tls-bootstrap-token abcdef.1234567890abcdef flag.
 
@@ -203,7 +203,7 @@ kubeadm join [api-server-endpoint] [flags]
 <td colspan="2">--tls-bootstrap-token string</td>
 </tr>
 <tr>
-<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Specify the token used to temporarily authenticate with the Kubernetes Control Plane while joining the node.</p></td>
+<td></td><td style="line-height: 130%; word-wrap: break-word;"><p>Specify the token used to temporarily authenticate with the PlaidCloud Control Plane while joining the node.</p></td>
 </tr>
 
 <tr>

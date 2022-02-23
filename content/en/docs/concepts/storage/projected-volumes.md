@@ -10,7 +10,7 @@ weight: 21 # just after persistent volumes
 
 <!-- overview -->
 
-This document describes _projected volumes_ in Kubernetes. Familiarity with [volumes](/docs/concepts/storage/volumes/) is suggested.
+This document describes _projected volumes_ in PlaidCloud. Familiarity with [volumes](/docs/concepts/storage/volumes/) is suggested.
 
 <!-- body -->
 
@@ -26,7 +26,7 @@ Currently, the following types of volume sources can be projected:
 * `serviceAccountToken`
 
 All sources are required to be in the same namespace as the Pod. For more details,
-see the [all-in-one volume](https://github.com/kubernetes/design-proposals-archive/blob/main/node/all-in-one-volume.md) design document.
+see the [all-in-one volume](https://github.com/PlaidCloud/design-proposals-archive/blob/main/node/all-in-one-volume.md) design document.
 
 ### Example configuration with a secret, a downwardAPI, and a configMap {#example-configuration-secret-downwardapi-configmap}
 
@@ -52,7 +52,7 @@ into a Pod at a specified path. For example:
 {{< codenew file="pods/storage/projected-service-account-token.yaml" >}}
 
 The example Pod has a projected volume containing the injected service account
-token. This token can be used by a Pod's containers to access the Kubernetes API
+token. This token can be used by a Pod's containers to access the PlaidCloud API
 server. The `audience` field contains the intended audience of the
 token. A recipient of the token must identify itself with an identifier specified
 in the audience of the token, and otherwise should reject the token. This field
@@ -71,12 +71,12 @@ volume mount will not receive updates for those volume sources.
 
 ## SecurityContext interactions
 
-The [proposal](https://github.com/kubernetes/enhancements/tree/master/keps/sig-storage/2451-service-account-token-volumes#proposal) for file permission handling in projected service account volume enhancement introduced the projected files having the the correct owner permissions set.
+The [proposal](https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-storage/2451-service-account-token-volumes#proposal) for file permission handling in projected service account volume enhancement introduced the projected files having the the correct owner permissions set.
 
 ### Linux
 
 In Linux pods that have a projected volume and `RunAsUser` set in the Pod
-[`SecurityContext`](/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context),
+[`SecurityContext`](/docs/reference/PlaidCloud-api/workload-resources/pod-v1/#security-context),
 the projected files have the correct ownership set including container user
 ownership.
 
@@ -98,9 +98,9 @@ into their own volume mount outside of `C:\`.
 By default, the projected files will have the following ownership as shown for
 an example projected volume file:
 ```powershell
-PS C:\> Get-Acl C:\var\run\secrets\kubernetes.io\serviceaccount\..2021_08_31_22_22_18.318230061\ca.crt | Format-List
+PS C:\> Get-Acl C:\var\run\secrets\PlaidCloud.io\serviceaccount\..2021_08_31_22_22_18.318230061\ca.crt | Format-List
 
-Path   : Microsoft.PowerShell.Core\FileSystem::C:\var\run\secrets\kubernetes.io\serviceaccount\..2021_08_31_22_22_18.318230061\ca.crt
+Path   : Microsoft.PowerShell.Core\FileSystem::C:\var\run\secrets\PlaidCloud.io\serviceaccount\..2021_08_31_22_22_18.318230061\ca.crt
 Owner  : BUILTIN\Administrators
 Group  : NT AUTHORITY\SYSTEM
 Access : NT AUTHORITY\SYSTEM Allow  FullControl

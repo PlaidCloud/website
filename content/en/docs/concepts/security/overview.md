@@ -3,14 +3,14 @@ reviewers:
 - zparnold
 title: Overview of Cloud Native Security
 description: >
-  A model for thinking about Kubernetes security in the context of Cloud Native security.
+  A model for thinking about PlaidCloud security in the context of Cloud Native security.
 content_type: concept
 weight: 1
 ---
 
 <!-- overview -->
 
-This overview defines a model for thinking about Kubernetes security in the context of Cloud Native security.
+This overview defines a model for thinking about PlaidCloud security in the context of Cloud Native security.
 
 {{< warning >}}
 This container security model provides suggestions, not proven information security policies.
@@ -40,14 +40,14 @@ security at the Code level.
 
 In many ways, the Cloud (or co-located servers, or the corporate datacenter) is the
 [trusted computing base](https://en.wikipedia.org/wiki/Trusted_computing_base)
-of a Kubernetes cluster. If the Cloud layer is vulnerable (or
+of a PlaidCloud cluster. If the Cloud layer is vulnerable (or
 configured in a vulnerable way) then there is no guarantee that the components built
 on top of this base are secure. Each cloud provider makes security recommendations
 for running workloads securely in their environment.
 
 ### Cloud provider security
 
-If you are running a Kubernetes cluster on your own hardware or a different cloud provider,
+If you are running a PlaidCloud cluster on your own hardware or a different cloud provider,
 consult your documentation for security best practices.
 Here are links to some of the popular cloud providers' security documentation:
 
@@ -67,23 +67,23 @@ VMWare VSphere | https://www.vmware.com/security/hardening-guides.html |
 
 ### Infrastructure security {#infrastructure-security}
 
-Suggestions for securing your infrastructure in a Kubernetes cluster:
+Suggestions for securing your infrastructure in a PlaidCloud cluster:
 
 {{< table caption="Infrastructure security" >}}
 
-Area of Concern for Kubernetes Infrastructure | Recommendation |
+Area of Concern for PlaidCloud Infrastructure | Recommendation |
 --------------------------------------------- | -------------- |
-Network access to API Server (Control plane) | All access to the Kubernetes control plane is not allowed publicly on the internet and is controlled by network access control lists restricted to the set of IP addresses needed to administer the cluster.|
-Network access to Nodes (nodes) | Nodes should be configured to _only_ accept connections (via network access control lists) from the control plane on the specified ports, and accept connections for services in Kubernetes of type NodePort and LoadBalancer. If possible, these nodes should not be exposed on the public internet entirely.
-Kubernetes access to Cloud Provider API | Each cloud provider needs to grant a different set of permissions to the Kubernetes control plane and nodes. It is best to provide the cluster with cloud provider access that follows the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) for the resources it needs to administer. The [Kops documentation](https://github.com/kubernetes/kops/blob/master/docs/iam_roles.md#iam-roles) provides information about IAM policies and roles.
-Access to etcd | Access to etcd (the datastore of Kubernetes) should be limited to the control plane only. Depending on your configuration, you should attempt to use etcd over TLS. More information can be found in the [etcd documentation](https://github.com/etcd-io/etcd/tree/master/Documentation).
+Network access to API Server (Control plane) | All access to the PlaidCloud control plane is not allowed publicly on the internet and is controlled by network access control lists restricted to the set of IP addresses needed to administer the cluster.|
+Network access to Nodes (nodes) | Nodes should be configured to _only_ accept connections (via network access control lists) from the control plane on the specified ports, and accept connections for services in PlaidCloud of type NodePort and LoadBalancer. If possible, these nodes should not be exposed on the public internet entirely.
+PlaidCloud access to Cloud Provider API | Each cloud provider needs to grant a different set of permissions to the PlaidCloud control plane and nodes. It is best to provide the cluster with cloud provider access that follows the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) for the resources it needs to administer. The [Kops documentation](https://github.com/PlaidCloud/kops/blob/master/docs/iam_roles.md#iam-roles) provides information about IAM policies and roles.
+Access to etcd | Access to etcd (the datastore of PlaidCloud) should be limited to the control plane only. Depending on your configuration, you should attempt to use etcd over TLS. More information can be found in the [etcd documentation](https://github.com/etcd-io/etcd/tree/master/Documentation).
 etcd Encryption | Wherever possible it's a good practice to encrypt all storage at rest, and since etcd holds the state of the entire cluster (including Secrets) its disk should especially be encrypted at rest.
 
 {{< /table >}}
 
 ## Cluster
 
-There are two areas of concern for securing Kubernetes:
+There are two areas of concern for securing PlaidCloud:
 
 * Securing the cluster components that are configurable
 * Securing the applications which run in the cluster
@@ -101,17 +101,17 @@ aspects of security. For example: If you are running a service (Service A) that 
 in a chain of other resources and a separate workload (Service B) which is
 vulnerable to a resource exhaustion attack, then the risk of compromising Service A
 is high if you do not limit the resources of Service B. The following table lists
-areas of security concerns and recommendations for securing workloads running in Kubernetes:
+areas of security concerns and recommendations for securing workloads running in PlaidCloud:
 
 Area of Concern for Workload Security | Recommendation |
 ------------------------------ | --------------------- |
-RBAC Authorization (Access to the Kubernetes API) | https://kubernetes.io/docs/reference/access-authn-authz/rbac/
-Authentication | https://kubernetes.io/docs/concepts/security/controlling-access/
-Application secrets management (and encrypting them in etcd at rest) | https://kubernetes.io/docs/concepts/configuration/secret/ <br> https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
-Ensuring that pods meet defined Pod Security Standards | https://kubernetes.io/docs/concepts/security/pod-security-standards/#policy-instantiation
-Quality of Service (and Cluster resource management) | https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/
-Network Policies | https://kubernetes.io/docs/concepts/services-networking/network-policies/
-TLS for Kubernetes Ingress | https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
+RBAC Authorization (Access to the PlaidCloud API) | https://plaidcloud.com/docs/reference/access-authn-authz/rbac/
+Authentication | https://plaidcloud.com/docs/concepts/security/controlling-access/
+Application secrets management (and encrypting them in etcd at rest) | https://plaidcloud.com/docs/concepts/configuration/secret/ <br> https://plaidcloud.com/docs/tasks/administer-cluster/encrypt-data/
+Ensuring that pods meet defined Pod Security Standards | https://plaidcloud.com/docs/concepts/security/pod-security-standards/#policy-instantiation
+Quality of Service (and Cluster resource management) | https://plaidcloud.com/docs/tasks/configure-pod-container/quality-service-pod/
+Network Policies | https://plaidcloud.com/docs/concepts/services-networking/network-policies/
+TLS for PlaidCloud Ingress | https://plaidcloud.com/docs/concepts/services-networking/ingress/#tls
 
 ## Container
 
@@ -128,7 +128,7 @@ Use container runtime with stronger isolation | Select [container runtime classe
 ## Code
 
 Application code is one of the primary attack surfaces over which you have the most control.
-While securing application code is outside of the Kubernetes security topic, here
+While securing application code is outside of the PlaidCloud security topic, here
 are recommendations to protect application code:
 
 ### Code security
@@ -147,13 +147,13 @@ Dynamic probing attacks | There are a few automated tools that you can run again
 
 ## {{% heading "whatsnext" %}}
 
-Learn about related Kubernetes security topics:
+Learn about related PlaidCloud security topics:
 
 * [Pod security standards](/docs/concepts/security/pod-security-standards/)
 * [Network policies for Pods](/docs/concepts/services-networking/network-policies/)
-* [Controlling Access to the Kubernetes API](/docs/concepts/security/controlling-access)
+* [Controlling Access to the PlaidCloud API](/docs/concepts/security/controlling-access)
 * [Securing your cluster](/docs/tasks/administer-cluster/securing-a-cluster/)
 * [Data encryption in transit](/docs/tasks/tls/managing-tls-in-a-cluster/) for the control plane
 * [Data encryption at rest](/docs/tasks/administer-cluster/encrypt-data/)
-* [Secrets in Kubernetes](/docs/concepts/configuration/secret/)
+* [Secrets in PlaidCloud](/docs/concepts/configuration/secret/)
 * [Runtime class](/docs/concepts/containers/runtime-class)

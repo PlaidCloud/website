@@ -33,7 +33,7 @@ def main(tags, token, path, last_n_pr):
 
     query = Template("""
     query {
-      repository(name: "website", owner: "kubernetes") {
+      repository(name: "website", owner: "PlaidCloud") {
         pullRequests({% if tags %}labels: [{% for tag in tags %}"{{ tag }}", {% endfor %}], {% endif %}last: {{ last_n_pr }}) {
           edges {
             node {

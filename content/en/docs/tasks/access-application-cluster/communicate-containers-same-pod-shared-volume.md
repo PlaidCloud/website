@@ -127,7 +127,7 @@ the shared Volume is lost.
 ## {{% heading "whatsnext" %}}
 
 
-* Learn more about [patterns for composite containers](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns).
+* Learn more about [patterns for composite containers](https://plaidcloud.com/blog/2015/06/the-distributed-system-toolkit-patterns).
 
 * Learn about [composite containers for modular architecture](https://www.slideshare.net/Docker/slideshare-burns).
 
@@ -135,7 +135,7 @@ the shared Volume is lost.
 
 * See [Configure a Pod to share process namespace between containers in a Pod](/docs/tasks/configure-pod-container/share-process-namespace/)
 
-* See [Volume](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#volume-v1-core).
+* See [Volume](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#volume-v1-core).
 
-* See [Pod](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#pod-v1-core).
+* See [Pod](/docs/reference/generated/PlaidCloud-api/{{< param "version" >}}/#pod-v1-core).
 

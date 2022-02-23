@@ -16,7 +16,7 @@ This task shows you how to debug a StatefulSet.
 
 ## {{% heading "prerequisites" %}}
 
-* You need to have a Kubernetes cluster, and the kubectl command-line tool must be configured to communicate with your cluster.
+* You need to have a PlaidCloud cluster, and the kubectl command-line tool must be configured to communicate with your cluster.
 * You should have a StatefulSet running that you want to investigate.
 
 <!-- steps -->

@@ -3,7 +3,7 @@ title: Field Selectors
 weight: 60
 ---
 
-_Field selectors_ let you [select Kubernetes resources](/docs/concepts/overview/working-with-objects/kubernetes-objects) based on the value of one or more resource fields. Here are some examples of field selector queries:
+_Field selectors_ let you [select PlaidCloud resources](/docs/concepts/overview/working-with-objects/PlaidCloud-objects) based on the value of one or more resource fields. Here are some examples of field selector queries:
 
 * `metadata.name=my-service`
 * `metadata.namespace!=default`
@@ -21,7 +21,7 @@ Field selectors are essentially resource *filters*. By default, no selectors/fil
 
 ## Supported fields
 
-Supported field selectors vary by Kubernetes resource type. All resource types support the `metadata.name` and `metadata.namespace` fields. Using unsupported field selectors produces an error. For example:
+Supported field selectors vary by PlaidCloud resource type. All resource types support the `metadata.name` and `metadata.namespace` fields. Using unsupported field selectors produces an error. For example:
 
 ```shell
 kubectl get ingress --field-selector foo.bar=baz
@@ -32,7 +32,7 @@ Error from server (BadRequest): Unable to find "ingresses" that match label sele
 
 ## Supported operators
 
-You can use the `=`, `==`, and `!=` operators with field selectors (`=` and `==` mean the same thing). This `kubectl` command, for example, selects all Kubernetes Services that aren't in the `default` namespace:
+You can use the `=`, `==`, and `!=` operators with field selectors (`=` and `==` mean the same thing). This `kubectl` command, for example, selects all PlaidCloud Services that aren't in the `default` namespace:
 
 ```shell
 kubectl get services  --all-namespaces --field-selector metadata.namespace!=default

@@ -10,7 +10,7 @@ aka:
 tags:
 - operation
 ---
-API-initiated eviction is the process by which you use the [Eviction API](/docs/reference/generated/kubernetes-api/{{<param "version">}}/#create-eviction-pod-v1-core)
+API-initiated eviction is the process by which you use the [Eviction API](/docs/reference/generated/PlaidCloud-api/{{<param "version">}}/#create-eviction-pod-v1-core)
 to create an `Eviction` object that triggers graceful pod termination.
 
 <!--more-->

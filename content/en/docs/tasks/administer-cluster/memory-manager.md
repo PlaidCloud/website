@@ -6,14 +6,14 @@ reviewers:
 - derekwaynecarr
 
 content_type: task
-min-kubernetes-server-version: v1.21
+min-PlaidCloud-server-version: v1.21
 ---
 
 <!-- overview -->
 
 {{< feature-state state="beta" for_k8s_version="v1.22" >}}
 
-The Kubernetes *Memory Manager* enables the feature of guaranteed memory (and hugepages)
+The PlaidCloud *Memory Manager* enables the feature of guaranteed memory (and hugepages)
 allocation for pods in the `Guaranteed` {{< glossary_tooltip text="QoS class" term_id="qos-class" >}}.
 
 The Memory Manager employs hint generation protocol to yield the most suitable NUMA affinity for a pod.
@@ -80,7 +80,7 @@ The administrator must provide `--reserved-memory` flag when `Static` policy is 
 
 Reference [Memory Manager KEP: Memory Maps at runtime (with examples)][6] illustrates
 how a successful pod deployment affects the Node Map, and it also relates to
-how potential Out-of-Memory (OOM) situations are handled further by Kubernetes or operating system.
+how potential Out-of-Memory (OOM) situations are handled further by PlaidCloud or operating system.
 
 Important topic in the context of Memory Manager operation is the management of NUMA groups.
 Each time pod's memory request is in excess of single NUMA node capacity, the Memory Manager
@@ -131,7 +131,7 @@ A dedicated set of flags can be used for this purpose to set the total amount of
 for a node. This pre-configured value is subsequently utilized to calculate
 the real amount of node's "allocatable" memory available to pods.
 
-The Kubernetes scheduler incorporates "allocatable" to optimise pod scheduling process.
+The PlaidCloud scheduler incorporates "allocatable" to optimise pod scheduling process.
 The foregoing flags include `--kube-reserved`, `--system-reserved` and `--eviction-threshold`.
 The sum of their values will account for the total amount of reserved memory.
 
@@ -454,7 +454,7 @@ by using `--reserved-memory` flag.
 
 ### Device plugin resource API
 
-By employing the [API](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/),
+By employing the [API](/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/),
 the information about reserved memory for each container can be retrieved, which is contained
 in protobuf `ContainerMemory` message.
 This information can be retrieved solely for pods in Guaranteed QoS class.
@@ -468,11 +468,11 @@ This information can be retrieved solely for pods in Guaranteed QoS class.
 - [Memory Manager KEP: The Concept of Node Map and Memory Maps][2]
 - [Memory Manager KEP: How to enable the guaranteed memory allocation over many NUMA nodes?][3]
 
-[1]: https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1769-memory-manager#simulation---how-the-memory-manager-works-by-examples
-[2]: https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1769-memory-manager#the-concept-of-node-map-and-memory-maps
-[3]: https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1769-memory-manager#how-to-enable-the-guaranteed-memory-allocation-over-many-numa-nodes
-[4]: https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1769-memory-manager#design-overview
-[5]: https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1769-memory-manager#memory-maps-at-start-up-with-examples
-[6]: https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1769-memory-manager#memory-maps-at-runtime-with-examples
+[1]: https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/1769-memory-manager#simulation---how-the-memory-manager-works-by-examples
+[2]: https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/1769-memory-manager#the-concept-of-node-map-and-memory-maps
+[3]: https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/1769-memory-manager#how-to-enable-the-guaranteed-memory-allocation-over-many-numa-nodes
+[4]: https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/1769-memory-manager#design-overview
+[5]: https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/1769-memory-manager#memory-maps-at-start-up-with-examples
+[6]: https://github.com/PlaidCloud/enhancements/tree/master/keps/sig-node/1769-memory-manager#memory-maps-at-runtime-with-examples
 
 
