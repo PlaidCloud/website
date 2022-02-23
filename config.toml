@@ -31,7 +31,7 @@ enableGitInfo = true
 
 # Norwegian ("no") is sometimes but not currently used for testing.
 # Hindi is disabled because it's currently in development.
-disableLanguages = ["hi", "no"]
+disableLanguages = ["hi", "no", "fr", "id", "it", "ja", "ko", "pl", "pt-br", "ru", "uk", "vi", "zh"]
 
 [caches]
  [caches.assets]
@@ -121,8 +121,7 @@ anchor = "smart"
 id = "UA-00000000-0"
 
 [params]
-copyright_k8s = "The Kubernetes Authors"
-copyright_linux =  "Copyright © 2020 The Linux Foundation ®."
+copyright_plaidcloud = "Copyright © 2022 Tartan Solutions, Inc - PlaidCloud ®"
 
 # privacy_policy = "https://policies.google.com/privacy"
 
@@ -136,27 +135,27 @@ version_menu = "Versions"
 time_format_blog = "Monday, January 02, 2006"
 time_format_default = "January 02, 2006 at 3:04 PM PST"
 
-description = "Production-Grade Container Orchestration"
+description = "Unified Finacial Analytics Solution"
 showedit = true
 
-latest = "v1.23"
+latest = "v5.8"
 
-fullversion = "v1.23.0"
-version = "v1.23"
+fullversion = "v5.10.1"
+version = "v5.10"
 githubbranch = "main"
 docsbranch = "main"
 deprecated = false
-currentUrl = "https://kubernetes.io/docs/home/"
+currentUrl = "https://docs.plaidcloud.io/docs/home/"
 nextUrl = "https://kubernetes-io-vnext-staging.netlify.com/"
 
 # See codenew shortcode
-githubWebsiteRaw = "raw.githubusercontent.com/kubernetes/website"
+githubWebsiteRaw = "raw.githubusercontent.com/plaidcloud/website"
 
 # GitHub repository link for editing a page and opening issues.
-github_repo = "https://github.com/kubernetes/website"
+github_repo = "https://github.com/plaidcloud/website"
 
 #Searching
-k8s_search = true
+plaidcloud_search = true
 
 #The following search parameters are specific to Docsy's implementation. Kubernetes implementes its own search-related partials and scripts.
 
@@ -179,39 +178,40 @@ js = [
 ]
 
 [[params.versions]]
-fullversion = "v1.23.0"
-version = "v1.23"
-githubbranch = "v1.23.0"
+fullversion = "v5.10.1"
+version = "v5.10"
+# githubbranch = "v1.23.0"
 docsbranch = "main"
-url = "https://kubernetes.io"
+url = "https://docs.plaidcloud.com"
 
 [[params.versions]]
-fullversion = "v1.22.4"
-version = "v1.22"
-githubbranch = "v1.22.4"
-docsbranch = "release-1.22"
-url = "https://v1-22.docs.kubernetes.io"
+fullversion = "v5.9.11"
+version = "v5.9"
+# githubbranch = "v1.22.4"
+docsbranch = "release-5.9"
+url = "https://v5-9.docs.plaidcloud.com"
 
 [[params.versions]]
-fullversion = "v1.21.7"
-version = "v1.21"
-githubbranch = "v1.21.7"
-docsbranch = "release-1.21"
-url = "https://v1-21.docs.kubernetes.io"
+fullversion = "v5.8.7"
+version = "v5.8"
+# githubbranch = "v1.21.7"
+docsbranch = "release-5.8"
+url = "https://v5-8.docs.plaidcloud.com"
 
 [[params.versions]]
-fullversion = "v1.20.13"
-version = "v1.20"
-githubbranch = "v1.20.13"
-docsbranch = "release-1.20"
-url = "https://v1-20.docs.kubernetes.io"
+fullversion = "v5.7.9"
+version = "v5.7"
+# githubbranch = "v1.21.7"
+docsbranch = "release-5.7"
+url = "https://v5-7.docs.plaidcloud.com"
 
 [[params.versions]]
-fullversion = "v1.19.16"
-version = "v1.19"
-githubbranch = "v1.19.16"
-docsbranch = "release-1.19"
-url = "https://v1-19.docs.kubernetes.io"
+fullversion = "v5.6.14"
+version = "v5.6"
+# githubbranch = "v1.21.7"
+docsbranch = "release-5.6"
+url = "https://v5-6.docs.plaidcloud.com"
+
 
 # User interface configuration
 [params.ui]
@@ -248,44 +248,32 @@ no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY
 
 [[params.links.user]]
 	name = "Twitter"
-	url = "https://twitter.com/kubernetesio"
+	url = "https://twitter.com/plaidcloud"
 	icon = "fab fa-twitter"
   desc = "Follow us on Twitter to get the latest news!"
 
 [[params.links.user]]
-	name = "Calendar"
-	url = "https://calendar.google.com/calendar/embed?src=calendar%40kubernetes.io"
-	icon = "fas fa-calendar-alt"
-  desc = "Google Calendar for Kubernetes"
-
-[[params.links.user]]
 	name = "Youtube"
-	url = "https://youtube.com/kubernetescommunity"
+	url = "https://youtube.com/plaidcloud"
 	icon = "fab fa-youtube"
-  desc = "Youtube community videos"
+  desc = "PlaidCloud Youtube videos"
 
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
 	name = "GitHub"
-	url = "https://github.com/kubernetes/kubernetes"
+	url = "https://github.com/plaidcloud"
 	icon = "fab fa-github"
   desc = "Development takes place here!"
 
 [[params.links.developer]]
 	name = "Slack"
-	url = "https://slack.k8s.io"
+	url = "https://slack.plaidcloud.com"
 	icon = "fab fa-slack"
-  desc = "Chat with other project developers"
-
-[[params.links.developer]]
-	name = "Contribute"
-	url = "https://git.k8s.io/community/contributors/guide"
-	icon = "fas fa-edit"
-  desc = "Contribute to the Kubernetes website"
+  desc = "Chat with others in the PlaidCloud community"
 
 [[params.links.developer]]
 	name = "Stack Overflow"
-	url = "https://stackoverflow.com/questions/tagged/kubernetes"
+	url = "https://stackoverflow.com/questions/tagged/plaidcloud"
 	icon = "fab fa-stack-overflow"
   desc = "Practical questions and curated answers"
 
@@ -293,15 +281,15 @@ no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY
 
 [languages]
 [languages.en]
-title = "Kubernetes"
-description = "Production-Grade Container Orchestration"
+title = "PlaidCloud"
+description = "Unified Financial Analytics"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 languagedirection = "ltr"
 
 [languages.zh]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "生产级别的容器编排系统"
 languageName = "中文 Chinese"
 weight = 2
@@ -313,7 +301,7 @@ time_format_blog = "2006.01.02"
 language_alternatives = ["en"]
 
 [languages.ko]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "운영 수준의 컨테이너 오케스트레이션"
 languageName = "한국어 Korean"
 weight = 3
@@ -325,7 +313,7 @@ time_format_blog = "2006.01.02"
 language_alternatives = ["en"]
 
 [languages.ja]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "プロダクショングレードのコンテナ管理基盤"
 languageName = "日本語 Japanese"
 weight = 4
@@ -337,7 +325,7 @@ time_format_blog = "2006.01.02"
 language_alternatives = ["en"]
 
 [languages.fr]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Solution professionnelle d’orchestration de conteneurs"
 languageName ="Français"
 weight = 5
@@ -350,7 +338,7 @@ time_format_blog = "02.01.2006"
 language_alternatives = ["en"]
 
 [languages.it]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Orchestrazione di Container in produzione"
 languageName = "Italiano"
 weight = 6
@@ -363,7 +351,7 @@ time_format_blog = "02.01.2006"
 language_alternatives = ["en"]
 
 [languages.no]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Production-Grade Container Orchestration"
 languageName ="Norsk"
 weight = 7
@@ -376,7 +364,7 @@ time_format_blog = "02.01.2006"
 language_alternatives = ["en"]
 
 [languages.de]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Produktionsreife Container-Orchestrierung"
 languageName ="Deutsch"
 weight = 8
@@ -389,7 +377,7 @@ time_format_blog = "02.01.2006"
 language_alternatives = ["en"]
 
 [languages.es]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Orquestación de contenedores para producción"
 languageName ="Español"
 weight = 9
@@ -402,7 +390,7 @@ time_format_blog = "02.01.2006"
 language_alternatives = ["en"]
 
 [languages.pt-br]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Orquestração de contêineres em nível de produção"
 languageName ="Português"
 weight = 9
@@ -415,7 +403,7 @@ time_format_blog = "02.01.2006"
 language_alternatives = ["en"]
 
 [languages.id]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Orkestrasi Kontainer dengan Skala Produksi"
 languageName ="Bahasa Indonesia"
 weight = 10
@@ -428,7 +416,7 @@ time_format_blog = "02.01.2006"
 language_alternatives = ["en"]
 
 [languages.hi]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Production-Grade Container Orchestration"
 languageName = "Hindi"
 weight = 11
@@ -440,7 +428,7 @@ time_format_blog = "01.02.2006"
 language_alternatives = ["en"]
 
 [languages.vi]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Giải pháp điều phối container trong môi trường production"
 languageName = "Tiếng Việt"
 contentDir = "content/vi"
@@ -448,7 +436,7 @@ weight = 12
 languagedirection = "ltr"
 
 [languages.ru]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Первоклассная оркестрация контейнеров"
 languageName = "Русский"
 weight = 12
@@ -461,7 +449,7 @@ time_format_blog = "02.01.2006"
 language_alternatives = ["en"]
 
 [languages.pl]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Produkcyjny system zarządzania kontenerami"
 languageName = "Polski"
 weight = 13
@@ -474,7 +462,7 @@ time_format_blog = "01.02.2006"
 language_alternatives = ["en"]
 
 [languages.uk]
-title = "Kubernetes"
+title = "PlaidCloud"
 description = "Довершена система оркестрації контейнерів"
 languageName = "Українська"
 weight = 14

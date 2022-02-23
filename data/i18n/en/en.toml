@@ -28,7 +28,7 @@ other = "Twitter"
 other = "YouTube"
 
 [deprecation_title]
-other = "You are viewing documentation for Kubernetes version:"
+other = "You are viewing documentation for PlaidCloud version:"
 
 [deprecation_warning]
 other = " documentation is no longer actively maintained. The version you are currently viewing is a static snapshot. For up-to-date documentation, see the "
@@ -106,7 +106,7 @@ other = "Tell your story"
 other = "Also known as"
 
 [layouts_docs_glossary_description]
-other = "This glossary is intended to be a comprehensive, standardized list of Kubernetes terminology. It includes technical terms that are specific to Kubernetes, as well as more general terms that provide useful context."
+other = "This glossary is intended to be a comprehensive, standardized list of PlaidCloud terminology. It includes technical terms that are specific to PlaidCloud, as well as more general terms that provide useful context."
 
 [layouts_docs_glossary_deselect_all]
 other = "Deselect all"
@@ -136,7 +136,7 @@ other = "or"
 other = "report a problem"
 
 [layouts_docs_partials_feedback_thanks]
-other = "Thanks for the feedback. If you have a specific, answerable question about how to use Kubernetes, ask it on"
+other = "Thanks for the feedback. If you have a specific, answerable question about how to use PlaidCloud, ask it on"
 
 [layouts_docs_search_fetching]
 other = "Fetching results..."
@@ -154,10 +154,9 @@ other = "Explore the community"
 other = "Contribute"
 
 [main_copyright_notice]
-other = """The Linux Foundation &reg;. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a>"""
-
+other = """PlaidCloud &reg;. All rights reserved. PlaidCloud is a registered trademark of Tartan Solutions"""
 [main_documentation_license]
-other = """The Kubernetes Authors | Documentation Distributed under <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+other = """Tartan Solutions, Inc  |  PlaidCloud is our SaaS platform for Financial Analytics"""
 
 [main_github_invite]
 other = "Interested in hacking on the core Kubernetes code base?"
@@ -165,16 +164,16 @@ other = "Interested in hacking on the core Kubernetes code base?"
 [main_github_view_on]
 other = "View On GitHub"
 
-[main_kubernetes_features]
-other = "Kubernetes Features"
+[main_plaidcloud_features]
+other = "PlaidCloud Features"
 
-[main_kubeweekly_baseline]
-other = "Interested in receiving the latest Kubernetes news? Sign up for KubeWeekly."
+[main_newsletter_baseline]
+other = "Interested in receiving the latest PlaidCloud news? Sign up for newsletter."
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 other = "View past newsletters"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 other = "Subscribe"
 
 [main_page_history]
@@ -203,7 +202,7 @@ other = "Objectives"
 other = "Options"
 
 [outdated_blog__message]
-other = "The Kubernetes project considers this article to be outdated because it is more than one year old. Check that the information in the page has not become incorrect since its publication."
+other = "The PlaidCloud team considers this article to be outdated because it is more than one year old. Check that the information in the page has not become incorrect since its publication."
 
 [outdated_blog__title]
 other = "Outdated article"
@@ -238,26 +237,26 @@ other = "Subscribe"
 other = "Synopsis"
 
 [thirdparty_message]
-other = """This section links to third party projects that provide functionality required by Kubernetes. The Kubernetes project authors aren't responsible for these projects, which are listed alphabetically. To add a project to this list, read the <a href="/docs/contribute/style/content-guide/#third-party-content">content guide</a> before submitting a change. <a href="#third-party-content-disclaimer">More information.</a>"""
+other = """This section links to third party projects that provide functionality required by PlaidCloud. The PlaidCloud team is not responsible for these projects, which are listed alphabetically."""
 
 [thirdparty_message_edit_disclaimer]
 other="""Third party content advice"""
 
 
 [thirdparty_message_single_item]
-other = """&#128711; This item links to a third party project or product that is not part of Kubernetes itself. <a class="alert-more-info" href="#third-party-content-disclaimer">More information</a>"""
+other = """&#128711; This item links to a third party project or product that is not part of PlaidCloud itself. <a class="alert-more-info" href="#third-party-content-disclaimer">More information</a>"""
 
 [thirdparty_message_disclaimer]
-other = """<p>Items on this page refer to third party products or projects that provide functionality required by Kubernetes. The Kubernetes project authors aren't responsible for those third-party products or projects. See the <a href="https://github.com/cncf/foundation/blob/master/website-guidelines.md" target="_blank">CNCF website guidelines</a> for more details.</p><p>You should read the <a href="/docs/contribute/style/content-guide/#third-party-content">content guide</a> before proposing a change that adds an extra third-party link.</p>"""
+other = """<p>Items on this page refer to third party products or projects that provide functionality required by PlaidCloud. The PlaidCloud team isn't responsible for those third-party products or projects."""
 
 [ui_search_placeholder]
 other = "Search"
 
 [version_check_mustbe]
-other = "Your Kubernetes server must be version "
+other = "Your PlaidCloud Workspace must be version "
 
 [version_check_mustbeorlater]
-other = "Your Kubernetes server must be at or later than version "
+other = "Your PlaidCloud Workspace must be at or later than version "
 
 [version_check_tocheck]
 other = "To check the version, enter "

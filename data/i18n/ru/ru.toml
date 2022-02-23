@@ -72,19 +72,19 @@ other = "Сообщить о проблеме"
 [main_community_explore]
 other = "Познакомиться с сообществом"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 other = "Возможности Kubernetes"
 
 [main_cncf_project]
 other = """Мы являемся проектом <a href="https://cncf.io/">CNCF</a></p>"""
 
-[main_kubeweekly_baseline]
+[main_newsletter_baseline]
 other = "Интересуетесь последними новостями Kubernetes? Зарегистрируйтесь в KubeWeekly."
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 other = "Посмотреть последние новости"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 other = "Подписаться"
 
 [main_contribute]

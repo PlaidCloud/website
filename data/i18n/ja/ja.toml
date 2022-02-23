@@ -128,10 +128,9 @@ other = "コミュニティを探す"
 other = "コントリビュート"
 
 [main_copyright_notice]
-other = """The Linux Foundation &reg;. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a>"""
-
+other = """PlaidCloud &reg;. All rights reserved. PlaidCloud is a registered trademark of Tartan Solutions"""
 [main_documentation_license]
-other = """The Kubernetes Authors | Documentation Distributed under <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+other = """Tartan Solutions, Inc  |  PlaidCloud is our SaaS platform for Financial Analytics"""
 
 [main_edit_this_page]
 other = "ページ編集"
@@ -145,16 +144,16 @@ other = "Issue作成"
 [main_github_view_on]
 other = "GitHubで参照する"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 other = "Kubernetesの機能"
 
-[main_kubeweekly_baseline]
+[main_newsletter_baseline]
 other = "最新のKubernetesのニュースを受け取りたいですか？ KubeWeeklyにサインアップしてください。"
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 other = "過去のニュースレターを見る"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 other = "登録"
 
 [main_page_history]

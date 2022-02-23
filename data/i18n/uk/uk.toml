@@ -182,19 +182,19 @@ other = "Хочете зламати основну кодову базу Kubern
 # other = "View On GitHub"
 other = "Переглянути у GitHub"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 # other = "Kubernetes Features"
 other = "Функціональні можливості Kubernetes"
 
-[main_kubeweekly_baseline]
+[main_newsletter_baseline]
 # other = "Interested in receiving the latest Kubernetes news? Sign up for KubeWeekly."
 other = "Хочете отримувати останні новини Kubernetes? Підпишіться на KubeWeekly."
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 # other = "View past newsletters"
 other = "Переглянути попередні інформаційні розсилки"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 # other = "Subscribe"
 other = "Підписатися"
 

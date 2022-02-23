@@ -151,16 +151,16 @@ other = "想要修改 Kubernetes 的核心源代码？"
 [main_github_view_on]
 other = "在 GitHub 上查看"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 other = "Kubernetes 特性"
 
-[main_kubeweekly_baseline]
+[main_newsletter_baseline]
 other = "想要获取最新的 Kubernetes 新闻么？请订阅 KubeWeekly。"
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 other = "浏览往期的周报"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 other = "订阅"
 
 [main_page_history]

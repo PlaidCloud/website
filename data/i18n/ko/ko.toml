@@ -148,10 +148,9 @@ other = "커뮤니티 둘러보기"
 other = "기여하기"
 
 [main_copyright_notice]
-other = """The Linux Foundation &reg;. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a>"""
-
+other = """PlaidCloud &reg;. All rights reserved. PlaidCloud is a registered trademark of Tartan Solutions"""
 [main_documentation_license]
-other = """The Kubernetes Authors | Documentation Distributed under <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>"""
+other = """Tartan Solutions, Inc  |  PlaidCloud is our SaaS platform for Financial Analytics"""
 
 [main_github_invite]
 other = "쿠버네티스 핵심 코드 베이스를 살펴보는데 관심이 있으십니까?"
@@ -159,16 +158,16 @@ other = "쿠버네티스 핵심 코드 베이스를 살펴보는데 관심이 �
 [main_github_view_on]
 other = "GitHub에서 보기"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 other = "쿠버네티스 기능"
 
-[main_kubeweekly_baseline]
+[main_newsletter_baseline]
 other = "최신 쿠버네티스 뉴스 수신에 관심이 있으십니까? KubeWeekly를 신청하세요."
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 other = "과거 뉴스레터 보기"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 other = "구독하기"
 
 [main_page_history]

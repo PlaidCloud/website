@@ -72,19 +72,19 @@ other = "Abrir un Issue"
 [main_community_explore]
 other = "Explorar la comunidad"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 other = "Características de Kubernetes"
 
 [main_cncf_project]
 other = """Somos un proyecto graduado de la <a href="https://cncf.io/">CNCF</a></p>"""
 
-[main_kubeweekly_baseline]
+[main_newsletter_baseline]
 other = "¿Interesado en recibir las últimas noticias de Kubernetes? Suscríbase a KubeWeekly."
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 other = "Ver boletines anteriores"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 other = "Suscríbase"
 
 [main_contribute]

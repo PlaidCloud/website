@@ -18,7 +18,7 @@ other = "Opprett en issue"
 [main_community_explore]
 other = "Utforsk folkene bak Kubernetes"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 other = "Egenskaper i Kubernetes"
 
 [main_cncf_project]

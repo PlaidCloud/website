@@ -142,16 +142,16 @@ other = "Sei interessato a contribuire a Kubernetes?"
 [main_github_view_on]
 other = "Visualizza su GitHub"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 other = "Caratteristiche di Kubernetes"
 
-[main_kubeweekly_baseline]
+[main_newsletter_baseline]
 other = "Sei interessato a ricevere le ultime notizie su Kubernetes? Registrati alla newsletter KubeWeekly."
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 other = "Vedi le precedenti mail della newsletter"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 other = "Iscriviti"
 
 [main_page_history]

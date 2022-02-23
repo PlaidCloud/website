@@ -141,16 +141,16 @@ other = "Quan tâm đến việc hacking mã nguồn Kubernetes?"
 [main_github_view_on]
 other = "Xem trên GitHub"
 
-[main_kubernetes_features]
+[main_plaidcloud_features]
 other = "Các tính năng của Kubernetes"
 
-[main_kubeweekly_baseline]
+[main_newsletter_baseline]
 other = "Muốn nhận những tin tức Kubernetes mới nhất? Đăng kí KubeWeekly."
 
-[main_kubernetes_past_link]
+[main_newsletter_past_link]
 other = "Xem các bản tin trước đây"
 
-[main_kubeweekly_signup]
+[main_newsletter_signup]
 other = "Đăng kí"
 
 [main_page_history]
