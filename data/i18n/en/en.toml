@@ -124,16 +124,10 @@ other = "Filter terms according to their tags"
 other = "Select all"
 
 [layouts_docs_partials_feedback_improvement]
-other = "suggest an improvement"
+other = "contact us"
 
 [layouts_docs_partials_feedback_issue]
-other = "Open an issue in the GitHub repo if you want to "
-
-[layouts_docs_partials_feedback_or]
-other = "or"
-
-[layouts_docs_partials_feedback_problem]
-other = "report a problem"
+other = "If you would like to suggest an improvement, please "
 
 [layouts_docs_partials_feedback_thanks]
 other = "Thanks for the feedback. If you have a specific, answerable question about how to use PlaidCloud, ask it on"

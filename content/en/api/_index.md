@@ -1,9 +1,6 @@
 ---
-linktitle: PlaidCloud APIs
-title: API
+linktitle: API
+title: APIs
 sitemap:
   priority: 1.0
 ---
-
-# PlaidCloud APIs
-This is for the PlaidCloud APIs

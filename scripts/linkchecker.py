@@ -288,9 +288,9 @@ def check_target(page, anchor, target):
     if (target.startswith("/docs/") or
             target.startswith("/" + ARGS.lang + "/docs/")):
 
-        # target is shared reference (kubectl or PlaidCloud-api?
+        # target is shared reference (kubectl or Kubernetes-api?
         if (target.find("/docs/reference/generated/kubectl/") >= 0 or
-                target.find("/docs/reference/generated/PlaidCloud-api/") >= 0):
+                target.find("/docs/reference/generated/Kubernetes-api/") >= 0):
             if check_file_exists(ROOT + "/static", target, "html"):
                 return None
             return new_record("ERROR", "Missing shared reference", target)
@@ -360,7 +360,7 @@ def check_apiref_target(target, anchor):
     :param target: The link target string to check
     :param anchor: Anchor string from the content page
     """
-    base = os.path.join(ROOT, "content", "en", "docs", "reference", "PlaidCloud-api")
+    base = os.path.join(ROOT, "content", "en", "docs", "reference", "Kubernetes-api")
     ok = check_file_exists(base + "/", target)
     if not ok:
         return new_record("ERROR", "API reference page not found", target)

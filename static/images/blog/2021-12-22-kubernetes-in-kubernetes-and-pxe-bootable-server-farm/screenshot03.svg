@@ -605,7 +605,7 @@
                  id="path1227" />
             </g>
             <g
-               aria-label="foo-PlaidCloud-apiserver"
+               aria-label="foo-Kubernetes-apiserver"
                id="text48"
                class="g"
                style="white-space:pre;fill:#dbab79">
@@ -717,7 +717,7 @@
                  id="path1279" />
             </g>
             <g
-               aria-label="foo-PlaidCloud-apiserver.default"
+               aria-label="foo-Kubernetes-apiserver.default"
                id="text52"
                class="g"
                style="white-space:pre;fill:#dbab79">
@@ -861,7 +861,7 @@
                  id="path1347" />
             </g>
             <g
-               aria-label="foo-PlaidCloud-apiserver.default.svc"
+               aria-label="foo-Kubernetes-apiserver.default.svc"
                id="text56"
                class="g"
                style="white-space:pre;fill:#dbab79">
@@ -1021,7 +1021,7 @@
                  id="path1423" />
             </g>
             <g
-               aria-label="'*.foo-PlaidCloud-apiserver'"
+               aria-label="'*.foo-Kubernetes-apiserver'"
                id="text60"
                class="g"
                style="white-space:pre;fill:#dbab79">
@@ -1149,7 +1149,7 @@
                  id="path1483" />
             </g>
             <g
-               aria-label="'*.foo-PlaidCloud-apiserver.default'"
+               aria-label="'*.foo-Kubernetes-apiserver.default'"
                id="text64"
                class="g"
                style="white-space:pre;fill:#dbab79">
@@ -1309,7 +1309,7 @@
                  id="path1559" />
             </g>
             <g
-               aria-label="'*.foo-PlaidCloud-apiserver.default.svc'"
+               aria-label="'*.foo-Kubernetes-apiserver.default.svc'"
                id="text68"
                class="g"
                style="white-space:pre;fill:#dbab79">

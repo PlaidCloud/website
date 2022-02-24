@@ -63,7 +63,7 @@ This will start the local Hugo server on port 1313. Open up your browser to <htt
 
 ## Building the API reference pages
 
-The API reference pages located in `content/en/docs/reference/PlaidCloud-api` are built from the Swagger specification, using <https://github.com/PlaidCloud-sigs/reference-docs/tree/master/gen-resourcesdocs>.
+The API reference pages located in `content/en/docs/reference/Kubernetes-api` are built from the Swagger specification, using <https://github.com/PlaidCloud-sigs/reference-docs/tree/master/gen-resourcesdocs>.
 
 To update the reference pages for a new PlaidCloud release follow these steps:
 
@@ -94,7 +94,7 @@ To update the reference pages for a new PlaidCloud release follow these steps:
    make container-serve
    ```
 
-   In a web browser, go to <http://localhost:1313/docs/reference/PlaidCloud-api/> to view the API reference.
+   In a web browser, go to <http://localhost:1313/docs/reference/Kubernetes-api/> to view the API reference.
 
 5. When all changes of the new contract are reflected into the configuration files `toc.yaml` and `fields.yaml`, create a Pull Request with the newly generated API reference pages.
 

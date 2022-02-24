@@ -13,4 +13,4 @@ IgnoreDirectoryMissingTrailingSlash: false
 IgnoreInternalEmptyHash: true
 IgnoreEmptyHref: true
 IgnoreDirs:
-  - "reference/generated/PlaidCloud-api"
+  - "reference/generated/Kubernetes-api"
