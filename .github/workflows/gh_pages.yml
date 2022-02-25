@@ -17,6 +17,24 @@ jobs:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
+      - name: Install autoprexir
+        run: npm autoprefixer --ignore-scripts
+
+      - name: Install postcss-cli
+        run: npm postcss-cli --ignore-scripts
+
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
