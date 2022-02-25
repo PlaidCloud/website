@@ -30,10 +30,10 @@ jobs:
           restore-keys: npm-
 
       - name: Install autoprexir
-        run: npm autoprefixer --ignore-scripts
+        run: npm install autoprefixer -D --save --ignore-scripts
 
       - name: Install postcss-cli
-        run: npm postcss-cli --ignore-scripts
+        run: npm install -D --save postcss-cli
 
 
       - name: Setup Hugo
