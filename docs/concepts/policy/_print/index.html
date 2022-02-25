@@ -1,0 +1,1761 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta name=ROBOTS content="INDEX, FOLLOW">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-36037335-10')</script>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=canonical type=text/html href=https://plaidcloud.com/docs/concepts/policy/>
+<link rel="shortcut icon" type=image/png href=/images/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=manifest href=/manifest.webmanifest>
+<link rel=apple-touch-icon href=/images/PlaidCloud-192x192.png>
+<title>Policies | PlaidCloud</title><meta property="og:title" content="Policies">
+<meta property="og:description" content="Policies you can configure that apply to groups of resources.
+">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plaidcloud.com/docs/concepts/policy/"><meta property="og:site_name" content="PlaidCloud">
+<meta itemprop=name content="Policies">
+<meta itemprop=description content="Policies you can configure that apply to groups of resources.
+"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Policies">
+<meta name=twitter:description content="Policies you can configure that apply to groups of resources.
+">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-00000000-0','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<link rel=preload href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css as=style>
+<link href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css rel=stylesheet integrity>
+<script src=/js/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=anonymous></script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Organization","url":"https://plaidcloud.com","logo":"https://plaidcloud.com/images/favicon.ico","potentialAction":{"@type":"SearchAction","target":"https://plaidcloud.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<meta name=theme-color content="#326ce5">
+<link rel=stylesheet href=/css/feature-states.css>
+<meta name=description content="Policies you can configure that apply to groups of resources.
+">
+<meta property="og:description" content="Policies you can configure that apply to groups of resources.
+">
+<meta name=twitter:description content="Policies you can configure that apply to groups of resources.
+">
+<meta property="og:url" content="https://plaidcloud.com/docs/concepts/policy/">
+<meta property="og:title" content="Policies">
+<meta name=twitter:title content="Policies">
+<meta name=twitter:image content="https://plaidcloud.com/images/favicon.ico">
+<meta name=twitter:image:alt content="PlaidCloud">
+<meta property="og:image" content="/images/PlaidCloud-horizontal-color.png">
+<meta property="og:type" content="article">
+<script src=/js/script.js></script>
+</head>
+<body class=td-section>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar" data-auto-burger=primary>
+<a class=navbar-brand href=/></a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+<li class="nav-item mr-2 mb-lg-0">
+<a class="nav-link active" href=/docs/>Documentation</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/api/>APIs</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidxl/>PlaidXL</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidlink/>PlaidLink</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/tips/>Tips & Tricks</span></a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+Versions
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/releases>Release Information</a>
+<a class=dropdown-item href=https://docs.plaidcloud.com/docs/concepts/policy/>v5.10</a>
+<a class=dropdown-item href=https://v5-9.docs.plaidcloud.com/docs/concepts/policy/>v5.9</a>
+<a class=dropdown-item href=https://v5-8.docs.plaidcloud.com/docs/concepts/policy/>v5.8</a>
+<a class=dropdown-item href=https://v5-7.docs.plaidcloud.com/docs/concepts/policy/>v5.7</a>
+<a class=dropdown-item href=https://v5-6.docs.plaidcloud.com/docs/concepts/policy/>v5.6</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdownMenuLink role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+English
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/de/>Deutsch</a>
+<a class=dropdown-item href=/es/>Español</a>
+</div>
+</li>
+</ul>
+</div>
+<button id=hamburger onclick=kub.toggleMenu() data-auto-burger-exclude><div></div></button>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+</div>
+<div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+</div>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<div class=td-content>
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href=# onclick="return print(),!1">Click here to print</a>.
+</p><p>
+<a href=/docs/concepts/policy/>Return to the regular view of this page</a>.
+</p>
+</div>
+<h1 class=title>Policies</h1>
+<div class=lead>Policies you can configure that apply to groups of resources.</div>
+<ul>
+<li>1: <a href=#pg-a935ff8c59eb116b43494255cc67f69a>Limit Ranges</a></li>
+<li>2: <a href=#pg-94ddc6e901c30f256138db11d09f05a3>Resource Quotas</a></li>
+<li>3: <a href=#pg-59977cbac423e20437db079757cb03df>Pod Security Policies</a></li>
+<li>4: <a href=#pg-7352434db5f5954d2f7656b46fe5a324>Process ID Limits And Reservations</a></li>
+<li>5: <a href=#pg-b528c4464c030f3f044124b38d778f04>Node Resource Managers</a></li>
+</ul>
+<div class=content>
+</div>
+</div>
+<div class=td-content>
+<h1 id=pg-a935ff8c59eb116b43494255cc67f69a>1 - Limit Ranges</h1>
+<p>By default, containers run with unbounded <a href=/docs/concepts/configuration/manage-resources-containers/>compute resources</a> on a PlaidCloud cluster.
+With resource quotas, cluster administrators can restrict resource consumption and creation on a <a class=glossary-tooltip title="An abstraction used by PlaidCloud to support multiple virtual clusters on the same physical cluster." data-toggle=tooltip data-placement=top href=/docs/concepts/overview/working-with-objects/namespaces target=_blank aria-label=namespace>namespace</a> basis.
+Within a namespace, a Pod or Container can consume as much CPU and memory as defined by the namespace's resource quota. There is a concern that one Pod or Container could monopolize all available resources. A LimitRange is a policy to constrain resource allocations (to Pods or Containers) in a namespace.</p>
+<p>A <em>LimitRange</em> provides constraints that can:</p>
+<ul>
+<li>Enforce minimum and maximum compute resources usage per Pod or Container in a namespace.</li>
+<li>Enforce minimum and maximum storage request per PersistentVolumeClaim in a namespace.</li>
+<li>Enforce a ratio between request and limit for a resource in a namespace.</li>
+<li>Set default request/limit for compute resources in a namespace and automatically inject them to Containers at runtime.</li>
+</ul>
+<h2 id=enabling-limitrange>Enabling LimitRange</h2>
+<p>LimitRange support has been enabled by default since PlaidCloud 1.10.</p>
+<p>A LimitRange is enforced in a particular namespace when there is a
+LimitRange object in that namespace.</p>
+<p>The name of a LimitRange object must be a valid
+<a href=/docs/concepts/overview/working-with-objects/names#dns-subdomain-names>DNS subdomain name</a>.</p>
+<h3 id=overview-of-limit-range>Overview of Limit Range</h3>
+<ul>
+<li>The administrator creates one LimitRange in one namespace.</li>
+<li>Users create resources like Pods, Containers, and PersistentVolumeClaims in the namespace.</li>
+<li>The <code>LimitRanger</code> admission controller enforces defaults and limits for all Pods and Containers that do not set compute resource requirements and tracks usage to ensure it does not exceed resource minimum, maximum and ratio defined in any LimitRange present in the namespace.</li>
+<li>If creating or updating a resource (Pod, Container, PersistentVolumeClaim) that violates a LimitRange constraint, the request to the API server will fail with an HTTP status code <code>403 FORBIDDEN</code> and a message explaining the constraint that have been violated.</li>
+<li>If a LimitRange is activated in a namespace for compute resources like <code>cpu</code> and <code>memory</code>, users must specify
+requests or limits for those values. Otherwise, the system may reject Pod creation.</li>
+<li>LimitRange validations occurs only at Pod Admission stage, not on Running Pods.</li>
+</ul>
+<p>Examples of policies that could be created using limit range are:</p>
+<ul>
+<li>In a 2 node cluster with a capacity of 8 GiB RAM and 16 cores, constrain Pods in a namespace to request 100m of CPU with a max limit of 500m for CPU and request 200Mi for Memory with a max limit of 600Mi for Memory.</li>
+<li>Define default CPU limit and request to 150m and memory default request to 300Mi for Containers started with no cpu and memory requests in their specs.</li>
+</ul>
+<p>In the case where the total limits of the namespace is less than the sum of the limits of the Pods/Containers,
+there may be contention for resources. In this case, the Containers or Pods will not be created.</p>
+<p>Neither contention nor changes to a LimitRange will affect already created resources.</p>
+<h2 id=what-s-next>What's next</h2>
+<p>Refer to the <a href=https://git.k8s.io/community/contributors/design-proposals/resource-management/admission_control_limit_range.md>LimitRanger design document</a> for more information.</p>
+<p>For examples on using limits, see:</p>
+<ul>
+<li><a href=/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace/>how to configure minimum and maximum CPU constraints per namespace</a>.</li>
+<li><a href=/docs/tasks/administer-cluster/manage-resources/memory-constraint-namespace/>how to configure minimum and maximum Memory constraints per namespace</a>.</li>
+<li><a href=/docs/tasks/administer-cluster/manage-resources/cpu-default-namespace/>how to configure default CPU Requests and Limits per namespace</a>.</li>
+<li><a href=/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/>how to configure default Memory Requests and Limits per namespace</a>.</li>
+<li><a href=/docs/tasks/administer-cluster/limit-storage-consumption/#limitrange-to-limit-requests-for-storage>how to configure minimum and maximum Storage consumption per namespace</a>.</li>
+<li>a <a href=/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/>detailed example on configuring quota per namespace</a>.</li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-94ddc6e901c30f256138db11d09f05a3>2 - Resource Quotas</h1>
+<p>When several users or teams share a cluster with a fixed number of nodes,
+there is a concern that one team could use more than its fair share of resources.</p>
+<p>Resource quotas are a tool for administrators to address this concern.</p>
+<p>A resource quota, defined by a <code>ResourceQuota</code> object, provides constraints that limit
+aggregate resource consumption per namespace. It can limit the quantity of objects that can
+be created in a namespace by type, as well as the total amount of compute resources that may
+be consumed by resources in that namespace.</p>
+<p>Resource quotas work like this:</p>
+<ul>
+<li>
+<p>Different teams work in different namespaces. Currently this is voluntary, but
+support for making this mandatory via ACLs is planned.</p>
+</li>
+<li>
+<p>The administrator creates one ResourceQuota for each namespace.</p>
+</li>
+<li>
+<p>Users create resources (pods, services, etc.) in the namespace, and the quota system
+tracks usage to ensure it does not exceed hard resource limits defined in a ResourceQuota.</p>
+</li>
+<li>
+<p>If creating or updating a resource violates a quota constraint, the request will fail with HTTP
+status code <code>403 FORBIDDEN</code> with a message explaining the constraint that would have been violated.</p>
+</li>
+<li>
+<p>If quota is enabled in a namespace for compute resources like <code>cpu</code> and <code>memory</code>, users must specify
+requests or limits for those values; otherwise, the quota system may reject pod creation. Hint: Use
+the <code>LimitRanger</code> admission controller to force defaults for pods that make no compute resource requirements.</p>
+<p>See the <a href=/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/>walkthrough</a>
+for an example of how to avoid this problem.</p>
+</li>
+</ul>
+<p>The name of a ResourceQuota object must be a valid
+<a href=/docs/concepts/overview/working-with-objects/names#dns-subdomain-names>DNS subdomain name</a>.</p>
+<p>Examples of policies that could be created using namespaces and quotas are:</p>
+<ul>
+<li>In a cluster with a capacity of 32 GiB RAM, and 16 cores, let team A use 20 GiB and 10 cores,
+let B use 10GiB and 4 cores, and hold 2GiB and 2 cores in reserve for future allocation.</li>
+<li>Limit the "testing" namespace to using 1 core and 1GiB RAM. Let the "production" namespace
+use any amount.</li>
+</ul>
+<p>In the case where the total capacity of the cluster is less than the sum of the quotas of the namespaces,
+there may be contention for resources. This is handled on a first-come-first-served basis.</p>
+<p>Neither contention nor changes to quota will affect already created resources.</p>
+<h2 id=enabling-resource-quota>Enabling Resource Quota</h2>
+<p>Resource Quota support is enabled by default for many PlaidCloud distributions. It is
+enabled when the <a class=glossary-tooltip title="Control plane component that serves the PlaidCloud API." data-toggle=tooltip data-placement=top href=/docs/concepts/overview/components/#kube-apiserver target=_blank aria-label="API server">API server</a>
+<code>--enable-admission-plugins=</code> flag has <code>ResourceQuota</code> as
+one of its arguments.</p>
+<p>A resource quota is enforced in a particular namespace when there is a
+ResourceQuota in that namespace.</p>
+<h2 id=compute-resource-quota>Compute Resource Quota</h2>
+<p>You can limit the total sum of
+<a href=/docs/concepts/configuration/manage-resources-containers/>compute resources</a>
+that can be requested in a given namespace.</p>
+<p>The following resource types are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Resource Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limits.cpu</code></td>
+<td>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>limits.memory</code></td>
+<td>Across all pods in a non-terminal state, the sum of memory limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>requests.cpu</code></td>
+<td>Across all pods in a non-terminal state, the sum of CPU requests cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>requests.memory</code></td>
+<td>Across all pods in a non-terminal state, the sum of memory requests cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>hugepages-&lt;size></code></td>
+<td>Across all pods in a non-terminal state, the number of huge page requests of the specified size cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>cpu</code></td>
+<td>Same as <code>requests.cpu</code></td>
+</tr>
+<tr>
+<td><code>memory</code></td>
+<td>Same as <code>requests.memory</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id=resource-quota-for-extended-resources>Resource Quota For Extended Resources</h3>
+<p>In addition to the resources mentioned above, in release 1.10, quota support for
+<a href=/docs/concepts/configuration/manage-resources-containers/#extended-resources>extended resources</a> is added.</p>
+<p>As overcommit is not allowed for extended resources, it makes no sense to specify both <code>requests</code>
+and <code>limits</code> for the same extended resource in a quota. So for extended resources, only quota items
+with prefix <code>requests.</code> is allowed for now.</p>
+<p>Take the GPU resource as an example, if the resource name is <code>nvidia.com/gpu</code>, and you want to
+limit the total number of GPUs requested in a namespace to 4, you can define a quota as follows:</p>
+<ul>
+<li><code>requests.nvidia.com/gpu: 4</code></li>
+</ul>
+<p>See <a href=#viewing-and-setting-quotas>Viewing and Setting Quotas</a> for more detail information.</p>
+<h2 id=storage-resource-quota>Storage Resource Quota</h2>
+<p>You can limit the total sum of <a href=/docs/concepts/storage/persistent-volumes/>storage resources</a> that can be requested in a given namespace.</p>
+<p>In addition, you can limit consumption of storage resources based on associated storage-class.</p>
+<table>
+<thead>
+<tr>
+<th>Resource Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requests.storage</code></td>
+<td>Across all persistent volume claims, the sum of storage requests cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>persistentvolumeclaims</code></td>
+<td>The total number of <a href=/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims>PersistentVolumeClaims</a> that can exist in the namespace.</td>
+</tr>
+<tr>
+<td><code>&lt;storage-class-name>.storageclass.storage.k8s.io/requests.storage</code></td>
+<td>Across all persistent volume claims associated with the <code>&lt;storage-class-name></code>, the sum of storage requests cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>&lt;storage-class-name>.storageclass.storage.k8s.io/persistentvolumeclaims</code></td>
+<td>Across all persistent volume claims associated with the storage-class-name, the total number of <a href=/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims>persistent volume claims</a> that can exist in the namespace.</td>
+</tr>
+</tbody>
+</table>
+<p>For example, if an operator wants to quota storage with <code>gold</code> storage class separate from <code>bronze</code> storage class, the operator can
+define a quota as follows:</p>
+<ul>
+<li><code>gold.storageclass.storage.k8s.io/requests.storage: 500Gi</code></li>
+<li><code>bronze.storageclass.storage.k8s.io/requests.storage: 100Gi</code></li>
+</ul>
+<p>In release 1.8, quota support for local ephemeral storage is added as an alpha feature:</p>
+<table>
+<thead>
+<tr>
+<th>Resource Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requests.ephemeral-storage</code></td>
+<td>Across all pods in the namespace, the sum of local ephemeral storage requests cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>limits.ephemeral-storage</code></td>
+<td>Across all pods in the namespace, the sum of local ephemeral storage limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><code>ephemeral-storage</code></td>
+<td>Same as <code>requests.ephemeral-storage</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> When using a CRI container runtime, container logs will count against the ephemeral storage quota.
+This can result in the unexpected eviction of pods that have exhausted their storage quotas.
+Refer to <a href=/docs/concepts/cluster-administration/logging/>Logging Architecture</a> for details.
+</div>
+<h2 id=object-count-quota>Object Count Quota</h2>
+<p>You can set quota for the total number of certain resources of all standard,
+namespaced resource types using the following syntax:</p>
+<ul>
+<li><code>count/&lt;resource>.&lt;group></code> for resources from non-core groups</li>
+<li><code>count/&lt;resource></code> for resources from the core group</li>
+</ul>
+<p>Here is an example set of resources users may want to put under object count quota:</p>
+<ul>
+<li><code>count/persistentvolumeclaims</code></li>
+<li><code>count/services</code></li>
+<li><code>count/secrets</code></li>
+<li><code>count/configmaps</code></li>
+<li><code>count/replicationcontrollers</code></li>
+<li><code>count/deployments.apps</code></li>
+<li><code>count/replicasets.apps</code></li>
+<li><code>count/statefulsets.apps</code></li>
+<li><code>count/jobs.batch</code></li>
+<li><code>count/cronjobs.batch</code></li>
+</ul>
+<p>The same syntax can be used for custom resources.
+For example, to create a quota on a <code>widgets</code> custom resource in the <code>example.com</code> API group, use <code>count/widgets.example.com</code>.</p>
+<p>When using <code>count/*</code> resource quota, an object is charged against the quota if it exists in server storage.
+These types of quotas are useful to protect against exhaustion of storage resources. For example, you may
+want to limit the number of Secrets in a server given their large size. Too many Secrets in a cluster can
+actually prevent servers and controllers from starting. You can set a quota for Jobs to protect against
+a poorly configured CronJob. CronJobs that create too many Jobs in a namespace can lead to a denial of service.</p>
+<p>It is also possible to do generic object count quota on a limited set of resources.
+The following types are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Resource Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>configmaps</code></td>
+<td>The total number of ConfigMaps that can exist in the namespace.</td>
+</tr>
+<tr>
+<td><code>persistentvolumeclaims</code></td>
+<td>The total number of <a href=/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims>PersistentVolumeClaims</a> that can exist in the namespace.</td>
+</tr>
+<tr>
+<td><code>pods</code></td>
+<td>The total number of Pods in a non-terminal state that can exist in the namespace. A pod is in a terminal state if <code>.status.phase in (Failed, Succeeded)</code> is true.</td>
+</tr>
+<tr>
+<td><code>replicationcontrollers</code></td>
+<td>The total number of ReplicationControllers that can exist in the namespace.</td>
+</tr>
+<tr>
+<td><code>resourcequotas</code></td>
+<td>The total number of ResourceQuotas that can exist in the namespace.</td>
+</tr>
+<tr>
+<td><code>services</code></td>
+<td>The total number of Services that can exist in the namespace.</td>
+</tr>
+<tr>
+<td><code>services.loadbalancers</code></td>
+<td>The total number of Services of type <code>LoadBalancer</code> that can exist in the namespace.</td>
+</tr>
+<tr>
+<td><code>services.nodeports</code></td>
+<td>The total number of Services of type <code>NodePort</code> that can exist in the namespace.</td>
+</tr>
+<tr>
+<td><code>secrets</code></td>
+<td>The total number of Secrets that can exist in the namespace.</td>
+</tr>
+</tbody>
+</table>
+<p>For example, <code>pods</code> quota counts and enforces a maximum on the number of <code>pods</code>
+created in a single namespace that are not terminal. You might want to set a <code>pods</code>
+quota on a namespace to avoid the case where a user creates many small pods and
+exhausts the cluster's supply of Pod IPs.</p>
+<h2 id=quota-scopes>Quota Scopes</h2>
+<p>Each quota can have an associated set of <code>scopes</code>. A quota will only measure usage for a resource if it matches
+the intersection of enumerated scopes.</p>
+<p>When a scope is added to the quota, it limits the number of resources it supports to those that pertain to the scope.
+Resources specified on the quota outside of the allowed set results in a validation error.</p>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Terminating</code></td>
+<td>Match pods where <code>.spec.activeDeadlineSeconds >= 0</code></td>
+</tr>
+<tr>
+<td><code>NotTerminating</code></td>
+<td>Match pods where <code>.spec.activeDeadlineSeconds is nil</code></td>
+</tr>
+<tr>
+<td><code>BestEffort</code></td>
+<td>Match pods that have best effort quality of service.</td>
+</tr>
+<tr>
+<td><code>NotBestEffort</code></td>
+<td>Match pods that do not have best effort quality of service.</td>
+</tr>
+<tr>
+<td><code>PriorityClass</code></td>
+<td>Match pods that references the specified <a href=/docs/concepts/scheduling-eviction/pod-priority-preemption>priority class</a>.</td>
+</tr>
+<tr>
+<td><code>CrossNamespacePodAffinity</code></td>
+<td>Match pods that have cross-namespace pod <a href=/docs/concepts/scheduling-eviction/assign-pod-node>(anti)affinity terms</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>BestEffort</code> scope restricts a quota to tracking the following resource:</p>
+<ul>
+<li><code>pods</code></li>
+</ul>
+<p>The <code>Terminating</code>, <code>NotTerminating</code>, <code>NotBestEffort</code> and <code>PriorityClass</code>
+scopes restrict a quota to tracking the following resources:</p>
+<ul>
+<li><code>pods</code></li>
+<li><code>cpu</code></li>
+<li><code>memory</code></li>
+<li><code>requests.cpu</code></li>
+<li><code>requests.memory</code></li>
+<li><code>limits.cpu</code></li>
+<li><code>limits.memory</code></li>
+</ul>
+<p>Note that you cannot specify both the <code>Terminating</code> and the <code>NotTerminating</code>
+scopes in the same quota, and you cannot specify both the <code>BestEffort</code> and
+<code>NotBestEffort</code> scopes in the same quota either.</p>
+<p>The <code>scopeSelector</code> supports the following values in the <code>operator</code> field:</p>
+<ul>
+<li><code>In</code></li>
+<li><code>NotIn</code></li>
+<li><code>Exists</code></li>
+<li><code>DoesNotExist</code></li>
+</ul>
+<p>When using one of the following values as the <code>scopeName</code> when defining the
+<code>scopeSelector</code>, the <code>operator</code> must be <code>Exists</code>.</p>
+<ul>
+<li><code>Terminating</code></li>
+<li><code>NotTerminating</code></li>
+<li><code>BestEffort</code></li>
+<li><code>NotBestEffort</code></li>
+</ul>
+<p>If the <code>operator</code> is <code>In</code> or <code>NotIn</code>, the <code>values</code> field must have at least
+one value. For example:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#bbb>  </span><span style=color:green;font-weight:700>scopeSelector</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>matchExpressions</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>scopeName</span>:<span style=color:#bbb> </span>PriorityClass<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>operator</span>:<span style=color:#bbb> </span>In<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>values</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span>- middle<span style=color:#bbb>
+</span></code></pre></div><p>If the <code>operator</code> is <code>Exists</code> or <code>DoesNotExist</code>, the <code>values</code> field must <em>NOT</em> be
+specified.</p>
+<h3 id=resource-quota-per-priorityclass>Resource Quota Per PriorityClass</h3>
+<div style=margin-top:10px;margin-bottom:10px>
+<b>FEATURE STATE:</b> <code>PlaidCloud v1.17 [stable]</code>
+</div>
+<p>Pods can be created at a specific <a href=/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority>priority</a>.
+You can control a pod's consumption of system resources based on a pod's priority, by using the <code>scopeSelector</code>
+field in the quota spec.</p>
+<p>A quota is matched and consumed only if <code>scopeSelector</code> in the quota spec selects the pod.</p>
+<p>When quota is scoped for priority class using <code>scopeSelector</code> field, quota object
+is restricted to track only following resources:</p>
+<ul>
+<li><code>pods</code></li>
+<li><code>cpu</code></li>
+<li><code>memory</code></li>
+<li><code>ephemeral-storage</code></li>
+<li><code>limits.cpu</code></li>
+<li><code>limits.memory</code></li>
+<li><code>limits.ephemeral-storage</code></li>
+<li><code>requests.cpu</code></li>
+<li><code>requests.memory</code></li>
+<li><code>requests.ephemeral-storage</code></li>
+</ul>
+<p>This example creates a quota object and matches it with pods at specific priorities. The example
+works as follows:</p>
+<ul>
+<li>Pods in the cluster have one of the three priority classes, "low", "medium", "high".</li>
+<li>One quota object is created for each priority.</li>
+</ul>
+<p>Save the following YAML to a file <code>quota.yml</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>List<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>items</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ResourceQuota<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>pods-high<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>hard</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>cpu</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;1000&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>memory</span>:<span style=color:#bbb> </span>200Gi<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>pods</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;10&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>scopeSelector</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>matchExpressions</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>operator </span>:<span style=color:#bbb> </span>In<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>scopeName</span>:<span style=color:#bbb> </span>PriorityClass<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>values</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#34;high&#34;</span>]<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ResourceQuota<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>pods-medium<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>hard</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>cpu</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;10&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>memory</span>:<span style=color:#bbb> </span>20Gi<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>pods</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;10&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>scopeSelector</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>matchExpressions</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>operator </span>:<span style=color:#bbb> </span>In<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>scopeName</span>:<span style=color:#bbb> </span>PriorityClass<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>values</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#34;medium&#34;</span>]<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ResourceQuota<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>pods-low<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>hard</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>cpu</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;5&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>memory</span>:<span style=color:#bbb> </span>10Gi<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>pods</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;10&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>scopeSelector</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>matchExpressions</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>operator </span>:<span style=color:#bbb> </span>In<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>scopeName</span>:<span style=color:#bbb> </span>PriorityClass<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>values</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#34;low&#34;</span>]<span style=color:#bbb>
+</span></code></pre></div><p>Apply the YAML using <code>kubectl create</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create -f ./quota.yml
+</code></pre></div><pre tabindex=0><code>resourcequota/pods-high created
+resourcequota/pods-medium created
+resourcequota/pods-low created
+</code></pre><p>Verify that <code>Used</code> quota is <code>0</code> using <code>kubectl describe quota</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl describe quota
+</code></pre></div><pre tabindex=0><code>Name:       pods-high
+Namespace:  default
+Resource    Used  Hard
+--------    ----  ----
+cpu         0     1k
+memory      0     200Gi
+pods        0     10
+
+
+Name:       pods-low
+Namespace:  default
+Resource    Used  Hard
+--------    ----  ----
+cpu         0     5
+memory      0     10Gi
+pods        0     10
+
+
+Name:       pods-medium
+Namespace:  default
+Resource    Used  Hard
+--------    ----  ----
+cpu         0     10
+memory      0     20Gi
+pods        0     10
+</code></pre><p>Create a pod with priority "high". Save the following YAML to a
+file <code>high-priority-pod.yml</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Pod<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>high-priority<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>containers</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>high-priority<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>image</span>:<span style=color:#bbb> </span>ubuntu<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>command</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#34;/bin/sh&#34;</span>]<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>args</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#34;-c&#34;</span>,<span style=color:#bbb> </span><span style=color:#b44>&#34;while true; do echo hello; sleep 10;done&#34;</span>]<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>resources</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>requests</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>memory</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;10Gi&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>cpu</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;500m&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>limits</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>memory</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;10Gi&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>cpu</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;500m&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>priorityClassName</span>:<span style=color:#bbb> </span>high<span style=color:#bbb>
+</span></code></pre></div><p>Apply it with <code>kubectl create</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create -f ./high-priority-pod.yml
+</code></pre></div><p>Verify that "Used" stats for "high" priority quota, <code>pods-high</code>, has changed and that
+the other two quotas are unchanged.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl describe quota
+</code></pre></div><pre tabindex=0><code>Name:       pods-high
+Namespace:  default
+Resource    Used  Hard
+--------    ----  ----
+cpu         500m  1k
+memory      10Gi  200Gi
+pods        1     10
+
+
+Name:       pods-low
+Namespace:  default
+Resource    Used  Hard
+--------    ----  ----
+cpu         0     5
+memory      0     10Gi
+pods        0     10
+
+
+Name:       pods-medium
+Namespace:  default
+Resource    Used  Hard
+--------    ----  ----
+cpu         0     10
+memory      0     20Gi
+pods        0     10
+</code></pre><h3 id=cross-namespace-pod-affinity-quota>Cross-namespace Pod Affinity Quota</h3>
+<div style=margin-top:10px;margin-bottom:10px>
+<b>FEATURE STATE:</b> <code>PlaidCloud v1.22 [beta]</code>
+</div>
+<p>Operators can use <code>CrossNamespacePodAffinity</code> quota scope to limit which namespaces are allowed to
+have pods with affinity terms that cross namespaces. Specifically, it controls which pods are allowed
+to set <code>namespaces</code> or <code>namespaceSelector</code> fields in pod affinity terms.</p>
+<p>Preventing users from using cross-namespace affinity terms might be desired since a pod
+with anti-affinity constraints can block pods from all other namespaces
+from getting scheduled in a failure domain.</p>
+<p>Using this scope operators can prevent certain namespaces (<code>foo-ns</code> in the example below)
+from having pods that use cross-namespace pod affinity by creating a resource quota object in
+that namespace with <code>CrossNamespaceAffinity</code> scope and hard limit of 0:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ResourceQuota<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>disable-cross-namespace-affinity<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>namespace</span>:<span style=color:#bbb> </span>foo-ns<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>hard</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>pods</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;0&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>scopeSelector</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>matchExpressions</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:green;font-weight:700>scopeName</span>:<span style=color:#bbb> </span>CrossNamespaceAffinity<span style=color:#bbb>
+</span></code></pre></div><p>If operators want to disallow using <code>namespaces</code> and <code>namespaceSelector</code> by default, and
+only allow it for specific namespaces, they could configure <code>CrossNamespaceAffinity</code>
+as a limited resource by setting the kube-apiserver flag --admission-control-config-file
+to the path of the following configuration file:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>apiserver.config.k8s.io/v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>AdmissionConfiguration<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>plugins</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;ResourceQuota&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>configuration</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>apiserver.config.k8s.io/v1<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ResourceQuotaConfiguration<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>limitedResources</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:green;font-weight:700>resource</span>:<span style=color:#bbb> </span>pods<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>matchScopes</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>scopeName</span>:<span style=color:#bbb> </span>CrossNamespaceAffinity<span style=color:#bbb>
+</span></code></pre></div><p>With the above configuration, pods can use <code>namespaces</code> and <code>namespaceSelector</code> in pod affinity only
+if the namespace where they are created have a resource quota object with
+<code>CrossNamespaceAffinity</code> scope and a hard limit greater than or equal to the number of pods using those fields.</p>
+<p>This feature is beta and enabled by default. You can disable it using the
+<a href=/docs/reference/command-line-tools-reference/feature-gates/>feature gate</a>
+<code>PodAffinityNamespaceSelector</code> in both kube-apiserver and kube-scheduler.</p>
+<h2 id=requests-vs-limits>Requests compared to Limits</h2>
+<p>When allocating compute resources, each container may specify a request and a limit value for either CPU or memory.
+The quota can be configured to quota either value.</p>
+<p>If the quota has a value specified for <code>requests.cpu</code> or <code>requests.memory</code>, then it requires that every incoming
+container makes an explicit request for those resources. If the quota has a value specified for <code>limits.cpu</code> or <code>limits.memory</code>,
+then it requires that every incoming container specifies an explicit limit for those resources.</p>
+<h2 id=viewing-and-setting-quotas>Viewing and Setting Quotas</h2>
+<p>Kubectl supports creating, updating, and viewing quotas:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create namespace myspace
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>cat <span style=color:#b44>&lt;&lt;EOF &gt; compute-resources.yaml
+</span><span style=color:#b44>apiVersion: v1
+</span><span style=color:#b44>kind: ResourceQuota
+</span><span style=color:#b44>metadata:
+</span><span style=color:#b44>  name: compute-resources
+</span><span style=color:#b44>spec:
+</span><span style=color:#b44>  hard:
+</span><span style=color:#b44>    requests.cpu: &#34;1&#34;
+</span><span style=color:#b44>    requests.memory: 1Gi
+</span><span style=color:#b44>    limits.cpu: &#34;2&#34;
+</span><span style=color:#b44>    limits.memory: 2Gi
+</span><span style=color:#b44>    requests.nvidia.com/gpu: 4
+</span><span style=color:#b44>EOF</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create -f ./compute-resources.yaml --namespace<span style=color:#666>=</span>myspace
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>cat <span style=color:#b44>&lt;&lt;EOF &gt; object-counts.yaml
+</span><span style=color:#b44>apiVersion: v1
+</span><span style=color:#b44>kind: ResourceQuota
+</span><span style=color:#b44>metadata:
+</span><span style=color:#b44>  name: object-counts
+</span><span style=color:#b44>spec:
+</span><span style=color:#b44>  hard:
+</span><span style=color:#b44>    configmaps: &#34;10&#34;
+</span><span style=color:#b44>    persistentvolumeclaims: &#34;4&#34;
+</span><span style=color:#b44>    pods: &#34;4&#34;
+</span><span style=color:#b44>    replicationcontrollers: &#34;20&#34;
+</span><span style=color:#b44>    secrets: &#34;10&#34;
+</span><span style=color:#b44>    services: &#34;10&#34;
+</span><span style=color:#b44>    services.loadbalancers: &#34;2&#34;
+</span><span style=color:#b44>EOF</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create -f ./object-counts.yaml --namespace<span style=color:#666>=</span>myspace
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl get quota --namespace<span style=color:#666>=</span>myspace
+</code></pre></div><pre tabindex=0><code class=language-none data-lang=none>NAME                    AGE
+compute-resources       30s
+object-counts           32s
+</code></pre><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl describe quota compute-resources --namespace<span style=color:#666>=</span>myspace
+</code></pre></div><pre tabindex=0><code class=language-none data-lang=none>Name:                    compute-resources
+Namespace:               myspace
+Resource                 Used  Hard
+--------                 ----  ----
+limits.cpu               0     2
+limits.memory            0     2Gi
+requests.cpu             0     1
+requests.memory          0     1Gi
+requests.nvidia.com/gpu  0     4
+</code></pre><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl describe quota object-counts --namespace<span style=color:#666>=</span>myspace
+</code></pre></div><pre tabindex=0><code class=language-none data-lang=none>Name:                   object-counts
+Namespace:              myspace
+Resource                Used    Hard
+--------                ----    ----
+configmaps              0       10
+persistentvolumeclaims  0       4
+pods                    0       4
+replicationcontrollers  0       20
+secrets                 1       10
+services                0       10
+services.loadbalancers  0       2
+</code></pre><p>Kubectl also supports object count quota for all standard namespaced resources
+using the syntax <code>count/&lt;resource>.&lt;group></code>:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create namespace myspace
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create quota <span style=color:#a2f>test</span> --hard<span style=color:#666>=</span>count/deployments.apps<span style=color:#666>=</span>2,count/replicasets.apps<span style=color:#666>=</span>4,count/pods<span style=color:#666>=</span>3,count/secrets<span style=color:#666>=</span><span style=color:#666>4</span> --namespace<span style=color:#666>=</span>myspace
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create deployment nginx --image<span style=color:#666>=</span>nginx --namespace<span style=color:#666>=</span>myspace --replicas<span style=color:#666>=</span><span style=color:#666>2</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl describe quota --namespace<span style=color:#666>=</span>myspace
+</code></pre></div><pre tabindex=0><code>Name:                         test
+Namespace:                    myspace
+Resource                      Used  Hard
+--------                      ----  ----
+count/deployments.apps        1     2
+count/pods                    2     3
+count/replicasets.apps        1     4
+count/secrets                 1     4
+</code></pre><h2 id=quota-and-cluster-capacity>Quota and Cluster Capacity</h2>
+<p>ResourceQuotas are independent of the cluster capacity. They are
+expressed in absolute units. So, if you add nodes to your cluster, this does <em>not</em>
+automatically give each namespace the ability to consume more resources.</p>
+<p>Sometimes more complex policies may be desired, such as:</p>
+<ul>
+<li>Proportionally divide total cluster resources among several teams.</li>
+<li>Allow each tenant to grow resource usage as needed, but have a generous
+limit to prevent accidental resource exhaustion.</li>
+<li>Detect demand from one namespace, add nodes, and increase quota.</li>
+</ul>
+<p>Such policies could be implemented using <code>ResourceQuotas</code> as building blocks, by
+writing a "controller" that watches the quota usage and adjusts the quota
+hard limits of each namespace according to other signals.</p>
+<p>Note that resource quota divides up aggregate cluster resources, but it creates no
+restrictions around nodes: pods from several namespaces may run on the same node.</p>
+<h2 id=limit-priority-class-consumption-by-default>Limit Priority Class consumption by default</h2>
+<p>It may be desired that pods at a particular priority, eg. "cluster-services",
+should be allowed in a namespace, if and only if, a matching quota object exists.</p>
+<p>With this mechanism, operators are able to restrict usage of certain high
+priority classes to a limited number of namespaces and not every namespace
+will be able to consume these priority classes by default.</p>
+<p>To enforce this, <code>kube-apiserver</code> flag <code>--admission-control-config-file</code> should be
+used to pass path to the following configuration file:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>apiserver.config.k8s.io/v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>AdmissionConfiguration<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>plugins</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;ResourceQuota&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>configuration</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>apiserver.config.k8s.io/v1<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ResourceQuotaConfiguration<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>limitedResources</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:green;font-weight:700>resource</span>:<span style=color:#bbb> </span>pods<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>matchScopes</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>scopeName</span>:<span style=color:#bbb> </span>PriorityClass<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>operator</span>:<span style=color:#bbb> </span>In<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>values</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#34;cluster-services&#34;</span>]<span style=color:#bbb>
+</span></code></pre></div><p>Then, create a resource quota object in the <code>kube-system</code> namespace:</p>
+<div class=highlight>
+<div class=copy-code-icon style=text-align:right>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/priority-class-resourcequota.yaml download=policy/priority-class-resourcequota.yaml><code>policy/priority-class-resourcequota.yaml</code>
+</a>
+<img src=/images/copycode.svg style=max-height:24px;cursor:pointer onclick="copyCode('policy-priority-class-resourcequota-yaml')" title="Copy policy/priority-class-resourcequota.yaml to clipboard">
+</img>
+</div>
+<div class=includecode id=policy-priority-class-resourcequota-yaml>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ResourceQuota<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>pods-cluster-services<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>scopeSelector</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>matchExpressions</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>operator </span>:<span style=color:#bbb> </span>In<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>scopeName</span>:<span style=color:#bbb> </span>PriorityClass<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>values</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#34;cluster-services&#34;</span>]</code></pre></div>
+</div>
+</div>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl apply -f https://k8s.io/examples/policy/priority-class-resourcequota.yaml -n kube-system
+</code></pre></div><pre tabindex=0><code class=language-none data-lang=none>resourcequota/pods-cluster-services created
+</code></pre><p>In this case, a pod creation will be allowed if:</p>
+<ol>
+<li>the Pod's <code>priorityClassName</code> is not specified.</li>
+<li>the Pod's <code>priorityClassName</code> is specified to a value other than <code>cluster-services</code>.</li>
+<li>the Pod's <code>priorityClassName</code> is set to <code>cluster-services</code>, it is to be created
+in the <code>kube-system</code> namespace, and it has passed the resource quota check.</li>
+</ol>
+<p>A Pod creation request is rejected if its <code>priorityClassName</code> is set to <code>cluster-services</code>
+and it is to be created in a namespace other than <code>kube-system</code>.</p>
+<h2 id=what-s-next>What's next</h2>
+<ul>
+<li>See <a href=https://git.k8s.io/community/contributors/design-proposals/resource-management/admission_control_resource_quota.md>ResourceQuota design doc</a> for more information.</li>
+<li>See a <a href=/docs/tasks/administer-cluster/quota-api-object/>detailed example for how to use resource quota</a>.</li>
+<li>Read <a href=https://github.com/PlaidCloud/community/blob/master/contributors/design-proposals/scheduling/pod-priority-resourcequota.md>Quota support for priority class design doc</a>.</li>
+<li>See <a href=https://github.com/PlaidCloud/PlaidCloud/pull/36765>LimitedResources</a></li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-59977cbac423e20437db079757cb03df>3 - Pod Security Policies</h1>
+<div style=margin-top:10px;margin-bottom:10px>
+<b>FEATURE STATE:</b> <code>PlaidCloud v1.21 [deprecated]</code>
+</div>
+<p>PodSecurityPolicy is deprecated as of PlaidCloud v1.21, and will be removed in v1.25. It has been replaced by
+<a href=/docs/concepts/security/pod-security-admission/>Pod Security Admission</a>. For more information on the deprecation,
+see <a href=/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/>PodSecurityPolicy Deprecation: Past, Present, and Future</a>.</p>
+<p>Pod Security Policies enable fine-grained authorization of pod creation and
+updates.</p>
+<h2 id=what-is-a-pod-security-policy>What is a Pod Security Policy?</h2>
+<p>A <em>Pod Security Policy</em> is a cluster-level resource that controls security
+sensitive aspects of the pod specification. The <a href=/docs/reference/generated/Kubernetes-api/v5.10/#podsecuritypolicy-v1beta1-policy>PodSecurityPolicy</a> objects
+define a set of conditions that a pod must run with in order to be accepted into
+the system, as well as defaults for the related fields. They allow an
+administrator to control the following:</p>
+<table>
+<thead>
+<tr>
+<th>Control Aspect</th>
+<th>Field Names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Running of privileged containers</td>
+<td><a href=#privileged><code>privileged</code></a></td>
+</tr>
+<tr>
+<td>Usage of host namespaces</td>
+<td><a href=#host-namespaces><code>hostPID</code>, <code>hostIPC</code></a></td>
+</tr>
+<tr>
+<td>Usage of host networking and ports</td>
+<td><a href=#host-namespaces><code>hostNetwork</code>, <code>hostPorts</code></a></td>
+</tr>
+<tr>
+<td>Usage of volume types</td>
+<td><a href=#volumes-and-file-systems><code>volumes</code></a></td>
+</tr>
+<tr>
+<td>Usage of the host filesystem</td>
+<td><a href=#volumes-and-file-systems><code>allowedHostPaths</code></a></td>
+</tr>
+<tr>
+<td>Allow specific FlexVolume drivers</td>
+<td><a href=#flexvolume-drivers><code>allowedFlexVolumes</code></a></td>
+</tr>
+<tr>
+<td>Allocating an FSGroup that owns the pod's volumes</td>
+<td><a href=#volumes-and-file-systems><code>fsGroup</code></a></td>
+</tr>
+<tr>
+<td>Requiring the use of a read only root file system</td>
+<td><a href=#volumes-and-file-systems><code>readOnlyRootFilesystem</code></a></td>
+</tr>
+<tr>
+<td>The user and group IDs of the container</td>
+<td><a href=#users-and-groups><code>runAsUser</code>, <code>runAsGroup</code>, <code>supplementalGroups</code></a></td>
+</tr>
+<tr>
+<td>Restricting escalation to root privileges</td>
+<td><a href=#privilege-escalation><code>allowPrivilegeEscalation</code>, <code>defaultAllowPrivilegeEscalation</code></a></td>
+</tr>
+<tr>
+<td>Linux capabilities</td>
+<td><a href=#capabilities><code>defaultAddCapabilities</code>, <code>requiredDropCapabilities</code>, <code>allowedCapabilities</code></a></td>
+</tr>
+<tr>
+<td>The SELinux context of the container</td>
+<td><a href=#selinux><code>seLinux</code></a></td>
+</tr>
+<tr>
+<td>The Allowed Proc Mount types for the container</td>
+<td><a href=#allowedprocmounttypes><code>allowedProcMountTypes</code></a></td>
+</tr>
+<tr>
+<td>The AppArmor profile used by containers</td>
+<td><a href=#apparmor>annotations</a></td>
+</tr>
+<tr>
+<td>The seccomp profile used by containers</td>
+<td><a href=#seccomp>annotations</a></td>
+</tr>
+<tr>
+<td>The sysctl profile used by containers</td>
+<td><a href=#sysctl><code>forbiddenSysctls</code>,<code>allowedUnsafeSysctls</code></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id=enabling-pod-security-policies>Enabling Pod Security Policies</h2>
+<p>Pod security policy control is implemented as an optional <a href=/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy>admission
+controller</a>.
+PodSecurityPolicies are enforced by <a href=/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-control-plug-in>enabling the admission
+controller</a>,
+but doing so without authorizing any policies <strong>will prevent any pods from being created</strong> in the
+cluster.</p>
+<p>Since the pod security policy API (<code>policy/v1beta1/podsecuritypolicy</code>) is
+enabled independently of the admission controller, for existing clusters it is
+recommended that policies are added and authorized before enabling the admission
+controller.</p>
+<h2 id=authorizing-policies>Authorizing Policies</h2>
+<p>When a PodSecurityPolicy resource is created, it does nothing. In order to use
+it, the requesting user or target pod's <a href=/docs/tasks/configure-pod-container/configure-service-account/>service
+account</a> must be
+authorized to use the policy, by allowing the <code>use</code> verb on the policy.</p>
+<p>Most PlaidCloud pods are not created directly by users. Instead, they are
+typically created indirectly as part of a
+<a href=/docs/concepts/workloads/controllers/deployment/>Deployment</a>,
+<a href=/docs/concepts/workloads/controllers/replicaset/>ReplicaSet</a>, or other
+templated controller via the controller manager. Granting the controller access
+to the policy would grant access for <em>all</em> pods created by that controller,
+so the preferred method for authorizing policies is to grant access to the
+pod's service account (see <a href=#run-another-pod>example</a>).</p>
+<h3 id=via-rbac>Via RBAC</h3>
+<p><a href=/docs/reference/access-authn-authz/rbac/>RBAC</a> is a standard PlaidCloud
+authorization mode, and can easily be used to authorize use of policies.</p>
+<p>First, a <code>Role</code> or <code>ClusterRole</code> needs to grant access to <code>use</code> the desired
+policies. The rules to grant access look like this:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io/v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ClusterRole<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>&lt;role name&gt;<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>rules</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>apiGroups</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#39;policy&#39;</span>]<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>resources</span>:<span style=color:#bbb> </span>[<span style=color:#b44>&#39;podsecuritypolicies&#39;</span>]<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>verbs</span>:<span style=color:#bbb>     </span>[<span style=color:#b44>&#39;use&#39;</span>]<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>resourceNames</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- &lt;list of policies to authorize&gt;<span style=color:#bbb>
+</span></code></pre></div><p>Then the <code>(Cluster)Role</code> is bound to the authorized user(s):</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io/v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ClusterRoleBinding<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>&lt;binding name&gt;<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>roleRef</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ClusterRole<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>&lt;role name&gt;<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>apiGroup</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>subjects</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># Authorize all service accounts in a namespace (recommended):</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Group<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>apiGroup</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>system:serviceaccounts:&lt;authorized namespace&gt;<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># Authorize specific service accounts (not recommended):</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ServiceAccount<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>&lt;authorized service account name&gt;<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>namespace</span>:<span style=color:#bbb> </span>&lt;authorized pod namespace&gt;<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># Authorize specific users (not recommended):</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>User<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>apiGroup</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>&lt;authorized user name&gt;<span style=color:#bbb>
+</span></code></pre></div><p>If a <code>RoleBinding</code> (not a <code>ClusterRoleBinding</code>) is used, it will only grant
+usage for pods being run in the same namespace as the binding. This can be
+paired with system groups to grant access to all pods run in the namespace:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#080;font-style:italic># Authorize all service accounts in a namespace:</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Group<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>apiGroup</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>system:serviceaccounts<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># Or equivalently, all authenticated users in a namespace:</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Group<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>apiGroup</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>system:authenticated<span style=color:#bbb>
+</span></code></pre></div><p>For more examples of RBAC bindings, see <a href=/docs/reference/access-authn-authz/rbac#role-binding-examples>Role Binding
+Examples</a>.
+For a complete example of authorizing a PodSecurityPolicy, see
+<a href=#example>below</a>.</p>
+<h3 id=recommended-practice>Recommended Practice</h3>
+<p>PodSecurityPolicy is being replaced by a new, simplified <code>PodSecurity</code> <a class=glossary-tooltip title="A piece of code that intercepts requests to the PlaidCloud API server prior to persistence of the object." data-toggle=tooltip data-placement=top href=/docs/reference/access-authn-authz/admission-controllers/ target=_blank aria-label="admission controller">admission controller</a>. For more details on this change, see
+<a href=/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/>PodSecurityPolicy Deprecation: Past, Present, and
+Future</a>. Follow these
+guidelines to simplify migration from PodSecurityPolicy to the new admission controller:</p>
+<ol>
+<li>
+<p>Limit your PodSecurityPolicies to the policies defined by the <a href=/docs/concepts/security/pod-security-standards>Pod Security Standards</a>:</p>
+<ul>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/privileged-psp.yaml download=policy/privileged-psp.yaml>Privileged</a>
+</li>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/baseline-psp.yaml download=policy/baseline-psp.yaml>Baseline</a>
+</li>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/restricted-psp.yaml download=policy/restricted-psp.yaml>Restricted</a>
+</li>
+</ul>
+</li>
+<li>
+<p>Only bind PSPs to entire namespaces, by using the <code>system:serviceaccounts:&lt;namespace></code> group
+(where <code>&lt;namespace></code> is the target namespace). For example:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io/v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># This cluster role binding allows all pods in the &#34;development&#34; namespace to use the baseline PSP.</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ClusterRoleBinding<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>psp-baseline-namespaces<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>roleRef</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>ClusterRole<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>psp-baseline<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>apiGroup</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>subjects</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Group<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>system:serviceaccounts:development<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>apiGroup</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Group<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>system:serviceaccounts:canary<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>apiGroup</span>:<span style=color:#bbb> </span>rbac.authorization.k8s.io<span style=color:#bbb>
+</span></code></pre></div></li>
+</ol>
+<h3 id=troubleshooting>Troubleshooting</h3>
+<ul>
+<li>
+<p>The <a href=/docs/reference/command-line-tools-reference/kube-controller-manager/>controller manager</a>
+must be run against the secured API port and must not have superuser permissions. See
+<a href=/docs/concepts/security/controlling-access>Controlling Access to the PlaidCloud API</a>
+to learn about API server access controls.<br>
+If the controller manager connected through the trusted API port (also known as the
+<code>localhost</code> listener), requests would bypass authentication and authorization modules;
+all PodSecurityPolicy objects would be allowed, and users would be able to create grant
+themselves the ability to create privileged containers.</p>
+<p>For more details on configuring controller manager authorization, see
+<a href=/docs/reference/access-authn-authz/rbac/#controller-roles>Controller Roles</a>.</p>
+</li>
+</ul>
+<h2 id=policy-order>Policy Order</h2>
+<p>In addition to restricting pod creation and update, pod security policies can
+also be used to provide default values for many of the fields that it
+controls. When multiple policies are available, the pod security policy
+controller selects policies according to the following criteria:</p>
+<ol>
+<li>PodSecurityPolicies which allow the pod as-is, without changing defaults or
+mutating the pod, are preferred. The order of these non-mutating
+PodSecurityPolicies doesn't matter.</li>
+<li>If the pod must be defaulted or mutated, the first PodSecurityPolicy
+(ordered by name) to allow the pod is selected.</li>
+</ol>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> During update operations (during which mutations to pod specs are disallowed)
+only non-mutating PodSecurityPolicies are used to validate the pod.
+</div>
+<h2 id=example>Example</h2>
+<p><em>This example assumes you have a running cluster with the PodSecurityPolicy
+admission controller enabled and you have cluster admin privileges.</em></p>
+<h3 id=set-up>Set up</h3>
+<p>Set up a namespace and a service account to act as for this example. We'll use
+this service account to mock a non-admin user.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create namespace psp-example
+kubectl create serviceaccount -n psp-example fake-user
+kubectl create rolebinding -n psp-example fake-editor --clusterrole<span style=color:#666>=</span>edit --serviceaccount<span style=color:#666>=</span>psp-example:fake-user
+</code></pre></div><p>To make it clear which user we're acting as and save some typing, create 2
+aliases:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#a2f>alias</span> kubectl-admin<span style=color:#666>=</span><span style=color:#b44>&#39;kubectl -n psp-example&#39;</span>
+<span style=color:#a2f>alias</span> kubectl-user<span style=color:#666>=</span><span style=color:#b44>&#39;kubectl --as=system:serviceaccount:psp-example:fake-user -n psp-example&#39;</span>
+</code></pre></div><h3 id=create-a-policy-and-a-pod>Create a policy and a pod</h3>
+<p>Define the example PodSecurityPolicy object in a file. This is a policy that
+prevents the creation of privileged pods.
+The name of a PodSecurityPolicy object must be a valid
+<a href=/docs/concepts/overview/working-with-objects/names#dns-subdomain-names>DNS subdomain name</a>.</p>
+<div class=highlight>
+<div class=copy-code-icon style=text-align:right>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/example-psp.yaml download=policy/example-psp.yaml><code>policy/example-psp.yaml</code>
+</a>
+<img src=/images/copycode.svg style=max-height:24px;cursor:pointer onclick="copyCode('policy-example-psp-yaml')" title="Copy policy/example-psp.yaml to clipboard">
+</img>
+</div>
+<div class=includecode id=policy-example-psp-yaml>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>policy/v1beta1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>PodSecurityPolicy<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>example<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>privileged</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>false</span><span style=color:#bbb>  </span><span style=color:#080;font-style:italic># Don&#39;t allow privileged pods!</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:#080;font-style:italic># The rest fills in some required fields.</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>seLinux</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span>RunAsAny<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>supplementalGroups</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span>RunAsAny<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>runAsUser</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span>RunAsAny<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>fsGroup</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span>RunAsAny<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>volumes</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- <span style=color:#b44>&#39;*&#39;</span><span style=color:#bbb>
+</span></code></pre></div>
+</div>
+</div>
+<p>And create it with kubectl:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-admin create -f example-psp.yaml
+</code></pre></div><p>Now, as the unprivileged user, try to create a simple pod:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-user create -f- <span style=color:#b44>&lt;&lt;EOF
+</span><span style=color:#b44>apiVersion: v1
+</span><span style=color:#b44>kind: Pod
+</span><span style=color:#b44>metadata:
+</span><span style=color:#b44>  name: pause
+</span><span style=color:#b44>spec:
+</span><span style=color:#b44>  containers:
+</span><span style=color:#b44>    - name: pause
+</span><span style=color:#b44>      image: k8s.gcr.io/pause
+</span><span style=color:#b44>EOF</span>
+</code></pre></div><p>The output is similar to this:</p>
+<pre tabindex=0><code>Error from server (Forbidden): error when creating &quot;STDIN&quot;: pods &quot;pause&quot; is forbidden: unable to validate against any pod security policy: []
+</code></pre><p><strong>What happened?</strong> Although the PodSecurityPolicy was created, neither the
+pod's service account nor <code>fake-user</code> have permission to use the new policy:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-user auth can-i use podsecuritypolicy/example
+no
+</code></pre></div><p>Create the rolebinding to grant <code>fake-user</code> the <code>use</code> verb on the example
+policy:</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> This is not the recommended way! See the <a href=#run-another-pod>next section</a>
+for the preferred approach.
+</div>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-admin create role psp:unprivileged <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    --verb<span style=color:#666>=</span>use <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    --resource<span style=color:#666>=</span>podsecuritypolicy <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    --resource-name<span style=color:#666>=</span>example
+role <span style=color:#b44>&#34;psp:unprivileged&#34;</span> created
+
+kubectl-admin create rolebinding fake-user:psp:unprivileged <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    --role<span style=color:#666>=</span>psp:unprivileged <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    --serviceaccount<span style=color:#666>=</span>psp-example:fake-user
+rolebinding <span style=color:#b44>&#34;fake-user:psp:unprivileged&#34;</span> created
+
+kubectl-user auth can-i use podsecuritypolicy/example
+yes
+</code></pre></div><p>Now retry creating the pod:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-user create -f- <span style=color:#b44>&lt;&lt;EOF
+</span><span style=color:#b44>apiVersion: v1
+</span><span style=color:#b44>kind: Pod
+</span><span style=color:#b44>metadata:
+</span><span style=color:#b44>  name: pause
+</span><span style=color:#b44>spec:
+</span><span style=color:#b44>  containers:
+</span><span style=color:#b44>    - name: pause
+</span><span style=color:#b44>      image: k8s.gcr.io/pause
+</span><span style=color:#b44>EOF</span>
+</code></pre></div><p>The output is similar to this</p>
+<pre tabindex=0><code>pod &quot;pause&quot; created
+</code></pre><p>It works as expected! But any attempts to create a privileged pod should still
+be denied:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-user create -f- <span style=color:#b44>&lt;&lt;EOF
+</span><span style=color:#b44>apiVersion: v1
+</span><span style=color:#b44>kind: Pod
+</span><span style=color:#b44>metadata:
+</span><span style=color:#b44>  name: privileged
+</span><span style=color:#b44>spec:
+</span><span style=color:#b44>  containers:
+</span><span style=color:#b44>    - name: pause
+</span><span style=color:#b44>      image: k8s.gcr.io/pause
+</span><span style=color:#b44>      securityContext:
+</span><span style=color:#b44>        privileged: true
+</span><span style=color:#b44>EOF</span>
+</code></pre></div><p>The output is similar to this:</p>
+<pre tabindex=0><code>Error from server (Forbidden): error when creating &quot;STDIN&quot;: pods &quot;privileged&quot; is forbidden: unable to validate against any pod security policy: [spec.containers[0].securityContext.privileged: Invalid value: true: Privileged containers are not allowed]
+</code></pre><p>Delete the pod before moving on:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-user delete pod pause
+</code></pre></div><h3 id=run-another-pod>Run another pod</h3>
+<p>Let's try that again, slightly differently:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-user create deployment pause --image<span style=color:#666>=</span>k8s.gcr.io/pause
+deployment <span style=color:#b44>&#34;pause&#34;</span> created
+
+kubectl-user get pods
+No resources found.
+
+kubectl-user get events | head -n <span style=color:#666>2</span>
+LASTSEEN   FIRSTSEEN   COUNT     NAME              KIND         SUBOBJECT                TYPE      REASON                  SOURCE                                  MESSAGE
+1m         2m          <span style=color:#666>15</span>        pause-7774d79b5   ReplicaSet                            Warning   FailedCreate            replicaset-controller                   Error creating: pods <span style=color:#b44>&#34;pause-7774d79b5-&#34;</span> is forbidden: no providers available to validate pod request
+</code></pre></div><p><strong>What happened?</strong> We already bound the <code>psp:unprivileged</code> role for our <code>fake-user</code>,
+why are we getting the error <code>Error creating: pods "pause-7774d79b5-" is forbidden: no providers available to validate pod request</code>? The answer lies in
+the source - <code>replicaset-controller</code>. Fake-user successfully created the
+deployment (which successfully created a replicaset), but when the replicaset
+went to create the pod it was not authorized to use the example
+podsecuritypolicy.</p>
+<p>In order to fix this, bind the <code>psp:unprivileged</code> role to the pod's service
+account instead. In this case (since we didn't specify it) the service account
+is <code>default</code>:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-admin create rolebinding default:psp:unprivileged <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    --role<span style=color:#666>=</span>psp:unprivileged <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    --serviceaccount<span style=color:#666>=</span>psp-example:default
+rolebinding <span style=color:#b44>&#34;default:psp:unprivileged&#34;</span> created
+</code></pre></div><p>Now if you give it a minute to retry, the replicaset-controller should
+eventually succeed in creating the pod:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-user get pods --watch
+NAME                    READY     STATUS    RESTARTS   AGE
+pause-7774d79b5-qrgcb   0/1       Pending   <span style=color:#666>0</span>         1s
+pause-7774d79b5-qrgcb   0/1       Pending   <span style=color:#666>0</span>         1s
+pause-7774d79b5-qrgcb   0/1       ContainerCreating   <span style=color:#666>0</span>         1s
+pause-7774d79b5-qrgcb   1/1       Running   <span style=color:#666>0</span>         2s
+</code></pre></div><h3 id=clean-up>Clean up</h3>
+<p>Delete the namespace to clean up most of the example resources:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-admin delete ns psp-example
+namespace <span style=color:#b44>&#34;psp-example&#34;</span> deleted
+</code></pre></div><p>Note that <code>PodSecurityPolicy</code> resources are not namespaced, and must be cleaned
+up separately:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl-admin delete psp example
+podsecuritypolicy <span style=color:#b44>&#34;example&#34;</span> deleted
+</code></pre></div><h3 id=example-policies>Example Policies</h3>
+<p>This is the least restrictive policy you can create, equivalent to not using the
+pod security policy admission controller:</p>
+<div class=highlight>
+<div class=copy-code-icon style=text-align:right>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/privileged-psp.yaml download=policy/privileged-psp.yaml><code>policy/privileged-psp.yaml</code>
+</a>
+<img src=/images/copycode.svg style=max-height:24px;cursor:pointer onclick="copyCode('policy-privileged-psp-yaml')" title="Copy policy/privileged-psp.yaml to clipboard">
+</img>
+</div>
+<div class=includecode id=policy-privileged-psp-yaml>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>policy/v1beta1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>PodSecurityPolicy<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>privileged<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>annotations</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>seccomp.security.alpha.PlaidCloud.io/allowedProfileNames</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;*&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>privileged</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>true</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>allowPrivilegeEscalation</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>true</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>allowedCapabilities</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- <span style=color:#b44>&#39;*&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>volumes</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- <span style=color:#b44>&#39;*&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>hostNetwork</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>true</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>hostPorts</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- <span style=color:green;font-weight:700>min</span>:<span style=color:#bbb> </span><span style=color:#666>0</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>max</span>:<span style=color:#bbb> </span><span style=color:#666>65535</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>hostIPC</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>true</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>hostPID</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>true</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>runAsUser</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;RunAsAny&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>seLinux</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;RunAsAny&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>supplementalGroups</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;RunAsAny&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>fsGroup</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;RunAsAny&#39;</span><span style=color:#bbb>
+</span></code></pre></div>
+</div>
+</div>
+<p>This is an example of a restrictive policy that requires users to run as an
+unprivileged user, blocks possible escalations to root, and requires use of
+several security mechanisms.</p>
+<div class=highlight>
+<div class=copy-code-icon style=text-align:right>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/restricted-psp.yaml download=policy/restricted-psp.yaml><code>policy/restricted-psp.yaml</code>
+</a>
+<img src=/images/copycode.svg style=max-height:24px;cursor:pointer onclick="copyCode('policy-restricted-psp-yaml')" title="Copy policy/restricted-psp.yaml to clipboard">
+</img>
+</div>
+<div class=includecode id=policy-restricted-psp-yaml>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>policy/v1beta1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>PodSecurityPolicy<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>restricted<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>annotations</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>seccomp.security.alpha.PlaidCloud.io/allowedProfileNames</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;docker/default,runtime/default&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>apparmor.security.beta.PlaidCloud.io/allowedProfileNames</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;runtime/default&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>apparmor.security.beta.PlaidCloud.io/defaultProfileName</span>:<span style=color:#bbb>  </span><span style=color:#b44>&#39;runtime/default&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>privileged</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>false</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:#080;font-style:italic># Required to prevent escalations to root.</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>allowPrivilegeEscalation</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>false</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>requiredDropCapabilities</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- ALL<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:#080;font-style:italic># Allow core volume types.</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>volumes</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:#b44>&#39;configMap&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:#b44>&#39;emptyDir&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:#b44>&#39;projected&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:#b44>&#39;secret&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:#b44>&#39;downwardAPI&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#080;font-style:italic># Assume that ephemeral CSI drivers &amp; persistentVolumes set up by the cluster admin are safe to use.</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:#b44>&#39;csi&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:#b44>&#39;persistentVolumeClaim&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:#b44>&#39;ephemeral&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>hostNetwork</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>false</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>hostIPC</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>false</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>hostPID</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>false</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>runAsUser</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#080;font-style:italic># Require the container to run without root privileges.</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;MustRunAsNonRoot&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>seLinux</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#080;font-style:italic># This policy assumes the nodes are using AppArmor rather than SELinux.</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;RunAsAny&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>supplementalGroups</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;MustRunAs&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>ranges</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#080;font-style:italic># Forbid adding the root group.</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>min</span>:<span style=color:#bbb> </span><span style=color:#666>1</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>max</span>:<span style=color:#bbb> </span><span style=color:#666>65535</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>fsGroup</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>rule</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;MustRunAs&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>ranges</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#080;font-style:italic># Forbid adding the root group.</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>min</span>:<span style=color:#bbb> </span><span style=color:#666>1</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>max</span>:<span style=color:#bbb> </span><span style=color:#666>65535</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>readOnlyRootFilesystem</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>false</span><span style=color:#bbb>
+</span></code></pre></div>
+</div>
+</div>
+<p>See <a href=/docs/concepts/security/pod-security-standards/#policy-instantiation>Pod Security Standards</a> for more examples.</p>
+<h2 id=policy-reference>Policy Reference</h2>
+<h3 id=privileged>Privileged</h3>
+<p><strong>Privileged</strong> - determines if any container in a pod can enable privileged mode.
+By default a container is not allowed to access any devices on the host, but a
+"privileged" container is given access to all devices on the host. This allows
+the container nearly all the same access as processes running on the host.
+This is useful for containers that want to use linux capabilities like
+manipulating the network stack and accessing devices.</p>
+<h3 id=host-namespaces>Host namespaces</h3>
+<p><strong>HostPID</strong> - Controls whether the pod containers can share the host process ID
+namespace. Note that when paired with ptrace this can be used to escalate
+privileges outside of the container (ptrace is forbidden by default).</p>
+<p><strong>HostIPC</strong> - Controls whether the pod containers can share the host IPC
+namespace.</p>
+<p><strong>HostNetwork</strong> - Controls whether the pod may use the node network
+namespace. Doing so gives the pod access to the loopback device, services
+listening on localhost, and could be used to snoop on network activity of other
+pods on the same node.</p>
+<p><strong>HostPorts</strong> - Provides a list of ranges of allowable ports in the host
+network namespace. Defined as a list of <code>HostPortRange</code>, with <code>min</code>(inclusive)
+and <code>max</code>(inclusive). Defaults to no allowed host ports.</p>
+<h3 id=volumes-and-file-systems>Volumes and file systems</h3>
+<p><strong>Volumes</strong> - Provides a list of allowed volume types. The allowable values
+correspond to the volume sources that are defined when creating a volume. For
+the complete list of volume types, see <a href=/docs/concepts/storage/volumes/#types-of-volumes>Types of
+Volumes</a>. Additionally, <code>*</code>
+may be used to allow all volume types.</p>
+<p>The <strong>recommended minimum set</strong> of allowed volumes for new PSPs are:</p>
+<ul>
+<li>configMap</li>
+<li>downwardAPI</li>
+<li>emptyDir</li>
+<li>persistentVolumeClaim</li>
+<li>secret</li>
+<li>projected</li>
+</ul>
+<div class="alert alert-danger warning callout" role=alert>
+<strong>Warning:</strong> PodSecurityPolicy does not limit the types of <code>PersistentVolume</code> objects that
+may be referenced by a <code>PersistentVolumeClaim</code>, and hostPath type
+<code>PersistentVolumes</code> do not support read-only access mode. Only trusted users
+should be granted permission to create <code>PersistentVolume</code> objects.
+</div>
+<p><strong>FSGroup</strong> - Controls the supplemental group applied to some volumes.</p>
+<ul>
+<li><em>MustRunAs</em> - Requires at least one <code>range</code> to be specified. Uses the
+minimum value of the first range as the default. Validates against all ranges.</li>
+<li><em>MayRunAs</em> - Requires at least one <code>range</code> to be specified. Allows
+<code>FSGroups</code> to be left unset without providing a default. Validates against
+all ranges if <code>FSGroups</code> is set.</li>
+<li><em>RunAsAny</em> - No default provided. Allows any <code>fsGroup</code> ID to be specified.</li>
+</ul>
+<p><strong>AllowedHostPaths</strong> - This specifies a list of host paths that are allowed
+to be used by hostPath volumes. An empty list means there is no restriction on
+host paths used. This is defined as a list of objects with a single <code>pathPrefix</code>
+field, which allows hostPath volumes to mount a path that begins with an
+allowed prefix, and a <code>readOnly</code> field indicating it must be mounted read-only.
+For example:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#bbb>  </span><span style=color:green;font-weight:700>allowedHostPaths</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#080;font-style:italic># This allows &#34;/foo&#34;, &#34;/foo/&#34;, &#34;/foo/bar&#34; etc., but</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#080;font-style:italic># disallows &#34;/fool&#34;, &#34;/etc/foo&#34; etc.</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#080;font-style:italic># &#34;/foo/../&#34; is never valid.</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:green;font-weight:700>pathPrefix</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;/foo&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>readOnly</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>true</span><span style=color:#bbb> </span><span style=color:#080;font-style:italic># only allow read-only mounts</span><span style=color:#bbb>
+</span></code></pre></div><div class="alert alert-danger warning callout" role=alert>
+<strong>Warning:</strong> <p>There are many ways a container with unrestricted access to the host
+filesystem can escalate privileges, including reading data from other
+containers, and abusing the credentials of system services, such as Kubelet.</p>
+<p>Writeable hostPath directory volumes allow containers to write
+to the filesystem in ways that let them traverse the host filesystem outside the <code>pathPrefix</code>.
+<code>readOnly: true</code>, available in PlaidCloud 1.11+, must be used on <strong>all</strong> <code>allowedHostPaths</code>
+to effectively limit access to the specified <code>pathPrefix</code>.</p>
+</div>
+<p><strong>ReadOnlyRootFilesystem</strong> - Requires that containers must run with a read-only
+root filesystem (i.e. no writable layer).</p>
+<h3 id=flexvolume-drivers>FlexVolume drivers</h3>
+<p>This specifies a list of FlexVolume drivers that are allowed to be used
+by flexvolume. An empty list or nil means there is no restriction on the drivers.
+Please make sure <a href=#volumes-and-file-systems><code>volumes</code></a> field contains the
+<code>flexVolume</code> volume type; no FlexVolume driver is allowed otherwise.</p>
+<p>For example:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>policy/v1beta1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>PodSecurityPolicy<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>allow-flex-volumes<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>spec</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:#080;font-style:italic># ... other spec fields</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>volumes</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- flexVolume<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>allowedFlexVolumes</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:green;font-weight:700>driver</span>:<span style=color:#bbb> </span>example/lvm<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:green;font-weight:700>driver</span>:<span style=color:#bbb> </span>example/cifs<span style=color:#bbb>
+</span></code></pre></div><h3 id=users-and-groups>Users and groups</h3>
+<p><strong>RunAsUser</strong> - Controls which user ID the containers are run with.</p>
+<ul>
+<li><em>MustRunAs</em> - Requires at least one <code>range</code> to be specified. Uses the
+minimum value of the first range as the default. Validates against all ranges.</li>
+<li><em>MustRunAsNonRoot</em> - Requires that the pod be submitted with a non-zero
+<code>runAsUser</code> or have the <code>USER</code> directive defined (using a numeric UID) in the
+image. Pods which have specified neither <code>runAsNonRoot</code> nor <code>runAsUser</code> settings
+will be mutated to set <code>runAsNonRoot=true</code>, thus requiring a defined non-zero
+numeric <code>USER</code> directive in the container. No default provided. Setting
+<code>allowPrivilegeEscalation=false</code> is strongly recommended with this strategy.</li>
+<li><em>RunAsAny</em> - No default provided. Allows any <code>runAsUser</code> to be specified.</li>
+</ul>
+<p><strong>RunAsGroup</strong> - Controls which primary group ID the containers are run with.</p>
+<ul>
+<li><em>MustRunAs</em> - Requires at least one <code>range</code> to be specified. Uses the
+minimum value of the first range as the default. Validates against all ranges.</li>
+<li><em>MayRunAs</em> - Does not require that RunAsGroup be specified. However, when RunAsGroup
+is specified, they have to fall in the defined range.</li>
+<li><em>RunAsAny</em> - No default provided. Allows any <code>runAsGroup</code> to be specified.</li>
+</ul>
+<p><strong>SupplementalGroups</strong> - Controls which group IDs containers add.</p>
+<ul>
+<li><em>MustRunAs</em> - Requires at least one <code>range</code> to be specified. Uses the
+minimum value of the first range as the default. Validates against all ranges.</li>
+<li><em>MayRunAs</em> - Requires at least one <code>range</code> to be specified. Allows
+<code>supplementalGroups</code> to be left unset without providing a default.
+Validates against all ranges if <code>supplementalGroups</code> is set.</li>
+<li><em>RunAsAny</em> - No default provided. Allows any <code>supplementalGroups</code> to be
+specified.</li>
+</ul>
+<h3 id=privilege-escalation>Privilege Escalation</h3>
+<p>These options control the <code>allowPrivilegeEscalation</code> container option. This bool
+directly controls whether the
+<a href=https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt><code>no_new_privs</code></a>
+flag gets set on the container process. This flag will prevent <code>setuid</code> binaries
+from changing the effective user ID, and prevent files from enabling extra
+capabilities (e.g. it will prevent the use of the <code>ping</code> tool). This behavior is
+required to effectively enforce <code>MustRunAsNonRoot</code>.</p>
+<p><strong>AllowPrivilegeEscalation</strong> - Gates whether or not a user is allowed to set the
+security context of a container to <code>allowPrivilegeEscalation=true</code>. This
+defaults to allowed so as to not break setuid binaries. Setting it to <code>false</code>
+ensures that no child process of a container can gain more privileges than its parent.</p>
+<p><strong>DefaultAllowPrivilegeEscalation</strong> - Sets the default for the
+<code>allowPrivilegeEscalation</code> option. The default behavior without this is to allow
+privilege escalation so as to not break setuid binaries. If that behavior is not
+desired, this field can be used to default to disallow, while still permitting
+pods to request <code>allowPrivilegeEscalation</code> explicitly.</p>
+<h3 id=capabilities>Capabilities</h3>
+<p>Linux capabilities provide a finer grained breakdown of the privileges
+traditionally associated with the superuser. Some of these capabilities can be
+used to escalate privileges or for container breakout, and may be restricted by
+the PodSecurityPolicy. For more details on Linux capabilities, see
+<a href=http://man7.org/linux/man-pages/man7/capabilities.7.html>capabilities(7)</a>.</p>
+<p>The following fields take a list of capabilities, specified as the capability
+name in ALL_CAPS without the <code>CAP_</code> prefix.</p>
+<p><strong>AllowedCapabilities</strong> - Provides a list of capabilities that are allowed to be added
+to a container. The default set of capabilities are implicitly allowed. The
+empty set means that no additional capabilities may be added beyond the default
+set. <code>*</code> can be used to allow all capabilities.</p>
+<p><strong>RequiredDropCapabilities</strong> - The capabilities which must be dropped from
+containers. These capabilities are removed from the default set, and must not be
+added. Capabilities listed in <code>RequiredDropCapabilities</code> must not be included in
+<code>AllowedCapabilities</code> or <code>DefaultAddCapabilities</code>.</p>
+<p><strong>DefaultAddCapabilities</strong> - The capabilities which are added to containers by
+default, in addition to the runtime defaults. See the <a href=https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities>Docker
+documentation</a>
+for the default list of capabilities when using the Docker runtime.</p>
+<h3 id=selinux>SELinux</h3>
+<ul>
+<li><em>MustRunAs</em> - Requires <code>seLinuxOptions</code> to be configured. Uses
+<code>seLinuxOptions</code> as the default. Validates against <code>seLinuxOptions</code>.</li>
+<li><em>RunAsAny</em> - No default provided. Allows any <code>seLinuxOptions</code> to be
+specified.</li>
+</ul>
+<h3 id=allowedprocmounttypes>AllowedProcMountTypes</h3>
+<p><code>allowedProcMountTypes</code> is a list of allowed ProcMountTypes.
+Empty or nil indicates that only the <code>DefaultProcMountType</code> may be used.</p>
+<p><code>DefaultProcMount</code> uses the container runtime defaults for readonly and masked
+paths for /proc. Most container runtimes mask certain paths in /proc to avoid
+accidental security exposure of special devices or information. This is denoted
+as the string <code>Default</code>.</p>
+<p>The only other ProcMountType is <code>UnmaskedProcMount</code>, which bypasses the
+default masking behavior of the container runtime and ensures the newly
+created /proc the container stays intact with no modifications. This is
+denoted as the string <code>Unmasked</code>.</p>
+<h3 id=apparmor>AppArmor</h3>
+<p>Controlled via annotations on the PodSecurityPolicy. Refer to the <a href=/docs/tutorials/clusters/apparmor/#podsecuritypolicy-annotations>AppArmor
+documentation</a>.</p>
+<h3 id=seccomp>Seccomp</h3>
+<p>As of PlaidCloud v1.19, you can use the <code>seccompProfile</code> field in the
+<code>securityContext</code> of Pods or containers to <a href=/docs/tutorials/clusters/seccomp>control use of seccomp
+profiles</a>. In prior versions, seccomp was
+controlled by adding annotations to a Pod. The same PodSecurityPolicies can be
+used with either version to enforce how these fields or annotations are applied.</p>
+<p><strong>seccomp.security.alpha.PlaidCloud.io/defaultProfileName</strong> - Annotation that
+specifies the default seccomp profile to apply to containers. Possible values
+are:</p>
+<ul>
+<li><code>unconfined</code> - Seccomp is not applied to the container processes (this is the
+default in PlaidCloud), if no alternative is provided.</li>
+<li><code>runtime/default</code> - The default container runtime profile is used.</li>
+<li><code>docker/default</code> - The Docker default seccomp profile is used. Deprecated as
+of PlaidCloud 1.11. Use <code>runtime/default</code> instead.</li>
+<li><code>localhost/&lt;path></code> - Specify a profile as a file on the node located at
+<code>&lt;seccomp_root>/&lt;path></code>, where <code>&lt;seccomp_root></code> is defined via the
+<code>--seccomp-profile-root</code> flag on the Kubelet. If the <code>--seccomp-profile-root</code>
+flag is not defined, the default path will be used, which is
+<code>&lt;root-dir>/seccomp</code> where <code>&lt;root-dir></code> is specified by the <code>--root-dir</code> flag.</li>
+</ul>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> The <code>--seccomp-profile-root</code> flag is deprecated since PlaidCloud
+v1.19. Users are encouraged to use the default path.
+</div>
+<p><strong>seccomp.security.alpha.PlaidCloud.io/allowedProfileNames</strong> - Annotation that
+specifies which values are allowed for the pod seccomp annotations. Specified as
+a comma-delimited list of allowed values. Possible values are those listed
+above, plus <code>*</code> to allow all profiles. Absence of this annotation means that the
+default cannot be changed.</p>
+<h3 id=sysctl>Sysctl</h3>
+<p>By default, all safe sysctls are allowed.</p>
+<ul>
+<li><code>forbiddenSysctls</code> - excludes specific sysctls. You can forbid a combination of safe and unsafe sysctls in the list. To forbid setting any sysctls, use <code>*</code> on its own.</li>
+<li><code>allowedUnsafeSysctls</code> - allows specific sysctls that had been disallowed by the default list, so long as these are not listed in <code>forbiddenSysctls</code>.</li>
+</ul>
+<p>Refer to the <a href=/docs/tasks/administer-cluster/sysctl-cluster/#podsecuritypolicy>Sysctl documentation</a>.</p>
+<h2 id=what-s-next>What's next</h2>
+<ul>
+<li>
+<p>See <a href=/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/>PodSecurityPolicy Deprecation: Past, Present, and
+Future</a> to learn about
+the future of pod security policy.</p>
+</li>
+<li>
+<p>See <a href=/docs/concepts/security/pod-security-standards/>Pod Security Standards</a> for policy recommendations.</p>
+</li>
+<li>
+<p>Refer to <a href=/docs/reference/generated/Kubernetes-api/v5.10/#podsecuritypolicy-v1beta1-policy>Pod Security Policy Reference</a> for the api details.</p>
+</li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-7352434db5f5954d2f7656b46fe5a324>4 - Process ID Limits And Reservations</h1>
+<div style=margin-top:10px;margin-bottom:10px>
+<b>FEATURE STATE:</b> <code>PlaidCloud v1.20 [stable]</code>
+</div>
+<p>PlaidCloud allow you to limit the number of process IDs (PIDs) that a
+<a class=glossary-tooltip title="A Pod represents a set of running containers in your cluster." data-toggle=tooltip data-placement=top href=/docs/concepts/workloads/pods/ target=_blank aria-label=Pod>Pod</a> can use.
+You can also reserve a number of allocatable PIDs for each <a class=glossary-tooltip title="A node is a worker machine in PlaidCloud." data-toggle=tooltip data-placement=top href=/docs/concepts/architecture/nodes/ target=_blank aria-label=node>node</a>
+for use by the operating system and daemons (rather than by Pods).</p>
+<p>Process IDs (PIDs) are a fundamental resource on nodes. It is trivial to hit the
+task limit without hitting any other resource limits, which can then cause
+instability to a host machine.</p>
+<p>Cluster administrators require mechanisms to ensure that Pods running in the
+cluster cannot induce PID exhaustion that prevents host daemons (such as the
+<a class=glossary-tooltip title="An agent that runs on each node in the cluster. It makes sure that containers are running in a pod." data-toggle=tooltip data-placement=top href=/docs/reference/generated/kubelet target=_blank aria-label=kubelet>kubelet</a> or
+<a class=glossary-tooltip title="kube-proxy is a network proxy that runs on each node in the cluster." data-toggle=tooltip data-placement=top href=/docs/reference/command-line-tools-reference/kube-proxy/ target=_blank aria-label=kube-proxy>kube-proxy</a>,
+and potentially also the container runtime) from running.
+In addition, it is important to ensure that PIDs are limited among Pods in order
+to ensure they have limited impact on other workloads on the same node.</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> On certain Linux installations, the operating system sets the PIDs limit to a low default,
+such as <code>32768</code>. Consider raising the value of <code>/proc/sys/kernel/pid_max</code>.
+</div>
+<p>You can configure a kubelet to limit the number of PIDs a given Pod can consume.
+For example, if your node's host OS is set to use a maximum of <code>262144</code> PIDs and
+expect to host less than <code>250</code> Pods, one can give each Pod a budget of <code>1000</code>
+PIDs to prevent using up that node's overall number of available PIDs. If the
+admin wants to overcommit PIDs similar to CPU or memory, they may do so as well
+with some additional risks. Either way, a single Pod will not be able to bring
+the whole machine down. This kind of resource limiting helps to prevent simple
+fork bombs from affecting operation of an entire cluster.</p>
+<p>Per-Pod PID limiting allows administrators to protect one Pod from another, but
+does not ensure that all Pods scheduled onto that host are unable to impact the node overall.
+Per-Pod limiting also does not protect the node agents themselves from PID exhaustion.</p>
+<p>You can also reserve an amount of PIDs for node overhead, separate from the
+allocation to Pods. This is similar to how you can reserve CPU, memory, or other
+resources for use by the operating system and other facilities outside of Pods
+and their containers.</p>
+<p>PID limiting is a an important sibling to <a href=/docs/concepts/configuration/manage-resources-containers/>compute
+resource</a> requests
+and limits. However, you specify it in a different way: rather than defining a
+Pod's resource limit in the <code>.spec</code> for a Pod, you configure the limit as a
+setting on the kubelet. Pod-defined PID limits are not currently supported.</p>
+<div class="alert alert-warning caution callout" role=alert>
+<strong>Caution:</strong> This means that the limit that applies to a Pod may be different depending on
+where the Pod is scheduled. To make things simple, it's easiest if all Nodes use
+the same PID resource limits and reservations.
+</div>
+<h2 id=node-pid-limits>Node PID limits</h2>
+<p>PlaidCloud allows you to reserve a number of process IDs for the system use. To
+configure the reservation, use the parameter <code>pid=&lt;number></code> in the
+<code>--system-reserved</code> and <code>--kube-reserved</code> command line options to the kubelet.
+The value you specified declares that the specified number of process IDs will
+be reserved for the system as a whole and for PlaidCloud system daemons
+respectively.</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> Before PlaidCloud version 1.20, PID resource limiting with Node-level
+reservations required enabling the <a href=/docs/reference/command-line-tools-reference/feature-gates/>feature
+gate</a>
+<code>SupportNodePidsLimit</code> to work.
+</div>
+<h2 id=pod-pid-limits>Pod PID limits</h2>
+<p>PlaidCloud allows you to limit the number of processes running in a Pod. You
+specify this limit at the node level, rather than configuring it as a resource
+limit for a particular Pod. Each Node can have a different PID limit.<br>
+To configure the limit, you can specify the command line parameter <code>--pod-max-pids</code>
+to the kubelet, or set <code>PodPidsLimit</code> in the kubelet
+<a href=/docs/tasks/administer-cluster/kubelet-config-file/>configuration file</a>.</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> Before PlaidCloud version 1.20, PID resource limiting for Pods required enabling
+the <a href=/docs/reference/command-line-tools-reference/feature-gates/>feature gate</a>
+<code>SupportPodPidsLimit</code> to work.
+</div>
+<h2 id=pid-based-eviction>PID based eviction</h2>
+<p>You can configure kubelet to start terminating a Pod when it is misbehaving and consuming abnormal amount of resources.
+This feature is called eviction. You can
+<a href=/docs/concepts/scheduling-eviction/node-pressure-eviction/>Configure Out of Resource Handling</a>
+for various eviction signals.
+Use <code>pid.available</code> eviction signal to configure the threshold for number of PIDs used by Pod.
+You can set soft and hard eviction policies.
+However, even with the hard eviction policy, if the number of PIDs growing very fast,
+node can still get into unstable state by hitting the node PIDs limit.
+Eviction signal value is calculated periodically and does NOT enforce the limit.</p>
+<p>PID limiting - per Pod and per Node sets the hard limit.
+Once the limit is hit, workload will start experiencing failures when trying to get a new PID.
+It may or may not lead to rescheduling of a Pod,
+depending on how workload reacts on these failures and how liveleness and readiness
+probes are configured for the Pod. However, if limits were set correctly,
+you can guarantee that other Pods workload and system processes will not run out of PIDs
+when one Pod is misbehaving.</p>
+<h2 id=what-s-next>What's next</h2>
+<ul>
+<li>Refer to the <a href=https://github.com/PlaidCloud/enhancements/blob/097b4d8276bc9564e56adf72505d43ce9bc5e9e8/keps/sig-node/20190129-pid-limiting.md>PID Limiting enhancement document</a> for more information.</li>
+<li>For historical context, read
+<a href=/blog/2019/04/15/process-id-limiting-for-stability-improvements-in-PlaidCloud-1.14/>Process ID Limiting for Stability Improvements in PlaidCloud 1.14</a>.</li>
+<li>Read <a href=/docs/concepts/configuration/manage-resources-containers/>Managing Resources for Containers</a>.</li>
+<li>Learn how to <a href=/docs/concepts/scheduling-eviction/node-pressure-eviction/>Configure Out of Resource Handling</a>.</li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-b528c4464c030f3f044124b38d778f04>5 - Node Resource Managers</h1>
+<p>In order to support latency-critical and high-throughput workloads, PlaidCloud offers a suite of Resource Managers. The managers aim to co-ordinate and optimise node's resources alignment for pods configured with a specific requirement for CPUs, devices, and memory (hugepages) resources.</p>
+<p>The main manager, the Topology Manager, is a Kubelet component that co-ordinates the overall resource management process through its <a href=/docs/tasks/administer-cluster/topology-manager/>policy</a>.</p>
+<p>The configuration of individual managers is elaborated in dedicated documents:</p>
+<ul>
+<li><a href=/docs/tasks/administer-cluster/cpu-management-policies/>CPU Manager Policies</a></li>
+<li><a href=/docs/concepts/extend-PlaidCloud/compute-storage-net/device-plugins/#device-plugin-integration-with-the-topology-manager>Device Manager</a></li>
+<li><a href=/docs/tasks/administer-cluster/memory-manager/>Memory Manager Policies</a></li>
+</ul>
+</div>
+</main>
+</div>
+</div>
+<footer class=d-print-none>
+<div class=footer__links>
+<nav>
+<a class=text-white href=/docs/home/>Home</a>
+</nav>
+</div>
+<div class=container-fluid>
+<div class=row>
+<div class="col-6 col-sm-2 text-xs-center order-sm-2">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="User mailing list" aria-label="User mailing list">
+<a class=text-white target=_blank href=https://discuss.PlaidCloud.io>
+<i class="fa fa-envelope"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Twitter aria-label=Twitter>
+<a class=text-white target=_blank href=https://twitter.com/plaidcloud>
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Youtube aria-label=Youtube>
+<a class=text-white target=_blank href=https://youtube.com/plaidcloud>
+<i class="fab fa-youtube"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub>
+<a class=text-white target=_blank href=https://github.com/plaidcloud>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack>
+<a class=text-white target=_blank href=https://slack.plaidcloud.com>
+<i class="fab fa-slack"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="Stack Overflow" aria-label="Stack Overflow">
+<a class=text-white target=_blank href=https://stackoverflow.com/questions/tagged/plaidcloud>
+<i class="fab fa-stack-overflow"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-12 col-sm-8 text-center order-sm-2">
+<small class=text-white>&copy; 2022 Tartan Solutions, Inc | PlaidCloud is our SaaS platform for Financial Analytics</small>
+<br>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=/js/popper-1.14.3.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script>
+<script src=/js/bootstrap-4.3.1.min.js integrity=sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM crossorigin=anonymous></script>
+<script src=/js/main.min.8b80c14bafc28ac0131eea78e5bd67d87c35913ab8c46a0686b3586d37a608c6.js integrity="sha256-i4DBS6/CisATHup45b1n2Hw1kTq4xGoGhrNYbTemCMY=" crossorigin=anonymous></script>
+</body>
+</html>

@@ -1,0 +1,1229 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta name=ROBOTS content="INDEX, FOLLOW">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-36037335-10')</script>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=canonical type=text/html href=https://plaidcloud.com/docs/concepts/security/>
+<link rel="shortcut icon" type=image/png href=/images/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=manifest href=/manifest.webmanifest>
+<link rel=apple-touch-icon href=/images/PlaidCloud-192x192.png>
+<title>Security | PlaidCloud</title><meta property="og:title" content="Security">
+<meta property="og:description" content="Concepts for keeping your cloud-native workload secure.
+">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plaidcloud.com/docs/concepts/security/"><meta property="og:site_name" content="PlaidCloud">
+<meta itemprop=name content="Security">
+<meta itemprop=description content="Concepts for keeping your cloud-native workload secure.
+"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Security">
+<meta name=twitter:description content="Concepts for keeping your cloud-native workload secure.
+">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-00000000-0','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<link rel=preload href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css as=style>
+<link href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css rel=stylesheet integrity>
+<script src=/js/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=anonymous></script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Organization","url":"https://plaidcloud.com","logo":"https://plaidcloud.com/images/favicon.ico","potentialAction":{"@type":"SearchAction","target":"https://plaidcloud.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<meta name=theme-color content="#326ce5">
+<link rel=stylesheet href=/css/feature-states.css>
+<meta name=description content="Concepts for keeping your cloud-native workload secure.
+">
+<meta property="og:description" content="Concepts for keeping your cloud-native workload secure.
+">
+<meta name=twitter:description content="Concepts for keeping your cloud-native workload secure.
+">
+<meta property="og:url" content="https://plaidcloud.com/docs/concepts/security/">
+<meta property="og:title" content="Security">
+<meta name=twitter:title content="Security">
+<meta name=twitter:image content="https://plaidcloud.com/images/favicon.ico">
+<meta name=twitter:image:alt content="PlaidCloud">
+<meta property="og:image" content="/images/PlaidCloud-horizontal-color.png">
+<meta property="og:type" content="article">
+<script src=/js/script.js></script>
+</head>
+<body class=td-section>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar" data-auto-burger=primary>
+<a class=navbar-brand href=/></a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+<li class="nav-item mr-2 mb-lg-0">
+<a class="nav-link active" href=/docs/>Documentation</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/api/>APIs</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidxl/>PlaidXL</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidlink/>PlaidLink</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/tips/>Tips & Tricks</span></a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+Versions
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/releases>Release Information</a>
+<a class=dropdown-item href=https://docs.plaidcloud.com/docs/concepts/security/>v5.10</a>
+<a class=dropdown-item href=https://v5-9.docs.plaidcloud.com/docs/concepts/security/>v5.9</a>
+<a class=dropdown-item href=https://v5-8.docs.plaidcloud.com/docs/concepts/security/>v5.8</a>
+<a class=dropdown-item href=https://v5-7.docs.plaidcloud.com/docs/concepts/security/>v5.7</a>
+<a class=dropdown-item href=https://v5-6.docs.plaidcloud.com/docs/concepts/security/>v5.6</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdownMenuLink role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+English
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/de/>Deutsch</a>
+<a class=dropdown-item href=/es/>Español</a>
+</div>
+</li>
+</ul>
+</div>
+<button id=hamburger onclick=kub.toggleMenu() data-auto-burger-exclude><div></div></button>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+</div>
+<div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+</div>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<div class=td-content>
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href=# onclick="return print(),!1">Click here to print</a>.
+</p><p>
+<a href=/docs/concepts/security/>Return to the regular view of this page</a>.
+</p>
+</div>
+<h1 class=title>Security</h1>
+<div class=lead>Concepts for keeping your cloud-native workload secure.</div>
+<ul>
+<li>1: <a href=#pg-04eeb110d75afc8acb2cf7a3db743985>Overview of Cloud Native Security</a></li>
+<li>2: <a href=#pg-1fb24c1dd155f43849da490a74c4b8c5>Pod Security Standards</a></li>
+<li>3: <a href=#pg-bc9934fccfeaf880eec6ea79025c0381>Pod Security Admission</a></li>
+<li>4: <a href=#pg-4d77d1ae4c06aa14f54b385191627881>Controlling Access to the PlaidCloud API</a></li>
+</ul>
+<div class=content>
+</div>
+</div>
+<div class=td-content>
+<h1 id=pg-04eeb110d75afc8acb2cf7a3db743985>1 - Overview of Cloud Native Security</h1>
+<div class=lead>A model for thinking about PlaidCloud security in the context of Cloud Native security.</div>
+<p>This overview defines a model for thinking about PlaidCloud security in the context of Cloud Native security.</p>
+<div class="alert alert-danger warning callout" role=alert>
+<strong>Warning:</strong> This container security model provides suggestions, not proven information security policies.
+</div>
+<h2 id=the-4c-s-of-cloud-native-security>The 4C's of Cloud Native security</h2>
+<p>You can think about security in layers. The 4C's of Cloud Native security are Cloud,
+Clusters, Containers, and Code.</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> This layered approach augments the <a href=https://en.wikipedia.org/wiki/Defense_in_depth_(computing)>defense in depth</a>
+computing approach to security, which is widely regarded as a best practice for securing
+software systems.
+</div>
+<figure class=diagram-large>
+<img src=/images/docs/4c.png> <figcaption>
+<h4>The 4C's of Cloud Native Security</h4>
+</figcaption>
+</figure>
+<p>Each layer of the Cloud Native security model builds upon the next outermost layer.
+The Code layer benefits from strong base (Cloud, Cluster, Container) security layers.
+You cannot safeguard against poor security standards in the base layers by addressing
+security at the Code level.</p>
+<h2 id=cloud>Cloud</h2>
+<p>In many ways, the Cloud (or co-located servers, or the corporate datacenter) is the
+<a href=https://en.wikipedia.org/wiki/Trusted_computing_base>trusted computing base</a>
+of a PlaidCloud cluster. If the Cloud layer is vulnerable (or
+configured in a vulnerable way) then there is no guarantee that the components built
+on top of this base are secure. Each cloud provider makes security recommendations
+for running workloads securely in their environment.</p>
+<h3 id=cloud-provider-security>Cloud provider security</h3>
+<p>If you are running a PlaidCloud cluster on your own hardware or a different cloud provider,
+consult your documentation for security best practices.
+Here are links to some of the popular cloud providers' security documentation:</p>
+<table><caption style=display:none>Cloud provider security</caption>
+<thead>
+<tr>
+<th>IaaS Provider</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alibaba Cloud</td>
+<td><a href=https://www.alibabacloud.com/trust-center>https://www.alibabacloud.com/trust-center</a></td>
+</tr>
+<tr>
+<td>Amazon Web Services</td>
+<td><a href=https://aws.amazon.com/security/>https://aws.amazon.com/security/</a></td>
+</tr>
+<tr>
+<td>Google Cloud Platform</td>
+<td><a href=https://cloud.google.com/security/>https://cloud.google.com/security/</a></td>
+</tr>
+<tr>
+<td>IBM Cloud</td>
+<td><a href=https://www.ibm.com/cloud/security>https://www.ibm.com/cloud/security</a></td>
+</tr>
+<tr>
+<td>Microsoft Azure</td>
+<td><a href=https://docs.microsoft.com/en-us/azure/security/azure-security>https://docs.microsoft.com/en-us/azure/security/azure-security</a></td>
+</tr>
+<tr>
+<td>Oracle Cloud Infrastructure</td>
+<td><a href=https://www.oracle.com/security/>https://www.oracle.com/security/</a></td>
+</tr>
+<tr>
+<td>VMWare VSphere</td>
+<td><a href=https://www.vmware.com/security/hardening-guides.html>https://www.vmware.com/security/hardening-guides.html</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id=infrastructure-security>Infrastructure security</h3>
+<p>Suggestions for securing your infrastructure in a PlaidCloud cluster:</p>
+<table><caption style=display:none>Infrastructure security</caption>
+<thead>
+<tr>
+<th>Area of Concern for PlaidCloud Infrastructure</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network access to API Server (Control plane)</td>
+<td>All access to the PlaidCloud control plane is not allowed publicly on the internet and is controlled by network access control lists restricted to the set of IP addresses needed to administer the cluster.</td>
+</tr>
+<tr>
+<td>Network access to Nodes (nodes)</td>
+<td>Nodes should be configured to <em>only</em> accept connections (via network access control lists) from the control plane on the specified ports, and accept connections for services in PlaidCloud of type NodePort and LoadBalancer. If possible, these nodes should not be exposed on the public internet entirely.</td>
+</tr>
+<tr>
+<td>PlaidCloud access to Cloud Provider API</td>
+<td>Each cloud provider needs to grant a different set of permissions to the PlaidCloud control plane and nodes. It is best to provide the cluster with cloud provider access that follows the <a href=https://en.wikipedia.org/wiki/Principle_of_least_privilege>principle of least privilege</a> for the resources it needs to administer. The <a href=https://github.com/PlaidCloud/kops/blob/master/docs/iam_roles.md#iam-roles>Kops documentation</a> provides information about IAM policies and roles.</td>
+</tr>
+<tr>
+<td>Access to etcd</td>
+<td>Access to etcd (the datastore of PlaidCloud) should be limited to the control plane only. Depending on your configuration, you should attempt to use etcd over TLS. More information can be found in the <a href=https://github.com/etcd-io/etcd/tree/master/Documentation>etcd documentation</a>.</td>
+</tr>
+<tr>
+<td>etcd Encryption</td>
+<td>Wherever possible it's a good practice to encrypt all storage at rest, and since etcd holds the state of the entire cluster (including Secrets) its disk should especially be encrypted at rest.</td>
+</tr>
+</tbody>
+</table>
+<h2 id=cluster>Cluster</h2>
+<p>There are two areas of concern for securing PlaidCloud:</p>
+<ul>
+<li>Securing the cluster components that are configurable</li>
+<li>Securing the applications which run in the cluster</li>
+</ul>
+<h3 id=cluster-components>Components of the Cluster</h3>
+<p>If you want to protect your cluster from accidental or malicious access and adopt
+good information practices, read and follow the advice about
+<a href=/docs/tasks/administer-cluster/securing-a-cluster/>securing your cluster</a>.</p>
+<h3 id=cluster-applications>Components in the cluster (your application)</h3>
+<p>Depending on the attack surface of your application, you may want to focus on specific
+aspects of security. For example: If you are running a service (Service A) that is critical
+in a chain of other resources and a separate workload (Service B) which is
+vulnerable to a resource exhaustion attack, then the risk of compromising Service A
+is high if you do not limit the resources of Service B. The following table lists
+areas of security concerns and recommendations for securing workloads running in PlaidCloud:</p>
+<table>
+<thead>
+<tr>
+<th>Area of Concern for Workload Security</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RBAC Authorization (Access to the PlaidCloud API)</td>
+<td><a href=https://plaidcloud.com/docs/reference/access-authn-authz/rbac/>https://plaidcloud.com/docs/reference/access-authn-authz/rbac/</a></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td><a href=https://plaidcloud.com/docs/concepts/security/controlling-access/>https://plaidcloud.com/docs/concepts/security/controlling-access/</a></td>
+</tr>
+<tr>
+<td>Application secrets management (and encrypting them in etcd at rest)</td>
+<td><a href=https://plaidcloud.com/docs/concepts/configuration/secret/>https://plaidcloud.com/docs/concepts/configuration/secret/</a> <br> <a href=https://plaidcloud.com/docs/tasks/administer-cluster/encrypt-data/>https://plaidcloud.com/docs/tasks/administer-cluster/encrypt-data/</a></td>
+</tr>
+<tr>
+<td>Ensuring that pods meet defined Pod Security Standards</td>
+<td><a href=https://plaidcloud.com/docs/concepts/security/pod-security-standards/#policy-instantiation>https://plaidcloud.com/docs/concepts/security/pod-security-standards/#policy-instantiation</a></td>
+</tr>
+<tr>
+<td>Quality of Service (and Cluster resource management)</td>
+<td><a href=https://plaidcloud.com/docs/tasks/configure-pod-container/quality-service-pod/>https://plaidcloud.com/docs/tasks/configure-pod-container/quality-service-pod/</a></td>
+</tr>
+<tr>
+<td>Network Policies</td>
+<td><a href=https://plaidcloud.com/docs/concepts/services-networking/network-policies/>https://plaidcloud.com/docs/concepts/services-networking/network-policies/</a></td>
+</tr>
+<tr>
+<td>TLS for PlaidCloud Ingress</td>
+<td><a href=https://plaidcloud.com/docs/concepts/services-networking/ingress/#tls>https://plaidcloud.com/docs/concepts/services-networking/ingress/#tls</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id=container>Container</h2>
+<p>Container security is outside the scope of this guide. Here are general recommendations and
+links to explore this topic:</p>
+<table>
+<thead>
+<tr>
+<th>Area of Concern for Containers</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container Vulnerability Scanning and OS Dependency Security</td>
+<td>As part of an image build step, you should scan your containers for known vulnerabilities.</td>
+</tr>
+<tr>
+<td>Image Signing and Enforcement</td>
+<td>Sign container images to maintain a system of trust for the content of your containers.</td>
+</tr>
+<tr>
+<td>Disallow privileged users</td>
+<td>When constructing containers, consult your documentation for how to create users inside of the containers that have the least level of operating system privilege necessary in order to carry out the goal of the container.</td>
+</tr>
+<tr>
+<td>Use container runtime with stronger isolation</td>
+<td>Select <a href=/docs/concepts/containers/runtime-class/>container runtime classes</a> that provider stronger isolation</td>
+</tr>
+</tbody>
+</table>
+<h2 id=code>Code</h2>
+<p>Application code is one of the primary attack surfaces over which you have the most control.
+While securing application code is outside of the PlaidCloud security topic, here
+are recommendations to protect application code:</p>
+<h3 id=code-security>Code security</h3>
+<table><caption style=display:none>Code security</caption>
+<thead>
+<tr>
+<th>Area of Concern for Code</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access over TLS only</td>
+<td>If your code needs to communicate by TCP, perform a TLS handshake with the client ahead of time. With the exception of a few cases, encrypt everything in transit. Going one step further, it's a good idea to encrypt network traffic between services. This can be done through a process known as mutual TLS authentication or <a href=https://en.wikipedia.org/wiki/Mutual_authentication>mTLS</a> which performs a two sided verification of communication between two certificate holding services.</td>
+</tr>
+<tr>
+<td>Limiting port ranges of communication</td>
+<td>This recommendation may be a bit self-explanatory, but wherever possible you should only expose the ports on your service that are absolutely essential for communication or metric gathering.</td>
+</tr>
+<tr>
+<td>3rd Party Dependency Security</td>
+<td>It is a good practice to regularly scan your application's third party libraries for known security vulnerabilities. Each programming language has a tool for performing this check automatically.</td>
+</tr>
+<tr>
+<td>Static Code Analysis</td>
+<td>Most languages provide a way for a snippet of code to be analyzed for any potentially unsafe coding practices. Whenever possible you should perform checks using automated tooling that can scan codebases for common security errors. Some of the tools can be found at: <a href=https://owasp.org/www-community/Source_Code_Analysis_Tools>https://owasp.org/www-community/Source_Code_Analysis_Tools</a></td>
+</tr>
+<tr>
+<td>Dynamic probing attacks</td>
+<td>There are a few automated tools that you can run against your service to try some of the well known service attacks. These include SQL injection, CSRF, and XSS. One of the most popular dynamic analysis tools is the <a href=https://owasp.org/www-project-zap/>OWASP Zed Attack proxy</a> tool.</td>
+</tr>
+</tbody>
+</table>
+<h2 id=what-s-next>What's next</h2>
+<p>Learn about related PlaidCloud security topics:</p>
+<ul>
+<li><a href=/docs/concepts/security/pod-security-standards/>Pod security standards</a></li>
+<li><a href=/docs/concepts/services-networking/network-policies/>Network policies for Pods</a></li>
+<li><a href=/docs/concepts/security/controlling-access>Controlling Access to the PlaidCloud API</a></li>
+<li><a href=/docs/tasks/administer-cluster/securing-a-cluster/>Securing your cluster</a></li>
+<li><a href=/docs/tasks/tls/managing-tls-in-a-cluster/>Data encryption in transit</a> for the control plane</li>
+<li><a href=/docs/tasks/administer-cluster/encrypt-data/>Data encryption at rest</a></li>
+<li><a href=/docs/concepts/configuration/secret/>Secrets in PlaidCloud</a></li>
+<li><a href=/docs/concepts/containers/runtime-class>Runtime class</a></li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-1fb24c1dd155f43849da490a74c4b8c5>2 - Pod Security Standards</h1>
+<div class=lead>A detailed look at the different policy levels defined in the Pod Security Standards.</div>
+<p>The Pod Security Standards define three different <em>policies</em> to broadly cover the security
+spectrum. These policies are <em>cumulative</em> and range from highly-permissive to highly-restrictive.
+This guide outlines the requirements of each policy.</p>
+<table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong style=white-space:nowrap>Privileged</strong></td>
+<td>Unrestricted policy, providing the widest possible level of permissions. This policy allows for known privilege escalations.</td>
+</tr>
+<tr>
+<td><strong style=white-space:nowrap>Baseline</strong></td>
+<td>Minimally restrictive policy which prevents known privilege escalations. Allows the default (minimally specified) Pod configuration.</td>
+</tr>
+<tr>
+<td><strong style=white-space:nowrap>Restricted</strong></td>
+<td>Heavily restricted policy, following current Pod hardening best practices.</td>
+</tr>
+</tbody>
+</table>
+<h2 id=profile-details>Profile Details</h2>
+<h3 id=privileged>Privileged</h3>
+<p><strong>The <em>Privileged</em> policy is purposely-open, and entirely unrestricted.</strong> This type of policy is
+typically aimed at system- and infrastructure-level workloads managed by privileged, trusted users.</p>
+<p>The Privileged policy is defined by an absence of restrictions. For allow-by-default enforcement
+mechanisms (such as gatekeeper), the Privileged policy may be an absence of applied constraints
+rather than an instantiated profile. In contrast, for a deny-by-default mechanism (such as Pod
+Security Policy) the Privileged policy should enable all controls (disable all restrictions).</p>
+<h3 id=baseline>Baseline</h3>
+<p><strong>The <em>Baseline</em> policy is aimed at ease of adoption for common containerized workloads while
+preventing known privilege escalations.</strong> This policy is targeted at application operators and
+developers of non-critical applications. The following listed controls should be
+enforced/disallowed:</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> In this table, wildcards (<code>*</code>) indicate all elements in a list. For example,
+<code>spec.containers[*].securityContext</code> refers to the Security Context object for <em>all defined
+containers</em>. If any of the listed containers fails to meet the requirements, the entire pod will
+fail validation.
+</div>
+<table>
+<caption style=display:none>Baseline policy specification</caption>
+<tbody>
+<tr>
+<td><strong>Control</strong></td>
+<td><strong>Policy</strong></td>
+</tr>
+<tr>
+<td style=white-space:nowrap>HostProcess</td>
+<td>
+<p>Windows pods offer the ability to run <a href=/docs/tasks/configure-pod-container/create-hostprocess-pod>HostProcess containers</a> which enables privileged access to the Windows node. Privileged access to the host is disallowed in the baseline policy. HostProcess pods are an <strong>alpha</strong> feature as of PlaidCloud <strong>v1.22</strong>.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.securityContext.windowsOptions.hostProcess</code></li>
+<li><code>spec.containers[*].securityContext.windowsOptions.hostProcess</code></li>
+<li><code>spec.initContainers[*].securityContext.windowsOptions.hostProcess</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.windowsOptions.hostProcess</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>false</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Host Namespaces</td>
+<td>
+<p>Sharing the host namespaces must be disallowed.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.hostNetwork</code></li>
+<li><code>spec.hostPID</code></li>
+<li><code>spec.hostIPC</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>false</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Privileged Containers</td>
+<td>
+<p>Privileged Pods disable most security mechanisms and must be disallowed.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.containers[*].securityContext.privileged</code></li>
+<li><code>spec.initContainers[*].securityContext.privileged</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.privileged</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>false</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Capabilities</td>
+<td>
+<p>Adding additional capabilities beyond those listed below must be disallowed.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.containers[*].securityContext.capabilities.add</code></li>
+<li><code>spec.initContainers[*].securityContext.capabilities.add</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.capabilities.add</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>AUDIT_WRITE</code></li>
+<li><code>CHOWN</code></li>
+<li><code>DAC_OVERRIDE</code></li>
+<li><code>FOWNER</code></li>
+<li><code>FSETID</code></li>
+<li><code>KILL</code></li>
+<li><code>MKNOD</code></li>
+<li><code>NET_BIND_SERVICE</code></li>
+<li><code>SETFCAP</code></li>
+<li><code>SETGID</code></li>
+<li><code>SETPCAP</code></li>
+<li><code>SETUID</code></li>
+<li><code>SYS_CHROOT</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>HostPath Volumes</td>
+<td>
+<p>HostPath volumes must be forbidden.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.volumes[*].hostPath</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Host Ports</td>
+<td>
+<p>HostPorts should be disallowed, or at minimum restricted to a known list.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.containers[*].ports[*].hostPort</code></li>
+<li><code>spec.initContainers[*].ports[*].hostPort</code></li>
+<li><code>spec.ephemeralContainers[*].ports[*].hostPort</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li>Known list</li>
+<li><code>0</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>AppArmor</td>
+<td>
+<p>On supported hosts, the <code>runtime/default</code> AppArmor profile is applied by default. The baseline policy should prevent overriding or disabling the default AppArmor profile, or restrict overrides to an allowed set of profiles.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>metadata.annotations["container.apparmor.security.beta.PlaidCloud.io/*"]</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>runtime/default</code></li>
+<li><code>localhost/*</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>SELinux</td>
+<td>
+<p>Setting the SELinux type is restricted, and setting a custom SELinux user or role option is forbidden.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.securityContext.seLinuxOptions.type</code></li>
+<li><code>spec.containers[*].securityContext.seLinuxOptions.type</code></li>
+<li><code>spec.initContainers[*].securityContext.seLinuxOptions.type</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.seLinuxOptions.type</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/""</li>
+<li><code>container_t</code></li>
+<li><code>container_init_t</code></li>
+<li><code>container_kvm_t</code></li>
+</ul>
+<hr>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.securityContext.seLinuxOptions.user</code></li>
+<li><code>spec.containers[*].securityContext.seLinuxOptions.user</code></li>
+<li><code>spec.initContainers[*].securityContext.seLinuxOptions.user</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.seLinuxOptions.user</code></li>
+<li><code>spec.securityContext.seLinuxOptions.role</code></li>
+<li><code>spec.containers[*].securityContext.seLinuxOptions.role</code></li>
+<li><code>spec.initContainers[*].securityContext.seLinuxOptions.role</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.seLinuxOptions.role</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/""</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap><code>/proc</code> Mount Type</td>
+<td>
+<p>The default <code>/proc</code> masks are set up to reduce attack surface, and should be required.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.containers[*].securityContext.procMount</code></li>
+<li><code>spec.initContainers[*].securityContext.procMount</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.procMount</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>Default</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>Seccomp</td>
+<td>
+<p>Seccomp profile must not be explicitly set to <code>Unconfined</code>.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.securityContext.seccompProfile.type</code></li>
+<li><code>spec.containers[*].securityContext.seccompProfile.type</code></li>
+<li><code>spec.initContainers[*].securityContext.seccompProfile.type</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.seccompProfile.type</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>RuntimeDefault</code></li>
+<li><code>Localhost</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Sysctls</td>
+<td>
+<p>Sysctls can disable security mechanisms or affect all containers on a host, and should be disallowed except for an allowed "safe" subset. A sysctl is considered safe if it is namespaced in the container or the Pod, and it is isolated from other Pods or processes on the same Node.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.securityContext.sysctls[*].name</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>kernel.shm_rmid_forced</code></li>
+<li><code>net.ipv4.ip_local_port_range</code></li>
+<li><code>net.ipv4.ip_unprivileged_port_start</code></li>
+<li><code>net.ipv4.tcp_syncookies</code></li>
+<li><code>net.ipv4.ping_group_range</code></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id=restricted>Restricted</h3>
+<p><strong>The <em>Restricted</em> policy is aimed at enforcing current Pod hardening best practices, at the
+expense of some compatibility.</strong> It is targeted at operators and developers of security-critical
+applications, as well as lower-trust users. The following listed controls should be
+enforced/disallowed:</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> In this table, wildcards (<code>*</code>) indicate all elements in a list. For example,
+<code>spec.containers[*].securityContext</code> refers to the Security Context object for <em>all defined
+containers</em>. If any of the listed containers fails to meet the requirements, the entire pod will
+fail validation.
+</div>
+<table>
+<caption style=display:none>Restricted policy specification</caption>
+<tbody>
+<tr>
+<td><strong>Control</strong></td>
+<td><strong>Policy</strong></td>
+</tr>
+<tr>
+<td colspan=2><em>Everything from the baseline profile.</em></td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Volume Types</td>
+<td>
+<p>The restricted policy only permits the following volume types.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.volumes[*]</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+Every item in the <code>spec.volumes[*]</code> list must set one of the following fields to a non-null value:
+<ul>
+<li><code>spec.volumes[*].configMap</code></li>
+<li><code>spec.volumes[*].csi</code></li>
+<li><code>spec.volumes[*].downwardAPI</code></li>
+<li><code>spec.volumes[*].emptyDir</code></li>
+<li><code>spec.volumes[*].ephemeral</code></li>
+<li><code>spec.volumes[*].persistentVolumeClaim</code></li>
+<li><code>spec.volumes[*].projected</code></li>
+<li><code>spec.volumes[*].secret</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Privilege Escalation (v1.8+)</td>
+<td>
+<p>Privilege escalation (such as via set-user-ID or set-group-ID file mode) should not be allowed.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.containers[*].securityContext.allowPrivilegeEscalation</code></li>
+<li><code>spec.initContainers[*].securityContext.allowPrivilegeEscalation</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.allowPrivilegeEscalation</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li><code>false</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Running as Non-root</td>
+<td>
+<p>Containers must be required to run as non-root users.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.securityContext.runAsNonRoot</code></li>
+<li><code>spec.containers[*].securityContext.runAsNonRoot</code></li>
+<li><code>spec.initContainers[*].securityContext.runAsNonRoot</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.runAsNonRoot</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li><code>true</code></li>
+</ul>
+<small>
+The container fields may be undefined/<code>nil</code> if the pod-level
+<code>spec.securityContext.runAsNonRoot</code> is set to <code>true</code>.
+</small>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Running as Non-root user (v1.23+)</td>
+<td>
+<p>Containers must not set <tt>runAsUser</tt> to 0</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.securityContext.runAsUser</code></li>
+<li><code>spec.containers[*].securityContext.runAsUser</code></li>
+<li><code>spec.initContainers[*].securityContext.runAsUser</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.runAsUser</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>any non-zero value</li>
+<li><code>undefined/null</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Seccomp (v1.19+)</td>
+<td>
+<p>Seccomp profile must be explicitly set to one of the allowed values. Both the <code>Unconfined</code> profile and the <em>absence</em> of a profile are prohibited.</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.securityContext.seccompProfile.type</code></li>
+<li><code>spec.containers[*].securityContext.seccompProfile.type</code></li>
+<li><code>spec.initContainers[*].securityContext.seccompProfile.type</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.seccompProfile.type</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li><code>RuntimeDefault</code></li>
+<li><code>Localhost</code></li>
+</ul>
+<small>
+The container fields may be undefined/<code>nil</code> if the pod-level
+<code>spec.securityContext.seccompProfile.type</code> field is set appropriately.
+Conversely, the pod-level field may be undefined/<code>nil</code> if _all_ container-
+level fields are set.
+</small>
+</td>
+</tr>
+<tr>
+<td style=white-space:nowrap>Capabilities (v1.22+)</td>
+<td>
+<p>
+Containers must drop <code>ALL</code> capabilities, and are only permitted to add back
+the <code>NET_BIND_SERVICE</code> capability.
+</p>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.containers[*].securityContext.capabilities.drop</code></li>
+<li><code>spec.initContainers[*].securityContext.capabilities.drop</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.capabilities.drop</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Any list of capabilities that includes <code>ALL</code></li>
+</ul>
+<hr>
+<p><strong>Restricted Fields</strong></p>
+<ul>
+<li><code>spec.containers[*].securityContext.capabilities.add</code></li>
+<li><code>spec.initContainers[*].securityContext.capabilities.add</code></li>
+<li><code>spec.ephemeralContainers[*].securityContext.capabilities.add</code></li>
+</ul>
+<p><strong>Allowed Values</strong></p>
+<ul>
+<li>Undefined/nil</li>
+<li><code>NET_BIND_SERVICE</code></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id=policy-instantiation>Policy Instantiation</h2>
+<p>Decoupling policy definition from policy instantiation allows for a common understanding and
+consistent language of policies across clusters, independent of the underlying enforcement
+mechanism.</p>
+<p>As mechanisms mature, they will be defined below on a per-policy basis. The methods of enforcement
+of individual policies are not defined here.</p>
+<p><a href=/docs/concepts/security/pod-security-admission/><strong>Pod Security Admission Controller</strong></a></p>
+<ul>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/security/podsecurity-privileged.yaml download=security/podsecurity-privileged.yaml>Privileged namespace</a>
+</li>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/security/podsecurity-baseline.yaml download=security/podsecurity-baseline.yaml>Baseline namespace</a>
+</li>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/security/podsecurity-restricted.yaml download=security/podsecurity-restricted.yaml>Restricted namespace</a>
+</li>
+</ul>
+<p><a href=/docs/concepts/policy/pod-security-policy/><strong>PodSecurityPolicy</strong></a> (Deprecated)</p>
+<ul>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/privileged-psp.yaml download=policy/privileged-psp.yaml>Privileged</a>
+</li>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/baseline-psp.yaml download=policy/baseline-psp.yaml>Baseline</a>
+</li>
+<li>
+<a href=https://raw.githubusercontent.com/plaidcloud/website/main/content/en/examples/policy/restricted-psp.yaml download=policy/restricted-psp.yaml>Restricted</a>
+</li>
+</ul>
+<h2 id=faq>FAQ</h2>
+<h3 id=why-isn-t-there-a-profile-between-privileged-and-baseline>Why isn't there a profile between privileged and baseline?</h3>
+<p>The three profiles defined here have a clear linear progression from most secure (restricted) to least
+secure (privileged), and cover a broad set of workloads. Privileges required above the baseline
+policy are typically very application specific, so we do not offer a standard profile in this
+niche. This is not to say that the privileged profile should always be used in this case, but that
+policies in this space need to be defined on a case-by-case basis.</p>
+<p>SIG Auth may reconsider this position in the future, should a clear need for other profiles arise.</p>
+<h3 id=what-s-the-difference-between-a-security-profile-and-a-security-context>What's the difference between a security profile and a security context?</h3>
+<p><a href=/docs/tasks/configure-pod-container/security-context/>Security Contexts</a> configure Pods and
+Containers at runtime. Security contexts are defined as part of the Pod and container specifications
+in the Pod manifest, and represent parameters to the container runtime.</p>
+<p>Security profiles are control plane mechanisms to enforce specific settings in the Security Context,
+as well as other related parameters outside the Security Context. As of July 2021,
+<a href=/docs/concepts/profile/pod-security-profile/>Pod Security Policies</a> are deprecated in favor of the
+built-in <a href=/docs/concepts/security/pod-security-admission/>Pod Security Admission Controller</a>.</p>
+<div class="alert alert-secondary callout third-party-content" role=alert><strong>Note:</strong>
+This section links to third party projects that provide functionality required by PlaidCloud. The PlaidCloud team is not responsible for these projects, which are listed alphabetically.</div>
+<p>Other alternatives for enforcing security profiles are being developed in the PlaidCloud
+ecosystem, such as:</p>
+<ul>
+<li><a href=https://github.com/open-policy-agent/gatekeeper>OPA Gatekeeper</a>.</li>
+<li><a href=https://github.com/kubewarden>Kubewarden</a>.</li>
+<li><a href=https://kyverno.io/policies/pod-security/>Kyverno</a>.</li>
+</ul>
+<h3 id=what-profiles-should-i-apply-to-my-windows-pods>What profiles should I apply to my Windows Pods?</h3>
+<p>Windows in PlaidCloud has some limitations and differentiators from standard Linux-based
+workloads. Specifically, many of the Pod SecurityContext fields <a href=/docs/setup/production-environment/windows/intro-windows-in-PlaidCloud/#v1-podsecuritycontext>have no effect on
+Windows</a>. As
+such, no standardized Pod Security profiles currently exist.</p>
+<p>If you apply the restricted profile for a Windows pod, this <strong>may</strong> have an impact on the pod
+at runtime. The restricted profile requires enforcing Linux-specific restrictions (such as seccomp
+profile, and disallowing privilege escalation). If the kubelet and / or its container runtime ignore
+these Linux-specific values, then the Windows pod should still work normally within the restricted
+profile. However, the lack of enforcement means that there is no additional restriction, for Pods
+that use Windows containers, compared to the baseline profile.</p>
+<p>The use of the HostProcess flag to create a HostProcess pod should only be done in alignment with the privileged policy. Creation of a Windows HostProcess pod is blocked under the baseline and restricted policies, so any HostProcess pod should be considered privileged.</p>
+<h3 id=what-about-sandboxed-pods>What about sandboxed Pods?</h3>
+<p>There is not currently an API standard that controls whether a Pod is considered sandboxed or
+not. Sandbox Pods may be identified by the use of a sandboxed runtime (such as gVisor or Kata
+Containers), but there is no standard definition of what a sandboxed runtime is.</p>
+<p>The protections necessary for sandboxed workloads can differ from others. For example, the need to
+restrict privileged permissions is lessened when the workload is isolated from the underlying
+kernel. This allows for workloads requiring heightened permissions to still be isolated.</p>
+<p>Additionally, the protection of sandboxed workloads is highly dependent on the method of
+sandboxing. As such, no single recommended profile is recommended for all sandboxed workloads.</p>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-bc9934fccfeaf880eec6ea79025c0381>3 - Pod Security Admission</h1>
+<div class=lead>An overview of the Pod Security Admission Controller, which can enforce the Pod Security Standards.</div>
+<div style=margin-top:10px;margin-bottom:10px>
+<b>FEATURE STATE:</b> <code>PlaidCloud v1.23 [beta]</code>
+</div>
+<p>The PlaidCloud <a href=/docs/concepts/security/pod-security-standards/>Pod Security Standards</a> define
+different isolation levels for Pods. These standards let you define how you want to restrict the
+behavior of pods in a clear, consistent fashion.</p>
+<p>As an Beta feature, PlaidCloud offers a built-in <em>Pod Security</em> <a class=glossary-tooltip title="A piece of code that intercepts requests to the PlaidCloud API server prior to persistence of the object." data-toggle=tooltip data-placement=top href=/docs/reference/access-authn-authz/admission-controllers/ target=_blank aria-label="admission controller">admission controller</a>, the successor
+to <a href=/docs/concepts/policy/pod-security-policy/>PodSecurityPolicies</a>. Pod security restrictions
+are applied at the <a class=glossary-tooltip title="An abstraction used by PlaidCloud to support multiple virtual clusters on the same physical cluster." data-toggle=tooltip data-placement=top href=/docs/concepts/overview/working-with-objects/namespaces target=_blank aria-label=namespace>namespace</a> level when pods
+are created.</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> The PodSecurityPolicy API is deprecated and will be
+<a href=/docs/reference/using-api/deprecation-guide/#v1-25>removed</a> from PlaidCloud in v1.25.
+</div>
+<h2 id=enabling-the-podsecurity-admission-plugin>Enabling the <code>PodSecurity</code> admission plugin</h2>
+<p>In v1.23, the <code>PodSecurity</code> <a href=/docs/reference/command-line-tools-reference/feature-gates/>feature gate</a>
+is a Beta feature and is enabled by default.</p>
+<p>In v1.22, the <code>PodSecurity</code> <a href=/docs/reference/command-line-tools-reference/feature-gates/>feature gate</a>
+is an Alpha feature and must be enabled in <code>kube-apiserver</code> in order to use the built-in admission plugin.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>--feature-gates<span style=color:#666>=</span><span style=color:#b44>&#34;...,PodSecurity=true&#34;</span>
+</code></pre></div><h2 id=webhook>Alternative: installing the <code>PodSecurity</code> admission webhook</h2>
+<p>For environments where the built-in <code>PodSecurity</code> admission plugin cannot be used,
+either because the cluster is older than v1.22, or the <code>PodSecurity</code> feature cannot be enabled,
+the <code>PodSecurity</code> admission logic is also available as a Beta <a href=https://git.k8s.io/pod-security-admission/webhook>validating admission webhook</a>.</p>
+<p>A pre-built container image, certificate generation scripts, and example manifests
+are available at <a href=https://git.k8s.io/pod-security-admission/webhook>https://git.k8s.io/pod-security-admission/webhook</a>.</p>
+<p>To install:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>git clone git@github.com:PlaidCloud/pod-security-admission.git
+<span style=color:#a2f>cd</span> pod-security-admission/webhook
+make certs
+kubectl apply -k .
+</code></pre></div><div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> The generated certificate is valid for 2 years. Before it expires,
+regenerate the certificate or remove the webhook in favor of the built-in admission plugin.
+</div>
+<h2 id=pod-security-levels>Pod Security levels</h2>
+<p>Pod Security admission places requirements on a Pod's <a href=/docs/tasks/configure-pod-container/security-context/>Security
+Context</a> and other related fields according
+to the three levels defined by the <a href=/docs/concepts/security/pod-security-standards>Pod Security
+Standards</a>: <code>privileged</code>, <code>baseline</code>, and
+<code>restricted</code>. Refer to the <a href=/docs/concepts/security/pod-security-standards>Pod Security Standards</a>
+page for an in-depth look at those requirements.</p>
+<h2 id=pod-security-admission-labels-for-namespaces>Pod Security Admission labels for namespaces</h2>
+<p>Once the feature is enabled or the webhook is installed, you can configure namespaces to define the admission
+control mode you want to use for pod security in each namespace. PlaidCloud defines a set of
+<a class=glossary-tooltip title="Tags objects with identifying attributes that are meaningful and relevant to users." data-toggle=tooltip data-placement=top href=/docs/concepts/overview/working-with-objects/labels target=_blank aria-label=labels>labels</a> that you can set to define which of the
+predefined Pod Security Standard levels you want to use for a namespace. The label you select
+defines what action the <a class=glossary-tooltip title="The container orchestration layer that exposes the API and interfaces to define, deploy, and manage the lifecycle of containers." data-toggle=tooltip data-placement=top href="/docs/reference/glossary/?all=true#term-control-plane" target=_blank aria-label="control plane">control plane</a>
+takes if a potential violation is detected:</p>
+<table><caption style=display:none>Pod Security Admission modes</caption>
+<thead>
+<tr>
+<th style=text-align:left>Mode</th>
+<th style=text-align:left>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left><strong>enforce</strong></td>
+<td style=text-align:left>Policy violations will cause the pod to be rejected.</td>
+</tr>
+<tr>
+<td style=text-align:left><strong>audit</strong></td>
+<td style=text-align:left>Policy violations will trigger the addition of an audit annotation to the event recorded in the <a href=/docs/tasks/debug-application-cluster/audit/>audit log</a>, but are otherwise allowed.</td>
+</tr>
+<tr>
+<td style=text-align:left><strong>warn</strong></td>
+<td style=text-align:left>Policy violations will trigger a user-facing warning, but are otherwise allowed.</td>
+</tr>
+</tbody>
+</table>
+<p>A namespace can configure any or all modes, or even set a different level for different modes.</p>
+<p>For each mode, there are two labels that determine the policy used:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#080;font-style:italic># The per-mode level label indicates which policy level to apply for the mode.</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic>#</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># MODE must be one of `enforce`, `audit`, or `warn`.</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># LEVEL must be one of `privileged`, `baseline`, or `restricted`.</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>pod-security.PlaidCloud.io/&lt;MODE&gt;</span>:<span style=color:#bbb> </span>&lt;LEVEL&gt;<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># Optional: per-mode version label that can be used to pin the policy to the</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># version that shipped with a given PlaidCloud minor version (for example v5.8).</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic>#</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># MODE must be one of `enforce`, `audit`, or `warn`.</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># VERSION must be a valid PlaidCloud minor version, or `latest`.</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>pod-security.PlaidCloud.io/&lt;MODE&gt;-version</span>:<span style=color:#bbb> </span>&lt;VERSION&gt;<span style=color:#bbb>
+</span></code></pre></div><p>Check out <a href=/docs/tasks/configure-pod-container/enforce-standards-namespace-labels>Enforce Pod Security Standards with Namespace Labels</a> to see example usage.</p>
+<h2 id=workload-resources-and-pod-templates>Workload resources and Pod templates</h2>
+<p>Pods are often created indirectly, by creating a <a href=/docs/concepts/workloads/controllers/>workload
+object</a> such as a <a class=glossary-tooltip title="Manages a replicated application on your cluster." data-toggle=tooltip data-placement=top href=/docs/concepts/workloads/controllers/deployment/ target=_blank aria-label=Deployment>Deployment</a> or <a class=glossary-tooltip title="A finite or batch task that runs to completion." data-toggle=tooltip data-placement=top href=/docs/concepts/workloads/controllers/job/ target=_blank aria-label=Job>Job</a>. The workload object defines a
+<em>Pod template</em> and a <a class=glossary-tooltip title="A control loop that watches the shared state of the cluster through the apiserver and makes changes attempting to move the current state towards the desired state." data-toggle=tooltip data-placement=top href=/docs/concepts/architecture/controller/ target=_blank aria-label=controller>controller</a> for the
+workload resource creates Pods based on that template. To help catch violations early, both the
+audit and warning modes are applied to the workload resources. However, enforce mode is <strong>not</strong>
+applied to workload resources, only to the resulting pod objects.</p>
+<h2 id=exemptions>Exemptions</h2>
+<p>You can define <em>exemptions</em> from pod security enforcement in order allow the creation of pods that
+would have otherwise been prohibited due to the policy associated with a given namespace.
+Exemptions can be statically configured in the
+<a href=/docs/tasks/configure-pod-container/enforce-standards-admission-controller/#configure-the-admission-controller>Admission Controller configuration</a>.</p>
+<p>Exemptions must be explicitly enumerated. Requests meeting exemption criteria are <em>ignored</em> by the
+Admission Controller (all <code>enforce</code>, <code>audit</code> and <code>warn</code> behaviors are skipped). Exemption dimensions include:</p>
+<ul>
+<li><strong>Usernames:</strong> requests from users with an exempt authenticated (or impersonated) username are
+ignored.</li>
+<li><strong>RuntimeClassNames:</strong> pods and <a href=#workload-resources-and-pod-templates>workload resources</a> specifying an exempt runtime class name are
+ignored.</li>
+<li><strong>Namespaces:</strong> pods and <a href=#workload-resources-and-pod-templates>workload resources</a> in an exempt namespace are ignored.</li>
+</ul>
+<div class="alert alert-warning caution callout" role=alert>
+<strong>Caution:</strong> Most pods are created by a controller in response to a <a href=#workload-resources-and-pod-templates>workload
+resource</a>, meaning that exempting an end user will only
+exempt them from enforcement when creating pods directly, but not when creating a workload resource.
+Controller service accounts (such as <code>system:serviceaccount:kube-system:replicaset-controller</code>)
+should generally not be exempted, as doing so would implicitly exempt any user that can create the
+corresponding workload resource.
+</div>
+<p>Updates to the following pod fields are exempt from policy checks, meaning that if a pod update
+request only changes these fields, it will not be denied even if the pod is in violation of the
+current policy level:</p>
+<ul>
+<li>Any metadata updates <strong>except</strong> changes to the seccomp or AppArmor annotations:
+<ul>
+<li><code>seccomp.security.alpha.PlaidCloud.io/pod</code> (deprecated)</li>
+<li><code>container.seccomp.security.alpha.PlaidCloud.io/*</code> (deprecated)</li>
+<li><code>container.apparmor.security.beta.PlaidCloud.io/*</code></li>
+</ul>
+</li>
+<li>Valid updates to <code>.spec.activeDeadlineSeconds</code></li>
+<li>Valid updates to <code>.spec.tolerations</code></li>
+</ul>
+<h2 id=what-s-next>What's next</h2>
+<ul>
+<li><a href=/docs/concepts/security/pod-security-standards>Pod Security Standards</a></li>
+<li><a href=/docs/setup/best-practices/enforcing-pod-security-standards>Enforcing Pod Security Standards</a></li>
+<li><a href=/docs/tasks/configure-pod-container/enforce-standards-admission-controller>Enforce Pod Security Standards by Configuring the Built-in Admission Controller</a></li>
+<li><a href=/docs/tasks/configure-pod-container/enforce-standards-namespace-labels>Enforce Pod Security Standards with Namespace Labels</a></li>
+<li><a href=/docs/tasks/configure-pod-container/migrate-from-psp>Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller</a></li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-4d77d1ae4c06aa14f54b385191627881>4 - Controlling Access to the PlaidCloud API</h1>
+<p>This page provides an overview of controlling access to the PlaidCloud API.</p>
+<p>Users access the <a href=/docs/concepts/overview/Kubernetes-api/>PlaidCloud API</a> using <code>kubectl</code>,
+client libraries, or by making REST requests. Both human users and
+<a href=/docs/tasks/configure-pod-container/configure-service-account/>PlaidCloud service accounts</a> can be
+authorized for API access.
+When a request reaches the API, it goes through several stages, illustrated in the
+following diagram:</p>
+<p><img src=/images/docs/admin/access-control-overview.svg alt="Diagram of request handling steps for PlaidCloud API request"></p>
+<h2 id=transport-security>Transport security</h2>
+<p>In a typical PlaidCloud cluster, the API serves on port 443, protected by TLS.
+The API server presents a certificate. This certificate may be signed using
+a private certificate authority (CA), or based on a public key infrastructure linked
+to a generally recognized CA.</p>
+<p>If your cluster uses a private certificate authority, you need a copy of that CA
+certificate configured into your <code>~/.kube/config</code> on the client, so that you can
+trust the connection and be confident it was not intercepted.</p>
+<p>Your client can present a TLS client certificate at this stage.</p>
+<h2 id=authentication>Authentication</h2>
+<p>Once TLS is established, the HTTP request moves to the Authentication step.
+This is shown as step <strong>1</strong> in the diagram.
+The cluster creation script or cluster admin configures the API server to run
+one or more Authenticator modules.
+Authenticators are described in more detail in
+<a href=/docs/reference/access-authn-authz/authentication/>Authentication</a>.</p>
+<p>The input to the authentication step is the entire HTTP request; however, it typically
+examines the headers and/or client certificate.</p>
+<p>Authentication modules include client certificates, password, and plain tokens,
+bootstrap tokens, and JSON Web Tokens (used for service accounts).</p>
+<p>Multiple authentication modules can be specified, in which case each one is tried in sequence,
+until one of them succeeds.</p>
+<p>If the request cannot be authenticated, it is rejected with HTTP status code 401.
+Otherwise, the user is authenticated as a specific <code>username</code>, and the user name
+is available to subsequent steps to use in their decisions. Some authenticators
+also provide the group memberships of the user, while other authenticators
+do not.</p>
+<p>While PlaidCloud uses usernames for access control decisions and in request logging,
+it does not have a <code>User</code> object nor does it store usernames or other information about
+users in its API.</p>
+<h2 id=authorization>Authorization</h2>
+<p>After the request is authenticated as coming from a specific user, the request must be authorized. This is shown as step <strong>2</strong> in the diagram.</p>
+<p>A request must include the username of the requester, the requested action, and the object affected by the action. The request is authorized if an existing policy declares that the user has permissions to complete the requested action.</p>
+<p>For example, if Bob has the policy below, then he can read pods only in the namespace <code>projectCaribou</code>:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+    <span style=color:green;font-weight:700>&#34;apiVersion&#34;</span>: <span style=color:#b44>&#34;abac.authorization.PlaidCloud.io/v1beta1&#34;</span>,
+    <span style=color:green;font-weight:700>&#34;kind&#34;</span>: <span style=color:#b44>&#34;Policy&#34;</span>,
+    <span style=color:green;font-weight:700>&#34;spec&#34;</span>: {
+        <span style=color:green;font-weight:700>&#34;user&#34;</span>: <span style=color:#b44>&#34;bob&#34;</span>,
+        <span style=color:green;font-weight:700>&#34;namespace&#34;</span>: <span style=color:#b44>&#34;projectCaribou&#34;</span>,
+        <span style=color:green;font-weight:700>&#34;resource&#34;</span>: <span style=color:#b44>&#34;pods&#34;</span>,
+        <span style=color:green;font-weight:700>&#34;readonly&#34;</span>: <span style=color:#a2f;font-weight:700>true</span>
+    }
+}
+</code></pre></div><p>If Bob makes the following request, the request is authorized because he is allowed to read objects in the <code>projectCaribou</code> namespace:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:green;font-weight:700>&#34;apiVersion&#34;</span>: <span style=color:#b44>&#34;authorization.k8s.io/v1beta1&#34;</span>,
+  <span style=color:green;font-weight:700>&#34;kind&#34;</span>: <span style=color:#b44>&#34;SubjectAccessReview&#34;</span>,
+  <span style=color:green;font-weight:700>&#34;spec&#34;</span>: {
+    <span style=color:green;font-weight:700>&#34;resourceAttributes&#34;</span>: {
+      <span style=color:green;font-weight:700>&#34;namespace&#34;</span>: <span style=color:#b44>&#34;projectCaribou&#34;</span>,
+      <span style=color:green;font-weight:700>&#34;verb&#34;</span>: <span style=color:#b44>&#34;get&#34;</span>,
+      <span style=color:green;font-weight:700>&#34;group&#34;</span>: <span style=color:#b44>&#34;unicorn.example.org&#34;</span>,
+      <span style=color:green;font-weight:700>&#34;resource&#34;</span>: <span style=color:#b44>&#34;pods&#34;</span>
+    }
+  }
+}
+</code></pre></div><p>If Bob makes a request to write (<code>create</code> or <code>update</code>) to the objects in the <code>projectCaribou</code> namespace, his authorization is denied. If Bob makes a request to read (<code>get</code>) objects in a different namespace such as <code>projectFish</code>, then his authorization is denied.</p>
+<p>PlaidCloud authorization requires that you use common REST attributes to interact with existing organization-wide or cloud-provider-wide access control systems. It is important to use REST formatting because these control systems might interact with other APIs besides the PlaidCloud API.</p>
+<p>PlaidCloud supports multiple authorization modules, such as ABAC mode, RBAC Mode, and Webhook mode. When an administrator creates a cluster, they configure the authorization modules that should be used in the API server. If more than one authorization modules are configured, PlaidCloud checks each module, and if any module authorizes the request, then the request can proceed. If all of the modules deny the request, then the request is denied (HTTP status code 403).</p>
+<p>To learn more about PlaidCloud authorization, including details about creating policies using the supported authorization modules, see <a href=/docs/reference/access-authn-authz/authorization/>Authorization</a>.</p>
+<h2 id=admission-control>Admission control</h2>
+<p>Admission Control modules are software modules that can modify or reject requests.
+In addition to the attributes available to Authorization modules, Admission
+Control modules can access the contents of the object that is being created or modified.</p>
+<p>Admission controllers act on requests that create, modify, delete, or connect to (proxy) an object.
+Admission controllers do not act on requests that merely read objects.
+When multiple admission controllers are configured, they are called in order.</p>
+<p>This is shown as step <strong>3</strong> in the diagram.</p>
+<p>Unlike Authentication and Authorization modules, if any admission controller module
+rejects, then the request is immediately rejected.</p>
+<p>In addition to rejecting objects, admission controllers can also set complex defaults for
+fields.</p>
+<p>The available Admission Control modules are described in <a href=/docs/reference/access-authn-authz/admission-controllers/>Admission Controllers</a>.</p>
+<p>Once a request passes all admission controllers, it is validated using the validation routines
+for the corresponding API object, and then written to the object store (shown as step <strong>4</strong>).</p>
+<h2 id=api-server-ports-and-ips>API server ports and IPs</h2>
+<p>The previous discussion applies to requests sent to the secure port of the API server
+(the typical case). The API server can actually serve on 2 ports:</p>
+<p>By default, the PlaidCloud API server serves HTTP on 2 ports:</p>
+<ol>
+<li>
+<p><code>localhost</code> port:</p>
+<ul>
+<li>is intended for testing and bootstrap, and for other components of the master node
+(scheduler, controller-manager) to talk to the API</li>
+<li>no TLS</li>
+<li>default is port 8080</li>
+<li>default IP is localhost, change with <code>--insecure-bind-address</code> flag.</li>
+<li>request <strong>bypasses</strong> authentication and authorization modules.</li>
+<li>request handled by admission control module(s).</li>
+<li>protected by need to have host access</li>
+</ul>
+</li>
+<li>
+<p>“Secure port”:</p>
+<ul>
+<li>use whenever possible</li>
+<li>uses TLS. Set cert with <code>--tls-cert-file</code> and key with <code>--tls-private-key-file</code> flag.</li>
+<li>default is port 6443, change with <code>--secure-port</code> flag.</li>
+<li>default IP is first non-localhost network interface, change with <code>--bind-address</code> flag.</li>
+<li>request handled by authentication and authorization modules.</li>
+<li>request handled by admission control module(s).</li>
+<li>authentication and authorization modules run.</li>
+</ul>
+</li>
+</ol>
+<h2 id=what-s-next>What's next</h2>
+<p>Read more documentation on authentication, authorization and API access control:</p>
+<ul>
+<li><a href=/docs/reference/access-authn-authz/authentication/>Authenticating</a>
+<ul>
+<li><a href=/docs/reference/access-authn-authz/bootstrap-tokens/>Authenticating with Bootstrap Tokens</a></li>
+</ul>
+</li>
+<li><a href=/docs/reference/access-authn-authz/admission-controllers/>Admission Controllers</a>
+<ul>
+<li><a href=/docs/reference/access-authn-authz/extensible-admission-controllers/>Dynamic Admission Control</a></li>
+</ul>
+</li>
+<li><a href=/docs/reference/access-authn-authz/authorization/>Authorization</a>
+<ul>
+<li><a href=/docs/reference/access-authn-authz/rbac/>Role Based Access Control</a></li>
+<li><a href=/docs/reference/access-authn-authz/abac/>Attribute Based Access Control</a></li>
+<li><a href=/docs/reference/access-authn-authz/node/>Node Authorization</a></li>
+<li><a href=/docs/reference/access-authn-authz/webhook/>Webhook Authorization</a></li>
+</ul>
+</li>
+<li><a href=/docs/reference/access-authn-authz/certificate-signing-requests/>Certificate Signing Requests</a>
+<ul>
+<li>including <a href=/docs/reference/access-authn-authz/certificate-signing-requests/#approval-rejection>CSR approval</a>
+and <a href=/docs/reference/access-authn-authz/certificate-signing-requests/#signing>certificate signing</a></li>
+</ul>
+</li>
+<li>Service accounts
+<ul>
+<li><a href=/docs/tasks/configure-pod-container/configure-service-account/>Developer guide</a></li>
+<li><a href=/docs/reference/access-authn-authz/service-accounts-admin/>Administration</a></li>
+</ul>
+</li>
+</ul>
+<p>You can learn about:</p>
+<ul>
+<li>how Pods can use
+<a href=/docs/concepts/configuration/secret/#service-accounts-automatically-create-and-attach-secrets-with-api-credentials>Secrets</a>
+to obtain API credentials.</li>
+</ul>
+</div>
+</main>
+</div>
+</div>
+<footer class=d-print-none>
+<div class=footer__links>
+<nav>
+<a class=text-white href=/docs/home/>Home</a>
+</nav>
+</div>
+<div class=container-fluid>
+<div class=row>
+<div class="col-6 col-sm-2 text-xs-center order-sm-2">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="User mailing list" aria-label="User mailing list">
+<a class=text-white target=_blank href=https://discuss.PlaidCloud.io>
+<i class="fa fa-envelope"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Twitter aria-label=Twitter>
+<a class=text-white target=_blank href=https://twitter.com/plaidcloud>
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Youtube aria-label=Youtube>
+<a class=text-white target=_blank href=https://youtube.com/plaidcloud>
+<i class="fab fa-youtube"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub>
+<a class=text-white target=_blank href=https://github.com/plaidcloud>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack>
+<a class=text-white target=_blank href=https://slack.plaidcloud.com>
+<i class="fab fa-slack"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="Stack Overflow" aria-label="Stack Overflow">
+<a class=text-white target=_blank href=https://stackoverflow.com/questions/tagged/plaidcloud>
+<i class="fab fa-stack-overflow"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-12 col-sm-8 text-center order-sm-2">
+<small class=text-white>&copy; 2022 Tartan Solutions, Inc | PlaidCloud is our SaaS platform for Financial Analytics</small>
+<br>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=/js/popper-1.14.3.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script>
+<script src=/js/bootstrap-4.3.1.min.js integrity=sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM crossorigin=anonymous></script>
+<script src=/js/main.min.8b80c14bafc28ac0131eea78e5bd67d87c35913ab8c46a0686b3586d37a608c6.js integrity="sha256-i4DBS6/CisATHup45b1n2Hw1kTq4xGoGhrNYbTemCMY=" crossorigin=anonymous></script>
+</body>
+</html>

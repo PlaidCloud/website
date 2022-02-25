@@ -1,0 +1,13 @@
+User-agent: *
+
+Disallow: /legacy/
+Disallow: /v1.0/
+Disallow: /v1.1/
+Disallow: /404/
+Disallow: /404.html
+
+Allow: /docs/reference/Kubernetes-api/api-index/
+Allow: /docs/reference/Kubernetes-api/labels-annotations-taints/
+Disallow: /docs/reference/Kubernetes-api/
+
+SITEMAP: https://plaidcloud.com/sitemap.xml

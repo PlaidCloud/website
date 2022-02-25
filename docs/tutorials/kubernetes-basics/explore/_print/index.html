@@ -1,0 +1,318 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta name=ROBOTS content="INDEX, FOLLOW">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-36037335-10')</script>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=canonical type=text/html href=https://plaidcloud.com/docs/tutorials/kubernetes-basics/explore/>
+<link rel="shortcut icon" type=image/png href=/images/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=manifest href=/manifest.webmanifest>
+<link rel=apple-touch-icon href=/images/PlaidCloud-192x192.png>
+<title>Explore Your App | PlaidCloud</title><meta property="og:title" content="Explore Your App">
+<meta property="og:description" content="Unified Financial Analytics">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plaidcloud.com/docs/tutorials/kubernetes-basics/explore/"><meta property="og:site_name" content="PlaidCloud">
+<meta itemprop=name content="Explore Your App">
+<meta itemprop=description content="Unified Financial Analytics"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Explore Your App">
+<meta name=twitter:description content="Unified Financial Analytics">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-00000000-0','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<link rel=preload href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css as=style>
+<link href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css rel=stylesheet integrity>
+<script src=/js/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=anonymous></script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Organization","url":"https://plaidcloud.com","logo":"https://plaidcloud.com/images/favicon.ico","potentialAction":{"@type":"SearchAction","target":"https://plaidcloud.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<meta name=theme-color content="#326ce5">
+<link rel=stylesheet href=/css/feature-states.css>
+<meta name=description content>
+<meta property="og:description" content>
+<meta name=twitter:description content>
+<meta property="og:url" content="https://plaidcloud.com/docs/tutorials/kubernetes-basics/explore/">
+<meta property="og:title" content="Explore Your App">
+<meta name=twitter:title content="Explore Your App">
+<meta name=twitter:image content="https://plaidcloud.com/images/favicon.ico">
+<meta name=twitter:image:alt content="PlaidCloud">
+<meta property="og:image" content="/images/PlaidCloud-horizontal-color.png">
+<meta property="og:type" content="article">
+<script src=/js/script.js></script>
+</head>
+<body class=td-section>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar" data-auto-burger=primary>
+<a class=navbar-brand href=/></a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+<li class="nav-item mr-2 mb-lg-0">
+<a class="nav-link active" href=/docs/>Documentation</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/api/>APIs</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidxl/>PlaidXL</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidlink/>PlaidLink</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/tips/>Tips & Tricks</span></a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+Versions
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/releases>Release Information</a>
+<a class=dropdown-item href=https://docs.plaidcloud.com/docs/tutorials/kubernetes-basics/explore/>v5.10</a>
+<a class=dropdown-item href=https://v5-9.docs.plaidcloud.com/docs/tutorials/kubernetes-basics/explore/>v5.9</a>
+<a class=dropdown-item href=https://v5-8.docs.plaidcloud.com/docs/tutorials/kubernetes-basics/explore/>v5.8</a>
+<a class=dropdown-item href=https://v5-7.docs.plaidcloud.com/docs/tutorials/kubernetes-basics/explore/>v5.7</a>
+<a class=dropdown-item href=https://v5-6.docs.plaidcloud.com/docs/tutorials/kubernetes-basics/explore/>v5.6</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdownMenuLink role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+English
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/de/>Deutsch</a>
+<a class=dropdown-item href=/es/>Español</a>
+</div>
+</li>
+</ul>
+</div>
+<button id=hamburger onclick=kub.toggleMenu() data-auto-burger-exclude><div></div></button>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+</div>
+<div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+</div>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<div class=td-content>
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href=# onclick="return print(),!1">Click here to print</a>.
+</p><p>
+<a href=/docs/tutorials/kubernetes-basics/explore/>Return to the regular view of this page</a>.
+</p>
+</div>
+<h1 class=title>Explore Your App</h1>
+<ul>
+<li>1: <a href=#pg-2771f4e8c45321b17cb0114a2d266453>Viewing Pods and Nodes</a></li>
+<li>2: <a href=#pg-4b01eab98a9844ad91131079654199dd>Interactive Tutorial - Exploring Your App</a></li>
+</ul>
+<div class=content>
+</div>
+</div>
+<div class=td-content>
+<h1 id=pg-2771f4e8c45321b17cb0114a2d266453>1 - Viewing Pods and Nodes</h1><!doctype html>
+<html lang=en>
+<body>
+<link href=/docs/tutorials/PlaidCloud-basics/public/css/styles.css rel=stylesheet>
+<div class=layout id=top>
+<main class=content>
+<div class=row>
+<div class=col-md-8>
+<h3>Objectives</h3>
+<ul>
+<li>Learn about PlaidCloud Pods.</li>
+<li>Learn about PlaidCloud Nodes.</li>
+<li>Troubleshoot deployed applications.</li>
+</ul>
+</div>
+<div class=col-md-8>
+<h2>PlaidCloud Pods</h2>
+<p>When you created a Deployment in Module <a href=/docs/tutorials/PlaidCloud-basics/deploy-app/deploy-intro/>2</a>, PlaidCloud created a <b>Pod</b> to host your application instance. A Pod is a PlaidCloud abstraction that represents a group of one or more application containers (such as Docker), and some shared resources for those containers. Those resources include:</p>
+<ul>
+<li>Shared storage, as Volumes</li>
+<li>Networking, as a unique cluster IP address</li>
+<li>Information about how to run each container, such as the container image version or specific ports to use</li>
+</ul>
+<p>A Pod models an application-specific "logical host" and can contain different application containers which are relatively tightly coupled. For example, a Pod might include both the container with your Node.js app as well as a different container that feeds the data to be published by the Node.js webserver. The containers in a Pod share an IP Address and port space, are always co-located and co-scheduled, and run in a shared context on the same Node.</p>
+<p>Pods are the atomic unit on the PlaidCloud platform. When we create a Deployment on PlaidCloud, that Deployment creates Pods with containers inside them (as opposed to creating containers directly). Each Pod is tied to the Node where it is scheduled, and remains there until termination (according to restart policy) or deletion. In case of a Node failure, identical Pods are scheduled on other available Nodes in the cluster.</p>
+</div>
+<div class=col-md-4>
+<div class="content__box content__box_lined">
+<h3>Summary:</h3>
+<ul>
+<li>Pods</li>
+<li>Nodes</li>
+<li>Kubectl main commands</li>
+</ul>
+</div>
+<div class="content__box content__box_fill">
+<p><i>
+A Pod is a group of one or more application containers (such as Docker) and includes shared storage (volumes), IP address and information about how to run them.
+</i></p>
+</div>
+</div>
+</div>
+<br>
+<div class=row>
+<div class=col-md-8>
+<h2 style=color:#3771e3>Pods overview</h2>
+</div>
+</div>
+<div class=row>
+<div class=col-md-8>
+<p><img src=/docs/tutorials/PlaidCloud-basics/public/images/module_03_pods.svg></p>
+</div>
+</div>
+<br>
+<div class=row>
+<div class=col-md-8>
+<h2>Nodes</h2>
+<p>A Pod always runs on a <b>Node</b>. A Node is a worker machine in PlaidCloud and may be either a virtual or a physical machine, depending on the cluster. Each Node is managed by the control plane. A Node can have multiple pods, and the PlaidCloud control plane automatically handles scheduling the pods across the Nodes in the cluster. The control plane's automatic scheduling takes into account the available resources on each Node.</p>
+<p>Every PlaidCloud Node runs at least:</p>
+<ul>
+<li>Kubelet, a process responsible for communication between the PlaidCloud control plane and the Node; it manages the Pods and the containers running on a machine.</li>
+<li>A container runtime (like Docker) responsible for pulling the container image from a registry, unpacking the container, and running the application.</li>
+</ul>
+</div>
+<div class=col-md-4>
+<div class="content__box content__box_fill">
+<p><i> Containers should only be scheduled together in a single Pod if they are tightly coupled and need to share resources such as disk. </i></p>
+</div>
+</div>
+</div>
+<br>
+<div class=row>
+<div class=col-md-8>
+<h2 style=color:#3771e3>Node overview</h2>
+</div>
+</div>
+<div class=row>
+<div class=col-md-8>
+<p><img src=/docs/tutorials/PlaidCloud-basics/public/images/module_03_nodes.svg></p>
+</div>
+</div>
+<br>
+<div class=row>
+<div class=col-md-8>
+<h2>Troubleshooting with kubectl</h2>
+<p>In Module <a href=/docs/tutorials/PlaidCloud-basics/deploy-app/deploy-intro/>2</a>, you used Kubectl command-line interface. You'll continue to use it in Module 3 to get information about deployed applications and their environments. The most common operations can be done with the following kubectl commands:</p>
+<ul>
+<li><b>kubectl get</b> - list resources</li>
+<li><b>kubectl describe</b> - show detailed information about a resource</li>
+<li><b>kubectl logs</b> - print the logs from a container in a pod</li>
+<li><b>kubectl exec</b> - execute a command on a container in a pod</li>
+</ul>
+<p>You can use these commands to see when applications were deployed, what their current statuses are, where they are running and what their configurations are.</p>
+<p>Now that we know more about our cluster components and the command line, let's explore our application.</p>
+</div>
+<div class=col-md-4>
+<div class="content__box content__box_fill">
+<p><i> A node is a worker machine in PlaidCloud and may be a VM or physical machine, depending on the cluster. Multiple Pods can run on one Node. </i></p>
+</div>
+</div>
+</div>
+<br>
+<div class=row>
+<div class=col-md-12>
+<a class="btn btn-lg btn-success" href=/docs/tutorials/PlaidCloud-basics/explore/explore-interactive/ role=button>Start Interactive Tutorial <span class=btn__next>›</span></a>
+</div>
+</div>
+</main>
+</div>
+</body>
+</html>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-4b01eab98a9844ad91131079654199dd>2 - Interactive Tutorial - Exploring Your App</h1><!doctype html>
+<html lang=en>
+<body>
+<link href=/docs/tutorials/PlaidCloud-basics/public/css/styles.css rel=stylesheet>
+<link href=/docs/tutorials/PlaidCloud-basics/public/css/overrides.css rel=stylesheet>
+<script src=https://katacoda.com/embed.js></script>
+<div class=layout id=top>
+<main class="content katacoda-content">
+<br>
+<div class=katacoda>
+<div class=katacoda__alert>
+To interact with the Terminal, please use the desktop/tablet version
+</div>
+<div class=katacoda__box id=inline-terminal-1 data-katacoda-id=PlaidCloud-bootcamp/4 data-katacoda-color=326de6 data-katacoda-secondary=273d6d data-katacoda-hideintro=false data-katacoda-prompt="PlaidCloud Bootcamp Terminal" style=height:600px>
+</div>
+</div>
+<div class=row>
+<div class=col-md-12>
+<a class="btn btn-lg btn-success" href=/docs/tutorials/PlaidCloud-basics/deploy-app/deploy-intro/ role=button>&lt; Return to Module 2<span class=btn></span></a>
+<a class="btn btn-lg btn-success" href=/docs/tutorials/PlaidCloud-basics/ role=button>Home<span></span></a>
+<a class="btn btn-lg btn-success" href=/docs/tutorials/PlaidCloud-basics/expose/expose-intro/ role=button>Continue to Module 4 ><span class=btn></span></a>
+</div>
+</div>
+</main>
+</div>
+</body>
+</html>
+</div>
+</main>
+</div>
+</div>
+<footer class=d-print-none>
+<div class=footer__links>
+<nav>
+<a class=text-white href=/docs/home/>Home</a>
+</nav>
+</div>
+<div class=container-fluid>
+<div class=row>
+<div class="col-6 col-sm-2 text-xs-center order-sm-2">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="User mailing list" aria-label="User mailing list">
+<a class=text-white target=_blank href=https://discuss.PlaidCloud.io>
+<i class="fa fa-envelope"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Twitter aria-label=Twitter>
+<a class=text-white target=_blank href=https://twitter.com/plaidcloud>
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Youtube aria-label=Youtube>
+<a class=text-white target=_blank href=https://youtube.com/plaidcloud>
+<i class="fab fa-youtube"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub>
+<a class=text-white target=_blank href=https://github.com/plaidcloud>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack>
+<a class=text-white target=_blank href=https://slack.plaidcloud.com>
+<i class="fab fa-slack"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="Stack Overflow" aria-label="Stack Overflow">
+<a class=text-white target=_blank href=https://stackoverflow.com/questions/tagged/plaidcloud>
+<i class="fab fa-stack-overflow"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-12 col-sm-8 text-center order-sm-2">
+<small class=text-white>&copy; 2022 Tartan Solutions, Inc | PlaidCloud is our SaaS platform for Financial Analytics</small>
+<br>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=/js/popper-1.14.3.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script>
+<script src=/js/bootstrap-4.3.1.min.js integrity=sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM crossorigin=anonymous></script>
+<script src=/js/main.min.8b80c14bafc28ac0131eea78e5bd67d87c35913ab8c46a0686b3586d37a608c6.js integrity="sha256-i4DBS6/CisATHup45b1n2Hw1kTq4xGoGhrNYbTemCMY=" crossorigin=anonymous></script>
+</body>
+</html>

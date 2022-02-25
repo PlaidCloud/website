@@ -1,0 +1,296 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta name=ROBOTS content="INDEX, FOLLOW">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-36037335-10')</script>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=canonical type=text/html href=https://plaidcloud.com/docs/tutorials/kubernetes-basics/deploy-app/>
+<link rel="shortcut icon" type=image/png href=/images/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=manifest href=/manifest.webmanifest>
+<link rel=apple-touch-icon href=/images/PlaidCloud-192x192.png>
+<title>Deploy an App | PlaidCloud</title><meta property="og:title" content="Deploy an App">
+<meta property="og:description" content="Unified Financial Analytics">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plaidcloud.com/docs/tutorials/kubernetes-basics/deploy-app/"><meta property="og:site_name" content="PlaidCloud">
+<meta itemprop=name content="Deploy an App">
+<meta itemprop=description content="Unified Financial Analytics"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Deploy an App">
+<meta name=twitter:description content="Unified Financial Analytics">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-00000000-0','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<link rel=preload href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css as=style>
+<link href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css rel=stylesheet integrity>
+<script src=/js/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=anonymous></script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Organization","url":"https://plaidcloud.com","logo":"https://plaidcloud.com/images/favicon.ico","potentialAction":{"@type":"SearchAction","target":"https://plaidcloud.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<meta name=theme-color content="#326ce5">
+<link rel=stylesheet href=/css/feature-states.css>
+<meta name=description content>
+<meta property="og:description" content>
+<meta name=twitter:description content>
+<meta property="og:url" content="https://plaidcloud.com/docs/tutorials/kubernetes-basics/deploy-app/">
+<meta property="og:title" content="Deploy an App">
+<meta name=twitter:title content="Deploy an App">
+<meta name=twitter:image content="https://plaidcloud.com/images/favicon.ico">
+<meta name=twitter:image:alt content="PlaidCloud">
+<meta property="og:image" content="/images/PlaidCloud-horizontal-color.png">
+<meta property="og:type" content="article">
+<script src=/js/script.js></script>
+</head>
+<body class=td-section>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar" data-auto-burger=primary>
+<a class=navbar-brand href=/></a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+<li class="nav-item mr-2 mb-lg-0">
+<a class="nav-link active" href=/docs/>Documentation</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/api/>APIs</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidxl/>PlaidXL</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidlink/>PlaidLink</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/tips/>Tips & Tricks</span></a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+Versions
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/releases>Release Information</a>
+<a class=dropdown-item href=https://docs.plaidcloud.com/docs/tutorials/kubernetes-basics/deploy-app/>v5.10</a>
+<a class=dropdown-item href=https://v5-9.docs.plaidcloud.com/docs/tutorials/kubernetes-basics/deploy-app/>v5.9</a>
+<a class=dropdown-item href=https://v5-8.docs.plaidcloud.com/docs/tutorials/kubernetes-basics/deploy-app/>v5.8</a>
+<a class=dropdown-item href=https://v5-7.docs.plaidcloud.com/docs/tutorials/kubernetes-basics/deploy-app/>v5.7</a>
+<a class=dropdown-item href=https://v5-6.docs.plaidcloud.com/docs/tutorials/kubernetes-basics/deploy-app/>v5.6</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdownMenuLink role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+English
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/de/>Deutsch</a>
+<a class=dropdown-item href=/es/>Español</a>
+</div>
+</li>
+</ul>
+</div>
+<button id=hamburger onclick=kub.toggleMenu() data-auto-burger-exclude><div></div></button>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+</div>
+<div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+</div>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<div class=td-content>
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href=# onclick="return print(),!1">Click here to print</a>.
+</p><p>
+<a href=/docs/tutorials/kubernetes-basics/deploy-app/>Return to the regular view of this page</a>.
+</p>
+</div>
+<h1 class=title>Deploy an App</h1>
+<ul>
+<li>1: <a href=#pg-2b1bba431989008c7493109a0f049ece>Using kubectl to Create a Deployment</a></li>
+<li>2: <a href=#pg-f8997ec143b382fa6c9621941ea62ca3>Interactive Tutorial - Deploying an App</a></li>
+</ul>
+<div class=content>
+</div>
+</div>
+<div class=td-content>
+<h1 id=pg-2b1bba431989008c7493109a0f049ece>1 - Using kubectl to Create a Deployment</h1><!doctype html>
+<html lang=en>
+<body>
+<link href=/docs/tutorials/PlaidCloud-basics/public/css/styles.css rel=stylesheet>
+<div class=layout id=top>
+<main class=content>
+<div class=row>
+<div class=col-md-8>
+<h3>Objectives</h3>
+<ul>
+<li>Learn about application Deployments.</li>
+<li>Deploy your first app on PlaidCloud with kubectl.</li>
+</ul>
+</div>
+<div class=col-md-8>
+<h3>PlaidCloud Deployments</h3>
+<p>
+Once you have a running PlaidCloud cluster, you can deploy your containerized applications on top of it.
+To do so, you create a PlaidCloud <b>Deployment</b> configuration. The Deployment instructs PlaidCloud
+how to create and update instances of your application. Once you've created a Deployment, the PlaidCloud
+control plane schedules the application instances included in that Deployment to run on individual Nodes in the
+cluster.
+</p>
+<p>Once the application instances are created, a PlaidCloud Deployment Controller continuously monitors those instances. If the Node hosting an instance goes down or is deleted, the Deployment controller replaces the instance with an instance on another Node in the cluster. <b>This provides a self-healing mechanism to address machine failure or maintenance.</b></p>
+<p>In a pre-orchestration world, installation scripts would often be used to start applications, but they did not allow recovery from machine failure. By both creating your application instances and keeping them running across Nodes, PlaidCloud Deployments provide a fundamentally different approach to application management. </p>
+</div>
+<div class=col-md-4>
+<div class="content__box content__box_lined">
+<h3>Summary:</h3>
+<ul>
+<li>Deployments</li>
+<li>Kubectl</li>
+</ul>
+</div>
+<div class="content__box content__box_fill">
+<p><i>
+A Deployment is responsible for creating and updating instances of your application
+</i></p>
+</div>
+</div>
+</div>
+<br>
+<div class=row>
+<div class=col-md-8>
+<h2 style=color:#3771e3>Deploying your first app on PlaidCloud</h2>
+</div>
+</div>
+<div class=row>
+<div class=col-md-8>
+<p><img src=/docs/tutorials/PlaidCloud-basics/public/images/module_02_first_app.svg></p>
+</div>
+</div>
+<br>
+<div class=row>
+<div class=col-md-8>
+<p>You can create and manage a Deployment by using the PlaidCloud command line interface, <b>Kubectl</b>. Kubectl uses the PlaidCloud API to interact with the cluster. In this module, you'll learn the most common Kubectl commands needed to create Deployments that run your applications on a PlaidCloud cluster.</p>
+<p>When you create a Deployment, you'll need to specify the container image for your application and the number of replicas that you want to run. You can change that information later by updating your Deployment; Modules <a href=/docs/tutorials/PlaidCloud-basics/scale/scale-intro/>5</a> and <a href=/docs/tutorials/PlaidCloud-basics/update/update-intro/>6</a> of the bootcamp discuss how you can scale and update your Deployments.</p>
+</div>
+<div class=col-md-4>
+<div class="content__box content__box_fill">
+<p><i> Applications need to be packaged into one of the supported container formats in order to be deployed on PlaidCloud </i></p>
+</div>
+</div>
+</div>
+<div class=row>
+<div class=col-md-8>
+<p>
+For your first Deployment, you'll use a hello-node application packaged in a Docker container that uses NGINX to echo back all the requests. (If you didn't already try creating a hello-node application and deploying it using a container, you can do that first by following the instructions from the <a href=/docs/tutorials/hello-minikube/>Hello Minikube tutorial</a>).
+<p>
+<p>Now that you know what Deployments are, let's go to the online tutorial and deploy our first app!</p>
+</div>
+</div>
+<br>
+<div class=row>
+<div class=col-md-12>
+<a class="btn btn-lg btn-success" href=/docs/tutorials/PlaidCloud-basics/deploy-app/deploy-interactive/ role=button>Start Interactive Tutorial <span class=btn__next>›</span></a>
+</div>
+</div>
+</main>
+</div>
+</body>
+</html>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-f8997ec143b382fa6c9621941ea62ca3>2 - Interactive Tutorial - Deploying an App</h1><!doctype html>
+<html lang=en>
+<body>
+<link href=/docs/tutorials/PlaidCloud-basics/public/css/styles.css rel=stylesheet>
+<link href=/docs/tutorials/PlaidCloud-basics/public/css/overrides.css rel=stylesheet>
+<script src=https://katacoda.com/embed.js></script>
+<div class=layout id=top>
+<main class="content katacoda-content">
+<div class=row>
+<div class=col-md-12>
+<p>
+A Pod is the basic execution unit of a PlaidCloud application. Each Pod represents a part of a workload that is running on your cluster. <a href=/docs/concepts/workloads/pods/>Learn more about Pods</a>.
+</p>
+</div>
+</div>
+<br>
+<div class=katacoda>
+<div class=katacoda__alert>
+To interact with the Terminal, please use the desktop/tablet version
+</div>
+<div class=katacoda__box id=inline-terminal-1 data-katacoda-id=PlaidCloud-bootcamp/7 data-katacoda-color=326de6 data-katacoda-secondary=273d6d data-katacoda-hideintro=false data-katacoda-prompt="PlaidCloud Bootcamp Terminal" style=height:600px>
+</div>
+</div>
+<div class=row>
+<div class=col-md-12>
+<a class="btn btn-lg btn-success" href=/docs/tutorials/PlaidCloud-basics/create-cluster/cluster-intro/ role=button> &lt; Return to Module 1<span></span></a>
+<a class="btn btn-lg btn-success" href=/docs/tutorials/PlaidCloud-basics/ role=button>Home<span></span></a>
+<a class="btn btn-lg btn-success" href=/docs/tutorials/PlaidCloud-basics/explore/explore-intro/ role=button>Continue to Module 3 ><span></span></a>
+</div>
+</div>
+</main>
+</div>
+</body>
+</html>
+</div>
+</main>
+</div>
+</div>
+<footer class=d-print-none>
+<div class=footer__links>
+<nav>
+<a class=text-white href=/docs/home/>Home</a>
+</nav>
+</div>
+<div class=container-fluid>
+<div class=row>
+<div class="col-6 col-sm-2 text-xs-center order-sm-2">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="User mailing list" aria-label="User mailing list">
+<a class=text-white target=_blank href=https://discuss.PlaidCloud.io>
+<i class="fa fa-envelope"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Twitter aria-label=Twitter>
+<a class=text-white target=_blank href=https://twitter.com/plaidcloud>
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Youtube aria-label=Youtube>
+<a class=text-white target=_blank href=https://youtube.com/plaidcloud>
+<i class="fab fa-youtube"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub>
+<a class=text-white target=_blank href=https://github.com/plaidcloud>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack>
+<a class=text-white target=_blank href=https://slack.plaidcloud.com>
+<i class="fab fa-slack"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="Stack Overflow" aria-label="Stack Overflow">
+<a class=text-white target=_blank href=https://stackoverflow.com/questions/tagged/plaidcloud>
+<i class="fab fa-stack-overflow"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-12 col-sm-8 text-center order-sm-2">
+<small class=text-white>&copy; 2022 Tartan Solutions, Inc | PlaidCloud is our SaaS platform for Financial Analytics</small>
+<br>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=/js/popper-1.14.3.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script>
+<script src=/js/bootstrap-4.3.1.min.js integrity=sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM crossorigin=anonymous></script>
+<script src=/js/main.min.8b80c14bafc28ac0131eea78e5bd67d87c35913ab8c46a0686b3586d37a608c6.js integrity="sha256-i4DBS6/CisATHup45b1n2Hw1kTq4xGoGhrNYbTemCMY=" crossorigin=anonymous></script>
+</body>
+</html>

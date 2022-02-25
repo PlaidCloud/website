@@ -1,0 +1,492 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta name=ROBOTS content="INDEX, FOLLOW">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-36037335-10')</script>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.92.1">
+<link rel=canonical type=text/html href=https://plaidcloud.com/docs/tasks/configmap-secret/>
+<link rel="shortcut icon" type=image/png href=/images/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=manifest href=/manifest.webmanifest>
+<link rel=apple-touch-icon href=/images/PlaidCloud-192x192.png>
+<title>Managing Secrets | PlaidCloud</title><meta property="og:title" content="Managing Secrets">
+<meta property="og:description" content="Managing confidential settings data using Secrets.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plaidcloud.com/docs/tasks/configmap-secret/"><meta property="og:site_name" content="PlaidCloud">
+<meta itemprop=name content="Managing Secrets">
+<meta itemprop=description content="Managing confidential settings data using Secrets."><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Managing Secrets">
+<meta name=twitter:description content="Managing confidential settings data using Secrets.">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-00000000-0','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<link rel=preload href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css as=style>
+<link href=/scss/main.min.01c7a67b0bd0142cbb01c908f6fba66be344bb33b67486e8e79e22f103b192f4.css rel=stylesheet integrity>
+<script src=/js/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=anonymous></script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Organization","url":"https://plaidcloud.com","logo":"https://plaidcloud.com/images/favicon.ico","potentialAction":{"@type":"SearchAction","target":"https://plaidcloud.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<meta name=theme-color content="#326ce5">
+<link rel=stylesheet href=/css/feature-states.css>
+<meta name=description content="Managing confidential settings data using Secrets.">
+<meta property="og:description" content="Managing confidential settings data using Secrets.">
+<meta name=twitter:description content="Managing confidential settings data using Secrets.">
+<meta property="og:url" content="https://plaidcloud.com/docs/tasks/configmap-secret/">
+<meta property="og:title" content="Managing Secrets">
+<meta name=twitter:title content="Managing Secrets">
+<meta name=twitter:image content="https://plaidcloud.com/images/favicon.ico">
+<meta name=twitter:image:alt content="PlaidCloud">
+<meta property="og:image" content="/images/PlaidCloud-horizontal-color.png">
+<meta property="og:type" content="article">
+<script src=/js/script.js></script>
+</head>
+<body class=td-section>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar" data-auto-burger=primary>
+<a class=navbar-brand href=/></a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+<li class="nav-item mr-2 mb-lg-0">
+<a class="nav-link active" href=/docs/>Documentation</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/api/>APIs</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidxl/>PlaidXL</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/plaidlink/>PlaidLink</span></a>
+</li>
+<li class="nav-item mr-2 mb-lg-0">
+<a class=nav-link href=/tips/>Tips & Tricks</span></a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+Versions
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/releases>Release Information</a>
+<a class=dropdown-item href=https://docs.plaidcloud.com/docs/tasks/configmap-secret/>v5.10</a>
+<a class=dropdown-item href=https://v5-9.docs.plaidcloud.com/docs/tasks/configmap-secret/>v5.9</a>
+<a class=dropdown-item href=https://v5-8.docs.plaidcloud.com/docs/tasks/configmap-secret/>v5.8</a>
+<a class=dropdown-item href=https://v5-7.docs.plaidcloud.com/docs/tasks/configmap-secret/>v5.7</a>
+<a class=dropdown-item href=https://v5-6.docs.plaidcloud.com/docs/tasks/configmap-secret/>v5.6</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdownMenuLink role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+English
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/de/>Deutsch</a>
+<a class=dropdown-item href=/es/>Español</a>
+</div>
+</li>
+</ul>
+</div>
+<button id=hamburger onclick=kub.toggleMenu() data-auto-burger-exclude><div></div></button>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+</div>
+<div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+</div>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<div class=td-content>
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href=# onclick="return print(),!1">Click here to print</a>.
+</p><p>
+<a href=/docs/tasks/configmap-secret/>Return to the regular view of this page</a>.
+</p>
+</div>
+<h1 class=title>Managing Secrets</h1>
+<div class=lead>Managing confidential settings data using Secrets.</div>
+<ul>
+<li>1: <a href=#pg-0ed63ce3c9665aed7ff5a560ff1da843>Managing Secrets using kubectl</a></li>
+<li>2: <a href=#pg-e841cf91fd3566db1e86143ed7a9e13c>Managing Secrets using Configuration File</a></li>
+<li>3: <a href=#pg-a0ff2e3ba8af5670d5dc3d94c4bd0a68>Managing Secrets using Kustomize</a></li>
+</ul>
+<div class=content>
+</div>
+</div>
+<div class=td-content>
+<h1 id=pg-0ed63ce3c9665aed7ff5a560ff1da843>1 - Managing Secrets using kubectl</h1>
+<div class=lead>Creating Secret objects using kubectl command line.</div>
+<h2 id=before-you-begin>Before you begin</h2>
+<p>You need to have a PlaidCloud cluster, and the kubectl command-line tool must
+be configured to communicate with your cluster. It is recommended to run this tutorial on a cluster with at least two nodes that are not acting as control plane hosts. If you do not already have a
+cluster, you can create one by using
+<a href=https://minikube.sigs.k8s.io/docs/tutorials/multi_node/>minikube</a>
+or you can use one of these PlaidCloud playgrounds:</p>
+<ul>
+<li><a href=https://www.katacoda.com/courses/PlaidCloud/playground>Katacoda</a></li>
+<li><a href=http://labs.play-with-k8s.com/>Play with PlaidCloud</a></li>
+</ul>
+<h2 id=create-a-secret>Create a Secret</h2>
+<p>A <code>Secret</code> can contain user credentials required by pods to access a database.
+For example, a database connection string consists of a username and password.
+You can store the username in a file <code>./username.txt</code> and the password in a
+file <code>./password.txt</code> on your local machine.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#a2f>echo</span> -n <span style=color:#b44>&#39;admin&#39;</span> &gt; ./username.txt
+<span style=color:#a2f>echo</span> -n <span style=color:#b44>&#39;1f2d1e2e67df&#39;</span> &gt; ./password.txt
+</code></pre></div><p>In these commands, the <code>-n</code> flag ensures that the generated files do not have
+an extra newline character at the end of the text. This is important because
+when <code>kubectl</code> reads a file and encodes the content into a base64 string, the
+extra newline character gets encoded too.</p>
+<p>The <code>kubectl create secret</code> command packages these files into a Secret and creates
+the object on the API server.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create secret generic db-user-pass <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>  --from-file<span style=color:#666>=</span>./username.txt <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>  --from-file<span style=color:#666>=</span>./password.txt
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>secret/db-user-pass created
+</code></pre><p>The default key name is the filename. You can optionally set the key name using
+<code>--from-file=[key=]source</code>. For example:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create secret generic db-user-pass <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>  --from-file<span style=color:#666>=</span><span style=color:#b8860b>username</span><span style=color:#666>=</span>./username.txt <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>  --from-file<span style=color:#666>=</span><span style=color:#b8860b>password</span><span style=color:#666>=</span>./password.txt
+</code></pre></div><p>You do not need to escape special characters in password strings that you
+include in a file.</p>
+<p>You can also provide Secret data using the <code>--from-literal=&lt;key>=&lt;value></code> tag.
+This tag can be specified more than once to provide multiple key-value pairs.
+Note that special characters such as <code>$</code>, <code>\</code>, <code>*</code>, <code>=</code>, and <code>!</code> will be
+interpreted by your <a href=https://en.wikipedia.org/wiki/Shell_(computing)>shell</a>
+and require escaping.</p>
+<p>In most shells, the easiest way to escape the password is to surround it with
+single quotes (<code>'</code>). For example, if your password is <code>S!B\*d$zDsb=</code>,
+run the following command:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl create secret generic db-user-pass <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>  --from-literal<span style=color:#666>=</span><span style=color:#b8860b>username</span><span style=color:#666>=</span>devuser <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>  --from-literal<span style=color:#666>=</span><span style=color:#b8860b>password</span><span style=color:#666>=</span><span style=color:#b44>&#39;S!B\*d$zDsb=&#39;</span>
+</code></pre></div><h2 id=verify-the-secret>Verify the Secret</h2>
+<p>Check that the Secret was created:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl get secrets
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>NAME                  TYPE                                  DATA      AGE
+db-user-pass          Opaque                                2         51s
+</code></pre><p>You can view a description of the <code>Secret</code>:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl describe secrets/db-user-pass
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>Name:            db-user-pass
+Namespace:       default
+Labels:          &lt;none&gt;
+Annotations:     &lt;none&gt;
+
+Type:            Opaque
+
+Data
+====
+password:    12 bytes
+username:    5 bytes
+</code></pre><p>The commands <code>kubectl get</code> and <code>kubectl describe</code> avoid showing the contents
+of a <code>Secret</code> by default. This is to protect the <code>Secret</code> from being exposed
+accidentally, or from being stored in a terminal log.</p>
+<h2 id=decoding-secret>Decoding the Secret </h2>
+<p>To view the contents of the Secret you created, run the following command:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl get secret db-user-pass -o <span style=color:#b8860b>jsonpath</span><span style=color:#666>=</span><span style=color:#b44>&#39;{.data}&#39;</span>
+</code></pre></div><p>The output is similar to:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{<span style=color:green;font-weight:700>&#34;password&#34;</span>:<span style=color:#b44>&#34;MWYyZDFlMmU2N2Rm&#34;</span>,<span style=color:green;font-weight:700>&#34;username&#34;</span>:<span style=color:#b44>&#34;YWRtaW4=&#34;</span>}
+</code></pre></div><p>Now you can decode the <code>password</code> data:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#a2f>echo</span> <span style=color:#b44>&#39;MWYyZDFlMmU2N2Rm&#39;</span> | base64 --decode
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>1f2d1e2e67df
+</code></pre><h2 id=clean-up>Clean Up</h2>
+<p>Delete the Secret you created:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl delete secret db-user-pass
+</code></pre></div>
+<h2 id=what-s-next>What's next</h2>
+<ul>
+<li>Read more about the <a href=/docs/concepts/configuration/secret/>Secret concept</a></li>
+<li>Learn how to <a href=/docs/tasks/configmap-secret/managing-secret-using-config-file/>manage Secrets using config files</a></li>
+<li>Learn how to <a href=/docs/tasks/configmap-secret/managing-secret-using-kustomize/>manage Secrets using kustomize</a></li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-e841cf91fd3566db1e86143ed7a9e13c>2 - Managing Secrets using Configuration File</h1>
+<div class=lead>Creating Secret objects using resource configuration file.</div>
+<h2 id=before-you-begin>Before you begin</h2>
+<p>You need to have a PlaidCloud cluster, and the kubectl command-line tool must
+be configured to communicate with your cluster. It is recommended to run this tutorial on a cluster with at least two nodes that are not acting as control plane hosts. If you do not already have a
+cluster, you can create one by using
+<a href=https://minikube.sigs.k8s.io/docs/tutorials/multi_node/>minikube</a>
+or you can use one of these PlaidCloud playgrounds:</p>
+<ul>
+<li><a href=https://www.katacoda.com/courses/PlaidCloud/playground>Katacoda</a></li>
+<li><a href=http://labs.play-with-k8s.com/>Play with PlaidCloud</a></li>
+</ul>
+<h2 id=create-the-config-file>Create the Config file</h2>
+<p>You can create a Secret in a file first, in JSON or YAML format, and then
+create that object. The
+<a href=/docs/reference/generated/Kubernetes-api/v5.10/#secret-v1-core>Secret</a>
+resource contains two maps: <code>data</code> and <code>stringData</code>.
+The <code>data</code> field is used to store arbitrary data, encoded using base64. The
+<code>stringData</code> field is provided for convenience, and it allows you to provide
+Secret data as unencoded strings.
+The keys of <code>data</code> and <code>stringData</code> must consist of alphanumeric characters,
+<code>-</code>, <code>_</code> or <code>.</code>.</p>
+<p>For example, to store two strings in a Secret using the <code>data</code> field, convert
+the strings to base64 as follows:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#a2f>echo</span> -n <span style=color:#b44>&#39;admin&#39;</span> | base64
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>YWRtaW4=
+</code></pre><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#a2f>echo</span> -n <span style=color:#b44>&#39;1f2d1e2e67df&#39;</span> | base64
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>MWYyZDFlMmU2N2Rm
+</code></pre><p>Write a Secret config file that looks like this:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Secret<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>mysecret<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>type</span>:<span style=color:#bbb> </span>Opaque<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>data</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>username</span>:<span style=color:#bbb> </span>YWRtaW4=<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>password</span>:<span style=color:#bbb> </span>MWYyZDFlMmU2N2Rm<span style=color:#bbb>
+</span></code></pre></div><p>Note that the name of a Secret object must be a valid
+<a href=/docs/concepts/overview/working-with-objects/names#dns-subdomain-names>DNS subdomain name</a>.</p>
+<div class="alert alert-info note callout" role=alert>
+<strong>Note:</strong> The serialized JSON and YAML values of Secret data are encoded as base64
+strings. Newlines are not valid within these strings and must be omitted. When
+using the <code>base64</code> utility on Darwin/macOS, users should avoid using the <code>-b</code>
+option to split long lines. Conversely, Linux users <em>should</em> add the option
+<code>-w 0</code> to <code>base64</code> commands or the pipeline <code>base64 | tr -d '\n'</code> if the <code>-w</code>
+option is not available.
+</div>
+<p>For certain scenarios, you may wish to use the <code>stringData</code> field instead. This
+field allows you to put a non-base64 encoded string directly into the Secret,
+and the string will be encoded for you when the Secret is created or updated.</p>
+<p>A practical example of this might be where you are deploying an application
+that uses a Secret to store a configuration file, and you want to populate
+parts of that configuration file during your deployment process.</p>
+<p>For example, if your application uses the following configuration file:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiUrl</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;https://my.api.com/api/v1&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>username</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;&lt;user&gt;&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>password</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;&lt;password&gt;&#34;</span><span style=color:#bbb>
+</span></code></pre></div><p>You could store this in a Secret using the following definition:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Secret<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>mysecret<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>type</span>:<span style=color:#bbb> </span>Opaque<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>stringData</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>config.yaml</span>:<span style=color:#bbb> </span>|<span style=color:#b44;font-style:italic>
+</span><span style=color:#b44;font-style:italic>    apiUrl: &#34;https://my.api.com/api/v1&#34;
+</span><span style=color:#b44;font-style:italic>    username: &lt;user&gt;
+</span><span style=color:#b44;font-style:italic>    password: &lt;password&gt;</span><span style=color:#bbb>    
+</span></code></pre></div><h2 id=create-the-secret-object>Create the Secret object</h2>
+<p>Now create the Secret using <a href=/docs/reference/generated/kubectl/kubectl-commands#apply><code>kubectl apply</code></a>:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl apply -f ./secret.yaml
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>secret/mysecret created
+</code></pre><h2 id=check-the-secret>Check the Secret</h2>
+<p>The <code>stringData</code> field is a write-only convenience field. It is never output when
+retrieving Secrets. For example, if you run the following command:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl get secret mysecret -o yaml
+</code></pre></div><p>The output is similar to:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>data</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>config.yaml</span>:<span style=color:#bbb> </span>YXBpVXJsOiAiaHR0cHM6Ly9teS5hcGkuY29tL2FwaS92MSIKdXNlcm5hbWU6IHt7dXNlcm5hbWV9fQpwYXNzd29yZDoge3twYXNzd29yZH19<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Secret<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>creationTimestamp</span>:<span style=color:#bbb> </span>2018-11-15T20:40:59Z<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>mysecret<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>namespace</span>:<span style=color:#bbb> </span>default<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>resourceVersion</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;7225&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>uid</span>:<span style=color:#bbb> </span>c280ad2e-e916-11e8-98f2-025000000001<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>type</span>:<span style=color:#bbb> </span>Opaque<span style=color:#bbb>
+</span></code></pre></div><p>The commands <code>kubectl get</code> and <code>kubectl describe</code> avoid showing the contents of a <code>Secret</code> by
+default. This is to protect the <code>Secret</code> from being exposed accidentally to an onlooker,
+or from being stored in a terminal log.
+To check the actual content of the encoded data, please refer to
+<a href=/docs/tasks/configmap-secret/managing-secret-using-kubectl/#decoding-secret>decoding secret</a>.</p>
+<p>If a field, such as <code>username</code>, is specified in both <code>data</code> and <code>stringData</code>,
+the value from <code>stringData</code> is used. For example, the following Secret definition:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Secret<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>mysecret<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>type</span>:<span style=color:#bbb> </span>Opaque<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>data</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>username</span>:<span style=color:#bbb> </span>YWRtaW4=<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>stringData</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>username</span>:<span style=color:#bbb> </span>administrator<span style=color:#bbb>
+</span></code></pre></div><p>Results in the following Secret:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>apiVersion</span>:<span style=color:#bbb> </span>v1<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>data</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>username</span>:<span style=color:#bbb> </span>YWRtaW5pc3RyYXRvcg==<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>kind</span>:<span style=color:#bbb> </span>Secret<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>metadata</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>creationTimestamp</span>:<span style=color:#bbb> </span>2018-11-15T20:46:46Z<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>mysecret<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>namespace</span>:<span style=color:#bbb> </span>default<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>resourceVersion</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;7579&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>uid</span>:<span style=color:#bbb> </span>91460ecb-e917-11e8-98f2-025000000001<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>type</span>:<span style=color:#bbb> </span>Opaque<span style=color:#bbb>
+</span></code></pre></div><p>Where <code>YWRtaW5pc3RyYXRvcg==</code> decodes to <code>administrator</code>.</p>
+<h2 id=clean-up>Clean Up</h2>
+<p>To delete the Secret you have created:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl delete secret mysecret
+</code></pre></div><h2 id=what-s-next>What's next</h2>
+<ul>
+<li>Read more about the <a href=/docs/concepts/configuration/secret/>Secret concept</a></li>
+<li>Learn how to <a href=/docs/tasks/configmap-secret/managing-secret-using-kubectl/>manage Secrets with the <code>kubectl</code> command</a></li>
+<li>Learn how to <a href=/docs/tasks/configmap-secret/managing-secret-using-kustomize/>manage Secrets using kustomize</a></li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-a0ff2e3ba8af5670d5dc3d94c4bd0a68>3 - Managing Secrets using Kustomize</h1>
+<div class=lead>Creating Secret objects using kustomization.yaml file.</div>
+<p>Since PlaidCloud v1.14, <code>kubectl</code> supports
+<a href=/docs/tasks/manage-PlaidCloud-objects/kustomization/>managing objects using Kustomize</a>.
+Kustomize provides resource Generators to create Secrets and ConfigMaps. The
+Kustomize generators should be specified in a <code>kustomization.yaml</code> file inside
+a directory. After generating the Secret, you can create the Secret on the API
+server with <code>kubectl apply</code>.</p>
+<h2 id=before-you-begin>Before you begin</h2>
+<p>You need to have a PlaidCloud cluster, and the kubectl command-line tool must
+be configured to communicate with your cluster. It is recommended to run this tutorial on a cluster with at least two nodes that are not acting as control plane hosts. If you do not already have a
+cluster, you can create one by using
+<a href=https://minikube.sigs.k8s.io/docs/tutorials/multi_node/>minikube</a>
+or you can use one of these PlaidCloud playgrounds:</p>
+<ul>
+<li><a href=https://www.katacoda.com/courses/PlaidCloud/playground>Katacoda</a></li>
+<li><a href=http://labs.play-with-k8s.com/>Play with PlaidCloud</a></li>
+</ul>
+<h2 id=create-the-kustomization-file>Create the Kustomization file</h2>
+<p>You can generate a Secret by defining a <code>secretGenerator</code> in a
+<code>kustomization.yaml</code> file that references other existing files.
+For example, the following kustomization file references the
+<code>./username.txt</code> and the <code>./password.txt</code> files:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>secretGenerator</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>db-user-pass<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>files</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- username.txt<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- password.txt<span style=color:#bbb>
+</span></code></pre></div><p>You can also define the <code>secretGenerator</code> in the <code>kustomization.yaml</code>
+file by providing some literals.
+For example, the following <code>kustomization.yaml</code> file contains two literals
+for <code>username</code> and <code>password</code> respectively:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>secretGenerator</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>db-user-pass<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>literals</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- username=admin<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- password=1f2d1e2e67df<span style=color:#bbb>
+</span></code></pre></div><p>You can also define the <code>secretGenerator</code> in the <code>kustomization.yaml</code>
+file by providing <code>.env</code> files.
+For example, the following <code>kustomization.yaml</code> file pulls in data from
+<code>.env.secret</code> file:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>secretGenerator</span>:<span style=color:#bbb>
+</span><span style=color:#bbb></span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>db-user-pass<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>envs</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span>- .env.secret<span style=color:#bbb>
+</span></code></pre></div><p>Note that in all cases, you don't need to base64 encode the values.</p>
+<h2 id=create-the-secret>Create the Secret</h2>
+<p>Apply the directory containing the <code>kustomization.yaml</code> to create the Secret.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl apply -k .
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>secret/db-user-pass-96mffmfh4k created
+</code></pre><p>Note that when a Secret is generated, the Secret name is created by hashing
+the Secret data and appending the hash value to the name. This ensures that
+a new Secret is generated each time the data is modified.</p>
+<h2 id=check-the-secret-created>Check the Secret created</h2>
+<p>You can check that the secret was created:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl get secrets
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>NAME                             TYPE                                  DATA      AGE
+db-user-pass-96mffmfh4k          Opaque                                2         51s
+</code></pre><p>You can view a description of the secret:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl describe secrets/db-user-pass-96mffmfh4k
+</code></pre></div><p>The output is similar to:</p>
+<pre tabindex=0><code>Name:            db-user-pass-96mffmfh4k
+Namespace:       default
+Labels:          &lt;none&gt;
+Annotations:     &lt;none&gt;
+
+Type:            Opaque
+
+Data
+====
+password.txt:    12 bytes
+username.txt:    5 bytes
+</code></pre><p>The commands <code>kubectl get</code> and <code>kubectl describe</code> avoid showing the contents of a <code>Secret</code> by
+default. This is to protect the <code>Secret</code> from being exposed accidentally to an onlooker,
+or from being stored in a terminal log.
+To check the actual content of the encoded data, please refer to
+<a href=/docs/tasks/configmap-secret/managing-secret-using-kubectl/#decoding-secret>decoding secret</a>.</p>
+<h2 id=clean-up>Clean Up</h2>
+<p>To delete the Secret you have created:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl delete secret db-user-pass-96mffmfh4k
+</code></pre></div>
+<h2 id=what-s-next>What's next</h2>
+<ul>
+<li>Read more about the <a href=/docs/concepts/configuration/secret/>Secret concept</a></li>
+<li>Learn how to <a href=/docs/tasks/configmap-secret/managing-secret-using-kubectl/>manage Secrets with the <code>kubectl</code> command</a></li>
+<li>Learn how to <a href=/docs/tasks/configmap-secret/managing-secret-using-config-file/>manage Secrets using config file</a></li>
+</ul>
+</div>
+</main>
+</div>
+</div>
+<footer class=d-print-none>
+<div class=footer__links>
+<nav>
+<a class=text-white href=/docs/home/>Home</a>
+</nav>
+</div>
+<div class=container-fluid>
+<div class=row>
+<div class="col-6 col-sm-2 text-xs-center order-sm-2">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="User mailing list" aria-label="User mailing list">
+<a class=text-white target=_blank href=https://discuss.PlaidCloud.io>
+<i class="fa fa-envelope"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Twitter aria-label=Twitter>
+<a class=text-white target=_blank href=https://twitter.com/plaidcloud>
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Youtube aria-label=Youtube>
+<a class=text-white target=_blank href=https://youtube.com/plaidcloud>
+<i class="fab fa-youtube"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub>
+<a class=text-white target=_blank href=https://github.com/plaidcloud>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack>
+<a class=text-white target=_blank href=https://slack.plaidcloud.com>
+<i class="fab fa-slack"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="Stack Overflow" aria-label="Stack Overflow">
+<a class=text-white target=_blank href=https://stackoverflow.com/questions/tagged/plaidcloud>
+<i class="fab fa-stack-overflow"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-12 col-sm-8 text-center order-sm-2">
+<small class=text-white>&copy; 2022 Tartan Solutions, Inc | PlaidCloud is our SaaS platform for Financial Analytics</small>
+<br>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=/js/popper-1.14.3.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script>
+<script src=/js/bootstrap-4.3.1.min.js integrity=sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM crossorigin=anonymous></script>
+<script src=/js/main.min.8b80c14bafc28ac0131eea78e5bd67d87c35913ab8c46a0686b3586d37a608c6.js integrity="sha256-i4DBS6/CisATHup45b1n2Hw1kTq4xGoGhrNYbTemCMY=" crossorigin=anonymous></script>
+</body>
+</html>
