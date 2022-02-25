@@ -1,26 +1,22 @@
 ---
-title: Download PlaidCloud
+title: Download PlaidCloud Components
 type: docs
 ---
-## Core PlaidCloud components
 
-Find links to download PlaidCloud components (and their checksums) in the [CHANGELOG](https://github.com/PlaidCloud/PlaidCloud/tree/master/CHANGELOG) files.
+## Download PlaidLink
 
-Alternately, use [downloadPlaidCloud.com](https://www.downloadPlaidCloud.com/) to filter by version and architecture.
+PlaidLink can operate as a Windows service, Unix/Linux/Mac daemon, docker container service, or as a Kubernetes pod.
 
-## kubectl
+Follow the [installation instructions](/plaidlink/setup/install) in the PlaidLink documentation to download and install the agent.
 
-<!-- overview -->
-The PlaidCloud command-line tool, [kubectl](/docs/reference/kubectl/kubectl/), allows
-you to run commands against PlaidCloud clusters.
 
-You can use kubectl to deploy applications, inspect and manage cluster resources,
-and view logs. For more information including a complete list of kubectl operations, see the
-[`kubectl` reference documentation](/docs/reference/kubectl/).
+## Download PlaidCloud RPC Tools
 
-kubectl is installable on a variety of Linux platforms, macOS and Windows. 
-Find your preferred operating system below.
+The PlaidCloud RPC tools repo provides essential tools for connecting to and interacting with PlaidCloud in an efficient way.  While you can use standard OAuth and JSON-RPC requests, 
+we have a set of utilities that make the whole experience a little easier to get started.
 
-- [Install kubectl on Linux](/docs/tasks/tools/install-kubectl-linux)
-- [Install kubectl on macOS](/docs/tasks/tools/install-kubectl-macos)
-- [Install kubectl on Windows](/docs/tasks/tools/install-kubectl-windows)
+[View the PlaidCloud RPC Github Repo](https://github.com/PlaidCloud/plaid-rpc)
+
+## Download PlaidXL
+
+Ok, you don't actually download this one but we put it here for reference.  Follow the Microsoft App Store [installation instructions](/plaidxl/setup/install) in the PlaidXL documentation.
