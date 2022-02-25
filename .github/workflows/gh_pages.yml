@@ -61,6 +61,9 @@ jobs:
           username: _json_key
           password: ${{ secrets.GCR_JSON_KEY }}
 
+      - name: Docker Buildx setup
+        uses: docker/setup-buildx-action@v1
+
       - name: Build and push
         # docker build -t gcr.io/plaidcloud-build/website:latest --pull --build-arg PLAID_BUILD_TAG={tag} --no-cache .
         id: docker_build
@@ -79,4 +82,3 @@ jobs:
       #   with:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
       #     publish_dir: ./public
-      
