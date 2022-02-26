@@ -1,0 +1,18 @@
+---
+title: Machine Learning
+slug: machine-learning
+description: Make processing your database tables easier with 'MADlib'
+date: 2022-01-25T07:39:51
+tags:
+- plaidcloud
+- expression
+categories:
+- PlaidCloud
+- Expressions
+---
+
+
+Analyze utilizes the expansive and powerful MADLib extension. MADlib helps you take advantage of the investments you’ve made in your database while using its computational power rather than extracting the data into an external system.
+
+
+Additional documentation on how to use machine learning is coming soon.

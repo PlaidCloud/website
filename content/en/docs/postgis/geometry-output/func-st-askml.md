@@ -1,0 +1,51 @@
+---
+title: func.ST_AsKML
+slug: func-st-askml
+description: Return the geometry as a Keyhole Markup Language (KML) element
+date: 2022-01-29T19:13:18
+tags:
+- plaidcloud
+- expression
+categories:
+- PlaidCloud
+- Expressions
+---
+
+
+# Description
+
+
+PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
+
+
+
+# Examples
+
+
+## SQL
+
+
+
+```
+ST_AsKML(geometry geom, integer maxdecimaldigits=15, text nprefix=NULL);
+```
+
+
+## PlaidCloud
+
+
+
+```
+func.ST_AsKML(geometry geom, integer maxdecimaldigits=15, text nprefix=NULL);
+```
+
+
+## References
+
+
+PostGIS Official Documentation for this method can be found [here](https://postgis.net/docs/manual-3.1/ST_AsKML.html).
+
+
+
+Additional capabilities and usage examples can be found in the PostGIS documentation
+

@@ -4,10 +4,10 @@
 # Teams and members are visible at https://github.com/orgs/PlaidCloud/teams.
 
 reviewers:
-- sig-docs-en-reviews
+- plaidcloud-docs-en-reviews
 
 approvers:
-- sig-docs-en-owners
+- plaidcloud-docs-en-owners
 
 labels:
 - language/en

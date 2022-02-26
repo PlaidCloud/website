@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: my-privileged-namespace
-  labels:
-    pod-security.PlaidCloud.io/enforce: privileged
-    pod-security.PlaidCloud.io/enforce-version: latest

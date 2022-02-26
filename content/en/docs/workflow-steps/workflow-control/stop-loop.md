@@ -1,0 +1,46 @@
+---
+title: Stop Loop
+slug: stop-loop
+description: Stop a recurring workflow dataset using Project variables
+date: 2022-01-25T07:39:50
+tags:
+- plaidcloud
+- expression
+categories:
+- PlaidCloud
+- Expressions
+---
+
+
+
+
+| Parameter | Value |
+| **Category** | Workflow |
+| **Operation** | workflow\_loop |
+| **Workflow Icon** | Icon |
+| **Input Type** |  |
+| **Output Type** |  |
+
+# Description
+
+
+Loops over a dataset and runs a specific workflow using the values of the looping dataset as Project variables.
+
+
+
+# Workflow to Stop [#](https://plaidcloud.com/docs/stop-loop/#1-toc-title)
+
+
+First, select the Project which contains the workflow that will be run on each loop from the **Project** dropdown menu.
+
+
+
+Next, select the particular workflow for running from the **Workflow** dropdown menu.
+
+
+
+*Todo*
+
+
+Screenshots coming soon
+

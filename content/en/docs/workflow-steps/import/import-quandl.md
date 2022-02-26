@@ -1,0 +1,265 @@
+---
+title: Import Quandl
+slug: import-quandl
+description: Imports data sets from Quandl’s repository of millions of data sets
+date: 2022-01-25T07:39:57
+tags:
+- plaidcloud
+- expression
+categories:
+- PlaidCloud
+- Expressions
+---
+
+
+
+
+| Parameter | Value |
+| **Category** | Import |
+| **Operation** | import\_quandl |
+| **Workflow Icon** |  |
+| **Input Type** | Quandl Dataset |
+| **Output Type** | PlaidCloud Analyze Table |
+
+# Description
+
+
+Imports data sets from Quandl’s repository of millions of data sets.
+
+
+For more details on Quandl data sets, see the Quandl official website here: <http://www.quandl.com/>.
+
+
+
+# Import Parameters
+
+
+## Source and Target
+
+
+Accessing Quandl data sets requires a user account or a guest account with limited access. This requires set up in Tools. For details on setting up a Quandl account connection, see here: [PlaidCloud Tools – Connection](https://plaidcloud.com/docs/plaidcloud/tools/connection).
+
+
+
+Once all necessary accounts have been set up, select the appropriate account from the drop down list.
+
+
+
+Next, enter criteria for the desired Quandl code. Users can use the **Search** functionality to search for data sets. Alternatively, data sets can be entered manually. This requires the user to enter the portion of the URL after “[http://www.quandl.com](http://www.quandl.com/)”. 
+
+
+
+For example, to import the data set for Microsoft stock, which can be found here (<http://www.quandl.com/GOOG/NASDAQ_MSFT>), enter *GOOG/NASDAQ\_MSFT* in the Quandl Code field.
+
+
+
+## Data Selection
+
+
+It is possible to slice Quandl data sets upon import. Available options include the following:
+
+
+* Start Date: Use the date picker to select the desired date.
+* End Date: Use the date picker to select the desired date.
+* Collapse: Aggregate results on a daily, weekly, monthly, quarterly, or annual basis. There is no aggregation by default.
+* Transformation: Summary calculations.
+* Limit Rows: The default value of 0 returns all rows. Any other positive integer value will specify the limit of rows to return from the data set.
+
+
+## Table Data Selection
+
+
+The Table Data Selection tab is used to map columns from the source data table to the target data table. All source columns on the left side of the window are automatically mapped to the target data table depicted on the right side of the window. Using the **Inspect Source** menu button, there are a few additional ways to map columns from source to target:
+
+
+* Populate Both Mapping Tables: Propagates all values from the source data table into the target data table. This is by default.
+* Populate Source Mapping Table Only: Maps all values in the source data table only. This is helpful when modifying an existing workflow when source column structure has changed.
+* Populate Target Mapping Table Only: Propagates all values into the target data table only.
+
+In addition to each of these options, each choice offers the ability to preview the source data.
+
+
+
+If the source and target column options aren’t enough, other columns can be added into the target data table in several different ways:
+
+
+* **Propagate All** will insert all source columns into the target data table, whether they already existed or not.
+* **Propagate Selected** will insert selected source column(s) only.
+* Right click on target side and select **Insert Row** to insert a row immediately above the currently selected row.
+* Right click on target side and select **Append Row** to insert a row at the bottom (far right) of the target data table.
+
+*Warning*
+
+
+Selecting **Propagate All** may effectively create a duplicate of every column. Analyze does not check to see if the columns are already mapped. Make sure duplicate column names do not exist.
+
+
+
+To delete columns from the target data table, select the desired column(s), then right click and select **Delete**.
+
+
+
+To rearrange columns in the target data table, select the desired column(s), then right click and select **Move to Top**, **Move Up**, **Move Down**, or **Move to Bottom**.
+
+
+
+To return only distinct options, select the **Distinct** menu option. This will toggle a set of checkboxes for each column in the source. Simply check any box next to the corresponding column to return distinct results only.
+
+
+
+*Warning*
+
+
+When the target data table contains only a subset of the source data table, select the check box next to only the columns which **are** to be included in the target data table. Selecting all checkboxes could provide output that does not appear to be distinct.
+
+
+
+To aggregate results, select the **Summarize** menu option. This will toggle a set of drop down boxes for each column in the target data table. The following summarization options are available:
+
+
+* Group by (set as default)
+* Sum
+* Min
+* Max
+* First
+* Last
+* Count
+* Mean
+* Median
+* Mode
+* Std Dev
+* Variance
+* Product
+* Absolute Val
+* Quantile
+* Skew
+* Kurtosis
+* Mean Abs Dev
+* Cumulative Sum
+* Cumulative Min
+* Cumulative Max
+* Cumulative Product
+
+*Todo*
+
+
+For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+
+
+
+## Data Filters
+
+
+To allow for maximum flexibility, data filters are available on the source data and the target data. For larger data sets, it can be especially beneficial to filter out rows on the source so the remaining operations are performed on a smaller data set.
+
+
+
+## Select Subset of Source Data
+
+
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+
+
+
+*Note*
+
+
+Compound filters **must** have individual elements wrapped in parentheses. For example, if filtering for Temperature and Humidity, a valid filter would look like this:
+
+
+## Duplicates
+
+
+To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table, which will contain all of the duplicate records.
+
+
+
+*Caution*
+
+
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+
+
+
+## Select Subset of Final Data
+
+
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+
+
+Example code here
+
+
+
+## Select Subset of Source Data
+
+
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+
+
+
+***Note***
+
+
+Compound filters **must** have individual elements wrapped in parentheses. For example, if filtering for Temperature and Humidity, a valid filter would look like this:
+
+
+
+## Duplicates
+
+
+To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
+
+
+
+*Caution*
+
+
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+
+
+
+## Source Table Slicing (Limit)
+
+
+To limit the data, check the **Apply Row Slicer** box and then specify the following:
+
+
+* **Initial Rows to Skip:** Rows of data to skip (column header row is **not** included in count)
+* **End at Row:** Last row of data to include. Note that this is different from simply counting rows at the end to drop
+
+
+## Select Subset of Final Data
+
+
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+
+
+Example code here
+
+
+
+## Final Data Table Slicing (Limit)
+
+
+To limit the data, simply check the **Apply Row Slicer** box and then specify the following:
+
+
+* **Initial Rows to Skip:** Rows of data to skip (column header row is not included in count)
+* **End at Row:** Last row of data to include. This is different from simply counting rows at the end to drop
+
+
+# Workflow Configuration Forms
+
+
+
+# Examples
+
+
+In this example, the data set for Microsoft stock, (<http://www.quandl.com/GOOG/NASDAQ_MSFT>), is imported into a data table. The **Quandl Connection** is *Guest*, while the **Quandl Code** is *GOOG/NASDAQ\_MSFT*. The data is filtered to show all data from *Jan 1, 2013* through *Dec 31, 2013*, a full year. The data is set to **Collapse** with *Monthly* aggregation.
+
+
+
+All columns are mapped from source to target. Analyze automatically detects the data types for all columns.
+
+
