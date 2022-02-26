@@ -485,7 +485,7 @@ order = [".jpg$", ".gif$", ".png$"]
 name = "hugo-gcs"
 # The Go Cloud Development Kit URL to deploy to. Examples:
 # GCS; see https://gocloud.dev/howto/blob/#gcs
-URL = "gs://plaidcloud-docs-website-net"
+URL = "gs://plaidcloud-docs-website-beta"
 
 
 # [[deployment.matchers]] configure behavior for files that match the Pattern.
