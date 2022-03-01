@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.string_to_array(text, delimiter)
 ```
 
 
-# Examples
+## Examples
 
 
 

@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# vHost Queues
+## vHost Queues
 
 
 **To reach and view vHost Queues:**
@@ -28,7 +28,7 @@ This will open the **Queues Table** which displays the list of queues and other 
 
 
 
-## Creating Queues
+### Creating Queues
 
 
 **To create a queue:**
@@ -53,7 +53,7 @@ Creating a durable queue results in a slightly slower process because each messa
 
 
 
-## Deleting Queues
+### Deleting Queues
 
 
 **To delete a queue:**
@@ -66,18 +66,21 @@ Creating a durable queue results in a slightly slower process because each messa
 5. Click the queues icon of the desired vHost
 6. Click the delete icon of the desired queue
 
-***Note***: When a queue is deleted, any consumers listening on the queue will be disconnected from the queue.
+{{< note >}}
+When a queue is deleted, any consumers listening on the queue will be disconnected from the queue.
+{{< /note >}}
 
 
 
-## Purging a Queue
+### Purging a Queue
 
 
 Purging a queue will delete all messages in that queue.
 
 
-
-***Note***: Messages that have already been acknowledged will not be purged because at least one member has received and marked the message as incomplete.
+{{< note >}}
+Messages that have already been acknowledged will not be purged because at least one member has received and marked the message as incomplete.
+{{< /note >}}
 
 
 

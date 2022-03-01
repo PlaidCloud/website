@@ -12,42 +12,30 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | SAP PCM |
-| **Operation** | pcm\_calc |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Starts SAP Profitability and Cost Management (PCM) model calculation process.
 
 
 
-# Our Credentials
+## Our Credentials
 
 
 Tartan Solutions is an official SAP Partner and a preferred vendor of services related to SAP PCM model design and implementation.
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
 Select Agent to Use from the dropdown, enter model name in the “Model Name” field, click the “Wait for Calculation to Complete” check box (if desired), then click “Save and Run Step”.
 
 
 
-*Todo*
 
-
-Screenshots, description, and update parameters coming soon
 

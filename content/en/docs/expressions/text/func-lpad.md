@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.lpad(value_string, force_length, fill_string)
 ```
 
 
-# Examples
+## Examples
 
 
 

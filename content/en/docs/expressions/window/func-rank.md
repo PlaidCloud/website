@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.rank().over(partition_by=field, order_by=field)
 ```
 
 
-# Examples
+## Examples
 
 
 

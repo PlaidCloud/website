@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.encode_categorical_variables ('abalone', 'abalone_out', 'height::TEXT')
+```sql
+madlib.encode_categorical_variables ('abalone', 'abalone_out', 'height::TEXT');
 ```
 
 
@@ -29,7 +29,7 @@ madlib.encode_categorical_variables ('abalone', 'abalone_out', 'height::TEXT')
 
 
 
-```
+```python
 func.madlib.encode_categorical_variables ('abalone', 'abalone_out', 'height::TEXT')
 ```
 

@@ -16,7 +16,7 @@ While members may be associated with other workspaces within an Organization, ea
 
 
 
-# Adding Members
+## Adding Members
 
 
 To add a member:
@@ -43,7 +43,7 @@ This process will send an email invitation to the member. The member then needs 
 
 
 
-# Removing Members
+## Removing Members
 
 
 To remove a member:

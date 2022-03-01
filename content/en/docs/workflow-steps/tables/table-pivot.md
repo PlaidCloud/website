@@ -11,38 +11,20 @@ categories:
 - Expressions
 ---
 
-
-
-
-| Parameter | Value |
-| **Category** | Table |
-| **Operation** | table\_pivot |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 No additional description for Table Rows to Columns (Pivot) yet.
 
 
 
-# Source and Target Parameters
+## Source and Target Parameters
 
 
 To establish the source and target, first select the data table to be exported from the dropdown menu. Next, select the target file path from PlaidCloud Document using the dropdown menu to select the appropriate account before navigating to the actual directory in the section immediately below. Finally, provide the target file with a descriptive name.
 
 
-
-***Note***
-
-
-Providing a file extension is advised but not required by Analyze. The data table will be exported into the appropriate file format with or without an extension.
-
-
-
-# Table Data Selection
+## Table Data Selection
 
 
 The Table Data Selection tab is used to map columns from the source data table to the target data table. All source columns on the left side of the window are automatically mapped to the target data table depicted on the right side of the window. Using the **Inspect Source** menu button, there are a few additional ways to map columns from source to target:
@@ -64,10 +46,11 @@ If the source and target column options aren’t enough, other columns can be ad
 * Right click on target side and select **Insert Row** to insert a row immediately above the currently selected row.
 * Right click on target side and select **Append Row** to insert a row at the bottom (far right) of the target data table.
 
-*Warning*
 
-
+{{< warning >}}
 Selecting **Propagate All** may effectively create a duplicate of every column. Analyze does not check to see if the columns are already mapped. Make sure duplicate column names do not exist.
+{{< /warning >}}
+
 
 
 
@@ -81,12 +64,10 @@ To rearrange columns in the target data table, select the desired column(s), the
 
 To return only distinct options, select the **Distinct** menu option. This will toggle a set of checkboxes for each column in the source. Simply check any box next to the corresponding column to return distinct results only.
 
-
-
-*Warning*
-
-
+{{< warning >}}
 When the target data table contains only a subset of the source data table, select the check box next to only the columns that **are** to be included in the target data table. Selecting all checkboxes could provide output that does not appear to be distinct.
+{{< /warning >}}
+
 
 
 
@@ -116,31 +97,28 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Max
 * Cumulative Product
 
-*Todo*
-
-
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
 
 
 
-## Data Filters
+### Data Filters
 
 
 To allow for maximum flexibility, data filters are available on the source data and the target data. For larger data sets, it can be especially beneficial to filter out rows on the source so the remaining operations are performed on a smaller data set.
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
 
 
 
-## Duplicates
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
@@ -148,31 +126,30 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 
-*Caution*
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Select Subset of Final Data
+### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
 
 
 
-## Duplicates
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
@@ -180,14 +157,13 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 
-*Caution*
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Source Table Slicing (Limit)
+### Source Table Slicing (Limit)
 
 
 To limit the data, check the **Apply Row Slicer** box and then specify the following:
@@ -198,14 +174,14 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 
 
 
-## Select Subset of Final Data
+### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples
 
 
 
-## Final Data Table Slicing (Limit)
+### Final Data Table Slicing (Limit)
 
 
 To limit the data, simply check the **Apply Row Slicer** box and then specify the following:

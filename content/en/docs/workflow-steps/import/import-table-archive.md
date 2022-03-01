@@ -11,32 +11,13 @@ categories:
 - Expressions
 ---
 
-
-
-
-| Parameter | Value |
-| **Category** | Import |
-| **Operation** | import\_archive |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Table Archive File |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 Imports PlaidCloud table archive.
 
 
 
-# Examples
+## Examples
 
-
-No examples yet…
-
-
-
-*Todo*
-
-
-Examples and screenshots coming soon
-
+No examples yet...

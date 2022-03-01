@@ -12,27 +12,13 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Document |
-| **Operation** | document\_remote\_delete\_file |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Deletes a remote file system file using a PlaidLink agent installed within the firewall.
 
 
-
-# Workflow Configuration Forms
-
-
-
-# Examples
+## Examples
 
 
 First, make a selection from the “Agent to Use” dropdown. Next, enter the file or folder path under “File or Folder Path for Delete”. Finally, select “Save and Run Step”. 

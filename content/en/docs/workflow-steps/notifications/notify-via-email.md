@@ -12,56 +12,42 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Notify |
-| **Operation** | notify\_email |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Send email notifications. Messages are sent from *[info@tartansolutions.com](mailto:info@tartansolutions.com)* email account. No outbound setup is required.
 
 
 
-## Email Addresses
+### Email Addresses
 
 
 Specify any number of email recipients. Acceptable delimiters include semicolon (;) and comma (,).
 
 
 
-## Message
+### Message
 
 
 Specify **Subject** and **Body** as desired.
 
 
 
-Please note that both [System Variables](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#system-variables) and [Workflow Variables](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#model-variables) are available for use with this transform, in both the subject line and the message body.
+Please note that both Project Variables and Workflow Variables are available for use with this transform, in both the subject line and the message body.
 
 
 
 Additionally, standard HTML code is permitted in the body to further customize the look of the email messages.
 
 
-
-# Workflow Configuration Forms
-
-
-
-## Attachments
+### Attachments
 
 
 Attaching files to emails is very simple. Select a file or folder from Document to attach. If a folder is selected, the contents of the folder will be attached as individual files. Variable substitution works with paths for better control of file attachments when sending out personalized emails.
 
 
 
-# Examples
+## Examples
 
 
 In this example, all of the system variables are used. Additionally, there is a small bit of HTML used to format the first line of the body. Executing this transform will send the following email:

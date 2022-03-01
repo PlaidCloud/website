@@ -12,30 +12,16 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | SAP |
-| **Operation** | sap\_master\_data |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Calls an SAP ECC Remote Function Call (RFC) designed to access master data tables and retrieves the data in tabular form. This data is then available for transformation processes in PlaidCloud. It also provides the ability to export the master data table structure to a separate file which includes column names, data types, and column order information.
 
 
-
-# Workflow Configuration Forms
-
+## Examples
 
 
-# Examples
-
-
-## RFC Parameters
+### RFC Parameters
 
 
 Select Agent to Use. Select Target Directory from the drop down bar, and browse below for the correct child folder destination for the file. Next, appropriately name the “Target File Name”. Under “Function Call Information”, enter the Function, the Return Value Parameter, and select the parameters.

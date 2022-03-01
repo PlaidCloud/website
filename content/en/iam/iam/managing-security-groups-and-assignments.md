@@ -19,7 +19,7 @@ PlaidCloud’s security and access management is straightforward. A member is gr
 
 
 
-# Managing Security Groups
+## Managing Security Groups
 
 
 Security groups can be added, updated, or deleted.
@@ -44,14 +44,14 @@ Security groups can be added, updated, or deleted.
 4. Click the Member icon
 5. Drag desired members from the “Unassigned Members” column to the “Assigned Members” column or vice versa to remove members
 
-# Setting Default Security Groups
+## Setting Default Security Groups
 
 
 To reduce the time needed for adding new members, identify a set of default security groups. This provides a baseline set of security groups for new members without needing to manually assign each person. The setting is available when adding a new security group if you check the box at the bottom of the Security Group window that reads “Assign to New Users by Default”.
 
 
 
-# Performing a Security Audit
+## Performing a Security Audit
 
 
 The security audit capability provides the ability to see group membership across all members and groups.
@@ -78,7 +78,7 @@ As all tables in PlaidCloud are exportable as a CSV file format, the group membe
 4. Click the small icon to the far right of “Username” in the table
 5. Click “Export CSV” or “Export XLXS” depending on your preference
 
-# Viewing Available Permission Settings
+## Viewing Available Permission Settings
 
 
 Each application being used in the workspace has specific available permissions. The security group permissions are based on these application permissions.

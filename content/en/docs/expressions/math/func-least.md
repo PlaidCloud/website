@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.least(value_1, value_2)
 ```
 
 
-# Examples
+## Examples
 
 
 

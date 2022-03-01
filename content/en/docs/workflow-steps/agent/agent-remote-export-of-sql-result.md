@@ -12,34 +12,12 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Remote |
-| **Operation** | remote\_export\_sql |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Execute specified SQL on a remote database through a PlaidLink Agent connection and export the result for use by PlaidCloud or other downstream systems.
 
 
+## Examples
 
-# Workflow Configuration Forms
-
-
-No screenshots available.
-
-
-
-# Examples
-
-
-*Todo*
-
-
-Examples and screenshots coming soon
-
+No examples yet...

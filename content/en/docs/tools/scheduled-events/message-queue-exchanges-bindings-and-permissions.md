@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# vHost Exchanges
+## vHost Exchanges
 
 
 **To view exchanges:**
@@ -28,7 +28,7 @@ This will open the **Exchanges Table** which displays the list of all exchanges 
 
 
 
-## Creating Exchanges
+### Creating Exchanges
 
 
 **To create an exchange:**
@@ -43,7 +43,7 @@ This will open the **Exchanges Table** which displays the list of all exchanges 
 7. Complete the required fields
 8. Click “Submit”
 
-## Deleting Exchanges
+### Deleting Exchanges
 
 
 **To delete an exchange:**
@@ -57,7 +57,7 @@ This will open the **Exchanges Table** which displays the list of all exchanges 
 6. Click the delete icon of the desired exchange
 7. Click “Delete” again
 
-# vHost Bindings
+## vHost Bindings
 
 
 **To view bindings:**
@@ -73,7 +73,7 @@ This will open the **Bindings Table**, which displays the list of bindings and o
 
 
 
-## Creating Bindings
+### Creating Bindings
 
 
 **To create a binding:**
@@ -88,7 +88,7 @@ This will open the **Bindings Table**, which displays the list of bindings and o
 7. Complete the desired fields
 8. Click “Submit”
 
-## Deleting Bindings
+### Deleting Bindings
 
 
 **To delete bindings:**
@@ -102,7 +102,7 @@ This will open the **Bindings Table**, which displays the list of bindings and o
 6. Click the delete icon of the desired binding
 7. Click “Delete” again
 
-# vHost Permissions
+## vHost Permissions
 
 
 **To view permissions:**
@@ -118,7 +118,7 @@ This will open the **Permissions Table**, which displays the list of users and t
 
 
 
-## Creating Permissions
+### Creating Permissions
 
 
 **To create a permission:**
@@ -133,7 +133,7 @@ This will open the **Permissions Table**, which displays the list of users and t
 7. Complete the required fields
 8. Click “Submit”
 
-## Deleting Permissions
+### Deleting Permissions
 
 
 **To delete permissions:**
@@ -147,14 +147,14 @@ This will open the **Permissions Table**, which displays the list of users and t
 6. Click the delete icon of the desired permission
 7. Click “Delete” again
 
-# Users
+## Users
 
 
 In order to access messages in the message queue, you must first set up users. PlaidCloud allows you to create an unlimited number of users in order to suit your needs.
 
-
-
-***Note*:** Because users can be granted permission to access multiple vHosts without needing different access levels, it is unnecessary to create one user for every vHost.
+{{< note >}}
+Because users can be granted permission to access multiple vHosts without needing different access levels, it is unnecessary to create one user for every vHost.
+{{< /note >}}
 
 
 
@@ -170,7 +170,7 @@ This will open the **User Table**, which displays users currently in the workspa
 
 
 
-## Creating Users
+### Creating Users
 
 
 **To create a new user:**
@@ -184,11 +184,12 @@ This will open the **User Table**, which displays users currently in the workspa
 6. Complete the required fields
 7. Click “Create”
 
-***Note***: You cannot edit any of the settings, including the password, after creating the user.
+{{< note >}}
+You cannot edit any of the settings, including the password, after creating the user.
+{{< /note >}}
 
 
-
-## Controlling User Access
+### Controlling User Access
 
 
 The Admin Level setting provides the user with different privileges. PlaidCloud provides three levels of access:
@@ -218,7 +219,7 @@ The Admin Level setting provides the user with different privileges. PlaidCloud 
 * View node-level data such as memory use and clustering
 * View truly global statistics for all virtual hosts
 
-## Deleting Users
+### Deleting Users
 
 
 **To delete a user:**
@@ -233,5 +234,6 @@ The Admin Level setting provides the user with different privileges. PlaidCloud 
 
 	* Click “Delete” again
 
-***Note***: Deleting a user will automatically remove all permissions granted to the user on all vHosts.
-
+{{< note >}}
+Deleting a user will automatically remove all permissions granted to the user on all vHosts.
+{{< /note >}}

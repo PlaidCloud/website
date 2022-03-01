@@ -21,7 +21,7 @@ PlaidCloud uses a path-based system to organize data editors, like you would use
 
 
 
-# Searching
+## Searching
 
 
 To search for data editors:
@@ -34,7 +34,7 @@ The search filter will search data editors’ names and labels for matches and s
 
 
 
-# Move
+## Move
 
 
 To move a data editor within the control hierarchy:
@@ -42,7 +42,7 @@ To move a data editor within the control hierarchy:
 
 1. Drag it into the folder where you wish to place it
 
-# Rename
+## Rename
 
 
 To rename a data editor:
@@ -57,7 +57,7 @@ The data editor will now be renamed but retain its original unique identifier.
 
 
 
-# Delete
+## Delete
 
 
 You can delete a single data editor or multiple data editors.
@@ -70,7 +70,7 @@ To delete a data editor:
 2. Click the delete button on the top toolbar
 
 
-# Create New Directory Structure
+## Create New Directory Structure
 
 
 To add a new folder to the control hierarchy:
@@ -85,7 +85,7 @@ To add a folder to an existing folder:
 2. Select New Folder
 
 
-# Mark Hierarchy for Viewing Roles
+## Mark Hierarchy for Viewing Roles
 
 
 The viewing of data editors by various roles:
@@ -100,7 +100,7 @@ To update multiple data editors:
 2. Select the desired viewing role from the Actions menu on the top toolbar
 
 
-# Memos to Describe Table Contents
+## Memos to Describe Table Contents
 
 
 To add a memo to a data editor:
@@ -110,7 +110,7 @@ To add a memo to a data editor:
 2. Update the memo in the right context form
 
 
-# View Additional Hierarchy Attributes
+## View Additional Hierarchy Attributes
 
 
 To view and edit additional data editor attributes:
@@ -119,7 +119,7 @@ To view and edit additional data editor attributes:
 1. Select the data editor and view the data editor context form on the right
 
 
-# Duplicate a Data Editor
+## Duplicate a Data Editor
 
 
 To duplicate a data editor:

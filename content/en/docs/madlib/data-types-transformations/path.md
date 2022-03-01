@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.path('eventlog', 'path_output', 'session_id', 'event_timestamp ASC', 'buy:=page=''CHECKOUT''', '(buy)', 'sum(revenue) as checkout_rev', TRUE)
+```sql
+madlib.path('eventlog', 'path_output', 'session_id', 'event_timestamp ASC', 'buy:=page=''CHECKOUT''', '(buy)', 'sum(revenue) as checkout_rev', TRUE);
 ```
 
 
@@ -29,8 +29,8 @@ madlib.path('eventlog', 'path_output', 'session_id', 'event_timestamp ASC', 'buy
 
 
 
-```
-func.madlib.path('eventlog', 'path_output', 'session_id', 'event_timestamp ASC', "buy:=page='CHECKOUT'", '(buy)', 'sum(revenue) as checkout_rev', TRUE)
+```python
+func.madlib.path('eventlog', 'path_output', 'session_id', 'event_timestamp ASC', "buy:=page='CHECKOUT'", '(buy)', 'sum(revenue) as checkout_rev', True)
 ```
 
 

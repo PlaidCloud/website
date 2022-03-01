@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -26,7 +26,7 @@ func.age(timestamp) JSRef: age2
 ```
 
 
-# Examples
+## Examples
 
 
 

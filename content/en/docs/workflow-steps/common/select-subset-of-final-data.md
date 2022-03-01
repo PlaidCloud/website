@@ -12,8 +12,8 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 

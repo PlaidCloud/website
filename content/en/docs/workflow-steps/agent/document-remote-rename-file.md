@@ -12,27 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Document |
-| **Operation** | document\_remote\_rename\_file |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Renames or moves a remote file system file using a PlaidLink agent installed within the firewall.
 
 
 
-# Workflow Configuration Forms
-
-
-
-# Examples
+## Examples
 
 
 First, make a selection from the “Agent to Use” dropdown. 

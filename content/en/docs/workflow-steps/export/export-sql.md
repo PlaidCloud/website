@@ -12,42 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Export |
-| **Operation** | export\_sql |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table |
-| **Output Type** | SQL Database |
-
-# Description
+## Description
 
 
 Export an Analyze data table to PlaidCloud Document as an SQL.
 
 
-
-# Workflow Configuration Forms
-
-
-No screenshots available.
+## Examples
 
 
-
-# Configuration Parameters
-
-
-
-
-| Parameter | Type | Description |
-| id | str | id |
-
-# Examples
-
-
-*Todo*
-
-
-Screenshots, description, and update parameters coming soon[.](https://plaidcloud.com/docs/plaidcloud/workflows/export/export_stata.html)
+No examples yet...
 

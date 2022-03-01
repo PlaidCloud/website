@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -26,7 +26,7 @@ func.log(b numeric, x numeric) JSRef: logb
 ```
 
 
-# Examples
+## Examples
 
 
 

@@ -20,7 +20,7 @@ PlaidCloud uses a path-based system to organize hierarchies, like you would use 
 
 
 
-# Searching
+## Searching
 
 
 To search for hierarchies:
@@ -30,7 +30,7 @@ To search for hierarchies:
 2. The search filter will search hierarchy names and labels for matches and show the results in the control hierarchy above
 
 
-# Move
+## Move
 
 
 To move a hierarchy within the control hierarchy:
@@ -39,7 +39,7 @@ To move a hierarchy within the control hierarchy:
 1. Drag it into the folder where you wish to place it
 
 
-# Rename
+## Rename
 
 
 To Rename a Hierarchy:
@@ -51,7 +51,7 @@ To Rename a Hierarchy:
 4. The hierarchy is now renamed, but it will retain its original unique identifier
 
 
-# Clear
+## Clear
 
 
 You can clear a single hierarchy or multiple hierarchies.
@@ -64,10 +64,10 @@ To clear a hierarchy:
 2. Click the clear button on the top toolbar
 
 
-# Delete
+## Delete
 
 
-## You can delete a single hierarchy or multiple hierarchies.
+### You can delete a single hierarchy or multiple hierarchies.
 
 
 To delete a hierarchy:
@@ -78,13 +78,13 @@ To delete a hierarchy:
 
 The delete operation will check to see if the hierarchy is in use by workflow steps, tables, or views. If so, you will be asked to remove those associations.
 
+{{< note >}}
+You can also force delete the hierarchy(s). Force deletion of the hierarchy(s) will leave references broken, so this should be used sparingly.
+{{< /note >}}
 
-***Note****:* You can also force delete the hierarchy(s). Force deletion of the hierarchy(s) will leave references broken, so this should be used sparingly.
 
 
-
-
-# Create New Directory Structure
+## Create New Directory Structure
 
 
 To create a new folder:
@@ -99,7 +99,7 @@ To add a folder to an existing folder:
 2. Select New Folder.
 
 
-# Mark Hierarchy for Viewing Roles
+## Mark Hierarchy for Viewing Roles
 
 
 To view hierarchies by roles:
@@ -114,7 +114,7 @@ To view hierarchies that need to be updated:
 2. Select the desired viewing role from the Actions menu on the top toolbar
 
 
-# Memos to Describe Table Contents
+## Memos to Describe Table Contents
 
 
 To add a memo to a hierarchy:
@@ -124,7 +124,7 @@ To add a memo to a hierarchy:
 2. Update the memo in the right context form
 
 
-# View Additional Hierarchy Attributes
+## View Additional Hierarchy Attributes
 
 
 To view and edit additional hierarchy attributes:
@@ -134,7 +134,7 @@ To view and edit additional hierarchy attributes:
 2. View the hierarchy context form on the right
 
 
-# Duplicate a Hierarchy
+## Duplicate a Hierarchy
 
 
 To duplicate a hierarchy:

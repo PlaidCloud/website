@@ -31,14 +31,14 @@ PlaidCloud uses a path-based system to organize tables, like you would use to na
 
 
 
-# Searching
+## Searching
 
 
 Searching for tables is accomplished by using the filter box in the lower left of hierarchy. The search filter will search table names and labels for matches and show the results in the hierarchy above.
 
 
 
-# Move
+## Move
 
 
 **To move a table:**
@@ -46,7 +46,7 @@ Searching for tables is accomplished by using the filter box in the lower left o
 
 1. Drag it into the folder where you wish it to be located
 
-# Rename
+## Rename
 
 
 **To rename a table:**
@@ -57,7 +57,7 @@ Searching for tables is accomplished by using the filter box in the lower left o
 3. Type in the new name and save it
 4. The table is now renamed, but it retains its original unique identifier.
 
-# Clear
+## Clear
 
 
 **To clear a table:**
@@ -70,7 +70,7 @@ Searching for tables is accomplished by using the filter box in the lower left o
 
 
 
-# Delete
+## Delete
 
 
 **To delete a table:**
@@ -84,7 +84,7 @@ Searching for tables is accomplished by using the filter box in the lower left o
 
 
 
-# Create New Directory Structure
+## Create New Directory Structure
 
 
 **To add a new folder:**
@@ -99,14 +99,14 @@ Searching for tables is accomplished by using the filter box in the lower left o
 2. Select New Folder
 
 
-# View Data (Table Explorer)
+## View Data (Table Explorer)
 
 
 Table data is viewed using the Data Explorer. The Data Explorer provides a grid view of the data as well as a column by column summary of values and statistics. Point-and-click filtering and exporting to familiar file formats are both available. The filter selections can also be saved as an Extract step usable in a workflow.
 
 
 
-# Publish Table for Reporting
+## Publish Table for Reporting
 
 
 Dashboard Visualizations are purposely limited to tables that have been published. When publishing a table, you can provide a unique name that may distinguish the data. This may be useful when the table has a more obscure name on part of the workflow that generated it, but it needs a clearer name for those building dashboards.
@@ -116,28 +116,28 @@ Published tables do not have paths associated with them. They will appear as a l
 
 
 
-# Mark Table for Viewing Roles
+## Mark Table for Viewing Roles
 
 
 The viewing of tables by various roles can be controlled by clicking the Explorer or Manager checkboxes. If multiple tables need to be updated, select the tables in the hierarchy and select the desired viewing role from the Actions menu on the top toolbar.
 
 
 
-# Memos to Describe Table Contents
+## Memos to Describe Table Contents
 
 
 Add a memo to a table to help understand the data.
 
 
 
-# View Table Shape, Size, and Last Updated Time
+## View Table Shape, Size, and Last Updated Time
 
 
 The number of rows, columns, and the data size for each table is shown in the table hierarchy. For very large tables (multi-million rows) the row count may be estimated and an indicator for approximate row count will be shown.
 
 
 
-# View Additional Table Attributes
+## View Additional Table Attributes
 
 
 **To view and edit other table attributes:**
@@ -147,7 +147,7 @@ The number of rows, columns, and the data size for each table is shown in the ta
 2. Click the view the table context form on the right.
 
 
-# Duplicate a Table
+## Duplicate a Table
 
 
 **To duplicate a table:**

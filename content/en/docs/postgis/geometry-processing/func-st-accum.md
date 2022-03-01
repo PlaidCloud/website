@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.ST_Accum()
 ```
 
 
-# Examples
+## Examples
 
 
 
@@ -30,7 +30,7 @@ Documentation for func.ST_Accum is coming soon.
 ```
 
 
-## References
+### References
 
 
 [PostgreSQL Documentation](https://postgis.net/docs/manual-1.5/ST_Accum.html)
