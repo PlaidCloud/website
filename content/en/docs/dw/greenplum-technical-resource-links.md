@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Greenplum Introductory Videos
+## Greenplum Introductory Videos
 
 
 [Introduction to Greenplum](https://www.youtube.com/watch?v=cgAygOm4Ohs)
@@ -27,7 +27,7 @@ categories:
 
 
 
-# Greenplum Advanced Usage Concepts
+## Greenplum Advanced Usage Concepts
 
 
 [Data Warehouse Modernization with Greenplum](https://www.youtube.com/watch?v=FweCYDk_k3M)
@@ -62,7 +62,7 @@ categories:
 
 
 
-# Greenplum is Open Source
+## Greenplum is Open Source
 
 
 [Go to the Greenplum Github Repo](https://github.com/greenplum-db/gpdb)

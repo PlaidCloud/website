@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.rtrim(value_string, string_to_trim)
 ```
 
 
-# Examples
+## Examples
 
 
 

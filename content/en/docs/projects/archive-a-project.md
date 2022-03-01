@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Creating an Archive
+## Creating an Archive
 
 
 Projects normally contain critical processes and logic, which are important to archive. If you ever need to restore the project to a specific state, having archives is essential. 
@@ -36,7 +36,7 @@ To archive a project:
 1. Open Analyze
 2. Select the “Projects” tab
 
-# Restoring an Archive
+## Restoring an Archive
 
 
 Once you have an archive, you may want to restore it. You can restore an archive into a new project or into an existing project.
@@ -49,7 +49,7 @@ To restore an archive:
 1. Open Analyze
 2. Select the “Projects” tab
 
-# Archiving Schedule
+## Archiving Schedule
 
 
 Archives can also serve as a periodic backup of your project. PlaidCloud allows you to manage the backup schedule and set the retention period of the backup archives to whatever is most convenient or desired.

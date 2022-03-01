@@ -12,17 +12,17 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
 
 
 
-# Examples
+## Examples
 
 
-## SQL
+### SQL
 
 
 
@@ -31,7 +31,7 @@ ST_ConcaveHull(geometry geom, float target_percent, boolean allow_holes = false)
 ```
 
 
-## PlaidCloud
+### PlaidCloud
 
 
 
@@ -40,7 +40,7 @@ func.ST_ConcaveHull(geometry geom, float target_percent, boolean allow_holes = f
 ```
 
 
-## References
+### References
 
 
 PostGIS Official Documentation for this method can be found [here](https://postgis.net/docs/manual-3.1/ST_ConcaveHull.html).

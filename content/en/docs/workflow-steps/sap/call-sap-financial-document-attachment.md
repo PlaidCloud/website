@@ -12,30 +12,16 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | SAP |
-| **API Key** | sap\_attach |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Calls an SAP ECC Remote Function Call (RFC) designed to attach a file to specified FI document number.
 
 
-
-# Workflow Configuration Forms
-
+## Examples
 
 
-# Examples
-
-
-## RFC Parameters
+### RFC Parameters
 
 
 Select Agent to Use. Select Target Directory from the drop down bar, and browse below for the correct child folder destination for the file. Next, appropriately name the “Target File Name”. Under “Function Call Information”, enter the Function, the Return Value Parameter, and select the parameters.

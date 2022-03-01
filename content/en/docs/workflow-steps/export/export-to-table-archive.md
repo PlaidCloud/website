@@ -12,24 +12,13 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Import |
-| **Operation** | export\_archive |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Table Archive File |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 Exports PlaidCloud table archive file.
 
 
 
-# Examples
+## Examples
 
-
-No examples yet…
-
+No examples yet...

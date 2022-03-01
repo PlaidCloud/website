@@ -12,42 +12,12 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Export |
-| **Operation** | export\_xml |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table |
-| **Output Type** | PlaidCloud Document File |
-
-# Description
+## Description
 
 
 Export an Analyze data table to PlaidCloud Document as an XML file.
 
 
+## Examples
 
-# Export Parameters
-
-
-
-# Workflow Configuration Forms
-
-
-No screenshots available
-
-
-
-# Examples
-
-
-No examples yet.
-
-
-
-*Todo*
-
-
-Screenshots, description, and update parameters coming soon
-
+No examples yet...

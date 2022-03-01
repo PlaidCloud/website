@@ -12,17 +12,17 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
 
 
 
-# Examples
+## Examples
 
 
-## SQL
+### SQL
 
 
 
@@ -34,7 +34,7 @@ ST_MinimumBoundingCircle(geometry geomA, integer num_segs_per_qt_circ=48);
 
 
 
-## PlaidCloud
+### PlaidCloud
 
 
 
@@ -46,7 +46,7 @@ func.ST_MinimumBoundingCircle(geometry geomA, integer num_segs_per_qt_circ=48);
 
 
 
-## References
+### References
 
 
 PostGIS Official Documentation for this method can be found [here](https://postgis.net/docs/manual-3.1/ST_MinimumBoundingCircle.html).

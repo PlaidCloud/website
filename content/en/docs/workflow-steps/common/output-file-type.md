@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 All exported files are uncompressed, but the following compression options are available:
@@ -23,8 +23,5 @@ All exported files are uncompressed, but the following compression options are a
 * BZip2
 
 
-*Todo*
 
-
-Screenshots, description, and update parameters coming soon
 

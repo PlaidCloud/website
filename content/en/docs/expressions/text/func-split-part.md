@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.split_part(value_string, split_on_string, group_number_int)
 ```
 
 
-# Examples
+## Examples
 
 
 

@@ -12,38 +12,26 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Table |
-| **Operation** | table\_delete |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Performs a delete on the table using the specified filter conditions. The operation is performed on the designated table directly so no additional tables are created. Only the rows that meet the filter criteria are deleted. This may be an effective approach when encountering concerns related to data size.
 
 
 
-# Table Selection
+## Table Selection
 
 
 Select the **Source** table for deleting from the dropdown list. This list includes all *Project* and *Workflow* data tables.
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
-*Todo*
 
-
-Screenshots, description, and update parameters coming soon
 

@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# AWS S3 Setup
+## AWS S3 Setup
 
 
 These steps need to be completed within the AWS console
@@ -35,7 +35,7 @@ You should now have everything you need to add your S3 account to PlaidCloud Doc
 
 
 
-# PlaidCloud Document Setup
+## PlaidCloud Document Setup
 
 
 1. Sign into PlaidCloud

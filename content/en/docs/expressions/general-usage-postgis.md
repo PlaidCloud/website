@@ -15,16 +15,14 @@ categories:
 Analyze provides access to the powerful PostGIS library of functions for geospatial analysis. The functions available are shown in the following table and link to instructions on the PostGIS site.
 
 
-
-**Important**
-
-
-
+{{< note >}}
 To specify the use of PostGIS functions in expressions, prefix the name with func. For example, using ST\_GeogFromText would use func.ST\_GeogFromText()
+{{< /note >}}
 
 
 
-# Geometry Constructors
+
+## Geometry Constructors
 
 
 

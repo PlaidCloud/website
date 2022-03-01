@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.avg().over(partition_by=field, order_by=field)
 ```
 
 
-# Examples
+## Examples
 
 
 

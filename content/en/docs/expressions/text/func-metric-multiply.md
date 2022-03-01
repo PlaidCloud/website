@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.metric_multiply(string)
 ```
 
 
-# Examples
+## Examples
 
 
 

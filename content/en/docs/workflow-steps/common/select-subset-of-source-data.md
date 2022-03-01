@@ -12,15 +12,14 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
-***Note***
-
+## Examples
 
 Compound filters **must** have individual elements wrapped in parentheses. For example, if filtering for Temperature and Humidity, a valid filter would look like this:
 

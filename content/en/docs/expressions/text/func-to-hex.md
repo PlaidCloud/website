@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.to_hex(number int or bigint)
 ```
 
 
-# Examples
+## Examples
 
 
 

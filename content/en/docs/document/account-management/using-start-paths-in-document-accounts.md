@@ -34,7 +34,7 @@ This provides the ability to restrict specific teams to lower levels of the tree
 
 
 
-# Adding and Updating the Start Path
+## Adding and Updating the Start Path
 
 
 1. Go to Document > Manage Accounts
@@ -42,7 +42,7 @@ This provides the ability to restrict specific teams to lower levels of the tree
 3. Add a Start Path in the Start Path text field
 4. Select the save button
 
-# Start Path Format
+## Start Path Format
 
 
 The path always begins with the bucket name followed by the sub-directories.

@@ -12,16 +12,7 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | SAP PCM |
-| **Operation** | pcm\_loader |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Loads an SAP Profitability and Cost Management (PCM) model using direct table loads. This process is significantly faster than Databridge. The Hyper Loader supports virtually all of the current PCM data, assignment, and structure tables.
@@ -84,19 +75,19 @@ This is the current list of available loading targets:
 * Worksheet 2 Dimensional Hierarchy
 * Worksheet Value
 
-# Our Credentials
+## Our Credentials
 
 
 Tartan Solutions is an official SAP Partner and a preferred vendor of services related to SAP PCM model design and implementation.
 
 
 
-# Workflow Configuration Forms
 
 
 
 
-# Examples
+
+## Examples
 
 
 Select Agent to Use from the dropdown. Enter model name and select the load package storage path location, then select the child folder desired from within. Use the Table Data Selection below to select the source table model and the target load table. Inspect source>>propagate both sides of the table will reveal the data. Click “Save and Run Step” when the data is entered and you have added any expressions.

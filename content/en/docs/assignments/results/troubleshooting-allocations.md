@@ -12,21 +12,21 @@ categories:
 ---
 
 
-# Stranded Cost
+## Stranded Cost
 
 
 Stranded cost is....
 
 
 
-# Over Allocation of Cost
+## Over Allocation of Cost
 
 
 Over allocation of cost is when you end up with more output cost...
 
 
 
-# Incorrect Allocation of Cost
+## Incorrect Allocation of Cost
 
 
 Incorrect allocation of costs happens when...

@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Searching
+## Searching
 
 
 Searching for projects is accomplished by using the filter box in the lower left of the hierarchy. The search filter will search project names and labels for matches and show the results in the hierarchy above.
@@ -20,7 +20,7 @@ Searching for projects is accomplished by using the filter box in the lower left
 
 
 
-# Creating New Projects
+## Creating New Projects
 
 
 To create a new project:
@@ -35,15 +35,12 @@ To create a new project:
 The project is now ready for updating access permissions, adding owners, and creating workflows.
 
 
-***Note***
+{{< note >}}
+By default, the project will be accessible by all members of the current workspace
+{{< /note >}}
 
 
-*By default, the project will be accessible by all members of the current workspace.*
-
-
-
-
-# Automatic Change Tracking
+## Automatic Change Tracking
 
 
 All changes to a project, including workflows, data editors, hierarchies, table structures, and UDFs are tracked and allow point-in-time recovery of the state. This allows for easy recovery from user introduced problems or simply copying a different point-in-time to another project for comparison.
@@ -53,13 +50,13 @@ In addition to overall tracking, projects and their elements also allow for vers
 
 
 
-# 
+## 
 
 
-# Managing Project Access
+## Managing Project Access
 
 
-## Types of Access
+### Types of Access
 
 
 Project security has been simplified into three types of access:
@@ -79,16 +76,16 @@ Setting the project security is easy to do:
 5. Click “Update”
 
 
-# All Workspace Members
+## All Workspace Members
 
 
 “All Workspace Members” access is the most simple option since it provides access to all members of the workspace and does not require any additional assignment of members.
 
 
-# 
+## 
 
 
-# Specific Members Only
+## Specific Members Only
 
 
 “The Specific Members Only” access setting requires assignment of each member to the project.To assign members to a project:
@@ -102,16 +99,12 @@ Setting the project security is easy to do:
 
 For clouds with large numbers of members, this approach can often require more effort than desired, which is where security groups become useful.
 
-
-***Note***
-
-
-*To add members, you must be a member of the workspace.*
+{{< note >}}
+To add members, you must be a member of the workspace.
+{{< /note >}}
 
 
-
-
-# Specific Security Groups Only
+## Specific Security Groups Only
 
 
 The “Specific Security Groups Only” option enables assigning specific security groups permission to access the account. With access restrictions relying on association with a security group or groups, the administration of account access for larger groups is much simpler. This is particularly useful when combined with single sign-on automatic group association. By using single sign-on to set member group assignments, these groups can also enable and disable access to projects implicitly.
@@ -127,7 +120,7 @@ To edit assigned groups:
 5. Click “Update”
 
 
-# Setting Different Viewing Roles
+## Setting Different Viewing Roles
 
 
 Many times a project may require several transformations and tables to complete intermediate steps while the end result may end up only consisting of a few tables. Members do not always require viewing of all the elements of the project, sometimes just the final product. PlaidCloud offers you the ability to set different viewing roles to easily declutter and control the visibility of each member.
@@ -143,11 +136,9 @@ The **Architect** role is the most simple because it allows full visibility and 
 
 The **Manager** and **Explorer** roles have no specific access privileges but can be custom-defined. In other words, you can choose which items are visible to each group.
 
-
-***Note***
-
-
-***Manager*** *and **Explorer** are not security groups, they only provide a convenient way of segregating duties and visibility of information.*
+{{< note >}}
+**Manager*** *and **Explorer** are not security groups, they only provide a convenient way of segregating duties and visibility of information.
+{{< /note >}}
 
 
 You can make everyone an **Architect** if you feel visibility of everything within the project is needed; otherwise, you can designate members as **Manager** and/or **Explorer** project members and control visibility that way.
@@ -166,7 +157,7 @@ To set the different role:
 7. Click “Update”
 
 
-# Managing Project Variables
+## Managing Project Variables
 
 
 When running a project or workflow it may be useful to set variables for recurring tasks in order to decrease clutter and save time. These variables operate just like a normal algebraic variable by allowing you to set what the variable represents and what operation should follow it. PlaidCloud allows you to set these variables at the project level, which will effect all the workflows within that project, or at the workflow level, which will only effect that specific workflow.
@@ -184,7 +175,7 @@ From the Variables Table you can view the variables and view/edit the current va
 
 
 
-# Cloning a Project
+## Cloning a Project
 
 
 When a project is cloned, there may be project related references, such as workflow steps, that run within the project. PlaidCloud offers two options for performing a full duplication:
@@ -217,7 +208,7 @@ To duplicate **without** updating project references:
 4. Click the “Actions” button
 5. Select the “Duplicate without project reference updates” option
 
-# Viewing the Project Report
+## Viewing the Project Report
 
 
 When a project or workflow is dynamic, maintaining detailed documentation becomes a challenge. To help solve this problem, PlaidCloud provides the ability to generate a project-level report that gives detailed documentation of workflows, workflow steps, user defined transforms, variables, and tables. This report is generated on-demand and reflects the current state of the project.

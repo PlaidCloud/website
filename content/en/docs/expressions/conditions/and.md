@@ -19,7 +19,7 @@ The and\_ operator allows checking if two or more conditions are all met.
 
 ---
 
-# Examples
+## Examples
 
 
 **Example 1**

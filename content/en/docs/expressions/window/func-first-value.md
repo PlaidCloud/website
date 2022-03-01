@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.first_value(field).over(partition_by=field, order_by=field)
 ```
 
 
-# Examples
+## Examples
 
 
 

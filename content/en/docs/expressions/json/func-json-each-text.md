@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.json_each_text(json)
 ```
 
 
-# Examples
+## Examples
 
 
 

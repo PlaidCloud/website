@@ -35,13 +35,11 @@ Analyze offers a wide variety of standard data types (dtypes) to support your re
 
 It is also possible to convert from one dtype to another using the func.cast() process.
 
+{{< note >}}
+Casting to an incompatible dtype may cause errors. For example, casting ‘hello’ to an integer will not work.
+{{< /note >}}
 
-
-***Note***: Casting to an incompatible dtype may cause errors. For example, casting ‘hello’ to an integer will not work.
-
-
-
-# func.cast() Type Conversions
+## func.cast() Type Conversions
 
 
 
@@ -56,7 +54,7 @@ It is also possible to convert from one dtype to another using the func.cast() p
 | func.cast(‘78.69’, BigInteger) | Text to Big Integer (Truncate decimals) | 78 |
 | func.cast(1, Boolean) | Integer to Boolean | True |
 
-# func.to() Data Type Conversions
+## func.to() Data Type Conversions
 
 
 

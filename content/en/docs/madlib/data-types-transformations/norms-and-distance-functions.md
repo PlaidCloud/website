@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.squared_dist_norm2(a, b)
+```sql
+madlib.squared_dist_norm2(a, b);
 ```
 
 
@@ -29,7 +29,7 @@ madlib.squared_dist_norm2(a, b)
 
 
 
-```
+```python
 func.madlib.squared_dist_norm2(a, b)
 ```
 

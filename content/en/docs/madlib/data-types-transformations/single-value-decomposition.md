@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.matrix_sparsify('mat', 'row=row_id, val=row_vec', 'mat_sparse', 'row=row_id, col=col_id, val=value')
+```sql
+madlib.matrix_sparsify('mat', 'row=row_id, val=row_vec', 'mat_sparse', 'row=row_id, col=col_id, val=value');
 ```
 
 
@@ -29,7 +29,7 @@ madlib.matrix_sparsify('mat', 'row=row_id, val=row_vec', 'mat_sparse', 'row=row_
 
 
 
-```
+```python
 func.madlib.matrix_sparsify('mat', 'row=row_id, val=row_vec', 'mat_sparse', 'row=row_id, col=col_id, val=value')
 ```
 

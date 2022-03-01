@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Workflow |
-| **Operation** | workflow\_create |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Create a new PlaidCloud Analyze workflow.
 
 
 
-# Workflow to Create
+## Workflow to Create
 
 
 First, select the Project in which the new workflow should be created from the dropdown menu.
@@ -38,17 +29,6 @@ First, select the Project in which the new workflow should be created from the d
 Next, type in a workflow name. The name should be unique to the Project.
 
 
+## Examples
 
-# Workflow Configuration Forms
-
-
-
-
-# Examples
-
-
-*Todo*
-
-
-Screenshots, description, and update parameters coming soon
-
+No examples yet...

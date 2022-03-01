@@ -12,17 +12,17 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
 
 
 
-# Examples
+## Examples
 
 
-## SQL
+### SQL
 
 
 
@@ -30,7 +30,7 @@ PlaidCloud expressions and filters provide use of most non-administrative PostGI
 ST_InterpolatePoint(geometry line, geometry point);
 ```
 
-## 
+### 
 PlaidCloud
 
 
@@ -40,7 +40,7 @@ func.ST_InterpolatePoint(geometry line, geometry point);
 ```
 
 
-## References
+### References
 
 
 PostGIS Official Documentation for this method can be found [here](https://postgis.net/docs/manual-3.1/ST_InterpolatePoint.html).

@@ -36,7 +36,7 @@ categories:
 | func.timeofday() | text | Current date and time (like clock\_timesta mp, but as a text string) |  |  |
 | func.transaction\_tim estamp() | timestamp with time zone | Current date and time (start of current transaction) |  |  |
 
-# Date and Time Formatting Directives
+## Date and Time Formatting Directives
 
 
 

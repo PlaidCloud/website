@@ -12,23 +12,11 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Export |
-| **Operation** | export\_spss |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Document File |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 Import SPSS sav and zsav files from PlaidCloud Document.
 
 
-*Todo*
 
-
-Screenshots, description, and update parameters coming soon
 

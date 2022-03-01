@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Document |
-| **Operation** | document\_create\_directory |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Create a new directory within PlaidCloud Document.
 
 
 
-# Where to Create New Folder
+## Where to Create New Folder
 
 
 First, select the appropriate account from the dropdown menu.
@@ -39,30 +30,25 @@ Next, press the **Browse** button to select the parent directory.
 
 
 
-# New Folder Name
+## New Folder Name
 
 
 Type the name for the new directory.
 
 
-
-***Note***
-
-
+{{< note >}}
 If the directory already exists, no action is taken.
+{{< /note >}}
 
 
 
-# Workflow Configuration Forms
 
 
 
 
-# Examples #
 
 
-In this example, the Document directory, *created\_by\_analyze*, is created within the 
+## Examples #
 
-
-*etl\_prototyping/* parent directory.
+No examples yet...
 

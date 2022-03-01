@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ case([(condition1, value1),(condition2, value2)], else_ = None)
 ```
 
 
-# Examples
+## Examples
 
 
 

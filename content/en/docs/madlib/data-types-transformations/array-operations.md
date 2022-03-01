@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.array_add(array1,array2)
+```sql
+madlib.array_add(array1,array2);
 ```
 
 
@@ -29,7 +29,7 @@ madlib.array_add(array1,array2)
 
 
 
-```
+```python
 func.madlib.array_add(array1,array2)
 ```
 

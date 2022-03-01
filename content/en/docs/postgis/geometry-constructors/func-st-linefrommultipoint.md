@@ -12,17 +12,17 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
 
 
 
-# Examples
+## Examples
 
 
-## SQL
+### SQL
 
 
 
@@ -31,7 +31,7 @@ ST_LineFromMultiPoint(geometry aMultiPoint); PlaidCloud
 ```
 
 
-## **PlaidCloud**
+### **PlaidCloud**
 
 
 
@@ -40,7 +40,7 @@ func.ST_LineFromMultiPoint(geometry aMultiPoint)
 ```
 
 
-## References
+### References
 
 
 

@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.ceil(numeric)
 ```
 
 
-# Examples
+## Examples
 
 
 

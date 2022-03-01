@@ -12,19 +12,16 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
+```python
+.any_([list of values])
 ```
-.any_([list of values]) JSRef: any
-```
 
 
-# Examples
+## Examples
 
 
-
-```
-Documentation for column.any_ is coming soon.
-```
+No examples yet...

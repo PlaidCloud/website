@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Document |
-| **Operation** | document\_delete\_directory |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Delete an existing directory from within PlaidCloud Document.
 
 
 
-# Folder to Delete
+## Folder to Delete
 
 
 First, select the appropriate account from the dropdown menu.
@@ -37,19 +28,18 @@ First, select the appropriate account from the dropdown menu.
 Next, press the **Browse** button to select the directory to delete.
 
 
-***Note***
-
-
+{{< note >}}
 If the directory doesn’t exist (already deleted), no action is taken.
+{{< /note >}}
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
 
 
-In this example, the Document directory, *etl\_prototyping/created\_by\_analyze/*, is deleted.
+## Examples
+
+No examples yet...
 

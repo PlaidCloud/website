@@ -12,26 +12,17 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
 
 
 
-# Examples
+## Examples
 
 
-## SQL
-
-
-
-```
-ST_PatchN(geometry geomA, integer n);
-```
-
-
-## PlaidCloud
+### SQL
 
 
 
@@ -40,7 +31,16 @@ ST_PatchN(geometry geomA, integer n);
 ```
 
 
-## References
+### PlaidCloud
+
+
+
+```
+ST_PatchN(geometry geomA, integer n);
+```
+
+
+### References
 
 
 PostGIS Official Documentation for this method can be found [here](https://postgis.net/docs/manual-3.1/ST_PatchN.html).

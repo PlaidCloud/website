@@ -28,7 +28,7 @@ To create a custom URL:
 3. Adjust the Single Sign-On URL as desired
 4. Click “Update Organization SSO Settings”
 
-# Allow Creation of Users Automatically
+## Allow Creation of Users Automatically
 
 
 If Single Sign-On is enabled, you can choose to automatically create members based on successful Single Sign-On authentication. New members will receive the default workspace and security roles specified in the Organization settings. To automatically create members:
@@ -42,10 +42,10 @@ If Single Sign-On is enabled, you can choose to automatically create members bas
 Use of this feature greatly simplifies member management because new members will automatically have access without any additional setup in PlaidCloud. Similarly, if members are removed from the Single Sign-On facility, they will no longer have access to PlaidCloud.
 
 
-# 
+## 
 
 
-# Allow Security Group Assignments from Single Sign-On
+## Allow Security Group Assignments from Single Sign-On
 
 
 If Single Sign-On is enabled, you can choose to pass a group association list along with the positive authentication message. The list’s items will be used to assign a member to the specified groups and remove them from any not specified. This is an effective way to manage security group assignments by using a central user management service such as Active Directory or other LDAP service.

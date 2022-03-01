@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Document |
-| **Operation** | document\_rename\_file |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Rename an existing file within PlaidCloud Document.
 
 
 
-# File to Rename
+## File to Rename
 
 
 First, select the appropriate account from the dropdown menu.
@@ -37,29 +28,23 @@ First, select the appropriate account from the dropdown menu.
 
 Next, press the **Browse** button to select the file to be renamed.
 
-
-
-***Note***
-
-
+{{< note >}}
 If the renamed file already exists, no action is taken.
+{{< /note >}}
 
 
-
-# Rename To
+## Rename To
 
 
 Type the new name for the file.
 
 
 
-# Workflow Configuration Forms
 
 
 
 
-# Examples
 
+## Examples
 
-In this example, the Document file, *etl\_prototyping/test\_copy/HIER\_NATURAL\_ACCOUNT.txt*, is renamed to *HIER\_NATURAL\_ACCOUNT\_renamed.txt*. Note that the parent directory is not listed in the **Rename To** section.
-
+No examples yet...

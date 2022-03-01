@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.translate(value_string, from_string_elements, to_string_elements)
 ```
 
 
-# Examples
+## Examples
 
 
 
