@@ -14,13 +14,11 @@ categories:
 
 Four types of access restrictions are available for an account: Private, Workspace, Member Only, and Security Group. The type of restriction set for a user is editable at any time from the account form.
 
+{{< note >}}
+None of the account access levels reveal the account credentials used to access the documents. Only account owners can view the credentials.
+{{< /note >}}
 
-
-*Note:* None of the account access levels reveal the account credentials used to access the documents. Only account owners can view the credentials.
-
-
-
-# Updating Account Access
+## Updating Account Access
 
 
 1. Select `Document > Manage Accounts` within PlaidCloud
@@ -32,17 +30,17 @@ Four types of access restrictions are available for an account: Private, Workspa
 
 
 
-# Restriction Options
+## Restriction Options
 
 
-## All Workspace Members
+### All Workspace Members
 
 
 This access is the simplest since it provides access to all members of the workspace and does not require any additional assignment of members.
 
 
 
-## Specific Members Only
+### Specific Members Only
 
 
 This access setting requires assignment of each member to an account. This option is particularly useful when combined with the single sign-on option of assigning members based on a list of groups sent with the authentication. However, for workspaces with large numbers of members, this approach can often require more effort than desired, which is where security groups become useful. To choose specific members only:
@@ -53,7 +51,7 @@ This access setting requires assignment of each member to an account. This optio
 3. To remove members, do the opposite
 4. Select the Save button
 
-## Specific Security Groups Only
+### Specific Security Groups Only
 
 
 With this option, permission to access an account is granted to specific security groups rather than just individuals. With access restrictions relying on association with a security group or groups, the administration of accounts with much larger user counts becomes much simpler. To edit assigned groups:
@@ -64,7 +62,7 @@ With this option, permission to access an account is granted to specific securit
 3. To remove groups, do the opposite
 4. Select the Save button
 
-## Remote agents
+### Remote agents
 
 
 PlaidLink agents will often use Document accounts to store files or move files among systems. To allow remote agents access to Document accounts, agents MUST have permission granted. This is a security feature to limit unwanted access to potentially sensitive information. To add agents:

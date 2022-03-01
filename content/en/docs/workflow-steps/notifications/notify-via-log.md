@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Notify |
-| **Operation** | notify\_log |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Write a message to the Analyze workflow log.
 
 
 
-## Message Parameters
+### Message Parameters
 
 
 Type the desired message to write to the log. Then select one of three severity levels from the following:
@@ -42,11 +33,11 @@ Please note that both [System Variables](https://plaidcloud.com/docs/plaidcloud/
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
 In this example, executing this transform will append an **Information** item to the log, stating *Write a message to the workflow log. I believe you have my stapler, Demo.*

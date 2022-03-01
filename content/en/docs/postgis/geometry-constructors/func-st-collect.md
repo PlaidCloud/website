@@ -12,14 +12,14 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
 
 
 
-# Examples
+## Examples
 
 
 **SQL**
@@ -31,7 +31,7 @@ ST_Collect(geometry g1, geometry g2)
 ```
 
 
-## PlaidCloud
+### PlaidCloud
 
 
 
@@ -40,7 +40,7 @@ func.ST_Collect(geometry g1, geometry g2)
 ```
 
 
-## References
+### References
 
 
 PostGIS Official Documentation for this method can be found [here](https://postgis.net/docs/ST_Collect.html).

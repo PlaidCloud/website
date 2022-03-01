@@ -12,38 +12,23 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Export |
-| **Operation** | export\_gbq |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table |
-| **Output Type** | Google Big Query |
-
-# Description
+## Description
 
 
 Export an Analyze data table to PlaidCloud Document as a Google BigQuery yet.
 
 
 
-# Workflow Configuration Forms
-
-
-No screenshots available.
 
 
 
-# Examples
+
+## Examples
 
 
 No examples for Export Google BigQuery yet.
 
 
 
-*Todo*
-
-
-Screenshots, description, and update parameters coming soon!
+!
 

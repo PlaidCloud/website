@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.ST_Length2D_Spheroid()
 ```
 
 
-# Examples
+## Examples
 
 
 
@@ -30,7 +30,7 @@ Documentation for func.ST_Length2D_Spheroid is coming soon.
 ```
 
 
-## References
+### References
 
 
 [PostgreSQL Documentation](https://postgis.net/docs/ST_Length_Spheroid.html)

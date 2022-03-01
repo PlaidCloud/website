@@ -16,7 +16,7 @@ Organizations in PlaidCloud provide a top level area to control options such as 
 
 
 
-# Managing Organization Administrators
+## Managing Organization Administrators
 
 
 Each Organization in PlaidCloud can assign multiple administrators. Administrators have special privileges to control the Organization. They can do things such as manage billing, update access management, and perform workspace management. To manage administrators:
@@ -29,7 +29,7 @@ This will display the table of current administrators. After the table opens, yo
 
 
 
-# Adding an Administrator
+## Adding an Administrator
 
 
 To add an administrator:
@@ -41,7 +41,7 @@ To add an administrator:
 4. Complete the required fields
 5. Click “Add as Administrator”
 
-# Deleting an Administrator
+## Deleting an Administrator
 
 
 To delete an administrator:

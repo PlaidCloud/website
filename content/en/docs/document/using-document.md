@@ -31,18 +31,14 @@ The various file and folder operations available in the file explorer are detail
 
 
 * Folders:
-
-
 	+ uploading new folders
 	+ creating new folders
 	+ renaming, deleting, and downloading current folders as ZIPs
 * Files:
-
-
 	+ downloading new files
 	+ renaming, deleting, and refreshing current files.
 
-## **Upload a File**
+## Upload a File
 
 
 1. Go to Document > Shared Accounts
@@ -136,21 +132,13 @@ The various file and folder operations available in the file explorer are detail
 4. Left-click to select the desired folder
 5. Right-click and select `Delete`
 
-# Download Folder Contents (zip file)
+## Download Folder Contents (zip file)
 
-
-The `Download as Zip` option is for downloading many files at once. This option will zip (compress) all contents of the selected folder and download the zip file (.zip extension). For easy navigation, the zip file retains the directory structure that exists in the file explorer.
-
-
-
-## Downloading Folder Contents as a Zip File
-
+The `Download as Zip` option is for downloading many files at once. This option will zip (compress) all contents of the selected folder and download the zip file (.zip extension). 
+For easy navigation, the zip file retains the directory structure that exists in the file explorer.
 
 1. Go to Document > Shared Accounts
 2. Select the folder icon (far left) for the account you wish to explore
 3. Browse to the desired directory
 4. Left-click to select the desired folder
 5. Right-click and select `Download as ZIP`
-
-## 
-

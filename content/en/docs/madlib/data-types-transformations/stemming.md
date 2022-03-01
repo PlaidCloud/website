@@ -20,7 +20,7 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
+```sql
 madlib.stem_token(word)
 ```
 
@@ -29,7 +29,7 @@ madlib.stem_token(word)
 
 
 
-```
+```python
 func.madlib.stem_token(word)
 ```
 

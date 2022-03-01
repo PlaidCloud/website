@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.pivot('pivset_ext', 'pivout', 'id', 'piv', 'val', 'sum')
+```sql
+madlib.pivot('pivset_ext', 'pivout', 'id', 'piv', 'val', 'sum');
 ```
 
 
@@ -29,7 +29,7 @@ madlib.pivot('pivset_ext', 'pivout', 'id', 'piv', 'val', 'sum')
 
 
 
-```
+```python
 func.madlib.pivot('pivset_ext', 'pivout', 'id', 'piv', 'val', 'sum')
 ```
 

@@ -12,31 +12,19 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Import |
-| **Operation** | table\_fixedwith |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Document File |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 Imports fixed-width files.
 
 
 
-# Examples
+## Examples
 
 
 No examples yet…
 
 
 
-*Todo*
 
-
-Examples and screenshots coming soon
 

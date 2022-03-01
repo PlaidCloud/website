@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.gen_doc_svecs('svec_output', 'dictionary_table', 'id', 'term', 'documents_table', 'id', 'term', 'count')
+```sql
+madlib.gen_doc_svecs('svec_output', 'dictionary_table', 'id', 'term', 'documents_table', 'id', 'term', 'count');
 ```
 
 
@@ -29,7 +29,7 @@ madlib.gen_doc_svecs('svec_output', 'dictionary_table', 'id', 'term', 'documents
 
 
 
-```
+```python
 func.madlib.gen_doc_svecs('svec_output', 'dictionary_table', 'id', 'term', 'documents_table', 'id', 'term', 'count')
 ```
 

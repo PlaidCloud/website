@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 Within **Analyze**, the Projects function provides a level of compartmentalization that makes controlling access and modifying privileges much easier. Projects are what provide the primary segregation of data within a workspace tab.
@@ -23,7 +23,7 @@ While Projects fall under Analyze, workflows fall under Projects, meaning that P
 
 
 
-# Accessing Projects
+## Accessing Projects
 
 
 **To access Projects:**

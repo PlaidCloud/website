@@ -11,31 +11,21 @@ categories:
 - Expressions
 ---
 
-
-
-
-| Parameter | Value |
-| **Category** | Notify |
-| **Operation** | notify\_distro |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Send an email notification to a PlaidCloud distribution group. Messages are sent from *[info@tartansolutions.com](mailto:info@tartansolutions.com)*. No outbound setup is required.
 
 
 
-# Select PlaidCloud Distribution List
+## Select PlaidCloud Distribution List
 
 
 Select a single distribution list from the drop down menu. Distribution lists can be created using Tools. For details on creating a distribution list, see here: [PlaidCloud Tools – Distro](https://plaidcloud.com/docs/plaidcloud/tools/distro).
 
 
 
-# Message
+## Message
 
 
 Specify **Subject** and **Body** as desired.
@@ -50,12 +40,12 @@ Additionally, standard HTML code is permitted in the body to further customize t
 
 
 
-# Workflow Configuration Forms
 
 
 
 
-# Examples
+
+## Examples
 
 
 In this example, all of the system variables are used. Additionally, there is a small bit of HTML used to format the first line of the body. Executing this transform will send the following email to all members specified in the distribution group:
@@ -65,8 +55,8 @@ In this example, all of the system variables are used. Additionally, there is a 
 * Subject: DEMO Analyze Demo Running
 
 
-***Note***
-
-
+{{< note >}}
 Individual recipients of the email message will **not** be able to see the names of other members on the distribution list.
+{{< /note >}}
+
 

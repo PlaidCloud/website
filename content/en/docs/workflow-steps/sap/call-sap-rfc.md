@@ -11,31 +11,21 @@ categories:
 - Expressions
 ---
 
-
-
-
-| Parameter | Value |
-| **Category** | SAP |
-| **API Key** | sap\_rfc |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Calls an SAP ECC Remote Function Call (RFC) and retrieves the data in tabular form. This data is then available for transformation processes in PlaidCloud.
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
-## RFC Parameters
+### RFC Parameters
 
 
 Select Agent to Use. Select Target Directory from the drop down bar, and browse below for the correct child folder destination for the file. Next, appropriately name the “Target File Name”. Under “Function Call Information”, enter the Function, the Return Value Parameter, and select the parameters.
@@ -46,7 +36,7 @@ You can choose to Insert Row or Append Row under the Parameters section, as well
 
 
 
-## Advanced Value Iteration
+### Advanced Value Iteration
 
 
 You can select “No Iterators” at the top of this tab and then select Save and Run Step if desired, or you can specify.

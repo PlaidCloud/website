@@ -12,16 +12,7 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Export |
-| **Operation** | export\_json |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table |
-| **Output Type** | PlaidCloud Document File |
-
-# Description
+## Description
 
 
 Export an Analyze data table to PlaidCloud Document as a JSON file. There are several options (shown below) for data orientation.
@@ -31,24 +22,24 @@ Export an Analyze data table to PlaidCloud Document as a JSON file. There are se
 For more details on JSON files, see the JSON official website here: <http://json.org/>.
 
 
-*Important*
-
-
+{{< note >}}
 JSON files do *not* retain column order. The column order in the source data table does not necessarily reflect the column order in the exported file.
+{{< /note >}}
 
 
 
-# Export Parameters
+
+## Export Parameters
 
 
-## Source and Target
+### Source and Target
 
 
 See details here: [Source and Target](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-and-target)
 
 
 
-## JSON Orientation
+### JSON Orientation
 
 
 Consider the following data set:
@@ -71,7 +62,7 @@ JSON files can be exported into one of four data formats:
 * Values: Data is stored in multiple Python lists. For example: **[[1,”Jack”,”M”,”MO”],[2,”Jill”,”F”,”MO”],[3,”George”,”M”,”VA”],[4,”Abe”,”M”,”KY”]]**
 
 
-## Date Handling
+### Date Handling
 
 
 Specify **Date Format** using the dropdown menu. Choose from the following formats:
@@ -89,21 +80,21 @@ Specify **Date Unit** using the dropdown menu. Choose from the following formats
 * **Nanoseconds (ns)**
 
 
-## Double Precision
+### Double Precision
 
 
 See details here: [Source and Target](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#double-precision)
 
 
 
-## Force ASCII
+### Force ASCII
 
 
 Select this checkbox to ensure that all strings are encoded in proper ASCII format. This is enabled by default.
 
 
 
-## Output File Type
+### Output File Type
 
 
 All exported files are uncompressed, but the following compression options are available:
@@ -114,7 +105,7 @@ All exported files are uncompressed, but the following compression options are a
 * BZip2
 
 
-## Table Data Selection
+### Table Data Selection
 
 
 Remember that JSON files do *not* retain column order. Adjustments to column order during this step may not be accurately reflected in the exported JSON file.
@@ -124,103 +115,88 @@ See details here: [Table Data Selection](https://plaidcloud.com/docs/plaidcloud/
 
 
 
-## Data Filters
+### Data Filters
 
 
 To allow for maximum flexibility, data filters are available on the source data and the target data. For larger data sets, it can be especially beneficial to filter out rows on the source so the remaining operations are performed on a smaller data set.
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
 
 
-***Note***
+
+### Duplicates
 
 
-Compound filters **must** have individual elements wrapped in parentheses. For example, if filtering for Temperature and Humidity, a valid filter would look like this:
+To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
+
+{{< caution >}}
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Duplicates
+
+### Select Subset of Final Data
+
+
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+
+
+
+
+
+
+### Select Subset of Source Data
+
+
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+
+
+
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
 
 
 
-*Caution*
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Select Subset of Final Data
-
-
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
-
-
-Example code here
-
-
-
-## Select Subset of Source Data
-
-
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
-
-
-***Note***
-
-
-Compound filters **must** have individual elements wrapped in parentheses. For example, if filtering for Temperature and Humidity, a valid filter would look like this:
-
-
-
-## Duplicates
-
-
-To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
-
-
-
-*Caution*
-
-
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
-
-
-
-## Source Table Slicing (Limit)
+### Source Table Slicing (Limit)
 
 
 See details here: [Source Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-table-slicing-limit)
 
 
 
-## Select Subset of Final Data
+### Select Subset of Final Data
 
 
 See details here: [Select Subset of Final Data](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#select-subset-of-final-data)
 
 
 
-## Final Data Table Slicing (Limit)
+### Final Data Table Slicing (Limit)
 
 
 See details here: [Final Data Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#final-data-table-slicing-limit)
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
 In this example, the Analyze Source Table *Import Google Spreadsheet* is exported to the json file *Export JSON Records orientation* in the *Analyze Demo Output* directory of PlaidCloud Document.

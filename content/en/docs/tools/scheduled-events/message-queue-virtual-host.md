@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 In order to ease the transition between new applications, it may sometimes be necessary for business teams to coordinate services and processes using services that cannot communicate in real-time. PlaidCloud provides a high performance messaging queue to handle asynchronous communication, with a wide range of delivery options, including:
@@ -31,7 +31,7 @@ Click here (<https://www.rabbitmq.com/tutorials/tutorial-two-python.html>) for a
 
 
 
-# Virtual Hosts (vHosts)
+## Virtual Hosts (vHosts)
 
 
 Virtual Hosts (vHosts) can be thought of as small, isolated message servers used for specific purposes such as queues, exchanges, and bindings. PlaidCloud uses vHosts to form its foundation for the message broker infrastructure.
@@ -50,7 +50,7 @@ This will open the **vHosts Table** in the workspace, which includes vHost infor
 
 
 
-## Creating vHosts
+### Creating vHosts
 
 
 **To create a vHost:**
@@ -68,7 +68,7 @@ Once the vHost is created, it will be tagged with its reference to a workspace i
 
 
 
-## Deleting vHosts
+### Deleting vHosts
 
 
 **To delete a vHost:**
@@ -81,7 +81,9 @@ Once the vHost is created, it will be tagged with its reference to a workspace i
 5. Click the delete icon
 6. Click “Delete” again
 
-***Note***: Deleting a vHost will delete all of its associated permissions, bindings, queues, and exchanges.
+{{< note >}}
+Deleting a vHost will delete all of its associated permissions, bindings, queues, and exchanges.
+{{< /note >}}
 
 
   

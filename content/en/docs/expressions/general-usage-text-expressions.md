@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Common Text Expressions [#](https://plaidcloud.com/docs/text-expressions/#0-toc-title)
+## Common Text Expressions [#](https://plaidcloud.com/docs/text-expressions/#0-toc-title)
 
 
 

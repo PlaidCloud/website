@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -26,7 +26,7 @@ func.round(v numeric, s int) JSRef: roundv
 ```
 
 
-# Examples
+## Examples
 
 
 

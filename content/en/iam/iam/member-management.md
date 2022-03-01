@@ -16,10 +16,10 @@ Identity provides the ability to add, remove, and/or suspend members of the work
 
 
 
-# New Members
+## New Members
 
 
-## Adding New Members
+### Adding New Members
 
 
 **To add members:**
@@ -32,7 +32,7 @@ Identity provides the ability to add, remove, and/or suspend members of the work
 5. Complete all required fields on the member form
 6. Click the “Create” button
 
-## New Member Welcome Email
+### New Member Welcome Email
 
 
 After adding a new member, a welcome email with sign-in credentials will be sent to their provided email address. The welcome email can be customized to provide additional information relevant to the new member’s PlaidCloud use.
@@ -48,7 +48,7 @@ After adding a new member, a welcome email with sign-in credentials will be sent
 4. Make any additions or changes desired
 5. Click the “Update” button
 
-# Viewing and Managing Member Sessions
+## Viewing and Managing Member Sessions
 
 
 **To view the current member sessions:**
@@ -68,7 +68,7 @@ From this table, it’s possible to view session information (current sessions a
 1. Highlight the member(s) you wish to logout
 2. Click the “End Selected Sessions” button in the upper left
 
-# Managing Distribution (Distro) Lists
+## Managing Distribution (Distro) Lists
 
 
 Distribution lists, Distros, are simply email distribution lists managed within PlaidCloud. They provide an easy way to quickly send reports, files, and/or other information to groups. The Distribution list feature allows for the management of lists on a workspace by workspace basis. This eliminates the need to rely on external lists that may over or undercover the intended audience.

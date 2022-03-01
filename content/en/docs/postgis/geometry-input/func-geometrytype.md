@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.GeometryType()
 ```
 
 
-# Examples
+## Examples
 
 
 
@@ -30,7 +30,7 @@ Documentation for func.GeometryType is coming soon.
 ```
 
 
-## References
+### References
 
 
 [PostgreSQL Documentation](https://postgis.net/docs/GeometryType.html)

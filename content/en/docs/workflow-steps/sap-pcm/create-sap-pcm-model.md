@@ -12,43 +12,31 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | SAP PCM |
-| **Operation** | pcm\_model\_create |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Creates a blank SAP Profitability and Cost Management (PCM) model.
 
 
 
-# Our Credentials
+## Our Credentials
 
 
 Tartan Solutions is an official SAP Partner and a preferred vendor of services related to SAP PCM model design and implementation.
 
 
 
-# Workflow Configuration Forms
 
 
 
 
-# Examples
+
+## Examples
 
 
 Select Agent to Use from the dropdown. Enter “Model Name” and select “Model type” from the dropdown (both of which are in the “Model Information” section). Check the “Wait for Copy to Complete” check box, then click “Save and Run Step”.
 
 
 
-*Todo*
 
-
-Examples and screenshots coming soon
 

@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 Sometimes it’s necessary and desired to access data or run processes from a remote system that does not allow external access. This is common in enterprise environments behind firewalls. PlaidCloud allows this ability by using PlaidLink, which enables remote systems access behind a firewall or where direct access from PlaidCloud is not desired.
@@ -27,7 +27,7 @@ PlaidLink can be installed on Windows, Unix, and Linux systems and can run under
 
 
 
-# Managing Agents
+## Managing Agents
 
 
 **To manage agents:**
@@ -41,7 +41,7 @@ This brings you to the **PlaidLink Agents Table** where you can view, modify, an
 
 
 
-# Creating an Agent
+## Creating an Agent
 
 
 **To create an agent:**
@@ -62,11 +62,13 @@ This brings you to the **PlaidLink Agents Table** where you can view, modify, an
 
 	* If the agent is not assigned, they will not have access
 
-***Note***: Any information not present on the new agent form will be automatically generated.
+{{< note >}}
+Any information not present on the new agent form will be automatically generated.
+{{< /note >}}
 
 
 
-# Obtaining Agent Credentials
+## Obtaining Agent Credentials
 
 
 To configure PlaidLink agents on the remote system, you must first obtain the agent’s identifying information in order to maintain security. This information includes both a public and a private key.
@@ -89,7 +91,7 @@ Please see the PlaidLink installation documentation if you need to install the a
 
 
 
-# Regenerating Agent Credentials
+## Regenerating Agent Credentials
 
 
 It is a good idea to periodically regenerate the public and private keys and update the configuration of remote systems in order to maintain security.
@@ -108,7 +110,7 @@ Once the credentials have been regenerated, they can be obtained in the same way
 
 
 
-# Enabling and Disabling an Agent
+## Enabling and Disabling an Agent
 
 
 **To disable an agent:**
@@ -119,11 +121,13 @@ Once the credentials have been regenerated, they can be obtained in the same way
 3. Click “PlaidLink Agents”
 4. Uncheck the “Active” checkbox
 
-***Note***: When an agent is not marked as active, remote systems will not be able to connect using those agent credentials.
+{{< note >}}
+When an agent is not marked as active, remote systems will not be able to connect using those agent credentials.
+{{< /note >}}
 
 
 
-# Running Multiple Agents
+## Running Multiple Agents
 
 
 PlaidLink is designed to allow operation of multiple agents using a single service installation. Such a streamlined installation system permits one install to handle agents from multiple workspaces and / or agents with different levels of permissions for task execution.

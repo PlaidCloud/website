@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.date_part(text, timestamp or interval)
 ```
 
 
-# Examples
+## Examples
 
 
 

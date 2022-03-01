@@ -12,16 +12,7 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Table |
-| **Operation** | table\_melt |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 Use to convert short, wide data tables into long, narrow data tables. Select columns are transposed, with the column names converted into values across multiple rows.
@@ -53,34 +44,31 @@ By specifying which columns to transpose and which columns to leave alone, this 
 
 
 
-# Source and Target Parameters
+## Source and Target Parameters
 
 
-## Source and Target
+### Source and Target
 
 
 To establish the source and target, first select the data table to be exported from the **Source Table** dropdown menu. Next, select the target file path from PlaidCloud Document using the dropdown menu to select the appropriate account before navigating to the actual directory in the section immediately below. Finally, provide the target file with a descriptive name.
 
-
-
-***Note***
-
-
+{{< note >}}
 Providing a file extension is advised but not required by Analyze. The data table will be exported into the appropriate file format with or without an extension.
+{{< /note >}}
 
 
 
-# Pre-Melt Table Data Selection
+
+## Pre-Melt Table Data Selection
 
 
 This section is a bit different from the standard Table Data Selection. Basically this is used to specify which columns are to be used in the Melt operation. This includes ID columns and Variable/Value columns.
 
 
-
-*Important*
-
-
+{{< note >}}
 The column layout in the Pre-Melt Table Data Selection does **NOT** reflect the column layout of the output data table. Target data table layout is specified in the [Melt Layout](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/table_melt#melt-layout) section.
+{{< /note >}}
+
 
 
 
@@ -88,14 +76,14 @@ For more details regarding Table Data Selection, see details here: [Table Data S
 
 
 
-# Data Filters
+## Data Filters
 
 
 To allow for maximum flexibility, data filters are available on the source data and the target data. For larger data sets, it can be especially beneficial to filter out rows on the source so the remaining operations are performed on a smaller data set.
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
@@ -105,7 +93,7 @@ for more details and examples.
 
 
 
-## Duplicates
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
@@ -113,21 +101,20 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 
-*Caution*
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Select Subset of Final Data
+### Select Subset of Final Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
@@ -137,7 +124,7 @@ for more details and examples.
 
 
 
-## Duplicates
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
@@ -145,14 +132,13 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 
-*Caution*
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Source Table Slicing (Limit)
+### Source Table Slicing (Limit)
 
 
 To limit the data, check the **Apply Row Slicer** box and then specify the following:
@@ -163,14 +149,14 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 
 
 
-## Select Subset of Final Data
+### Select Subset of Final Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
 
 
 
-## Final Data Table Slicing (Limit)
+### Final Data Table Slicing (Limit)
 
 
 To limit the data, simply check the **Apply Row Slicer** box and then specify the following:
@@ -181,21 +167,20 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 
 
 
-# Melt Layout
+## Melt Layout
 
 
 There is a **Guess Layout** button available to allow Analyze a first crack at specifying ID columns. By default, all text (data type of **String**) columns are placed in the **Keys** section. Numeric columns are not placed into **Keys** by default, but they are allowed to be there based on the model’s needs.
 
 
-
-***Note***
-
-
+{{< note >}}
 The target data table’s structure will consist of all **ID Columns** plus the names specified for **Variable Column Name** and **Value Column Name**.
+{{< /note >}}
 
 
 
-## Columns to Use as IDs (Keys)
+
+### Columns to Use as IDs (Keys)
 
 
 ID columns are the columns which remain in tact. These columns are effectively repeated for every instance of a variable/value combination. For a monthly table, this would result in 12 repetitions of ID columns.
@@ -210,7 +195,7 @@ To remove a field from the **IDs**, simply right-click and select **Delete**.
 
 
 
-## Melt Result Column Naming
+### Melt Result Column Naming
 
 
 There are 2 values to specify. Both of these values will become column names in the target data table.
@@ -219,14 +204,14 @@ There are 2 values to specify. Both of these values will become column names in 
 * **Variable Column Name:** As specified in the transform, *The variable names are derived from the current source column names*. Essentially, specify a column name which will represent the data originally represented in the source data table columns.
 * **Value Column Name:** Specify a column name to represent the data represented within the source data table. Typically this will be a numerical unit: Dollars, Pounds, Degrees, Percent, etc.
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
-## Convert Monthly Data
+### Convert Monthly Data
 
 
 In this example, we will use the table listed in the [Description](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/table_melt#description) section above.
@@ -246,11 +231,3 @@ No **Data Filters** are used, so this tab is not shown.
 
 
 Lastly, the **Guess** button is used to correctly identify that *BudgetCategory* is the only **ID / Key** value. Remember that this is a text field (not numeric), so that is why it’s identified as such. All of the other columns (all 12 months JAN – DEC) will be included in the melt operation. As such, *Month* is a good **Variable Column Name** to reflect what the columns in the source data table represented. *Dollars* will be used for **Value Column Name** as all of the data was in US dollar format.
-
-
-
-## BCS Demo – Transpose (Melt) Columns
-
-
-For an additional example, please see the [Transpose Computer Rankings from Columns to Rows](https://plaidcloud.com/docs/plaidcloud/analyze/models/demo_2013_bcs_rankings#transpose-computer-rankings-from-columns-to-rows) section of the BCS Demo.
-

@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | SAP PCM |
-| **Operation** | pcm\_stop |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Stops an SAP Profitability and Cost Management (PCM) model calculation process.
 
 
 
-# Our Credentials
+## Our Credentials
 
 
 Tartan Solutions is an official SAP Partner and a preferred vendor of services related to SAP PCM model design and implementation.
@@ -36,7 +27,7 @@ Tartan Solutions is an official SAP Partner and a preferred vendor of services r
 
 
 
-# Examples
+## Examples
 
 
 Select Agent to Use from the dropdown, enter “Model Name”, click the “Wait for Copy to Complete” check box, then click “Save and Run Step”.

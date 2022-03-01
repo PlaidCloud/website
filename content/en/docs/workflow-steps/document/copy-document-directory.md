@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Document |
-| **Operation** | document\_copy\_directory |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Copy an entire directory within PlaidCloud Document.
 
 
 
-# Copy Directory
+## Copy Directory
 
 
 First, select the appropriate account from the dropdown menu.
@@ -39,7 +30,7 @@ Next, press the **Browse** button to select the directory you’d like to copy.
 
 
 
-# Select Destination
+## Select Destination
 
 
 First, select the appropriate account from the dropdown menu.
@@ -53,19 +44,18 @@ Next, press the **Browse** button to select the destination for the copied direc
 If desired, the copied directory can be given a new name. To do so, simply check the **Rename the Copied Folder to:** box and type in a new name.
 
 
-
-*Important*
-
-
+{{< note >}}
 The default behavior is to overwrite anything which already exists. Be careful to not accidentally overwrite.
+{{< /note >}}
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+
+## Examples
 
 
 In this example, the *etl\_prototyping/data\_files/* directory is copied into the *etl\_prototyping/* directory. It is renamed to *test\_copy\_2*.

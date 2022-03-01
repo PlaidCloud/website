@@ -31,7 +31,7 @@ If you choose to create a personal account, the default authentication type is p
 
 
 
-# Changing Passwords
+## Changing Passwords
 
 
 For members using two-factor or password-only authentication, password changes are simple and can be performed under the “Member” menu (gravatar icon) in the upper right corner.
@@ -55,14 +55,14 @@ For members using two-factor or password-only authentication, password changes a
 
 
 
-# Password Only Authentication
+## Password Only Authentication
 
 
 Password-only authentication is the simplest and least secure option, even with cryptic passwords. This option may be ideal for those looking to maintain quick and convenient access without too much concern about security risks. Password-only authentication is the most widely used option on the web, including at many banking sites.
 
 
 
-# Two-Factor Authentication
+## Two-Factor Authentication
 
 
 Two-Factor, or multi-factor, authentication provides a substantial increase in security over password-only because it requires both something “you know” (the password) and something “you have” (the access key). In other words, the password alone will not enable access.
@@ -77,7 +77,7 @@ To learn more about two-factor authentication, please refer to this [more in-dep
 
 
 
-## Enabling Two-Factor
+### Enabling Two-Factor
 
 
 **To enable two-factor and set your authentication code preferences:**
@@ -87,7 +87,7 @@ To learn more about two-factor authentication, please refer to this [more in-dep
 2. Click “Manage Multi-Factor Authentication” in the dropdown menu
 3. Select your preferred type of two-factor authentication code delivery.
 
-## Types of Two-Factor Authentication
+### Types of Two-Factor Authentication
 
 
 PlaidCloud has three options for receiving this additional information:
@@ -97,7 +97,7 @@ PlaidCloud has three options for receiving this additional information:
 * Via text message (or SMS)
 * Via a YubiKey from Yubico <<http://yubico.com>>
 
-## Smartphone-based Authentication
+### Smartphone-based Authentication
 
 
 To get your code via a smartphone app, you will need to download an authenticator app, such as Google Authenticator, for your [iOS](https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) device. Note that there are other compatible authenticator apps that can be used, but this article assumes you’re using the Google Authenticator app.
@@ -121,7 +121,7 @@ After downloading the app, open it and follow the in-app setup instructions.
 9. If the code is valid, Two-Factor will be enabled for your account and you will be shown a list of backup codes.
 10. Once enabled, you can select “Manage Multi-Factor Authentication” again to view your backup codes or to disable two-factor.
 
-## SMS-based Authentication
+### SMS-based Authentication
 
 
 **To use SMS-based Authentication:**
@@ -136,7 +136,7 @@ After downloading the app, open it and follow the in-app setup instructions.
 7. If the code is valid, two-factor will be enabled for your account and SMS will send you a different code to enter whenever you log in
 8. Once enabled, you can select “Manage Multi-Factor Authentication” again to update your contact information or to disable two-factor.
 
-## YubiKey Authentication
+### YubiKey Authentication
 
 
 If using Yubikeys – hardware authentication devices manufactured by Yubico – members can register up to five YubiKeys for their account. We have both a managed pool of PlaidCloud YubiKeys that can be administered by the person responsible for your workspace access security, or members can choose to use any standard YubiKey.
@@ -176,7 +176,7 @@ If the OTP is valid, two-factor will be enabled for your account and you will ne
 
 
 
-## PlaidCloud YubiKey Pool
+### PlaidCloud YubiKey Pool
 
 
 The Managed YubiKey Pool provides an easy way to manage two-factor authentication for members of the workspace. The managed keys are branded with the PlaidCloud logo and can be shipped directly to members or in bulk to an administrator.
@@ -213,7 +213,7 @@ Managed keys are a one-time cost. There are no additional on-going charges for t
 
 
 
-# What Recovery Codes Do
+## What Recovery Codes Do
 
 
 For security reasons, PlaidCloud Support cannot immediately restore access to accounts with two-factor authentication enabled if you lose your phone or YubiKey. Recovery codes allow for you to still access your account with a lost phone or YubiKey and then reconfigure it from there.
@@ -228,7 +228,7 @@ After successfully setting up your two-factor authentication, you’ll be provid
 
 
 
-## Lost YubiKey
+### Lost YubiKey
 
 
 You can provide an SMS number as part of your profile. If you lose access to both your registered set of YubiKeys and your recovery codes, a backup SMS number can get you back in to your account.
@@ -256,7 +256,7 @@ This will mark the key as lost and allow you to issue a new one.
 
 
 
-# Single Sign-On
+## Single Sign-On
 
 
 Single Sign-On requires an external service to perform the actual authentication process, and PlaidCloud simply receives a positive or negative response. Use of Single Sign-On can reduce the administrative requirements for managing passwords across multiple applications and ensure good member management practices when employees leave or access restrictions are applied.

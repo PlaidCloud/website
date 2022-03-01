@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.sessionize('eventlog', 'sessionize_output_view', 'user_id', 'event_timestamp', '0:30:0')
+```sql
+madlib.sessionize('eventlog', 'sessionize_output_view', 'user_id', 'event_timestamp', '0:30:0');
 ```
 
 
@@ -29,7 +29,7 @@ madlib.sessionize('eventlog', 'sessionize_output_view', 'user_id', 'event_timest
 
 
 
-```
+```python
 func.madlib.sessionize('eventlog', 'sessionize_output_view', 'user_id', 'event_timestamp', '0:30:0')
 ```
 

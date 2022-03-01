@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.safe_divide(numerator numeric, denominator numeric, divide_by_zero_value)
 ```
 
 
-# Examples
+## Examples
 
 
 

@@ -12,34 +12,19 @@ categories:
 ---
 
 
-  
-
-
-
-
-
-| Parameter | Value |
-| **Category** | Table |
-| **Operation** | table\_union |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table(s) |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 Use to combine multiple data tables with the same column structure into a single data table. For example, time series data is a prime candidate for this transform. The result is always the distinct set of records after combining the data.
 
-
-
-***Note***
-
-
+{{< note >}}
 **Union** removes duplicates. If you want to keep all records, use **Union All** instead.
+{{< /note >}}
 
 
 
-# Sources
+
+## Sources
 
 
 The **Sources** section serves as a collection of all data tables to append together. Typically, all of the data tables will have the same (or similar) column structure. There are two buttons available to add a data table to the list:
@@ -61,71 +46,61 @@ To execute the transform properly, there will need to be one entry in the **Sour
 
 By default, each source is named *New Table*, but the modeler is encouraged to provide descriptive names by double-clicking the name and renaming accordingly.
 
-
-
-***Note***
-
-
+{{< note >}}
 It is important to remember that the text shown is **not** related to the source data table’s name. We recommend that the modeler provides a name that is descriptive, often the same as the source data table, but keep in mind that there is no tie whatsoever between the names.
+{{< /note >}}
 
 
 
-# Target Table
+
+## Target Table
 
 
 By default, the **Target Table** is left blank. Before naming, note that data tables must follow Linux naming conventions. As such, we recommend that names only consist of alphanumeric characters. Analyze will automatically scrub any invalid characters from the name. Additionally, it will limit the length to 256 characters, so be concise!
 
 
 
-## Table Data Selection Tab
+### Table Data Selection Tab
 
-
-***Note***
-
-
+{{< note >}}
 Remember to configure **Table Data Selection** conditions for each data table listed in **Sources**.
+{{< /note >}}
 
 
 
-## Source Table
+
+### Source Table
 
 
 To set **Source Table**, select the original data table from the dropdown list. Selecting a data table will automatically populate whether it is a *Project* or a *Workflow* table. Additionally, there is an option to preview the data table.
 
 
 
-## Source Columns and Target Columns
+### Source Columns and Target Columns
 
 
 Displays the columns in the source table (**Source Columns**) alongside the column to be used in the resulting new table (**target columns**).
 
 
 
-*Todo*
+### Data Filters Tab
 
 
-source columns and replacements
-
-
-
-## Data Filters Tab
-
-
-***Note***
-
-
+{{< note >}}
 Remember to configure **Data Filters** conditions for each data table listed in **Sources**.
+{{< /note >}}
 
 
 
-## Data Filters
+
+### Data Filters
 
 
 To allow for maximum flexibility, data filters are available on the source data and the target data. For larger data sets, it can be especially beneficial to filter out rows on the source, so the remaining operations are performed on a smaller data set.
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
@@ -135,36 +110,26 @@ for more details and examples.
 
 
 
-***Note***
-
-
-Compound filters **must** have individual elements wrapped in parentheses. For example, if filtering for Temperature and Humidity, a valid filter would look like this:
-
-
-
-## Duplicates
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
 
-
-
-
-**Caution**
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Select Subset of Final Data
+
+### Select Subset of Final Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
@@ -174,22 +139,19 @@ for more details and examples.
 
 
 
-## Duplicates
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
 
-
-
-
-**Caution**
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Source Table Slicing (Limit)
+
+### Source Table Slicing (Limit)
 
 
 To limit the data, check the **Apply Row Slicer** box and then specify the following:
@@ -200,14 +162,14 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 
 
 
-## Select Subset of Final Data
+### Select Subset of Final Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
 
 
 
-## Final Data Table Slicing (Limit)
+### Final Data Table Slicing (Limit)
 
 
 To limit the data, simply check the **Apply Row Slicer** box and then specify the following:

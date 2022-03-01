@@ -12,17 +12,17 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
 
 
 
-# Examples
+## Examples
 
 
-## SQL
+### SQL
 
 
 
@@ -31,7 +31,7 @@ ST_Subdivide(geometry geom, integer max_vertices=256, float8 gridSize = -1);
 ```
 
 
-## PlaidCloud
+### PlaidCloud
 
 
 
@@ -40,7 +40,7 @@ func.ST_Subdivide(geometry geom, integer max_vertices=256, float8 gridSize = -1)
 ```
 
 
-## References
+### References
 
 
 PostGIS Official Documentation for this method can be found [here](https://postgis.net/docs/manual-3.1/ST_Subdivide.html).

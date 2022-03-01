@@ -12,43 +12,31 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Notify |
-| **Operation** | notify\_agent |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Notify a PlaidCloud Agent.
 
 
 
-# Select Registered Agent
+## Select Registered Agent
 
 
 
-# Agent Operation
+## Agent Operation
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
 No examples for Notify PlaidCloud Agent yet.
 
 
 
-*Todo*
 
-
-Examples and screenshots coming soon
 

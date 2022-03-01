@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud connects to external systems by using various data connections directly or through PlaidLink agents.
@@ -22,10 +22,10 @@ For more details on each data connection type, please navigate to the specific d
 
 
 
-# Relational Databases
+## Relational Databases
 
 
-## Greenplum
+### Greenplum
 
 
 
@@ -34,7 +34,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | greenplum |
 
-## Microsoft SQL Server
+### Microsoft SQL Server
 
 
 
@@ -43,7 +43,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | sqlserver |
 
-## MySQL
+### MySQL
 
 
 
@@ -52,7 +52,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | mysql |
 
-## ODBC
+### ODBC
 
 
 
@@ -61,7 +61,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | odbc |
 
-## Oracle
+### Oracle
 
 
 
@@ -70,7 +70,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | oracle |
 
-## Postgres
+### Postgres
 
 
 
@@ -79,7 +79,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | postgres |
 
-## Amazon Redshift
+### Amazon Redshift
 
 
 
@@ -88,7 +88,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | redshift |
 
-## SAP HANA
+### SAP HANA
 
 
 
@@ -97,7 +97,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | hana |
 
-## Exasol
+### Exasol
 
 
 
@@ -106,7 +106,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | exasol |
 
-## IBM DB2
+### IBM DB2
 
 
 
@@ -115,7 +115,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | db2 |
 
-## Informix
+### Informix
 
 
 
@@ -124,10 +124,10 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | informix |
 
-# Hadoop Based Databases
+## Hadoop Based Databases
 
 
-## Hive
+### Hive
 
 
 
@@ -136,7 +136,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | hive |
 
-## Presto
+### Presto
 
 
 
@@ -145,7 +145,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | presto |
 
-## Spark
+### Spark
 
 
 
@@ -154,10 +154,10 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Database |
 | **Reference** | spark |
 
-# Cloud Services
+## Cloud Services
 
 
-## oAuth Connection
+### oAuth Connection
 
 
 
@@ -166,7 +166,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | oAuth |
 | **Reference** | oauth |
 
-## Quandl
+### Quandl
 
 
 
@@ -175,10 +175,10 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Quandl |
 | **Reference** | quandl |
 
-# Google Related
+## Google Related
 
 
-## Google Big Query
+### Google Big Query
 
 
 
@@ -187,7 +187,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Google Big Query |
 | **Reference** | gbq |
 
-## Google Spreadsheet
+### Google Spreadsheet
 
 
 
@@ -196,10 +196,10 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | Google Spreadsheet |
 | **Reference** | gspread |
 
-# SAP Related
+## SAP Related
 
 
-## SAP Analytics Cloud
+### SAP Analytics Cloud
 
 
 
@@ -208,7 +208,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | SAP Analytics Cloud |
 | **Reference** | sap\_sac |
 
-## SAP ECC
+### SAP ECC
 
 
 
@@ -217,7 +217,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | SAP ECC |
 | **Reference** | sap\_ecc |
 
-## SAP Profitability and Cost Management (PCM) [#](https://plaidcloud.com/docs/data-connections/#26-toc-title)
+### SAP Profitability and Cost Management (PCM) [#](https://plaidcloud.com/docs/data-connections/#26-toc-title)
 
 
 
@@ -226,7 +226,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | SAP PCM |
 | **Reference** | sap\_pcm |
 
-## SAP Profitability and Performance Management (PaPM)
+### SAP Profitability and Performance Management (PaPM)
 
 
 

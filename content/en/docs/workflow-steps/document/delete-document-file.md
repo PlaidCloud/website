@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Document |
-| **Operation** | document\_delete\_file |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Delete an existing file from within PlaidCloud Document.
 
 
 
-# File to Delete
+## File to Delete
 
 
 First, select the appropriate account from the dropdown menu.
@@ -36,19 +27,15 @@ First, select the appropriate account from the dropdown menu.
 
 Next, press the **Browse** button to select the file to delete.
 
-
-***Note***
-
-
+{{< note >}}
 If the file doesn’t exist (already deleted), no action is taken.
+{{< /note >}}
 
 
 
-# Workflow Configuration Forms
 
 
-
-# Examples
+## Examples
 
 
 In this example, the Document file, *etl\_prototyping/test\_copy/add\_extension*, is deleted. Remember from a [previous example](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/document_copy_file#no-extension-provided) that this file wasn’t given an extension.

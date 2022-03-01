@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -25,7 +25,7 @@ Returns the numeric code of the first character of the argument. In UTF8 encodin
 
 
 
-# Examples
+## Examples
 
 
 
@@ -34,7 +34,7 @@ func.ascii('x') → 120
 ```
 
 
-# External References
+## External References
 
 
 [PostgreSQL Documentation](https://www.postgresql.org/docs/13/functions-string.html)

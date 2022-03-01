@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.trunc(numeric) func.trunc(v numeric, s int) JSRef: truncv
 ```
 
 
-# Examples
+## Examples
 
 
 

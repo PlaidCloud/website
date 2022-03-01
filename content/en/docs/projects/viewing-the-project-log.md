@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Viewing and Sorting the Project Log
+## Viewing and Sorting the Project Log
 
 
 As things happen within a project, such as assigning new members or running workflows, the Project Log stores the events. The Project Log consolidates the view of all individual workflow logs in order to provide a more comprehensive view of project activities. PlaidCloud also enables the viewer to sort and filter a Project Log and view details of a particular log entry.
@@ -38,13 +38,13 @@ As things happen within a project, such as assigning new members or running work
 1. Right click on the desired log entry
 2. View the “Log Message” box for details
 
-# Clearing the Project Log
+## Clearing the Project Log
 
 
 Clearing the Project Log may be desirable from time to time
 
 
-## 
+### 
 *Note: Clearing the Project Log will include deleting all the sub-logs for each workflo*w.
 
 

@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 The Table Data Selection tab is used to map columns from the source data table to the target data table. All source columns on the left side of the window are automatically mapped to the target data table depicted on the right side of the window. Using the **Inspect Source** menu button, there are a few additional ways to map columns from source to target:
@@ -34,10 +34,11 @@ If the source and target column options aren’t enough, other columns can be ad
 * Right click on target side and select **Insert Row** to insert a row immediately above the currently selected row.
 * Right click on target side and select **Append Row** to insert a row at the bottom (far right) of the target data table.
 
-**Warning**
 
-
+{{< warning >}}
 Selecting **Propagate All** may effectively create a duplicate of every column. Analyze does not check to see if the columns are already mapped. Make sure duplicate column names do not exist.
+{{< /warning >}}
+
 
 
 
@@ -51,12 +52,10 @@ To rearrange columns in the target data table, select the desired column(s), the
 
 To return only distinct options, select the **Distinct** menu option. This will toggle a set of checkboxes for each column in the source. Simply check any box next to the corresponding column to return only distinct results.
 
-
-
-**Warning**
-
-
+{{< warning >}}
 When the target data table contains only a subset of the source data table, only select the check box next to the columns which **are** to be included in the target data table. Selecting all checkboxes could provide output that does not appear to be distinct.
+{{< /warning >}}
+
 
 
 
@@ -86,13 +85,5 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Max
 * Cumulative Product
 
-*Todo*
-
 
 For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
-
-
-
-  
-
-

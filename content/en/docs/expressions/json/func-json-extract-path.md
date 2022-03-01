@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.json_extract_path(json, key_1, key_2, ...)
 ```
 
 
-# Examples
+## Examples
 
 
 

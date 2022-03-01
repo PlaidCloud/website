@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.width_bucket(op numeric, b1 numeric, b2 numeric, count int)
 ```
 
 
-# Examples
+## Examples
 
 
 

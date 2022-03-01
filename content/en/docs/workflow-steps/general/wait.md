@@ -12,14 +12,14 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 The Wait transform is used to pause processing for a specified duration. This can be especially helpful when waiting for I/O operations from other systems or for debugging workflows during development.
 
 
 
-# Duration Parameters
+## Duration Parameters
 
 
 Specify a non-negative integer value using the **Duration** spinner.

@@ -12,14 +12,14 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 Table Faker generates fake data.
 
 
 
-## Address
+### Address
 
 
 
@@ -42,7 +42,7 @@ Table Faker generates fake data.
 | Street Name |  |
 | Street Suffix |  |
 
-## Automotive
+### Automotive
 
 
 
@@ -50,7 +50,7 @@ Table Faker generates fake data.
 | Generator | Optional Arguments |
 | License Plate |  |
 
-## Barcode
+### Barcode
 
 
 
@@ -59,7 +59,7 @@ Table Faker generates fake data.
 | EAN13 |  |
 | EAN8 |  |
 
-## Colors
+### Colors
 
 
 
@@ -72,7 +72,7 @@ Table Faker generates fake data.
 | Safe Color Name |  |
 | Safe Hex Color |  |
 
-## Company
+### Company
 
 
 
@@ -82,19 +82,19 @@ Table Faker generates fake data.
 | Company Name |  |
 | Company Suffix |  |
 
-## Credit Card
+### Credit Card
 
 
 
 
 | Generator | Optional Arguments |
-| Expriration Date | “start”=”now”“end”=”+10y”# ‘12/20’ |
+| Expriration Date | “start”=”now”“end”=”+10y”## ‘12/20’ |
 | Full | “card\_type”=null |
 | Number | “card\_type”=null |
 | Provider | “card\_type”=null |
 | Security Code | “card\_type”=null |
 
-## Currency
+### Currency
 
 
 
@@ -102,7 +102,7 @@ Table Faker generates fake data.
 | Generator | Optional Arguments |
 | Code |  |
 
-## Date Time
+### Date Time
 
 
 
@@ -126,7 +126,7 @@ Table Faker generates fake data.
 | Unix Time | “end\_datetime”=null“start\_datetime”=null |
 | Year |  |
 
-## File
+### File
 
 
 
@@ -137,7 +137,7 @@ Table Faker generates fake data.
 | File Path | “depth”=”1”“category”=null“extension”=null |
 | Mime Type | “category”=null |
 
-## Internet
+### Internet
 
 
 
@@ -162,7 +162,7 @@ Table Faker generates fake data.
 | URL Page |  |
 | User Name |  |
 
-## ISBN
+### ISBN
 
 
 
@@ -171,7 +171,7 @@ Table Faker generates fake data.
 | ISBN10 | “eparator”=”-“ |
 | ISBN13 | “eparator”=”-“ |
 
-## Job
+### Job
 
 
 
@@ -179,7 +179,7 @@ Table Faker generates fake data.
 | Generator | Optional Arguments |
 | Job Name |  |
 
-## Lorem
+### Lorem
 
 
 
@@ -193,7 +193,7 @@ Table Faker generates fake data.
 | Word | “ext\_word\_list”=null |
 | Words | “nb”=”3”“ext\_word\_list”=null |
 
-## Misc
+### Misc
 
 
 
@@ -211,7 +211,7 @@ Table Faker generates fake data.
 | SHA256 | “raw\_output”=false |
 | UUID4 |  |
 
-## Numeric
+### Numeric
 
 
 
@@ -227,7 +227,7 @@ Table Faker generates fake data.
 | Random Percentage (0 – 100) |  |
 | Serial (Auto Increment) |  |
 
-## Person
+### Person
 
 
 
@@ -249,7 +249,7 @@ Table Faker generates fake data.
 | Suffix Female |  |
 | Suffix Male |  |
 
-## Phone
+### Phone
 
 
 
@@ -258,7 +258,7 @@ Table Faker generates fake data.
 | Phone Number |  |
 | ISDN |  |
 
-## Tax
+### Tax
 
 
 
@@ -268,7 +268,7 @@ Table Faker generates fake data.
 | Full SSN |  |
 | ITIN |  |
 
-## User Agent
+### User Agent
 
 
 
@@ -286,7 +286,7 @@ Table Faker generates fake data.
 | Safari |  |
 | Windows Platform Token |  |
 
-## Special Generators
+### Special Generators
 
 
 While these two generators do not have arguments, the options they provide act similarly to arguments.

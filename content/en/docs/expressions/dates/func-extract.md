@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -21,7 +21,7 @@ func.extract(field, timestamp or interval)
 ```
 
 
-# Examples
+## Examples
 
 
 

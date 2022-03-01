@@ -13,7 +13,7 @@ categories:
 
 
 
-# Description
+## Description
 
 
 To limit the data, simply check the **Apply Row Slicer** box and then specify the following:
@@ -22,8 +22,5 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 * **Initial Rows to Skip:** Rows of data to skip (column header row is not included in count)
 * **End at Row:** Last row of data to include. This is different from simply counting rows at the end to drop
 
-*Todo*
 
-
-Screenshots, description, and update parameters coming soon
 

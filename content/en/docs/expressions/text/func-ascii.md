@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Syntax
+## Syntax
 
 
 
@@ -25,7 +25,7 @@ Returns the numeric code of the first character of the argument. In UTF8 encodin
 
 
 
-# Examples
+## Examples
 
 
 

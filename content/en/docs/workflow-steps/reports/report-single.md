@@ -12,27 +12,15 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Report |
-| **Operation** | report\_one |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** | PDF File |
-
-# Description
+## Description
 
 
 Generates a PDF report based on the defined RML template and input data sources for the report.
 
 
 
-# Examples
+## Examples
 
 
-*Todo*
 
-
-Examples and screenshots coming soon
 

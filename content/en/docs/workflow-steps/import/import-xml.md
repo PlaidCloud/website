@@ -11,36 +11,16 @@ categories:
 - Expressions
 ---
 
-
-
-
-| Parameter | Value |
-| **Category** | Import |
-| **Operation** | import\_xml |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Document File |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 Import XML data as an XML file.
 
 
 
-# Import Parameters
+## Import Parameters
 
 
 
-# Examples
-
-
-No examples yet.
-
-
-
-*Todo*
-
-
-Description, examples, and screenshots coming soon
+## Examples
 

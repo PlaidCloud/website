@@ -12,24 +12,7 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Remote |
-| **Operation** | remote\_execute\_sql |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Execute specified SQL on a remote database through a PlaidLink Agent connection.
-
-
-
-# Workflow Configuration Forms
-
-
-No screenshots available.
-

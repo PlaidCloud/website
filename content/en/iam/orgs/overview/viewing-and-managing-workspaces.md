@@ -24,7 +24,7 @@ Since workspaces are fully isolated, data cannot be directly shared or accessed 
 
 
 
-# Viewing and Managing Workspaces
+## Viewing and Managing Workspaces
 
 
 Viewing and managing workspaces within an Organization is simple. You must be an Organization owner to manage workspaces. To view and manage workspaces:
@@ -37,7 +37,7 @@ This will bring you to a table showing all the current workspaces within the Org
 
 
 
-## Creating a Workspace
+### Creating a Workspace
 
 
 1. Select “Organization Settings” from the menu in the upper right of the browser
@@ -50,7 +50,7 @@ This will bring you to a table showing all the current workspaces within the Org
 
 
 
-## Updating a Workspace
+### Updating a Workspace
 
 
 1. Select “Organization Settings” from the menu in the upper right of the browser
@@ -59,7 +59,7 @@ This will bring you to a table showing all the current workspaces within the Org
 4. Adjust the fields as desired
 5. Click “Submit”
 
-## Suspending a Workspace
+### Suspending a Workspace
 
 
 1. Select “Organization Settings” from the menu in the upper right of the browser
@@ -67,7 +67,7 @@ This will bring you to a table showing all the current workspaces within the Org
 3. Uncheck the “Active” checkbox of the desired workspace
 4. Click “Submit”
 
-## Deleting a Workspace
+### Deleting a Workspace
 
 
 1. Select “Organization Settings” from the menu in the upper right of the browser
@@ -79,7 +79,7 @@ This will bring you to a table showing all the current workspaces within the Org
 
 
 
-## Managing Apps Available in Workspace
+### Managing Apps Available in Workspace
 
 
 By default, new workspaces have three apps automatically added: Analyze, Document, and Identity. While Identity cannot be removed because it is essential to managing access and roles within a workspace, Analyze and Document can be removed. To manage which apps are available in a workspace, including custom apps:

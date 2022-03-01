@@ -12,17 +12,17 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 PlaidCloud expressions and filters provide use of most non-administrative PostGIS methods. PostGIS methods are accessed by prefixing the standard method name with `func.`.
 
 
 
-# Examples
+## Examples
 
 
-## SQL
+### SQL
 
 
 
@@ -31,7 +31,7 @@ ST_CPAWithin(geometry track1, geometry track2, float8 maxdist);
 ```
 
 
-## PlaidCloud
+### PlaidCloud
 
 
 
@@ -40,7 +40,7 @@ func.ST_CPAWithin(geometry track1, geometry track2, float8 maxdist);
 ```
 
 
-## References
+### References
 
 
 PostGIS Official Documentation for this method can be found [here](https://postgis.net/docs/manual-3.1/ST_CPAWithin.html).

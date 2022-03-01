@@ -12,57 +12,39 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Table |
-| **Operation** | table\_lookup |
-| **Workflow Icon** | Icon |
-| **Input Type** | PlaidCloud Analyze Table |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 If you are a regular user of the vlookup function in Microsoft Excel, the Table Lookup transform should feel very familiar. It’s used to perform essentially the same function. Unlike the Microsoft Excel version, the PlaidCloud Analyze Table Lookup transform offers greater flexibility, especially allowing for matching on and returning multiple columns.
 
 
 
-# Source and Target Parameters
+## Source and Target Parameters
 
 
-## Source and Target
+### Source and Target
 
 
 To establish the source and target, first select the data table to be exported from the 
-
-
 dropdown menu. Next, select the target file path from PlaidCloud Document using the dropdown menu to select the appropriate account before navigating to the actual directory in the section immediately below. Finally, provide the target file with a descriptive name.
 
 
 
-***Note***
-
-
-Providing a file extension is advised, but not required by Analyze. The data table will be exported into the appropriate file format with or without an extension.
-
-
-
-## Lookup Table Source
+### Lookup Table Source
 
 
 Select the Lookup Table from the dropdown list. This list includes all *Project* and *Workflow* data tables.
 
 
 
-## Select Subset of Lookup Data
+### Select Subset of Lookup Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see the following section for more details and examples: [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
 
 
 
-## Lookup Table Slicing (Limit)
+### Lookup Table Slicing (Limit)
 
 
 To limit the data, simply check the **Apply Row Slicer** box and then specify the following:
@@ -73,7 +55,7 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 
 
 
-## Table Data Selection
+### Table Data Selection
 
 
 The Table Data Selection tab is used to map columns from the source data table to the target data table. All source columns on the left side of the window are automatically mapped to the target data table depicted on the right side of the window. Using the **Inspect Source** menu button, there are a few additional ways to map columns from source to target:
@@ -95,10 +77,11 @@ If the source and target column options aren’t enough, other columns can be ad
 * Right click on target side and select **Insert Row** to insert a row immediately above the currently selected row.
 * Right click on target side and select **Append Row** to insert a row at the bottom (far right) of the target data table.
 
-*Warning*
 
-
+{{< warning >}}
 Selecting **Propagate All** may effectively create a duplicate of every column. Analyze does not check to see if the columns are already mapped. Make sure duplicate column names do not exist.
+{{< /warning >}}
+
 
 
 
@@ -113,11 +96,10 @@ To rearrange columns in the target data table, select the desired column(s), the
 To return only distinct options, select the **Distinct** menu option. This will toggle a set of checkboxes for each column in the source. Simply check any box next to the corresponding column to return distinct results only.
 
 
-
-*Warning*
-
-
+{{< warning >}}
 When the target data table contains only a subset of the source data table, only select the check box next to the columns which **are** to be included in the target data table. Selecting all checkboxes could provide output that does not appear to be distinct.
+{{< /warning >}}
+
 
 
 
@@ -147,21 +129,18 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Max
 * Cumulative Product
 
-*Todo*
-
-
 For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
 
 
 
-## Data Filters
+### Data Filters
 
 
 To allow for maximum flexibility, data filters are available on the source data and the target data. For larger data sets, it can be especially beneficial to filter out rows on the source so the remaining operations are performed on a smaller data set.
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
@@ -171,7 +150,7 @@ for more details and examples.
 
 
 
-## Duplicates
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
@@ -179,21 +158,20 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 
-*Caution*
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Select Subset of Final Data
+### Select Subset of Final Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
 
 
 
-## Select Subset of Source Data
+### Select Subset of Source Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
@@ -203,7 +181,7 @@ for more details and examples.
 
 
 
-## Duplicates
+### Duplicates
 
 
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
@@ -211,14 +189,13 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 
-*Caution*
-
-
+{{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+{{< /caution >}}
 
 
 
-## Source Table Slicing (Limit)
+### Source Table Slicing (Limit)
 
 
 To limit the data, check the **Apply Row Slicer** box and then specify the following:
@@ -229,17 +206,17 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 
 
 
-## Select Subset of Final Data
+### Select Subset of Final Data
 
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
 
 
-Example code here
 
 
 
-## Final Data Table Slicing (Limit)
+
+### Final Data Table Slicing (Limit)
 
 
 To limit the data, simply check the **Apply Row Slicer** box and then specify the following:
@@ -250,10 +227,10 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 
 
 
-## Lookup Operation
+### Lookup Operation
 
 
-## Lookup Columns and Replacements
+### Lookup Columns and Replacements
 
 
 To view the columns available in the lookup table, simply select the **Inspect Source** button and one of its options to **Populate Lookup Source Mapping Table**. If desired, options are available to preview the data in the lookup table.
@@ -264,7 +241,7 @@ By default, the lookup table returns distinct values for all columns. Since a lo
 
 
 
-## Lookup Relationship Map
+### Lookup Relationship Map
 
 
 The **Lookup Relationship Map** is used to specify all columns used for matching. By using the **Guess** button, Analyze will populate the relationship map with all columns from the source data table which have a matching name in the lookup data table.
@@ -275,7 +252,7 @@ Additionally, these values can be entered manually by right-clicking the mouse b
 
 
 
-## Field Value Map
+### Field Value Map
 
 
 The **Field Value Map** is used to append columns of data onto the target data table based upon matching values found. By default, using the **Guess** button will add all columns which were **not** used in the **Lookup Relationship Map** section. If not all columns are desired, items can be removed by right-clicking and selecting the **Delete** option.
@@ -286,14 +263,14 @@ Additionally, there are options available to rename the mapped columns simply by
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
-## Lookup Product Dimension Information
+### Lookup Product Dimension Information
 
 
 In this example, the modeler needs information from the product dimension table to make sense of the order fact table. As such, the *Import Order Fact* table is selected as the **Source Table**. The *Import Product Dim* table contains the desired lookup information, so it’s selected as the **Lookup Table Source**. Although available, no filters are applied to the lookup data table (nor any other data tables, for that matter).
@@ -313,15 +290,3 @@ Lastly, the source data table is matched to the lookup data table using the *Pro
 
 
 In the resulting target data table, the *Product\_Description* and *Retail\_Unit\_Cost* columns have been added, based on matching values in the *Product\_ID* column. 
-
-
-
-## BCS Demo – Use Lookup Standardization
-
-
-For an example showing how to standardize values with a lookup data table, please see the [Standardize Team Names & Finalize Human Polls](https://plaidcloud.com/docs/plaidcloud/analyze/models/demo_2013_bcs_rankings#standardize-team-names-finalize-human-polls) section of the BCS Demo.
-
-
-## 
-
-

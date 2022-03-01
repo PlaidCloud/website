@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.matrix_trans('"mat_B"', 'row=row_id, val=vector', 'mat_r')
+```sql
+madlib.matrix_trans('"mat_B"', 'row=row_id, val=vector', 'mat_r');
 ```
 
 
@@ -29,7 +29,7 @@ madlib.matrix_trans('"mat_B"', 'row=row_id, val=vector', 'mat_r')
 
 
 
-```
+```python
 func.madlib.matrix_trans('"mat_B"', 'row=row_id, val=vector', 'mat_r')
 ```
 

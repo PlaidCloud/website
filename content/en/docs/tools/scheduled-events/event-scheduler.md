@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 Scheduling specific workflows can be a useful organization tool, so PlaidCloud provides the ability to do just that. Using event scheduler, you can schedule a workflow to run by month, day, hour, minute, or even on a financial workday schedule. If using the financial workday schedule approach, PlaidCloud also allows configuration of holiday schedules using various holiday calendars.
@@ -32,13 +32,12 @@ The Events Table will indicate whether the event is scheduled by month, day, hou
 
 This will open the **Events Table** showing all the current events configured for the workspace.
 
+{{< note >}}
+If the event is active, the “Active” icon will be displayed. 
+{{< /note >}}
 
 
-***Note****:* If the event is active, the “Active” icon will be displayed. 
-
-
-
-# Creating an Event
+## Creating an Event
 
 
 **To create an event:**
@@ -73,11 +72,12 @@ Otherwise, you can set the workflow to run using the **classic schedule** approa
 2. Under the “Schedule type” select “Use Workday Schedule”
 3. Choose the workday you would like the workflow to run on
 
-***Note***: By default, the timezone for events is set to UTC but can be adjusted using the “Timezone” field.
+{{< note >}}
+By default, the timezone for events is set to UTC but can be adjusted using the “Timezone” field.
+{{< /note >}}
 
 
-
-# Editing an Event
+## Editing an Event
 
 
 **To edit an event:**
@@ -90,7 +90,7 @@ Otherwise, you can set the workflow to run using the **classic schedule** approa
 5. Adjust desired fields
 6. Click “Update”
 
-# Deleting an Event
+## Deleting an Event
 
 
 **To delete an event:**
@@ -102,7 +102,7 @@ Otherwise, you can set the workflow to run using the **classic schedule** approa
 4. Click the delete icon
 5. Click delete again
 
-# Pausing an Event
+## Pausing an Event
 
 
 **To temporarily pause an event:**
@@ -119,7 +119,7 @@ Saving the event after unchecking the active box means the event will no longer 
 
 
 
-# Running Events on Demand
+## Running Events on Demand
 
 
 **To run an event immediately:**

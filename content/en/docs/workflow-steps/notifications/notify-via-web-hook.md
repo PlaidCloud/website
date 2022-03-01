@@ -11,44 +11,31 @@ categories:
 - Expressions
 ---
 
-
-
-
-| Parameter | Value |
-| **Category** | Notify |
-| **Operation** | notify\_web\_hook |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Send a notification via Web Hook (URL).
 
 
 
-## Web Hook URL
+### Web Hook URL
 
 
 
-## Post and Put Message Payload
+### Post and Put Message Payload
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
 No examples for Notify Web Hook (URL) yet.
 
 
 
-*Todo*
 
-
-Examples and screenshots coming soon
 

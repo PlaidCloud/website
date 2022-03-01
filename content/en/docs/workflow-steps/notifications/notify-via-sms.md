@@ -12,23 +12,14 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Notify |
-| **Operation** | notify\_sms |
-| **Workflow Icon** | Icon |
-| **Input Type** |  |
-| **Output Type** |  |
-
-# Description
+## Description
 
 
 Send an SMS message. Messages are sent from *[info@tartansolutions.com](mailto:info@tartansolutions.com)* email account. No outbound setup or data is required.
 
 
 
-## Carrier and Number
+### Carrier and Number
 
 
 From the **Mobile Provider** dropdown list, select from hundreds of domestic and international providers. For the convenience of the majority of our customers, USA carriers are listed first, followed by all international options listed alphabetically.
@@ -42,7 +33,7 @@ Next, specify a valid phone number. Acceptable formats include the following:
 * 555.555.5555
 * 555-555-5555
 
-## Message
+### Message
 
 
 Specify **Subject** and **Message** as desired.
@@ -52,11 +43,11 @@ Please note that both [System Variables](https://plaidcloud.com/docs/plaidcloud/
 
 
 
-# Workflow Configuration Forms
 
 
 
-# Examples
+
+## Examples
 
 
 In this example, an SMS message is sent to a USA-based Verizon cell number, *867-5309*. System variables are used in the message. The final message reads, 

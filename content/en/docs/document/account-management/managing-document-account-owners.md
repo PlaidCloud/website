@@ -16,7 +16,7 @@ The member who creates the account is assigned as the owner by default. However,
 
 
 
-# Add or Remove Owners
+## Add or Remove Owners
 
 
 1. Go to `Document > Management Accounts` in PlaidCloud

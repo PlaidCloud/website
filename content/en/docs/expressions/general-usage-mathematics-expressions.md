@@ -15,16 +15,15 @@ categories:
 Expressions use a Python-like syntax and provide a lot of powerful transformation capabilities.
 
 
-
-**Important**
-
-
-
+{{< note >}}
 Always use table.field references in expressions
+{{< /note >}}
 
 
 
-# Common Mathematics Expressions
+
+
+## Common Mathematics Expressions
 
 
 
@@ -43,12 +42,12 @@ Always use table.field references in expressions
 | column.op(‘@’) | @ | absolute value | @ -5.0 | 5 |
 | column.op(‘&’) | & | bitwise AND | 91 & 15 | 11 |
 | column.op(‘|’) | | | bitwise OR | 32 | 3 | 35 |
-| column.op(‘#’) | # | bitwise XOR | 17 # 5 | 20 |
+| column.op(‘#’) | ## | bitwise XOR | 17 ## 5 | 20 |
 | column.op(‘~’) | ~ | bitwise NOT | ~1 | -2 |
 | column.op(‘<<’) | << | bitwise shift left | 1 << 4 | 16 |
 | column.op(‘>>’) | >> | bitwise shift right | 8 >> 2 | 2 |
 
-# Mathematics Functions
+## Mathematics Functions
 
 
 
@@ -81,7 +80,7 @@ Always use table.field references in expressions
 | func.least(value…) | (same as input) | Select the smallest value from a list. NULL values in the list are ignored. The result will be NULL only if all values are NULL. |  |  |  |
 | func.greatest(value …) | (same as input) | Select the largest value from a list. NULL values in the list are ignored. The result will be NULL only if all values are NULL. |  |  |  |
 
-# Trigonometric Functions
+## Trigonometric Functions
 
 
 

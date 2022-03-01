@@ -12,27 +12,18 @@ categories:
 ---
 
 
-
-
-| Parameter | Value |
-| **Category** | Import |
-| **Operation** | import\_gbq |
-| **Workflow Icon** | Icon |
-| **Input Type** | Google Big Query |
-| **Output Type** | PlaidCloud Analyze Table |
-
-# Description
+## Description
 
 
 Import Google BigQuery files.
 
 
 
-# Workflow Configuration Forms [#](https://plaidcloud.com/docs/import-google-bigquery/#1-toc-title)
+ [#](https://plaidcloud.com/docs/import-google-bigquery/#1-toc-title)
 
 
 
-# Examples
+## Examples
 
 
 No examples for Import Google BigQuery yet.

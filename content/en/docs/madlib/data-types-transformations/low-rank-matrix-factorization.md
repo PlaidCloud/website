@@ -20,8 +20,8 @@ PlaidCloud expressions and filters provide use of most non-administrative Apache
 
 
 
-```
-madlib.lmf_igd_run('lmf_model', 'lmf_data', 'row', 'col', 'val', 999, 10000, 3, 0.1, 2, 10, 1e-9)
+```sql
+madlib.lmf_igd_run('lmf_model', 'lmf_data', 'row', 'col', 'val', 999, 10000, 3, 0.1, 2, 10, 1e-9);
 ```
 
 
@@ -29,7 +29,7 @@ madlib.lmf_igd_run('lmf_model', 'lmf_data', 'row', 'col', 'val', 999, 10000, 3, 
 
 
 
-```
+```python
 func.madlib.lmf_igd_run('lmf_model', 'lmf_data', 'row', 'col', 'val', 999, 10000, 3, 0.1, 2, 10, 1e-9)
 ```
 

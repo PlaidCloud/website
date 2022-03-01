@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Wasabi Hot Storage Setup
+## Wasabi Hot Storage Setup
 
 
 These steps need to be completed within the Wasabi Hot Storage console
@@ -33,7 +33,7 @@ You should now have everything you need to add your Wasabi account to PlaidCloud
 
 
 
-# PlaidCloud Document Setup
+## PlaidCloud Document Setup
 
 
 1. Sign into PlaidCloud

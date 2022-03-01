@@ -12,14 +12,14 @@ categories:
 ---
 
 
-# Description
+## Description
 
 
 Usually, members will have access to multiple workspaces and projects. Having this data in multiple spots, however, may not always be desirable. This is why PlaidCloud allows the ability to view all of the accessible data in a single location through the use of dashboards and highly intuitive data exploration. PlaidCloud Dashboards (where the dashboards and data exploration are integrated) provides a rich pallet of visualization and data exploration tools that can operate on virtually any size dataset. This setup also makes it possible to create dashboards and other visualizations that combine information across projects and workspaces, including Ad-hoc analysis.
 
 
 
-# Editing a Table
+## Editing a Table
 
 
 The message you receive after creating a new table also directs you to edit the table configuration. While there are more advanced features to edit the configuration, we will start with a limited and more simple portion. To edit table configuration:
@@ -41,14 +41,14 @@ This allows you to define the way you want to use specific columns of your table
 * **Max:** If this is a metric you want to gather basic summary statistics for
 * **Is temporal:** This should be checked for any date or time fields
 
-# Exploring Your Data
+## Exploring Your Data
 
 
 To start exploring your data, simply click on the desired table. By default, you’ll be presented with a Table View.
 
 
 
-## Getting a Data Count
+### Getting a Data Count
 
 
 To get a the count of all your records in the table:
@@ -82,7 +82,7 @@ You should then see your results in the table.
 
 
 
-## Restricting Result Number
+### Restricting Result Number
 
 
 If you only need a certain number of results, such as the top 10:
@@ -92,7 +92,7 @@ If you only need a certain number of results, such as the top 10:
 2. Type in the desired max result count in the “Row Limit” section
 3. Click “Query”
 
-## Additional Visualization Tools
+### Additional Visualization Tools
 
 
 To expand abbreviated values to their full length:

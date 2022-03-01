@@ -12,7 +12,7 @@ categories:
 ---
 
 
-# Google Cloud Setup
+## Google Cloud Setup
 
 
 These steps need to be completed within Google Cloud Platform
@@ -36,7 +36,7 @@ You should now have everything you need to add your GCS account to PlaidCloud Do
 
 
 
-# PlaidCloud Document Setup
+## PlaidCloud Document Setup
 
 
 1. Sign into PlaidCloud
