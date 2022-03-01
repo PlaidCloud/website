@@ -48,5 +48,5 @@ If the renamed directory already exists, no action is taken.
 ## Examples
 
 
-In this example, the Document directory, *etl\_prototyping/created\_by\_analyze/*, is renamed to *renamed\_by\_analyze*. Note that the parent directory is not listed in the **Rename To** section.
+No examples yet...
 

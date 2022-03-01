@@ -18,11 +18,6 @@ categories:
 Calls an SAP ECC Remote Function Call (RFC) designed to attach a file to specified FI document number.
 
 
-
-
-
-
-
 ## Examples
 
 

@@ -37,6 +37,4 @@ There is no popup dialog to confirm deletion. Make sure you are selecting the co
 
 ## Examples
 
-
-In this example, the existing workflow named *Blank Workflow Renamed by Analyze* is deleted from the *Default* project.
-
+No examples yet...

@@ -93,7 +93,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -113,7 +113,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -123,7 +123,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -153,7 +153,7 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expression](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expression](/docs/expressions) for more details and examples.
 
 
 
@@ -174,16 +174,4 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 ## Examples
 
 
-### Import Record-Oriented JSON Data
-
-
-In this example, the JSON data is stored in the record-oriented format. The first record is highlighted within the red box below. Note that each **Column -> Value** pair is comma-delimited and that the entire record is enclosed within curly braces ({ }) because it is a Python dictionary set.
-
-
-
-Note that the **JSON Data Orientation** is listed as *Records* to reflect the structure accordingly.
-
-
-
-Finally, the target columns are specified in the **Table Data Selection** tab. As previously mentioned, note that the target data table did not retain the column order listed in the original file. If desired, the columns can be rearranged as necessary.
-
+No examples yet...

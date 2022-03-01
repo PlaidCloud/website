@@ -17,24 +17,11 @@ categories:
 
 Notify a PlaidCloud Agent.
 
-
-
-## Select Registered Agent
-
-
-
-## Agent Operation
-
-
-
-
-
-
-
 ## Examples
 
 
-No examples for Notify PlaidCloud Agent yet.
+No examples yet...
+
 
 
 

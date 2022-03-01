@@ -17,12 +17,6 @@ categories:
 
 Exports a file to a remote file system using a PlaidLink agent installed within the firewall.
 
-
-
-
-
-
-
 ## Examples
 
 

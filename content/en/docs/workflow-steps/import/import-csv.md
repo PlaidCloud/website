@@ -196,7 +196,7 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Product
 
 
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
 
 
 
@@ -210,7 +210,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -230,7 +230,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -240,7 +240,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -271,7 +271,7 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -302,19 +302,4 @@ Do **not** wrap replacement strings in quotation marks unless you are looking fo
 
 ## Examples
 
-
-### Import CSV Comma Delimited
-
-
-In this example, the text file, *Export CSV comma delimited.csv*, is imported from the *Analyze Demo Output* directory of PlaidCloud Document into a data table named *Import CSV*. The **Inspect Source File** button was used to correctly determine the **CSV Dialect** value of *Excel CSV*.
-
-
-
-No changes are made to the default settings in the **Import Parameters** tab.
-
-
-All columns are mapped from source to target as *Float*, *String*, or *Datetime* data types, for number data, string data, and date data, respectively. No additional operations are performed.
-
-
-
-The modeler has optimistically chosen to replace a few instances of weather conditions. *Mostly Cloudy* becomes *Partly Sunny*, while *Partly Cloudy* becomes *Mostly Sunny*. Note that the text replacement strings are **not** wrapped in quotation marks.
+No examples yet...

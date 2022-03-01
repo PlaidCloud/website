@@ -16,24 +16,11 @@ categories:
 
 Send a notification via Web Hook (URL).
 
-
-
-### Web Hook URL
-
-
-
-### Post and Put Message Payload
-
-
-
-
-
-
-
 ## Examples
 
 
-No examples for Notify Web Hook (URL) yet.
+No examples yet...
+
 
 
 

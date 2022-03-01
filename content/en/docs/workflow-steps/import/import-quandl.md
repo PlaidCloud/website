@@ -27,7 +27,7 @@ For more details on Quandl data sets, see the Quandl official website here: <htt
 ### Source and Target
 
 
-Accessing Quandl data sets requires a user account or a guest account with limited access. This requires set up in Tools. For details on setting up a Quandl account connection, see here: [PlaidCloud Tools – Connection](https://plaidcloud.com/docs/plaidcloud/tools/connection).
+Accessing Quandl data sets requires a user account or a guest account with limited access. This requires set up in Tools. For details on setting up a Quandl account connection, see here: [PlaidCloud Tools – Connection](/docs/tools/data-connections).
 
 
 
@@ -130,7 +130,7 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Product
 
 
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
 
 
 
@@ -144,7 +144,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -170,7 +170,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -180,7 +180,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -210,7 +210,7 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -233,11 +233,4 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 
 ## Examples
 
-
-In this example, the data set for Microsoft stock, (<http://www.quandl.com/GOOG/NASDAQ_MSFT>), is imported into a data table. The **Quandl Connection** is *Guest*, while the **Quandl Code** is *GOOG/NASDAQ\_MSFT*. The data is filtered to show all data from *Jan 1, 2013* through *Dec 31, 2013*, a full year. The data is set to **Collapse** with *Monthly* aggregation.
-
-
-
-All columns are mapped from source to target. Analyze automatically detects the data types for all columns.
-
-
+No examples yet...

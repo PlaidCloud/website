@@ -39,7 +39,7 @@ To establish the source and target, first select the data table to be exported f
 Specify the columns to import into the target data table. A single value like *B* means to import only column B. Specify consecutive column ranges with a colon (:) delimiter, such as *A:H* to import the first 8 columns. Use a comma (,) delimiter to specify non-consecutive columns such as “A,C,E,G” to import every other column. Additionally, mixed delimiters are allowed. An entry such as *A,C:E* will import columns A, C, D, and E only.
 
 {{< note >}}
-If uncertain, leave this section blank and use [Table Data Selection](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#table-data-selection) to select the target data table columns to include.
+If uncertain, leave this section blank and use [Table Data Selection](/docs/workflow-steps/common/table-data-selection) to select the target data table columns to include.
 {{< /note >}}
 
 
@@ -126,7 +126,7 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Product
 
 
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
 
 
 
@@ -140,7 +140,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 for more details and examples.
 
 
@@ -161,7 +161,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -171,7 +171,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 {{< note >}}
@@ -220,7 +220,7 @@ It is advisable to not use the **Source Table Slicing (Limit)** feature when imp
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -244,33 +244,4 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 ## Examples
 
 
-### Import Excel 2007 File
-
-
-In this example, a file with the *.xlsx* file extension is imported. First, the file, *Export XLS 2007 format.xlsx*, is selected from the appropriate Document directory, *Analyze Demo Output*. In this instance, *Sheet1* is the only worksheet available, so it is selected from the **Selected Worksheets** section. The **Columns to Import** option is used to specify a subset of columns. By using the subset, *A,C:D*, only columns A, C, and D are included. No **Other NA Values** are given.
-
-
-
-Next, all available columns are mapped in the **Table Data Selection**. Keep in mind that since the **Columns to Import** option was used in the **Import Parameters** tab, only 3 columns are available here. No additional operations are performed.
-
-
-
-### Import Zipped Excel Legacy File
-
-
-In this example, a file with the *.xls* file extension is imported. First, the file, *Export XLS Legacy format and zipped.xls.zip*, is selected from the appropriate Document directory, *Analyze Demo Output*. Notice that Analyze will automatically unzip this file if needed. No parameters are required to specify that the file needs to be unzipped. In this instance, *Sheet1* is the only worksheet available, so it is selected from the **Selected Worksheets** section. The **Columns to Import** option is not used, nor is the **Other NA Values** option.
-
-
-
-Next, all available columns are mapped in the **Table Data Selection**. No additional operations are performed.
-
-
-
-### Import Multiple Worksheets From the Same File
-
-
-In this example, a collection of stock prices is imported from an Excel workbook, *PlaidCloud Analyze Demo – Import All Stock.xlsx*, from the appropriate Document directory, *Analyze Demo Input*. Once the workbook is selected from the dropdown menu, the Analyze **Target Table** name is set to *Import Excel All at Once*. Next, the **All Worksheets** button was used to import all available worksheets.
-
-
-
-Next, all available columns are mapped in the **Table Data Selection**. No additional operations are performed.
+No examples yet...

@@ -86,4 +86,4 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Product
 
 
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).

@@ -28,4 +28,3 @@ Tartan Solutions is an official SAP Partner and a preferred vendor of services r
 
 
 Select Agent to Use from the dropdown, enter “Model Name”, “From Period Name” and “To Period Name” in the “Model Information” field. Click the “Wait for Copy to Complete” check box, then click “Save and Run Step”.
-

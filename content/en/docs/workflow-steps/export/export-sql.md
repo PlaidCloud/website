@@ -18,21 +18,8 @@ categories:
 Export an Analyze data table to PlaidCloud Document as an SQL.
 
 
-
-
-
-
-
-## Configuration Parameters
-
-
-
-
-| Parameter | Type | Description |
-| id | str | id |
-
 ## Examples
 
 
-[.](https://plaidcloud.com/docs/plaidcloud/workflows/export/export_stata.html)
+No examples yet...
 

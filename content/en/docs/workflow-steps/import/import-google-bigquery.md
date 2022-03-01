@@ -25,6 +25,5 @@ Import Google BigQuery files.
 
 ## Examples
 
-
-No examples for Import Google BigQuery yet.
+No examples yet...
 

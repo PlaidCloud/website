@@ -11,10 +11,6 @@ categories:
 - Expressions
 ---
 
-
-Documentation coming soon...
-
-
+## Description
 
 Includes ability to perform delta loads and map to alternate target table names.
-

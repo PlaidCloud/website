@@ -271,5 +271,5 @@ While Single Sign-On does require a more extensive authentication process behind
 
 
 
-For more information on setting up and managing Single Sign-On see the [Organization and Workspace management area.](https://plaidcloud.com/docs/plaidcloud/workspaces/organization.html)
+For more information on setting up and managing Single Sign-On see the [Organization and Workspace management area.](/iam/orgs/advanced/managing-single-sign-on-for-organization)
 

@@ -24,10 +24,4 @@ Import SQL table files from PlaidCloud Document.
 
 ## Examples
 
-
-No examples for Import SQL yet.
-
-
-
-
-
+No examples yet...

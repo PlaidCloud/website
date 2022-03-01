@@ -18,11 +18,6 @@ categories:
 Deletes a remote file system file using a PlaidLink agent installed within the firewall.
 
 
-
-
-
-
-
 ## Examples
 
 

@@ -26,7 +26,7 @@ Specify the following parameters:
 
 
 * **Source Table**: Analyze data table to export
-* **Quandl Connection**: Accessing Quandl data sets requires a user account or a guest account with limited access. This requires set up in Tools. For details on setting up a Quandl account connection, see here: [PlaidCloud Tools – Connection](https://plaidcloud.com/docs/plaidcloud/tools/connection)
+* **Quandl Connection**: Accessing Quandl data sets requires a user account or a guest account with limited access. This requires set up in Tools. For details on setting up a Quandl account connection, see here: [PlaidCloud Tools – Connection](/docs/tools/data-connections)
 * **Quandl Code**: Use the **Search** button to search for data sets. Alternatively, data sets can be entered manually. This requires the user to enter the portion of the URL after “[http://www.quandl.com](http://www.quandl.com/)”. For example, to import the data set for Microsoft stock, which can be found here (<http://www.quandl.com/GOOG/NASDAQ_MSFT>), enter *GOOG/NASDAQ\_MSFT* in the Quandl Code field
 * **Dataset Name**: Name of the dataset to be exported to Quandl
 * **Dataset Description**: Description of dataset to be exported to Quandl
@@ -106,7 +106,7 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Product
 
 
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
 
 
 
@@ -120,7 +120,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -140,7 +140,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -150,7 +150,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -170,21 +170,21 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Source Table Slicing (Limit)
 
 
-See details here: [Source Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-table-slicing-limit)
+See details here: [Source Table Slicing](/docs/workflow-steps/common/source-table-slicing-limit)
 
 
 
 ### Select Subset of Final Data
 
 
-See details here: [Select Subset of Final Data](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#select-subset-of-final-data)
+See details here: [Select Subset of Final Data](/docs/workflow-steps/common/select-subset-of-final-data)
 
 
 
 ### Final Data Table Slicing (Limit)
 
 
-See details here: [Final Data Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#final-data-table-slicing-limit)
+See details here: [Final Data Table Slicing](/docs/workflow-steps/common/final-data-table-slicing)
 
 
 
@@ -194,6 +194,5 @@ See details here: [Final Data Table Slicing](https://plaidcloud.com/docs/plaidcl
 
 ## Examples
 
-
-No examples for Export Quandl yet.
+No examples yet...
 

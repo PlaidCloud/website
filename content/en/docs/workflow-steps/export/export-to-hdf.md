@@ -28,7 +28,7 @@ For more details on HDF5 files, see the HDF Group’s official website here: <ht
 ### Source and Target
 
 
-See details here: [Source and Target](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-and-target)
+See details here: [Source and Target](/docs/workflow-steps/common/table-data-selection)
 
 
 
@@ -117,7 +117,7 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Product
 
 
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
 
 
 
@@ -131,7 +131,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -151,7 +151,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -161,7 +161,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 *Note*
@@ -187,21 +187,21 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Source Table Slicing (Limit)
 
 
-See details here: [Source Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-table-slicing-limit)
+See details here: [Source Table Slicing](/docs/workflow-steps/common/source-table-slicing-limit)
 
 
 
 ### Select Subset of Final Data
 
 
-See details here: [Select Subset of Final Data](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#select-subset-of-final-data)
+See details here: [Select Subset of Final Data](/docs/workflow-steps/common/select-subset-of-final-data)
 
 
 
 ### Final Data Table Slicing (Limit)
 
 
-See details here: [Final Data Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#final-data-table-slicing-limit)
+See details here: [Final Data Table Slicing](/docs/workflow-steps/common/final-data-table-slicing)
 
 
 
@@ -211,9 +211,4 @@ See details here: [Final Data Table Slicing](https://plaidcloud.com/docs/plaidcl
 
 ## Examples
 
-
-In this example, the Analyze target table, *Import Google Spreadsheet*, is exported to an HDF file named *Export HDF5*. The target directory is the *Analyze Demo Output* directory of PlaidCloud Document. No compression is used.
-
-
-All columns are mapped from source to target as *Float*, *String*, or *Datetime* data types, for number data, string data, and date data, respectively. No additional operations are performed.
-
+No examples yet...

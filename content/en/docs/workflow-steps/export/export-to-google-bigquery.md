@@ -18,17 +18,6 @@ categories:
 Export an Analyze data table to PlaidCloud Document as a Google BigQuery yet.
 
 
-
-
-
-
-
 ## Examples
 
-
-No examples for Export Google BigQuery yet.
-
-
-
-!
-
+No examples yet...

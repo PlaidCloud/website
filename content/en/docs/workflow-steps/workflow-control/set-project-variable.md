@@ -32,9 +32,4 @@ The table will display the list of registered project variables and the current 
 ## Examples
 
 
-In this example, the *a\_variable* is set to a different value (*another\_value*).
-
-
-
-In this example, a new unregistered variable (*unreg*) is created and set to *something new and different* by right-clicking on the table and selecting either *Insert* or *Append*.
-
+No examples yet...

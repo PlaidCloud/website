@@ -18,11 +18,6 @@ categories:
 Calls an SAP ECC Remote Function Call (RFC) designed to post a journal entry including applicable VAT and Withholding taxes. This may also run in test mode which will perform a posting process but not complete the posting. This allows for the collection of detectable errors such as an account being closed or a customer not existing in the specified company code specified. The error checking is robust with the ability to return multiple detected errors in a single test.
 
 
-
-
-
-
-
 ## Examples
 
 

@@ -21,6 +21,4 @@ Exports PlaidCloud table archive file.
 
 ## Examples
 
-
-No examples yet…
-
+No examples yet...

@@ -35,7 +35,7 @@ Specify the source data table by selecting it from the dropdown menu.
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
@@ -98,7 +98,7 @@ Specify the source data table by selecting it from the dropdown menu.
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
@@ -179,7 +179,7 @@ To add additional columns manually, right click anywhere in the section and sele
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples
 
 
 
@@ -248,8 +248,3 @@ Finally, the join conditions are set in the **Table Output** tab. Using the **Gu
 
 
 As expected, the final output includes all rows from both tables, whether they had a match in both tables or not. As such, this time *Porsche* does indeed show up despite having no models. Additionally, *Batmobile*, *Lightning McQueen*, and *Optimus Prime* are included in the results even though none of them have a manufacturer. Besides, who can say ‘No’ to them?
-
-
-
-To include all matching results only, consider the [Inner Join Automobile Example](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/table_join_inner#join-automobile-manufacturers-with-models).
-

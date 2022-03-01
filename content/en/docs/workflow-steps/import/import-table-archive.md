@@ -20,10 +20,4 @@ Imports PlaidCloud table archive.
 
 ## Examples
 
-
-No examples yet…
-
-
-
-
-
+No examples yet...

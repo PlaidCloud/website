@@ -35,7 +35,7 @@ Specify the source data table by selecting it from the dropdown menu.
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -95,7 +95,7 @@ Specify the source data table by selecting it from the dropdown menu.
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
@@ -176,7 +176,7 @@ To add additional columns manually, right click anywhere in the section and sele
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -251,7 +251,3 @@ As expected, the final output only includes values which had a match in both tab
 
 
 *Batmobile* had no manufacturer (it was a custom job), so it’s not included.
-
-
-
-To include all results (including non-matching), consider the [Outer Join Automobile Example](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/table_join_outer#join-automobile-manufacturers-with-models).

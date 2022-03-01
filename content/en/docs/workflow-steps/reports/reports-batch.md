@@ -21,10 +21,4 @@ Generates many PDF reports based on the defined RML template and input data sour
 
 ## Examples
 
-
-No examples yet…
-
-
-
-!
-
+No examples yet...

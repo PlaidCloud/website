@@ -41,6 +41,5 @@ If the directory doesn’t exist (already deleted), no action is taken.
 
 ## Examples
 
-
-In this example, the Document directory, *etl\_prototyping/created\_by\_analyze/*, is deleted.
+No examples yet...
 

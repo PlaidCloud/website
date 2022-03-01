@@ -97,7 +97,7 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Max
 * Cumulative Product
 
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
 
 
 
@@ -111,7 +111,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
@@ -135,14 +135,14 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples
 
 
 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
@@ -177,7 +177,7 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples
 
 
 

@@ -12,7 +12,7 @@ categories:
 ---
 
 
-## Description [#](https://plaidcloud.com/docs/run-remote-python/#0-toc-title)
+## Description
 
 
 This transform will run a Python file using PlaidLink. The Python file is executed on the remote system.

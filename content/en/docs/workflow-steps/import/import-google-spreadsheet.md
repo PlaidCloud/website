@@ -22,7 +22,7 @@ Import specific worksheets from Google Spreadsheet files.
 ### Source and Target
 
 
-Accessing Google Spreadsheet data requires a valid Google user account. This requires set up in Tools. For details on setting up a Google account connection, see here: [PlaidCloud Tools – Connection](https://plaidcloud.com/docs/plaidcloud/tools/connection).
+Accessing Google Spreadsheet data requires a valid Google user account. This requires set up in Tools. For details on setting up a Google account connection, see here: [PlaidCloud Tools – Connection](/docs/tools/data-connections).
 
 
 
@@ -62,7 +62,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -82,7 +82,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -92,7 +92,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 {{< note >}}
@@ -140,7 +140,7 @@ Use of the **Source Table Slicing (Limit)** feature is not recommended when impo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -163,43 +163,4 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 
 ## Examples
 
-
-### Import Single Spreadsheet
-
-
-In this example, the Google Spreadsheet file *PlaidCloud Analyze Demo* is imported from Google Drive. Once the Spreadsheet was selected from the dropdown menu, the Analyze **Target Table** name is set to *Import Google Spreadsheet*. 
-
-
-
-Next, the **Find Sheets in Selected File** button in the **Selected Worksheets** section was used to provide a list of all available Spreadsheets. Finally, all the Spreadsheets except for *CAK 20140825* were deselected, leaving only this single Spreadsheet to be imported.
-
-
-
-All columns are mapped from source to target. Initially, all data types were set to *String*, but they have been manually changed to *Float*, *String*, or *Datetime* data types, for number data, string data, and date data, respectively.
-
-
-
-A data filter is applied, with the **Source Table Slicing (Limit)** restricting the input data set to a maximum of 100 rows of data.
-
-
-
-### Import Multiple Spreadsheets at Once
-
-
-In this example, a collection of stock prices is imported from a Google Spreadsheet, *PlaidCloud Analyze Demo – Import All Stock*. Once the Spreadsheet was selected from the dropdown menu, the Analyze **Target Table** name is set to *Import All Google Spreadsheets at Once*. 
-
-
-
-Next, the **All Worksheets** button was used to import all available Spreadsheets.
-
-
-
-All columns are mapped from source to target. Initially, all data types were set to *String*, but they have been manually changed to *Float*, *String*, or *Datetime* data types, for number data, string data, and date data, respectively. Additionally, the columns are sorted, first by *Symbol* in ascending order to ensure stock prices are grouped by ticker value. 
-
-
-
-Next, the columns are sorted by *Date* in descending order, to show the most recent prices first.
-
-{{< note >}}
-Be aware that large numbers may not fit within the *Int(16)* or *Float(16)* data types. In this example, *Volume* needed to be set to a larger data type, *Float(64)* to accommodate all numbers.
-{{< /note >}}
+No examples yet...

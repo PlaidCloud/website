@@ -21,6 +21,4 @@ Generates a PDF report based on the defined RML template and input data sources 
 
 ## Examples
 
-
-
-
+No examples yet...

@@ -29,14 +29,6 @@ First, select the Project in which the new workflow should be created from the d
 Next, type in a workflow name. The name should be unique to the Project.
 
 
-
-
-
-
-
-
 ## Examples
 
-
-
-
+No examples yet...

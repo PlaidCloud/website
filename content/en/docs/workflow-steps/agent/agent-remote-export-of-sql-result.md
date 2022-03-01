@@ -18,13 +18,6 @@ categories:
 Execute specified SQL on a remote database through a PlaidLink Agent connection and export the result for use by PlaidCloud or other downstream systems.
 
 
-
-
-
-
-
 ## Examples
 
-
-
-
+No examples yet...

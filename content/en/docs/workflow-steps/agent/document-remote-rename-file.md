@@ -19,10 +19,6 @@ Renames or moves a remote file system file using a PlaidLink agent installed wit
 
 
 
-
-
-
-
 ## Examples
 
 

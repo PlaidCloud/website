@@ -58,13 +58,5 @@ The default behavior is to overwrite anything which already exists. Be careful t
 ## Examples
 
 
-In this example, the *etl\_prototyping/data\_files/* directory is copied into the *etl\_prototyping/* directory. It is renamed to *test\_copy\_2*.
-
-
-As you can see below, the source and target directories have the same contents.
-
-
-
-The copied directory’s files all contain the same timestamp as they were created during the copy.
-
+No examples yet...
 

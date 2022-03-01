@@ -26,7 +26,7 @@ Under “Source and Target, use the dropdown list to specify the **From Workflow
 
 
 
-For additional details, see details here: [Source and Target](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-and-target_1).
+For additional details, see details here: [Source and Target](/docs/workflow-steps/common/table-data-selection_1).
 
 
 

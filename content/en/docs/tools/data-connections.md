@@ -217,7 +217,7 @@ For more details on each data connection type, please navigate to the specific d
 | **Connection Type** | SAP ECC |
 | **Reference** | sap\_ecc |
 
-### SAP Profitability and Cost Management (PCM) [#](https://plaidcloud.com/docs/data-connections/#26-toc-title)
+### SAP Profitability and Cost Management (PCM)
 
 
 

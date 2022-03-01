@@ -35,10 +35,4 @@ Next, enter the new workflow name into the **New Workflow** field. Remember: the
 
 ## Examples
 
-
-In this example, the *Blank Workflow Created by Analyze* is copied to a new workflow named *Blank Workflow Copied by Analyze*. The copied workflow remains in the same project, *Default*, as the original workflow. The default value of **ERROR if the target workflow already exists** is used to ensure that nothing happens should the specified workflow already exist. 
-
-
-
-
-
+No examples yet...

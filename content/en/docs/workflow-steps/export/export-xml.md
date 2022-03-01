@@ -18,24 +18,6 @@ categories:
 Export an Analyze data table to PlaidCloud Document as an XML file.
 
 
-
-## Export Parameters
-
-
-
-
-
-
-No screenshots available
-
-
-
 ## Examples
 
-
-No examples yet.
-
-
-
-
-
+No examples yet...

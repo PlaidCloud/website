@@ -66,16 +66,5 @@ Be sure to provide a file extension when changing the name of the file. The file
 
 ## Examples
 
-
-
-### Extension Provided
-
-
-In this example, the file, *HIER\_NATURAL\_ACCOUNT.txt*, is copied from the *etl\_prototyping/data\_files/* directory. It is copied to *etl\_prototyping/test\_copy/* and renamed to *HIER\_NATURAL\_ACCOUNT\_2.txt*. Since the **Allow Overwriting Existing File** option is not checked, a numerical suffix will be added to the subsequent copy.
-
-
-### No Extension Provided
-
-
-In this example, the file, *HIER\_CC\_SIMPLE.txt*, is copied from the *etl\_prototyping/data\_files/* directory. It is copied to *etl\_prototyping/test\_copy/* and renamed to *add\_extension*. Note that since no extension is provided, Document will not show what type the file is, even though it will be a valid text file. This is inadvisable. Also, since the **Allow Overwriting Existing File** option is not checked, a numerical suffix will be added to the subsequent copy.
+No examples yet...
 

@@ -26,7 +26,7 @@ Export an Analyze data table to PlaidCloud Document as an HTML file. The resulta
 ### Source and Target
 
 
-See details here: [Source and Target](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-and-target)
+See details here: [Source and Target](/docs/workflow-steps/common/table-data-selection)
 
 
 
@@ -65,7 +65,8 @@ All exported files are uncompressed, but the following compression options are a
 ### Table Data Selection
 
 
-The Table Data Selection tab is used to map columns from the source data table to the target data table. All source columns on the left side of the window are automatically mapped to the target data table depicted on the right side of the window. Using the **Inspect Source** menu button, there are a few additional ways to map columns from source to target:
+The Table Data Selection tab is used to map columns from the source data table to the target data table. All source columns on the left side of the window are 
+automatically mapped to the target data table depicted on the right side of the window. Using the **Inspect Source** menu button, there are a few additional ways to map columns from source to target:
 
 
 * Populate Both Mapping Tables: Propagates all values from the source data table into the target data table. This is done by default.
@@ -133,7 +134,7 @@ To aggregate results, select the **Summarize** menu option. This will toggle a s
 * Cumulative Max
 * Cumulative Product
 
-For more aggregation details, see the Analyze overview page [here](/docs/analyze/#aggregation).
+For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
 
 
 
@@ -147,7 +148,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -166,7 +167,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -176,7 +177,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -196,33 +197,24 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Source Table Slicing (Limit)
 
 
-See details here: [Source Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-table-slicing-limit)
+See details here: [Source Table Slicing](/docs/workflow-steps/common/source-table-slicing-limit)
 
 
 
 ### Select Subset of Final Data
 
 
-See details here: [Select Subset of Final Data](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#select-subset-of-final-data)
+See details here: [Select Subset of Final Data](/docs/workflow-steps/common/select-subset-of-final-data)
 
 
 
 ### Final Data Table Slicing (Limit)
 
 
-See details here: [Final Data Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#final-data-table-slicing-limit)
-
-
-
-
-
+See details here: [Final Data Table Slicing](/docs/workflow-steps/common/final-data-table-slicing)
 
 
 ## Examples
 
 
-In this example, the Analyze target table, *Import Google Spreadsheet*, is exported to an HTML file named *Export HTML*. The target directory is the *Analyze Demo Output* directory of PlaidCloud Document. The title row is bolded, **Escape Characters** are enabled, and **Decimal Places** are limited to 2 digits. The index column is not included. No compression is used.
-
-
-All columns are mapped from source to target as *Text* data types. No additional operations are performed.
-
+No examples yet...

@@ -39,20 +39,9 @@ Next, specify a valid phone number. Acceptable formats include the following:
 Specify **Subject** and **Message** as desired.
 
 
-Please note that both [System Variables](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#system-variables) and [Workflow Variables](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#model-variables) are available for use with this transform, in both the subject line as well as the message body.**WARNING:** Standard data rates may apply for recipients.
-
-
-
-
-
-
+Please note that both Project Variables and Workflow Variables are available for use with this transform, in both the subject line as well as the message body.**WARNING:** Standard data rates may apply for recipients.
 
 ## Examples
 
 
-In this example, an SMS message is sent to a USA-based Verizon cell number, *867-5309*. System variables are used in the message. The final message reads, 
-
-
-
-*Jenny, Analyze Demo is running now in the Demo cloud.*
-
+No examples yet...

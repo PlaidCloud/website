@@ -50,9 +50,5 @@ If the directory already exists, no action is taken.
 
 ## Examples #
 
-
-In this example, the Document directory, *created\_by\_analyze*, is created within the 
-
-
-*etl\_prototyping/* parent directory.
+No examples yet...
 

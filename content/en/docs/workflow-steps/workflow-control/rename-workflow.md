@@ -44,7 +44,4 @@ Finally, enter the new workflow name in the **Rename To** field. Remember that t
 
 ## Examples
 
-
-In this example, the workflow *Blank Workflow Copied by Analyze* is renamed to *Blank Workflow Renamed by Analyze*. Additionally, the default value of **ERROR if the target workflow already exists** ensures that nothing happens should the specified workflow already exist. 
-
-
+No examples yet...

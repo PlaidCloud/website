@@ -29,12 +29,7 @@ Type the desired message to write to the log. Then select one of three severity 
 * Warning
 * Error
 
-Please note that both [System Variables](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#system-variables) and [Workflow Variables](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#model-variables) are available for use with this transform.
-
-
-
-
-
+Please note that both Project Variables and Workflow Variables are available for use with this transform.
 
 
 ## Examples

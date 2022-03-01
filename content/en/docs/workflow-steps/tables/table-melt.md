@@ -66,13 +66,13 @@ This section is a bit different from the standard Table Data Selection. Basicall
 
 
 {{< note >}}
-The column layout in the Pre-Melt Table Data Selection does **NOT** reflect the column layout of the output data table. Target data table layout is specified in the [Melt Layout](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/table_melt#melt-layout) section.
+The column layout in the Pre-Melt Table Data Selection does **NOT** reflect the column layout of the output data table. Target data table layout is specified in the Melt Layout section.
 {{< /note >}}
 
 
 
 
-For more details regarding Table Data Selection, see details here: [Table Data Selection](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#table-data-selection)
+For more details regarding Table Data Selection, see details here: [Table Data Selection](/docs/workflow-steps/common/table-data-selection)
 
 
 
@@ -86,7 +86,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
@@ -110,14 +110,14 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples
 
 
 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions)
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions)
 
 
 for more details and examples.
@@ -152,7 +152,7 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples
 
 
 
@@ -211,23 +211,4 @@ There are 2 values to specify. Both of these values will become column names in 
 ## Examples
 
 
-### Convert Monthly Data
-
-
-In this example, we will use the table listed in the [Description](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/table_melt#description) section above.
-
-
-
-First, the **Source Table** and **Target Table** are specified. 
-
-
-
-Next, use the **Inspect Source** and **Populate Both Mapping Tables** buttons to make all of the columns available for the melt operation. Keep in mind, this does not reflect the target data table’s layout. For example, if the report was only on the first half of the year, JUL-DEC months could be deleted from the right pane.
-
-
-
-No **Data Filters** are used, so this tab is not shown.
-
-
-
-Lastly, the **Guess** button is used to correctly identify that *BudgetCategory* is the only **ID / Key** value. Remember that this is a text field (not numeric), so that is why it’s identified as such. All of the other columns (all 12 months JAN – DEC) will be included in the melt operation. As such, *Month* is a good **Variable Column Name** to reflect what the columns in the source data table represented. *Dollars* will be used for **Value Column Name** as all of the data was in US dollar format.
+No examples yet...

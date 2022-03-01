@@ -37,6 +37,5 @@ If the file doesn’t exist (already deleted), no action is taken.
 
 ## Examples
 
-
-In this example, the Document file, *etl\_prototyping/test\_copy/add\_extension*, is deleted. Remember from a [previous example](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/document_copy_file#no-extension-provided) that this file wasn’t given an extension.
+No examples yet...
 

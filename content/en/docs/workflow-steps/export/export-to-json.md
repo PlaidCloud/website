@@ -35,7 +35,7 @@ JSON files do *not* retain column order. The column order in the source data tab
 ### Source and Target
 
 
-See details here: [Source and Target](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-and-target)
+See details here: [Source and Target](/docs/workflow-steps/common/table-data-selection)
 
 
 
@@ -79,14 +79,6 @@ Specify **Date Unit** using the dropdown menu. Choose from the following formats
 * **Microseconds (us)**
 * **Nanoseconds (ns)**
 
-
-### Double Precision
-
-
-See details here: [Source and Target](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#double-precision)
-
-
-
 ### Force ASCII
 
 
@@ -111,7 +103,7 @@ All exported files are uncompressed, but the following compression options are a
 Remember that JSON files do *not* retain column order. Adjustments to column order during this step may not be accurately reflected in the exported JSON file.
 
 
-See details here: [Table Data Selection](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#table-data-selection)
+See details here: [Table Data Selection](/docs/workflow-steps/common/table-data-selection)
 
 
 
@@ -125,7 +117,7 @@ To allow for maximum flexibility, data filters are available on the source data 
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -144,7 +136,7 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Select Subset of Final Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -154,7 +146,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 ### Select Subset of Source Data
 
 
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](https://plaidcloud.com/docs/plaidcloud/workflows/index#expressions) for more details and examples.
+Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
 
@@ -174,21 +166,21 @@ This will **not** remove the duplicate items from the target data table. To remo
 ### Source Table Slicing (Limit)
 
 
-See details here: [Source Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#source-table-slicing-limit)
+See details here: [Source Table Slicing](/docs/workflow-steps/common/source-table-slicing-limit)
 
 
 
 ### Select Subset of Final Data
 
 
-See details here: [Select Subset of Final Data](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#select-subset-of-final-data)
+See details here: [Select Subset of Final Data](/docs/workflow-steps/common/select-subset-of-final-data)
 
 
 
 ### Final Data Table Slicing (Limit)
 
 
-See details here: [Final Data Table Slicing](https://plaidcloud.com/docs/plaidcloud/workflows/transforms/common_features#final-data-table-slicing-limit)
+See details here: [Final Data Table Slicing](/docs/workflow-steps/common/final-data-table-slicing)
 
 
 
@@ -199,8 +191,4 @@ See details here: [Final Data Table Slicing](https://plaidcloud.com/docs/plaidcl
 ## Examples
 
 
-In this example, the Analyze Source Table *Import Google Spreadsheet* is exported to the json file *Export JSON Records orientation* in the *Analyze Demo Output* directory of PlaidCloud Document.
-
-
-Next, all columns are mapped in the **Table Data Selection**. No additional operations are performed. Remember that column order is not necessarily retained in the output json file.
-
+No examples yet...

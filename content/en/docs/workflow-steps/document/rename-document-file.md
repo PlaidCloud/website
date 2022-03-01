@@ -47,6 +47,4 @@ Type the new name for the file.
 
 ## Examples
 
-
-In this example, the Document file, *etl\_prototyping/test\_copy/HIER\_NATURAL\_ACCOUNT.txt*, is renamed to *HIER\_NATURAL\_ACCOUNT\_renamed.txt*. Note that the parent directory is not listed in the **Rename To** section.
-
+No examples yet...
