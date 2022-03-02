@@ -394,3 +394,7 @@ To add shortcodes to includes.
 ## Katacoda Embedded Live Environment
 
 {{< kat-button >}}
+
+## Embed a custom markdown shortcode section
+
+{{< include "i-am-a-test.md" >}}
