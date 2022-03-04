@@ -38,7 +38,7 @@ ST_UnaryUnion(geometry geom, float8 gridSize = -1);
 
 
 
-```
+```python
 func.ST_UnaryUnion(geometry geom, float8 gridSize = -1);
 ```
 

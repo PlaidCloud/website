@@ -35,8 +35,8 @@ Box2D(geometry geomA);
 
 
 
-```
-func.Box2D(geometry geomA);
+```python
+func.Box2D(geometry geomA)
 ```
 
 

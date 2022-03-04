@@ -14,21 +14,14 @@ categories:
 
 Expressions use a Python-like syntax and provide a lot of powerful transformation capabilities.
 
-
 {{< note >}}
 Always use table.field references in expressions
 {{< /note >}}
 
-
-
-
-
 ## Common Mathematics Expressions
 
-
-
-
 | Analyze Expression | Operator | Description | Example | Result |
+|--------------------|----------|-------------|---------|--------|
 | + | + | addition | 2 + 3 | 5 |
 | – | – | subtraction | 2 – 3 | -1 |
 | * | * | multiplication | 2 * 3 | 6 |
@@ -53,6 +46,7 @@ Always use table.field references in expressions
 
 
 | Analyze Expression | Return Type | Description | Example | Result |  |
+|--------------------|-------------|-------------|---------|--------|--|
 | func.abs(x) | (same as input) | absolute value | abs(-17.4 ) | 17.4 |  |
 | func.cbrt(dp) | Big Float | cube root | cbrt(27.0 ) | 3 |  |
 | func.ceil(dp or numeric) | (same as input) | smallest integer not less than argument | ceil(-42. 8) | -42 |  |
@@ -86,6 +80,7 @@ Always use table.field references in expressions
 
 
 | Analyze Expression | Description |
+|--------------------|-------------|
 | func.acos(x) | inverse cosine |
 | func.asin(x) | inverse sine |
 | func.atan(x) | inverse tangent |

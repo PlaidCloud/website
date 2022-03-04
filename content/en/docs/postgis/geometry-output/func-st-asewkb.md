@@ -35,8 +35,8 @@ ST_AsEWKB(geometry g1);
 
 
 
-```
-func.ST_AsEWKB(geometry g1);
+```python
+func.ST_AsEWKB(geometry g1)
 ```
 
 

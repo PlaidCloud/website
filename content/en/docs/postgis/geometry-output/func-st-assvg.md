@@ -35,8 +35,8 @@ ST_AsSVG(geometry geom, integer rel=0, integer maxdecimaldigits=15);
 
 
 
-```
-func.ST_AsSVG(geometry geom, integer rel=0, integer maxdecimaldigits=15);
+```python
+func.ST_AsSVG(geometry geom, integer rel=0, integer maxdecimaldigits=15)
 ```
 
 

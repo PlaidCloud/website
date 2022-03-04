@@ -35,8 +35,8 @@ ST_Crosses(geometry g1, geometry g2);
 
 
 
-```
-func.ST_Crosses(geometry g1, geometry g2);
+```python
+func.ST_Crosses(geometry g1, geometry g2)
 ```
 
 

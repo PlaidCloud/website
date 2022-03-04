@@ -35,7 +35,7 @@ ST_LineFromMultiPoint(geometry aMultiPoint); PlaidCloud
 
 
 
-```
+```python
 func.ST_LineFromMultiPoint(geometry aMultiPoint) 
 ```
 

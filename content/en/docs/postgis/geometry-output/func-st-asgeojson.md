@@ -35,8 +35,8 @@ ST_AsGeoJSON(geography geog, integer maxdecimaldigits=9, integer options=0);
 
 
 
-```
-func.ST_AsGeoJSON(geography geog, integer maxdecimaldigits=9, integer options=0);
+```python
+func.ST_AsGeoJSON(geography geog, integer maxdecimaldigits=9, integer options=0)
 ```
 
 

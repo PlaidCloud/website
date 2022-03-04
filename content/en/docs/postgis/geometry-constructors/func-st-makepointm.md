@@ -35,8 +35,8 @@ ST_MakePointM(float x, float y, float m);
 
 
 
-```
-func.ST_MakePointM(float x, float y, float m);
+```python
+func.ST_MakePointM(float x, float y, float m)
 ```
 
 

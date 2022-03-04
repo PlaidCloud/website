@@ -35,8 +35,8 @@ ST_Affine(geometry geomA, float a, float b, float d, float e, float xoff, float 
 
 
 
-```
-func.ST_Affine(geometry geomA, float a, float b, float d, float e, float xoff, float yoff);
+```python
+func.ST_Affine(geometry geomA, float a, float b, float d, float e, float xoff, float yoff)
 ```
 
 

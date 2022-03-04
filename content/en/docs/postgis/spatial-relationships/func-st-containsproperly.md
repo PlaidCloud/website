@@ -38,7 +38,7 @@ ST_ContainsProperly(geometry geomA, geometry geomB);
 
 
 
-```
+```python
 func.ST_ContainsProperly(geometry geomA, geometry geomB);
 ```
 

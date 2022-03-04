@@ -35,8 +35,8 @@ ST_AddPoint(geometry linestring, geometry point);
 
 
 
-```
-func.ST_AddPoint(geometry linestring, geometry point);
+```python
+func.ST_AddPoint(geometry linestring, geometry point)
 ```
 
 

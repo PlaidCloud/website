@@ -35,8 +35,8 @@ ST_IsValidReason(geometry geomA, integer flags);
 
 
 
-```
-func.ST_IsValidReason(geometry geomA, integer flags);
+```python
+func.ST_IsValidReason(geometry geomA, integer flags)
 ```
 
 

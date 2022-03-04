@@ -35,8 +35,8 @@ ST_SRID(geometry g1);
 
 
 
-```
-func.ST_SRID(geometry g1);
+```python
+func.ST_SRID(geometry g1)
 ```
 
 

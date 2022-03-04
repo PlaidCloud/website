@@ -218,11 +218,11 @@ source for this page).
 ## Links
 
 To format a link, put the link text inside square brackets, followed by the
-link target in parentheses. [Link to PlaidCloud.io](https://plaidcloud.com/) or
-[Relative link to PlaidCloud.io](/)
+link target in parentheses. [Link to PlaidCloud.com](https://plaidcloud.com/) or
+[Relative link to docs.plaidCloud.com](/)
 
 You can also use HTML, but it is not preferred.
-<a href="https://plaidcloud.com/">Link to PlaidCloud.io</a>
+<a href="https://plaidcloud.com/">Link to PlaidCloud.com</a>
 
 ## Images
 
@@ -394,3 +394,9 @@ To add shortcodes to includes.
 ## Katacoda Embedded Live Environment
 
 {{< kat-button >}}
+
+---
+
+## Embed a custom markdown shortcode section
+
+{{< include "i-am-a-test.md" >}}

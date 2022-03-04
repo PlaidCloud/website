@@ -46,7 +46,9 @@ The various file and folder operations available in the file explorer are detail
 3. Browse to the desired directory
 4. Right-click and select `Upload Here`
 
-*Note*: Multiple files may be uploaded at one time.
+{{< note >}}
+ Multiple files may be uploaded at one time
+{{< /note >}}
 
 
 ## Download a File

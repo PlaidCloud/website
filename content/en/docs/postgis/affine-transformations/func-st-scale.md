@@ -35,8 +35,8 @@ ST_Scale(geometry geom, geometry factor);
 
 
 
-```
-func.ST_Scale(geometry geom, geometry factor);
+```python
+func.ST_Scale(geometry geom, geometry factor)
 ```
 
 

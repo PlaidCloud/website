@@ -35,8 +35,8 @@ ST_NDims(geometry g1);
 
 
 
-```
-func.ST_NDims(geometry g1);
+```python
+func.ST_NDims(geometry g1)
 ```
 
 

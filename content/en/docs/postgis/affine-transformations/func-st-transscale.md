@@ -35,8 +35,8 @@ ST_TransScale(geometry geomA, float deltaX, float deltaY, float XFactor, float Y
 
 
 
-```
-func.ST_TransScale(geometry geomA, float deltaX, float deltaY, float XFactor, float YFactor);
+```python
+func.ST_TransScale(geometry geomA, float deltaX, float deltaY, float XFactor, float YFactor)
 ```
 
 

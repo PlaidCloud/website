@@ -35,8 +35,8 @@ ST_LineCrossingDirection(geometry linestringA, geometry linestringB);
 
 
 
-```
-func.ST_LineCrossingDirection(geometry linestringA, geometry linestringB);
+```python
+func.ST_LineCrossingDirection(geometry linestringA, geometry linestringB)
 ```
 
 

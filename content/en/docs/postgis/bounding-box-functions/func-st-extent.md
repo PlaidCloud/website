@@ -35,8 +35,8 @@ ST_Extent(geometry set geomfield);
 
 
 
-```
-func.ST_Extent(geometry set geomfield);
+```python
+func.ST_Extent(geometry set geomfield)
 ```
 
 

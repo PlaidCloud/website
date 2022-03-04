@@ -35,8 +35,8 @@ ST_ConvexHull(geometry geomA);
 
 
 
-```
-func.ST_ConvexHull(geometry geomA);
+```python
+func.ST_ConvexHull(geometry geomA)
 ```
 
 

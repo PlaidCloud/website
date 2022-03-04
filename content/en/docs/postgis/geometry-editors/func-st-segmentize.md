@@ -35,8 +35,8 @@ ST_Segmentize(geometry geom, float max_segment_length);
 
 
 
-```
-func.ST_Segmentize(geometry geom, float max_segment_length);
+```python
+func.ST_Segmentize(geometry geom, float max_segment_length)
 ```
 
 

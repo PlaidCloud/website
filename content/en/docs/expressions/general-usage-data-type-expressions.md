@@ -42,9 +42,8 @@ Casting to an incompatible dtype may cause errors. For example, casting ‘hello
 ## func.cast() Type Conversions
 
 
-
-
 | Analyze Expression | Description | Result |
+|--------------------|-------------|--------|
 | func.cast(123, Text) | Integer to Text | ‘123’ |
 | func.cast(‘123’, Integer) | Text to Integer | 123 |
 | func.cast(‘78.69’, Float) | Text to Float | 78.69 |
@@ -60,6 +59,7 @@ Casting to an incompatible dtype may cause errors. For example, casting ‘hello
 
 
 | Analyze Expression | Return Type | Description | Example |
+|--------------------|-------------|-------------|---------|
 | func.to\_char(timesta mp, text) | text | convert time stamp to string | to\_char(c urrent\_ti mestamp, ‘HH12:MI:S S’) |
 | func.to\_char(interva l, text) | text | convert interval to string | to\_char(i nterval ‘15h 2m 12s’, ‘HH24:MI:S S’) |
 | func.to\_char(integer , text) | text | convert integer to string | to\_char(1 25, ‘999’) |

@@ -35,8 +35,8 @@ ST_GeomFromGML(text geomgml);
 
 
 
-```
-func.ST_GeomFromGML(text geomgml);
+```python
+func.ST_GeomFromGML(text geomgml)
 ```
 
 

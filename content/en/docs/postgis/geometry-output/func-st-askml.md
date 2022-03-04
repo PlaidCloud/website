@@ -35,8 +35,8 @@ ST_AsKML(geometry geom, integer maxdecimaldigits=15, text nprefix=NULL);
 
 
 
-```
-func.ST_AsKML(geometry geom, integer maxdecimaldigits=15, text nprefix=NULL);
+```python
+func.ST_AsKML(geometry geom, integer maxdecimaldigits=15, text nprefix=NULL)
 ```
 
 

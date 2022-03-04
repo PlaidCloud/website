@@ -23,7 +23,12 @@ Conditional statements use case syntax. This is the equivalent of simple if-then
 
 
 ```python
-[ (table.first_name != None, func.concat(table.first_name, table.last_name), ], else_ = table.last_name
+case(
+    [ 
+        (table.first_name != None, func.concat(table.first_name, table.last_name)), 
+    ], 
+    else_ = table.last_name
+)
 ```
 
 
@@ -31,19 +36,35 @@ Conditional statements use case syntax. This is the equivalent of simple if-then
 
 
 ```python
-case( [ (order_table.qty > 100, item_table.specialprice), (order_table.qty > 10, item_table.bulkprice) ], else_=item_table.regularprice )
+case(
+    [ 
+        (order_table.qty > 100, item_table.specialprice), 
+        (order_table.qty > 10, item_table.bulkprice) 
+    ], 
+    else_=item_table.regularprice
+)
 ```
 
 
 ```python
-case( [ (users_table.name == "wendy", "W"), (users_table.name == "jack", "J") ], else_='E' )
+case( 
+    [ 
+        (users_table.name == "wendy", "W"), 
+        (users_table.name == "jack", "J") 
+    ], 
+    else_='E'
+)
 ```
 
 
 The above may also be written in shorthand as:
 
 ```python
-case( {"wendy": "W", "jack": "J"}, value=users_table.name, else_='E' )
+case(
+    {"wendy": "W", "jack": "J"}, 
+    value=users_table.name, 
+    else_='E' 
+)
 ```
 
 

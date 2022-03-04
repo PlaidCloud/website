@@ -35,8 +35,8 @@ ST_Contains(geometry geomA, geometry geomB);
 
 
 
-```
-func.ST_Contains(geometry geomA, geometry geomB);
+```python
+func.ST_Contains(geometry geomA, geometry geomB)
 ```
 
 

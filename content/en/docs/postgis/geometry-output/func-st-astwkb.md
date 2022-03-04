@@ -35,8 +35,8 @@ ST_AsTWKB(geometry g1, integer decimaldigits_xy=0, integer decimaldigits_z=0, in
 
 
 
-```
-func.ST_AsTWKB(geometry g1, integer decimaldigits_xy=0, integer decimaldigits_z=0, integer decimaldigits_m=0, boolean include_sizes=false, boolean include_bounding boxes=false);
+```python
+func.ST_AsTWKB(geometry g1, integer decimaldigits_xy=0, integer decimaldigits_z=0, integer decimaldigits_m=0, boolean include_sizes=false, boolean include_bounding boxes=false)
 ```
 
 

@@ -28,7 +28,9 @@ To add a member:
 4. Select the desired member and drag them to the appropriate column
 5. Click “Submit”
 
-*Note*: In order to add members to a workspace, the members must be part of the Organization and must appear on the member management form. If you want to add a member who does not appear on the member management form, you must first invite the member into the workspace.
+{{< note >}}
+In order to add members to a workspace, the members must be part of the Organization and must appear on the member management form. If you want to add a member who does not appear on the member management form, you must first invite the member into the workspace.
+{{< /note >}}
 
 
 

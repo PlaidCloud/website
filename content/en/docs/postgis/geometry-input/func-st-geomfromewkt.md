@@ -35,8 +35,8 @@ ST_GeomFromEWKT(text EWKT);
 
 
 
-```
-func.ST_GeomFromEWKT(text EWKT);
+```python
+func.ST_GeomFromEWKT(text EWKT)
 ```
 
 

@@ -35,8 +35,8 @@ ST_Force2D(geometry geomA);
 
 
 
-```
-func.ST_Force2D(geometry geomA);
+```python
+func.ST_Force2D(geometry geomA)
 ```
 
 

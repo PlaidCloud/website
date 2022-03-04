@@ -35,8 +35,8 @@ ST_ClipByBox2D(geometry geom, box2d box);
 
 
 
-```
-func.ST_ClipByBox2D(geometry geom, box2d box);
+```python
+func.ST_ClipByBox2D(geometry geom, box2d box)
 ```
 
 

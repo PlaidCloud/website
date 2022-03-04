@@ -35,8 +35,8 @@ ST_GeometryN(geometry geomA, integer n);
 
 
 
-```
-func.ST_GeometryN(geometry geomA, integer n);
+```python
+func.ST_GeometryN(geometry geomA, integer n)
 ```
 
 

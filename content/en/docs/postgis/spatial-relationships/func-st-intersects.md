@@ -35,8 +35,8 @@ ST_Intersects( geometry geomA , geometry geomB );
 
 
 
-```
-func.ST_Intersects( geometry geomA , geometry geomB );
+```python
+func.ST_Intersects( geometry geomA , geometry geomB )
 ```
 
 

@@ -35,8 +35,8 @@ ST_NumGeometries(geometry geom);
 
 
 
-```
-func.ST_NumGeometries(geometry geom);
+```python
+func.ST_NumGeometries(geometry geom)
 ```
 
 

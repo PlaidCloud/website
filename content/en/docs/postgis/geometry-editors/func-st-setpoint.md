@@ -35,9 +35,9 @@ ST_SetPoint(geometry linestring, integer zerobasedposition, geometry point);
 
 
 
-```
+```python
 func.ST_SetPoint(geometry linestring, integer zerobasedposition,   
-geometry point);
+geometry point)
 ```
 
 

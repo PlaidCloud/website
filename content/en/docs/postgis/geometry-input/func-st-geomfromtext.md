@@ -35,8 +35,8 @@ ST_GeomFromText(text WKT);
 
 
 
-```
-func.ST_GeomFromText(text WKT);
+```python
+func.ST_GeomFromText(text WKT)
 ```
 
 

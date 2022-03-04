@@ -35,8 +35,8 @@ ST_IsClosed(geometry g);
 
 
 
-```
-func.ST_IsClosed(geometry g);
+```python
+func.ST_IsClosed(geometry g)
 ```
 
 

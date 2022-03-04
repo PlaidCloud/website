@@ -35,8 +35,8 @@ ST_SymDifference(geometry geomA, geometry geomB, float8 gridSize = -1);
 
 
 
-```
-func.ST_SymDifference(geometry geomA, geometry geomB, float8 gridSize = -1);
+```python
+func.ST_SymDifference(geometry geomA, geometry geomB, float8 gridSize = -1)
 ```
 
 

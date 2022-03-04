@@ -35,8 +35,8 @@ ST_BdPolyFromText(text WKT, integer srid);
 
 
 
-```
-func.ST_BdPolyFromText(text WKT, integer srid);
+```python
+func.ST_BdPolyFromText(text WKT, integer srid)
 ```
 
 

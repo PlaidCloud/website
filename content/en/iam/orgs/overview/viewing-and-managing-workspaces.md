@@ -75,8 +75,9 @@ This will bring you to a table showing all the current workspaces within the Org
 3. Click the delete icon of the desired workspace
 4. Click “Delete” again
 
-*Note*: Deletion is a permanent action. This process will delete the workspace and all associated data. Be sure you have everything you need backed up before doing this.
-
+{{< note >}}
+Deletion is a permanent action. This process will delete the workspace and all associated data. Be sure you have everything you need backed up before doing this.
+{{< /note >}}
 
 
 ### Managing Apps Available in Workspace

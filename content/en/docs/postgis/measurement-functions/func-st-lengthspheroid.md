@@ -35,8 +35,8 @@ ST_LengthSpheroid(geometry a_geometry, spheroid a_spheroid);
 
 
 
-```
-func.ST_LengthSpheroid(geometry a_geometry, spheroid a_spheroid);
+```python
+func.ST_LengthSpheroid(geometry a_geometry, spheroid a_spheroid)
 ```
 
 

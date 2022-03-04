@@ -35,8 +35,8 @@ ST_NumPatches(geometry g1);
 
 
 
-```
-func.ST_NumPatches(geometry g1);
+```python
+func.ST_NumPatches(geometry g1)
 ```
 
 

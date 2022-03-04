@@ -35,8 +35,8 @@ ST_GeoHash(geometry geom, integer maxchars=full_precision_of_point);
 
 
 
-```
-func.ST_GeoHash(geometry geom, integer maxchars=full_precision_of_point);
+```python
+func.ST_GeoHash(geometry geom, integer maxchars=full_precision_of_point)
 ```
 
 

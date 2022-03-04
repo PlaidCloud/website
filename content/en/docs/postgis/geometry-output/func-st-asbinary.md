@@ -35,8 +35,8 @@ ST_AsBinary(geometry g1);
 
 
 
-```
-func.ST_AsBinary(geometry g1);
+```python
+func.ST_AsBinary(geometry g1)
 ```
 
 

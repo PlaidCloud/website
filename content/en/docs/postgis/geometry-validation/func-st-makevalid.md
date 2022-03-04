@@ -35,8 +35,8 @@ ST_MakeValid(geometry input);
 
 
 
-```
-func.ST_MakeValid(geometry input);
+```python
+func.ST_MakeValid(geometry input)
 ```
 
 

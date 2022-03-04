@@ -35,8 +35,8 @@ ST_IsSimple(geometry geomA);
 
 
 
-```
-func.ST_IsSimple(geometry geomA);
+```python
+func.ST_IsSimple(geometry geomA)
 ```
 
 

@@ -35,8 +35,8 @@ ST_Summary(geometry g);
 
 
 
-```
-func.ST_Summary(geometry g);
+```python
+func.ST_Summary(geometry g)
 ```
 
 

@@ -35,8 +35,8 @@ ST_3DMaxDistance(geometry g1, geometry g2);
 
 
 
-```
-func.ST_3DMaxDistance(geometry g1, geometry g2);
+```python
+func.ST_3DMaxDistance(geometry g1, geometry g2)
 ```
 
 

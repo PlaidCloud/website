@@ -35,8 +35,8 @@ ST_BdMPolyFromText(text WKT, integer srid);
 
 
 
-```
-func.ST_BdMPolyFromText(text WKT, integer srid);
+```python
+func.ST_BdMPolyFromText(text WKT, integer srid)
 ```
 
 

@@ -35,8 +35,8 @@ ST_PolygonFromText(text WKT);
 
 
 
-```
-func.ST_PolygonFromText(text WKT);
+```python
+func.ST_PolygonFromText(text WKT)
 ```
 
 

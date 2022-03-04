@@ -35,8 +35,8 @@ ST_AsEWKT(geometry g1);
 
 
 
-```
-func.ST_AsEWKT(geometry g1);
+```python
+func.ST_AsEWKT(geometry g1)
 ```
 
 

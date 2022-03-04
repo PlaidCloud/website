@@ -35,8 +35,8 @@ ST_LocateBetweenElevations(geometry geom, float8 elevation_start, float8 elevati
 
 
 
-```
-func.ST_LocateBetweenElevations(geometry geom, float8 elevation_start, float8 elevation_end);
+```python
+func.ST_LocateBetweenElevations(geometry geom, float8 elevation_start, float8 elevation_end)
 ```
 
 

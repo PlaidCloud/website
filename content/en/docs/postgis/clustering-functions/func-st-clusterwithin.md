@@ -35,8 +35,8 @@ ST_ClusterWithin(geometry set g, float8 distance);
 
 
 
-```
-func.ST_ClusterWithin(geometry set g, float8 distance);
+```python
+func.ST_ClusterWithin(geometry set g, float8 distance)
 ```
 
 

@@ -35,8 +35,8 @@ ST_SimplifyPreserveTopology(geometry geomA, float tolerance);
 
 
 
-```
-func.ST_SimplifyPreserveTopology(geometry geomA, float tolerance);
+```python
+func.ST_SimplifyPreserveTopology(geometry geomA, float tolerance)
 ```
 
 

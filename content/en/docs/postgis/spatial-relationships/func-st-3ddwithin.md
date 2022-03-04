@@ -35,8 +35,8 @@ ST_3DDWithin(geometry g1, geometry g2, double precision distance_of_srid);
 
 
 
-```
-func.ST_3DDWithin(geometry g1, geometry g2, double precision distance_of_srid);
+```python
+func.ST_3DDWithin(geometry g1, geometry g2, double precision distance_of_srid)
 ```
 
 

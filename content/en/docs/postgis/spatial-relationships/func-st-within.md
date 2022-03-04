@@ -35,8 +35,8 @@ ST_Within(geometry A, geometry B);
 
 
 
-```
-func.ST_Within(geometry A, geometry B);
+```python
+func.ST_Within(geometry A, geometry B)
 ```
 
 

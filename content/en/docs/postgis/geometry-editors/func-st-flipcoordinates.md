@@ -35,8 +35,8 @@ ST_FlipCoordinates(geometry geom);
 
 
 
-```
-func.ST_FlipCoordinates(geometry geom);
+```python
+func.ST_FlipCoordinates(geometry geom)
 ```
 
 

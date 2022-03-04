@@ -35,8 +35,8 @@ ST_CollectionHomogenize(geometry collection);
 
 
 
-```
-func.ST_CollectionHomogenize(geometry collection);
+```python
+func.ST_CollectionHomogenize(geometry collection)
 ```
 
 

@@ -35,8 +35,8 @@ ST_3DMakeBox(geometry point3DLowLeftBottom, geometry point3DUpRightTop);
 
 
 
-```
-func.ST_3DMakeBox(geometry point3DLowLeftBottom, geometry point3DUpRightTop);
+```python
+func.ST_3DMakeBox(geometry point3DLowLeftBottom, geometry point3DUpRightTop)
 ```
 
 

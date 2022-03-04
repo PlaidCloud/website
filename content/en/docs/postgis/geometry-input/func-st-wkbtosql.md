@@ -35,8 +35,8 @@ ST_WKBToSQL(bytea WKB);
 
 
 
-```
-func.ST_WKBToSQL(bytea WKB);
+```python
+func.ST_WKBToSQL(bytea WKB)
 ```
 
 

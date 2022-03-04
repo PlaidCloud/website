@@ -14,10 +14,8 @@ categories:
 
 You may apply filters using column references.
 
-
-
-
 | Operator | Description | Example |
+|----------|-------------|---------|
 | and\_() | Creates an AND SQL condition | and\_(table.a > 23, table.b == u’blue’) |
 | or\_() | Creates an OR SQL condition | or\_(table.a > 23, table.b == u’blue’) |
 | not\_() | Inverts the condition | not\_(and\_(table.a > 23, table.b == u’blue’)) |
@@ -31,13 +29,9 @@ You may apply filters using column references.
 | is\_ | Applies the SQL is the IS for things like IS NULL | table.column.is\_(None) |
 | isnot | Applies the SQL is the IS for things like IS NOT NULL | table.column.isnot(None) |
 | like | Applies the SQL LIKE method | table.column.like(‘%foobar%’’) |
-| table.column. like(‘% /% of profit%’, escape=’/’) |  |  |
 | notlike | Applies the SQL NOT LIKE method | table.column.notlike(‘%foobar%’) |
-| table.column. notlike(‘% /% of profit%’, escape=’/’) |  |  |
 | ilike | Applies the SQL ILIKE method | table.column.ilike(‘%foobar%’) |
-| table.column. like(‘% /% of profit%’, escape=’/’) |  |  |
 | notilike | Applies the SQL NOT ILIKE method | table.column.notilike(‘%foobar%’) |
-| table.column. notilike(‘% /% of profit%’, escape=’/’) |  |  |
 | NULL, Null, null | Alias for Python None |  |
 | TRUE, true | Alias for Python True |  |
 | FALSE, false | Alias for Python False |  |

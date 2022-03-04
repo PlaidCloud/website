@@ -35,8 +35,8 @@ ST_AsText(geometry g1);
 
 
 
-```
-func.ST_AsText(geometry g1);
+```python
+func.ST_AsText(geometry g1)
 ```
 
 

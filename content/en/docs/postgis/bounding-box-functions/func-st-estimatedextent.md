@@ -35,8 +35,8 @@ ST_EstimatedExtent(text table_name, text geocolumn_name);
 
 
 
-```
-func.ST_EstimatedExtent(text table_name, text geocolumn_name);
+```python
+func.ST_EstimatedExtent(text table_name, text geocolumn_name)
 ```
 
 

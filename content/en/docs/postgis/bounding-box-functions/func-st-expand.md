@@ -35,8 +35,8 @@ ST_Expand(geometry geom, float units_to_expand);
 
 
 
-```
-func.ST_Expand(geometry geom, float units_to_expand);
+```python
+func.ST_Expand(geometry geom, float units_to_expand)
 ```
 
 
