@@ -35,8 +35,8 @@ ST_DumpPoints(geometry geom);
 
 
 
-```
-func.ST_DumpPoints(geometry geom);
+```python
+func.ST_DumpPoints(geometry geom)
 ```
 
 

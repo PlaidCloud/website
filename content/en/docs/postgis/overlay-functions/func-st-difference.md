@@ -35,8 +35,8 @@ ST_Difference(geometry geomA, geometry geomB, float8 gridSize = -1);
 
 
 
-```
-func.ST_Difference(geometry geomA, geometry geomB, float8 gridSize = -1);
+```python
+func.ST_Difference(geometry geomA, geometry geomB, float8 gridSize = -1)
 ```
 
 

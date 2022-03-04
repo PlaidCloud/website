@@ -35,8 +35,8 @@ ST_Perimeter2D(geometry geomA);
 
 
 
-```
-func.ST_Perimeter2D(geometry geomA);
+```python
+func.ST_Perimeter2D(geometry geomA)
 ```
 
 

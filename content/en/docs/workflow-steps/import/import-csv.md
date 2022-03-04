@@ -85,20 +85,14 @@ The **Text Qualifier** section allows users to specify how to handle the data wi
 
 ### Row Skipping
 
-
 For input files with extraneous records, you can specify any number of rows to ignore from the top and/or bottom of the input file. This is especially helpful for files with control sums at the bottom.
-
-
 
 ### Column Headers
 
 
-
 ### Data Quality
 
-
 Choose from any of the following options:
-
 
 * Skip Quality Check: Analyze inspects each input file to ensure that each row of data contains the same number of columns. It also checks to make sure that quotation marks are not unbalanced, which could create data errors upon loading the file.
 * Error on Bad Data Lines: If any rows have too few or too many columns, an error will be raised and the target data table will not be created. By default, this is turned off and bad lines are simply dropped from the target data table.
@@ -113,7 +107,6 @@ Selecting the **Skip Quality Check** box reduces overhead by removing an additio
 
 ### Parsing Overrides
 
-
 Analyze handles boolean and null values specially. This section provides the ability to specify values which should be treated specially.
 
 
@@ -122,104 +115,19 @@ Analyze handles boolean and null values specially. This section provides the abi
 * Enable NA Conversion: Any values which should be converted to **NULL** values should be entered here. Use a comma delimiter to specify multiple values. For example, adding the failed Microsoft Excel vlookup value of **#N/A** would convert all instances of **#N/A** to **NULL**.
 
 
-### Table Data Selection
-
-
-The Table Data Selection tab is used to map columns from the source data table to the target data table. All source columns on the left side of the window are automatically mapped to the target data table depicted on the right side of the window. Using the **Inspect Source** menu button, there are a few additional ways to map columns from source to target:
-
-
-* Populate Both Mapping Tables: Propagates all values from the source data table into the target data table. This is done by default.
-* Populate Source Mapping Table Only: Maps all values in the source data table only. This is helpful when modifying an existing workflow when source column structure has changed.
-* Populate Target Mapping Table Only: Propagates all values into the target data table only.
-
-In addition to each of these options, each choice offers the ability to preview the source data.
-
-
-
-If the source and target column options aren’t enough, other columns can be added into the target data table in several different ways:
-
-
-* **Propagate All** will insert all source columns into the target data table, whether they already existed or not.
-* **Propagate Selected** will insert selected source column(s) only.
-* Right click on target side and select **Insert Row** to insert a row immediately above the currently selected row.
-* Right click on target side and select **Append Row** to insert a row at the bottom (far right) of the target data table.
-
-{{< warning >}}
-Selecting **Propagate All** may effectively create a duplicate of every column. Analyze does not check to see if the columns are already mapped. Make sure duplicate column names do not exist.
-{{< /warning >}}
-
-
-
-
-To delete columns from the target data table, select the desired column(s), then right click and select **Delete**.
-
-
-
-To rearrange columns in the target data table, select the desired column(s), then right click and select **Move to Top**, **Move Up**, **Move Down**, or **Move to Bottom**.
-
-
-
-To return only distinct options, select the **Distinct** menu option. This will toggle a set of checkboxes for each column in the source. Simply check any box next to the corresponding column to return only distinct results.
-
-
-{{< warning >}}
-When the target data table contains only a subset of the source data table, only select the check box next to the columns which **are** to be included in the target data table. Selecting all checkboxes could provide output that does not appear to be distinct.
-{{< /warning >}}
-
-
-
-
-To aggregate results, select the **Summarize** menu option. This will toggle a set of drop down boxes for each column in the target data table. The following summarization options are available:
-
-
-* Group by (set as default)
-* Sum
-* Min
-* Max
-* First
-* Last
-* Count
-* Mean
-* Median
-* Mode
-* Std Dev
-* Variance
-* Product
-* Absolute Val
-* Quantile
-* Skew
-* Kurtosis
-* Mean Abs Dev
-* Cumulative Sum
-* Cumulative Min
-* Cumulative Max
-* Cumulative Product
-
-
-For more aggregation details, see the Analyze overview page [here](/docs/workflow-steps/common/aggregation).
-
-
-
 ### Data Filters
-
 
 To allow for maximum flexibility, data filters are available on the source data and the target data. For larger data sets, it can be especially beneficial to filter out rows on the source so the remaining operations are performed on a smaller data set.
 
 
-
 ### Select Subset of Source Data
-
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
-
 ### Duplicates
 
-
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
-
-
 
 {{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
@@ -227,29 +135,9 @@ This will **not** remove the duplicate items from the target data table. To remo
 
 
 
-### Select Subset of Final Data
-
-
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
-
-
-
-
-
-
-### Select Subset of Source Data
-
-
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
-
-
-
 ### Duplicates
 
-
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
-
-
 
 {{< caution >}}
 This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
@@ -259,7 +147,6 @@ This will **not** remove the duplicate items from the target data table. To remo
 
 ### Source Table Slicing (Limit)
 
-
 To limit the data, check the **Apply Row Slicer** box and then specify the following:
 
 
@@ -267,22 +154,14 @@ To limit the data, check the **Apply Row Slicer** box and then specify the follo
 * **End at Row:** Last row of data to include. Note that this is different from simply counting rows at the end to drop
 
 
-
 ### Select Subset of Final Data
-
 
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
-
-
-
-
 ### Final Data Table Slicing (Limit)
 
-
 To limit the data, simply check the **Apply Row Slicer** box and then specify the following:
-
 
 * **Initial Rows to Skip:** Rows of data to skip (column header row is not included in count)
 * **End at Row:** Last row of data to include. This is different from simply counting rows at the end to drop
@@ -290,16 +169,28 @@ To limit the data, simply check the **Apply Row Slicer** box and then specify th
 
 ### Text Replacement
 
-
-To perform basic Find/Replace operations, right click and select **Insert Row** or **Append Row** to add a new row prior to your selection or at the end of the list, respectively. Then, fill out the **Find** and **Replace With** fields. This will replace all instances found in the target data table, regardless of column position. Keep in mind that text replacement is case sensitive, so searching for *analyze* is not the same as searching for *Analyze*.
+To perform basic Find/Replace operations, right click and select **Insert Row** or **Append Row** to add a new row prior to your selection or at the end of the list, respectively. 
+Then, fill out the **Find** and **Replace With** fields. This will replace all instances found in the target data table, regardless of column position. Keep in mind that text 
+replacement is case sensitive, so searching for *analyze* is not the same as searching for *Analyze*.
 
 
 {{< note >}}
-Do **not** wrap replacement strings in quotation marks unless you are looking for quotation-mark-wrapped strings within the data. This is different from typical string expressions found elsewhere in Analyze, which do require strings to be wrapped in quotation marks.
+Replacement text should **not** have quotation marks unless you want the replaced text to contain those quotation marks
 {{< /note >}}
-
 
 
 ## Examples
 
 No examples yet...
+
+---
+
+## Common Component Usage
+
+{{< include "common-import-file-selection" >}}
+
+{{< include "common-import-target-selection" >}}
+
+{{< include "common-data-mapper" >}}
+
+{{< include "common-data-filter" >}}

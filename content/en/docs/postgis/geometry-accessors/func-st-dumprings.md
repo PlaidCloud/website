@@ -38,8 +38,8 @@ ST_DumpRings(geometry a_polygon);
 
 
 
-```
-func.ST_DumpRings(geometry a_polygon);
+```python
+func.ST_DumpRings(geometry a_polygon)
 ```
 
   

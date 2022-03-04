@@ -35,8 +35,8 @@ ST_MemSize(geometry geomA);
 
 
 
-```
-func.ST_MemSize(geometry geomA);
+```python
+func.ST_MemSize(geometry geomA)
 ```
 
 

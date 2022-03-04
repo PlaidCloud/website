@@ -38,7 +38,7 @@ ST_MinimumBoundingCircle(geometry geomA, integer num_segs_per_qt_circ=48);
 
 
 
-```
+```python
 func.ST_MinimumBoundingCircle(geometry geomA, integer num_segs_per_qt_circ=48);
 ```
 

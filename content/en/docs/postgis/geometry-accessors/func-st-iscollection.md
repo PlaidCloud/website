@@ -35,8 +35,8 @@ ST_IsCollection(geometry g);
 
 
 
-```
-func.ST_IsCollection(geometry g);
+```python
+func.ST_IsCollection(geometry g)
 ```
 
 

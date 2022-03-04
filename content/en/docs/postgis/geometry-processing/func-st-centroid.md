@@ -35,7 +35,7 @@ ST_Centroid(geometry g1);
 
 
 
-```
+```python
 func.ST_Centroid(geometry g1); 
 ```
 

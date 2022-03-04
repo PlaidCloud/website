@@ -35,8 +35,8 @@ ST_Simplify(geometry geomA, float tolerance, boolean preserveCollapsed);
 
 
 
-```
-func.ST_Simplify(geometry geomA, float tolerance, boolean preserveCollapsed);
+```python
+func.ST_Simplify(geometry geomA, float tolerance, boolean preserveCollapsed)
 ```
 
 

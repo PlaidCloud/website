@@ -35,8 +35,8 @@ ST_LineMerge(geometry amultilinestring);
 
 
 
-```
-func.ST_LineMerge(geometry amultilinestring);
+```python
+func.ST_LineMerge(geometry amultilinestring)
 ```
 
 

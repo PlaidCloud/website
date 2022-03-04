@@ -35,8 +35,8 @@ ST_GeometryFromText(text WKT);
 
 
 
-```
-func.ST_GeometryFromText(text WKT);
+```python
+func.ST_GeometryFromText(text WKT)
 ```
 
 

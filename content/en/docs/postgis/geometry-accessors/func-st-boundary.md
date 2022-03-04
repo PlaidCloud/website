@@ -35,8 +35,8 @@ ST_Boundary(geometry geomA);
 
 
 
-```
-func.ST_Boundary(geometry geomA);
+```python
+func.ST_Boundary(geometry geomA)
 ```
 
 

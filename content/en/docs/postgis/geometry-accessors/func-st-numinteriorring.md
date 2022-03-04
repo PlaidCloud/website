@@ -35,8 +35,8 @@ ST_NumInteriorRing(geometry a_polygon);
 
 
 
-```
-ST_NumInteriorRing(geometry a_polygon);
+```python
+ST_NumInteriorRing(geometry a_polygon)
 ```
 
 

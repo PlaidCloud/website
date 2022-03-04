@@ -14,8 +14,9 @@ categories:
 
 PlaidCloud’s security and access management is straightforward. A member is granted or denied access based on the groups in which a member is associated. Adding or changing a member’s security association is easily customizable.
 
-
-*Note*: Each workspace is allowed an unlimited number of security groups, but we recommend minimizing the number in order to ease security management.
+{{< note >}}
+Each workspace is allowed an unlimited number of security groups, but we recommend minimizing the number in order to ease security management.
+{{< /note >}}
 
 
 

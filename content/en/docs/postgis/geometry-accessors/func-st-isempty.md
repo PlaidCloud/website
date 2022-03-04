@@ -35,8 +35,8 @@ ST_IsEmpty(geometry geomA);
 
 
 
-```
-func.ST_IsEmpty(geometry geomA);
+```python
+func.ST_IsEmpty(geometry geomA)
 ```
 
 

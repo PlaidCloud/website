@@ -35,8 +35,8 @@ ST_RemoveRepeatedPoints(geometry geom, float8 tolerance);
 
 
 
-```
-func.ST_RemoveRepeatedPoints(geometry geom, float8 tolerance);
+```python
+func.ST_RemoveRepeatedPoints(geometry geom, float8 tolerance)
 ```
 
 

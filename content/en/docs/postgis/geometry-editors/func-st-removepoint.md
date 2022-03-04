@@ -35,8 +35,8 @@ ST_RemovePoint(geometry linestring, integer offset);
 
 
 
-```
-func.ST_RemovePoint(geometry linestring, integer offset);
+```python
+func.ST_RemovePoint(geometry linestring, integer offset)
 ```
 
 

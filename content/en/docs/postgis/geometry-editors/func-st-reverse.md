@@ -35,8 +35,8 @@ ST_Reverse(geometry g1);
 
 
 
-```
-func.ST_Reverse(geometry g1);
+```python
+func.ST_Reverse(geometry g1)
 ```
 
 

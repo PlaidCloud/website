@@ -35,8 +35,8 @@ ST_MemUnion(geometry set geomfield);
 
 
 
-```
-func.ST_MemUnion(geometry set geomfield);
+```python
+func.ST_MemUnion(geometry set geomfield)
 ```
 
 

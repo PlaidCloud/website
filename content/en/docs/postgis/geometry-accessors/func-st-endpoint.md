@@ -38,8 +38,8 @@ ST_EndPoint(geometry g);
 
 
 
-```
-func.ST_EndPoint(geometry g);
+```python
+func.ST_EndPoint(geometry g)
 ```
 
   

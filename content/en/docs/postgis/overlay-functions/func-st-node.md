@@ -35,8 +35,8 @@ ST_Node(geometry geom);
 
 
 
-```
-func.ST_Node(geometry geom);
+```python
+func.ST_Node(geometry geom)
 ```
 
 

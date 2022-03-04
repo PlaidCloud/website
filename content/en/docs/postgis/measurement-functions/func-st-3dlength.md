@@ -35,8 +35,8 @@ ST_3DLength(geometry a_3dlinestring);
 
 
 
-```
-func.ST_3DLength(geometry a_3dlinestring);
+```python
+func.ST_3DLength(geometry a_3dlinestring)
 ```
 
 

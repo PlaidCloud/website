@@ -35,8 +35,8 @@ ST_GeomFromKML(text geomkml);
 
 
 
-```
-func.ST_GeomFromKML(text geomkml);
+```python
+func.ST_GeomFromKML(text geomkml)
 ```
 
 

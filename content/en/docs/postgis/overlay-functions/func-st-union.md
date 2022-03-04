@@ -35,8 +35,8 @@ ST_Union(geometry g1, geometry g2);
 
 
 
-```
-func.ST_Union(geometry g1, geometry g2);
+```python
+func.ST_Union(geometry g1, geometry g2)
 ```
 
 

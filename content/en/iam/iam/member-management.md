@@ -84,7 +84,9 @@ Distribution lists, Distros, are simply email distribution lists managed within 
 4. Complete all required fields of the Distro List form
 5. Click the “create” button
 
-*Note*: Distro lists can include both workspace members and non-members.
+{{< note >}}
+Distro lists can include both workspace members and non-members
+{{< /note >}}
 
 
 

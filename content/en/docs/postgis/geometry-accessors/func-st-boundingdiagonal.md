@@ -35,8 +35,8 @@ ST_BoundingDiagonal(geometry geom, boolean fits=false);
 
 
 
-```
-func.ST_BoundingDiagonal(geometry geom, boolean fits=false);
+```python
+func.ST_BoundingDiagonal(geometry geom, boolean fits=False)
 ```
 
 

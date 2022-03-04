@@ -51,20 +51,11 @@ To overwrite the existing file, simply check the **Allow Overwriting Existing Fi
 
 To rename the file, check the **Rename the copied file to** box and type in a new name.
 
-
-
-*Note*
-
-
+{{< note >}}
 Be sure to provide a file extension when changing the name of the file. The file will be created successfully without an extension, but operating systems won’t know its type.
-
-
-
-
-
+{{< /note >}}
 
 
 ## Examples
 
 No examples yet...
-

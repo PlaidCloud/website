@@ -35,8 +35,8 @@ ST_CoordDim(geometry geomA);
 
 
 
-```
-func.ST_CoordDim(geometry geomA);
+```python
+func.ST_CoordDim(geometry geomA)
 ```
 
 

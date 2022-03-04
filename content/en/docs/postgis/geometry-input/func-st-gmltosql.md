@@ -35,8 +35,8 @@ ST_GMLToSQL(text geomgml);
 
 
 
-```
-func.ST_GMLToSQL(text geomgml);
+```python
+func.ST_GMLToSQL(text geomgml)
 ```
 
 

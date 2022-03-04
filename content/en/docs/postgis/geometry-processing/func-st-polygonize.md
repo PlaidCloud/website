@@ -35,8 +35,8 @@ ST_Polygonize(geometry set geomfield);
 
 
 
-```
-func.ST_Polygonize(geometry set geomfield);
+```python
+func.ST_Polygonize(geometry set geomfield)
 ```
 
 

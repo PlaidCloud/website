@@ -35,8 +35,8 @@ ST_MPolyFromText(text WKT);
 
 
 
-```
-func.ST_MPolyFromText(text WKT);
+```python
+func.ST_MPolyFromText(text WKT)
 ```
 
 

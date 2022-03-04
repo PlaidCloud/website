@@ -35,7 +35,7 @@ ST_PointFromWKB(bytea wkb);
 
 
 
-```
+```python
 func.ST_PointFromWKB(bytea wkb); 
 ```
 

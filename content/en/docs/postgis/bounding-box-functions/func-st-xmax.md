@@ -35,8 +35,8 @@ ST_XMax(box3d aGeomorBox2DorBox3D);
 
 
 
-```
-func.ST_XMax(box3d aGeomorBox2DorBox3D);
+```python
+func.ST_XMax(box3d aGeomorBox2DorBox3D)
 ```
 
 

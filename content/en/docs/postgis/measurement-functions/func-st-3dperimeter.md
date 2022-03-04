@@ -35,8 +35,8 @@ ST_3DPerimeter(geometry geomA);
 
 
 
-```
-func.ST_3DPerimeter(geometry geomA);
+```python
+func.ST_3DPerimeter(geometry geomA)
 ```
 
 

@@ -35,8 +35,8 @@ ST_Split(geometry input, geometry blade);
 
 
 
-```
-func.ST_Split(geometry input, geometry blade);
+```python
+func.ST_Split(geometry input, geometry blade)
 ```
 
 

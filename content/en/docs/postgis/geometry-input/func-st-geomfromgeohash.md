@@ -35,8 +35,8 @@ ST_GeomFromGeoHash(text geohash, integer precision=full_precision_of_geohash);
 
 
 
-```
-func.ST_GeomFromGeoHash(text geohash, integer precision=full_precision_of_geohash);
+```python
+func.ST_GeomFromGeoHash(text geohash, integer precision=full_precision_of_geohash)
 ```
 
 

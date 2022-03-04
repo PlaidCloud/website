@@ -35,8 +35,8 @@ ST_IsValidDetail(geometry geom, integer flags);
 
 
 
-```
-func.ST_IsValidDetail(geometry geom, integer flags);
+```python
+func.ST_IsValidDetail(geometry geom, integer flags)
 ```
 
 

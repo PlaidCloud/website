@@ -35,8 +35,8 @@ ST_CurveToLine(geometry curveGeom, float tolerance, integer tolerance_type, inte
 
 
 
-```
-func.ST_CurveToLine(geometry curveGeom, float tolerance, integer tolerance_type, integer flags);
+```python
+func.ST_CurveToLine(geometry curveGeom, float tolerance, integer tolerance_type, integer flags)
 ```
 
 

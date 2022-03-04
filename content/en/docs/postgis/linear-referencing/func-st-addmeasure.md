@@ -35,8 +35,8 @@ ST_AddMeasure(geometry geom_mline, float8 measure_start, float8 measure_end);
 
 
 
-```
-func.ST_AddMeasure(geometry geom_mline, float8 measure_start, float8 measure_end);
+```python
+func.ST_AddMeasure(geometry geom_mline, float8 measure_start, float8 measure_end)
 ```
 
 

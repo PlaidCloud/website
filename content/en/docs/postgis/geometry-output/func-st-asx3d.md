@@ -35,8 +35,8 @@ ST_AsX3D(geometry g1, integer maxdecimaldigits=15, integer options=0);
 
 
 
-```
-func.ST_AsX3D(geometry g1, integer maxdecimaldigits=15, integer options=0);
+```python
+func.ST_AsX3D(geometry g1, integer maxdecimaldigits=15, integer options=0)
 ```
 
 

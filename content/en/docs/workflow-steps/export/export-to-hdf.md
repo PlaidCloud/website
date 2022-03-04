@@ -164,12 +164,6 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
 
 
-*Note*
-
-
-Compound filters **must** have individual elements wrapped in parentheses. For example, if filtering for Temperature and Humidity, a valid filter would look like this:
-
-
 
 ### Duplicates
 

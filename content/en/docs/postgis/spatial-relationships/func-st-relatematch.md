@@ -35,8 +35,8 @@ ST_RelateMatch(text intersectionMatrix, text intersectionMatrixPattern);
 
 
 
-```
-func.ST_RelateMatch(text intersectionMatrix, text intersectionMatrixPattern);
+```python
+func.ST_RelateMatch(text intersectionMatrix, text intersectionMatrixPattern)
 ```
 
 

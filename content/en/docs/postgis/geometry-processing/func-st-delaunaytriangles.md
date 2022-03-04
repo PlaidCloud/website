@@ -35,8 +35,8 @@ ST_DelaunayTriangles(geometry g1, float tolerance, int4 flags);
 
 
 
-```
-func.ST_DelaunayTriangles(geometry g1, float tolerance, int4 flags);
+```python
+func.ST_DelaunayTriangles(geometry g1, float tolerance, int4 flags)
 ```
 
 

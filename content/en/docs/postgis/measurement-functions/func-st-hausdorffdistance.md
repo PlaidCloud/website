@@ -35,8 +35,8 @@ ST_HausdorffDistance(geometry g1, geometry g2);
 
 
 
-```
-func.ST_HausdorffDistance(geometry g1, geometry g2);
+```python
+func.ST_HausdorffDistance(geometry g1, geometry g2)
 ```
 
 

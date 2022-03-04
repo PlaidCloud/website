@@ -35,8 +35,8 @@ ST_Dimension(geometry g);
 
 
 
-```
-func.ST_Dimension(geometry g);
+```python
+func.ST_Dimension(geometry g)
 ```
 
 

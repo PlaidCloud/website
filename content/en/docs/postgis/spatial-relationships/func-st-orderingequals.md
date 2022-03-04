@@ -35,8 +35,8 @@ ST_OrderingEquals(geometry A, geometry B);
 
 
 
-```
-func.ST_OrderingEquals(geometry A, geometry B);
+```python
+func.ST_OrderingEquals(geometry A, geometry B)
 ```
 
 

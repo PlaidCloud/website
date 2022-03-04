@@ -38,8 +38,8 @@ ST_YMax(box3d aGeomorBox2DorBox3D);
 
 
 
-```
-func.ST_YMax(box3d aGeomorBox2DorBox3D);
+```python
+func.ST_YMax(box3d aGeomorBox2DorBox3D)
 ```
 
   

@@ -35,8 +35,8 @@ ST_LocateAlong(geometry ageom_with_measure, float8 a_measure, float8 offset);
 
 
 
-```
-func.ST_LocateAlong(geometry ageom_with_measure, float8 a_measure, float8 offset);
+```python
+func.ST_LocateAlong(geometry ageom_with_measure, float8 a_measure, float8 offset)
 ```
 
 

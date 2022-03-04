@@ -35,8 +35,8 @@ ST_AsLatLonText(geometry pt, text format='');
 
 
 
-```
-func.ST_AsLatLonText(geometry pt, text format='');
+```python
+func.ST_AsLatLonText(geometry pt, text format='')
 ```
 
 

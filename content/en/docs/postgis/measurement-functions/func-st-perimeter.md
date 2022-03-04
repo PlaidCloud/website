@@ -35,8 +35,8 @@ ST_Perimeter(geometry g1);
 
 
 
-```
-func.ST_Perimeter(geometry g1);
+```python
+func.ST_Perimeter(geometry g1)
 ```
 
 

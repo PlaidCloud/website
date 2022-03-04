@@ -35,8 +35,8 @@ ST_ForceSFS(geometry geomA);
 
 
 
-```
-func.ST_ForceSFS(geometry geomA);
+```python
+func.ST_ForceSFS(geometry geomA)
 ```
 
 

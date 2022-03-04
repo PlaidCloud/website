@@ -35,8 +35,8 @@ ST_GeomCollFromText(text WKT, integer srid);
 
 
 
-```
-func.ST_GeomCollFromText(text WKT, integer srid);
+```python
+func.ST_GeomCollFromText(text WKT, integer srid)
 ```
 
 

@@ -35,8 +35,8 @@ ST_GeomFromGeoJSON(text geomjson);
 
 
 
-```
-func.ST_GeomFromGeoJSON(text geomjson);
+```python
+func.ST_GeomFromGeoJSON(text geomjson)
 ```
 
 

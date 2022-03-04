@@ -35,8 +35,8 @@ ST_Azimuth(geometry pointA, geometry pointB);
 
 
 
-```
-func.ST_Azimuth(geometry pointA, geometry pointB);
+```python
+func.ST_Azimuth(geometry pointA, geometry pointB)
 ```
 
 

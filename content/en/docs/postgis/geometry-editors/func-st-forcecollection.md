@@ -35,8 +35,8 @@ ST_ForceCollection(geometry geomA);
 
 
 
-```
-func.ST_ForceCollection(geometry geomA);
+```python
+func.ST_ForceCollection(geometry geomA)
 ```
 
 

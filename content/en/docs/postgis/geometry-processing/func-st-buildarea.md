@@ -35,8 +35,8 @@ ST_BuildArea(geometry geom);
 
 
 
-```
-func.ST_BuildArea(geometry geom);
+```python
+func.ST_BuildArea(geometry geom)
 ```
 
 

@@ -35,8 +35,8 @@ ST_Multi(geometry g1);
 
 
 
-```
-func.ST_Multi(geometry g1);
+```python
+func.ST_Multi(geometry g1)
 ```
 
 

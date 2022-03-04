@@ -35,8 +35,8 @@ ST_IsValidTrajectory(geometry line);
 
 
 
-```
-func.ST_IsValidTrajectory(geometry line);
+```python
+func.ST_IsValidTrajectory(geometry line)
 ```
 
 

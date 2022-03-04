@@ -35,8 +35,8 @@ ST_MPointFromText(text WKT);
 
 
 
-```
-func.ST_MPointFromText(text WKT);
+```python
+func.ST_MPointFromText(text WKT)
 ```
 
 

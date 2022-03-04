@@ -35,8 +35,8 @@ ST_LineInterpolatePoint(geometry a_linestring, float8 a_fraction);
 
 
 
-```
-func.ST_LineInterpolatePoint(geometry a_linestring, float8 a_fraction);
+```python
+func.ST_LineInterpolatePoint(geometry a_linestring, float8 a_fraction)
 ```
 
 

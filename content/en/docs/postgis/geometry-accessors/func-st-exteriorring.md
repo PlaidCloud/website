@@ -35,8 +35,8 @@ ST_ExteriorRing(geometry a_polygon);
 
 
 
-```
-func.ST_ExteriorRing(geometry a_polygon);
+```python
+func.ST_ExteriorRing(geometry a_polygon)
 ```
 
 

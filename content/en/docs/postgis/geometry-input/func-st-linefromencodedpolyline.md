@@ -35,8 +35,8 @@ ST_LineFromEncodedPolyline(text polyline, integer precision=5);
 
 
 
-```
-func.ST_LineFromEncodedPolyline(text polyline, integer precision=5);
+```python
+func.ST_LineFromEncodedPolyline(text polyline, integer precision=5)
 ```
 
 

@@ -35,8 +35,8 @@ ST_MakePolygon(geometry linestring);
 
 
 
-```
-func.ST_MakePolygon(geometry linestring);
+```python
+func.ST_MakePolygon(geometry linestring)
 ```
 
 

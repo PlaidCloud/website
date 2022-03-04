@@ -35,8 +35,8 @@ ST_GeogFromText(text EWKT);
 
 
 
-```
-func.ST_GeogFromText(text EWKT);
+```python
+func.ST_GeogFromText(text EWKT)
 ```
 
 

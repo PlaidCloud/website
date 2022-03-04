@@ -35,8 +35,8 @@ ST_PatchN(geometry geomA, integer n);
 
 
 
-```
-ST_PatchN(geometry geomA, integer n);
+```python
+ST_PatchN(geometry geomA, integer n)
 ```
 
 

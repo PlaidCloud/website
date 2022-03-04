@@ -70,23 +70,18 @@ To get a the count of all your records in the table:
 
 You should then see your results in the table.
 
-
-
 **If you want to find the count of a specific field or restriction:**
-
 
 1. Type in the desired restriction(s) in the “Group By” field
 2. Run the query
 
-*Note*: When using “measurement” in a restriction it will refer to the value of the measurement taken which depends on the type of measurement. Therefore you should ensure the measurement types are the same under the “filter section (e.g. weather\_description and Maximum temperature.)”
-
-
+{{< note >}}
+When using “measurement” in a restriction it will refer to the value of the measurement taken which depends on the type of measurement. Therefore you should ensure the measurement types are the same under the “filter section (e.g. weather\_description and Maximum temperature.)”
+{{< /note >}}
 
 ### Restricting Result Number
 
-
 If you only need a certain number of results, such as the top 10:
-
 
 1. Select “Options”
 2. Type in the desired max result count in the “Row Limit” section
@@ -94,9 +89,7 @@ If you only need a certain number of results, such as the top 10:
 
 ### Additional Visualization Tools
 
-
 To expand abbreviated values to their full length:
-
 
 1. Select “Edit Table Config”
 2. Click “List Sql Metric”
@@ -119,4 +112,3 @@ To change the chart type:
 3. Click “Query”
 
 From here you are able to set axis labels, margins, ticks, etc.
-

@@ -35,8 +35,8 @@ ST_SharedPaths(geometry lineal1, geometry lineal2);
 
 
 
-```
-func.ST_SharedPaths(geometry lineal1, geometry lineal2);
+```python
+func.ST_SharedPaths(geometry lineal1, geometry lineal2)
 ```
 
 

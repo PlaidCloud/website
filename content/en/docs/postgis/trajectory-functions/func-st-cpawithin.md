@@ -35,8 +35,8 @@ ST_CPAWithin(geometry track1, geometry track2, float8 maxdist);
 
 
 
-```
-func.ST_CPAWithin(geometry track1, geometry track2, float8 maxdist);
+```python
+func.ST_CPAWithin(geometry track1, geometry track2, float8 maxdist)
 ```
 
 

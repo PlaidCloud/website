@@ -35,8 +35,8 @@ ST_Equals(geometry A, geometry B);
 
 
 
-```
-func.ST_Equals(geometry A, geometry B);
+```python
+func.ST_Equals(geometry A, geometry B)
 ```
 
 

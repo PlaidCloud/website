@@ -35,8 +35,8 @@ ST_NRings(geometry geomA);
 
 
 
-```
-func.ST_NRings(geometry geomA);
+```python
+func.ST_NRings(geometry geomA)
 ```
 
 
