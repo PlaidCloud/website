@@ -36,7 +36,7 @@ PlaidCloud
 
 
 ```
-func.ST_InterpolatePoint(geometry line, geometry point);
+func.ST_InterpolatePoint(geometry line, geometry point)
 ```
 
 

@@ -35,8 +35,8 @@ ST_HasArc(geometry geomA);
 
 
 
-```
-func.ST_HasArc(geometry geomA);
+```python
+func.ST_HasArc(geometry geomA)
 ```
 
 

@@ -26,8 +26,9 @@ The default authentication type is password only. However, two-factor authentica
 If you choose to create a personal account, the default authentication type is password only. To change this to a two-factor authentication, reference the steps under the Two-Factor section.
 
 
-
-*Note*: Members may have access to the Identity tab for security purposes or in order to manage members for the workspace. Details on managing security and authentication for new members or members without access can be found on the main “Identity” page.
+{{< note >}}
+Members may have access to the Identity tab for security purposes or in order to manage members for the workspace. Details on managing security and authentication for new members or members without access can be found on the main “Identity” page.
+{{< /note >}}
 
 
 
@@ -141,11 +142,10 @@ After downloading the app, open it and follow the in-app setup instructions.
 
 If using Yubikeys – hardware authentication devices manufactured by Yubico – members can register up to five YubiKeys for their account. We have both a managed pool of PlaidCloud YubiKeys that can be administered by the person responsible for your workspace access security, or members can choose to use any standard YubiKey.
 
+{{< note >}}
+Keys from the PlaidCloud YubiKey pool (YubiKeys specifically issued by PlaidCloud) count towards the five key limit.
 
-
-*Note*: Keys from the PlaidCloud YubiKey pool (YubiKeys specifically issued by PlaidCloud) count towards the five key limit.
-
-
+{{< /note >}}
 
 To enable YubiKey authentication, you must first register at least one YubiKey.
 
@@ -223,8 +223,9 @@ For security reasons, PlaidCloud Support cannot immediately restore access to ac
 After successfully setting up your two-factor authentication, you’ll be provided with a set of randomly generated recovery codes that you should view and save. We strongly recommend saving your recovery codes immediately. However, these codes can be downloaded at any point after enabling two-factor authentication. For more information, see [Downloading your two-factor authentication recovery codes](https://plaidcloud.com/docs/identity/downloading-your-two-factor-authentication-recovery-codes).
 
 
-
-*Note*: If you do not have a backup code or a backup key registered a much more stringent process is followed that may require several days to validate the authenticity of the access request and maintain PlaidCLoud security.
+{{< note >}}
+If you do not have a backup code or a backup key registered a much more stringent process is followed that may require several days to validate the authenticity of the access request and maintain PlaidCLoud security.
+{{< /note >}}
 
 
 
@@ -234,8 +235,9 @@ After successfully setting up your two-factor authentication, you’ll be provid
 You can provide an SMS number as part of your profile. If you lose access to both your registered set of YubiKeys and your recovery codes, a backup SMS number can get you back in to your account.
 
 
-
-*Note*: This is not an automated process, so regaining access may require some time.
+{{< note >}}
+This is not an automated process, so regaining access may require some time.
+{{< /note >}}
 
 
 If the member is using a managed pool key and loses it, the workspace pool administrator can mark the key as lost and issue a new one. This reduces the risk of being locked out of an account or having to retain recovery codes.

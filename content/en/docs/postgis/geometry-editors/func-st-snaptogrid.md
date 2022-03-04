@@ -35,8 +35,8 @@ ST_SnapToGrid(geometry geomA, float originX, float originY, float sizeX, float s
 
 
 
-```
-func.ST_SnapToGrid(geometry geomA, float originX, float originY, float sizeX, float sizeY);
+```python
+func.ST_SnapToGrid(geometry geomA, float originX, float originY, float sizeX, float sizeY)
 ```
 
 

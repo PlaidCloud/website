@@ -15,12 +15,13 @@ categories:
 
 
 | Analyze Expression | Return Type | Description | Example | Result |
+|--------------------|-------------|-------------|---------|--------|
 | func.age(timestamp, timestamp) | interval | Subtract arguments, producing a “symbolic” result that uses years and months | age (timest amp ‘2001-04-1 0’, timestamp ‘1957-06-1 3’) | 43 years 9 months 27 days |
 | func.age(timestamp) | interval | Subtract from current\_date | age(timest amp ‘1957-06-1 3’) | 43 years 8 months 3 days |
 | func.clock\_timestamp () | timestamp with time zone | Current date and time (changes during statement execution) |  |  |
 | func.current\_date | date | Current date |  |  |
 | func.current\_time | time with time zone | Current time of day |  |  |
-| func.current\_timesta mp | timestamp with time zone | Current date and time (start of current transaction) |  |  |
+| func.current\_timestamp | timestamp with time zone | Current date and time (start of current transaction) |  |  |
 | func.date\_part(text, timestamp) | double precision | Get subfield (equivalent to extract) | date\_part (‘hour’, timestamp ‘2001-02-1 6 20:38:40’) | 20 |
 | func.date\_part(text, interval) | double precision | Get subfield (equivalent to extract) | date\_part (‘month’, interval ‘2 years 3 months’) | 3 |
 | func.date\_trunc(text , timestamp) | timestamp | Truncate to specified precision | date\_trun c(‘hour’, timestamp ‘2001-02-1 6 20:38:40’) | 36938.833 3333333 |
@@ -42,6 +43,7 @@ categories:
 
 
 | Pattern | Description |
+|---------|-------------|
 | HH | hour of day (01-12) |
 | HH12 | hour of day (01-12) |
 | HH24 | hour of day (00-23) |

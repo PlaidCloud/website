@@ -35,8 +35,8 @@ ST_Polygon(geometry lineString, integer srid);
 
 
 
-```
-func.ST_Polygon(geometry lineString, integer srid);
+```python
+func.ST_Polygon(geometry lineString, integer srid)
 ```
 
 

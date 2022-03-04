@@ -36,7 +36,7 @@ ST_LineFromWKB(bytea WKB)
 
 
 
-```
+```python
 func.ST_LineFromWKB(bytea WKB)  
 
 ```

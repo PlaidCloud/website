@@ -35,8 +35,8 @@ ST_Overlaps(geometry A, geometry B);
 
 
 
-```
-func.ST_Overlaps(geometry A, geometry B);
+```python
+func.ST_Overlaps(geometry A, geometry B)
 ```
 
 

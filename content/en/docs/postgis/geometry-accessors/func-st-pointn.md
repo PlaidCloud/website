@@ -35,8 +35,8 @@ ST_PointN(geometry a_linestring, integer n);
 
 
 
-```
-func.ST_PointN(geometry a_linestring, integer n);
+```python
+func.ST_PointN(geometry a_linestring, integer n)
 ```
 
 

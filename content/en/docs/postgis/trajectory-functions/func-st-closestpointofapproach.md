@@ -35,8 +35,8 @@ ST_ClosestPointOfApproach(geometry track1, geometry track2);
 
 
 
-```
-func.ST_ClosestPointOfApproach(geometry track1, geometry track2);
+```python
+func.ST_ClosestPointOfApproach(geometry track1, geometry track2)
 ```
 
 

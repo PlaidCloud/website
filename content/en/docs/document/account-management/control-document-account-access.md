@@ -26,8 +26,9 @@ None of the account access levels reveal the account credentials used to access 
 3. Select the desired access level restriction located under `Security Model`
 4. Select the Save button
 
-*Note*: Depending on the selected Security Model, there will be different options for assigning which members or security groups are allowed access from the account list under Manage Accounts.
-
+{{< note >}}
+Depending on the selected Security Model, there will be different options for assigning which members or security groups are allowed access from the account list under Manage Accounts.
+{{< /note >}}
 
 
 ## Restriction Options

@@ -35,8 +35,8 @@ ST_CoveredBy(geometry geomA, geometry geomB);
 
 
 
-```
-func.ST_CoveredBy(geometry geomA, geometry geomB);
+```python
+func.ST_CoveredBy(geometry geomA, geometry geomB)
 ```
 
 

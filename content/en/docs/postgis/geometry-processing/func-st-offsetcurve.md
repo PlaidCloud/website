@@ -35,8 +35,8 @@ ST_OffsetCurve(geometry line, float signed_distance, text style_parameters='');
 
 
 
-```
-func.ST_OffsetCurve(geometry line, float signed_distance, text style_parameters='');
+```python
+func.ST_OffsetCurve(geometry line, float signed_distance, text style_parameters='')
 ```
 
 

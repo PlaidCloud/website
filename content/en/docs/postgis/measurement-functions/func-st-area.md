@@ -35,8 +35,8 @@ ST_Area(geometry g1);
 
 
 
-```
-func.ST_Area(geometry g1);
+```python
+func.ST_Area(geometry g1)
 ```
 
 

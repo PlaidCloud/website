@@ -35,8 +35,8 @@ ST_ClusterIntersecting(geometry set g);
 
 
 
-```
-func.ST_ClusterIntersecting(geometry set g);
+```python
+func.ST_ClusterIntersecting(geometry set g)
 ```
 
 

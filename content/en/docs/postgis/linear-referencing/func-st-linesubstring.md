@@ -35,8 +35,8 @@ ST_LineSubstring(geometry a_linestring, float8 startfraction, float8 endfraction
 
 
 
-```
-func.ST_LineSubstring(geometry a_linestring, float8 startfraction, float8 endfraction);
+```python
+func.ST_LineSubstring(geometry a_linestring, float8 startfraction, float8 endfraction)
 ```
 
 

@@ -35,8 +35,8 @@ ST_PointInsideCircle(geometry a_point, float center_x, float center_y, float rad
 
 
 
-```
-func.ST_PointInsideCircle(geometry a_point, float center_x, float center_y, float radius);
+```python
+func.ST_PointInsideCircle(geometry a_point, float center_x, float center_y, float radius)
 ```
 
 

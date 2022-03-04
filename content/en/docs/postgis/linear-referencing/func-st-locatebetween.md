@@ -35,8 +35,8 @@ ST_LocateBetween(geometry geom, float8 measure_start, float8 measure_end, float8
 
 
 
-```
-func.ST_LocateBetween(geometry geom, float8 measure_start, float8 measure_end, float8 offset);
+```python
+func.ST_LocateBetween(geometry geom, float8 measure_start, float8 measure_end, float8 offset)
 ```
 
 

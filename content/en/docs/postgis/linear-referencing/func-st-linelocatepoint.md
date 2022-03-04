@@ -35,8 +35,8 @@ ST_LineLocatePoint(geometry a_linestring, geometry a_point);
 
 
 
-```
-func.ST_LineLocatePoint(geometry a_linestring, geometry a_point);
+```python
+func.ST_LineLocatePoint(geometry a_linestring, geometry a_point)
 ```
 
 

@@ -35,8 +35,8 @@ ST_WKTToSQL(text WKT);
 
 
 
-```
-func.ST_WKTToSQL(text WKT);
+```python
+func.ST_WKTToSQL(text WKT)
 ```
 
 

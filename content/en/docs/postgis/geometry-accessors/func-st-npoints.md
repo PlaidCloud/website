@@ -35,8 +35,8 @@ ST_NPoints(geometry g1);
 
 
 
-```
-func.ST_NPoints(geometry g1);
+```python
+func.ST_NPoints(geometry g1)
 ```
 
 

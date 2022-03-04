@@ -35,8 +35,8 @@ ST_ForceRHR(geometry g);
 
 
 
-```
-func.ST_ForceRHR(geometry g);
+```python
+func.ST_ForceRHR(geometry g)
 ```
 
 

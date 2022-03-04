@@ -35,8 +35,8 @@ ST_SimplifyVW(geometry geomA, float tolerance);
 
 
 
-```
-func.ST_SimplifyVW(geometry geomA, float tolerance);
+```python
+func.ST_SimplifyVW(geometry geomA, float tolerance)
 ```
 
 

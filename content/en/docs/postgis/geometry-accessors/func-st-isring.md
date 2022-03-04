@@ -35,8 +35,8 @@ ST_IsRing(geometry g);
 
 
 
-```
-func.ST_IsRing(geometry g);
+```python
+func.ST_IsRing(geometry g)
 ```
 
 

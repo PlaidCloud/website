@@ -36,7 +36,7 @@ ST_LinestringFromWKB(bytea WKB);
 
 
 
-```
+```python
 func.ST_LinestringFromWKB(bytea WKB);
 ```
 

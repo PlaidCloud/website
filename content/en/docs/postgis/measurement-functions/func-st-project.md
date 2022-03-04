@@ -35,8 +35,8 @@ ST_Project(geography g1, float distance, float azimuth);
 
 
 
-```
-func.ST_Project(geography g1, float distance, float azimuth);
+```python
+func.ST_Project(geography g1, float distance, float azimuth)
 ```
 
 

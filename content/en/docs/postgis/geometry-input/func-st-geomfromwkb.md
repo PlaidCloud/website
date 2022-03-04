@@ -38,7 +38,7 @@ ST_GeomFromWKB(bytea geom);
 
 
 
-```
+```python
 func.ST_GeomFromWKB(bytea geom);
 ```
 

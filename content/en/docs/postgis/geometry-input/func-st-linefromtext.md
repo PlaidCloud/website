@@ -35,8 +35,8 @@ ST_LineFromText(text WKT);
 
 
 
-```
-func.ST_LineFromText(text WKT);
+```python
+func.ST_LineFromText(text WKT)
 ```
 
 

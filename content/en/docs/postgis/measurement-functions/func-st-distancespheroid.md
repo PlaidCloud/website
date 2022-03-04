@@ -35,8 +35,8 @@ ST_DistanceSpheroid(geometry geomlonlatA, geometry geomlonlatB, spheroid measure
 
 
 
-```
-func.ST_DistanceSpheroid(geometry geomlonlatA, geometry geomlonlatB, spheroid measurement_spheroid);
+```python
+func.ST_DistanceSpheroid(geometry geomlonlatA, geometry geomlonlatB, spheroid measurement_spheroid)
 ```
 
 

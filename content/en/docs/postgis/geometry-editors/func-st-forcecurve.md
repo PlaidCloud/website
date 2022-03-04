@@ -35,8 +35,8 @@ ST_ForceCurve(geometry g);
 
 
 
-```
-func.ST_ForceCurve(geometry g);
+```python
+func.ST_ForceCurve(geometry g)
 ```
 
 

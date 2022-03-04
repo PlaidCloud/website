@@ -35,8 +35,8 @@ ST_Force3D(geometry geomA, float Zvalue = 0.0);
 
 
 
-```
-func.ST_Force3D(geometry geomA, float Zvalue = 0.0);
+```python
+func.ST_Force3D(geometry geomA, float Zvalue = 0.0)
 ```
 
 

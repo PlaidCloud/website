@@ -35,8 +35,8 @@ ST_Buffer(geometry g1, float radius_of_buffer, text buffer_style_parameters = ''
 
 
 
-```
-func.ST_Buffer(geometry g1, float radius_of_buffer, text buffer_style_parameters = '');
+```python
+func.ST_Buffer(geometry g1, float radius_of_buffer, text buffer_style_parameters = '')
 ```
 
 

@@ -35,8 +35,8 @@ ST_IsValid(geometry g);
 
 
 
-```
-func.ST_IsValid(geometry g);
+```python
+func.ST_IsValid(geometry g)
 ```
 
 

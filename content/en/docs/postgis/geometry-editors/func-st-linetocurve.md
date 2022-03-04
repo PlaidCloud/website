@@ -35,8 +35,8 @@ ST_LineToCurve(geometry geomANoncircular);
 
 
 
-```
-func.ST_LineToCurve(geometry geomANoncircular);
+```python
+func.ST_LineToCurve(geometry geomANoncircular)
 ```
 
 

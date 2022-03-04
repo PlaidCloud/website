@@ -35,8 +35,8 @@ ST_Snap(geometry input, geometry reference, float tolerance);
 
 
 
-```
-func.ST_Snap(geometry input, geometry reference, float tolerance);
+```python
+func.ST_Snap(geometry input, geometry reference, float tolerance)
 ```
 
 

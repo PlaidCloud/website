@@ -35,8 +35,8 @@ ST_Intersection( geography geogA , geography geogB );
 
 
 
-```
-func.ST_Intersection( geography geogA , geography geogB );
+```python
+func.ST_Intersection( geography geogA , geography geogB )
 ```
 
 

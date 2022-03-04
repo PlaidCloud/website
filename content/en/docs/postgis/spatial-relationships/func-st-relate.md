@@ -35,8 +35,8 @@ ST_Relate(geometry geomA, geometry geomB);
 
 
 
-```
-func.ST_Relate(geometry geomA, geometry geomB);
+```python
+func.ST_Relate(geometry geomA, geometry geomB)
 ```
 
 

@@ -35,8 +35,8 @@ ST_Covers(geometry geomA, geometry geomB);
 
 
 
-```
-func.ST_Covers(geometry geomA, geometry geomB);
+```python
+func.ST_Covers(geometry geomA, geometry geomB)
 ```
 
 

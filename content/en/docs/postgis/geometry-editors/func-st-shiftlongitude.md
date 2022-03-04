@@ -35,8 +35,8 @@ ST_ShiftLongitude(geometry geom);
 
 
 
-```
-func.ST_ShiftLongitude(geometry geom);
+```python
+func.ST_ShiftLongitude(geometry geom)
 ```
 
 

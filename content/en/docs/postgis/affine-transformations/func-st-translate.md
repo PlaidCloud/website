@@ -35,8 +35,8 @@ ST_Translate(geometry g1, float deltax, float deltay);
 
 
 
-```
-func.ST_Translate(geometry g1, float deltax, float deltay);
+```python
+func.ST_Translate(geometry g1, float deltax, float deltay)
 ```
 
 

@@ -35,8 +35,8 @@ ST_ConcaveHull(geometry geom, float target_percent, boolean allow_holes = false)
 
 
 
-```
-func.ST_ConcaveHull(geometry geom, float target_percent, boolean allow_holes = false);
+```python
+func.ST_ConcaveHull(geometry geom, float target_percent, boolean allow_holes = false)
 ```
 
 

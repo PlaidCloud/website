@@ -35,8 +35,8 @@ ST_DFullyWithin(geometry g1, geometry g2, double precision distance);
 
 
 
-```
-func.ST_DFullyWithin(geometry g1, geometry g2, double precision distance);
+```python
+func.ST_DFullyWithin(geometry g1, geometry g2, double precision distance)
 ```
 
 

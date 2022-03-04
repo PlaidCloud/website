@@ -35,8 +35,8 @@ ST_GeogFromWKB(bytea wkb);
 
 
 
-```
-func.ST_GeogFromWKB(bytea wkb);
+```python
+func.ST_GeogFromWKB(bytea wkb)
 ```
 
 

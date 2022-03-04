@@ -35,8 +35,8 @@ ST_Point(float x, float y);
 
 
 
-```
-func.ST_Point(float x, float y);
+```python
+func.ST_Point(float x, float y)
 ```
 
 

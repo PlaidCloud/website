@@ -35,8 +35,8 @@ ST_StartPoint(geometry geomA);
 
 
 
-```
-ST_StartPoint(geometry geomA);
+```python
+ST_StartPoint(geometry geomA)
 ```
 
 

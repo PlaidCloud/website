@@ -35,8 +35,8 @@ ST_MakeBox2D(geometry pointLowLeft, geometry pointUpRight);
 
 
 
-```
-func.ST_MakeBox2D(geometry pointLowLeft, geometry pointUpRight);
+```python
+func.ST_MakeBox2D(geometry pointLowLeft, geometry pointUpRight)
 ```
 
 

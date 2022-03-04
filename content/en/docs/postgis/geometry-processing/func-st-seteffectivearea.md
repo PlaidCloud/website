@@ -35,8 +35,8 @@ ST_SetEffectiveArea(geometry geomA, float threshold = 0, integer set_area = 1);
 
 
 
-```
-func.ST_SetEffectiveArea(geometry geomA, float threshold = 0, integer set_area = 1);
+```python
+func.ST_SetEffectiveArea(geometry geomA, float threshold = 0, integer set_area = 1)
 ```
 
 

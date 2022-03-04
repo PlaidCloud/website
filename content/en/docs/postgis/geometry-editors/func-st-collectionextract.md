@@ -35,8 +35,8 @@ ST_CollectionExtract(geometry collection);
 
 
 
-```
-func.ST_CollectionExtract(geometry collection);
+```python
+func.ST_CollectionExtract(geometry collection)
 ```
 
 

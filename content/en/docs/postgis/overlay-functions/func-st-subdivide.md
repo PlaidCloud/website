@@ -35,8 +35,8 @@ ST_Subdivide(geometry geom, integer max_vertices=256, float8 gridSize = -1);
 
 
 
-```
-func.ST_Subdivide(geometry geom, integer max_vertices=256, float8 gridSize = -1);
+```python
+func.ST_Subdivide(geometry geom, integer max_vertices=256, float8 gridSize = -1)
 ```
 
 

@@ -35,8 +35,8 @@ ST_Zmflag(geometry geomA);
 
 
 
-```
-func.ST_Zmflag(geometry geomA);
+```python
+func.ST_Zmflag(geometry geomA)
 ```
 
 

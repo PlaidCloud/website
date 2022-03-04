@@ -35,8 +35,8 @@ ST_GeomFromEWKB(bytea EWKB);
 
 
 
-```
-func.ST_GeomFromEWKB(bytea EWKB);
+```python
+func.ST_GeomFromEWKB(bytea EWKB)
 ```
 
 

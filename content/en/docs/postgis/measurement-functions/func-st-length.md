@@ -35,8 +35,8 @@ ST_Length(geometry a_2dlinestring);
 
 
 
-```
-func.ST_Length(geometry a_2dlinestring);
+```python
+func.ST_Length(geometry a_2dlinestring)
 ```
 
 

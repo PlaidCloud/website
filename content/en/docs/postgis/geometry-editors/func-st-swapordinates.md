@@ -35,8 +35,8 @@ ST_SwapOrdinates(geometry geom, cstring ords);
 
 
 
-```
-func.ST_SwapOrdinates(geometry geom, cstring ords);
+```python
+func.ST_SwapOrdinates(geometry geom, cstring ords)
 ```
 
 

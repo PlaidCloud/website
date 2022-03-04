@@ -35,8 +35,8 @@ ST_3DExtent(geometry set geomfield);
 
 
 
-```
-func.ST_3DExtent(geometry set geomfield);
+```python
+func.ST_3DExtent(geometry set geomfield)
 ```
 
 

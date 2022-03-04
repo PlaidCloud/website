@@ -35,8 +35,8 @@ ST_Rotate(geometry geomA, float rotRadians);
 
 
 
-```
-func.ST_Rotate(geometry geomA, float rotRadians);
+```python
+func.ST_Rotate(geometry geomA, float rotRadians)
 ```
 
 

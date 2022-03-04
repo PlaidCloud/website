@@ -35,8 +35,8 @@ ST_AsEncodedPolyline(geometry geom, integer precision=5);
 
 
 
-```
-func.ST_AsEncodedPolyline(geometry geom, integer precision=5);
+```python
+func.ST_AsEncodedPolyline(geometry geom, integer precision=5)
 ```
 
 

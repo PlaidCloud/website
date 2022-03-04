@@ -35,8 +35,8 @@ ST_X(geometry a_point);
 
 
 
-```
-func.ST_X(geometry a_point);
+```python
+func.ST_X(geometry a_point)
 ```
 
 

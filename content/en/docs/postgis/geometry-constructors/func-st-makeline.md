@@ -35,8 +35,8 @@ ST_MakeLine(geometry geom1, geometry geom2);
 
 
 
-```
-func.ST_MakeLine(geometry geom1, geometry geom2);
+```python
+func.ST_MakeLine(geometry geom1, geometry geom2)
 ```
 
 

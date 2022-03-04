@@ -35,8 +35,8 @@ ST_SetSRID(geometry geom, integer srid);
 
 
 
-```
-func.ST_SetSRID(geometry geom, integer srid);
+```python
+func.ST_SetSRID(geometry geom, integer srid)
 ```
 
 

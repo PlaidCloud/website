@@ -35,8 +35,8 @@ ST_DistanceCPA(geometry track1, geometry track2);
 
 
 
-```
-func.ST_DistanceCPA(geometry track1, geometry track2);
+```python
+func.ST_DistanceCPA(geometry track1, geometry track2)
 ```
 
 

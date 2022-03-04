@@ -35,8 +35,8 @@ ST_PointOnSurface(geometry g1);
 
 
 
-```
-func.ST_PointOnSurface(geometry g1);
+```python
+func.ST_PointOnSurface(geometry g1)
 ```
 
 
