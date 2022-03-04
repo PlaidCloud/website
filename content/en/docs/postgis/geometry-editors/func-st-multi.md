@@ -3,12 +3,6 @@ title: func.ST_Multi
 slug: func-st-multi
 description: Returns the geometry as a MULTI* geometry
 date: 2022-01-28T13:35:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

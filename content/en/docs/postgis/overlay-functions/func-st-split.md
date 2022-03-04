@@ -3,12 +3,6 @@ title: func.ST_Split
 slug: func-st-split
 description: The function supports splitting a line by a (multi)point, (multi)line or (multi)polygon boundary, or a (multi)polygon by line
 date: 2022-01-31T10:51:44
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

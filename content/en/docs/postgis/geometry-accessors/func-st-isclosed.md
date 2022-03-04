@@ -3,12 +3,6 @@ title: func.ST_IsClosed
 slug: func-st-isclosed
 description: Returns TRUE if the LINESTRING's start and end points are coincident
 date: 2022-01-27T14:13:32
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

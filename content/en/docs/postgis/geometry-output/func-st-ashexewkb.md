@@ -3,12 +3,6 @@ title: func.ST_AsHEXEWKB
 slug: func-st-ashexewkb
 description: Returns a Geometry in HEXEWKB format (as text) using either little-endian (NDR) or big-endian (XDR) encoding
 date: 2022-01-29T19:08:44
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

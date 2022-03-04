@@ -3,12 +3,6 @@ title: func.Box2D
 slug: func-box2d
 description: Returns a BOX2D representing the 2D extent of the geometry
 date: 2022-01-31T17:44:03
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

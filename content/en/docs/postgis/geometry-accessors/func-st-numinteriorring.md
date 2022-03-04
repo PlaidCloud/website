@@ -3,12 +3,6 @@ title: func.ST_NumInteriorRing
 slug: func-st-numinteriorring
 description: This function returns the number of interior rings of a polygon geom. It returns NULL if the geom is not a polygon.
 date: 2022-01-27T14:29:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

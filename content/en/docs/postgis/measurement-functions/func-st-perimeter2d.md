@@ -3,12 +3,6 @@ title: func.ST_Perimeter2D
 slug: func-st-perimeter2d
 description: Returns the 2-dimensional perimeter of a polygonal geometry
 date: 2022-01-31T10:42:12
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

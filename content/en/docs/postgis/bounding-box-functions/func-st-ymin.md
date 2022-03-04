@@ -3,12 +3,6 @@ title: func.ST_YMin
 slug: func-st-ymin
 description: Returns the Y minima of a 2D or 3D bounding box or a geometry
 date: 2022-01-31T17:58:01
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

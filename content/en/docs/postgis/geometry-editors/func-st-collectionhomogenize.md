@@ -3,12 +3,6 @@ title: func.ST_CollectionHomogenize
 slug: func-st-collectionhomogenize
 description: Given a geometry collection, returns the "simplest" representation of the contents
 date: 2022-01-28T13:17:08
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

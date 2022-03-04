@@ -3,12 +3,6 @@ title: func.ST_GeogFromText
 slug: func-st-geogfromtext
 description: Returns a geography object from the well-known text or extended well-known representation
 date: 2022-01-29T14:29:13
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

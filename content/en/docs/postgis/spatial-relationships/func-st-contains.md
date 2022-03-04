@@ -3,12 +3,6 @@ title: func.ST_Contains
 slug: func-st-contains
 description: Geo 'A' contains Geo 'B' ONLY IF no points of B lie in the exterior of A, and at least one point of B interior lies in A interior
 date: 2022-01-31T09:36:14
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

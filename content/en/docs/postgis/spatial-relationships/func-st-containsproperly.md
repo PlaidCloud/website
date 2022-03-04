@@ -3,12 +3,6 @@ title: func.ST_ContainsProperly
 slug: func-st-containsproperly
 description: Returns true if B intersects the interior of A but not the boundary (or exterior)
 date: 2022-01-31T09:43:02
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

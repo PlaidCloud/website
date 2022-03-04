@@ -3,12 +3,6 @@ title: Message Queue Exchanges, Bindings and Permissions
 slug: message-queue-exchanges-bindings-and-permissions
 description: Create and manage your own exchanges and viewership controls for message queues
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

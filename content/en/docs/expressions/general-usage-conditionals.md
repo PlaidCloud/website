@@ -3,12 +3,6 @@ title: General Usage Conditionals
 slug: general-usage-conditionals
 description: Simple If-then-else Operation, Complex Condition with Multiple Options, Coalesce
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

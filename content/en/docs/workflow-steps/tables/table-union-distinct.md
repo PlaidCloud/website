@@ -3,12 +3,6 @@ title: Table Union Distinct
 slug: table-union-distinct
 description: Consolidate data tables
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

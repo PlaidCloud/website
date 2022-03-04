@@ -3,12 +3,6 @@ title: func.ST_SetSRID
 slug: func-st-setsrid
 description: Sets the SRID on a geometry to a particular integer value
 date: 2022-01-29T14:22:36
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

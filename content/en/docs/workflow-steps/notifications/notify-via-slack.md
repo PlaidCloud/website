@@ -3,12 +3,6 @@ title: Notify via Slack
 slug: notify-via-slack
 description: Send Slack notifications
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

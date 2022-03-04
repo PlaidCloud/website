@@ -3,12 +3,6 @@ title: Single Value Decomposition
 slug: single-value-decomposition
 description: Factorization of a real or complex matrix, with many useful applications in signal processing and statistics
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

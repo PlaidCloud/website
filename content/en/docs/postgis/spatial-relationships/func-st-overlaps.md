@@ -3,12 +3,6 @@ title: func.ST_Overlaps
 slug: func-st-overlaps
 description: Returns TRUE if the Geometries "spatially overlap"
 date: 2022-01-31T09:59:43
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

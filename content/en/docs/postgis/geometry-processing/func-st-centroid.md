@@ -3,12 +3,6 @@ title: func.ST_Centroid
 slug: func-st-centroid
 description: Computes a point which is the geometric center of mass of a geometry
 date: 2022-01-31T11:00:45
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Import JSON
 slug: import-json
 description: Import JSON text files from PlaidCloud Document
 date: 2022-01-25T07:39:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Description

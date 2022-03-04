@@ -3,12 +3,6 @@ title: func.ST_Distance
 slug: func-st-distance
 description: For geometry types returns the minimum 2D Cartesian (planar) distance between two geometries, in projected units (spatial ref units)
 date: 2022-01-31T10:22:29
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

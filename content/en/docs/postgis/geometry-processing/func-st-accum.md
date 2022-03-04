@@ -3,12 +3,6 @@ title: func.St_Accum
 slug: func-st-accum
 description: Aggregate. Constructs an array of geometries
 date: 2022-01-26T10:39:06
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

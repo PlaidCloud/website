@@ -3,12 +3,6 @@ title: func.ST_PointFromText
 slug: func-st-pointfromtext
 description: Constructs a PostGIS ST_Geometry point object from the OGC Well-Known text representation
 date: 2022-01-29T14:41:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

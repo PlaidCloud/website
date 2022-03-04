@@ -3,12 +3,6 @@ title: Import Quandl
 slug: import-quandl
 description: Imports data sets from Quandl’s repository of millions of data sets
 date: 2022-01-25T07:39:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Description

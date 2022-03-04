@@ -3,12 +3,6 @@ title: func.ST_LineToCurve
 slug: func-st-linetocurve
 description: Converts plain LINESTRING/POLYGON to CIRCULAR STRINGs and Curved Polygons
 date: 2022-01-28T13:34:04
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

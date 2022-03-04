@@ -3,12 +3,6 @@ title: func.ST_DelaunayTriangles
 slug: func-st-delaunaytriangles
 description: Return the Delaunay triangulation of the vertices of the input geometry
 date: 2022-01-31T11:04:51
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

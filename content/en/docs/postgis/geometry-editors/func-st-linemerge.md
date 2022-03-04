@@ -3,12 +3,6 @@ title: func.ST_LineMerge
 slug: func-st-linemerge
 description: Returns a (set of) LineString(s) formed by sewing together the constituent line work of a MULTILINESTRING
 date: 2022-01-28T13:33:14
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

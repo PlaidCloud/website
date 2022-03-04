@@ -3,12 +3,6 @@ title: func.ST_IsEmpty
 slug: func-st-isempty
 description: Returns true if this Geometry is an empty geometry
 date: 2022-01-25T07:40:11
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_MakePointM
 slug: func-st-makepointm
 description: Creates a point with X, Y and M (measure) coordinates
 date: 2022-01-25T07:40:10
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

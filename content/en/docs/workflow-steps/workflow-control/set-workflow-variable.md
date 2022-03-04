@@ -3,12 +3,6 @@ title: Set Workflow Variable
 slug: set-workflow-variable
 description: Set variables during a workflow
 date: 2022-01-25T07:40:18
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

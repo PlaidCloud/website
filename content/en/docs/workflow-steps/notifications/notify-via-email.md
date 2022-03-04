@@ -3,12 +3,6 @@ title: Notify Via Email
 slug: notify-via-email
 description: Send email notifications
 date: 2022-01-25T07:39:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_Equals
 slug: func-st-equals
 description: Returns TRUE if the given Geometries are "spatially equal"
 date: 2022-01-31T09:54:30
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Table Faker
 slug: table-faker
 description: This function generates fake data
 date: 2022-01-25T07:39:50
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

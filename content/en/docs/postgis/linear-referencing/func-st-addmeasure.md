@@ -3,12 +3,6 @@ title: func.ST_AddMeasure
 slug: func-st-addmeasure
 description: Return a derived geometry with measure elements linearly interpolated between the start and end points
 date: 2022-02-01T11:33:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

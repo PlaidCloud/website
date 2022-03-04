@@ -3,12 +3,6 @@ title: func.lead
 slug: func-lead
 description: This analytic function provides access to more than one row of a table at the same time without a self join
 date: 2022-01-25T07:40:02
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

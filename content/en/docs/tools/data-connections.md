@@ -3,12 +3,6 @@ title: Data Connections
 slug: data-connections
 description: Use this table reference for more information on external system connections and databases
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

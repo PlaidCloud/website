@@ -3,12 +3,6 @@ title: Table Lookup
 slug: table-lookup
 description: Similar to Microsoft Excel, this workflow function also increases process performance
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

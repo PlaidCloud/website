@@ -3,12 +3,6 @@ title: func.regexp_replace
 slug: func-regexp-replace
 description: This function returns a new string with the substrings, which match a regular expression pattern, replaced by a new substring
 date: 2022-02-04T11:09:26
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

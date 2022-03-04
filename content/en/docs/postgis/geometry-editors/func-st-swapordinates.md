@@ -3,12 +3,6 @@ title: func.ST_SwapOrdinates
 slug: func-st-swapordinates
 description: Returns a version of the given geometry with given ordinates swapped
 date: 2022-01-28T13:46:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

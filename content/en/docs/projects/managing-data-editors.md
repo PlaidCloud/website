@@ -3,12 +3,6 @@ title: Managing Data Editors
 slug: managing-data-editors
 description: Create and Edit table data though user interaction
 date: 2022-01-25T07:39:48
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

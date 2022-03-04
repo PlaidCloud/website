@@ -3,12 +3,6 @@ title: Configure an Allocation
 slug: configure-an-allocation
 description: Set up a cost allocation transform and manage assignments
 date: 2022-01-25T07:40:20
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

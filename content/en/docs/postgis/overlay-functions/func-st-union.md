@@ -3,12 +3,6 @@ title: func.ST_Union
 slug: func-st-union
 description: Unions the input geometries, merging geometry to produce a result geometry with no overlaps
 date: 2022-01-31T10:55:27
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: General Usage Data Type Expressions
 slug: general-usage-data-type-expressions
 description: The following data types (dytpes) are available through Analyze to support your requirements
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

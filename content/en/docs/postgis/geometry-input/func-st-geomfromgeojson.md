@@ -3,12 +3,6 @@ title: func.ST_GeomFromGeoJSON
 slug: func-st-geomfromgeojson
 description: Constructs a PostGIS geometry object from the GeoJSON representation
 date: 2022-01-29T15:02:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

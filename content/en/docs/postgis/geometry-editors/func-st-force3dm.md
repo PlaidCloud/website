@@ -3,12 +3,6 @@ title: func.ST_Force3DM
 slug: func-st-force3dm
 description: Forces the geometries into XYM mode
 date: 2022-01-28T13:25:05
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

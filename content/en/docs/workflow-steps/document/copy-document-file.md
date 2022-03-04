@@ -3,12 +3,6 @@ title: Copy Document File
 slug: copy-document-file
 description: Copy a single file within PlaidCloud Document.
 date: 2022-01-25T07:39:55
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_RelateMatch
 slug: func-st-relatematch
 description: Tests if a Dimensionally Extended 9-Intersection Model (DE-9IM) intersectionMatrix value satisfies an intersectionMatrixPattern
 date: 2022-01-31T10:03:41
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

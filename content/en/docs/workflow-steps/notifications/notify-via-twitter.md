@@ -3,12 +3,6 @@ title: Notify Via Twitter
 slug: notify-via-twitter
 description: Send a direct message from PlaidCloud
 date: 2022-01-25T07:39:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: General Usage Filters
 slug: general-usage-filters
 description: Apply filters using column references
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

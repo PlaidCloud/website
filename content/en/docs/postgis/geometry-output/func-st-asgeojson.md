@@ -3,12 +3,6 @@ title: func.ST_AsGeoJSON
 slug: func-st-asgeojson
 description: Return the geometry as a GeoJSON "geometry" object, or the row as a GeoJSON "feature" object
 date: 2022-01-29T19:11:07
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

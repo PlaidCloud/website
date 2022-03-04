@@ -3,12 +3,6 @@ title: Table Union All
 slug: table-union-all
 description: Access history to all created workflow data tables
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Description

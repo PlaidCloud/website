@@ -3,12 +3,6 @@ title: func.ST_MakeValid
 slug: func-st-makevalid
 description: The function attempts to create a valid representation of a given invalid geometry without losing any of the input vertices
 date: 2022-01-28T13:51:54
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

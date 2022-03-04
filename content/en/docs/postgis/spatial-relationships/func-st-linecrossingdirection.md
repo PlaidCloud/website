@@ -3,12 +3,6 @@ title: func.ST_LineCrossingDirection
 slug: func-st-linecrossingdirection
 description: Given 2 linestrings, returns an integer between -3 and 3 indicating what kind of crossing behavior exists between them
 date: 2022-01-31T09:52:03
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_LongestLine
 slug: func-st-longestline
 description: Returns the 2-dimensional longest line between the points of two geometries
 date: 2022-01-31T10:37:07
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

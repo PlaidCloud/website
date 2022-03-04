@@ -3,12 +3,6 @@ title: func.ST_NRings
 slug: func-st-nrings
 description: If the geometry is a polygon or multi-polygon returns the number of rings
 date: 2022-01-27T14:26:12
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_EstimatedExtent
 slug: func-st-estimatedextent
 description: Return the 'estimated' extent of the given spatial table
 date: 2022-01-31T17:47:34
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_WKTToSQL
 slug: func-st-wkttosql
 description: This method implements the SQL/MM specification. SQL-MM 3 5.1.34
 date: 2022-01-29T14:44:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

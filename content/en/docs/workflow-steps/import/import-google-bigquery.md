@@ -3,12 +3,6 @@ title: Import Google BigQuery
 slug: import-google-bigquery
 description: Import Google BigQuery files
 date: 2022-01-25T07:39:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

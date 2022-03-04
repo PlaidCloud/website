@@ -3,12 +3,6 @@ title: Table Loader
 slug: table-loader
 description: Load and transfer data content from table to table
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

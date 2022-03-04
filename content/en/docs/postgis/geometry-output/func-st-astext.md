@@ -3,12 +3,6 @@ title: func.ST_AsText
 slug: func-st-astext
 description: Returns the Well-Known Text representation of the geometry/geography
 date: 2022-01-29T19:04:55
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

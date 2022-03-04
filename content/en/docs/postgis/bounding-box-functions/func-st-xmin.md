@@ -3,12 +3,6 @@ title: func.ST_XMin
 slug: func-st-xmin
 description: Returns the X minima of a 2D or 3D bounding box or a geometry
 date: 2022-01-31T17:55:52
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

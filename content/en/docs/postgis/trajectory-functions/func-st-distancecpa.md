@@ -3,12 +3,6 @@ title: func.ST_DistanceCPA
 slug: func-st-distancecpa
 description: Returns the minimum distance two moving objects have ever been each other
 date: 2022-02-01T12:34:31
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

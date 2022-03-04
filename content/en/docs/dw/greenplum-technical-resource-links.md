@@ -3,12 +3,6 @@ title: Greenplum Technical Resource Links
 slug: greenplum-technical-resource-links
 description: Helpful and interesting technical resources for reference
 date: 2022-01-25T07:39:51
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

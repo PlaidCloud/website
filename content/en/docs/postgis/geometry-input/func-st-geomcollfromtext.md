@@ -3,12 +3,6 @@ title: func.ST_GeomCollFromText
 slug: func-st-geomcollfromtext
 description: Makes a collection Geometry from the Well-Known-Text (WKT) representation with the given SRID
 date: 2022-01-29T14:31:32
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

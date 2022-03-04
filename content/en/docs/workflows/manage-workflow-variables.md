@@ -3,12 +3,6 @@ title: Manage Workflow Variables
 slug: manage-workflow-variables
 description: Create, view, and set workflow variable values
 date: 2022-01-25T07:40:20
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

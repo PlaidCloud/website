@@ -3,12 +3,6 @@ title: func.ST_AsEncodedPolyline
 slug: func-st-asencodedpolyline
 description: Returns the geometry as an Encoded Polyline
 date: 2022-01-29T19:09:22
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

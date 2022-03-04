@@ -3,12 +3,6 @@ title: General Usage Text Expressions
 slug: general-usage-text-expressions
 description: Commonly Used Text Expressions
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

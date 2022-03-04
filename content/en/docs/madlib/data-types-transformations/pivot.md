@@ -3,12 +3,6 @@ title: Pivot
 slug: pivot
 description: Perform basic OLAP type operations on data
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Table Outer Join
 slug: table-outer-join
 description: Combine data tables using specified join key(s)
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

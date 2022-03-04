@@ -3,12 +3,6 @@ title: func.ST_DWithin
 slug: func-st-dwithin
 description: Returns true if the geometries are within a given distance
 date: 2022-01-31T10:09:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_IsSimple
 slug: func-st-issimple
 description: Returns true if this Geometry has no anomalous geometric points
 date: 2022-01-27T14:18:55
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

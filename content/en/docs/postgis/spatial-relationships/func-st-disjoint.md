@@ -3,12 +3,6 @@ title: func.ST_Disjoint
 slug: func-st-disjoint
 description: Overlaps, Touches, Within imply geometries are not spatially disjoint, unless they return true, then they are not spatially disjoint
 date: 2022-01-31T09:52:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

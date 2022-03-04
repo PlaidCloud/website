@@ -3,12 +3,6 @@ title: func.ST_Scale
 slug: func-st-scale
 description: Scales the geometry to a new size by multiplying the ordinates with the corresponding factor parameters
 date: 2022-01-31T17:37:40
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

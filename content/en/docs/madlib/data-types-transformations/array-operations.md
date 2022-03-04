@@ -3,12 +3,6 @@ title: Array Operations
 slug: array-operations
 description: Provides support functions enabling fast array operations
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

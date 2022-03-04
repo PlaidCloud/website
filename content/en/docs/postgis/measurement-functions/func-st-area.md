@@ -3,12 +3,6 @@ title: func.ST_Area
 slug: func-st-area
 description: Returns the area of a polygonal geometry
 date: 2022-01-31T10:14:27
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

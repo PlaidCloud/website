@@ -3,12 +3,6 @@ title: Export to JSON
 slug: export-to-json
 description: Export an Analyze data table to PlaidCloud Document as a JSON file
 date: 2022-01-25T07:39:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

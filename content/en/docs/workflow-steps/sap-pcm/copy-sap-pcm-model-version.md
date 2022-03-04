@@ -3,12 +3,6 @@ title: Copy SAP PCM Version
 slug: copy-sap-pcm-model-version
 description: Copy your a version within an SAP PCM model
 date: 2022-01-25T07:39:52
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ### Description

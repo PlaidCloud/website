@@ -3,12 +3,6 @@ title: func.date_part
 slug: func-date-part
 description: Returns a 'date' value expression through its subfields
 date: 2022-01-25T07:39:55
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_LineFromMultiPoint
 slug: func-st-linefrommultipoint
 description: Creates a LineString from a MultiPoint geometry
 date: 2022-01-25T07:40:10
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

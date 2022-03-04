@@ -3,12 +3,6 @@ title: Managing Document Account Backups
 slug: managing-document-account-backups
 description: Control how, where, and when Document account backups occur
 date: 2022-01-25T07:39:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Getting Started
 slug: getting-started
 description: Get connected and run APIs from command line or another application
 date: 2022-01-25T07:39:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

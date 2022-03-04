@@ -3,12 +3,6 @@ title: Import HTML
 slug: import-html
 description: Import HTML table data from the internet
 date: 2022-01-25T07:39:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Description

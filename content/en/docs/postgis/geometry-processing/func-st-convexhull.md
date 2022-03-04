@@ -3,12 +3,6 @@ title: func.ST_ConvexHull
 slug: func-st-convexhull
 description: Computes the convex hull of a geometry. The convex hull is the smallest convex geometry that encloses all geometries in the input
 date: 2022-01-31T11:04:09
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

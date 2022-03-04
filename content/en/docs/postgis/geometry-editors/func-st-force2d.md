@@ -3,12 +3,6 @@ title: func.ST_Force2D
 slug: func-st-force2d
 description: Forces the geometries into a "2-dimensional mode" so that all output representations will only have the X and Y coordinates
 date: 2022-01-28T13:20:24
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

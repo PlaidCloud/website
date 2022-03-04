@@ -3,12 +3,6 @@ title: Export to Excel
 slug: export-to-excel
 description: Export an Analyze data table to PlaidCloud Document as a Microsoft Excel file
 date: 2022-01-25T07:39:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

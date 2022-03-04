@@ -3,12 +3,6 @@ title: Copy & Paste steps
 slug: copy-paste-steps
 description: Copy and paste steps within and across workflows
 date: 2022-01-25T07:40:21
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

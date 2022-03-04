@@ -3,12 +3,6 @@ title: func.current_time
 slug: func-current-time
 description: Returns a current time value based on the time zone
 date: 2022-01-25T07:39:55
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

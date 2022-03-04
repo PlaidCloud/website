@@ -3,12 +3,6 @@ title: Table Pivot
 slug: table-pivot
 description: Flip rows to columns
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Description

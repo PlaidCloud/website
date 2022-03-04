@@ -3,12 +3,6 @@ title: func.ST_GeographyFromText
 slug: func-st-geographyfromtext
 description: Returns a geography object from the well-known text representation. SRID 4326 is assumed if unspecified
 date: 2022-01-29T14:29:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

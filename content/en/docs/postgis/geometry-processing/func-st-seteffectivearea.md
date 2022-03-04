@@ -3,12 +3,6 @@ title: func.ST_SetEffectiveArea
 slug: func-st-seteffectivearea
 description: Sets the effective area for each vertex, using the Visvalingam-Whyatt algorithm
 date: 2022-01-31T17:30:36
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

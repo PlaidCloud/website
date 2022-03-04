@@ -3,12 +3,6 @@ title: Stemming
 slug: stemming
 description: Provides a basic stemming operation for text input using the Porter Stemming Algorithm
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

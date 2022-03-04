@@ -3,12 +3,6 @@ title: Wait
 slug: wait
 description: Pauses workflow execution for a specified period of time
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

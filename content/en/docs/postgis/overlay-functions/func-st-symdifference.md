@@ -3,12 +3,6 @@ title: func.ST_SymDifference
 slug: func-st-symdifference
 description: Returns a geometry representing the portions of geonetries A and B that do not intersect
 date: 2022-01-31T10:53:54
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

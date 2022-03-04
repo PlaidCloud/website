@@ -3,12 +3,6 @@ title: func.ST_DFullyWithin
 slug: func-st-dfullywithin
 description: Returns true if the geometries are entirely within the specified distance of one another
 date: 2022-01-31T10:09:02
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Agent Remote Execution of SQL
 slug: agent-remote-execution-of-sql
 description: Execute specified SQL on a remote database through a PlaidLink Agent connection.
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

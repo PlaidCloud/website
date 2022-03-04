@@ -3,12 +3,6 @@ title: Low-Rank Matrix Factorization
 slug: low-rank-matrix-factorization
 description: Represent an incomplete matrix using a low-rank approximation
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

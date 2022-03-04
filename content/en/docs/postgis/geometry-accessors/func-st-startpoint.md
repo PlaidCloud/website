@@ -3,12 +3,6 @@ title: func.ST_StartPoint
 slug: func-st-startpoint
 description: Returns the first point of a LINESTRING or CIRCULARLINESTRING geometry as a POINT
 date: 2022-01-27T14:37:11
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

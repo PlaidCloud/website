@@ -3,12 +3,6 @@ title: func.ST_Rotate
 slug: func-st-rotate
 description: Rotates geometry rotRadians counter-clockwise about the origin point
 date: 2022-01-31T17:33:07
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

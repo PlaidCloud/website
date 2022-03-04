@@ -3,12 +3,6 @@ title: Event Scheduler
 slug: event-scheduler
 description: Create and organize a scheduled recurring event
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

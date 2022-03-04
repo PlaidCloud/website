@@ -3,12 +3,6 @@ title: func.ST_BuildArea
 slug: func-st-buildarea
 description: Creates an areal geometry formed by the constituent linework of the input geometry
 date: 2022-01-31T10:58:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

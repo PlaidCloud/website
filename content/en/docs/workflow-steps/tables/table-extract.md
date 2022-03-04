@@ -3,12 +3,6 @@ title: Table Extract
 slug: table-extract
 description: This function helps to extract data from one table and place it in another
 date: 2022-01-25T07:39:50
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

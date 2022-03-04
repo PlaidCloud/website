@@ -3,12 +3,6 @@ title: General Usage Dates and Time Expressions
 slug: general-usage-dates-and-time-expressions
 description: Common Expression Values for date/time functions
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_BdPolyFromText
 slug: func-st-bdpolyfromtext
 description: Construct a Polygon given an arbitrary collection of closed linestrings as a MultiLineString Well-Known text representation
 date: 2022-01-29T14:26:43
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_DumpRings
 slug: func-st-dumprings
 description: This is a set-returning function (SRF). It returns a set of geometry_dump rows, as an integer and a geometry, aliased "path" and "geom"
 date: 2022-01-27T13:53:24
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

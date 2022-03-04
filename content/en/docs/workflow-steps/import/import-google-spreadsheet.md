@@ -3,12 +3,6 @@ title: Import Google Spreadsheet
 slug: import-google-spreadsheet
 description: Import specific worksheets from Google Spreadsheet files
 date: 2022-01-25T07:39:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

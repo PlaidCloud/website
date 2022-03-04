@@ -3,12 +3,6 @@ title: Convert Document Encoding to ASCII
 slug: convert-document-encoding-to-ascii
 description: Updates file encoding and converts all characters to ASCII
 date: 2022-01-25T07:39:55
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Description

@@ -3,12 +3,6 @@ title: Run a workflow
 slug: run-a-workflow
 description: How to run a workflow from the workflow management area
 date: 2022-01-25T07:40:20
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

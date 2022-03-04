@@ -3,12 +3,6 @@ title: Rename Document Directory
 slug: rename-document-directory
 description: Rename an existing directory in PlaidCloud Document
 date: 2022-01-25T07:40:18
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

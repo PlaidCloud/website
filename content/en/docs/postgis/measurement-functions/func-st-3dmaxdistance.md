@@ -3,12 +3,6 @@ title: func.ST_3DMaxDistance
 slug: func-st-3dmaxdistance
 description: Returns the 3-dimensional maximum cartesian distance between two geometries in projected units
 date: 2022-01-31T10:34:08
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

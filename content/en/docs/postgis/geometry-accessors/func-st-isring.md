@@ -3,12 +3,6 @@ title: func.ST_IsRing
 slug: func-st-isring
 description: Returns TRUE if this LINESTRING is both ST_IsClosed and ST_IsSimple (does not self intersect)
 date: 2022-01-27T14:17:13
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

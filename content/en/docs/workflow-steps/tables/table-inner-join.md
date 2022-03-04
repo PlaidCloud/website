@@ -3,12 +3,6 @@ title: Table Inner Join
 slug: table-inner-join
 description: Use this function to perform an inner join between two data tables
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

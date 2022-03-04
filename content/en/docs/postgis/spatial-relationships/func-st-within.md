@@ -3,12 +3,6 @@ title: func.ST_Within
 slug: func-st-within
 description: Returns TRUE if geometry A is completely inside geometry B
 date: 2022-01-31T10:05:54
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

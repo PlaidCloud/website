@@ -3,12 +3,6 @@ title: func.ST_MPointFromText
 slug: func-st-mpointfromtext
 description: Makes a Multi-Point Geometry from WKT with the given SRID
 date: 2022-01-29T14:39:05
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

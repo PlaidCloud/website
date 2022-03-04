@@ -3,12 +3,6 @@ title: func.ST_Perimeter
 slug: func-st-perimeter
 description: Returns the 2D perimeter of the geometry/geography if it is a ST_Surface, ST_MultiSurface (Polygon, MultiPolygon)
 date: 2022-01-31T10:40:04
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

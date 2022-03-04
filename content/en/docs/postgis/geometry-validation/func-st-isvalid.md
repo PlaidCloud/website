@@ -3,12 +3,6 @@ title: func.ST_IsValid
 slug: func-st-isvalid
 description: Test if an ST_Geometry value is well-formed in 2D according to the OGC rules
 date: 2022-01-28T13:48:43
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

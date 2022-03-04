@@ -3,12 +3,6 @@ title: func.first_value
 slug: func-first-value
 description: FIRST_VALUE is an analytic function. It returns the first value in an ordered set of values
 date: 2022-01-25T07:40:02
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_IsValidTrajectory
 slug: func-st-isvalidtrajectory
 description: Tests if a geometry encodes a valid trajectory
 date: 2022-02-01T11:35:27
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

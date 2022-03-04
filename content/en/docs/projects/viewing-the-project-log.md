@@ -3,12 +3,6 @@ title: Viewing the Project Log
 slug: viewing-the-project-log
 description: View, sort and clear your project activities and assignments
 date: 2022-01-25T07:39:48
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

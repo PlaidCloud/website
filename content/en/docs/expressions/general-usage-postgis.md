@@ -3,12 +3,6 @@ title: General Usage PostGIS
 slug: general-usage-postgis
 description: Enhanced 'Analyze' functions for geospatial analysis
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 Analyze provides access to the powerful PostGIS library of functions for geospatial analysis. The functions available are shown in the following table and link to instructions on the PostGIS site.

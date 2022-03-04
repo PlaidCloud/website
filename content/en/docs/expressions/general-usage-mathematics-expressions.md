@@ -3,12 +3,6 @@ title: General Usage Mathematics Expressions
 slug: general-usage-mathematics-expressions
 description: Expression with Enhanced Transformation Capabilities
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

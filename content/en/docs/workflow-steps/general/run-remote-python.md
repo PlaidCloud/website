@@ -3,12 +3,6 @@ title: Run Remote Python
 slug: run-remote-python
 description: Run a Python file using PlaidLink
 date: 2022-01-25T07:39:50
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

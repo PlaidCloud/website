@@ -3,12 +3,6 @@ title: func.ST_3DPerimeter
 slug: func-st-3dperimeter
 description: Returns the 3-dimensional perimeter of the geometry, if it is a polygon or multi-polygon
 date: 2022-01-31T10:34:51
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_3DIntersects
 slug: func-st-3dintersects
 description: Overlaps, Touches, Within all imply spatial intersection and if any returns true, then the geometries also spatially intersect
 date: 2022-01-31T09:35:26
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

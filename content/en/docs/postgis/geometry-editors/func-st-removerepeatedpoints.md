@@ -3,12 +3,6 @@ title: func.ST_RemoveRepeatedPoints
 slug: func-st-removerepeatedpoints
 description: Returns a version of the given geometry with duplicated points removed
 date: 2022-01-28T13:38:43
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_NPoints
 slug: func-st-npoints
 description: Return the number of points in a geometry
 date: 2022-01-27T14:24:37
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

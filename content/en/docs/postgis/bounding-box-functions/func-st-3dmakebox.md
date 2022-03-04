@@ -3,12 +3,6 @@ title: func.ST_3DMakeBox
 slug: func-st-3dmakebox
 description: Creates a BOX3D defined by the given two 3D point geometries
 date: 2022-01-31T17:52:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

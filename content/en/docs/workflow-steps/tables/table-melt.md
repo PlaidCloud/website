@@ -3,12 +3,6 @@ title: Table Melt
 slug: table-melt
 description: Flip columns to rows
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

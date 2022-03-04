@@ -3,12 +3,6 @@ title: Using Start Paths in Document Accounts
 slug: using-start-paths-in-document-accounts
 description: Control where users start navigation in document storage
 date: 2022-01-25T07:39:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

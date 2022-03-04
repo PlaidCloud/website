@@ -3,12 +3,6 @@ title: func.ST_Reverse
 slug: func-st-reverse
 description: Can be used on any geometry and reverses the order of the vertexes
 date: 2022-01-28T13:39:35
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

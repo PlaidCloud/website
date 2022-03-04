@@ -3,12 +3,6 @@ title: func.ST_GeometryN
 slug: func-st-geometryn
 description: This section describes functions and operators for examining and manipulating string values
 date: 2022-01-27T14:08:44
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

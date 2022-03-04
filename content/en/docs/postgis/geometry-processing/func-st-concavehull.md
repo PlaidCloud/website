@@ -3,12 +3,6 @@ title: func.ST_ConcaveHull
 slug: func-st-concavehull
 description: The concave hull of a geometry represents a possibly concave geometry that encloses the input geometry
 date: 2022-01-31T11:01:44
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

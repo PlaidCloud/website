@@ -3,12 +3,6 @@ title: func.ST_SimplifyVW
 slug: func-st-simplifyvw
 description: Returns a "simplified" version of the given geometry using the Visvalingam-Whyatt algorithm
 date: 2022-01-31T17:29:46
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

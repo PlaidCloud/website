@@ -3,12 +3,6 @@ title: func.ST_IsCollection
 slug: func-st-iscollection
 description: Returns TRUE if the geometry type of the argument is a geometry collection type
 date: 2022-01-27T14:14:28
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

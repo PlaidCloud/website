@@ -3,12 +3,6 @@ title: func.ST_Collect
 slug: func-st-collect
 description: Collects geometries into a geometry collection
 date: 2022-01-25T07:40:15
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

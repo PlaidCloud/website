@@ -3,12 +3,6 @@ title: func.ST_MakePolygon
 slug: func-st-makepolygon
 description: Creates a Polygon formed by the given shell and optional array of holes
 date: 2022-01-25T07:40:09
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

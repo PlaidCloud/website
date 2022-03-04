@@ -3,12 +3,6 @@ title: Call SAP General Ledger Posting
 slug: call-sap-general-ledger-posting
 description: Calls an SAP ECC Remote Function Call (RFC) designed to post a journal entry including applicable VAT and Withholding taxes
 date: 2022-01-25T07:39:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

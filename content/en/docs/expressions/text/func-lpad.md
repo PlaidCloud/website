@@ -3,12 +3,6 @@ title: func.lpad
 slug: func-lpad
 description: LPAD function pads the left-side of a string with a specific set of characters (when string1 is not null).
 date: 2022-02-03T09:59:11
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
