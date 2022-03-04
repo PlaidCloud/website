@@ -16,8 +16,9 @@ categories:
 
 
 
-```
-func.trunc(numeric) func.trunc(v numeric, s int) JSRef: truncv
+```python
+func.trunc(float) 
+func.trunc(v float, s int)
 ```
 
 

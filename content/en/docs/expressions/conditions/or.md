@@ -12,7 +12,7 @@ categories:
 ---
 
 
-The or\_ operator allows checking two or more conditions to determine if the evaluation is true or false.
+The or_ operator allows checking two or more conditions to determine if the evaluation is true or false.
 
 
 

@@ -22,7 +22,7 @@ func.log(numeric)
 
 
 ```
-func.log(b numeric, x numeric) JSRef: logb
+func.log(b numeric, x numeric)
 ```
 
 

@@ -14,7 +14,7 @@ categories:
 ## Description
 
 
-“Set Project Variable” sets project variables for use during the workflow. A variable name and value may contain any combination of valid characters, including spaces. Variables are referenced within the workflow by placing them inside curly braces. For example, *a\_variable* is referenced within a transform as *{a\_variable}* so it could be used in something like a formula or field value (e.g., {a\_variable} * 2).
+“Set Project Variable” sets project variables for use during the workflow. A variable name and value may contain any combination of valid characters, including spaces. Variables are referenced within the workflow by placing them inside curly braces. For example, *a_variable* is referenced within a transform as *{a_variable}* so it could be used in something like a formula or field value (e.g., {a_variable} * 2).
 
 
 

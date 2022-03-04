@@ -64,7 +64,7 @@ This will open the **vHosts Table** in the workspace, which includes vHost infor
 6. Name the vHost for future referencing
 7. Click “Create”
 
-Once the vHost is created, it will be tagged with its reference to a workspace identifier. For example, if you create a vHost with the name of ‘super’ and its identifier is 890, the actual name of the user will be ‘cloud\_890\_super’. This allows for unique vHosts without constant name collisions.
+Once the vHost is created, it will be tagged with its reference to a workspace identifier. For example, if you create a vHost with the name of ‘super’ and its identifier is 890, the actual name of the user will be ‘cloud_890_super’. This allows for unique vHosts without constant name collisions.
 
 
 

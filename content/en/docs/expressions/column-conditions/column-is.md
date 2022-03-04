@@ -16,14 +16,13 @@ categories:
 
 
 
-```
-.is_(value) JSRef: is .is_(None) JSRef: isNone
+```python
+.is_(value)
+.is_(None)
 ```
 
 
 ## Examples
-
-
 
 ```
 Documentation for column.is_ is coming soon.

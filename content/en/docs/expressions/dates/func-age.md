@@ -22,7 +22,7 @@ func.age(timestamp, timestamp)
 
 
 ```
-func.age(timestamp) JSRef: age2
+func.age(timestamp)
 ```
 
 

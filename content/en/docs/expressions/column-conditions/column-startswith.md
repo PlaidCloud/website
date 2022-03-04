@@ -17,7 +17,7 @@ categories:
 
 
 ```
-.startswith(string) JSRef: startsWith
+.startswith(string)
 ```
 
 

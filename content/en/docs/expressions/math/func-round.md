@@ -22,7 +22,7 @@ func.round(numeric)
 
 
 ```
-func.round(v numeric, s int) JSRef: roundv
+func.round(v numeric, s int)
 ```
 
 

@@ -16,8 +16,8 @@ categories:
 
 
 
-```
-.in_([list of values]) JSRef: in
+```python
+.in_([list of values])
 ```
 
 

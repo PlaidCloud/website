@@ -17,7 +17,7 @@ categories:
 
 
 ```
-.notilike(string) JSRef: notILike
+.notilike(string)
 ```
 
 

@@ -12,7 +12,7 @@ categories:
 ---
 
 
-Expressions use a Python-like syntax and provide a lot of powerful transformation capabilities.
+Expressions use Python [SQLAlchemy](https://www.sqlalchemy.org) syntax and provide powerful transformation capabilities.
 
 {{< note >}}
 Always use table.field references in expressions
@@ -28,22 +28,16 @@ Always use table.field references in expressions
 | / | / | division (integer division truncates results) | 4 / 2 | 2 |
 | column.op(‘%’) | % | modulo (remainder) | 5 % 4 | 1 |
 | column.op(‘^’) | ^ | exponentiation | 2.0 ^ 3.0 | 8 |
-| column.op(‘|/’) | |/ | square root | |/ 25.0 | 5 |
-| column.op(‘||/’) | ||/ | cube root | ||/ 27.0 | 3 |
 | column.op(‘!’) | ! | factorial | 5 ! | 120 |
 | column.op(‘!!’) | !! | factorial (prefix operator) | !! 5 | 120 |
 | column.op(‘@’) | @ | absolute value | @ -5.0 | 5 |
 | column.op(‘&’) | & | bitwise AND | 91 & 15 | 11 |
-| column.op(‘|’) | | | bitwise OR | 32 | 3 | 35 |
 | column.op(‘#’) | ## | bitwise XOR | 17 ## 5 | 20 |
 | column.op(‘~’) | ~ | bitwise NOT | ~1 | -2 |
 | column.op(‘<<’) | << | bitwise shift left | 1 << 4 | 16 |
 | column.op(‘>>’) | >> | bitwise shift right | 8 >> 2 | 2 |
 
 ## Mathematics Functions
-
-
-
 
 | Analyze Expression | Return Type | Description | Example | Result |  |
 |--------------------|-------------|-------------|---------|--------|--|
@@ -70,7 +64,7 @@ Always use table.field references in expressions
 | func.sqrt(dp or numeric) | (same as input) | square root | sqrt(2.0) | 1.414213 5623731 |  |
 | func.trunc(dp or numeric) | (same as input) | truncate toward zero | trunc(42. 8) | 42 |  |
 | func.trunc(v numeric, s int) | numeric | truncate to s decimal places | trunc(42. 4382, 2) | 42.43 |  |
-| func.width\_bucket( op numeric, b1 numeric, b2 numeric, count int) | integer | return the bucket to which operand would be assigned in an equidepth histogram with count buckets, in the range b1 to b2 | width\_bu cket(5.35 , 0.024, 10.06, 5) | 3 |  |
+| func.width_bucket( op numeric, b1 numeric, b2 numeric, count int) | integer | return the bucket to which operand would be assigned in an equidepth histogram with count buckets, in the range b1 to b2 | width_bu cket(5.35 , 0.024, 10.06, 5) | 3 |  |
 | func.least(value…) | (same as input) | Select the smallest value from a list. NULL values in the list are ignored. The result will be NULL only if all values are NULL. |  |  |  |
 | func.greatest(value …) | (same as input) | Select the largest value from a list. NULL values in the list are ignored. The result will be NULL only if all values are NULL. |  |  |  |
 

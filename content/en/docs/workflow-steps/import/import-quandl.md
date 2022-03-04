@@ -39,7 +39,7 @@ Next, enter criteria for the desired Quandl code. Users can use the **Search** f
 
 
 
-For example, to import the data set for Microsoft stock, which can be found here (<http://www.quandl.com/GOOG/NASDAQ_MSFT>), enter *GOOG/NASDAQ\_MSFT* in the Quandl Code field.
+For example, to import the data set for Microsoft stock, which can be found here (<http://www.quandl.com/GOOG/NASDAQ_MSFT>), enter *GOOG/NASDAQ_MSFT* in the Quandl Code field.
 
 
 
@@ -155,7 +155,7 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 
@@ -185,7 +185,7 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 
