@@ -8,12 +8,14 @@ date: 2022-01-25T07:39:55
 ## Description
 
 Import delimited text files from PlaidCloud Document. This includes, but is not limited to, the following delimiter types:
-* comma
-* pipe
-* semicolon
+* comma (, )
+* pipe (|)
+* semicolon (; )
 * tab
-* space
-* other/custom (tilde, dash, etc)
+* space ( )
+* at symbol (@)
+* tilda (~)
+* colon (:)
 
 ## Examples
 
@@ -22,24 +24,6 @@ Import delimited text files from PlaidCloud Document. This includes, but is not 
 ---
 
 ## Unique Configuration Items
-
-### Remove non-ASCII Characters
-
-By selecting this option, the import will remove any content that is not ASCII.  While PlaidCloud fully supports Unicode (UTF-8), real-world
-CSV files can contain all sorts of encodings and stray characters that make them challenging to process.
-
-If the content of the CSV is expected to be ASCII only, checking this box will help ensure the import process runs smoothly.
-
-{{< caution >}}
-If your data contains text from locations throughout the world it may contain non-ASCII names and phrases
-{{< /caution >}}
-
-### Delete Files After Import
-
-This option will allow the import process to delete the file from the PlaidCloud Document account after a successful import has completed.
-
-This can be useful if the import files are generated can be recreated from a system of record or there is no reason to retain the raw input files
-once they have been processed.
 
 ### Inspect Selected Source File
 
@@ -99,6 +83,10 @@ This will **not** remove the duplicate items from the target data table. To remo
 ---
 
 ## Common Configuration Items
+
+{{< include "common-remove-non-ascii" >}}
+
+{{< include "common-delete-files-after-import" >}}
 
 {{< include "common-import-file-selection" >}}
 
