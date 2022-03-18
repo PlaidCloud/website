@@ -31,6 +31,6 @@ Adding the expression above to an **Interval** column called `remaining` would r
 
 | location   | employee | timestamp           | remaining |
 |------------|----------|---------------------|-----------|
-| Building A | John Doe | 2022-01-05 15:34:31 | 00:10:00  |
+| Building A | John Doe | 2022-01-05 15:34:31 | 00:12:10  |
 | Building A | John Doe | 2022-01-05 15:44:31 | 00:02:10  |
 | Building A | John Doe | 2022-01-05 15:46:41 | 00:00:00  |
