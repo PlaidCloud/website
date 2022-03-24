@@ -3,12 +3,6 @@ title: func.ST_GeogFromWKB
 slug: func-st-geogfromwkb
 description: This function, takes a well-known binary representation (WKB) of a geometry and creates an instance of the appropriate geography type
 date: 2022-01-29T14:45:41
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_Segmentize
 slug: func-st-segmentize
 description: Returns a modified geometry having no segment longer than the given max_segment_length
 date: 2022-01-28T13:41:18
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

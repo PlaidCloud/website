@@ -3,12 +3,6 @@ title: func.ST_ClusterWithin
 slug: func-st-clusterwithin
 description: Aggregate function that returns an array of GeometryCollections that represent a set of geometries separated by a specified distance
 date: 2022-01-31T17:42:30
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

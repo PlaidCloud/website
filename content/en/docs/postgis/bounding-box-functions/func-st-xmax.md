@@ -3,12 +3,6 @@ title: func.ST_XMax
 slug: func-st-xmax
 description: Returns the X maxima of a 2D or 3D bounding box or a geometry
 date: 2022-01-31T17:55:02
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

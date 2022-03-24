@@ -3,12 +3,6 @@ title: func.ST_3DExtent
 slug: func-st-3dextent
 description: ST_3DExtent returns a box3d (includes Z coordinate) bounding box that encloses a set of geometries
 date: 2022-01-31T17:50:41
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

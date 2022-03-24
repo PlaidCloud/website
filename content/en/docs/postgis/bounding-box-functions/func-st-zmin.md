@@ -3,12 +3,6 @@ title: func.ST_ZMin
 slug: func-st-zmin
 description: Returns the Z minima of a 2D or 3D bounding box or a geometry
 date: 2022-01-31T18:01:07
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

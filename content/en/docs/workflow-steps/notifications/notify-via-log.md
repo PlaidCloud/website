@@ -3,12 +3,6 @@ title: Notify Via Log
 slug: notify-via-log
 description: Write a message to the Analyze workflow log
 date: 2022-01-25T07:39:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

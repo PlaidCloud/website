@@ -3,12 +3,6 @@ title: Table Outer Join
 slug: table-outer-join
 description: Combine data tables using specified join key(s)
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -62,7 +56,7 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 
@@ -125,7 +119,7 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 
@@ -205,7 +199,7 @@ In this example, consider the following source data tables. First is a list of a
 
 
 
-| Mfg\_ID | Manufacturer |
+| Mfg_ID | Manufacturer |
 | 1 | Aston Martin |
 | 2 | Porsche |
 | 3 | Lamborghini |
@@ -217,7 +211,7 @@ Next is a list of automobile models with a manufacturer ID. Note that there are 
 
 
 
-| ModelName | Mfg\_ID |
+| ModelName | Mfg_ID |
 | Aventador | 3 |
 | Countach | 3 |
 | DBS | 1 |
@@ -228,7 +222,7 @@ Next is a list of automobile models with a manufacturer ID. Note that there are 
 | Agera | 5 |
 | Lightning McQueen |  |
 
-To get a list of models by manufacturer, it makes sense to join on *Mfg\_ID*. By leveraging outer join concepts, the output will also be able to show those items which do not have any matches.
+To get a list of models by manufacturer, it makes sense to join on *Mfg_ID*. By leveraging outer join concepts, the output will also be able to show those items which do not have any matches.
 
 
 
@@ -240,7 +234,7 @@ Next, specify parameters for **Table B Data Selection.** Once again, the source 
 
 
 
-Finally, the join conditions are set in the **Table Output** tab. Using the **Guess** button, Analyze properly identifies the *Mfg\_ID* column to use as the **Join Key**. Lastly, the 
+Finally, the join conditions are set in the **Table Output** tab. Using the **Guess** button, Analyze properly identifies the *Mfg_ID* column to use as the **Join Key**. Lastly, the 
 
 
 **Target Output Columns** are specified automatically using the **Propagate** button. This effectively includes all columns from all tables, with any join columns obviously only being included a single time. Note that the columns are sorted alphabetically, first by *Manufacturer* and next by *ModelName*.

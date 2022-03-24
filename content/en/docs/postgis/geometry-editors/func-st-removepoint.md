@@ -3,12 +3,6 @@ title: func.ST_RemovePoint
 slug: func-st-removepoint
 description: Remove a point from a linestring, given its 0-based index
 date: 2022-01-28T13:36:48
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_MakePoint
 slug: func-st-makepoint
 description: Creates a 2D, 3D Z or 4D ZM Point geometry
 date: 2022-01-25T07:40:10
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

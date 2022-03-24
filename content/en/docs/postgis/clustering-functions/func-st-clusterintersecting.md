@@ -3,12 +3,6 @@ title: func.ST_ClusterIntersecting
 slug: func-st-clusterintersecting
 description: ClusterIntersecting is an aggregate function that returns an array of GeometryCollections that represent an interconnected set of geometries
 date: 2022-01-31T17:41:46
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

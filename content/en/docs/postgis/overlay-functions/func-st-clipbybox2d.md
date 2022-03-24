@@ -3,12 +3,6 @@ title: func.ST_ClipByBox2D
 slug: func-st-clipbybox2d
 description: Clips a geometry by a 2D box in a fast and tolerant but possibly invalid way
 date: 2022-01-31T10:46:14
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

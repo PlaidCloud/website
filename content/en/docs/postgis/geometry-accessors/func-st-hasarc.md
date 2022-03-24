@@ -3,12 +3,6 @@ title: func.ST_HasArc
 slug: func-st-hasarc
 description: Returns true if a geometry or geometry collection contains a circular string
 date: 2022-01-27T14:10:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

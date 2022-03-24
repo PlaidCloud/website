@@ -3,12 +3,6 @@ title: func.ST_Intersects
 slug: func-st-intersects
 description: If a geometry or geography shares any portion of space then they intersect
 date: 2022-01-31T09:55:17
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

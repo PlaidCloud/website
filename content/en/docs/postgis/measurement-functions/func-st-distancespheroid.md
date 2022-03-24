@@ -3,12 +3,6 @@ title: func.ST_DistanceSpheroid
 slug: func-st-distancespheroid
 description: Returns minimum distance in meters between two lon/lat geometries given a particular spheroid
 date: 2022-01-31T10:23:20
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

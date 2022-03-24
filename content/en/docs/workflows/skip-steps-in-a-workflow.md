@@ -3,12 +3,6 @@ title: Skip steps in a workflow
 slug: skip-steps-in-a-workflow
 description: How to disable steps in a workflow so they are not executed
 date: 2022-01-25T07:40:20
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

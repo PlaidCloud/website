@@ -3,12 +3,6 @@ title: func.ST_ExteriorRing
 slug: func-st-exteriorring
 description: Returns a line string representing the exterior ring of the POLYGON geometry
 date: 2022-01-27T14:04:02
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

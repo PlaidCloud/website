@@ -3,12 +3,6 @@ title: func.ST_X
 slug: func-st-x
 description: Return the X coordinate of the point, or NULL if not available. Input must be a point
 date: 2022-01-27T14:40:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Add Google Cloud Storage Account
 slug: add-google-cloud-storage-account
 description: How to add a Google Cloud Storage (GCS) account to Document
 date: 2022-01-25T07:39:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

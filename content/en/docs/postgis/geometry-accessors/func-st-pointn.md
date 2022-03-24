@@ -3,12 +3,6 @@ title: func.ST_PointN
 slug: func-st-pointn
 description: Return the Nth point in a single linestring or circular linestring in the geometry
 date: 2022-01-27T14:35:33
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

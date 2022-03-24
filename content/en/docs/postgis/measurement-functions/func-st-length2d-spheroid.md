@@ -3,12 +3,6 @@ title: func.ST_Length2D_Spheroid
 slug: func-st-length2d-spheroid
 description: Returns the 2D length or perimeter of the geometry on a spheroid
 date: 2022-01-26T10:39:52
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

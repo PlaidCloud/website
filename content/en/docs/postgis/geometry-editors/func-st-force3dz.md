@@ -3,12 +3,6 @@ title: func.ST_Force3DZ
 slug: func-st-force3dz
 description: This function forces the geoms into XYZ mode. If a geom has no 'Z' compenent, then a 'Z coordinate' is automatically added
 date: 2022-01-28T13:23:12
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

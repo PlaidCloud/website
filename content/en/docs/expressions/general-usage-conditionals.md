@@ -3,12 +3,6 @@ title: General Usage Conditionals
 slug: general-usage-conditionals
 description: Simple If-then-else Operation, Complex Condition with Multiple Options, Coalesce
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -25,7 +19,7 @@ Conditional statements use case syntax. This is the equivalent of simple if-then
 ```python
 case(
     [ 
-        (table.first_name != None, func.concat(table.first_name, table.last_name)), 
+        (table.first_name.isnot(None), func.concat(table.first_name, table.last_name)), 
     ], 
     else_ = table.last_name
 )
@@ -76,4 +70,8 @@ When trying to find the first non-null value in a set of columns, the coalesce m
 func.coalesce(table_beta.adjusted_price, table_alpha.override_price, table_alpha.price) * table_beta.quantity_sold
 ```
 
-Coalesce also works for text values. This example will use the nickname if it is not null, or it will fall back to the first\_name. func.coalesce(table.nickname, table.first\_name).
+Coalesce also works for text values. This example will use the nickname if it is not null, or it will fall back to the first_name. 
+
+```python
+func.coalesce(table.nickname, table.first_name)
+```

@@ -3,12 +3,6 @@ title: func.ST_GeomFromText
 slug: func-st-geomfromtext
 description: Constructs a PostGIS ST_Geometry object from the OGC Well-Known text representation
 date: 2022-01-29T14:34:41
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Controlling Parallel Execution
 slug: controlling-parallel-execution
 description: How to control serial versus parallel execution of steps in a workflow
 date: 2022-01-25T07:40:20
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

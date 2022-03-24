@@ -3,12 +3,6 @@ title: Pass
 slug: pass
 description: This does nothing but may be useful for documenting workflows
 date: 2022-01-25T07:39:51
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

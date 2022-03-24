@@ -3,12 +3,6 @@ title: Call SAP RFC
 slug: call-sap-rfc
 description: Calls an SAP ECC Remote Function Call (RFC) and retrieves the data in tabular form
 date: 2022-01-25T07:39:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Description

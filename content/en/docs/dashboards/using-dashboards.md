@@ -3,12 +3,6 @@ title: Using Dashboards
 slug: using-dashboards
 description: Create and edit data tables within dashboard and explore the data
 date: 2022-01-25T07:39:48
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -76,7 +70,7 @@ You should then see your results in the table.
 2. Run the query
 
 {{< note >}}
-When using “measurement” in a restriction it will refer to the value of the measurement taken which depends on the type of measurement. Therefore you should ensure the measurement types are the same under the “filter section (e.g. weather\_description and Maximum temperature.)”
+When using “measurement” in a restriction it will refer to the value of the measurement taken which depends on the type of measurement. Therefore you should ensure the measurement types are the same under the “filter section (e.g. weather_description and Maximum temperature.)”
 {{< /note >}}
 
 ### Restricting Result Number

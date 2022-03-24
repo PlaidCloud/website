@@ -3,12 +3,6 @@ title: func.ST_IsValidDetail
 slug: func-st-isvaliddetail
 description: Returns a valid_detail row, formed by a boolean (valid) stating whether the geometry is valid or invalid
 date: 2022-01-28T13:49:31
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

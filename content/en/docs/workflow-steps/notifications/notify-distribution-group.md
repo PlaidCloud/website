@@ -3,12 +3,6 @@ title: Notify Distribution Group
 slug: notify-distribution-group
 description: Send an email to a PlaidCloud distribution group
 date: 2022-01-25T07:40:18
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Description

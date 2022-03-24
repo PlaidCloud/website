@@ -3,12 +3,6 @@ title: func.ST_Length
 slug: func-st-length
 description: Returns the 2D Cartesian length of the geometry for geometry types and uses the inverse geodesic calculation for geography types
 date: 2022-01-31T10:25:51
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

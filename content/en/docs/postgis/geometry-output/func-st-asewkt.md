@@ -3,12 +3,6 @@ title: func.ST_AsEWKT
 slug: func-st-asewkt
 description: Returns the Well-Known Text representation of the geometry prefixed with the SRID
 date: 2022-01-29T19:04:08
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

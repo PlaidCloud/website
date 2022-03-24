@@ -3,12 +3,6 @@ title: Notify Via SMS
 slug: notify-via-sms
 description: Send an SMS message
 date: 2022-01-25T07:39:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

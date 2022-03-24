@@ -3,12 +3,6 @@ title: func.ST_M
 slug: func-st-m
 description: Return the M coordinate of a Point, or NULL if not available. Input must be a Point
 date: 2022-01-27T14:21:15
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

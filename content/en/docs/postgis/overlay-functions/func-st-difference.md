@@ -3,12 +3,6 @@ title: func.ST_Difference
 slug: func-st-difference
 description: Returns a geometry representing the part of geometry A that does not intersect geometry B
 date: 2022-01-31T10:46:57
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_MaxDistance
 slug: func-st-maxdistance
 description: Returns the 2-dimensional maximum distance between two geometries, in projected units
 date: 2022-01-31T10:39:21
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

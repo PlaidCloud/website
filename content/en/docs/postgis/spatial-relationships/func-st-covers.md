@@ -3,12 +3,6 @@ title: func.ST_Covers
 slug: func-st-covers
 description: Returns 1 (TRUE) if no point in Geometry/Geography B is outside Geometry/Geography A
 date: 2022-01-31T09:40:15
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

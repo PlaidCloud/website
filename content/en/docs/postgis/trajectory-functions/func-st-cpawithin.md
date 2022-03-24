@@ -3,12 +3,6 @@ title: func.ST_CPAWithin
 slug: func-st-cpawithin
 description: Checks whether two moving objects have ever been within the specified maximum distance
 date: 2022-02-01T11:37:35
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Data Connections
 slug: data-connections
 description: Use this table reference for more information on external system connections and databases
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -177,26 +171,26 @@ For more details on each data connection type, please navigate to the specific d
 | Parameter | Value |
 |-----------|-------|
 | **Connection Type** | SAP Analytics Cloud |
-| **Reference** | sap\_sac |
+| **Reference** | sap_sac |
 
 ### SAP ECC
 
 | Parameter | Value |
 |-----------|-------|
 | **Connection Type** | SAP ECC |
-| **Reference** | sap\_ecc |
+| **Reference** | sap_ecc |
 
 ### SAP Profitability and Cost Management (PCM)
 
 | Parameter | Value |
 |-----------|-------|
 | **Connection Type** | SAP PCM |
-| **Reference** | sap\_pcm |
+| **Reference** | sap_pcm |
 
 ### SAP Profitability and Performance Management (PaPM)
 
 | Parameter | Value |
 |-----------|-------|
 | **Connection Type** | SAP PaPM |
-| **Reference** | sap\_papm |
+| **Reference** | sap_papm |
 

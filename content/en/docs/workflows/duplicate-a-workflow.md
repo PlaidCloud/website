@@ -3,12 +3,6 @@ title: Duplicate a Workflow
 slug: duplicate-a-workflow
 description: Making a duplicate copy of a workflow
 date: 2022-01-25T07:40:20
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_MakeLine
 slug: func-st-makeline
 description: Creates a LineString containing the points of Point, MultiPoint, or LineString geometries
 date: 2022-01-25T07:40:10
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

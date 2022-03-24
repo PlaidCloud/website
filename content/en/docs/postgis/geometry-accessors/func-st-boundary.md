@@ -3,12 +3,6 @@ title: func.ST_Boundary
 slug: func-st-boundary
 description: Returns the closure of the combinatorial boundary of this Geometry
 date: 2022-01-27T13:41:13
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

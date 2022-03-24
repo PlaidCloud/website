@@ -3,12 +3,6 @@ title: Path
 slug: path
 description: Performs regular pattern matching over a sequence of rows
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

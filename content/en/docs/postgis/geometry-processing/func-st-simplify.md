@@ -3,12 +3,6 @@ title: func.ST_Simplify
 slug: func-st-simplify
 description: Returns a "simplified" version of the given geometry using the Douglas-Peucker algorithm
 date: 2022-01-31T11:12:28
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

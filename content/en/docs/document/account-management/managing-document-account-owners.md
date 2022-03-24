@@ -3,12 +3,6 @@ title: Managing Document Account Owners
 slug: managing-document-account-owners
 description: Add and remove Document account owners
 date: 2022-01-25T07:39:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

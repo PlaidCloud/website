@@ -3,12 +3,6 @@ title: Advanced Data Mapper Usage
 slug: advanced-data-mapper-usage
 description: Using the advanced features of the Data Mapper
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 ## Review

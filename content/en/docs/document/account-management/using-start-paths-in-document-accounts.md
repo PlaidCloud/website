@@ -3,12 +3,6 @@ title: Using Start Paths in Document Accounts
 slug: using-start-paths-in-document-accounts
 description: Control where users start navigation in document storage
 date: 2022-01-25T07:39:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -22,7 +16,7 @@ The Start Path option in Document accounts is useful for the following reasons:
 * When controlling access to sub-directories for specific teams and groups
 * Granting access to only one bucket
 
-For example, setting a start path of *teams/team\_1/* for the `Team 1` Document account *and teams/team\_2* for the `Team 2` Document account provides different start points on a shared account. When a member opens the Team 1 Document account they will begin file navigation inside *team/team\_1*. They will not be able to move up the tree and see anything above *teams/team\_1*.
+For example, setting a start path of *teams/team_1/* for the `Team 1` Document account *and teams/team_2* for the `Team 2` Document account provides different start points on a shared account. When a member opens the Team 1 Document account they will begin file navigation inside *team/team_1*. They will not be able to move up the tree and see anything above *teams/team_1*.
 
 
 

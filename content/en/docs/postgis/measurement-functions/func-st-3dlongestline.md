@@ -3,12 +3,6 @@ title: func.ST_3DLongestLine
 slug: func-st-3dlongestline
 description: Returns the 3-dimensional longest line between two geometries
 date: 2022-01-31T10:31:16
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: General Usage Data Type Expressions
 slug: general-usage-data-type-expressions
 description: The following data types (dytpes) are available through Analyze to support your requirements
 date: 2022-01-25T07:39:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -60,13 +54,13 @@ Casting to an incompatible dtype may cause errors. For example, casting ‘hello
 
 | Analyze Expression | Return Type | Description | Example |
 |--------------------|-------------|-------------|---------|
-| func.to\_char(timesta mp, text) | text | convert time stamp to string | to\_char(c urrent\_ti mestamp, ‘HH12:MI:S S’) |
-| func.to\_char(interva l, text) | text | convert interval to string | to\_char(i nterval ‘15h 2m 12s’, ‘HH24:MI:S S’) |
-| func.to\_char(integer , text) | text | convert integer to string | to\_char(1 25, ‘999’) |
-| func.to\_char(big float, text) | text | convert real/double precision to string | to\_char(1 25.8::real , ‘999D9’) |
-| func.to\_char(numeric , text) | text | convert numeric to string | to\_char(- 125.8, ‘999D99S’) |
-| func.to\_date(text, text) | date | convert string to date | to\_date(‘ 05 Dec 2000’, ‘DD Mon YYYY’) |
-| func.to\_number(text, text) | numeric | convert string to numeric | to\_number (‘12,454.8 -‘, ‘99G999D9S ‘) |
-| func.to\_timestamp(te xt, text) | timestamp with time zone | convert string to time stamp | to\_timest amp(‘05 Dec 2000’, ‘DD Mon YYYY’) |
-| func.to\_timestamp(bi g float) | timestamp with time zone | convert UNIX epoch to time stamp | to\_timest amp(200120 400) |
+| func.to_char(timesta mp, text) | text | convert time stamp to string | to_char(c urrent_ti mestamp, ‘HH12:MI:S S’) |
+| func.to_char(interva l, text) | text | convert interval to string | to_char(i nterval ‘15h 2m 12s’, ‘HH24:MI:S S’) |
+| func.to_char(integer , text) | text | convert integer to string | to_char(1 25, ‘999’) |
+| func.to_char(big float, text) | text | convert real/double precision to string | to_char(1 25.8::real , ‘999D9’) |
+| func.to_char(numeric , text) | text | convert numeric to string | to_char(- 125.8, ‘999D99S’) |
+| func.to_date(text, text) | date | convert string to date | to_date(‘ 05 Dec 2000’, ‘DD Mon YYYY’) |
+| func.to_number(text, text) | numeric | convert string to numeric | to_number (‘12,454.8 -‘, ‘99G999D9S ‘) |
+| func.to_timestamp(te xt, text) | timestamp with time zone | convert string to time stamp | to_timest amp(‘05 Dec 2000’, ‘DD Mon YYYY’) |
+| func.to_timestamp(bi g float) | timestamp with time zone | convert UNIX epoch to time stamp | to_timest amp(200120 400) |
 

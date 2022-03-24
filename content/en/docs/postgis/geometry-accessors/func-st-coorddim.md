@@ -3,12 +3,6 @@ title: func.ST_CoordDim
 slug: func-st-coorddim
 description: Return the coordinate dimension of the ST_Geometry value
 date: 2022-01-27T13:42:25
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

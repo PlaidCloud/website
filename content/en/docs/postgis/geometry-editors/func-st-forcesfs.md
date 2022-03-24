@@ -3,12 +3,6 @@ title: func.ST_ForceSFS
 slug: func-st-forcesfs
 description: This function supports Polyhedral surfaces, Triangles and Triangulated Irregular Network Surfaces
 date: 2022-01-28T13:28:41
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

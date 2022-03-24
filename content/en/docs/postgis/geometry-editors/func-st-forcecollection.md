@@ -3,12 +3,6 @@ title: func.ST_ForceCollection
 slug: func-st-forcecollection
 description: Converts the geometry into a GEOMETRYCOLLECTION
 date: 2022-01-28T13:27:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

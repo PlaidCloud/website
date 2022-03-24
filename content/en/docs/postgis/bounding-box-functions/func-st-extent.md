@@ -3,12 +3,6 @@ title: func.ST_Extent
 slug: func-st-extent
 description: ST_Extent returns a bounding box that encloses a set of geometries
 date: 2022-01-31T17:49:52
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

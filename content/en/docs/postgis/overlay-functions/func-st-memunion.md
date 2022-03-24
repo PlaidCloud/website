@@ -3,12 +3,6 @@ title: func.ST_MemUnion
 slug: func-st-memunion
 description: Aggregate function which unions geometry in a memory-efficent but slower way
 date: 2022-01-31T10:49:21
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

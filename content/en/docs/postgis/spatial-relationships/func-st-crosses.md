@@ -3,12 +3,6 @@ title: func.ST_Crosses
 slug: func-st-crosses
 description: Takes two geometry objects and returns TRUE if their intersection "spatially cross", but not all interior points in common
 date: 2022-01-31T09:49:40
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

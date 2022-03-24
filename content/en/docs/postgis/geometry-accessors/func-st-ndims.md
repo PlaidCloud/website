@@ -3,12 +3,6 @@ title: func.ST_NDims
 slug: func-st-ndims
 description: Returns the coordinate dimension of the geometry
 date: 2022-01-27T14:23:55
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

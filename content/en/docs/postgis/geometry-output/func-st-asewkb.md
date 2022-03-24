@@ -3,12 +3,6 @@ title: func.ST_AsEWKB
 slug: func-st-asewkb
 description: Returns the Well-Known Binary representation of the geometry with SRID metadata
 date: 2022-01-29T19:07:17
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

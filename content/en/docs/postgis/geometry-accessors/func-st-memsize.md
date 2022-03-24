@@ -3,12 +3,6 @@ title: func.ST_MemSize
 slug: func-st-memsize
 description: Returns the amount of memory space (in bytes) the geometry takes
 date: 2022-01-27T14:22:01
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Create Workflow
 slug: create-workflow
 description: Create a new workflow in 'Analyze'
 date: 2022-01-25T07:40:17
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

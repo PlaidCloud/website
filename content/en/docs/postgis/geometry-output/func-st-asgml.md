@@ -3,12 +3,6 @@ title: func.ST_AsGML
 slug: func-st-asgml
 description: Return the geometry as a Geography Markup Language (GML) element
 date: 2022-01-29T19:11:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

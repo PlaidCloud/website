@@ -3,12 +3,6 @@ title: func.ST_YMax
 slug: func-st-ymax
 description: Returns the Y maxima of a 2D or 3D bounding box or a geometry
 date: 2022-01-31T17:57:16
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

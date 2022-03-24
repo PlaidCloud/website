@@ -3,12 +3,6 @@ title: func.ST_ZMax
 slug: func-st-zmax
 description: Returns the Z maxima of a 2D or 3D bounding box or a geometry
 date: 2022-01-31T18:00:24
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_PointFromWKB
 slug: func-st-pointfromwkb
 description: This function, takes a binary representation of geometry and a (SRID) and creates the appropriate geometry type - POINT GEOMETRY
 date: 2022-01-29T14:52:42
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

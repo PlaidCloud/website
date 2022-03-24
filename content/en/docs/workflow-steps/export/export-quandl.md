@@ -3,12 +3,6 @@ title: Export Quandl
 slug: export-quandl
 description: Export an Analyze data table to Quandl’s database
 date: 2022-01-25T07:39:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -27,7 +21,7 @@ Specify the following parameters:
 
 * **Source Table**: Analyze data table to export
 * **Quandl Connection**: Accessing Quandl data sets requires a user account or a guest account with limited access. This requires set up in Tools. For details on setting up a Quandl account connection, see here: [PlaidCloud Tools – Connection](/docs/tools/data-connections)
-* **Quandl Code**: Use the **Search** button to search for data sets. Alternatively, data sets can be entered manually. This requires the user to enter the portion of the URL after “[http://www.quandl.com](http://www.quandl.com/)”. For example, to import the data set for Microsoft stock, which can be found here (<http://www.quandl.com/GOOG/NASDAQ_MSFT>), enter *GOOG/NASDAQ\_MSFT* in the Quandl Code field
+* **Quandl Code**: Use the **Search** button to search for data sets. Alternatively, data sets can be entered manually. This requires the user to enter the portion of the URL after “[http://www.quandl.com](http://www.quandl.com/)”. For example, to import the data set for Microsoft stock, which can be found here (<http://www.quandl.com/GOOG/NASDAQ_MSFT>), enter *GOOG/NASDAQ_MSFT* in the Quandl Code field
 * **Dataset Name**: Name of the dataset to be exported to Quandl
 * **Dataset Description**: Description of dataset to be exported to Quandl
 
@@ -130,7 +124,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 
@@ -161,7 +155,7 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 

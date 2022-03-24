@@ -3,12 +3,6 @@ title: func.ST_PatchN
 slug: func-st-patchn
 description: Returns the 1-based Nth geometry (face) if the geometry is a POLYHEDRALSURFACE or POLYHEDRALSURFACEM
 date: 2022-01-27T14:34:44
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

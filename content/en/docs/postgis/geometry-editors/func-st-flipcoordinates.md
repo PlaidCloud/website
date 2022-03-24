@@ -3,12 +3,6 @@ title: func.ST_FlipCoordinates
 slug: func-st-flipcoordinates
 description: Returns a version of the given geometry with X and Y axis flipped
 date: 2022-01-28T13:19:43
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

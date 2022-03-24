@@ -3,12 +3,6 @@ title: func.ST_Affine
 slug: func-st-affine
 description: Applies a 3D affine transformation to the geometry to do things like translate, rotate, scale in one step
 date: 2022-01-31T17:32:22
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

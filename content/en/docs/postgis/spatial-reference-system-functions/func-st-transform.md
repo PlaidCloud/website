@@ -3,12 +3,6 @@ title: func.ST_Transform
 slug: func-st-transform
 description: Returns a new geometry with its coordinates transformed to a different spatial reference system
 date: 2022-01-29T14:25:00
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Norms and Distance Functions
 slug: norms-and-distance-functions
 description: Useful utility functions for basic linear algebra operations
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

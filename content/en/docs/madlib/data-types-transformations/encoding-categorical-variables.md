@@ -3,12 +3,6 @@ title: Encoding Categorical Variables
 slug: encoding-categorical-variables
 description: Coding categorical variables into one-hot, dummy, effects, orthogonal, and Helmert
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_BoundingDiagonal
 slug: func-st-boundingdiagonal
 description: Returns the diagonal of the supplied geometry's bounding box as a LineString
 date: 2022-01-27T13:57:23
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

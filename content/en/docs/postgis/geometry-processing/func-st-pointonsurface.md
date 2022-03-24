@@ -3,12 +3,6 @@ title: func.ST_PointOnSurface
 slug: func-st-pointonsurface
 description: Returns a POINT guaranteed to intersect a surface
 date: 2022-01-31T11:09:23
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

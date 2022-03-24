@@ -3,12 +3,6 @@ title: func.ST_Expand
 slug: func-st-expand
 description: This function returns a bounding box expanded from the bounding box of the input
 date: 2022-01-31T17:48:22
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

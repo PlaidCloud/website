@@ -3,12 +3,6 @@ title: func.ST_Intersection
 slug: func-st-intersection
 description: Returns a geometry representing the point-set intersection of two geometries
 date: 2022-01-31T10:48:40
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

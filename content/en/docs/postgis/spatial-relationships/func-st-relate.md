@@ -3,12 +3,6 @@ title: func.ST_Relate
 slug: func-st-relate
 description: These functions allow testing and evaluating the spatial (topological) relationship between two geometries
 date: 2022-01-31T10:02:04
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

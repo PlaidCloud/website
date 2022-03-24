@@ -3,12 +3,6 @@ title: func.ST_TransScale
 slug: func-st-transscale
 description: Translates the geometry using the deltaX and deltaY args, then scales it using the XFactor, YFactor args, working in 2D only
 date: 2022-01-31T17:40:10
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

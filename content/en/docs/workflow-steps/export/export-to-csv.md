@@ -3,12 +3,6 @@ title: Export to CSV
 slug: export-to-csv
 description: Export an Analyze data table to PlaidCloud Document as a CSV delimited file
 date: 2022-01-25T07:39:58
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -53,10 +47,10 @@ To specify a custom delimiter, select **User Defined Separator –>** and then *
 The **Text Qualifier** section allows users to specify how to handle data with quotation marks and escape characters. Choose from the following settings:
 
 
-* Special Characters (QUOTE\_MINIMAL): Quote fields with special characters (anything that would confuse a parser configured with the same dialect and options). This is the default setting.
-* All (QUOTE\_ALL): Quote everything, regardless of type.
-* Non-Numeric (QUOTE\_NONNUMERIC): Quote all fields that are not integers or floats. When used with the reader, input fields that are not quoted are converted to floats.
-* None (QUOTE\_NONE): Do not quote anything on output. Quote characters are included in output with the escape character provided by the user. Note that only a single escape character can be provided.
+* Special Characters (QUOTE_MINIMAL): Quote fields with special characters (anything that would confuse a parser configured with the same dialect and options). This is the default setting.
+* All (QUOTE_ALL): Quote everything, regardless of type.
+* Non-Numeric (QUOTE_NONNUMERIC): Quote all fields that are not integers or floats. When used with the reader, input fields that are not quoted are converted to floats.
+* None (QUOTE_NONE): Do not quote anything on output. Quote characters are included in output with the escape character provided by the user. Note that only a single escape character can be provided.
 
 Lastly, the **Use Windows Compatible Line Endings** checkbox is selected by default to ensure compatibility with Windows systems. It is advisable to leave this setting on unless working in a unix-only environment.
 
@@ -170,7 +164,7 @@ Any valid Python expression is acceptable to subset the data. Please see [Expres
 To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 
@@ -198,7 +192,7 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 

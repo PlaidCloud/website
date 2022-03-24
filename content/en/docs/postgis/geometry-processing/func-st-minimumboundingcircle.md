@@ -3,12 +3,6 @@ title: func.ST_MinimumBoundingCircle
 slug: func-st-minimumboundingcircle
 description: Returns the smallest circle polygon that contains a geometry
 date: 2022-01-31T11:06:48
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
