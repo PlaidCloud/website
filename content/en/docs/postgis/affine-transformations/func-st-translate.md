@@ -3,12 +3,6 @@ title: func.ST_Translate
 slug: func-st-translate
 description: Returns a new geometry whose coordinates are translated delta x,delta y,delta z units
 date: 2022-01-31T17:39:26
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

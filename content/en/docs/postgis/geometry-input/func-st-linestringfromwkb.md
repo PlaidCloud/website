@@ -3,12 +3,6 @@ title: func.ST_LinestringFromWKB
 slug: func-st-linestringfromwkb
 description: This function, takes a binary representation of geometry and a (SRID) and creates the appropriate geometry type -LINESTRING GEOMETRY
 date: 2022-01-29T14:51:06
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

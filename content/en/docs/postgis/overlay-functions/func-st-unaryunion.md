@@ -3,12 +3,6 @@ title: func.ST_UnaryUnion
 slug: func-st-unaryunion
 description: A single-input variant of ST_Union
 date: 2022-01-31T10:56:12
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

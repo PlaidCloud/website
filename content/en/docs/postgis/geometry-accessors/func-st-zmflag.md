@@ -3,12 +3,6 @@ title: func.ST_Zmflag
 slug: func-st-zmflag
 description: Returns a code indicating the ZM coordinate dimension of a geometry
 date: 2022-01-27T14:43:59
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

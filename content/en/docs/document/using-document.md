@@ -3,12 +3,6 @@ title: Using Document
 slug: using-document
 description: Upload, download, delete, and view files in Document accounts
 date: 2022-01-25T07:39:48
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

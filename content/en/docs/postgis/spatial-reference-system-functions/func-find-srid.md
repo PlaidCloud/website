@@ -3,12 +3,6 @@ title: func.Find_SRID
 slug: func-find-srid
 description: Returns the integer SRID of the specified geometry column
 date: 2022-01-26T10:36:40
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

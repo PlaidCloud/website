@@ -3,12 +3,6 @@ title: func.ST_GMLToSQL
 slug: func-st-gmltosql
 description: This method implements the SQL/MM specification. SQL-MM 3 5.1.50 (except for curves support)
 date: 2022-01-29T15:07:29
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

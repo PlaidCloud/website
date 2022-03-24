@@ -3,12 +3,6 @@ title: func.ST_AsBinary
 slug: func-st-asbinary
 description: Returns the Well-Known Binary representation of the geometry
 date: 2022-01-29T19:06:28
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

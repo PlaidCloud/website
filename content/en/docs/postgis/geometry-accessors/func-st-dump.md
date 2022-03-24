@@ -3,12 +3,6 @@ title: func.ST_Dump
 slug: func-st-dump
 description: This is a set-returning function (SRF). It returns a set of geometry_dump rows, formed by a geometry (geom) and an array of integers (path)
 date: 2022-01-27T13:45:06
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

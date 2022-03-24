@@ -3,12 +3,6 @@ title: func.ST_MakeEnvelope
 slug: func-st-makeenvelope
 description: Creates a rectangular Polygon from the minimum and maximum values for X and Y
 date: 2022-01-25T07:40:10
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

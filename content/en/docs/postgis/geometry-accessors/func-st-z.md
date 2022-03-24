@@ -3,12 +3,6 @@ title: func.ST_Z
 slug: func-st-z
 description: Return the Z coordinate of the point, or NULL if not available. Input must be a point
 date: 2022-01-27T14:43:16
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_InterpolatePoint
 slug: func-st-interpolatepoint
 description: Return the value of the measure dimension of a geometry at the point closed to the provided point
 date: 2022-02-01T11:33:16
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

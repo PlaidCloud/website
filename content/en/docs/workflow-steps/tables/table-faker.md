@@ -3,12 +3,6 @@ title: Table Faker
 slug: table-faker
 description: This function generates fake data
 date: 2022-01-25T07:39:50
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -89,10 +83,10 @@ Table Faker generates fake data.
 
 | Generator | Optional Arguments |
 | Expriration Date | “start”=”now”“end”=”+10y”## ‘12/20’ |
-| Full | “card\_type”=null |
-| Number | “card\_type”=null |
-| Provider | “card\_type”=null |
-| Security Code | “card\_type”=null |
+| Full | “card_type”=null |
+| Number | “card_type”=null |
+| Provider | “card_type”=null |
+| Security Code | “card_type”=null |
 
 ### Currency
 
@@ -110,20 +104,20 @@ Table Faker generates fake data.
 | Generator | Optional Arguments |
 | AM/PM |  |
 | Century |  |
-| Date | “pattern”:”%Y-%m-%d”“end\_datetime”:null |
-| Date Time | “tzinfo”:null“end\_datetime”=null |
-| Date Time this Century | “before\_now”=true“after\_now”=false“tzinfo”=null |
-| Date Time this Decade | “before\_now”=true“after\_now”=false“tzinfo”=null |
-| Date Time this Month | “before\_now”=true“after\_now”=false“tzinfo”=null |
-| Date Time this Year | “before\_now”=true“after\_now”=false“tzinfo”=null |
+| Date | “pattern”:”%Y-%m-%d”“end_datetime”:null |
+| Date Time | “tzinfo”:null“end_datetime”=null |
+| Date Time this Century | “before_now”=true“after_now”=false“tzinfo”=null |
+| Date Time this Decade | “before_now”=true“after_now”=false“tzinfo”=null |
+| Date Time this Month | “before_now”=true“after_now”=false“tzinfo”=null |
+| Date Time this Year | “before_now”=true“after_now”=false“tzinfo”=null |
 | Day of Month |  |
 | Day of Week |  |
-| ISO8601 Date Time | “tzinfo”=null“end\_datetime”=null |
+| ISO8601 Date Time | “tzinfo”=null“end_datetime”=null |
 | Month |  |
 | Month Name |  |
-| Past Date (Last 30 Days) | “start\_date”=”-30d”“tzinfo”=null |
+| Past Date (Last 30 Days) | “start_date”=”-30d”“tzinfo”=null |
 | Timezone |  |
-| Unix Time | “end\_datetime”=null“start\_datetime”=null |
+| Unix Time | “end_datetime”=null“start_datetime”=null |
 | Year |  |
 
 ### File
@@ -150,7 +144,7 @@ Table Faker generates fake data.
 | Free Email |  |
 | Free Email Domain |  |
 | Image URL | “width”=null“height”=null |
-| IPv4 | “network”=false“address\_class”=”no”“private”=null |
+| IPv4 | “network”=false“address_class”=”no”“private”=null |
 | IPv6 | “network”=false |
 | MAC Address |  |
 | Safe Email |  |
@@ -185,13 +179,13 @@ Table Faker generates fake data.
 
 
 | Generator | Optional Arguments |
-| Paragraph | “nb\_sentences”=”3”“variable\_nb\_sentences”=true“ext\_word\_list”=null |
-| Paragraphs | “nb”=”3”“ext\_word\_list”=null |
-| Sentence | “nb\_words”=”6”“variable\_nb\_words”=true“ext\_word\_list”=null |
-| Sentences | “nb”=”3”“ext\_word\_list”=null |
-| Text | “max\_nb\_chars”=”200”“ext\_word\_list”=null |
-| Word | “ext\_word\_list”=null |
-| Words | “nb”=”3”“ext\_word\_list”=null |
+| Paragraph | “nb_sentences”=”3”“variable_nb_sentences”=true“ext_word_list”=null |
+| Paragraphs | “nb”=”3”“ext_word_list”=null |
+| Sentence | “nb_words”=”6”“variable_nb_words”=true“ext_word_list”=null |
+| Sentences | “nb”=”3”“ext_word_list”=null |
+| Text | “max_nb_chars”=”200”“ext_word_list”=null |
+| Word | “ext_word_list”=null |
+| Words | “nb”=”3”“ext_word_list”=null |
 
 ### Misc
 
@@ -200,15 +194,15 @@ Table Faker generates fake data.
 
 | Generator | Optional Arguments |
 | Binary | “length”=”1048576” |
-| Boolean | “chance\_of\_getting\_true”=”50” |
+| Boolean | “chance_of_getting_true”=”50” |
 | Null Boolean |  |
 | Locale |  |
 | Language Code |  |
-| MD5 | “raw\_output”=false |
-| Password | “length”=”10”“special\_chars”=true“digits”=true“upper\_case”=true“lower\_case”=true |
+| MD5 | “raw_output”=false |
+| Password | “length”=”10”“special_chars”=true“digits”=true“upper_case”=true“lower_case”=true |
 | Random String |  |
-| SHA1 | “raw\_output”=false |
-| SHA256 | “raw\_output”=false |
+| SHA1 | “raw_output”=false |
+| SHA256 | “raw_output”=false |
 | UUID4 |  |
 
 ### Numeric
@@ -274,7 +268,7 @@ Table Faker generates fake data.
 
 
 | Generator | Optional Arguments |
-| Chrome | “version\_from”=”13”“version\_to”=”63”“build\_from”=”800”“build\_to”=”899” |
+| Chrome | “version_from”=”13”“version_to”=”63”“build_from”=”800”“build_to”=”899” |
 | Firefox |  |
 | Full User Agent |  |
 | Internet Explorer |  |
@@ -320,7 +314,7 @@ In order to provide the options for random choice, simply put your options in qu
 
 
 
-Here, the “Key Word Args/Pattern/Choices” column of the “pattern” row contains a sentence with several references. The first reference equation ( {percentage0-100:.2f}% ) points to the “percentage0-100” row which will generate a random equation. Therefore, the random percentage produced by the “percentage0-100” row will be automatically inserted into the sentence. The reference equation {first\_name} points to the row titled “first\_name” which will randomly generate a first name, and this name will be automatically inserted into the sentence. The last reference equation ( {randomn\_choice} ) operates the same as the other two.
+Here, the “Key Word Args/Pattern/Choices” column of the “pattern” row contains a sentence with several references. The first reference equation ( {percentage0-100:.2f}% ) points to the “percentage0-100” row which will generate a random equation. Therefore, the random percentage produced by the “percentage0-100” row will be automatically inserted into the sentence. The reference equation {first_name} points to the row titled “first_name” which will randomly generate a first name, and this name will be automatically inserted into the sentence. The last reference equation ( {randomn_choice} ) operates the same as the other two.
 
 
 

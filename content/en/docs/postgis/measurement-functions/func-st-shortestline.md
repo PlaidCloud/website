@@ -3,12 +3,6 @@ title: func.ST_ShortestLine
 slug: func-st-shortestline
 description: Returns the 2-dimensional shortest line between two geometries
 date: 2022-01-31T10:44:28
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

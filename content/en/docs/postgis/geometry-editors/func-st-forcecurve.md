@@ -3,12 +3,6 @@ title: func.ST_ForceCurve
 slug: func-st-forcecurve
 description: Turns a geometry into its curved representation
 date: 2022-01-28T13:31:24
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

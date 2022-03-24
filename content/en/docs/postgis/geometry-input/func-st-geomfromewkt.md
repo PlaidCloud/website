@@ -3,12 +3,6 @@ title: func.ST_GeomFromEWKT
 slug: func-st-geomfromewkt
 description: Constructs a PostGIS ST_Geometry object from the OGC Extended Well-Known text (EWKT) representation
 date: 2022-01-29T14:32:21
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

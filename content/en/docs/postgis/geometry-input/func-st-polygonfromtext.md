@@ -3,12 +3,6 @@ title: func.ST_PolygonFromText
 slug: func-st-polygonfromtext
 description: Makes a Polygon Geometry from WKT with the given SRID
 date: 2022-01-29T14:42:48
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

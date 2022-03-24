@@ -3,12 +3,6 @@ title: func.ST_3DDWithin
 slug: func-st-3ddwithin
 description: For geometry type returns true if the 3d distance between two objects is within distance_of_srid specified projected units
 date: 2022-01-31T09:50:26
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

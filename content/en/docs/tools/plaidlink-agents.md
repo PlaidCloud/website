@@ -3,12 +3,6 @@ title: PlaidLink Agents
 slug: plaidlink-agents
 description: Create and manage remote access using lightweight agents
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -87,7 +81,7 @@ This will open a form where you can view the public and private key values.
 
 
 
-Please see the PlaidLink installation documentation if you need to install the agent: :*doc:’../../../plaidlink/getting\_started.rst’*
+Please see the PlaidLink installation documentation if you need to install the agent: :*doc:’../../../plaidlink/getting_started.rst’*
 
 
 

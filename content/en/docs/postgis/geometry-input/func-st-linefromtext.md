@@ -3,12 +3,6 @@ title: func.ST_LineFromText
 slug: func-st-linefromtext
 description: Makes a Linestring Geometry from WKT with the given SRID
 date: 2022-01-29T14:36:13
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_Snap
 slug: func-st-snap
 description: Snaps the vertices and segments of a geometry to another Geometry's vertices
 date: 2022-01-28T13:46:05
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

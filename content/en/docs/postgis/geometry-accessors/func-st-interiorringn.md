@@ -3,12 +3,6 @@ title: func.ST_InteriorRingN
 slug: func-st-interiorringn
 description: Returns the Nth interior linestring ring of the polygon geometry
 date: 2022-01-27T14:11:41
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

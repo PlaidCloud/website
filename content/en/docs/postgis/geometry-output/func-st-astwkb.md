@@ -3,12 +3,6 @@ title: func.ST_AsTWKB
 slug: func-st-astwkb
 description: Returns the geometry in TWKB (Tiny Well-Known Binary) format
 date: 2022-01-29T19:19:07
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

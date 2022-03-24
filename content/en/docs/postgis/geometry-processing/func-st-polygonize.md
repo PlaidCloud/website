@@ -3,12 +3,6 @@ title: func.ST_Polygonize
 slug: func-st-polygonize
 description: Creates a GeometryCollection containing the polygons formed by the constituent linework of a set of geometries
 date: 2022-01-31T11:10:06
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

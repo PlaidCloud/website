@@ -3,12 +3,6 @@ title: func.ascii
 slug: func-ascii
 description: The ASCII function takes a single argument of any character data type and returns an integer based on the first character data
 date: 2022-01-26T11:34:21
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

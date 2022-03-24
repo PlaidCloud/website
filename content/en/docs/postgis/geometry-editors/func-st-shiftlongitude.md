@@ -3,12 +3,6 @@ title: func.ST_ShiftLongitude
 slug: func-st-shiftlongitude
 description: Reads every point/vertex in a geometry, and if the longitude coordinate is <0, adds 360 to it
 date: 2022-01-28T13:43:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

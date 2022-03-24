@@ -3,12 +3,6 @@ title: func.ST_NumGeometries
 slug: func-st-numgeometries
 description: Returns the number of Geometries
 date: 2022-01-27T14:27:02
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

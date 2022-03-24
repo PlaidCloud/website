@@ -3,12 +3,6 @@ title: Delete Document Directory
 slug: delete-document-directory
 description: Delete an existing directory from within PlaidCloud Document
 date: 2022-01-25T07:39:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

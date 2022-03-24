@@ -3,12 +3,6 @@ title: func.ST_Subdivide
 slug: func-st-subdivide
 description: Divides geometry into parts using rectilinear lines, until each part can be represented using no more than max_vertices
 date: 2022-01-31T10:53:12
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

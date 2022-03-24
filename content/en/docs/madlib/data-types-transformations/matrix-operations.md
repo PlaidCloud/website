@@ -3,12 +3,6 @@ title: Matrix Operations
 slug: matrix-operations
 description: Provides basic matrix operations for matrices that are too big to fit in memory
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

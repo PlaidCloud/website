@@ -3,12 +3,6 @@ title: View Workflow Report
 slug: view-workflow-report
 description: Get a summary report of the workflow and settings
 date: 2022-01-25T07:40:20
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

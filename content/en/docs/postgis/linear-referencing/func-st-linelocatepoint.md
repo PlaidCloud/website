@@ -3,12 +3,6 @@ title: func.ST_LineLocatePoint
 slug: func-st-linelocatepoint
 description: Returns a float between 0 and 1 representing the location of the closest point on LineString to the given Point
 date: 2022-01-31T18:03:30
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

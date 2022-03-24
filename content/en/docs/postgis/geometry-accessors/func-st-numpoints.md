@@ -3,12 +3,6 @@ title: func.ST_NumPoints
 slug: func-st-numpoints
 description: Return the number of points in an ST_LineString or ST_CircularString value
 date: 2022-01-27T14:32:28
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

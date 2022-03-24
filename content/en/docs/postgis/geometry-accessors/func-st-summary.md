@@ -3,12 +3,6 @@ title: func.ST_Summary
 slug: func-st-summary
 description: Returns a text summary of the contents of the geometry
 date: 2022-01-27T14:38:01
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

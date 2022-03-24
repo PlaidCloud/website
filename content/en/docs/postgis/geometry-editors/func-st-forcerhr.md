@@ -3,12 +3,6 @@ title: func.ST_ForceRHR
 slug: func-st-forcerhr
 description: Forces the orientation of the vertices in a polygon to follow the area that is bounded by the polygon is to the right of the boundary
 date: 2022-01-28T13:30:34
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

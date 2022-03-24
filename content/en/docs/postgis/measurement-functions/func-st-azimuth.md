@@ -3,12 +3,6 @@ title: func.ST_Azimuth
 slug: func-st-azimuth
 description: Returns the azimuth in radians of the segment defined by the given point geometries, or NULL if the two points are coincident
 date: 2022-01-31T10:15:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

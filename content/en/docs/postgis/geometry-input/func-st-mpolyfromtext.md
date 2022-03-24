@@ -3,12 +3,6 @@ title: func.ST_MPolyFromText
 slug: func-st-mpolyfromtext
 description: Makes a MultiPolygon from WKT with the given SRID
 date: 2022-01-29T14:40:16
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

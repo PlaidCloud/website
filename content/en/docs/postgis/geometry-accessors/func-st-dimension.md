@@ -3,12 +3,6 @@ title: func.ST_Dimension
 slug: func-st-dimension
 description: Return the topological dimension of this Geometry object, which must be less than or equal to the coordinate dimension
 date: 2022-01-27T13:43:42
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

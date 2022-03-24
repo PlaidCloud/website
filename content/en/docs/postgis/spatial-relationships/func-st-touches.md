@@ -3,12 +3,6 @@ title: func.ST_Touches
 slug: func-st-touches
 description: Returns TRUE if the only points in common between g1 and g2 lie in the union of the boundaries of g1 and g2
 date: 2022-01-31T10:05:09
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

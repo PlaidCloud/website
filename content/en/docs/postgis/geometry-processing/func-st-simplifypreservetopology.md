@@ -3,12 +3,6 @@ title: func.ST_SimplifyPreserveTopology
 slug: func-st-simplifypreservetopology
 description: Simplifies a geometry by removing points that would fall within a specified distance tolerance.
 date: 2022-01-31T17:28:22
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

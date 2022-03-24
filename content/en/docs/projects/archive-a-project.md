@@ -3,12 +3,6 @@ title: Archive a Project
 slug: archive-a-project
 description: Create and Restore your project archives
 date: 2022-01-25T07:39:48
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

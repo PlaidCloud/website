@@ -3,12 +3,6 @@ title: func.ST_AsSVG
 slug: func-st-assvg
 description: Return the geometry as Scalar Vector Graphics (SVG) path data
 date: 2022-01-29T19:19:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: Sessionize
 slug: sessionize
 description: Performs time-oriented session reconstruction on a data set comprising a sequence of events
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

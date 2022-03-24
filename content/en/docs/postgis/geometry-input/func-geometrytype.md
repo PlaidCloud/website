@@ -3,12 +3,6 @@ title: func.GeometryType
 slug: func-geometrytype
 description: Returns the type of the geometry as a string
 date: 2022-01-26T10:38:23
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

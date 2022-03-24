@@ -3,12 +3,6 @@ title: func.ST_Polygon
 slug: func-st-polygon
 description: Returns a polygon built from the given LineString and sets the spatial reference system from the SRID
 date: 2022-01-25T07:40:07
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_AsKML
 slug: func-st-askml
 description: Return the geometry as a Keyhole Markup Language (KML) element
 date: 2022-01-29T19:13:18
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

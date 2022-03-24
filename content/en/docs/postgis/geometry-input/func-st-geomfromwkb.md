@@ -3,12 +3,6 @@ title: func.ST_GeomFromWKB
 slug: func-st-geomfromwkb
 description: This function takes a binary representation of a geometry and a Spatial Reference System ID (SRID) and creates the appropriate geometry type
 date: 2022-01-29T14:48:25
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_RotateZ
 slug: func-st-rotatez
 description: Rotates a geometry geomA - rotRadians about the Z axis
 date: 2022-01-31T17:36:54
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

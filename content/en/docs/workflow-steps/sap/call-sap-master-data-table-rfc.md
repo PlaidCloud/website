@@ -3,12 +3,6 @@ title: Call SAP Master Data Table RFC
 slug: call-sap-master-data-table-rfc
 description: Calls an SAP ECC Remote Function Call (RFC) designed to access master data tables and retrieves the data in tabular form
 date: 2022-01-25T07:39:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

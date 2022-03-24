@@ -3,12 +3,6 @@ title: func.ST_HausdorffDistance
 slug: func-st-hausdorffdistance
 description: Returns the Hausdorff distance between two geometries, a measure of how similar or dissimilar 2 geometries are
 date: 2022-01-31T10:24:51
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_Force4D
 slug: func-st-force4d
 description: Forces the geometries into XYZM mode
 date: 2022-01-28T13:26:03
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

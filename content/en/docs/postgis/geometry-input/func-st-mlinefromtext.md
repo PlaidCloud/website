@@ -3,12 +3,6 @@ title: func.ST_MLineFromText
 slug: func-st-mlinefromtext
 description: Makes a Multi-Line Geometry from Well-Known-Text (WKT) with the given SRID
 date: 2022-01-29T14:37:00
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

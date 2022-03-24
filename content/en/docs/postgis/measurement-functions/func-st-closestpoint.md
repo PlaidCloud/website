@@ -3,12 +3,6 @@ title: func.ST_ClosestPoint
 slug: func-st-closestpoint
 description: Returns the 2-dimensional point on g1 that is closest to g2
 date: 2022-01-31T10:16:45
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

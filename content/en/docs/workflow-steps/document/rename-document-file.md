@@ -3,12 +3,6 @@ title: Rename Document File
 slug: rename-document-file
 description: Rename an existing file in PlaidCloud Document
 date: 2022-01-25T07:40:18
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

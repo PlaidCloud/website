@@ -3,12 +3,6 @@ title: Create Document Directory
 slug: create-document-directory
 description: Use PlaidCloud Document to create a new Document Directory
 date: 2022-01-25T07:40:17
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

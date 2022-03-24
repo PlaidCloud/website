@@ -3,12 +3,6 @@ title: func.ST_PointInsideCircle
 slug: func-st-pointinsidecircle
 description: Returns true if the geometry is a point and is inside the circle with center center_x,center_y and radius radius
 date: 2022-01-31T10:12:27
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

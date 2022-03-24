@@ -3,12 +3,6 @@ title: func.ST_LineSubstring
 slug: func-st-linesubstring
 description: Return a linestring being a substring of the input one starting and ending at the given fractions of total 2d length
 date: 2022-01-31T18:05:28
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

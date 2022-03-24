@@ -3,12 +3,6 @@ title: func.ST_Buffer
 slug: func-st-buffer
 description: Returns a geometry/geography that represents all points whose distance from this Geometry/geography is less than or equal to distance
 date: 2022-01-31T10:58:04
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

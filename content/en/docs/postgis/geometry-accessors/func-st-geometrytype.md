@@ -3,12 +3,6 @@ title: func.ST_GeometryType
 slug: func-st-geometrytype
 description: Returns the type of the geometry as a string. 'ST_LineString', 'ST_Polygon','ST_MultiPolygon'
 date: 2022-01-27T13:38:32
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

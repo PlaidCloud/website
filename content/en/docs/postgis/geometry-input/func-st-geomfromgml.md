@@ -3,12 +3,6 @@ title: func.ST_GeomFromGML
 slug: func-st-geomfromgml
 description: Constructs a PostGIS ST_Geometry object from the OGC GML representation
 date: 2022-01-29T15:01:26
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

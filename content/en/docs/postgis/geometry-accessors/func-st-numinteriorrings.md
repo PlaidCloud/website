@@ -3,12 +3,6 @@ title: func.ST_NumInteriorRings
 slug: func-st-numinteriorrings
 description: Return the number of interior rings of a polygon geometry
 date: 2022-01-27T14:28:54
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

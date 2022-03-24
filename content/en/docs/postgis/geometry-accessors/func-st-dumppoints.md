@@ -3,12 +3,6 @@ title: func.ST_DumpPoints
 slug: func-st-dumppoints
 description: This set-returning function (SRF) returns a set of geometry_dump rows formed by a geometry (geom) and an array of integers (path)
 date: 2022-01-27T13:46:28
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

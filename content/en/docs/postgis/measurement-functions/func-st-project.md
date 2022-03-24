@@ -3,12 +3,6 @@ title: func.ST_Project
 slug: func-st-project
 description: Returns a point projected from a start point along a geodesic using a given distance and azimuth (bearing)
 date: 2022-01-31T10:43:45
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

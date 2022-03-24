@@ -3,12 +3,6 @@ title: func.isfinite
 slug: func-isfinite
 description: This function is used to determine whether the numeric value is finite
 date: 2022-01-25T07:39:55
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

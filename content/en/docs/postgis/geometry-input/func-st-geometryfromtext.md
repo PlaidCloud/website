@@ -3,12 +3,6 @@ title: func.ST_GeometryFromText
 slug: func-st-geometryfromtext
 description: This method implements the SQL/MM specification and OpenGIS simple features implementation
 date: 2022-01-29T14:33:53
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

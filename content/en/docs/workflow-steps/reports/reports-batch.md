@@ -3,12 +3,6 @@ title: Reports Batch
 slug: reports-batch
 description: Generate multiple PDF documents based on specific data from each report
 date: 2022-01-25T07:40:18
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

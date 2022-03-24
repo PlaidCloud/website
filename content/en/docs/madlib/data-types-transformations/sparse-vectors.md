@@ -3,12 +3,6 @@ title: Sparse Vectors
 slug: sparse-vectors
 description: Provides compressed storage of vectors that have many duplicate elements
 date: 2022-01-25T07:40:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

@@ -3,12 +3,6 @@ title: func.ST_CollectionExtract
 slug: func-st-collectionextract
 description: Given a geometry collection, return a homogeneous multi-geometry
 date: 2022-01-28T13:15:22
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

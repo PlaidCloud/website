@@ -3,12 +3,6 @@ title: func.ST_RotateY
 slug: func-st-rotatey
 description: Rotates a geometry geomA - rotRadians about the y axis
 date: 2022-01-31T17:35:31
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

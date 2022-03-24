@@ -3,12 +3,6 @@ title: func.ST_Envelope
 slug: func-st-envelope
 description: Returns the double-precision (float8) minimum bounding box for the supplied geometry, as a geometry
 date: 2022-01-27T13:58:19
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

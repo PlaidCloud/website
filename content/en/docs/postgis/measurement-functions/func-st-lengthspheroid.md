@@ -3,12 +3,6 @@ title: func.ST_LengthSpheroid
 slug: func-st-lengthspheroid
 description: Returns the 2D or 3D length/perimeter of a lon/lat geometry on a spheroid
 date: 2022-01-31T10:32:10
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

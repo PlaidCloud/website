@@ -3,12 +3,6 @@ title: Notify via Microsoft Teams
 slug: notify-via-microsoft-teams
 description: Send notifications to Microsoft Teams channels
 date: 2022-01-25T07:40:21
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

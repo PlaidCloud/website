@@ -3,12 +3,6 @@ title: func.ST_OrderingEquals
 slug: func-st-orderingequals
 description: Compares two geometries and returns it (TRUE) if the geometries are equal and the coordinates are in the same order
 date: 2022-01-31T10:00:28
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

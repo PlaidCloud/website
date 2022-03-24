@@ -3,12 +3,6 @@ title: func.ST_SRID
 slug: func-st-srid
 description: Returns the spatial reference identifier for the ST_Geometry as defined in spatial_ref_sys table
 date: 2022-01-29T14:23:27
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

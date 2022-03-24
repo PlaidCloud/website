@@ -3,12 +3,6 @@ title: Table Lookup
 slug: table-lookup
 description: Similar to Microsoft Excel, this workflow function also increases process performance
 date: 2022-01-25T07:39:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
@@ -159,7 +153,7 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 
@@ -190,7 +184,7 @@ To report duplicates, select the **Report Duplicates in Table** checkbox and the
 
 
 {{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common\_features#table-data-selection) section.
+This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
 {{< /caution >}}
 
 
@@ -285,8 +279,8 @@ No **Data Filters** are applied to either source or target data.
 
 
 
-Lastly, the source data table is matched to the lookup data table using the *Product\_ID* field found in each table. Only the *Product\_Description* and *Unit\_Cost* columns are appended to the target data table, with *Unit\_Cost* being renamed to *Retail\_Unit\_Cost* in the process. 
+Lastly, the source data table is matched to the lookup data table using the *Product_ID* field found in each table. Only the *Product_Description* and *Unit_Cost* columns are appended to the target data table, with *Unit_Cost* being renamed to *Retail_Unit_Cost* in the process. 
 
 
 
-In the resulting target data table, the *Product\_Description* and *Retail\_Unit\_Cost* columns have been added, based on matching values in the *Product\_ID* column. 
+In the resulting target data table, the *Product_Description* and *Retail_Unit_Cost* columns have been added, based on matching values in the *Product_ID* column. 

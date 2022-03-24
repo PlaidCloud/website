@@ -3,12 +3,6 @@ title: func.ST_Point
 slug: func-st-point
 description: Returns a Point with the given X and Y coordinate values
 date: 2022-01-25T07:40:08
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

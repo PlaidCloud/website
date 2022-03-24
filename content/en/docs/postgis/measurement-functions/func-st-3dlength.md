@@ -3,12 +3,6 @@ title: func.ST_3DLength
 slug: func-st-3dlength
 description: Returns the 3-dimensional or 2-dimensional length of the geometry if it is a linestring or multi-linestring
 date: 2022-01-31T10:29:37
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

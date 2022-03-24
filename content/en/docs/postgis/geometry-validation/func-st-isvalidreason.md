@@ -3,12 +3,6 @@ title: func.ST_IsValidReason
 slug: func-st-isvalidreason
 description: Returns text stating if a geometry is valid or not an if not valid, a reason why
 date: 2022-01-28T13:51:10
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

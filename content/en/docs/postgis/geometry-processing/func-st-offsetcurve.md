@@ -3,12 +3,6 @@ title: func.ST_OffsetCurve
 slug: func-st-offsetcurve
 description: Return an offset line at a given distance and side from an input line
 date: 2022-01-31T11:07:36
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

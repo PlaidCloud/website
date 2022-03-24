@@ -3,12 +3,6 @@ title: Delete Document File
 slug: delete-document-file
 description: Delete an existing file from within PlaidCloud Document
 date: 2022-01-25T07:39:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

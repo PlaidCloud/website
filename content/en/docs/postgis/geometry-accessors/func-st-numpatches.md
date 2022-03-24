@@ -3,12 +3,6 @@ title: func.ST_NumPatches
 slug: func-st-numpatches
 description: Return the number of faces on a Polyhedral Surface
 date: 2022-01-27T14:31:43
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

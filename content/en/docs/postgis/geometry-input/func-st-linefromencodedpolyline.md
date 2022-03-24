@@ -3,12 +3,6 @@ title: func.ST_LineFromEncodedPolyline
 slug: func-st-linefromencodedpolyline
 description: Creates a LineString from an Encoded Polyline string
 date: 2022-01-29T15:12:17
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

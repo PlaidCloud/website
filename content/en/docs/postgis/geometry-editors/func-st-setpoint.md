@@ -3,12 +3,6 @@ title: func.ST_SetPoint
 slug: func-st-setpoint
 description: Replace point N of linestring with given point
 date: 2022-01-28T13:42:02
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

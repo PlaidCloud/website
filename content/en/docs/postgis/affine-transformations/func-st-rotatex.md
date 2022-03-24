@@ -3,12 +3,6 @@ title: func.ST_RotateX
 slug: func-st-rotatex
 description: Rotates a geometry geomA - rotRadians about the X axis
 date: 2022-01-31T17:34:46
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

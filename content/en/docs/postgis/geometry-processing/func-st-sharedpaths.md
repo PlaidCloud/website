@@ -3,12 +3,6 @@ title: func.ST_SharedPaths
 slug: func-st-sharedpaths
 description: Returns a collection containing paths shared by the two input geometries
 date: 2022-01-31T11:11:44
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

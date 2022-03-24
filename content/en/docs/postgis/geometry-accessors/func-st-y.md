@@ -3,12 +3,6 @@ title: func.ST_Y
 slug: func-st-y
 description: Return the Y coordinate of the point, or NULL if not available. Input must be a point
 date: 2022-01-27T14:41:49
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

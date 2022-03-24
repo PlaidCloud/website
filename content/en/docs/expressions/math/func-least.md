@@ -3,12 +3,6 @@ title: func.least
 slug: func-least
 description: The LEAST function returns the “least” or “smallest” value from the list of expressions
 date: 2022-01-25T07:40:00
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

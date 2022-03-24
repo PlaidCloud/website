@@ -3,16 +3,10 @@ title: and_
 slug: and
 description: Checks if all conditions are met
 date: 2022-01-25T07:39:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
-The and\_ operator allows checking if two or more conditions are all met.
+The and_ operator allows checking if two or more conditions are all met.
 
 
 

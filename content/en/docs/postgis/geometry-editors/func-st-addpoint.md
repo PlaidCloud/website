@@ -3,12 +3,6 @@ title: func.ST_AddPoint
 slug: func-st-addpoint
 description: Adds a point to a LineString before point <position> (0-based index)
 date: 2022-01-28T13:14:09
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

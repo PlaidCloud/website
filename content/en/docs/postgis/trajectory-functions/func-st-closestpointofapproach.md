@@ -3,12 +3,6 @@ title: func.ST_ClosestPointOfApproach
 slug: func-st-closestpointofapproach
 description: Returns the smallest measure at which points interpolated along the given trajectories are at the smallest distance
 date: 2022-02-01T11:36:07
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 

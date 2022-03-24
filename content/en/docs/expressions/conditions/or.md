@@ -3,16 +3,10 @@ title: or_
 slug: or
 description: Checks if any conditions are met
 date: 2022-01-25T07:39:47
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
-The or\_ operator allows checking two or more conditions to determine if the evaluation is true or false.
+The or_ operator allows checking two or more conditions to determine if the evaluation is true or false.
 
 
 

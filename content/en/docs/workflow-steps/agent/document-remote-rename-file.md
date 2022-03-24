@@ -3,12 +3,6 @@ title: Document - Remote Rename File
 slug: document-remote-rename-file
 description: Renames or moves a remote file system file using a PlaidLink agent installed within the firewall
 date: 2022-01-25T07:39:56
-tags:
-- plaidcloud
-- expression
-categories:
-- PlaidCloud
-- Expressions
 ---
 
 
