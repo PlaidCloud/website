@@ -1,6 +1,5 @@
 ---
 linktitle: Data Management
 title: Data Management
-sitemap:
-  priority: 1.0
+weight: 5.0
 ---

@@ -1,6 +1,5 @@
 ---
 linktitle: Projects
 title: Projects
-sitemap:
-  priority: 1.0
+weight: 1.0
 ---

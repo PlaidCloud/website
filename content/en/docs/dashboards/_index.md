@@ -1,6 +1,5 @@
 ---
 linktitle: Dashboards
 title: Dashboards
-sitemap:
-  priority: 1.0
+weight: 4.0
 ---
