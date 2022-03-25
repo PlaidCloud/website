@@ -1,6 +1,5 @@
 ---
 linktitle: Workflows
 title: Workflows
-sitemap:
-  priority: 1.0
+weight: 2.0
 ---
