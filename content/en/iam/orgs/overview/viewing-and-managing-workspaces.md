@@ -46,8 +46,9 @@ This will bring you to a table showing all the current workspaces within the Org
 4. Complete the required fields
 5. Click “Submit”
 
-*Note:* By default, the member who created the workspace will be assigned to it automatically.
-
+{{< note >}}
+By default, the member who created the workspace will be assigned to it automatically.
+{{< /note >}}
 
 
 ### Updating a Workspace
