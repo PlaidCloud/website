@@ -5,38 +5,27 @@ description: Import JSON text files from PlaidCloud Document
 date: 2022-01-25T07:39:57
 ---
 
-## Description
 
+## Description
 
 Import JSON text files from PlaidCloud Document.
 
-
-
 For more details on JSON files, see the JSON official website here: <http://json.org/>.
-
-
 
 JSON files do *not* retain column order. The column order in the source file does not necessarily reflect the column order in the imported data table.
 
 
+## Examples
 
-## Import Parameters
+No examples yet...
 
+---
 
-### Source and Target
-
-
-To establish the source and target, first select the data table to be exported from the **Source Table** dropdown menu. Next, select the target file path from PlaidCloud Document using the dropdown menu to select the appropriate account before navigating to the actual directory in the section immediately below. Finally, provide the target file with a descriptive name.
-
-
+## Unique Configuration Items
 
 ### JSON Data Orientation
 
-
 Consider the following data set:
-
-
-
 
 | ID | Name | Gender | State |
 | 1 | Jack | M | MO |
@@ -45,7 +34,6 @@ Consider the following data set:
 | 4 | Abe | M | KY |
 
 JSON files can be imported from one of three data formats:
-
 
 * Records: Data is stored in Python dictionary sets, with each row stored in {Column -> Value, …} format. For example:
 
@@ -68,104 +56,18 @@ JSON files can be imported from one of three data formats:
 { "columns": ["ID", "Name", "Gender", "State"], "index": [0, 1, 2, 3], "data": [ [1, "Jack", "M", "MO"], [2, "Jill", "F", "MO"], [3, "George", "M", "VA"], [4, "Abe", "M", "KY"] ] }
 ```
 
+---
 
+## Common Configuration Items
 
-### Table Data Selection
+{{< include "common-remove-non-ascii" >}}
 
+{{< include "common-delete-files-after-import" >}}
 
-Remember that JSON files do *not* retain column order. Adjustments to column order may be required during this step.
+{{< include "common-import-file-selection" >}}
 
+{{< include "common-import-target-selection" >}}
 
+{{< include "common-data-mapper" >}}
 
-### Data Filters
-
-
-To allow for maximum flexibility, data filters are available on the source data and the target data. For larger data sets, it can be especially beneficial to filter out rows on the source so the remaining operations are performed on a smaller data set.
-
-
-
-### Select Subset of Source Data
-
-
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
-
-
-
-### Duplicates
-
-
-To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
-
-
-
-{{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
-{{< /caution >}}
-
-
-
-### Select Subset of Final Data
-
-
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
-
-
-
-
-
-
-### Select Subset of Source Data
-
-
-Any valid Python expression is acceptable to subset the data. Please see [Expressions](/docs/expressions) for more details and examples.
-
-
-
-### Duplicates
-
-
-To report duplicates, select the **Report Duplicates in Table** checkbox and then specify an output table which will contain all of the duplicate records.
-
-
-
-{{< caution >}}
-This will **not** remove the duplicate items from the target data table. To remove duplicate items, use the **Distinct** menu options as specified in the [Table Data Selection](../transforms/common_features#table-data-selection) section.
-{{< /caution >}}
-
-
-
-### Source Table Slicing (Limit)
-
-
-To limit the data, check the **Apply Row Slicer** box and then specify the following:
-
-
-* **Initial Rows to Skip:** Rows of data to skip (column header row is **not** included in count)
-* **End at Row:** Last row of data to include. Note that this is different from simply counting rows at the end to drop
-
-
-### Select Subset of Source Data
-
-
-Any valid Python expression is acceptable to subset the data. Please see [Expression](/docs/expressions) for more details and examples.
-
-
-
-### Final Data Table Slicing (Limit)
-
-
-To limit the data, simply check the **Apply Row Slicer** box and then specify the following:
-
-
-* **Initial Rows to Skip:** Rows of data to skip (column header row is not included in count)
-* **End at Row:** Last row of data to include. This is different from simply counting rows at the end to drop
-
-
-
-
-
-
-## Examples
-
-
-No examples yet...
+{{< include "common-data-filter" >}}
