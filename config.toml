@@ -135,7 +135,7 @@ version_menu = "Versions"
 time_format_blog = "Monday, January 02, 2006"
 time_format_default = "January 02, 2006 at 3:04 PM EST"
 
-description = "Unified Finacial Analytics Solution"
+description = "Unified Financial Analytics Solution"
 showedit = true
 
 latest = "v5.8"
@@ -145,7 +145,7 @@ version = "v5.10"
 githubbranch = "main"
 docsbranch = "main"
 deprecated = false
-currentUrl = "https://docs.plaidcloud.io/docs/home/"
+currentUrl = "https://docs.plaidcloud.io/"
 nextUrl = "https://PlaidCloud-io-vnext-staging.netlify.com/"
 
 # See codenew shortcode
