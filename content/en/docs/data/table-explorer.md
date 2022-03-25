@@ -10,7 +10,7 @@ Table Explorer provides a powerful and readily accessible data exploration tool 
 life easy for people working with large and complex data.
 
 Table Explorer supports exploration on any size dataset so you can use the same tool no matter how much your data grows.  It also provides point-and-click 
-filtering along with advanced filter capabilities to zero in on the data you need.  The best part is that anywhere in PlaidCloud that has tables or views, 
+filtering along with advanced filter capabilities to zero in on the data you need.  The best part is that anywhere in PlaidCloud with tables or views, 
 you can click on those tables and views to explore with Table Explorer.  By being fully integrated, data access is only a click away.
 
 The `Grid` view provides a tabular view of the data. The `Details` view provides a summary of each column, a count of unique values, and summary statistics for numeric columns.
@@ -149,7 +149,7 @@ When exploring data, it is often in the context of determining how to filter it 
 including advanced filters to zero in on the desired result.
 
 Instead of attempting to replicate all the filters, columns, summarizations, and sorts in an Extract Step, you can simply save the existing Table Explorer settings
-as a new Extract Step.  This option is under the 
+as a new Extract Step. 
 
 
 ### Save as View
@@ -164,6 +164,8 @@ a data pipeline.
 
 You never have to lose your filter work.  You can save your Table Explorer settings as a saved filter.  Saved filters also include column visibility, summarizations,
 columns filters, advanced filters, and sorts.
+
+You can also let others use a saved filter by checking the `Public` checkbox when saving the filter.
 
 From the `Actions` menu you can also choose to delete and rename saved filters.
 
