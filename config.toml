@@ -160,7 +160,7 @@ plaidcloud_search = true
 #The following search parameters are specific to Docsy's implementation. PlaidCloud implementes its own search-related partials and scripts.
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-gcs_engine_id = "2ba3e945a0f2c92e9"
+gcs_engine_id = "ee7b3fb393a7e3b28"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false
