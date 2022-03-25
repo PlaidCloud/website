@@ -1,6 +1,5 @@
 ---
-linktitle: PostGIS Expressions
+linktitle: PostGIS Expressions (Geospatial)
 title: PostGIS Expressions (Geospatial)
-sitemap:
-  priority: 1.0
+weight: 12.0
 ---

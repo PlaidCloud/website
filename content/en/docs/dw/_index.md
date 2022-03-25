@@ -1,6 +1,5 @@
 ---
 linktitle: Greenplum Data Warehouses
 title: Greenplum Data Warehouses
-sitemap:
-  priority: 1.0
+weight: 8.0
 ---

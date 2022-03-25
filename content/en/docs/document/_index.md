@@ -1,6 +1,5 @@
 ---
 linktitle: Document
 title: Document
-sitemap:
-  priority: 1.0
+weight: 6.0
 ---

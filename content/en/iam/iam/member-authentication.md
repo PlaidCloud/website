@@ -21,26 +21,19 @@ The Identity tab houses the security and authentication features that PlaidCloud
 
 The default authentication type is password only. However, two-factor authentication can also be activated. If a Single Sign-On SAML authentication provider is available, you can configure your PlaidCloud organization to use Single Sign-On.
 
-
-
 If you choose to create a personal account, the default authentication type is password only. To change this to a two-factor authentication, reference the steps under the Two-Factor section.
-
 
 {{< note >}}
 Members may have access to the Identity tab for security purposes or in order to manage members for the workspace. Details on managing security and authentication for new members or members without access can be found on the main “Identity” page.
 {{< /note >}}
 
 
-
 ## Changing Passwords
-
 
 For members using two-factor or password-only authentication, password changes are simple and can be performed under the “Member” menu (gravatar icon) in the upper right corner.
 
 
-
 **To change passwords:**
-
 
 1. Select the icon (gravatar) in the upper right
 
@@ -52,15 +45,14 @@ For members using two-factor or password-only authentication, password changes a
 5. Re-enter your password (for confirmation)
 6. Click the “Update” button to save
 
-*Note:* Only strong passwords are accepted, and the new password must be different from the current one.
-
+{{< note >}}
+Only strong passwords are accepted, and the new password must be different from the current one.
+{{< /note >}}
 
 
 ## Password Only Authentication
 
-
-Password-only authentication is the simplest and least secure option, even with cryptic passwords. This option may be ideal for those looking to maintain quick and convenient access without too much concern about security risks. Password-only authentication is the most widely used option on the web, including at many banking sites.
-
+Password-only authentication is the simplest and least secure option, even with long cryptic passwords. This option may be ideal for those looking to maintain quick and convenient access without too much concern about security risks. Password-only authentication continues to be a common practice but we highly recommend using Two-Factor instead.
 
 
 ## Two-Factor Authentication
@@ -68,14 +60,7 @@ Password-only authentication is the simplest and least secure option, even with 
 
 Two-Factor, or multi-factor, authentication provides a substantial increase in security over password-only because it requires both something “you know” (the password) and something “you have” (the access key). In other words, the password alone will not enable access.
 
-
-
 Passwords are susceptible to security threats because they represent a *single* piece of information that a malicious actor needs to gain access; two-factor provides additional security by requiring *additional information* to sign in. For this reason we **strongly** urge you to use two-factor for the safety of your account, not only on PlaidCloud, but on other websites that support it.
-
-
-
-To learn more about two-factor authentication, please refer to this [more in-depth explanation](https://plaidcloud.com/docs/identity/about-two-factor-authentication).
-
 
 
 ### Enabling Two-Factor
@@ -90,9 +75,7 @@ To learn more about two-factor authentication, please refer to this [more in-dep
 
 ### Types of Two-Factor Authentication
 
-
 PlaidCloud has three options for receiving this additional information:
-
 
 * Via smartphone app (e.g. Google Authenticator, Authy, Okta, FreeOTP, etc…)
 * Via text message (or SMS)
@@ -103,9 +86,7 @@ PlaidCloud has three options for receiving this additional information:
 
 To get your code via a smartphone app, you will need to download an authenticator app, such as Google Authenticator, for your [iOS](https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) device. Note that there are other compatible authenticator apps that can be used, but this article assumes you’re using the Google Authenticator app.
 
-
 After downloading the app, open it and follow the in-app setup instructions.
-
 
 
 **Once you have the authenticator set up:**
